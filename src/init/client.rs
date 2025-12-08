@@ -1,4 +1,4 @@
-use valence::{ChunkLayer, EntityLayer, GameMode, app::{App, Plugin, Update}, client::{Client, VisibleChunkLayer, VisibleEntityLayers}, entity::{EntityLayerId, Position}, prelude::{Added, Entity, Query, With}};
+use valence::{ChunkLayer, EntityLayer, GameMode, app::{App, Plugin, Update}, client::{Client, VisibleChunkLayer, VisibleEntityLayers}, command::scopes::CommandScopes, entity::{EntityLayerId, Position}, op_level::OpLevel, prelude::{Added, Entity, Query, With}};
 
 pub struct ClientInitializationPlugin;
 
@@ -22,6 +22,8 @@ fn initialize_joining_clients(
             &mut VisibleEntityLayers,
             &mut Position,
             &mut GameMode,
+            &mut OpLevel,
+            &mut CommandScopes,
         ),
         Added<Client>,
     >,
@@ -33,6 +35,8 @@ fn initialize_joining_clients(
         mut visible_entity_layers,
         mut position,
         mut game_mode,
+        mut op_level,
+        mut permissions,
     ) in &mut clients
     {
         let layer = layers.single();
@@ -41,6 +45,9 @@ fn initialize_joining_clients(
         visible_entity_layers.0.insert(layer);
         position.set([0.0, 100.0, 0.0]);
         *game_mode = GameMode::Creative;
+
+        op_level.set(4);
+        permissions.add("meloncraft.command.gamemode");
     }
 }
 

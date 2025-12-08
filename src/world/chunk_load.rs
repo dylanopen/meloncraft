@@ -27,7 +27,6 @@ fn handle_chunk_load(
                     "Failed to load chunk at ({}, {}): {e:#}",
                     event.pos.x, event.pos.z
                 );
-
                 error!("{}", errmsg);
                 layer.send_chat_message(errmsg.color(Color::RED));
 

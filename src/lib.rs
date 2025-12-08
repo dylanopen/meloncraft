@@ -2,4 +2,5 @@
 
 pub mod init;
 pub mod world;
+pub mod command;
 
