@@ -8,6 +8,7 @@ pub fn main() {
         .add_plugins(meloncraft::init::client::ClientInitializationPlugin)
         .add_plugins(meloncraft::world::world_load::WorldLoadPlugin)
         .add_plugins(meloncraft::command::gamemode::GamemodeCommandPlugin)
+        .add_plugins(meloncraft::block_destroy::BlockDestroyPlugin)
         .run();
 }
 

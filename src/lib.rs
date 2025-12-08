@@ -3,4 +3,5 @@
 pub mod init;
 pub mod world;
 pub mod command;
+pub mod block_destroy;
 
