@@ -15,7 +15,5 @@ fn setup(
     dimensions: Res<DimensionTypeRegistry>,
     biomes: Res<BiomeRegistry>,
 ) {
-    let mut layer = LayerBundle::new(ident!("overworld"), &dimensions, &biomes, &server);
-    commands.spawn(layer);
 }
 

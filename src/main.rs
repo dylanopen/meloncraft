@@ -6,6 +6,7 @@ pub fn main() {
         .add_plugins(DefaultPlugins)
         .add_plugins(meloncraft::init::startup::StartupPlugin)
         .add_plugins(meloncraft::init::client::ClientInitializationPlugin)
+        .add_plugins(meloncraft::world::world_load::WorldLoadPlugin)
         .run();
 }
 
