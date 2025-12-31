@@ -1,0 +1,9 @@
+[package]
+name = "meloncraft_handshaking"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+meloncraft_client = { workspace = true }
+meloncraft_packets = { workspace = true }
+bevy = { workspace = true }

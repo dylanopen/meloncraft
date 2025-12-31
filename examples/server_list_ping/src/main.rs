@@ -1,6 +1,7 @@
 use bevy::app::{App, Update};
 use bevy::MinimalPlugins;
 use bevy::prelude::MessageReader;
+use meloncraft::handshaking::MeloncraftHandshakingPlugin;
 use meloncraft::network::MeloncraftNetworkPlugin;
 use meloncraft::incoming_packet_generators::MeloncraftPacketGeneratorsPlugin;
 use meloncraft::packets::incoming::handshaking::Handshake;
@@ -13,8 +14,9 @@ pub fn main() {
     app.add_plugins(MeloncraftNetworkPlugin);
     app.add_plugins(MeloncraftPacketsPlugin);
     app.add_plugins(MeloncraftPacketGeneratorsPlugin);
+    app.add_plugins(MeloncraftHandshakingPlugin);
 
-    app.add_systems(Update, respond_to_handshake);
+    //app.add_systems(Update, respond_to_handshake);
 
     app.run();
 }
