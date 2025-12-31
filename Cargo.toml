@@ -1,8 +1,11 @@
 [workspace]
 resolver = "3"
 members = [
-    "crates/meloncraft_network", "crates/meloncraft_incoming_packet_generators", "crates/meloncraft_packets",
-    "crates/meloncraft_protocol_types"
+    "crates/meloncraft_network",
+    "crates/meloncraft_incoming_packet_generators",
+    "crates/meloncraft_packets",
+    "crates/meloncraft_protocol_types",
+    "crates/meloncraft_client"
 ]
 exclude = [
     "examples"
@@ -20,11 +23,13 @@ edition = "2024"
 [workspace.dependencies]
 meloncraft_protocol_types = { path = "crates/meloncraft_protocol_types" }
 meloncraft_network = { path = "crates/meloncraft_network" }
+meloncraft_client = { path = "crates/meloncraft_client" }
 meloncraft_packets = { path = "crates/meloncraft_packets" }
 meloncraft_incoming_packet_generators = { path = "crates/meloncraft_incoming_packet_generators" }
 
 [dependencies]
 meloncraft_protocol_types = { workspace = true }
 meloncraft_network = { workspace = true }
+meloncraft_client = { workspace = true }
 meloncraft_packets = { workspace = true }
 meloncraft_incoming_packet_generators = { workspace = true }

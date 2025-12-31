@@ -1,5 +1,5 @@
 use bevy::ecs::message::Message;
-use meloncraft_network::connection_state::ConnectionState;
+use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::IncomingNetworkPacket;
 use meloncraft_protocol_types::deserialize;
 use crate::IncomingPacket;

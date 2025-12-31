@@ -1,4 +1,4 @@
-use meloncraft_network::connection_state::ConnectionState;
+use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::IncomingNetworkPacket;
 
 pub trait IncomingPacket: Sized {

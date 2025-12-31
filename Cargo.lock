@@ -747,10 +747,18 @@ checksum = "5e5032e24019045c762d3c0f28f5b6b8bbf38563a65908389bf7978758920897"
 name = "meloncraft"
 version = "0.1.0"
 dependencies = [
+ "meloncraft_client",
  "meloncraft_incoming_packet_generators",
  "meloncraft_network",
  "meloncraft_packets",
  "meloncraft_protocol_types",
+]
+
+[[package]]
+name = "meloncraft_client"
+version = "0.1.0"
+dependencies = [
+ "bevy",
 ]
 
 [[package]]
@@ -767,6 +775,7 @@ name = "meloncraft_network"
 version = "0.1.0"
 dependencies = [
  "bevy",
+ "meloncraft_client",
  "meloncraft_protocol_types",
 ]
 
@@ -775,6 +784,7 @@ name = "meloncraft_packets"
 version = "0.1.0"
 dependencies = [
  "bevy",
+ "meloncraft_client",
  "meloncraft_network",
  "meloncraft_protocol_types",
 ]
