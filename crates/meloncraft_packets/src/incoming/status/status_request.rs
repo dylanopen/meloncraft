@@ -2,7 +2,6 @@ use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::IncomingNetworkPacket;
-use meloncraft_protocol_types::deserialize;
 use crate::IncomingPacket;
 
 #[derive(Message, Debug)]
