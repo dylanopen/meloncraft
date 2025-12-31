@@ -1,4 +1,4 @@
-// Thanks to https://git.thetxt.io/thetxt/oxide!
+// Thanks to https://git.thetxt.io/thetxt/oxide (heavily inspired by the project's deserialisation)!
 
 use std::error::Error;
 use std::fmt::{Display, Formatter};
