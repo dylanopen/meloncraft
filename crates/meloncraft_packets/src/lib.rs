@@ -1,5 +1,8 @@
-mod incoming_packet;
+pub mod incoming_packet;
+pub mod outgoing_packet;
+
 pub mod incoming;
+pub mod outgoing;
 
 use bevy::app::{App, Plugin};
 pub use incoming_packet::IncomingPacket;
