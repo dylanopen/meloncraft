@@ -1,0 +1,26 @@
+[workspace]
+resolver = "3"
+members = [
+    "crates/meloncraft_network",
+    "crates/meloncraft_protocol_types"
+]
+exclude = [
+    "examples"
+]
+
+[workspace.dependencies.bevy]
+version = "0.17.3"
+default-features = false
+
+[package]
+name = "meloncraft"
+version = "0.1.0"
+edition = "2024"
+
+[workspace.dependencies]
+meloncraft_protocol_types = { path = "crates/meloncraft_protocol_types" }
+meloncraft_network = { path = "crates/meloncraft_network" }
+
+[dependencies]
+meloncraft_protocol_types = { workspace = true }
+meloncraft_network = { workspace = true }
