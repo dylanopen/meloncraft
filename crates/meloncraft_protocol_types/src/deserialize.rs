@@ -6,7 +6,7 @@ use std::fmt::{Display, Formatter};
 #[allow(dead_code)]
 pub fn boolean(data: &mut Vec<u8>) -> Result<bool, Box<dyn Error>> {
     data.reverse();
-    let value = data.pop().unwrap();
+    let value = data.pop().ok_or(Box::new(DeserializeError::ParseInvalidValue))?;
     data.reverse();
 
     return match value {
@@ -19,7 +19,7 @@ pub fn boolean(data: &mut Vec<u8>) -> Result<bool, Box<dyn Error>> {
 #[allow(dead_code)]
 pub fn unsigned_short(data: &mut Vec<u8>) -> Result<u16, Box<dyn Error>> {
     data.reverse();
-    let first_byte = data.pop().unwrap();
+    let first_byte = data.pop().ok_or(Box::new(DeserializeError::ParseInvalidValue))?;
     let second_byte = data.pop().unwrap();
     data.reverse();
 
@@ -30,35 +30,35 @@ pub fn unsigned_short(data: &mut Vec<u8>) -> Result<u16, Box<dyn Error>> {
 
 #[allow(dead_code)]
 pub fn long(data: &mut Vec<u8>) -> Result<i64, Box<dyn Error>> {
-    let output: i64 = i64::from_be_bytes(data[..8].try_into().unwrap());
+    let output: i64 = i64::from_be_bytes(data[..8].try_into()?);
     data.drain(0..7);
     return Ok(output);
 }
 
 #[allow(dead_code)]
 pub fn double(data: &mut Vec<u8>) -> Result<f64, Box<dyn Error>> {
-    let output: f64 = f64::from_be_bytes(data[..8].try_into().unwrap());
+    let output: f64 = f64::from_be_bytes(data[..8].try_into()?);
     data.drain(0..7);
     return Ok(output);
 }
 
 #[allow(dead_code)]
 pub fn float(data: &mut Vec<u8>) -> Result<f32, Box<dyn Error>> {
-    let output: f32 = f32::from_be_bytes(data[..4].try_into().unwrap());
+    let output: f32 = f32::from_be_bytes(data[..4].try_into()?);
     data.drain(0..3);
     return Ok(output);
 }
 
 #[allow(dead_code)]
 pub fn uuid(data: &mut Vec<u8>) -> Result<u128, Box<dyn Error>> {
-    let output: u128 = u128::from_be_bytes(data[..16].try_into().unwrap());
+    let output: u128 = u128::from_be_bytes(data[..16].try_into()?);
     data.drain(0..15);
     return Ok(output);
 }
 
 #[allow(dead_code)]
 pub fn string(data: &mut Vec<u8>) -> Result<String, Box<dyn Error>> {
-    let length = varint(data).unwrap();
+    let length = varint(data)?;
     let raw_string: &[u8] = &data.clone()[..length as usize];
     data.drain(..length as usize);
 
