@@ -14,3 +14,15 @@ pub struct IncomingNetworkPacket {
 pub struct IncomingNetworkPacketReceived {
     pub packet: IncomingNetworkPacket,
 }
+
+#[derive(Clone, Debug)]
+pub struct OutgoingNetworkPacket {
+    pub client: Entity,
+    pub id: i32,
+    pub data: Vec<u8>,
+}
+
+#[derive(Message)]
+pub struct OutgoingNetworkPacketReceived {
+    pub packet: OutgoingNetworkPacket,
+}
