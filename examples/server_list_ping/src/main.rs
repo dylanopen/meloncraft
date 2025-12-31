@@ -1,11 +1,31 @@
-use bevy::app::App;
+use bevy::app::{App, Update};
 use bevy::MinimalPlugins;
+use bevy::prelude::MessageReader;
 use meloncraft::network::MeloncraftNetworkPlugin;
+use meloncraft::incoming_packet_generators::MeloncraftPacketGeneratorsPlugin;
+use meloncraft::network::packet::{IncomingNetworkPacket, IncomingNetworkPacketReceived};
+use meloncraft::packets::incoming::handshaking::Handshake;
+use meloncraft::packets::MeloncraftPacketsPlugin;
 
 pub fn main() {
 
     let mut app = App::new();
     app.add_plugins(MinimalPlugins);
     app.add_plugins(MeloncraftNetworkPlugin);
+    app.add_plugins(MeloncraftPacketsPlugin);
+    app.add_plugins(MeloncraftPacketGeneratorsPlugin);
+
+    app.add_systems(Update, respond_to_handshake);
+
     app.run();
+}
+
+fn respond_to_handshake(
+    mut mr: MessageReader<Handshake>,
+    mut a: MessageReader<IncomingNetworkPacketReceived>,
+) {
+    for msg in mr.read() {
+    }
+    for b in a.read() {
+    }
 }

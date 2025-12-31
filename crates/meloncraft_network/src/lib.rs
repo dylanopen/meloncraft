@@ -3,7 +3,7 @@ use std::net::TcpListener;
 use bevy::app::{App, Plugin, Update};
 use crate::connection_listener::ConnectionListener;
 use crate::connection_state::ConnectionStates;
-use crate::packet::IncomingPacketReceived;
+use crate::packet::IncomingNetworkPacketReceived;
 use crate::tcp_reader::receive_packets;
 
 pub mod connection_state;
@@ -18,7 +18,7 @@ impl Plugin for MeloncraftNetworkPlugin {
         let connection_listener = ConnectionListener(TcpListener::bind("127.0.0.1:25565").unwrap());
         let connection_states = ConnectionStates(HashMap::new());
 
-        app.add_message::<IncomingPacketReceived>();
+        app.add_message::<IncomingNetworkPacketReceived>();
         app.insert_resource(connection_listener);
         app.insert_resource(connection_states);
         app.add_systems(Update, receive_packets);

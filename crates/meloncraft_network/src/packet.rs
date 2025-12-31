@@ -2,7 +2,7 @@ use bevy::prelude::Message;
 use crate::connection_state::ConnectionState;
 
 #[derive(Clone, Debug)]
-pub struct IncomingPacket {
+pub struct IncomingNetworkPacket {
     pub len: i32,
     pub state: ConnectionState,
     pub id: i32,
@@ -10,8 +10,8 @@ pub struct IncomingPacket {
 }
 
 #[derive(Message)]
-pub struct IncomingPacketReceived {
-    pub packet: IncomingPacket,
+pub struct IncomingNetworkPacketReceived {
+    pub packet: IncomingNetworkPacket,
 }
 
 
