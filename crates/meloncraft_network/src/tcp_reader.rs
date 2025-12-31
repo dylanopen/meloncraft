@@ -1,5 +1,4 @@
 use std::io::{BufRead, BufReader};
-use std::net::TcpStream;
 use bevy::prelude::{Commands, MessageWriter, Query, Res, ResMut};
 use meloncraft_client::connection::ClientConnection;
 use meloncraft_client::connection_state::ConnectionState;
@@ -17,10 +16,6 @@ pub fn receive_packets(
 ) {
     if let Some(stream) = connection_listener.incoming().next() {
         let stream = stream.unwrap();
-        println!(
-            "Incoming connection from {:?}",
-            &stream.peer_addr().unwrap()
-        );
 
         let mut stream = stream.try_clone().unwrap();
         let mut buf_reader = BufReader::new(&mut stream);
@@ -54,7 +49,6 @@ pub fn receive_packets(
             id: packet_id,
             data: raw_packet,
         };
-        dbg!(&packet);
         incoming_packet_received_mw.write(IncomingNetworkPacketReceived { packet });
     }
 }
