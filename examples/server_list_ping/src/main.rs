@@ -4,7 +4,7 @@ use bevy::prelude::MessageReader;
 use meloncraft::handshaking::MeloncraftHandshakingPlugin;
 use meloncraft::network::MeloncraftNetworkPlugin;
 use meloncraft::incoming_packet_generators::MeloncraftPacketGeneratorsPlugin;
-use meloncraft::packets::incoming::handshaking::Handshake;
+use meloncraft::packets::incoming::handshaking::Intention;
 use meloncraft::packets::MeloncraftPacketsPlugin;
 
 pub fn main() {
@@ -22,7 +22,7 @@ pub fn main() {
 }
 
 fn respond_to_handshake(
-    mut mr: MessageReader<Handshake>,
+    mut mr: MessageReader<Intention>,
 ) {
     for msg in mr.read() {
         println!("Handshake received: {:?}", msg);

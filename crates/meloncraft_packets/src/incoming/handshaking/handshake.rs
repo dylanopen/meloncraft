@@ -6,7 +6,7 @@ use meloncraft_protocol_types::deserialize;
 use crate::IncomingPacket;
 
 #[derive(Message, Debug)]
-pub struct Handshake {
+pub struct Intention {
     pub client: Entity,
     pub protocol_version: i32,
     pub server_address: String,
@@ -14,7 +14,7 @@ pub struct Handshake {
     pub next_state: ConnectionState,
 }
 
-impl IncomingPacket for Handshake {
+impl IncomingPacket for Intention {
     fn id() -> i32 { 0x00 }
     fn state() -> ConnectionState { ConnectionState::Handshaking }
     fn parse(incoming: &IncomingNetworkPacket) -> Option<Self> {
@@ -28,7 +28,7 @@ impl IncomingPacket for Handshake {
             _ => return None, // TODO: log this
         };
 
-        Some(Handshake {
+        Some(Intention {
             client: incoming.client,
             protocol_version,
             server_address,

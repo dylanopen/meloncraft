@@ -8,7 +8,7 @@ pub struct MeloncraftPacketsPlugin;
 
 impl Plugin for MeloncraftPacketsPlugin {
     fn build(&self, app: &mut App) {
-        app.add_message::<incoming::handshaking::Handshake>();
+        app.add_message::<incoming::handshaking::Intention>();
         app.add_message::<incoming::status::StatusRequest>();
     }
 }

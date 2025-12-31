@@ -1,9 +1,9 @@
 use bevy::prelude::{MessageReader, Query};
 use meloncraft_client::connection::ClientConnection;
-use meloncraft_packets::incoming::handshaking::Handshake;
+use meloncraft_packets::incoming::handshaking::Intention;
 
 pub fn update_connection_states(
-    mut handshake_pr: MessageReader<Handshake>,
+    mut handshake_pr: MessageReader<Intention>,
     mut client_connections: Query<&mut ClientConnection>,
 ) {
     for packet in handshake_pr.read() {

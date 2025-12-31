@@ -1,2 +1,2 @@
 mod handshake;
-pub use handshake::Handshake;
+pub use handshake::Intention;
