@@ -7,7 +7,13 @@ pub trait IncomingPacket: Sized {
     fn parse(incoming: &IncomingNetworkPacket) -> Option<Self>;
 
     fn validate(incoming: &IncomingNetworkPacket) -> Result<(), ()> {
-        return Ok(())
+        if incoming.state != Self::state() {
+            return Err(());
+        }
+        if incoming.id != Self::id() {
+            return Err(());
+        }
+        Ok(())
     }
 
     fn from_packet(incoming: &IncomingNetworkPacket) -> Option<Self> {
