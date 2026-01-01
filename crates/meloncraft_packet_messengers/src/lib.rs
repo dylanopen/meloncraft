@@ -20,8 +20,7 @@ impl Plugin for MeloncraftPacketGeneratorsPlugin {
             (
                 forward_incoming_packet::<Intention>,
                 forward_incoming_packet::<StatusRequest>,
-            )
-                .chain(),
+            ),
         );
 
         app.add_systems(Update, forward_outgoing_packet::<StatusResponse>);

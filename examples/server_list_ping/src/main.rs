@@ -15,7 +15,7 @@ use std::time::Duration;
 
 pub fn main() {
     let mut app = App::new();
-    app.add_plugins(MinimalPlugins.set(ScheduleRunnerPlugin::run_loop(Duration::from_millis(500))));
+    app.add_plugins(MinimalPlugins.set(ScheduleRunnerPlugin::run_loop(Duration::from_millis(50))));
     app.add_plugins(MeloncraftNetworkPlugin);
     app.add_plugins(MeloncraftPacketsPlugin);
     app.add_plugins(MeloncraftPacketGeneratorsPlugin);

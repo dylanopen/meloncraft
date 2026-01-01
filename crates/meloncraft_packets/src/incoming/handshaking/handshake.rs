@@ -22,7 +22,7 @@ impl IncomingPacket for Intention {
         ConnectionState::Handshaking
     }
     fn parse(incoming: &IncomingNetworkPacket) -> Option<Self> {
-        dbg!(incoming);
+        dbg!(&incoming.data);
         let mut incoming = incoming.clone();
         let protocol_version = deserialize::varint(&mut incoming.data).unwrap();
         let server_address = deserialize::string(&mut incoming.data).unwrap();
@@ -32,7 +32,6 @@ impl IncomingPacket for Intention {
             2 | 3 => ConnectionState::Login,
             _ => return None, // TODO: log this
         };
-        dbg!(&incoming.data);
 
         Some(Intention {
             client: incoming.client,

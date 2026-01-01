@@ -20,6 +20,7 @@ pub struct IncomingTcpPacket {
 const VARINT_CONTINUE_BIT: u8 = 0b10000000;
 
 pub fn handle_client(stream: TcpStream, entity: Entity) {
+    let mut iters = 0;
     let mut stream = stream.try_clone().unwrap();
     stream
         .set_read_timeout(Some(Duration::from_millis(2000)))
@@ -27,6 +28,10 @@ pub fn handle_client(stream: TcpStream, entity: Entity) {
     let address = stream.peer_addr().unwrap();
     let mut buf_reader = BufReader::new(&mut stream);
     loop {
+        if iters == 1 {
+            sleep(Duration::from_millis(12)); // packets are messages - unfortunately necessary to avoid race condition
+        }
+        iters += 1;
         let mut length_bytes = Vec::new();
         loop {
             let mut single_byte_buf = vec![0u8; 1];
@@ -47,8 +52,6 @@ pub fn handle_client(stream: TcpStream, entity: Entity) {
         if raw_packet.is_empty() {
             break;
         }
-
-        dbg!(&raw_packet);
 
         let packet_id = deserialize::varint(&mut raw_packet).unwrap();
         let packet = IncomingNetworkPacket {

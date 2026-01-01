@@ -1,4 +1,4 @@
-use bevy::prelude::{EventReader, Message, MessageReader, MessageWriter, Query};
+use bevy::prelude::{Message, MessageReader, MessageWriter, Query};
 use meloncraft_client::connection::ClientConnection;
 use meloncraft_network::INBOUND_PACKETS;
 use meloncraft_network::packet::IncomingNetworkPacketReceived;
