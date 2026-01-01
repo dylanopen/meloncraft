@@ -7,6 +7,7 @@ use meloncraft::network::MeloncraftNetworkPlugin;
 use meloncraft::network::packet::IncomingNetworkPacketReceived;
 use meloncraft::packet_messengers::MeloncraftPacketGeneratorsPlugin;
 use meloncraft::packets::MeloncraftPacketsPlugin;
+use meloncraft::packets::incoming::handshaking::Intention;
 use meloncraft::packets::incoming::status::StatusRequest;
 use meloncraft::packets::outgoing::status::StatusResponse;
 use std::time::Duration;
@@ -21,14 +22,21 @@ pub fn main() {
 
     app.add_systems(Update, respond_to_status_request);
     app.add_systems(Update, respond_to_packet);
+    app.add_systems(Update, respond_to_intention);
     app.add_systems(Update, say_hi);
 
     app.run();
 }
 
+fn respond_to_intention(mut mr: MessageReader<Intention>) {
+    for msg in mr.read() {
+        dbg!(msg);
+    }
+}
+
 fn respond_to_packet(mut mr: MessageReader<IncomingNetworkPacketReceived>) {
     for msg in mr.read() {
-        dbg!(&msg.packet);
+        // dbg!(&msg.packet);
     }
 }
 
@@ -38,10 +46,6 @@ fn respond_to_status_request(
     mut mr: MessageReader<StatusRequest>,
     mut mw: MessageWriter<StatusResponse>,
 ) {
-    if mr.is_empty() {
-    } else {
-        println!("Received status response");
-    }
     for msg in mr.read() {
         mw.write(StatusResponse {
             client: msg.client,

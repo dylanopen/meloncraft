@@ -1,16 +1,14 @@
 use crate::INBOUND_PACKETS;
 use crate::connected_clients::ConnectedClients;
 use crate::connection_listener::ConnectionListener;
-use crate::connection_manager::CLIENT_CONNECTIONS;
 use crate::packet::{IncomingNetworkPacket, IncomingNetworkPacketReceived};
 use bevy::prelude::{Commands, Entity, MessageWriter, Query, Res, ResMut};
-use meloncraft_client::connection::ClientConnection;
+use meloncraft_client::connection::{CLIENT_CONNECTIONS, ClientConnection};
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_protocol_types::deserialize;
 use std::io::{BufRead, BufReader, Read};
 use std::net::{TcpListener, TcpStream};
-use std::sync::mpsc::{Receiver, Sender, channel};
-use std::thread;
+use std::thread::sleep;
 use std::time::Duration;
 
 pub struct IncomingTcpPacket {
@@ -20,25 +18,69 @@ pub struct IncomingTcpPacket {
     pub data: Vec<u8>,
 }
 
-pub fn handle_client(mut stream: TcpStream, entity: Entity) {
+const VARINT_CONTINUE_BIT: u8 = 0b10000000;
+
+pub fn handle_client(stream: TcpStream, entity: Entity) {
+    let mut stream = stream.try_clone().unwrap();
+    stream
+        .set_read_timeout(Some(Duration::from_millis(1000)))
+        .unwrap();
+    let address = stream.peer_addr().unwrap();
+    let mut buf_reader = BufReader::new(&mut stream);
     loop {
+        let mut length_bytes = Vec::new();
+        loop {
+            let mut single_byte_buf = vec![0u8; 1];
+            if buf_reader.read_exact(&mut single_byte_buf).is_err() {
+                break; // no more packets to read
+            }
+            if single_byte_buf[0] & VARINT_CONTINUE_BIT == 0 {
+                break; // no more data in varint to read
+            }
+            length_bytes.push(single_byte_buf[0]);
+        }
+        dbg!(&length_bytes);
+        let length = deserialize::varint(&mut length_bytes).unwrap().0;
+        let mut raw_packet: Vec<u8> = vec![0; length as usize];
+        println!("receiving packet from client {entity}");
+        buf_reader.read_to_end(&mut raw_packet).unwrap();
+        dbg!(&raw_packet);
+        // client sent incomplete packets, disconnect them
+
+        if raw_packet.is_empty() {
+            //break;
+        }
+
+        /*
         let mut packet_len = [0; 3];
-        let Ok(amount_read) = stream.peek(&mut packet_len) else {
-            break;
+        let Ok(_) = stream.peek(&mut packet_len) else {
+            sleep(Duration::from_millis(1));
+            dbg!("peeking");
+            continue;
         };
         let len = deserialize::varint(&mut packet_len.to_vec()).unwrap();
-        let mut raw_packet = vec![0; len as usize];
+        if len == 0 {
+            continue; // client disconnected
+        }
+        let mut raw_packet = vec![0; (len + 3) as usize];
         if stream.read_exact(&mut raw_packet).is_err() {
-            break; // no more packets to read
+            // no more packets to read for now
+            sleep(Duration::from_millis(1));
+            continue;
         };
         if raw_packet.is_empty() {
-            break;
+            sleep(Duration::from_millis(1));
+            println!("Client {entity} disconnected");
+            continue;
         }
+        println!("packet sent from client {entity}");
+         */
+
+        let (length, length_bytes) = deserialize::varint(&mut raw_packet).unwrap();
+        dbg!(length, length_bytes);
+        buf_reader.consume((length + length_bytes) as usize);
         dbg!(&raw_packet);
 
-        let address = stream.peer_addr().unwrap();
-
-        let length = deserialize::varint(&mut raw_packet).unwrap();
         let packet_id = deserialize::varint(&mut raw_packet).unwrap();
         let state = CLIENT_CONNECTIONS
             .lock()
@@ -52,7 +94,7 @@ pub fn handle_client(mut stream: TcpStream, entity: Entity) {
         let packet = IncomingNetworkPacket {
             client: entity,
             len: length,
-            id: packet_id,
+            id: packet_id.0,
             data: raw_packet,
             state,
         };
@@ -67,7 +109,7 @@ pub fn receive_new_clients(tcp_listener: TcpListener) {
                 Ok(stream) => {
                     CLIENT_CONNECTIONS.lock().unwrap().push(ClientConnection {
                         address: stream.peer_addr().unwrap(),
-                        tcp_stream: stream,
+                        tcp_stream: stream.try_clone().unwrap(),
                         state: ConnectionState::Handshaking,
                     });
                 }
@@ -76,105 +118,5 @@ pub fn receive_new_clients(tcp_listener: TcpListener) {
                 }
             }
         }
-    }
-}
-
-pub fn receive_packets_old(
-    mut commands: Commands,
-    connection_listener: ResMut<ConnectionListener>,
-    mut connected_clients: ResMut<ConnectedClients>,
-    client_connections: Query<&ClientConnection>,
-    mut incoming_packet_received_mw: MessageWriter<IncomingNetworkPacketReceived>,
-) {
-    for client in client_connections.iter() {
-        loop {
-            let mut stream = client.tcp_stream.try_clone().unwrap();
-            stream.set_nonblocking(true).unwrap();
-            let mut packet_len = [0; 3];
-            let Ok(amount_read) = stream.peek(&mut packet_len) else {
-                break;
-            };
-            let len = deserialize::varint(&mut packet_len.to_vec()).unwrap();
-            let mut raw_packet = vec![0; len as usize];
-            if let Err(_) = stream.read_exact(&mut raw_packet) {
-                break; // no more packets to read
-            };
-            if raw_packet.is_empty() {
-                break;
-            }
-            dbg!(&raw_packet);
-
-            let address = stream.peer_addr().unwrap();
-            let client_entity = match connected_clients.0.get(&address) {
-                Some(entity) => Some(*entity),
-                None => None,
-            };
-            let (client_entity, client_connection_state) = match client_entity {
-                None => (
-                    commands
-                        .spawn(ClientConnection {
-                            tcp_stream: stream,
-                            state: ConnectionState::Handshaking,
-                            address,
-                        })
-                        .id(),
-                    &ConnectionState::Handshaking,
-                ),
-                Some(entity) => (entity, &client_connections.get(entity).unwrap().state),
-            };
-            connected_clients.0.insert(address, client_entity);
-
-            let length = deserialize::varint(&mut raw_packet).unwrap();
-            let packet_id = deserialize::varint(&mut raw_packet).unwrap();
-            let packet = IncomingNetworkPacket {
-                client: client_entity,
-                len: length,
-                state: *client_connection_state,
-                id: packet_id,
-                data: raw_packet,
-            };
-            incoming_packet_received_mw.write(IncomingNetworkPacketReceived { packet });
-        }
-    }
-    connection_listener.0.set_nonblocking(true).unwrap();
-    for stream in connection_listener.incoming() {
-        let Ok(stream) = stream else {
-            break;
-        };
-
-        let mut stream = stream.try_clone().unwrap();
-        let mut buf_reader = BufReader::new(&mut stream);
-        let mut raw_packet: Vec<u8> = buf_reader.fill_buf().unwrap().to_vec();
-
-        let address = stream.peer_addr().unwrap();
-        let client_entity = match connected_clients.0.get(&address) {
-            Some(entity) => Some(*entity),
-            None => None,
-        };
-        let (client_entity, client_connection_state) = match client_entity {
-            None => (
-                commands
-                    .spawn(ClientConnection {
-                        tcp_stream: stream,
-                        state: ConnectionState::Handshaking,
-                        address,
-                    })
-                    .id(),
-                &ConnectionState::Handshaking,
-            ),
-            Some(entity) => (entity, &client_connections.get(entity).unwrap().state),
-        };
-        connected_clients.0.insert(address, client_entity);
-
-        let length = deserialize::varint(&mut raw_packet).unwrap();
-        let packet_id = deserialize::varint(&mut raw_packet).unwrap();
-        let packet = IncomingNetworkPacket {
-            client: client_entity,
-            len: length,
-            state: *client_connection_state,
-            id: packet_id,
-            data: raw_packet,
-        };
-        incoming_packet_received_mw.write(IncomingNetworkPacketReceived { packet });
     }
 }

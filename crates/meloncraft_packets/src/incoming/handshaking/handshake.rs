@@ -1,9 +1,9 @@
+use crate::IncomingPacket;
 use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::IncomingNetworkPacket;
 use meloncraft_protocol_types::deserialize;
-use crate::IncomingPacket;
 
 #[derive(Message, Debug)]
 pub struct Intention {
@@ -15,18 +15,24 @@ pub struct Intention {
 }
 
 impl IncomingPacket for Intention {
-    fn id() -> i32 { 0x00 }
-    fn state() -> ConnectionState { ConnectionState::Handshaking }
+    fn id() -> i32 {
+        0x00
+    }
+    fn state() -> ConnectionState {
+        ConnectionState::Handshaking
+    }
     fn parse(incoming: &IncomingNetworkPacket) -> Option<Self> {
+        dbg!(incoming);
         let mut incoming = incoming.clone();
-        let protocol_version = deserialize::varint(&mut incoming.data).ok()?;
-        let server_address = deserialize::string(&mut incoming.data).ok()?;
-        let server_port = deserialize::unsigned_short(&mut incoming.data).ok()?;
-        let next_state = match deserialize::varint(&mut incoming.data).ok()? {
+        let protocol_version = deserialize::varint(&mut incoming.data).unwrap().0;
+        let server_address = deserialize::string(&mut incoming.data).unwrap();
+        let server_port = deserialize::unsigned_short(&mut incoming.data).unwrap();
+        let next_state = match deserialize::varint(&mut incoming.data).unwrap().0 {
             1 => ConnectionState::Status,
-            2|3 => ConnectionState::Login,
+            2 | 3 => ConnectionState::Login,
             _ => return None, // TODO: log this
         };
+        dbg!(&incoming.data);
 
         Some(Intention {
             client: incoming.client,
