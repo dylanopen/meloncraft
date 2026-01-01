@@ -1,5 +1,5 @@
 use bevy::prelude::{Message, MessageReader, MessageWriter};
-use meloncraft_network::packet::{OutgoingNetworkPacket, OutgoingNetworkPacketReceived};
+use meloncraft_network::packet::OutgoingNetworkPacketReceived;
 use meloncraft_packets::outgoing_packet::OutgoingPacket;
 
 pub fn forward_outgoing_packet<T: Message+OutgoingPacket>(
