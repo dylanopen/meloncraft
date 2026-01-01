@@ -6,7 +6,8 @@ members = [
     "crates/meloncraft_packets",
     "crates/meloncraft_protocol_types",
     "crates/meloncraft_client",
-    "crates/meloncraft_handshaking"
+    "crates/meloncraft_handshaking",
+    "crates/meloncraft_server_list"
 ]
 exclude = [
     "examples"
@@ -28,6 +29,7 @@ meloncraft_client = { path = "crates/meloncraft_client" }
 meloncraft_packets = { path = "crates/meloncraft_packets" }
 meloncraft_packet_messengers = { path = "crates/meloncraft_packet_messengers" }
 meloncraft_handshaking = { path = "crates/meloncraft_handshaking" }
+meloncraft_server_list = { path = "crates/meloncraft_server_list" }
 
 [dependencies]
 meloncraft_protocol_types = { workspace = true }
@@ -36,3 +38,4 @@ meloncraft_client = { workspace = true }
 meloncraft_packets = { workspace = true }
 meloncraft_packet_messengers = { workspace = true }
 meloncraft_handshaking = { workspace = true }
+meloncraft_server_list = { workspace = true }

@@ -753,6 +753,7 @@ dependencies = [
  "meloncraft_packet_messengers",
  "meloncraft_packets",
  "meloncraft_protocol_types",
+ "meloncraft_server_list",
 ]
 
 [[package]]
@@ -802,6 +803,13 @@ dependencies = [
 [[package]]
 name = "meloncraft_protocol_types"
 version = "0.1.0"
+
+[[package]]
+name = "meloncraft_server_list"
+version = "0.1.0"
+dependencies = [
+ "bevy",
+]
 
 [[package]]
 name = "memchr"
