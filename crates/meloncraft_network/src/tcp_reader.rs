@@ -14,7 +14,6 @@ pub fn receive_packets(
     client_connections: Query<&ClientConnection>,
     mut incoming_packet_received_mw: MessageWriter<IncomingNetworkPacketReceived>,
 ) {
-    dbg!();
     for client in client_connections.iter() {
         loop {
             let mut stream = client.tcp_stream.try_clone().unwrap();
@@ -58,7 +57,6 @@ pub fn receive_packets(
             incoming_packet_received_mw.write(IncomingNetworkPacketReceived { packet });
         }
     }
-    dbg!();
     connection_listener.0.set_nonblocking(true).unwrap();
     for stream in connection_listener.incoming() {
         let Ok(stream) = stream else { break; };
@@ -96,5 +94,4 @@ pub fn receive_packets(
         };
         incoming_packet_received_mw.write(IncomingNetworkPacketReceived { packet });
     }
-    dbg!();
 }

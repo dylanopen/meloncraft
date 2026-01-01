@@ -19,10 +19,8 @@ pub fn send_packets(
     mut outgoing_packet_received_mr: MessageReader<OutgoingNetworkPacketReceived>,
     mut client_connections: Query<&mut ClientConnection>,
 ) {
-    println!("packet sending starting");
     let mut client_packets: HashMap<Entity, Vec<OutgoingNetworkPacket>> = HashMap::new();
     for packet_msg in outgoing_packet_received_mr.read() {
-        dbg!();
         let packet = packet_msg.packet.clone();
         match client_packets.get_mut(&packet.client) {
             Some(packets) => {
@@ -39,5 +37,4 @@ pub fn send_packets(
             send_packet(&mut stream, packet.id, packet.data);
         }
     }
-    println!("packets sent");
 }
