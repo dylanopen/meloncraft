@@ -749,8 +749,8 @@ version = "0.1.0"
 dependencies = [
  "meloncraft_client",
  "meloncraft_handshaking",
- "meloncraft_incoming_packet_generators",
  "meloncraft_network",
+ "meloncraft_packet_messengers",
  "meloncraft_packets",
  "meloncraft_protocol_types",
 ]
@@ -772,21 +772,21 @@ dependencies = [
 ]
 
 [[package]]
-name = "meloncraft_incoming_packet_generators"
-version = "0.1.0"
-dependencies = [
- "bevy",
- "meloncraft_network",
- "meloncraft_packets",
-]
-
-[[package]]
 name = "meloncraft_network"
 version = "0.1.0"
 dependencies = [
  "bevy",
  "meloncraft_client",
  "meloncraft_protocol_types",
+]
+
+[[package]]
+name = "meloncraft_packet_messengers"
+version = "0.1.0"
+dependencies = [
+ "bevy",
+ "meloncraft_network",
+ "meloncraft_packets",
 ]
 
 [[package]]

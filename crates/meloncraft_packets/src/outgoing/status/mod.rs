@@ -1,1 +1,2 @@
-pub mod status_response;
+mod status_response;
+pub use status_response::StatusResponse;

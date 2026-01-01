@@ -1,5 +1,5 @@
 [package]
-name = "meloncraft_incoming_packet_generators"
+name = "meloncraft_packet_messengers"
 version = "0.1.0"
 edition = "2024"
 

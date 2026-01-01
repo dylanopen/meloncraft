@@ -1,9 +1,10 @@
-use bevy::prelude::Entity;
+use bevy::prelude::{Entity, Message};
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::OutgoingNetworkPacket;
 use meloncraft_protocol_types::serialize;
 use crate::outgoing_packet::OutgoingPacket;
 
+#[derive(Message, Debug, Clone)]
 pub struct StatusResponse {
     pub client: Entity,
     pub version_name: String,
@@ -17,7 +18,7 @@ pub struct StatusResponse {
 impl OutgoingPacket for StatusResponse {
     fn id() -> i32 { 0x00 }
     fn state() -> ConnectionState { ConnectionState::Status }
-    fn serialize(self) -> Option<OutgoingNetworkPacket> {
+    fn serialize(&self) -> Option<OutgoingNetworkPacket> {
         let json = format!(
             "{{\"version\": {{\"name\": \"{}\",\"protocol\": {}}},\"players\": {{\"max\": {},\"online\": {},\"sample\": []}},\"description\": {{\"text\": \"{}\"}},\"enforcesSecureChat\": {}}}",
             self.version_name,

@@ -2,7 +2,7 @@ use bevy::prelude::{Message, MessageReader, MessageWriter};
 use meloncraft_network::packet::IncomingNetworkPacketReceived;
 use meloncraft_packets::IncomingPacket;
 
-pub fn forward_packet<T: Message+IncomingPacket>(
+pub fn forward_incoming_packet<T: Message+IncomingPacket>(
     mut all_packets: MessageReader<IncomingNetworkPacketReceived>,
     mut packet_writer: MessageWriter<T>
 ) {

@@ -13,6 +13,7 @@ impl IncomingPacket for StatusRequest {
     fn id() -> i32 { 0x00 }
     fn state() -> ConnectionState { ConnectionState::Status}
     fn parse(incoming: &IncomingNetworkPacket) -> Option<Self> {
+        dbg!();
         Some(StatusRequest {
             client: incoming.client,
         })
