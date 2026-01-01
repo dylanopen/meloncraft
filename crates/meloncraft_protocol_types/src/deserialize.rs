@@ -62,7 +62,7 @@ pub fn uuid(data: &mut Vec<u8>) -> Result<u128, Box<dyn Error>> {
 
 #[allow(dead_code)]
 pub fn string(data: &mut Vec<u8>) -> Result<String, Box<dyn Error>> {
-    let length = varint(data)?.0;
+    let length = varint(data)?;
     let raw_string: &[u8] = &data.clone()[..length as usize];
     data.drain(..length as usize);
 
@@ -73,7 +73,7 @@ const SEGMENT_BITS: u8 = 0x7F;
 const CONTINUE_BIT: u8 = 0x80;
 
 #[allow(dead_code)]
-pub fn varint(data: &mut Vec<u8>) -> Result<(i32, i32), Box<dyn Error>> {
+pub fn varint(data: &mut Vec<u8>) -> Result<i32, Box<dyn Error>> {
     let mut value: i32 = 0;
     let mut position = 0;
     let mut current_byte: u8;
@@ -96,7 +96,7 @@ pub fn varint(data: &mut Vec<u8>) -> Result<(i32, i32), Box<dyn Error>> {
 
     data.reverse();
 
-    return Ok((value, position / 7 + 1));
+    return Ok(value);
 }
 
 #[derive(Debug)]

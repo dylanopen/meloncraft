@@ -794,6 +794,7 @@ name = "meloncraft_packet_messengers"
 version = "0.1.0"
 dependencies = [
  "bevy",
+ "meloncraft_client",
  "meloncraft_network",
  "meloncraft_packets",
 ]

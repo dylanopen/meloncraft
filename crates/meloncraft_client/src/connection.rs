@@ -20,17 +20,8 @@ impl Clone for ClientConnection {
         }
     }
 }
-#[derive(Component, Clone, Copy, Debug, Eq, PartialEq, Hash)]
-pub struct ClientConnectionId(pub usize);
-
-impl ClientConnectionId {
-    pub fn get(self) -> ClientConnection {
-        CLIENT_CONNECTIONS.lock().unwrap()[self.0].clone()
-    }
-}
-
 lazy_static! {
-    pub static ref CLIENT_CONNECTIONS: Mutex<Vec<ClientConnection>> = {
+    pub static ref CLIENT_CONNECTIONS: Mutex<Vec<TcpStream>> = {
         let client_connections = Vec::new();
         Mutex::new(client_connections)
     };

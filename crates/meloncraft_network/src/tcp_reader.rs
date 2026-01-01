@@ -1,5 +1,4 @@
 use crate::INBOUND_PACKETS;
-use crate::connected_clients::ConnectedClients;
 use crate::connection_listener::ConnectionListener;
 use crate::packet::{IncomingNetworkPacket, IncomingNetworkPacketReceived};
 use bevy::prelude::{Commands, Entity, MessageWriter, Query, Res, ResMut};
@@ -39,7 +38,7 @@ pub fn handle_client(stream: TcpStream, entity: Entity) {
                 break; // no more data in varint to read
             }
         }
-        let length = deserialize::varint(&mut length_bytes).unwrap().0;
+        let length = deserialize::varint(&mut length_bytes).unwrap();
         let mut raw_packet: Vec<u8> = vec![0; length as usize];
         if buf_reader.read_exact(&mut raw_packet).is_err() {
             println!("Client {entity} disconnected due to failing to stream packets");
@@ -52,21 +51,11 @@ pub fn handle_client(stream: TcpStream, entity: Entity) {
         dbg!(&raw_packet);
 
         let packet_id = deserialize::varint(&mut raw_packet).unwrap();
-        let state = CLIENT_CONNECTIONS
-            .lock()
-            .unwrap()
-            .iter()
-            .filter(|conn| conn.address == address)
-            .collect::<Vec<_>>()
-            .first()
-            .unwrap()
-            .state;
         let packet = IncomingNetworkPacket {
             client: entity,
             len: length,
-            id: packet_id.0,
+            id: packet_id,
             data: raw_packet,
-            state,
         };
         INBOUND_PACKETS.lock().unwrap().push(packet);
     }
@@ -77,11 +66,7 @@ pub fn receive_new_clients(tcp_listener: TcpListener) {
         for stream in tcp_listener.incoming() {
             match stream {
                 Ok(stream) => {
-                    CLIENT_CONNECTIONS.lock().unwrap().push(ClientConnection {
-                        address: stream.peer_addr().unwrap(),
-                        tcp_stream: stream.try_clone().unwrap(),
-                        state: ConnectionState::Handshaking,
-                    });
+                    CLIENT_CONNECTIONS.lock().unwrap().push(stream);
                 }
                 Err(e) => {
                     eprintln!("Failed to establish TCP connection with new client: {e}")

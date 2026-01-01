@@ -5,7 +5,6 @@ use meloncraft_client::connection_state::ConnectionState;
 pub struct IncomingNetworkPacket {
     pub client: Entity,
     pub len: i32,
-    pub state: ConnectionState,
     pub id: i32,
     pub data: Vec<u8>,
 }

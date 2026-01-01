@@ -24,10 +24,10 @@ impl IncomingPacket for Intention {
     fn parse(incoming: &IncomingNetworkPacket) -> Option<Self> {
         dbg!(incoming);
         let mut incoming = incoming.clone();
-        let protocol_version = deserialize::varint(&mut incoming.data).unwrap().0;
+        let protocol_version = deserialize::varint(&mut incoming.data).unwrap();
         let server_address = deserialize::string(&mut incoming.data).unwrap();
         let server_port = deserialize::unsigned_short(&mut incoming.data).unwrap();
-        let next_state = match deserialize::varint(&mut incoming.data).unwrap().0 {
+        let next_state = match deserialize::varint(&mut incoming.data).unwrap() {
             1 => ConnectionState::Status,
             2 | 3 => ConnectionState::Login,
             _ => return None, // TODO: log this

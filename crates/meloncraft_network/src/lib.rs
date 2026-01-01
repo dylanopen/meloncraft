@@ -1,4 +1,3 @@
-use crate::connected_clients::ConnectedClients;
 use crate::connection_listener::ConnectionListener;
 use crate::connection_manager::connection_manager;
 use crate::packet::{
@@ -14,7 +13,6 @@ use std::net::TcpListener;
 use std::sync::Mutex;
 use std::thread;
 
-pub mod connected_clients;
 pub mod connection_listener;
 mod connection_manager;
 pub mod packet;
@@ -37,14 +35,12 @@ pub struct MeloncraftNetworkPlugin;
 impl Plugin for MeloncraftNetworkPlugin {
     fn build(&self, app: &mut App) {
         let connection_listener = ConnectionListener(TcpListener::bind("127.0.0.1:25565").unwrap());
-        let connected_clients = ConnectedClients(HashMap::new());
 
         let tcp_listener = connection_listener.0.try_clone().unwrap();
         thread::spawn(move || receive_new_clients(tcp_listener.try_clone().unwrap()));
 
         app.add_message::<IncomingNetworkPacketReceived>();
         app.add_message::<OutgoingNetworkPacketReceived>();
-        app.insert_resource(connected_clients);
         app.insert_resource(connection_listener);
         app.add_systems(Update, send_packets);
         app.add_systems(Update, connection_manager);

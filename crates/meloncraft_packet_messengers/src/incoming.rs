@@ -1,4 +1,5 @@
-use bevy::prelude::{EventReader, Message, MessageReader, MessageWriter};
+use bevy::prelude::{EventReader, Message, MessageReader, MessageWriter, Query};
+use meloncraft_client::connection::ClientConnection;
 use meloncraft_network::INBOUND_PACKETS;
 use meloncraft_network::packet::IncomingNetworkPacketReceived;
 use meloncraft_packets::IncomingPacket;
@@ -6,9 +7,10 @@ use meloncraft_packets::IncomingPacket;
 pub fn forward_incoming_packet<T: Message + IncomingPacket>(
     mut all_packets: MessageReader<IncomingNetworkPacketReceived>,
     mut packet_writer: MessageWriter<T>,
+    client_connections: Query<&ClientConnection>,
 ) {
     for network_packet in all_packets.read() {
-        if let Some(packet) = T::from_packet(&network_packet.packet) {
+        if let Some(packet) = T::from_packet(&network_packet.packet, &client_connections) {
             packet_writer.write(packet);
         }
     }

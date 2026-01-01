@@ -1,6 +1,7 @@
 use bevy::MinimalPlugins;
-use bevy::app::PluginGroup;
 use bevy::app::{App, ScheduleRunnerPlugin, Update};
+use bevy::app::{FixedUpdate, PluginGroup};
+use bevy::ecs::schedule::ExecutorKind;
 use bevy::prelude::{MessageReader, MessageWriter};
 use meloncraft::handshaking::MeloncraftHandshakingPlugin;
 use meloncraft::network::MeloncraftNetworkPlugin;
@@ -19,6 +20,10 @@ pub fn main() {
     app.add_plugins(MeloncraftPacketsPlugin);
     app.add_plugins(MeloncraftPacketGeneratorsPlugin);
     app.add_plugins(MeloncraftHandshakingPlugin);
+
+    app.edit_schedule(FixedUpdate, |schedule| {
+        schedule.set_executor_kind(ExecutorKind::SingleThreaded);
+    });
 
     app.add_systems(Update, respond_to_status_request);
     app.add_systems(Update, respond_to_packet);
@@ -47,6 +52,7 @@ fn respond_to_status_request(
     mut mw: MessageWriter<StatusResponse>,
 ) {
     for msg in mr.read() {
+        dbg!(&msg);
         mw.write(StatusResponse {
             client: msg.client,
             description: "Meloncraft".to_owned(),
