@@ -2,7 +2,7 @@ use std::ops::{Deref, DerefMut};
 use bevy::ecs::resource::Resource;
 
 #[derive(Resource)]
-pub struct Motd(String);
+pub struct Motd(pub String);
 
 impl Deref for Motd {
     type Target = String;
