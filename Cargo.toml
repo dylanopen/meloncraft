@@ -30,6 +30,7 @@ meloncraft_packets = { path = "crates/meloncraft_packets" }
 meloncraft_packet_messengers = { path = "crates/meloncraft_packet_messengers" }
 meloncraft_handshaking = { path = "crates/meloncraft_handshaking" }
 meloncraft_server_list = { path = "crates/meloncraft_server_list" }
+lazy_static = "1.5.0"
 
 [dependencies]
 meloncraft_protocol_types = { workspace = true }

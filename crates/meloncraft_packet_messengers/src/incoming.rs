@@ -1,5 +1,6 @@
-use bevy::prelude::{Message, MessageReader, MessageWriter};
+use bevy::prelude::{EventReader, Message, MessageReader, MessageWriter};
 use meloncraft_network::packet::IncomingNetworkPacketReceived;
+use meloncraft_network::INBOUND_PACKETS;
 use meloncraft_packets::IncomingPacket;
 
 pub fn forward_incoming_packet<T: Message+IncomingPacket>(
@@ -11,4 +12,16 @@ pub fn forward_incoming_packet<T: Message+IncomingPacket>(
             packet_writer.write(packet);
         }
     }
+}
+
+pub fn read_new_packets(
+    mut incoming_network_packet_mw: MessageWriter<IncomingNetworkPacketReceived>,
+) {
+    let mut inbound_packets = INBOUND_PACKETS.lock().unwrap();
+    let mut inbound_packet_msgs = Vec::new();
+    while let Some(packet) = inbound_packets.pop() {
+        inbound_packet_msgs.push(IncomingNetworkPacketReceived { packet });
+    }
+    inbound_packets.clear();
+    incoming_network_packet_mw.write_batch(inbound_packet_msgs);
 }

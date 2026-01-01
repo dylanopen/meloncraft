@@ -1,30 +1,52 @@
-use std::collections::HashMap;
-use std::net::{TcpListener, TcpStream};
-use bevy::app::{App, Plugin, Update};
-use crate::connection_listener::ConnectionListener;
 use crate::connected_clients::ConnectedClients;
-use crate::packet::{IncomingNetworkPacketReceived, OutgoingNetworkPacketReceived};
-use crate::tcp_reader::receive_packets;
+use crate::connection_listener::ConnectionListener;
+use crate::connection_manager::connection_manager;
+use crate::packet::{
+    IncomingNetworkPacket, IncomingNetworkPacketReceived, OutgoingNetworkPacket,
+    OutgoingNetworkPacketReceived,
+};
+use crate::tcp_reader::receive_new_clients;
 use crate::tcp_writer::send_packets;
+use bevy::app::{App, Plugin, Update};
+use lazy_static::lazy_static;
+use std::collections::HashMap;
+use std::net::TcpListener;
+use std::sync::Mutex;
+use std::thread;
 
-pub mod packet;
-pub mod connection_listener;
-pub mod tcp_reader;
 pub mod connected_clients;
+pub mod connection_listener;
+mod connection_manager;
+pub mod packet;
+pub mod tcp_reader;
 mod tcp_writer;
+
+lazy_static! {
+    pub static ref INBOUND_PACKETS: Mutex<Vec<IncomingNetworkPacket>> = {
+        let packets = Vec::new();
+        Mutex::new(packets)
+    };
+    pub static ref OUTBOUND_PACKETS: Mutex<Vec<OutgoingNetworkPacket>> = {
+        let packets = Vec::new();
+        Mutex::new(packets)
+    };
+}
 
 pub struct MeloncraftNetworkPlugin;
 
 impl Plugin for MeloncraftNetworkPlugin {
     fn build(&self, app: &mut App) {
-        let tcp_stream = ConnectionListener(TcpListener::bind("127.0.0.1:25565").unwrap());
+        let connection_listener = ConnectionListener(TcpListener::bind("127.0.0.1:25565").unwrap());
         let connected_clients = ConnectedClients(HashMap::new());
+
+        let tcp_listener = connection_listener.0.try_clone().unwrap();
+        thread::spawn(move || receive_new_clients(tcp_listener.try_clone().unwrap()));
 
         app.add_message::<IncomingNetworkPacketReceived>();
         app.add_message::<OutgoingNetworkPacketReceived>();
-        app.insert_resource(tcp_stream);
         app.insert_resource(connected_clients);
-        app.add_systems(Update, receive_packets);
+        app.insert_resource(connection_listener);
         app.add_systems(Update, send_packets);
+        app.add_systems(Update, connection_manager);
     }
 }

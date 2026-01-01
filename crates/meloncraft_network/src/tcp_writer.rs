@@ -1,10 +1,10 @@
-use std::collections::HashMap;
-use std::io::Write;
-use std::net::TcpStream;
+use crate::packet::{OutgoingNetworkPacket, OutgoingNetworkPacketReceived};
 use bevy::prelude::{Entity, MessageReader, Query, Res};
 use meloncraft_client::connection::ClientConnection;
 use meloncraft_protocol_types::serialize;
-use crate::packet::{OutgoingNetworkPacket, OutgoingNetworkPacketReceived};
+use std::collections::HashMap;
+use std::io::Write;
+use std::net::TcpStream;
 
 fn send_packet(stream: &mut TcpStream, packet_id: i32, mut data: Vec<u8>) {
     let mut response: Vec<u8> = serialize::varint(packet_id);
@@ -25,14 +25,19 @@ pub fn send_packets(
         match client_packets.get_mut(&packet.client) {
             Some(packets) => {
                 packets.push(packet);
-            },
+            }
             None => {
                 client_packets.insert(packet.client, vec![packet]);
             }
         }
     }
     for (client, packets) in client_packets {
-        let mut stream = client_connections.get_mut(client).unwrap().tcp_stream.try_clone().unwrap();
+        let mut stream = client_connections
+            .get_mut(client)
+            .unwrap()
+            .tcp_stream
+            .try_clone()
+            .unwrap();
         for mut packet in packets {
             send_packet(&mut stream, packet.id, packet.data);
         }

@@ -1,6 +1,6 @@
-use std::net::{SocketAddr, TcpStream};
-use bevy::ecs::component::Component;
 use crate::connection_state::ConnectionState;
+use bevy::ecs::component::Component;
+use std::net::{SocketAddr, TcpStream};
 
 #[derive(Component, Debug)]
 pub struct ClientConnection {
