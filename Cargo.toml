@@ -27,7 +27,6 @@ meloncraft_protocol_types = { path = "crates/meloncraft_protocol_types" }
 meloncraft_network = { path = "crates/meloncraft_network" }
 meloncraft_client = { path = "crates/meloncraft_client" }
 meloncraft_packets = { path = "crates/meloncraft_packets" }
-meloncraft_packet_messengers = { path = "crates/meloncraft_packet_messengers" }
 meloncraft_handshaking = { path = "crates/meloncraft_handshaking" }
 meloncraft_server_list = { path = "crates/meloncraft_server_list" }
 lazy_static = "1.5.0"
@@ -37,6 +36,5 @@ meloncraft_protocol_types = { workspace = true }
 meloncraft_network = { workspace = true }
 meloncraft_client = { workspace = true }
 meloncraft_packets = { workspace = true }
-meloncraft_packet_messengers = { workspace = true }
 meloncraft_handshaking = { workspace = true }
 meloncraft_server_list = { workspace = true }

@@ -3,7 +3,6 @@ use bevy::app::PluginGroup;
 use bevy::app::{App, ScheduleRunnerPlugin};
 use meloncraft::handshaking::MeloncraftHandshakingPlugin;
 use meloncraft::network::MeloncraftNetworkPlugin;
-use meloncraft::packet_messengers::MeloncraftPacketGeneratorsPlugin;
 use meloncraft::packets::MeloncraftPacketsPlugin;
 use meloncraft::server_list::MeloncraftServerListPlugin;
 use meloncraft::server_list::max_players::MaxPlayers;
@@ -21,7 +20,6 @@ pub fn main() {
     app.add_plugins(MinimalPlugins.set(ScheduleRunnerPlugin::run_loop(Duration::from_millis(50))));
     app.add_plugins(MeloncraftNetworkPlugin);
     app.add_plugins(MeloncraftPacketsPlugin);
-    app.add_plugins(MeloncraftPacketGeneratorsPlugin);
     app.add_plugins(MeloncraftHandshakingPlugin);
     app.add_plugins(MeloncraftServerListPlugin);
 
