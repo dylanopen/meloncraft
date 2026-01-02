@@ -1,9 +1,11 @@
 use bevy::MinimalPlugins;
-use bevy::app::PluginGroup;
 use bevy::app::{App, ScheduleRunnerPlugin};
+use bevy::app::{PluginGroup, Update};
+use bevy::prelude::MessageReader;
 use meloncraft::handshaking::MeloncraftHandshakingPlugin;
 use meloncraft::network::MeloncraftNetworkPlugin;
 use meloncraft::packets::MeloncraftPacketsPlugin;
+use meloncraft::packets::incoming::login::LoginStart;
 use meloncraft::server_list::MeloncraftServerListPlugin;
 use meloncraft::server_list::max_players::MaxPlayers;
 use meloncraft::server_list::motd::Motd;
@@ -23,5 +25,16 @@ pub fn main() {
     app.add_plugins(MeloncraftHandshakingPlugin);
     app.add_plugins(MeloncraftServerListPlugin);
 
+    app.add_systems(Update, login_listener);
+
     app.run();
+}
+
+fn login_listener(mut pr: MessageReader<LoginStart>) {
+    for packet in pr.read() {
+        println!(
+            "{} tried to log-in! This example only adds serverlist functionality.",
+            packet.name
+        );
+    }
 }

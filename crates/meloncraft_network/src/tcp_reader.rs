@@ -16,6 +16,8 @@ pub struct IncomingTcpPacket {
 }
 
 const VARINT_CONTINUE_BIT: u8 = 0b10000000;
+const CONNECTION_SLEEP_DURATION: u64 = 20;
+const SECOND_PACKET_SLEEP_DURATION: u64 = 50;
 
 pub fn handle_client(stream: TcpStream, entity: Entity) {
     let mut iters = 0;
@@ -26,7 +28,8 @@ pub fn handle_client(stream: TcpStream, entity: Entity) {
     let mut buf_reader = BufReader::new(&mut stream);
     loop {
         if iters == 1 {
-            sleep(Duration::from_millis(12)); // packets are messages - so unfortunately necessary to avoid race condition
+            // packets are messages - so unfortunately necessary to avoid race condition
+            sleep(Duration::from_millis(SECOND_PACKET_SLEEP_DURATION));
         }
         iters += 1;
         let mut length_bytes = Vec::new();
@@ -41,6 +44,7 @@ pub fn handle_client(stream: TcpStream, entity: Entity) {
             }
         }
         let Ok(length) = VarInt::net_deserialize(&mut length_bytes) else {
+            sleep(Duration::from_millis(CONNECTION_SLEEP_DURATION));
             continue; // no more packets left to read
         };
         let length = length.0;
