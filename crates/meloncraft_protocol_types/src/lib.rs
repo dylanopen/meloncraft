@@ -2,6 +2,7 @@ pub mod nbt;
 
 mod boolean;
 mod byte;
+mod i32;
 mod i64;
 mod i8;
 mod prefixed_array;
