@@ -2,12 +2,14 @@ pub mod nbt;
 
 mod boolean;
 mod i64;
+mod prefixed_array;
 mod protocol_type;
 mod string;
 mod u16;
 mod uuid;
 mod varint;
 
+pub use prefixed_array::PrefixedArray;
 pub use protocol_type::ProtocolBuffer;
 pub use protocol_type::ProtocolType;
 pub use varint::VarInt;
