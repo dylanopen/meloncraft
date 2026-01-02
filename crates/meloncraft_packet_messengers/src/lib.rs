@@ -1,9 +1,7 @@
 use crate::incoming::{forward_incoming_packet, read_new_packets};
 use crate::outgoing::forward_outgoing_packet;
 use bevy::app::{App, Plugin, Update};
-use meloncraft_packets::incoming::handshaking::Intention;
-use meloncraft_packets::incoming::status::StatusRequest;
-use meloncraft_packets::outgoing::status::StatusResponse;
+use meloncraft_packets as packets;
 
 pub mod incoming;
 pub mod outgoing;
@@ -17,11 +15,15 @@ impl Plugin for MeloncraftPacketGeneratorsPlugin {
         app.add_systems(
             Update,
             (
-                forward_incoming_packet::<Intention>,
-                forward_incoming_packet::<StatusRequest>,
+                forward_incoming_packet::<packets::incoming::handshaking::Intention>,
+                forward_incoming_packet::<packets::incoming::status::StatusRequest>,
+                forward_incoming_packet::<packets::incoming::status::Ping>,
             ),
         );
 
-        app.add_systems(Update, forward_outgoing_packet::<StatusResponse>);
+        app.add_systems(
+            Update,
+            forward_outgoing_packet::<packets::outgoing::status::StatusResponse>,
+        );
     }
 }
