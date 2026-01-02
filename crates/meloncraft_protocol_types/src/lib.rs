@@ -3,6 +3,7 @@ pub mod nbt;
 pub mod serialize;
 
 mod boolean;
+mod i64;
 mod protocol_type;
 mod u16;
 mod varint;
