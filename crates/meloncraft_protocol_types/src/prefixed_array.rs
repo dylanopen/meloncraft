@@ -2,11 +2,10 @@ use crate::{ProtocolBuffer, ProtocolType, VarInt};
 use std::fmt::Debug;
 
 pub struct PrefixedArray<T: ProtocolType> {
-    pub length: i32,
     pub values: Vec<T>,
 }
 
-impl<T: ProtocolType + Debug> ProtocolType for PrefixedArray<T> {
+impl<T: ProtocolType> ProtocolType for PrefixedArray<T> {
     fn net_serialize(&self) -> Vec<u8> {
         todo!()
     }
@@ -18,7 +17,12 @@ impl<T: ProtocolType + Debug> ProtocolType for PrefixedArray<T> {
         while data.len() > target_length {
             values.push(data.net_deserialize()?);
         }
-        dbg!(&values, data);
-        Ok(PrefixedArray { length, values })
+        Ok(PrefixedArray { values })
+    }
+}
+
+impl<T: ProtocolType> From<Vec<T>> for PrefixedArray<T> {
+    fn from(values: Vec<T>) -> Self {
+        Self { values }
     }
 }
