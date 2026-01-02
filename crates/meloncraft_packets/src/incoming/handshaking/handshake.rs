@@ -5,7 +5,7 @@ use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::IncomingNetworkPacket;
 use meloncraft_protocol_types::{ProtocolType, VarInt};
 
-#[derive(Message, Debug)]
+#[derive(Message, Debug, Clone)]
 pub struct Intention {
     pub client: Entity,
     pub protocol_version: i32,

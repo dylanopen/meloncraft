@@ -1,8 +1,9 @@
+use bevy::ecs::message::Message;
 use bevy::prelude::{Entity, Query};
 use meloncraft_client::connection::ClientConnection;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::IncomingNetworkPacket;
-use std::fmt::Display;
+use std::fmt::{Debug, Display};
 
 #[derive(Debug)]
 pub enum IncomingPacketParseError {
@@ -42,7 +43,7 @@ impl Display for IncomingPacketParseError {
     }
 }
 
-pub trait IncomingPacket: Sized {
+pub trait IncomingPacket: Sized + Message + Debug + Clone {
     fn id() -> i32;
     fn state() -> ConnectionState;
     fn parse(incoming: &IncomingNetworkPacket) -> Option<Self>;

@@ -6,7 +6,7 @@ use meloncraft_network::packet::IncomingNetworkPacket;
 use meloncraft_player::Uuid;
 use meloncraft_protocol_types::ProtocolType;
 
-#[derive(Message, Debug)]
+#[derive(Message, Debug, Clone)]
 pub struct LoginStart {
     pub client: Entity,
     pub name: String,

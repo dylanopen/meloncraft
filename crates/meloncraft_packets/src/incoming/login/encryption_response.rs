@@ -1,6 +1,5 @@
 use crate::IncomingPacket;
 use bevy::ecs::message::Message;
-use bevy::platform::collections::Equivalent;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::IncomingNetworkPacket;

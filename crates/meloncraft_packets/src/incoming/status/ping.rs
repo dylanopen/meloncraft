@@ -4,7 +4,7 @@ use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::IncomingNetworkPacket;
 use meloncraft_protocol_types::ProtocolType;
 
-#[derive(Message, Debug)]
+#[derive(Message, Debug, Clone)]
 pub struct Ping {
     pub client: Entity,
     pub timestamp: i64,
