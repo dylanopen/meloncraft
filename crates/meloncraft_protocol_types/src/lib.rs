@@ -9,6 +9,7 @@ mod i8;
 mod prefixed_array;
 mod protocol_type;
 mod string;
+mod u128;
 mod u16;
 mod u32;
 mod u64;
