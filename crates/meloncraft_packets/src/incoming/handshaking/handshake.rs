@@ -23,13 +23,9 @@ impl IncomingPacket for Intention {
     }
     fn parse(incoming: &IncomingNetworkPacket) -> Option<Self> {
         let mut incoming = incoming.clone();
-        dbg!(&incoming.data);
         let protocol_version = VarInt::net_deserialize(&mut incoming.data).unwrap().0;
-        dbg!(protocol_version);
         let server_address = String::net_deserialize(&mut incoming.data).unwrap();
-        dbg!(&server_address);
         let server_port = u16::net_deserialize(&mut incoming.data).unwrap();
-        dbg!(&server_port);
         let next_state = match VarInt::net_deserialize(&mut incoming.data).unwrap().0 {
             1 => ConnectionState::Status,
             2 | 3 => ConnectionState::Login,

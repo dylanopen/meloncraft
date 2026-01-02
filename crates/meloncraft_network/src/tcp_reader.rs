@@ -60,7 +60,6 @@ pub fn handle_client(stream: TcpStream, entity: Entity) {
             id: packet_id,
             data: raw_packet,
         };
-        dbg!("sent packet {iters}");
 
         INBOUND_PACKETS.lock().unwrap().push(packet);
     }

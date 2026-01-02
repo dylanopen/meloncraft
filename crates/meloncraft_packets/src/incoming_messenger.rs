@@ -12,7 +12,6 @@ pub fn forward_incoming_packet<T: Message + IncomingPacket + Debug>(
 ) {
     for network_packet in all_packets.read() {
         if let Some(packet) = T::from_packet(&network_packet.packet, &client_connections) {
-            dbg!(&packet);
             packet_writer.write(packet);
         }
     }

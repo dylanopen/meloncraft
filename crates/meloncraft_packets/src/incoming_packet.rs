@@ -75,15 +75,7 @@ pub trait IncomingPacket: Sized {
         incoming: &IncomingNetworkPacket,
         client_connections: &Query<&ClientConnection>,
     ) -> Option<Self> {
-        match Self::validate(incoming, client_connections) {
-            Ok(()) => {
-                dbg!("Matched packet", incoming);
-            }
-            Err(e) => {
-                dbg!(e);
-                return None;
-            }
-        }
+        Self::validate(incoming, client_connections).ok()?;
         Some(Self::parse(incoming).unwrap())
     }
 }

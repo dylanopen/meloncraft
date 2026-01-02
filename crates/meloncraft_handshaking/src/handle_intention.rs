@@ -10,6 +10,5 @@ pub fn update_connection_states(
         let entity = packet.client;
         let mut client_connection = client_connections.get_mut(entity).unwrap();
         client_connection.state = packet.next_state;
-        dbg!();
     }
 }
