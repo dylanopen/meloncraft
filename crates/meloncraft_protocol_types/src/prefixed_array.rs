@@ -1,5 +1,4 @@
 use crate::{ProtocolBuffer, ProtocolType, VarInt};
-use std::fmt::Debug;
 
 pub struct PrefixedArray<T: ProtocolType> {
     pub values: Vec<T>,
@@ -7,7 +6,14 @@ pub struct PrefixedArray<T: ProtocolType> {
 
 impl<T: ProtocolType> ProtocolType for PrefixedArray<T> {
     fn net_serialize(&self) -> Vec<u8> {
-        todo!()
+        let mut body = Vec::new();
+        for value in &self.values {
+            body.append(&mut value.net_serialize());
+        }
+        let length = VarInt(body.len() as i32);
+        let mut serial = length.net_serialize();
+        serial.append(&mut body);
+        serial
     }
     fn net_deserialize(data: &mut Vec<u8>) -> Result<Self, ()> {
         let length: VarInt = data.net_deserialize()?;
