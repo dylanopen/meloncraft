@@ -810,6 +810,9 @@ dependencies = [
 [[package]]
 name = "meloncraft_protocol_types"
 version = "0.1.0"
+dependencies = [
+ "meloncraft_player",
+]
 
 [[package]]
 name = "meloncraft_server_list"
