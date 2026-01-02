@@ -2,6 +2,7 @@ pub mod nbt;
 
 mod boolean;
 mod byte;
+mod i128;
 mod i16;
 mod i32;
 mod i64;
