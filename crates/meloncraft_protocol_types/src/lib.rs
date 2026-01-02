@@ -11,6 +11,7 @@ mod protocol_type;
 mod string;
 mod u16;
 mod u32;
+mod u64;
 mod u8;
 mod ubyte;
 mod uuid;
