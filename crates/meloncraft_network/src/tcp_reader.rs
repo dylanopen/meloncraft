@@ -1,11 +1,9 @@
 use crate::INBOUND_PACKETS;
-use crate::connection_listener::ConnectionListener;
-use crate::packet::{IncomingNetworkPacket, IncomingNetworkPacketReceived};
-use bevy::prelude::{Commands, Entity, MessageWriter, Query, Res, ResMut};
-use meloncraft_client::connection::{CLIENT_CONNECTIONS, ClientConnection};
-use meloncraft_client::connection_state::ConnectionState;
+use crate::packet::IncomingNetworkPacket;
+use bevy::prelude::Entity;
+use meloncraft_client::connection::CLIENT_CONNECTIONS;
 use meloncraft_protocol_types::deserialize;
-use std::io::{BufRead, BufReader, Read};
+use std::io::{BufReader, Read};
 use std::net::{TcpListener, TcpStream};
 use std::thread::sleep;
 use std::time::Duration;
@@ -25,7 +23,6 @@ pub fn handle_client(stream: TcpStream, entity: Entity) {
     stream
         .set_read_timeout(Some(Duration::from_millis(15000)))
         .unwrap();
-    let address = stream.peer_addr().unwrap();
     let mut buf_reader = BufReader::new(&mut stream);
     loop {
         if iters == 1 {

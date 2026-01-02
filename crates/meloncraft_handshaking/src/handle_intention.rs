@@ -1,5 +1,5 @@
 use bevy::prelude::{MessageReader, Query};
-use meloncraft_client::connection::{CLIENT_CONNECTIONS, ClientConnection};
+use meloncraft_client::connection::ClientConnection;
 use meloncraft_packets::incoming::handshaking::Intention;
 
 pub fn update_connection_states(

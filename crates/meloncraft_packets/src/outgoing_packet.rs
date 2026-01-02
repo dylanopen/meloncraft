@@ -1,7 +1,5 @@
-use bevy::prelude::Query;
-use meloncraft_client::connection::ClientConnection;
 use meloncraft_client::connection_state::ConnectionState;
-use meloncraft_network::packet::{IncomingNetworkPacket, OutgoingNetworkPacket};
+use meloncraft_network::packet::OutgoingNetworkPacket;
 
 pub trait OutgoingPacket: Sized {
     fn id() -> i32;

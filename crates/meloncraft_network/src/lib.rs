@@ -8,7 +8,6 @@ use crate::tcp_reader::receive_new_clients;
 use crate::tcp_writer::send_packets;
 use bevy::app::{App, Plugin, Update};
 use lazy_static::lazy_static;
-use std::collections::HashMap;
 use std::net::TcpListener;
 use std::sync::Mutex;
 use std::thread;

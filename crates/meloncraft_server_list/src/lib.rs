@@ -1,6 +1,5 @@
 use crate::status_request::respond_to_status_request;
 use bevy::app::{App, Plugin, Update};
-use bevy::prelude::{IntoScheduleConfigs, resource_exists};
 
 pub mod max_players;
 pub mod motd;

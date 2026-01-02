@@ -1,5 +1,4 @@
 use bevy::prelude::{Entity, Message};
-use meloncraft_client::connection_state::ConnectionState;
 
 #[derive(Clone, Debug)]
 pub struct IncomingNetworkPacket {
