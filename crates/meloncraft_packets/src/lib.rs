@@ -18,6 +18,7 @@ impl Plugin for MeloncraftPacketsPlugin {
         app.add_message::<incoming::handshaking::Intention>();
         app.add_message::<incoming::status::StatusRequest>();
         app.add_message::<incoming::status::Ping>();
+        app.add_message::<incoming::login::LoginStart>();
 
         app.add_message::<outgoing::status::StatusResponse>();
         app.add_message::<outgoing::status::Pong>();
@@ -30,6 +31,7 @@ impl Plugin for MeloncraftPacketsPlugin {
                 forward_incoming_packet::<incoming::handshaking::Intention>,
                 forward_incoming_packet::<incoming::status::StatusRequest>,
                 forward_incoming_packet::<incoming::status::Ping>,
+                forward_incoming_packet::<incoming::login::LoginStart>,
             ),
         );
 

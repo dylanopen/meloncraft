@@ -796,12 +796,16 @@ dependencies = [
  "bevy",
  "meloncraft_client",
  "meloncraft_network",
+ "meloncraft_player",
  "meloncraft_protocol_types",
 ]
 
 [[package]]
 name = "meloncraft_player"
 version = "0.1.0"
+dependencies = [
+ "bevy",
+]
 
 [[package]]
 name = "meloncraft_protocol_types"
