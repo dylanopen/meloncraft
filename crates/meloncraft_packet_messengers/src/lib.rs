@@ -23,7 +23,10 @@ impl Plugin for MeloncraftPacketGeneratorsPlugin {
 
         app.add_systems(
             Update,
-            forward_outgoing_packet::<packets::outgoing::status::StatusResponse>,
+            (
+                forward_outgoing_packet::<packets::outgoing::status::StatusResponse>,
+                forward_outgoing_packet::<packets::outgoing::status::Pong>,
+            ),
         );
     }
 }

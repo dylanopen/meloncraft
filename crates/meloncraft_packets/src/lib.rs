@@ -16,5 +16,6 @@ impl Plugin for MeloncraftPacketsPlugin {
         app.add_message::<incoming::status::Ping>();
 
         app.add_message::<outgoing::status::StatusResponse>();
+        app.add_message::<outgoing::status::Pong>();
     }
 }
