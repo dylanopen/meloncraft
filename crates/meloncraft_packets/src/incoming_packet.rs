@@ -4,6 +4,7 @@ use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::IncomingNetworkPacket;
 use std::fmt::Display;
 
+#[derive(Debug)]
 pub enum IncomingPacketParseError {
     ClientNonExistent {
         packet_client: Entity,
@@ -74,7 +75,15 @@ pub trait IncomingPacket: Sized {
         incoming: &IncomingNetworkPacket,
         client_connections: &Query<&ClientConnection>,
     ) -> Option<Self> {
-        Self::validate(incoming, client_connections).ok()?;
-        Self::parse(incoming)
+        match Self::validate(incoming, client_connections) {
+            Ok(()) => {
+                dbg!("Matched packet", incoming);
+            }
+            Err(e) => {
+                dbg!(e);
+                return None;
+            }
+        }
+        Some(Self::parse(incoming).unwrap())
     }
 }

@@ -2,7 +2,7 @@ use crate::INBOUND_PACKETS;
 use crate::packet::IncomingNetworkPacket;
 use bevy::prelude::Entity;
 use meloncraft_client::connection::CLIENT_CONNECTIONS;
-use meloncraft_protocol_types::deserialize;
+use meloncraft_protocol_types::{ProtocolType, VarInt};
 use std::io::{BufReader, Read};
 use std::net::{TcpListener, TcpStream};
 use std::thread::sleep;
@@ -26,7 +26,7 @@ pub fn handle_client(stream: TcpStream, entity: Entity) {
     let mut buf_reader = BufReader::new(&mut stream);
     loop {
         if iters == 1 {
-            sleep(Duration::from_millis(12)); // packets are messages - unfortunately necessary to avoid race condition
+            sleep(Duration::from_millis(12)); // packets are messages - so unfortunately necessary to avoid race condition
         }
         iters += 1;
         let mut length_bytes = Vec::new();
@@ -40,7 +40,10 @@ pub fn handle_client(stream: TcpStream, entity: Entity) {
                 break; // no more data in varint to read
             }
         }
-        let length = deserialize::varint(&mut length_bytes).unwrap();
+        let Ok(length) = VarInt::net_deserialize(&mut length_bytes) else {
+            continue; // no more packets left to read
+        };
+        let length = length.0;
         let mut raw_packet: Vec<u8> = vec![0; length as usize];
         if buf_reader.read_exact(&mut raw_packet).is_err() {
             println!("Client {entity} disconnected due to failing to stream packets");
@@ -50,13 +53,15 @@ pub fn handle_client(stream: TcpStream, entity: Entity) {
             break;
         }
 
-        let packet_id = deserialize::varint(&mut raw_packet).unwrap();
+        let packet_id = VarInt::net_deserialize(&mut raw_packet).unwrap().0;
         let packet = IncomingNetworkPacket {
             client: entity,
             len: length,
             id: packet_id,
             data: raw_packet,
         };
+        dbg!("sent packet {iters}");
+
         INBOUND_PACKETS.lock().unwrap().push(packet);
     }
 }

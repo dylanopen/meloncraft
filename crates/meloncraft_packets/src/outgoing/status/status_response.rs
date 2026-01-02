@@ -2,7 +2,7 @@ use crate::outgoing_packet::OutgoingPacket;
 use bevy::prelude::{Entity, Message};
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::OutgoingNetworkPacket;
-use meloncraft_protocol_types::serialize;
+use meloncraft_protocol_types::ProtocolType;
 
 #[derive(Message, Debug, Clone)]
 pub struct StatusResponse {
@@ -35,7 +35,7 @@ impl OutgoingPacket for StatusResponse {
         Some(OutgoingNetworkPacket {
             client: self.client,
             id: Self::id(),
-            data: serialize::string(&json),
+            data: json.net_serialize(),
         })
     }
 }

@@ -1,6 +1,6 @@
 use crate::ProtocolType;
 
-pub struct VarInt(i32);
+pub struct VarInt(pub i32);
 
 const SEGMENT_BITS: u32 = 0x7F;
 const CONTINUE_BIT: u8 = 0x80;

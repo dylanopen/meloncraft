@@ -3,7 +3,7 @@ use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::IncomingNetworkPacket;
-use meloncraft_protocol_types::deserialize;
+use meloncraft_protocol_types::{ProtocolType, VarInt};
 
 #[derive(Message, Debug)]
 pub struct Intention {
@@ -23,10 +23,14 @@ impl IncomingPacket for Intention {
     }
     fn parse(incoming: &IncomingNetworkPacket) -> Option<Self> {
         let mut incoming = incoming.clone();
-        let protocol_version = deserialize::varint(&mut incoming.data).unwrap();
-        let server_address = deserialize::string(&mut incoming.data).unwrap();
-        let server_port = deserialize::unsigned_short(&mut incoming.data).unwrap();
-        let next_state = match deserialize::varint(&mut incoming.data).unwrap() {
+        dbg!(&incoming.data);
+        let protocol_version = VarInt::net_deserialize(&mut incoming.data).unwrap().0;
+        dbg!(protocol_version);
+        let server_address = String::net_deserialize(&mut incoming.data).unwrap();
+        dbg!(&server_address);
+        let server_port = u16::net_deserialize(&mut incoming.data).unwrap();
+        dbg!(&server_port);
+        let next_state = match VarInt::net_deserialize(&mut incoming.data).unwrap().0 {
             1 => ConnectionState::Status,
             2 | 3 => ConnectionState::Login,
             _ => return None, // TODO: log this

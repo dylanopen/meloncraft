@@ -5,9 +5,16 @@ impl ProtocolType for u16 {
         vec![(self / 256) as u8, (self % 256) as u8]
     }
 
-    fn net_deserialize(bytes: &mut Vec<u8>) -> Result<Self, ()> {
-        let byte_1 = bytes.pop().ok_or(())?;
-        let byte_2 = bytes.pop().ok_or(())?;
-        Ok(byte_1 as u16 * 256u16 + byte_2 as u16)
+    fn net_deserialize(data: &mut Vec<u8>) -> Result<Self, ()> {
+        if data.len() < 2 {
+            return Err(());
+        }
+
+        let first_byte = data.remove(0);
+        let second_byte = data.remove(0);
+
+        let output: u16 = (first_byte as u16 * 256) + second_byte as u16;
+
+        Ok(output)
     }
 }

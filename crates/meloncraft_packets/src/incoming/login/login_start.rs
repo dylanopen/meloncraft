@@ -4,9 +4,9 @@ use bevy::ecs::message::Message;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::IncomingNetworkPacket;
 use meloncraft_player::Uuid;
-use meloncraft_protocol_types::deserialize;
+use meloncraft_protocol_types::ProtocolType;
 
-#[derive(Message)]
+#[derive(Message, Debug)]
 pub struct LoginStart {
     pub client: Entity,
     pub name: String,
@@ -24,9 +24,8 @@ impl IncomingPacket for LoginStart {
     fn parse(incoming: &IncomingNetworkPacket) -> Option<Self> {
         let mut incoming = incoming.clone();
         let client = incoming.client;
-        let name = deserialize::string(&mut incoming.data).unwrap();
-        let uuid = deserialize::uuid(&mut incoming.data).unwrap();
-        let uuid = Uuid(uuid);
+        let name = String::net_deserialize(&mut incoming.data).unwrap();
+        let uuid = Uuid::net_deserialize(&mut incoming.data).unwrap();
         Some(Self { client, uuid, name })
     }
 }
