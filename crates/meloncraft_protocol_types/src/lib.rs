@@ -8,6 +8,7 @@ mod prefixed_array;
 mod protocol_type;
 mod string;
 mod u16;
+mod u8;
 mod ubyte;
 mod uuid;
 mod varint;
