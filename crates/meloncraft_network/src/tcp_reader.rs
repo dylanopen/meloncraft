@@ -23,7 +23,7 @@ pub fn handle_client(stream: TcpStream, entity: Entity) {
     let mut iters = 0;
     let mut stream = stream.try_clone().unwrap();
     stream
-        .set_read_timeout(Some(Duration::from_millis(2000)))
+        .set_read_timeout(Some(Duration::from_millis(15000)))
         .unwrap();
     let address = stream.peer_addr().unwrap();
     let mut buf_reader = BufReader::new(&mut stream);

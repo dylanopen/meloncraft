@@ -6,7 +6,6 @@ pub fn update_connection_states(
     mut handshake_pr: MessageReader<Intention>,
     mut client_connections: Query<&mut ClientConnection>,
 ) {
-    println!("{}", handshake_pr.len());
     for packet in handshake_pr.read() {
         let entity = packet.client;
         let mut client_connection = client_connections.get_mut(entity).unwrap();
