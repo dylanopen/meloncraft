@@ -1,5 +1,4 @@
 use crate::ProtocolType;
-use crate::deserialize::DeserializeError;
 
 pub struct VarInt(i32);
 
