@@ -1,3 +1,5 @@
+#![allow(clippy::all)]
+
 // Thanks to https://git.thetxt.io/thetxt/oxide (heavily inspired by the project's deserialisation)!
 
 use std::error::Error;
