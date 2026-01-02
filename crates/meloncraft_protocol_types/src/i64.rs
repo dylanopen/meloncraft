@@ -6,8 +6,12 @@ impl ProtocolType for i64 {
     }
 
     fn net_deserialize(data: &mut Vec<u8>) -> Result<i64, ()> {
-        let output: i64 = i64::from_be_bytes(data[..8].try_into().map_err(|_| ())?);
-        data.drain(0..7);
+        if data.len() < 8 {
+            return Err(());
+        }
+        let arg_data = data.drain(0..8);
+        let output = i64::from_le_bytes(arg_data.as_slice().try_into().map_err(|_| ())?);
+
         Ok(output)
     }
 }
