@@ -2,18 +2,43 @@ use crate::ProtocolType;
 
 pub struct VarInt(i32);
 
-const SEGMENT_BITS: u8 = 0x7F;
+const SEGMENT_BITS: u32 = 0x7F;
 const CONTINUE_BIT: u8 = 0x80;
 
 impl ProtocolType for VarInt {
-    fn net_deserialize(bytes: &mut Vec<u8>) -> Result<Self, ()> {
+    fn net_serialize(&self) -> Vec<u8> {
+        let mut output: Vec<u8> = Vec::new();
+
+        let mut uvalue = self.0 as u32;
+        loop {
+            let mut byte = (uvalue & SEGMENT_BITS) as u8;
+            uvalue >>= 7;
+
+            if uvalue != 0 {
+                byte |= CONTINUE_BIT;
+            }
+
+            output.push(byte);
+
+            if uvalue == 0 {
+                break;
+            }
+        }
+
+        output
+    }
+
+    fn net_deserialize(data: &mut Vec<u8>) -> Result<Self, ()> {
+        if data.is_empty() {
+            return Err(());
+        }
+
         let mut value: i32 = 0;
         let mut position = 0;
         let mut current_byte: u8;
-        bytes.reverse();
 
         loop {
-            current_byte = bytes.pop().unwrap_or(0);
+            current_byte = data.remove(0);
             value |= (current_byte as i32 & SEGMENT_BITS as i32) << position;
 
             if (current_byte & CONTINUE_BIT) == 0 {
@@ -26,31 +51,6 @@ impl ProtocolType for VarInt {
                 return Err(());
             }
         }
-
-        bytes.reverse();
-
-        Ok(VarInt(value))
-    }
-
-    fn net_serialize(&self) -> Vec<u8> {
-        let mut value = self.0;
-        let mut output: Vec<u8> = Vec::new();
-
-        loop {
-            if value as u8 & !SEGMENT_BITS == 0 {
-                output.push(value as u8);
-                break;
-            }
-
-            output.push((value as u8 & SEGMENT_BITS) | CONTINUE_BIT);
-
-            value >>= 7;
-
-            if output.len() >= 5 {
-                break;
-            }
-        }
-
-        output
+        Ok(Self(value))
     }
 }
