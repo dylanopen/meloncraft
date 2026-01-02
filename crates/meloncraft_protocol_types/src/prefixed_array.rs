@@ -18,7 +18,7 @@ impl<T: ProtocolType + Debug> ProtocolType for PrefixedArray<T> {
         while data.len() > target_length {
             values.push(data.net_deserialize()?);
         }
-        dbg!(&values);
+        dbg!(&values, data);
         Ok(PrefixedArray { length, values })
     }
 }

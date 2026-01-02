@@ -21,6 +21,6 @@ impl IncomingPacket for Ping {
         let mut incoming = incoming.clone();
         let client = incoming.client;
         let timestamp = i64::net_deserialize(&mut incoming.data).unwrap();
-        Some(Self { client, timestamp })
+        Some(Ping { client, timestamp })
     }
 }
