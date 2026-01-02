@@ -5,3 +5,4 @@ edition = "2024"
 
 [dependencies]
 bevy = { workspace = true }
+meloncraft_packets = { workspace = true }

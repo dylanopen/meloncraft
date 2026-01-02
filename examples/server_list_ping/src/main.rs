@@ -1,66 +1,29 @@
 use bevy::MinimalPlugins;
-use bevy::app::{App, ScheduleRunnerPlugin, Update};
-use bevy::app::{FixedUpdate, PluginGroup};
-use bevy::ecs::schedule::ExecutorKind;
-use bevy::prelude::{MessageReader, MessageWriter};
+use bevy::app::PluginGroup;
+use bevy::app::{App, ScheduleRunnerPlugin};
 use meloncraft::handshaking::MeloncraftHandshakingPlugin;
 use meloncraft::network::MeloncraftNetworkPlugin;
-use meloncraft::network::packet::IncomingNetworkPacketReceived;
 use meloncraft::packet_messengers::MeloncraftPacketGeneratorsPlugin;
 use meloncraft::packets::MeloncraftPacketsPlugin;
-use meloncraft::packets::incoming::handshaking::Intention;
-use meloncraft::packets::incoming::status::StatusRequest;
-use meloncraft::packets::outgoing::status::StatusResponse;
+use meloncraft::server_list::MeloncraftServerListPlugin;
+use meloncraft::server_list::max_players::MaxPlayers;
+use meloncraft::server_list::motd::Motd;
+use meloncraft::server_list::online_players::OnlinePlayers;
 use std::time::Duration;
 
 pub fn main() {
     let mut app = App::new();
+
+    app.insert_resource(Motd("Meloncraft server list example".to_owned()));
+    app.insert_resource(OnlinePlayers(17));
+    app.insert_resource(MaxPlayers(32));
+
     app.add_plugins(MinimalPlugins.set(ScheduleRunnerPlugin::run_loop(Duration::from_millis(50))));
     app.add_plugins(MeloncraftNetworkPlugin);
     app.add_plugins(MeloncraftPacketsPlugin);
     app.add_plugins(MeloncraftPacketGeneratorsPlugin);
     app.add_plugins(MeloncraftHandshakingPlugin);
-
-    app.edit_schedule(FixedUpdate, |schedule| {
-        schedule.set_executor_kind(ExecutorKind::SingleThreaded);
-    });
-
-    app.add_systems(Update, respond_to_status_request);
-    app.add_systems(Update, respond_to_packet);
-    app.add_systems(Update, respond_to_intention);
-    app.add_systems(Update, say_hi);
+    app.add_plugins(MeloncraftServerListPlugin);
 
     app.run();
-}
-
-fn respond_to_intention(mut mr: MessageReader<Intention>) {
-    for msg in mr.read() {
-        dbg!(msg);
-    }
-}
-
-fn respond_to_packet(mut mr: MessageReader<IncomingNetworkPacketReceived>) {
-    for msg in mr.read() {
-        // dbg!(&msg.packet);
-    }
-}
-
-fn say_hi() {}
-
-fn respond_to_status_request(
-    mut mr: MessageReader<StatusRequest>,
-    mut mw: MessageWriter<StatusResponse>,
-) {
-    for msg in mr.read() {
-        dbg!(&msg);
-        mw.write(StatusResponse {
-            client: msg.client,
-            description: "Meloncraft".to_owned(),
-            enforces_secure_chat: false,
-            max_players: 1000,
-            online_players: 678,
-            version_name: "Meloncraft".to_owned(),
-            version_protocol: 773,
-        });
-    }
 }
