@@ -1,5 +1,4 @@
 use crate::ProtocolType;
-use crate::deserialize::DeserializeError;
 
 impl ProtocolType for bool {
     fn net_serialize(&self) -> Vec<u8> {
