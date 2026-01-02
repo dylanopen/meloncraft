@@ -8,5 +8,6 @@ mod u16;
 mod uuid;
 mod varint;
 
+pub use protocol_type::ProtocolBuffer;
 pub use protocol_type::ProtocolType;
 pub use varint::VarInt;
