@@ -2,12 +2,12 @@
 resolver = "3"
 members = [
     "crates/meloncraft_network",
-    "crates/meloncraft_packet_messengers",
     "crates/meloncraft_packets",
     "crates/meloncraft_protocol_types",
     "crates/meloncraft_client",
     "crates/meloncraft_handshaking",
-    "crates/meloncraft_server_list"
+    "crates/meloncraft_server_list",
+    "crates/meloncraft_player"
 ]
 exclude = [
     "examples"
@@ -29,6 +29,8 @@ meloncraft_client = { path = "crates/meloncraft_client" }
 meloncraft_packets = { path = "crates/meloncraft_packets" }
 meloncraft_handshaking = { path = "crates/meloncraft_handshaking" }
 meloncraft_server_list = { path = "crates/meloncraft_server_list" }
+meloncraft_player = { path = "crates/meloncraft_player" }
+
 lazy_static = "1.5.0"
 
 [dependencies]
@@ -38,3 +40,4 @@ meloncraft_client = { workspace = true }
 meloncraft_packets = { workspace = true }
 meloncraft_handshaking = { workspace = true }
 meloncraft_server_list = { workspace = true }
+meloncraft_player = { workspace = true }
