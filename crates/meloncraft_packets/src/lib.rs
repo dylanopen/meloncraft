@@ -23,6 +23,7 @@ impl Plugin for MeloncraftPacketsPlugin {
 
         app.add_message::<outgoing::status::StatusResponse>();
         app.add_message::<outgoing::status::Pong>();
+        app.add_message::<outgoing::login::EncryptionRequest>();
 
         app.add_systems(Update, read_new_packets);
 
@@ -42,6 +43,7 @@ impl Plugin for MeloncraftPacketsPlugin {
             (
                 forward_outgoing_packet::<outgoing::status::StatusResponse>,
                 forward_outgoing_packet::<outgoing::status::Pong>,
+                forward_outgoing_packet::<outgoing::login::EncryptionRequest>,
             ),
         );
     }
