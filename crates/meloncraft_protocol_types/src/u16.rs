@@ -2,7 +2,7 @@ use crate::ProtocolType;
 
 impl ProtocolType for u16 {
     fn net_serialize(&self) -> Vec<u8> {
-        vec![(self / 256) as u8, (self % 256) as u8]
+        self.to_be_bytes().to_vec()
     }
 
     fn net_deserialize(data: &mut Vec<u8>) -> Result<Self, ()> {
