@@ -1,11 +1,12 @@
 use crate::IncomingPacket;
-use bevy::prelude::Message;
+use bevy::prelude::{Entity, Message};
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::IncomingNetworkPacket;
 use meloncraft_protocol_types::deserialize;
 
 #[derive(Message, Debug)]
 pub struct Ping {
+    pub client: Entity,
     pub timestamp: i64,
 }
 
@@ -18,7 +19,8 @@ impl IncomingPacket for Ping {
     }
     fn parse(incoming: &IncomingNetworkPacket) -> Option<Self> {
         let mut incoming = incoming.clone();
+        let client = incoming.client;
         let timestamp = deserialize::long(&mut incoming.data).unwrap();
-        Some(Self { timestamp })
+        Some(Self { client, timestamp })
     }
 }
