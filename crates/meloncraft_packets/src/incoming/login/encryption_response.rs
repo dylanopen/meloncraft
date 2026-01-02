@@ -6,7 +6,7 @@ use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::IncomingNetworkPacket;
 use meloncraft_protocol_types::{PrefixedArray, ProtocolBuffer};
 
-#[derive(Message)]
+#[derive(Message, Debug, Clone)]
 pub struct EncryptionResponse {
     pub client: Entity,
     pub shared_secret: Vec<i8>, // bytes are stored as i8s in the
@@ -14,12 +14,12 @@ pub struct EncryptionResponse {
 }
 
 impl IncomingPacket for EncryptionResponse {
-    fn state() -> ConnectionState {
-        ConnectionState::Login
-    }
-
     fn id() -> i32 {
         0x01
+    }
+
+    fn state() -> ConnectionState {
+        ConnectionState::Login
     }
 
     fn parse(incoming: &IncomingNetworkPacket) -> Option<Self> {
