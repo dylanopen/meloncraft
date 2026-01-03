@@ -3,6 +3,7 @@ pub mod nbt;
 mod boolean;
 mod byte;
 mod f32;
+mod f64;
 mod i128;
 mod i16;
 mod i32;
