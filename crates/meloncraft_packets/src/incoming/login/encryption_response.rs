@@ -24,9 +24,9 @@ impl IncomingPacket for EncryptionResponse {
     fn parse(incoming: &IncomingNetworkPacket) -> Option<Self> {
         let mut incoming = incoming.clone();
         let shared_secret: PrefixedArray<Byte> = incoming.data.net_deserialize().unwrap();
-        let shared_secret = shared_secret.values;
+        let shared_secret = shared_secret.0;
         let verify_token: PrefixedArray<Byte> = incoming.data.net_deserialize().unwrap();
-        let verify_token = verify_token.values;
+        let verify_token = verify_token.0;
         Some(Self {
             client: incoming.client,
             shared_secret,

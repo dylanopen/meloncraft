@@ -7,7 +7,7 @@ impl ProtocolType for NbtTag {
         serialize::root(self.clone())
     }
 
-    fn net_deserialize(data: &mut Vec<u8>) -> Result<Self, ()> {
+    fn net_deserialize(_data: &mut Vec<u8>) -> Result<Self, ()> {
         todo!()
     }
 }
