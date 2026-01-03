@@ -7,7 +7,8 @@ members = [
     "crates/meloncraft_client",
     "crates/meloncraft_handshaking",
     "crates/meloncraft_server_list",
-    "crates/meloncraft_player"
+    "crates/meloncraft_player",
+    "crates/meloncraft_nbt"
 ]
 exclude = [
     "examples"
@@ -30,6 +31,7 @@ meloncraft_packets = { path = "crates/meloncraft_packets" }
 meloncraft_handshaking = { path = "crates/meloncraft_handshaking" }
 meloncraft_server_list = { path = "crates/meloncraft_server_list" }
 meloncraft_player = { path = "crates/meloncraft_player" }
+meloncraft_nbt = { path = "crates/meloncraft_nbt" }
 
 lazy_static = "1.5.0"
 
@@ -41,3 +43,4 @@ meloncraft_packets = { workspace = true }
 meloncraft_handshaking = { workspace = true }
 meloncraft_server_list = { workspace = true }
 meloncraft_player = { workspace = true }
+meloncraft_nbt = { workspace = true }
