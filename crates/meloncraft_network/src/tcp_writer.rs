@@ -15,6 +15,7 @@ fn send_packet(stream: &mut TcpStream, packet_id: i32, mut data: Vec<u8>) {
     stream
         .write_all(length_prefixed_response.as_slice())
         .unwrap();
+    stream.flush().unwrap();
 }
 
 pub fn send_packets(
