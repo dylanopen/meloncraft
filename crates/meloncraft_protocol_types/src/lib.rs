@@ -12,6 +12,7 @@ mod i64;
 mod i8;
 mod identifier;
 mod json_text;
+mod option;
 mod prefixed_array;
 mod protocol_type;
 mod string;
