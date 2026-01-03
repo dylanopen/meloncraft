@@ -761,6 +761,7 @@ dependencies = [
  "meloncraft_packets",
  "meloncraft_player",
  "meloncraft_protocol_types",
+ "meloncraft_registry",
  "meloncraft_server_list",
 ]
 
@@ -817,6 +818,7 @@ dependencies = [
  "meloncraft_network",
  "meloncraft_player",
  "meloncraft_protocol_types",
+ "meloncraft_registry",
 ]
 
 [[package]]
@@ -831,6 +833,14 @@ name = "meloncraft_protocol_types"
 version = "0.1.0"
 dependencies = [
  "meloncraft_player",
+]
+
+[[package]]
+name = "meloncraft_registry"
+version = "0.1.0"
+dependencies = [
+ "meloncraft_nbt",
+ "meloncraft_protocol_types",
 ]
 
 [[package]]

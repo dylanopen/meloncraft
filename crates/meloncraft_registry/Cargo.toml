@@ -1,0 +1,8 @@
+[package]
+name = "meloncraft_registry"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+meloncraft_protocol_types = { workspace = true }
+meloncraft_nbt = { workspace = true }

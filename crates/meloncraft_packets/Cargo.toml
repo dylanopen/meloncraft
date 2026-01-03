@@ -9,3 +9,4 @@ meloncraft_client = { workspace = true }
 meloncraft_player = { workspace = true }
 meloncraft_network = { workspace = true }
 meloncraft_protocol_types = { workspace = true }
+meloncraft_registry = { workspace = true }
