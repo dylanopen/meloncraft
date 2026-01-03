@@ -1,4 +1,4 @@
 use bevy::ecs::component::Component;
 
 #[derive(Component)]
-pub struct PlayerUsername(pub String);
+pub struct Username(pub String);
