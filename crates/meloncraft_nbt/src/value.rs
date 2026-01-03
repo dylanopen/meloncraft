@@ -2,7 +2,7 @@ use crate::tag::NbtTag;
 
 #[derive(Debug, Clone, PartialEq, PartialOrd)]
 pub enum NbtValue {
-    Root,
+    Root(Vec<NbtTag>),
     U8(u8),
     I16(i16),
     I32(i32),
@@ -51,22 +51,28 @@ impl NbtValue {
     }
 
     pub fn get(&self, key: &str) -> Option<&NbtValue> {
-        if let NbtValue::Compound(compound) = self {
-            for tag in compound {
-                if tag.key == key {
-                    return Some(&tag.value);
-                }
+        let compound = match self {
+            NbtValue::Compound(compound) => compound,
+            NbtValue::Root(compound) => compound,
+            _ => return None,
+        };
+        for tag in compound {
+            if tag.key == key {
+                return Some(&tag.value);
             }
         }
         None
     }
 
     pub fn get_mut(&mut self, key: &str) -> Option<&mut NbtValue> {
-        if let NbtValue::Compound(compound) = self {
-            for tag in compound {
-                if tag.key == key {
-                    return Some(&mut tag.value);
-                }
+        let compound = match self {
+            NbtValue::Compound(compound) => compound,
+            NbtValue::Root(compound) => compound,
+            _ => return None,
+        };
+        for tag in compound {
+            if tag.key == key {
+                return Some(&mut tag.value);
             }
         }
         None
