@@ -27,6 +27,7 @@ impl Plugin for MeloncraftPacketsPlugin {
         app.add_message::<outgoing::login::Disconnect>();
         app.add_message::<outgoing::login::EncryptionRequest>();
         app.add_message::<outgoing::login::LoginSuccess>();
+        app.add_message::<outgoing::login::SetCompression>();
 
         app.add_systems(Update, read_new_packets);
 
@@ -50,6 +51,7 @@ impl Plugin for MeloncraftPacketsPlugin {
                 forward_outgoing_packet::<outgoing::login::Disconnect>,
                 forward_outgoing_packet::<outgoing::login::EncryptionRequest>,
                 forward_outgoing_packet::<outgoing::login::LoginSuccess>,
+                forward_outgoing_packet::<outgoing::login::SetCompression>,
             ),
         );
     }
