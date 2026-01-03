@@ -77,4 +77,22 @@ impl NbtValue {
         }
         None
     }
+
+    pub fn to_id(&self) -> u8 {
+        match self {
+            NbtValue::U8(_) => 1,
+            NbtValue::I16(_) => 2,
+            NbtValue::I32(_) => 3,
+            NbtValue::I64(_) => 4,
+            NbtValue::F32(_) => 5,
+            NbtValue::F64(_) => 6,
+            NbtValue::ArrayU8(_) => 7,
+            NbtValue::String(_) => 8,
+            NbtValue::List(_) => 9,
+            NbtValue::Compound(_) => 10,
+            NbtValue::Root(_) => 10, // internally, a compound
+            NbtValue::ArrayI32(_) => 11,
+            NbtValue::ArrayI64(_) => 12,
+        }
+    }
 }
