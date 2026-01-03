@@ -5,6 +5,7 @@ pub enum ConnectionState {
     Handshaking,
     Status,
     Login,
+    Configuration,
     Play,
 }
 
@@ -14,6 +15,7 @@ impl Display for ConnectionState {
             ConnectionState::Handshaking => write!(f, "Handshaking"),
             ConnectionState::Status => write!(f, "Status"),
             ConnectionState::Login => write!(f, "Login"),
+            ConnectionState::Configuration => write!(f, "Configuration"),
             ConnectionState::Play => write!(f, "Play"),
         }
     }
