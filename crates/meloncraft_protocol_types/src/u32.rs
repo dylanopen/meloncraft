@@ -10,7 +10,7 @@ impl ProtocolType for u32 {
             return Err(());
         }
         let arg_data = data.drain(0..4);
-        let output = u32::from_le_bytes(arg_data.as_slice().try_into().map_err(|_| ())?);
+        let output = u32::from_be_bytes(arg_data.as_slice().try_into().map_err(|_| ())?);
 
         Ok(output)
     }

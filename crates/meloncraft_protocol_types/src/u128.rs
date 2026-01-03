@@ -10,7 +10,7 @@ impl ProtocolType for u128 {
             return Err(());
         }
         let arg_data = data.drain(0..16);
-        let output = u128::from_le_bytes(arg_data.as_slice().try_into().map_err(|_| ())?);
+        let output = u128::from_be_bytes(arg_data.as_slice().try_into().map_err(|_| ())?);
 
         Ok(output)
     }
