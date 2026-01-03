@@ -20,6 +20,7 @@ exclude = [
 [workspace.dependencies.bevy]
 version = "0.17.3"
 default-features = false
+features = ["debug"]
 
 [package]
 name = "meloncraft"
