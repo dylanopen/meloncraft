@@ -41,4 +41,12 @@ impl NbtValue {
             None
         }
     }
+
+    pub fn get_list_children_mut(&mut self) -> Option<&mut Vec<NbtValue>> {
+        if let NbtValue::List(list) = self {
+            Some(list)
+        } else {
+            None
+        }
+    }
 }
