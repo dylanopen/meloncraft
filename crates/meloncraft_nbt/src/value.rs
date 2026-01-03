@@ -33,4 +33,12 @@ impl NbtValue {
             None
         }
     }
+
+    pub fn get_list_children(&self) -> Option<&Vec<NbtValue>> {
+        if let NbtValue::List(list) = self {
+            Some(list)
+        } else {
+            None
+        }
+    }
 }
