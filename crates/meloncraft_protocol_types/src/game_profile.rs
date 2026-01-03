@@ -1,6 +1,7 @@
 use crate::{PrefixedArray, ProtocolBuffer, ProtocolType};
 use meloncraft_player::Uuid;
 
+#[derive(Debug, Clone)]
 pub struct GameProfile {
     pub uuid: Uuid,
     pub username: String,
