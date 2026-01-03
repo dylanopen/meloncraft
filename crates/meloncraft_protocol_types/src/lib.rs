@@ -10,6 +10,7 @@ mod i16;
 mod i32;
 mod i64;
 mod i8;
+mod identifier;
 mod json_text;
 mod prefixed_array;
 mod protocol_type;
@@ -24,6 +25,7 @@ mod uuid;
 mod varint;
 
 pub use byte::Byte;
+pub use identifier::Identifier;
 pub use json_text::JsonText;
 pub use prefixed_array::PrefixedArray;
 pub use protocol_type::ProtocolBuffer;
