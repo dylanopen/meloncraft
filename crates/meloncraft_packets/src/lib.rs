@@ -20,6 +20,7 @@ impl Plugin for MeloncraftPacketsPlugin {
         app.add_message::<incoming::status::Ping>();
         app.add_message::<incoming::login::LoginStart>();
         app.add_message::<incoming::login::EncryptionResponse>();
+        app.add_message::<incoming::login::LoginAcknowledged>();
 
         app.add_message::<outgoing::status::StatusResponse>();
         app.add_message::<outgoing::status::Pong>();
@@ -37,6 +38,7 @@ impl Plugin for MeloncraftPacketsPlugin {
                 forward_incoming_packet::<incoming::status::Ping>,
                 forward_incoming_packet::<incoming::login::LoginStart>,
                 forward_incoming_packet::<incoming::login::EncryptionResponse>,
+                forward_incoming_packet::<incoming::login::LoginAcknowledged>,
             ),
         );
 
