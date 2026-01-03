@@ -754,6 +754,7 @@ name = "meloncraft"
 version = "0.1.0"
 dependencies = [
  "meloncraft_client",
+ "meloncraft_core",
  "meloncraft_handshaking",
  "meloncraft_login",
  "meloncraft_nbt",
@@ -772,6 +773,10 @@ dependencies = [
  "bevy",
  "lazy_static",
 ]
+
+[[package]]
+name = "meloncraft_core"
+version = "0.1.0"
 
 [[package]]
 name = "meloncraft_handshaking"
