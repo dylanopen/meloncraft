@@ -4,6 +4,7 @@ mod boolean;
 mod byte;
 mod f32;
 mod f64;
+mod game_profile;
 mod i128;
 mod i16;
 mod i32;
@@ -23,6 +24,7 @@ mod uuid;
 mod varint;
 
 pub use byte::Byte;
+pub use game_profile::GameProfile;
 pub use json_text::JsonText;
 pub use prefixed_array::PrefixedArray;
 pub use protocol_type::ProtocolBuffer;
