@@ -58,6 +58,7 @@ impl Plugin for MeloncraftPacketsPlugin {
                 forward_outgoing_packet::<outgoing::configuration::CookieRequest>,
                 forward_outgoing_packet::<outgoing::configuration::Disconnect>,
                 forward_outgoing_packet::<outgoing::configuration::FinishConfiguration>,
+                forward_outgoing_packet::<outgoing::configuration::KeepAlive>,
             ),
         );
     }
