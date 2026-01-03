@@ -1,13 +1,11 @@
 use crate::{ProtocolBuffer, ProtocolType, VarInt};
 
-pub struct PrefixedArray<T: ProtocolType> {
-    pub values: Vec<T>,
-}
+pub struct PrefixedArray<T: ProtocolType>(pub Vec<T>);
 
 impl<T: ProtocolType> ProtocolType for PrefixedArray<T> {
     fn net_serialize(&self) -> Vec<u8> {
         let mut body = Vec::new();
-        for value in &self.values {
+        for value in &self.0 {
             body.append(&mut value.net_serialize());
         }
         let length = VarInt(body.len() as i32);
@@ -23,12 +21,12 @@ impl<T: ProtocolType> ProtocolType for PrefixedArray<T> {
         while data.len() > target_length {
             values.push(data.net_deserialize()?);
         }
-        Ok(PrefixedArray { values })
+        Ok(PrefixedArray(values))
     }
 }
 
 impl<T: ProtocolType> From<Vec<T>> for PrefixedArray<T> {
     fn from(values: Vec<T>) -> Self {
-        Self { values }
+        Self(values)
     }
 }
