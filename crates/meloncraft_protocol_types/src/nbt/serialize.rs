@@ -1,6 +1,6 @@
-use crate::tag::NbtTag;
-use crate::value::NbtValue;
-use meloncraft_protocol_types::ProtocolType;
+use crate::ProtocolType;
+use meloncraft_nbt::NbtTag;
+use meloncraft_nbt::NbtValue;
 
 pub fn root(tag: NbtTag) -> Vec<u8> {
     let mut output = Vec::new();

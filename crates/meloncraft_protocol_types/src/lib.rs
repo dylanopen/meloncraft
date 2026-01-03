@@ -1,4 +1,4 @@
-pub mod nbt;
+mod nbt;
 
 mod boolean;
 mod byte;

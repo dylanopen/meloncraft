@@ -1,5 +1,5 @@
 use meloncraft_core::Identifier;
-use meloncraft_nbt::tag::NbtTag;
+use meloncraft_nbt::NbtTag;
 
 pub struct RegistryEntry {
     pub id: Identifier,

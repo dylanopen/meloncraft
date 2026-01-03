@@ -1,6 +1,7 @@
-use crate::serialize;
-use crate::tag::NbtTag;
-use meloncraft_protocol_types::ProtocolType;
+mod serialize;
+
+use crate::ProtocolType;
+use meloncraft_nbt::NbtTag;
 
 impl ProtocolType for NbtTag {
     fn net_serialize(&self) -> Vec<u8> {
