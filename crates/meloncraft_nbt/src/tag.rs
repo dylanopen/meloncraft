@@ -20,3 +20,13 @@ pub enum NbtValue {
     List(Vec<NbtValue>),
     Compound(Vec<NbtTag>),
 }
+
+impl NbtValue {
+    pub fn get_compound_children(&self) -> Option<&Vec<NbtTag>> {
+        if let NbtValue::Compound(compound) = self {
+            Some(compound)
+        } else {
+            None
+        }
+    }
+}
