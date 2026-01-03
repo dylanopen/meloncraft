@@ -755,6 +755,7 @@ version = "0.1.0"
 dependencies = [
  "meloncraft_client",
  "meloncraft_handshaking",
+ "meloncraft_login",
  "meloncraft_nbt",
  "meloncraft_network",
  "meloncraft_packets",
@@ -779,6 +780,10 @@ dependencies = [
  "meloncraft_client",
  "meloncraft_packets",
 ]
+
+[[package]]
+name = "meloncraft_login"
+version = "0.1.0"
 
 [[package]]
 name = "meloncraft_nbt"

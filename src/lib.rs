@@ -1,5 +1,6 @@
 pub use meloncraft_client as client;
 pub use meloncraft_handshaking as handshaking;
+pub use meloncraft_login as login;
 pub use meloncraft_nbt as nbt;
 pub use meloncraft_network as network;
 pub use meloncraft_packets as packets;
