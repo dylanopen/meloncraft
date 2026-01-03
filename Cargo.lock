@@ -784,6 +784,10 @@ dependencies = [
 [[package]]
 name = "meloncraft_login"
 version = "0.1.0"
+dependencies = [
+ "bevy",
+ "meloncraft_player",
+]
 
 [[package]]
 name = "meloncraft_nbt"
