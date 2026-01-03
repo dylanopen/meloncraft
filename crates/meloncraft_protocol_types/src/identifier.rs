@@ -1,7 +1,5 @@
 use crate::{ProtocolBuffer, ProtocolType};
-
-#[derive(Clone, Debug)]
-pub struct Identifier(pub String);
+use meloncraft_core::Identifier;
 
 impl ProtocolType for Identifier {
     fn net_serialize(&self) -> Vec<u8> {

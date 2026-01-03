@@ -820,6 +820,7 @@ version = "0.1.0"
 dependencies = [
  "bevy",
  "meloncraft_client",
+ "meloncraft_core",
  "meloncraft_network",
  "meloncraft_player",
  "meloncraft_protocol_types",
@@ -837,6 +838,7 @@ dependencies = [
 name = "meloncraft_protocol_types"
 version = "0.1.0"
 dependencies = [
+ "meloncraft_core",
  "meloncraft_player",
 ]
 
@@ -844,6 +846,7 @@ dependencies = [
 name = "meloncraft_registry"
 version = "0.1.0"
 dependencies = [
+ "meloncraft_core",
  "meloncraft_nbt",
  "meloncraft_protocol_types",
 ]

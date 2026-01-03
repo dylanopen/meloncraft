@@ -2,8 +2,9 @@ use crate::outgoing_packet::OutgoingPacket;
 use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
+use meloncraft_core::Identifier;
 use meloncraft_network::packet::OutgoingNetworkPacket;
-use meloncraft_protocol_types::{Identifier, ProtocolType};
+use meloncraft_protocol_types::ProtocolType;
 
 #[derive(Message, Debug, Clone)]
 pub struct CookieRequest {
