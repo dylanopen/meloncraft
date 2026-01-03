@@ -32,6 +32,7 @@ impl Plugin for MeloncraftPacketsPlugin {
         app.add_message::<outgoing::configuration::Disconnect>();
         app.add_message::<outgoing::configuration::FinishConfiguration>();
         app.add_message::<outgoing::configuration::Ping>();
+        app.add_message::<outgoing::configuration::ResetChat>();
 
         app.add_systems(Update, read_new_packets);
 
@@ -60,7 +61,8 @@ impl Plugin for MeloncraftPacketsPlugin {
                 forward_outgoing_packet::<outgoing::configuration::Disconnect>,
                 forward_outgoing_packet::<outgoing::configuration::FinishConfiguration>,
                 forward_outgoing_packet::<outgoing::configuration::KeepAlive>,
-                forward_outgoing_packet::<outgoing::configuration::Ping>,
+                forward_outgoing_packet::<outgoing::configuration::ResetChat>,
+                forward_outgoing_packet::<outgoing::configuration::ResetChat>,
             ),
         );
     }
