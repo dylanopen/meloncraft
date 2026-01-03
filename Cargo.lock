@@ -783,6 +783,9 @@ dependencies = [
 [[package]]
 name = "meloncraft_nbt"
 version = "0.1.0"
+dependencies = [
+ "meloncraft_protocol_types",
+]
 
 [[package]]
 name = "meloncraft_network"
