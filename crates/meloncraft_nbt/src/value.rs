@@ -25,4 +25,12 @@ impl NbtValue {
             None
         }
     }
+
+    pub fn get_compound_children_mut(&mut self) -> Option<&mut Vec<NbtTag>> {
+        if let NbtValue::Compound(compound) = self {
+            Some(compound)
+        } else {
+            None
+        }
+    }
 }
