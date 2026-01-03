@@ -60,4 +60,15 @@ impl NbtValue {
         }
         None
     }
+
+    pub fn get_mut(&mut self, key: &str) -> Option<&mut NbtValue> {
+        if let NbtValue::Compound(compound) = self {
+            for tag in compound {
+                if tag.key == key {
+                    return Some(&mut tag.value);
+                }
+            }
+        }
+        None
+    }
 }
