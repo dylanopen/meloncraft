@@ -49,4 +49,15 @@ impl NbtValue {
             None
         }
     }
+
+    pub fn get(&self, key: &str) -> Option<&NbtValue> {
+        if let NbtValue::Compound(compound) = self {
+            for tag in compound {
+                if tag.key == key {
+                    return Some(&tag.value);
+                }
+            }
+        }
+        None
+    }
 }
