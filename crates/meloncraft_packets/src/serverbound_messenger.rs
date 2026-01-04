@@ -5,7 +5,7 @@ use meloncraft_network::SERVERBOUND_PACKETS;
 use meloncraft_network::packet::ServerboundNetworkPacketReceived;
 use std::fmt::Debug;
 
-pub fn forward_serverbound_packet<T: Message + ServerboundPacket + Debug>(
+pub fn fwd<T: Message + ServerboundPacket + Debug>(
     mut all_packets: MessageReader<ServerboundNetworkPacketReceived>,
     mut packet_writer: MessageWriter<T>,
     client_connections: Query<&ClientConnection>,
