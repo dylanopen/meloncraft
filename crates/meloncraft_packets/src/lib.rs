@@ -46,6 +46,7 @@ impl Plugin for MeloncraftPacketsPlugin {
         app.add_message::<clientbound::configuration::ServerLinks>();
         app.add_message::<clientbound::configuration::ClearDialog>();
         app.add_message::<clientbound::configuration::ShowDialog>();
+        app.add_message::<clientbound::configuration::CodeOfConduct>();
 
         app.add_systems(Update, read_new_packets);
 
@@ -96,6 +97,7 @@ impl Plugin for MeloncraftPacketsPlugin {
                     forward_clientbound_packet::<clientbound::configuration::ServerLinks>,
                     forward_clientbound_packet::<clientbound::configuration::ClearDialog>,
                     forward_clientbound_packet::<clientbound::configuration::ShowDialog>,
+                    forward_clientbound_packet::<clientbound::configuration::CodeOfConduct>,
                 ),
             ),
         );

@@ -1,5 +1,6 @@
 mod add_resource_pack;
 mod clear_dialog;
+mod code_of_conduct;
 mod cookie_request;
 mod custom_report_details;
 mod disconnect;
@@ -19,6 +20,7 @@ mod update_tags;
 
 pub use add_resource_pack::AddResourcePack;
 pub use clear_dialog::ClearDialog;
+pub use code_of_conduct::CodeOfConduct;
 pub use cookie_request::CookieRequest;
 pub use custom_report_details::CustomReportDetails;
 pub use disconnect::Disconnect;
