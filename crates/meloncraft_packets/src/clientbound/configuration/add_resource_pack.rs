@@ -2,11 +2,9 @@ use crate::clientbound_packet::ClientboundPacket;
 use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
-use meloncraft_core::Identifier;
 use meloncraft_network::packet::ClientboundNetworkPacket;
 use meloncraft_player::Uuid;
-use meloncraft_protocol_types::{PrefixedArray, ProtocolType};
-use meloncraft_registry::RegistryEntry;
+use meloncraft_protocol_types::ProtocolType;
 use meloncraft_text::NbtText;
 
 #[derive(Message, Debug, Clone)]

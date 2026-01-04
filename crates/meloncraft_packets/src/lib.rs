@@ -37,6 +37,7 @@ impl Plugin for MeloncraftPacketsPlugin {
         app.add_message::<clientbound::configuration::RegistryData>();
         app.add_message::<clientbound::configuration::RemoveResourcePack>();
         app.add_message::<clientbound::configuration::AddResourcePack>();
+        app.add_message::<clientbound::configuration::StoreCookie>();
 
         app.add_systems(Update, read_new_packets);
 
