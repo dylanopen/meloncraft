@@ -114,8 +114,8 @@ pub fn long_array(payload: Vec<i64>) -> Vec<u8> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::tag::NbtTag;
-    use crate::value::NbtValue;
+    use meloncraft_nbt::NbtTag;
+    use meloncraft_nbt::NbtValue;
 
     #[test]
     fn test_serialize_root() {
