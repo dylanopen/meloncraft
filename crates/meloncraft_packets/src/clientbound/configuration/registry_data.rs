@@ -1,9 +1,9 @@
-use crate::outgoing_packet::OutgoingPacket;
+use crate::clientbound_packet::ClientboundPacket;
 use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_core::Identifier;
-use meloncraft_network::packet::OutgoingNetworkPacket;
+use meloncraft_network::packet::ClientboundNetworkPacket;
 use meloncraft_protocol_types::{PrefixedArray, ProtocolType};
 use meloncraft_registry::RegistryEntry;
 
@@ -14,7 +14,7 @@ pub struct RegistryData {
     pub registry_entries: Vec<RegistryEntry>,
 }
 
-impl OutgoingPacket for RegistryData {
+impl ClientboundPacket for RegistryData {
     fn id() -> i32 {
         0x07
     }
@@ -23,10 +23,10 @@ impl OutgoingPacket for RegistryData {
         ConnectionState::Configuration
     }
 
-    fn serialize(&self) -> Option<OutgoingNetworkPacket> {
+    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let mut data = self.registry_id.net_serialize();
         data.extend(PrefixedArray(self.registry_entries.clone()).net_serialize());
-        Some(OutgoingNetworkPacket {
+        Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data,

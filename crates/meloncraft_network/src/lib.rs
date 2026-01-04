@@ -1,8 +1,8 @@
 use crate::connection_listener::ConnectionListener;
 use crate::connection_manager::connection_manager;
 use crate::packet::{
-    IncomingNetworkPacket, IncomingNetworkPacketReceived, OutgoingNetworkPacket,
-    OutgoingNetworkPacketReceived,
+    ClientboundNetworkPacket, ClientboundNetworkPacketReceived, IncomingNetworkPacket,
+    IncomingNetworkPacketReceived,
 };
 use crate::tcp_reader::receive_new_clients;
 use crate::tcp_writer::send_packets;
@@ -23,7 +23,7 @@ lazy_static! {
         let packets = Vec::new();
         Mutex::new(packets)
     };
-    pub static ref OUTBOUND_PACKETS: Mutex<Vec<OutgoingNetworkPacket>> = {
+    pub static ref CLIENTBOUND_PACKETS: Mutex<Vec<ClientboundNetworkPacket>> = {
         let packets = Vec::new();
         Mutex::new(packets)
     };
@@ -39,7 +39,7 @@ impl Plugin for MeloncraftNetworkPlugin {
         thread::spawn(move || receive_new_clients(tcp_listener.try_clone().unwrap()));
 
         app.add_message::<IncomingNetworkPacketReceived>();
-        app.add_message::<OutgoingNetworkPacketReceived>();
+        app.add_message::<ClientboundNetworkPacketReceived>();
         app.insert_resource(connection_listener);
         app.add_systems(Update, send_packets);
         app.add_systems(Update, connection_manager);

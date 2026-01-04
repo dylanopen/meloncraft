@@ -1,7 +1,7 @@
-use crate::outgoing_packet::OutgoingPacket;
+use crate::clientbound_packet::ClientboundPacket;
 use bevy::prelude::{Entity, Message};
 use meloncraft_client::connection_state::ConnectionState;
-use meloncraft_network::packet::OutgoingNetworkPacket;
+use meloncraft_network::packet::ClientboundNetworkPacket;
 use meloncraft_protocol_types::ProtocolType;
 
 #[derive(Message, Debug, Clone)]
@@ -15,14 +15,14 @@ pub struct StatusResponse {
     pub enforces_secure_chat: bool,
 }
 
-impl OutgoingPacket for StatusResponse {
+impl ClientboundPacket for StatusResponse {
     fn id() -> i32 {
         0x00
     }
     fn state() -> ConnectionState {
         ConnectionState::Status
     }
-    fn serialize(&self) -> Option<OutgoingNetworkPacket> {
+    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let json = format!(
             "{{\"version\": {{\"name\": \"{}\",\"protocol\": {}}},\"players\": {{\"max\": {},\"online\": {},\"sample\": []}},\"description\": {{\"text\": \"{}\"}},\"enforcesSecureChat\": {}}}",
             self.version_name,
@@ -32,7 +32,7 @@ impl OutgoingPacket for StatusResponse {
             self.description,
             self.enforces_secure_chat,
         );
-        Some(OutgoingNetworkPacket {
+        Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data: json.net_serialize(),

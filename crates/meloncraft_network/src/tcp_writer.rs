@@ -1,4 +1,4 @@
-use crate::packet::{OutgoingNetworkPacket, OutgoingNetworkPacketReceived};
+use crate::packet::{ClientboundNetworkPacket, ClientboundNetworkPacketReceived};
 use bevy::prelude::{Entity, MessageReader, Query};
 use meloncraft_client::connection::ClientConnection;
 use meloncraft_protocol_types::{ProtocolType, VarInt};
@@ -19,11 +19,11 @@ fn send_packet(stream: &mut TcpStream, packet_id: i32, mut data: Vec<u8>) {
 }
 
 pub fn send_packets(
-    mut outgoing_packet_received_mr: MessageReader<OutgoingNetworkPacketReceived>,
+    mut clientbound_packet_received_mr: MessageReader<ClientboundNetworkPacketReceived>,
     mut client_connections: Query<&mut ClientConnection>,
 ) {
-    let mut client_packets: HashMap<Entity, Vec<OutgoingNetworkPacket>> = HashMap::new();
-    for packet_msg in outgoing_packet_received_mr.read() {
+    let mut client_packets: HashMap<Entity, Vec<ClientboundNetworkPacket>> = HashMap::new();
+    for packet_msg in clientbound_packet_received_mr.read() {
         let packet = packet_msg.packet.clone();
         match client_packets.get_mut(&packet.client) {
             Some(packets) => {

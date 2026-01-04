@@ -1,8 +1,8 @@
+use crate::clientbound_packet::ClientboundPacket;
 use bevy::ecs::message::Message;
-use crate::outgoing_packet::OutgoingPacket;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
-use meloncraft_network::packet::OutgoingNetworkPacket;
+use meloncraft_network::packet::ClientboundNetworkPacket;
 use meloncraft_protocol_types::ProtocolType;
 
 #[derive(Message, Debug, Clone)]
@@ -11,7 +11,7 @@ pub struct SetCompression {
     pub threshold: i32,
 }
 
-impl OutgoingPacket for SetCompression {
+impl ClientboundPacket for SetCompression {
     fn id() -> i32 {
         0x03
     }
@@ -20,8 +20,8 @@ impl OutgoingPacket for SetCompression {
         ConnectionState::Login
     }
 
-    fn serialize(&self) -> Option<OutgoingNetworkPacket> {
-        Some(OutgoingNetworkPacket {
+    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
+        Some(ClientboundNetworkPacket {
             client: self.entity,
             id: Self::id(),
             data: self.threshold.net_serialize(),
