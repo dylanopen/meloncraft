@@ -9,6 +9,7 @@ mod f64;
 mod i16;
 mod i32;
 mod i64;
+mod list;
 mod string;
 mod u8;
 
@@ -23,5 +24,6 @@ pub use f64::NbtF64;
 pub use i16::NbtI16;
 pub use i32::NbtI32;
 pub use i64::NbtI64;
+pub use list::NbtList;
 pub use string::NbtString;
 pub use u8::NbtU8;
