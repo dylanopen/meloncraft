@@ -8,6 +8,7 @@ mod registry_data;
 mod remove_resource_pack;
 mod reset_chat;
 mod store_cookie;
+mod transfer;
 
 pub use add_resource_pack::AddResourcePack;
 pub use cookie_request::CookieRequest;
@@ -19,3 +20,4 @@ pub use registry_data::RegistryData;
 pub use remove_resource_pack::RemoveResourcePack;
 pub use reset_chat::ResetChat;
 pub use store_cookie::StoreCookie;
+pub use transfer::Transfer;

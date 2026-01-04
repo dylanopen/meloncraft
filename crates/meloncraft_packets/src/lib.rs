@@ -38,6 +38,7 @@ impl Plugin for MeloncraftPacketsPlugin {
         app.add_message::<clientbound::configuration::RemoveResourcePack>();
         app.add_message::<clientbound::configuration::AddResourcePack>();
         app.add_message::<clientbound::configuration::StoreCookie>();
+        app.add_message::<clientbound::configuration::Transfer>();
 
         app.add_systems(Update, read_new_packets);
 
@@ -72,6 +73,7 @@ impl Plugin for MeloncraftPacketsPlugin {
                 forward_clientbound_packet::<clientbound::configuration::RemoveResourcePack>,
                 forward_clientbound_packet::<clientbound::configuration::AddResourcePack>,
                 forward_clientbound_packet::<clientbound::configuration::AddResourcePack>,
+                forward_clientbound_packet::<clientbound::configuration::Transfer>,
             ),
         );
     }
