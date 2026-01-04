@@ -1,4 +1,5 @@
-#[derive(Debug, Clone)]
-pub struct JsonText {
-    pub data: String,
-}
+mod json;
+mod nbt;
+
+pub use json::JsonText;
+pub use nbt::NbtText;
