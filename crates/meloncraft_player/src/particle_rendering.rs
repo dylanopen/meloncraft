@@ -1,3 +1,6 @@
+use bevy::prelude::Component;
+
+#[derive(Component, Debug, Clone)]
 pub enum ParticleRenderingMode {
     All = 0,
     Decreased = 1,

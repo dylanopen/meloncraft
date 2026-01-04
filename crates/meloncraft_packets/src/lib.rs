@@ -21,6 +21,7 @@ impl Plugin for MeloncraftPacketsPlugin {
         app.add_message::<serverbound::login::LoginStart>();
         app.add_message::<serverbound::login::EncryptionResponse>();
         app.add_message::<serverbound::login::LoginAcknowledged>();
+        app.add_message::<serverbound::configuration::ClientInformation>();
 
         app.add_message::<clientbound::status::StatusResponse>();
         app.add_message::<clientbound::status::Pong>();
@@ -63,6 +64,7 @@ impl Plugin for MeloncraftPacketsPlugin {
                     forward_serverbound_packet::<serverbound::login::EncryptionResponse>,
                     forward_serverbound_packet::<serverbound::login::LoginAcknowledged>,
                 ),
+                (forward_serverbound_packet::<serverbound::configuration::ClientInformation>,),
             ),
         );
 
