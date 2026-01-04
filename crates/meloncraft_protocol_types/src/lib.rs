@@ -4,6 +4,7 @@ mod boolean;
 mod byte;
 mod datapack_metadata;
 mod disconnect_report;
+mod displayed_skin_parts;
 mod f32;
 mod f64;
 mod game_profile;

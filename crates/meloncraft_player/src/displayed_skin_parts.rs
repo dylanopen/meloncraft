@@ -1,6 +1,6 @@
 use bevy::prelude::Component;
 
-#[derive(Component, Debug, Clone)]
+#[derive(Component, Debug, Clone, PartialEq)]
 pub struct DisplayedSkinParts {
     pub cape: bool,
     pub jacket: bool,
