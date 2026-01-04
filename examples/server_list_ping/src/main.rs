@@ -7,11 +7,11 @@ use meloncraft::network::MeloncraftNetworkPlugin;
 use meloncraft::packets::MeloncraftPacketsPlugin;
 use meloncraft::packets::clientbound::login::Disconnect;
 use meloncraft::packets::serverbound::login::LoginStart;
-use meloncraft::protocol_types::JsonText;
 use meloncraft::server_list::MeloncraftServerListPlugin;
 use meloncraft::server_list::max_players::MaxPlayers;
 use meloncraft::server_list::motd::Motd;
 use meloncraft::server_list::online_players::OnlinePlayers;
+use meloncraft::text::JsonText;
 use std::time::Duration;
 
 pub fn main() {
