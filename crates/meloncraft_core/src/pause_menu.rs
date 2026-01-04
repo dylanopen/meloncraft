@@ -16,3 +16,9 @@ pub enum BuiltinPauseMenuLabel {
 
 #[derive(Debug, Clone)]
 pub struct CustomPauseMenuLabel(pub NbtText);
+
+#[derive(Debug, Clone)]
+pub enum PauseMenuLabel {
+    Builtin(BuiltinPauseMenuLabel),
+    Custom(CustomPauseMenuLabel),
+}
