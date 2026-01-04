@@ -3,7 +3,8 @@ use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::ClientboundNetworkPacket;
-use meloncraft_protocol_types::{JsonText, ProtocolType};
+use meloncraft_protocol_types::ProtocolType;
+use meloncraft_text::JsonText;
 
 #[derive(Message, Clone, Debug)]
 pub struct Disconnect {

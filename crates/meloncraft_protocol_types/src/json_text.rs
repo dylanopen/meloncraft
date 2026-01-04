@@ -1,9 +1,5 @@
 use crate::{ProtocolBuffer, ProtocolType};
-
-#[derive(Debug, Clone)]
-pub struct JsonText {
-    pub data: String,
-}
+use meloncraft_text::JsonText;
 
 impl ProtocolType for JsonText {
     fn net_serialize(&self) -> Vec<u8> {

@@ -823,6 +823,7 @@ dependencies = [
  "meloncraft_player",
  "meloncraft_protocol_types",
  "meloncraft_registry",
+ "meloncraft_text",
 ]
 
 [[package]]
@@ -840,6 +841,7 @@ dependencies = [
  "meloncraft_nbt",
  "meloncraft_player",
  "meloncraft_registry",
+ "meloncraft_text",
 ]
 
 [[package]]

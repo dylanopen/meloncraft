@@ -27,7 +27,6 @@ mod uuid;
 mod varint;
 
 pub use byte::Byte;
-pub use json_text::JsonText;
 pub use prefixed_array::PrefixedArray;
 pub use protocol_type::ProtocolBuffer;
 pub use protocol_type::ProtocolType;
