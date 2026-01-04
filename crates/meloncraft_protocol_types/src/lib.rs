@@ -11,6 +11,7 @@ mod i32;
 mod i64;
 mod i8;
 mod identifier;
+mod item_tag;
 mod json_text;
 mod nbt_text;
 mod option;
