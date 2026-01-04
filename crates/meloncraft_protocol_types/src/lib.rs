@@ -1,7 +1,6 @@
 mod nbt;
 
 mod boolean;
-mod builtin_pause_menu_label;
 mod byte;
 mod datapack_metadata;
 mod disconnect_report;
@@ -18,6 +17,7 @@ mod item_tag;
 mod json_text;
 mod nbt_text;
 mod option;
+mod pause_menu;
 mod prefixed_array;
 mod protocol_type;
 mod registry_entry;
