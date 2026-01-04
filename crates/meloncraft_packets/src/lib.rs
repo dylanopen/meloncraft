@@ -35,6 +35,7 @@ impl Plugin for MeloncraftPacketsPlugin {
         app.add_message::<clientbound::configuration::Ping>();
         app.add_message::<clientbound::configuration::ResetChat>();
         app.add_message::<clientbound::configuration::RegistryData>();
+        app.add_message::<clientbound::configuration::RemoveResourcePack>();
 
         app.add_systems(Update, read_new_packets);
 
@@ -66,6 +67,7 @@ impl Plugin for MeloncraftPacketsPlugin {
                 forward_clientbound_packet::<clientbound::configuration::Ping>,
                 forward_clientbound_packet::<clientbound::configuration::ResetChat>,
                 forward_clientbound_packet::<clientbound::configuration::RegistryData>,
+                forward_clientbound_packet::<clientbound::configuration::RemoveResourcePack>,
             ),
         );
     }
