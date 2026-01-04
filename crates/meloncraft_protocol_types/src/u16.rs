@@ -9,11 +9,8 @@ impl ProtocolType for u16 {
         if data.len() < 2 {
             return Err(());
         }
-
-        let first_byte = data.remove(0);
-        let second_byte = data.remove(0);
-
-        let output: u16 = (first_byte as u16 * 256) + second_byte as u16;
+        let arg_data = data.drain(0..2);
+        let output = u16::from_be_bytes(arg_data.as_slice().try_into().map_err(|_| ())?);
 
         Ok(output)
     }

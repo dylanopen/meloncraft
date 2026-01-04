@@ -4,7 +4,14 @@ impl ProtocolType for i8 {
     fn net_serialize(&self) -> Vec<u8> {
         self.to_be_bytes().to_vec()
     }
+
     fn net_deserialize(data: &mut Vec<u8>) -> Result<Self, ()> {
-        Ok(Self::from_be_bytes([data.remove(0)]))
+        if data.len() < 1 {
+            return Err(());
+        }
+        let arg_data = data.drain(0..1);
+        let output = i8::from_be_bytes(arg_data.as_slice().try_into().map_err(|_| ())?);
+
+        Ok(output)
     }
 }
