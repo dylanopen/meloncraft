@@ -1,3 +1,4 @@
+mod add_resource_pack;
 mod cookie_request;
 mod disconnect;
 mod finish_configuration;
@@ -7,6 +8,7 @@ mod registry_data;
 mod remove_resource_pack;
 mod reset_chat;
 
+pub use add_resource_pack::AddResourcePack;
 pub use cookie_request::CookieRequest;
 pub use disconnect::Disconnect;
 pub use finish_configuration::FinishConfiguration;
