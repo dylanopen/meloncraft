@@ -2,6 +2,7 @@ mod tag;
 mod value;
 
 mod array_i32;
+mod array_i64;
 mod array_u8;
 mod f32;
 mod f64;
@@ -14,6 +15,7 @@ pub use tag::NbtTag;
 pub use value::NbtValue;
 
 pub use array_i32::NbtArrayI32;
+pub use array_i64::ArrayI64;
 pub use array_u8::NbtArrayU8;
 pub use f32::NbtF32;
 pub use f64::NbtF64;
