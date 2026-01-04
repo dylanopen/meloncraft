@@ -23,6 +23,7 @@ impl Plugin for MeloncraftPacketsPlugin {
         app.add_message::<serverbound::login::LoginAcknowledged>();
         app.add_message::<serverbound::configuration::ClientInformation>();
         app.add_message::<serverbound::configuration::CookieResponse>();
+        app.add_message::<serverbound::configuration::FinishConfiguration>();
 
         app.add_message::<clientbound::status::StatusResponse>();
         app.add_message::<clientbound::status::Pong>();
@@ -68,6 +69,7 @@ impl Plugin for MeloncraftPacketsPlugin {
                 (
                     forward_serverbound_packet::<serverbound::configuration::ClientInformation>,
                     forward_serverbound_packet::<serverbound::configuration::CookieResponse>,
+                    forward_serverbound_packet::<serverbound::configuration::FinishConfiguration>,
                 ),
             ),
         );
