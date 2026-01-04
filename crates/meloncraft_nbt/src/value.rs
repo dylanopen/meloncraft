@@ -1,19 +1,23 @@
 use crate::tag::NbtTag;
+use crate::{
+    NbtArrayI32, NbtArrayI64, NbtArrayU8, NbtCompound, NbtF32, NbtF64, NbtI16, NbtI32, NbtI64,
+    NbtList, NbtString, NbtU8,
+};
 
-#[derive(Debug, Clone, PartialEq, PartialOrd)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum NbtValue {
-    U8(u8),
-    I16(i16),
-    I32(i32),
-    I64(i64),
-    F32(f32),
-    F64(f64),
-    ArrayU8(Vec<u8>),
-    ArrayI32(Vec<i32>),
-    ArrayI64(Vec<i64>),
-    String(String),
-    List(Vec<NbtValue>),
-    Compound(Vec<NbtTag>),
+    U8(NbtU8),
+    I16(NbtI16),
+    I32(NbtI32),
+    I64(NbtI64),
+    F32(NbtF32),
+    F64(NbtF64),
+    ArrayU8(NbtArrayU8),
+    ArrayI32(NbtArrayI32),
+    ArrayI64(NbtArrayI64),
+    String(NbtString),
+    List(NbtList),
+    Compound(NbtCompound),
 }
 
 impl NbtValue {
@@ -53,7 +57,7 @@ impl NbtValue {
         let NbtValue::Compound(compound) = self else {
             return None;
         };
-        for tag in compound {
+        for tag in compound.iter() {
             if tag.key == key {
                 return Some(&tag.value);
             }
@@ -65,7 +69,7 @@ impl NbtValue {
         let NbtValue::Compound(compound) = self else {
             return None;
         };
-        for tag in compound {
+        for tag in compound.iter_mut() {
             if tag.key == key {
                 return Some(&mut tag.value);
             }

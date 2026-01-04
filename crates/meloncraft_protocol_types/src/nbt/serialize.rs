@@ -18,12 +18,12 @@ fn value(payload: NbtValue) -> Vec<u8> {
         NbtValue::I64(p) => p.net_serialize(),
         NbtValue::F32(p) => p.net_serialize(),
         NbtValue::F64(p) => p.net_serialize(),
-        NbtValue::ArrayU8(p) => byte_array(p),
-        NbtValue::String(p) => string(p),
-        NbtValue::List(p) => list(p),
-        NbtValue::Compound(p) => compound(p),
-        NbtValue::ArrayI32(p) => int_array(p),
-        NbtValue::ArrayI64(p) => long_array(p),
+        NbtValue::ArrayU8(p) => byte_array((*p).clone()),
+        NbtValue::String(p) => string((*p).clone()),
+        NbtValue::List(p) => list((*p).clone()),
+        NbtValue::Compound(p) => compound((*p).clone()),
+        NbtValue::ArrayI32(p) => int_array((*p).clone()),
+        NbtValue::ArrayI64(p) => long_array((*p).clone()),
     }
 }
 
@@ -62,12 +62,12 @@ pub fn list(payload: Vec<NbtValue>) -> Vec<u8> {
             NbtValue::I64(p) => output.append(&mut p.net_serialize()),
             NbtValue::F32(p) => output.append(&mut p.net_serialize()),
             NbtValue::F64(p) => output.append(&mut p.net_serialize()),
-            NbtValue::ArrayU8(p) => output.append(&mut byte_array(p)),
-            NbtValue::String(p) => output.append(&mut string(p)),
-            NbtValue::List(p) => output.append(&mut list(p)),
-            NbtValue::Compound(p) => output.append(&mut compound(p)),
-            NbtValue::ArrayI32(p) => output.append(&mut int_array(p)),
-            NbtValue::ArrayI64(p) => output.append(&mut long_array(p)),
+            NbtValue::ArrayU8(p) => output.append(&mut byte_array((*p).clone())),
+            NbtValue::String(p) => output.append(&mut string((*p).clone())),
+            NbtValue::List(p) => output.append(&mut list((*p).clone())),
+            NbtValue::Compound(p) => output.append(&mut compound((*p).clone())),
+            NbtValue::ArrayI32(p) => output.append(&mut int_array((*p).clone())),
+            NbtValue::ArrayI64(p) => output.append(&mut long_array((*p).clone())),
         }
     }
     output
@@ -114,13 +114,16 @@ mod tests {
     fn test_serialize_root() {
         let root_tag = NbtTag {
             key: String::new(),
-            value: NbtValue::Compound(vec![
-                NbtTag::new("byteTag".to_string(), NbtValue::U8(42)),
-                NbtTag::new(
-                    "stringTag".to_string(),
-                    NbtValue::String("Hello, NBT!".to_string()),
-                ),
-            ]),
+            value: NbtValue::Compound(
+                vec![
+                    NbtTag::new("byteTag".to_string(), NbtValue::U8(42.into())),
+                    NbtTag::new(
+                        "stringTag".to_string(),
+                        NbtValue::String("Hello, NBT!".into()),
+                    ),
+                ]
+                .into(),
+            ),
         };
 
         let serialized = tag(root_tag);

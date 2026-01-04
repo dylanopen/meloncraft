@@ -1,6 +1,6 @@
 use crate::value::NbtValue;
 
-#[derive(Debug, Clone, PartialEq, PartialOrd)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct NbtTag {
     pub key: String,
     pub value: NbtValue,
