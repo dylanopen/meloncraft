@@ -16,6 +16,9 @@ pub use pong::Pong;
 mod resource_pack_response;
 pub use resource_pack_response::ResourcePackResponse;
 
+mod select_known_packs;
+pub use select_known_packs::SelectKnownPacks;
+
 pub fn register_packets(app: &mut bevy::app::App) {
     use crate::serverbound_messenger::fwd;
     use bevy::app::PreUpdate;
@@ -37,4 +40,7 @@ pub fn register_packets(app: &mut bevy::app::App) {
 
     app.add_message::<ResourcePackResponse>();
     app.add_systems(PreUpdate, fwd::<ResourcePackResponse>);
+
+    app.add_message::<SelectKnownPacks>();
+    app.add_systems(PreUpdate, fwd::<SelectKnownPacks>);
 }
