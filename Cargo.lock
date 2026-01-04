@@ -778,6 +778,9 @@ dependencies = [
 [[package]]
 name = "meloncraft_core"
 version = "0.1.0"
+dependencies = [
+ "meloncraft_text",
+]
 
 [[package]]
 name = "meloncraft_handshaking"
