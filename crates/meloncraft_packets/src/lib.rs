@@ -8,7 +8,7 @@ pub mod serverbound_messenger;
 
 use crate::clientbound_messenger::forward_clientbound_packet;
 use crate::serverbound_messenger::{forward_serverbound_packet, read_new_packets};
-use bevy::app::{App, Plugin, Update};
+use bevy::app::{App, Plugin, PostUpdate, PreUpdate, Update};
 pub use serverbound_packet::ServerboundPacket;
 
 pub struct MeloncraftPacketsPlugin;
@@ -43,44 +43,56 @@ impl Plugin for MeloncraftPacketsPlugin {
         app.add_message::<clientbound::configuration::UpdateTags>();
         app.add_message::<clientbound::configuration::SelectKnownPacks>();
         app.add_message::<clientbound::configuration::CustomReportDetails>();
+        app.add_message::<clientbound::configuration::ServerLinks>();
 
         app.add_systems(Update, read_new_packets);
 
         app.add_systems(
-            Update,
+            PreUpdate,
             (
                 forward_serverbound_packet::<serverbound::handshaking::Intention>,
-                forward_serverbound_packet::<serverbound::status::StatusRequest>,
-                forward_serverbound_packet::<serverbound::status::Ping>,
-                forward_serverbound_packet::<serverbound::login::LoginStart>,
-                forward_serverbound_packet::<serverbound::login::EncryptionResponse>,
-                forward_serverbound_packet::<serverbound::login::LoginAcknowledged>,
+                (
+                    forward_serverbound_packet::<serverbound::status::StatusRequest>,
+                    forward_serverbound_packet::<serverbound::status::Ping>,
+                ),
+                (
+                    forward_serverbound_packet::<serverbound::login::LoginStart>,
+                    forward_serverbound_packet::<serverbound::login::EncryptionResponse>,
+                    forward_serverbound_packet::<serverbound::login::LoginAcknowledged>,
+                ),
             ),
         );
 
         app.add_systems(
-            Update,
+            PostUpdate,
             (
-                forward_clientbound_packet::<clientbound::status::StatusResponse>,
-                forward_clientbound_packet::<clientbound::status::Pong>,
-                forward_clientbound_packet::<clientbound::login::Disconnect>,
-                forward_clientbound_packet::<clientbound::login::EncryptionRequest>,
-                forward_clientbound_packet::<clientbound::login::LoginSuccess>,
-                forward_clientbound_packet::<clientbound::login::SetCompression>,
-                forward_clientbound_packet::<clientbound::configuration::CookieRequest>,
-                forward_clientbound_packet::<clientbound::configuration::Disconnect>,
-                forward_clientbound_packet::<clientbound::configuration::FinishConfiguration>,
-                forward_clientbound_packet::<clientbound::configuration::KeepAlive>,
-                forward_clientbound_packet::<clientbound::configuration::Ping>,
-                forward_clientbound_packet::<clientbound::configuration::ResetChat>,
-                forward_clientbound_packet::<clientbound::configuration::RegistryData>,
-                forward_clientbound_packet::<clientbound::configuration::RemoveResourcePack>,
-                forward_clientbound_packet::<clientbound::configuration::AddResourcePack>,
-                forward_clientbound_packet::<clientbound::configuration::AddResourcePack>,
-                forward_clientbound_packet::<clientbound::configuration::Transfer>,
-                forward_clientbound_packet::<clientbound::configuration::SetFeatureFlags>,
-                forward_clientbound_packet::<clientbound::configuration::SelectKnownPacks>,
-                forward_clientbound_packet::<clientbound::configuration::CustomReportDetails>,
+                (
+                    forward_clientbound_packet::<clientbound::status::StatusResponse>,
+                    forward_clientbound_packet::<clientbound::status::Pong>,
+                ),
+                (
+                    forward_clientbound_packet::<clientbound::login::Disconnect>,
+                    forward_clientbound_packet::<clientbound::login::EncryptionRequest>,
+                    forward_clientbound_packet::<clientbound::login::LoginSuccess>,
+                    forward_clientbound_packet::<clientbound::login::SetCompression>,
+                ),
+                (
+                    forward_clientbound_packet::<clientbound::configuration::CookieRequest>,
+                    forward_clientbound_packet::<clientbound::configuration::Disconnect>,
+                    forward_clientbound_packet::<clientbound::configuration::FinishConfiguration>,
+                    forward_clientbound_packet::<clientbound::configuration::KeepAlive>,
+                    forward_clientbound_packet::<clientbound::configuration::Ping>,
+                    forward_clientbound_packet::<clientbound::configuration::ResetChat>,
+                    forward_clientbound_packet::<clientbound::configuration::RegistryData>,
+                    forward_clientbound_packet::<clientbound::configuration::RemoveResourcePack>,
+                    forward_clientbound_packet::<clientbound::configuration::AddResourcePack>,
+                    forward_clientbound_packet::<clientbound::configuration::AddResourcePack>,
+                    forward_clientbound_packet::<clientbound::configuration::Transfer>,
+                    forward_clientbound_packet::<clientbound::configuration::SetFeatureFlags>,
+                    forward_clientbound_packet::<clientbound::configuration::SelectKnownPacks>,
+                    forward_clientbound_packet::<clientbound::configuration::CustomReportDetails>,
+                    forward_clientbound_packet::<clientbound::configuration::ServerLinks>,
+                ),
             ),
         );
     }
