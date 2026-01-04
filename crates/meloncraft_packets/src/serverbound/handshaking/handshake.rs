@@ -1,8 +1,8 @@
-use crate::IncomingPacket;
+use crate::ServerboundPacket;
 use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
-use meloncraft_network::packet::IncomingNetworkPacket;
+use meloncraft_network::packet::ServerboundNetworkPacket;
 use meloncraft_protocol_types::{ProtocolType, VarInt};
 
 #[derive(Message, Debug, Clone)]
@@ -14,14 +14,14 @@ pub struct Intention {
     pub next_state: ConnectionState,
 }
 
-impl IncomingPacket for Intention {
+impl ServerboundPacket for Intention {
     fn id() -> i32 {
         0x00
     }
     fn state() -> ConnectionState {
         ConnectionState::Handshaking
     }
-    fn parse(incoming: &IncomingNetworkPacket) -> Option<Self> {
+    fn parse(incoming: &ServerboundNetworkPacket) -> Option<Self> {
         let mut incoming = incoming.clone();
         let protocol_version = VarInt::net_deserialize(&mut incoming.data).unwrap().0;
         let server_address = String::net_deserialize(&mut incoming.data).unwrap();

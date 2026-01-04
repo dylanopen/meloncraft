@@ -1,26 +1,26 @@
 pub mod clientbound_packet;
-pub mod incoming_packet;
+pub mod serverbound_packet;
 
 pub mod clientbound;
 pub mod clientbound_messenger;
-pub mod incoming;
-pub mod incoming_messenger;
+pub mod serverbound;
+pub mod serverbound_messenger;
 
 use crate::clientbound_messenger::forward_clientbound_packet;
-use crate::incoming_messenger::{forward_incoming_packet, read_new_packets};
+use crate::serverbound_messenger::{forward_serverbound_packet, read_new_packets};
 use bevy::app::{App, Plugin, Update};
-pub use incoming_packet::IncomingPacket;
+pub use serverbound_packet::ServerboundPacket;
 
 pub struct MeloncraftPacketsPlugin;
 
 impl Plugin for MeloncraftPacketsPlugin {
     fn build(&self, app: &mut App) {
-        app.add_message::<incoming::handshaking::Intention>();
-        app.add_message::<incoming::status::StatusRequest>();
-        app.add_message::<incoming::status::Ping>();
-        app.add_message::<incoming::login::LoginStart>();
-        app.add_message::<incoming::login::EncryptionResponse>();
-        app.add_message::<incoming::login::LoginAcknowledged>();
+        app.add_message::<serverbound::handshaking::Intention>();
+        app.add_message::<serverbound::status::StatusRequest>();
+        app.add_message::<serverbound::status::Ping>();
+        app.add_message::<serverbound::login::LoginStart>();
+        app.add_message::<serverbound::login::EncryptionResponse>();
+        app.add_message::<serverbound::login::LoginAcknowledged>();
 
         app.add_message::<clientbound::status::StatusResponse>();
         app.add_message::<clientbound::status::Pong>();
@@ -41,12 +41,12 @@ impl Plugin for MeloncraftPacketsPlugin {
         app.add_systems(
             Update,
             (
-                forward_incoming_packet::<incoming::handshaking::Intention>,
-                forward_incoming_packet::<incoming::status::StatusRequest>,
-                forward_incoming_packet::<incoming::status::Ping>,
-                forward_incoming_packet::<incoming::login::LoginStart>,
-                forward_incoming_packet::<incoming::login::EncryptionResponse>,
-                forward_incoming_packet::<incoming::login::LoginAcknowledged>,
+                forward_serverbound_packet::<serverbound::handshaking::Intention>,
+                forward_serverbound_packet::<serverbound::status::StatusRequest>,
+                forward_serverbound_packet::<serverbound::status::Ping>,
+                forward_serverbound_packet::<serverbound::login::LoginStart>,
+                forward_serverbound_packet::<serverbound::login::EncryptionResponse>,
+                forward_serverbound_packet::<serverbound::login::LoginAcknowledged>,
             ),
         );
 

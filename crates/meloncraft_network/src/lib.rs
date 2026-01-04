@@ -1,8 +1,8 @@
 use crate::connection_listener::ConnectionListener;
 use crate::connection_manager::connection_manager;
 use crate::packet::{
-    ClientboundNetworkPacket, ClientboundNetworkPacketReceived, IncomingNetworkPacket,
-    IncomingNetworkPacketReceived,
+    ClientboundNetworkPacket, ClientboundNetworkPacketReceived, ServerboundNetworkPacket,
+    ServerboundNetworkPacketReceived,
 };
 use crate::tcp_reader::receive_new_clients;
 use crate::tcp_writer::send_packets;
@@ -19,7 +19,7 @@ pub mod tcp_reader;
 mod tcp_writer;
 
 lazy_static! {
-    pub static ref INBOUND_PACKETS: Mutex<Vec<IncomingNetworkPacket>> = {
+    pub static ref SERVERBOUND_PACKETS: Mutex<Vec<ServerboundNetworkPacket>> = {
         let packets = Vec::new();
         Mutex::new(packets)
     };
@@ -38,7 +38,7 @@ impl Plugin for MeloncraftNetworkPlugin {
         let tcp_listener = connection_listener.0.try_clone().unwrap();
         thread::spawn(move || receive_new_clients(tcp_listener.try_clone().unwrap()));
 
-        app.add_message::<IncomingNetworkPacketReceived>();
+        app.add_message::<ServerboundNetworkPacketReceived>();
         app.add_message::<ClientboundNetworkPacketReceived>();
         app.insert_resource(connection_listener);
         app.add_systems(Update, send_packets);

@@ -1,7 +1,7 @@
 use bevy::prelude::{Entity, Message};
 
 #[derive(Clone, Debug)]
-pub struct IncomingNetworkPacket {
+pub struct ServerboundNetworkPacket {
     pub client: Entity,
     pub len: i32,
     pub id: i32,
@@ -9,8 +9,8 @@ pub struct IncomingNetworkPacket {
 }
 
 #[derive(Message)]
-pub struct IncomingNetworkPacketReceived {
-    pub packet: IncomingNetworkPacket,
+pub struct ServerboundNetworkPacketReceived {
+    pub packet: ServerboundNetworkPacket,
 }
 
 #[derive(Clone, Debug)]

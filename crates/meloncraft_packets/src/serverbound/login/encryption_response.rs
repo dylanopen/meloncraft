@@ -1,8 +1,8 @@
-use crate::IncomingPacket;
+use crate::ServerboundPacket;
 use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
-use meloncraft_network::packet::IncomingNetworkPacket;
+use meloncraft_network::packet::ServerboundNetworkPacket;
 use meloncraft_protocol_types::{Byte, PrefixedArray, ProtocolBuffer};
 
 #[derive(Message, Debug, Clone)]
@@ -12,7 +12,7 @@ pub struct EncryptionResponse {
     pub verify_token: Vec<Byte>,  // mc protocol for some reason
 }
 
-impl IncomingPacket for EncryptionResponse {
+impl ServerboundPacket for EncryptionResponse {
     fn id() -> i32 {
         0x01
     }
@@ -21,7 +21,7 @@ impl IncomingPacket for EncryptionResponse {
         ConnectionState::Login
     }
 
-    fn parse(incoming: &IncomingNetworkPacket) -> Option<Self> {
+    fn parse(incoming: &ServerboundNetworkPacket) -> Option<Self> {
         let mut incoming = incoming.clone();
         let shared_secret: PrefixedArray<Byte> = incoming.data.net_deserialize().unwrap();
         let shared_secret = shared_secret.0;

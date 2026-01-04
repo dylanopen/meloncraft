@@ -2,11 +2,11 @@ use bevy::ecs::message::Message;
 use bevy::prelude::{Entity, Query};
 use meloncraft_client::connection::ClientConnection;
 use meloncraft_client::connection_state::ConnectionState;
-use meloncraft_network::packet::IncomingNetworkPacket;
+use meloncraft_network::packet::ServerboundNetworkPacket;
 use std::fmt::{Debug, Display};
 
 #[derive(Debug)]
-pub enum IncomingPacketParseError {
+pub enum ServerboundPacketParseError {
     ClientNonExistent {
         packet_client: Entity,
     },
@@ -20,19 +20,19 @@ pub enum IncomingPacketParseError {
     },
 }
 
-impl Display for IncomingPacketParseError {
+impl Display for ServerboundPacketParseError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            IncomingPacketParseError::ClientNonExistent {
+            ServerboundPacketParseError::ClientNonExistent {
                 packet_client: client,
             } => f.write_fmt(format_args!("Non-existent client: {client}",)),
-            IncomingPacketParseError::UnmatchedState {
+            ServerboundPacketParseError::UnmatchedState {
                 packet_state,
                 required_state,
             } => f.write_fmt(format_args!(
                 "Unmatched state: packet={packet_state} -> required={required_state}",
             )),
-            IncomingPacketParseError::UnmatchedId {
+            ServerboundPacketParseError::UnmatchedId {
                 packet_id,
                 required_id,
             } => f.write_fmt(format_args!(
@@ -43,28 +43,28 @@ impl Display for IncomingPacketParseError {
     }
 }
 
-pub trait IncomingPacket: Sized + Message + Debug + Clone {
+pub trait ServerboundPacket: Sized + Message + Debug + Clone {
     fn id() -> i32;
     fn state() -> ConnectionState;
-    fn parse(incoming: &IncomingNetworkPacket) -> Option<Self>;
+    fn parse(packet: &ServerboundNetworkPacket) -> Option<Self>;
 
     fn validate(
-        incoming: &IncomingNetworkPacket,
+        incoming: &ServerboundNetworkPacket,
         client_connections: &Query<&ClientConnection>,
-    ) -> Result<(), IncomingPacketParseError> {
+    ) -> Result<(), ServerboundPacketParseError> {
         let Ok(client_connection) = client_connections.get(incoming.client) else {
-            return Err(IncomingPacketParseError::ClientNonExistent {
+            return Err(ServerboundPacketParseError::ClientNonExistent {
                 packet_client: incoming.client,
             });
         };
         if client_connection.state != Self::state() {
-            return Err(IncomingPacketParseError::UnmatchedState {
+            return Err(ServerboundPacketParseError::UnmatchedState {
                 packet_state: client_connection.state,
                 required_state: Self::state(),
             });
         }
         if incoming.id != Self::id() {
-            return Err(IncomingPacketParseError::UnmatchedId {
+            return Err(ServerboundPacketParseError::UnmatchedId {
                 packet_id: incoming.id,
                 required_id: Self::id(),
             });
@@ -73,7 +73,7 @@ pub trait IncomingPacket: Sized + Message + Debug + Clone {
     }
 
     fn from_packet(
-        incoming: &IncomingNetworkPacket,
+        incoming: &ServerboundNetworkPacket,
         client_connections: &Query<&ClientConnection>,
     ) -> Option<Self> {
         Self::validate(incoming, client_connections).ok()?;

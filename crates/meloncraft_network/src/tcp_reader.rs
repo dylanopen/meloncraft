@@ -1,5 +1,5 @@
-use crate::INBOUND_PACKETS;
-use crate::packet::IncomingNetworkPacket;
+use crate::SERVERBOUND_PACKETS;
+use crate::packet::ServerboundNetworkPacket;
 use bevy::prelude::Entity;
 use meloncraft_client::connection::CLIENT_CONNECTIONS;
 use meloncraft_protocol_types::{ProtocolType, VarInt};
@@ -8,7 +8,7 @@ use std::net::{TcpListener, TcpStream};
 use std::thread::sleep;
 use std::time::Duration;
 
-pub struct IncomingTcpPacket {
+pub struct ServerboundTcpPacket {
     pub client: Entity,
     pub len: i32,
     pub id: i32,
@@ -58,14 +58,14 @@ pub fn handle_client(stream: TcpStream, entity: Entity) {
         }
 
         let packet_id = VarInt::net_deserialize(&mut raw_packet).unwrap().0;
-        let packet = IncomingNetworkPacket {
+        let packet = ServerboundNetworkPacket {
             client: entity,
             len: length,
             id: packet_id,
             data: raw_packet,
         };
 
-        INBOUND_PACKETS.lock().unwrap().push(packet);
+        SERVERBOUND_PACKETS.lock().unwrap().push(packet);
     }
 }
 

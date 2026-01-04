@@ -1,8 +1,8 @@
-use crate::IncomingPacket;
+use crate::ServerboundPacket;
 use bevy::ecs::entity::Entity;
 use bevy::ecs::message::Message;
 use meloncraft_client::connection_state::ConnectionState;
-use meloncraft_network::packet::IncomingNetworkPacket;
+use meloncraft_network::packet::ServerboundNetworkPacket;
 use meloncraft_player::Uuid;
 use meloncraft_protocol_types::ProtocolType;
 
@@ -13,7 +13,7 @@ pub struct LoginStart {
     pub uuid: Uuid,
 }
 
-impl IncomingPacket for LoginStart {
+impl ServerboundPacket for LoginStart {
     fn id() -> i32 {
         0x00
     }
@@ -21,7 +21,7 @@ impl IncomingPacket for LoginStart {
         ConnectionState::Login
     }
 
-    fn parse(incoming: &IncomingNetworkPacket) -> Option<Self> {
+    fn parse(incoming: &ServerboundNetworkPacket) -> Option<Self> {
         let mut incoming = incoming.clone();
         let client = incoming.client;
         let name = String::net_deserialize(&mut incoming.data).unwrap();

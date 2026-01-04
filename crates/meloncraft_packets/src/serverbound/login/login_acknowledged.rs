@@ -1,23 +1,25 @@
-use crate::IncomingPacket;
+use crate::ServerboundPacket;
 use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
-use meloncraft_network::packet::IncomingNetworkPacket;
+use meloncraft_network::packet::ServerboundNetworkPacket;
 
 #[derive(Message, Debug, Clone)]
-pub struct StatusRequest {
+pub struct LoginAcknowledged {
     pub client: Entity,
 }
 
-impl IncomingPacket for StatusRequest {
+impl ServerboundPacket for LoginAcknowledged {
     fn id() -> i32 {
-        0x00
+        0x03
     }
+
     fn state() -> ConnectionState {
-        ConnectionState::Status
+        ConnectionState::Login
     }
-    fn parse(incoming: &IncomingNetworkPacket) -> Option<Self> {
-        Some(StatusRequest {
+
+    fn parse(incoming: &ServerboundNetworkPacket) -> Option<Self> {
+        Some(Self {
             client: incoming.client,
         })
     }

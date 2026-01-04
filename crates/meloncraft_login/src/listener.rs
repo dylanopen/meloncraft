@@ -3,7 +3,7 @@ use bevy::prelude::{MessageReader, MessageWriter, Query, Res};
 use meloncraft_client::connection::ClientConnection;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_packets::clientbound::login::LoginSuccess;
-use meloncraft_packets::incoming::login::LoginStart;
+use meloncraft_packets::serverbound::login::LoginStart;
 use meloncraft_player::GameProfile;
 
 pub fn login_offline_unencrypted_listener(

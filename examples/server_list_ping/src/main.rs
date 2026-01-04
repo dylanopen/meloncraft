@@ -6,7 +6,7 @@ use meloncraft::handshaking::MeloncraftHandshakingPlugin;
 use meloncraft::network::MeloncraftNetworkPlugin;
 use meloncraft::packets::MeloncraftPacketsPlugin;
 use meloncraft::packets::clientbound::login::Disconnect;
-use meloncraft::packets::incoming::login::LoginStart;
+use meloncraft::packets::serverbound::login::LoginStart;
 use meloncraft::protocol_types::JsonText;
 use meloncraft::server_list::MeloncraftServerListPlugin;
 use meloncraft::server_list::max_players::MaxPlayers;
