@@ -1,3 +1,4 @@
+mod chat_colors;
 mod chat_mode;
 mod game_profile;
 mod locale;
@@ -5,6 +6,7 @@ mod username;
 mod uuid;
 mod view_distance;
 
+pub use chat_colors::ChatColors;
 pub use chat_mode::ChatMode;
 pub use game_profile::GameProfile;
 pub use game_profile::GameProfileProperties;
