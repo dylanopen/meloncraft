@@ -19,6 +19,7 @@ mod prefixed_array;
 mod protocol_type;
 mod registry_entry;
 mod registry_tag;
+mod registry_tags;
 mod string;
 mod u128;
 mod u16;
