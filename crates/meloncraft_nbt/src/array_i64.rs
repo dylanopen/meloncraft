@@ -1,2 +1,2 @@
 #[derive(Debug, Clone)]
-pub struct ArrayI64(pub Vec<i64>);
+pub struct NbtArrayI64(pub Vec<i64>);
