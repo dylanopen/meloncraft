@@ -42,3 +42,9 @@ pub enum PauseMenuLabel {
     Builtin(BuiltinPauseMenuLabel),
     Custom(CustomPauseMenuLabel),
 }
+
+#[derive(Debug, Clone)]
+pub struct PauseMenuLink {
+    pub label: PauseMenuLabel,
+    pub url: String,
+}
