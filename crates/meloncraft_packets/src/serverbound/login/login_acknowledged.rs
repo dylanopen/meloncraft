@@ -18,7 +18,7 @@ impl ServerboundPacket for LoginAcknowledged {
         ConnectionState::Login
     }
 
-    fn parse(incoming: &ServerboundNetworkPacket) -> Option<Self> {
+    fn deserialize(incoming: &ServerboundNetworkPacket) -> Option<Self> {
         Some(Self {
             client: incoming.client,
         })

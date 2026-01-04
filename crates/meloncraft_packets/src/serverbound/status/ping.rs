@@ -17,7 +17,7 @@ impl ServerboundPacket for Ping {
     fn state() -> ConnectionState {
         ConnectionState::Status
     }
-    fn parse(incoming: &ServerboundNetworkPacket) -> Option<Self> {
+    fn deserialize(incoming: &ServerboundNetworkPacket) -> Option<Self> {
         let mut incoming = incoming.clone();
         let client = incoming.client;
         let timestamp = i64::net_deserialize(&mut incoming.data).unwrap();

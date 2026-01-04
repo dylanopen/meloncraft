@@ -21,7 +21,7 @@ impl ServerboundPacket for Intention {
     fn state() -> ConnectionState {
         ConnectionState::Handshaking
     }
-    fn parse(incoming: &ServerboundNetworkPacket) -> Option<Self> {
+    fn deserialize(incoming: &ServerboundNetworkPacket) -> Option<Self> {
         let mut incoming = incoming.clone();
         let protocol_version = VarInt::net_deserialize(&mut incoming.data).unwrap().0;
         let server_address = String::net_deserialize(&mut incoming.data).unwrap();
