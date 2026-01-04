@@ -15,6 +15,7 @@ mod json_text;
 mod option;
 mod prefixed_array;
 mod protocol_type;
+mod registry_entry;
 mod string;
 mod u128;
 mod u16;

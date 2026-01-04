@@ -838,6 +838,7 @@ dependencies = [
  "meloncraft_core",
  "meloncraft_nbt",
  "meloncraft_player",
+ "meloncraft_registry",
 ]
 
 [[package]]
@@ -846,7 +847,6 @@ version = "0.1.0"
 dependencies = [
  "meloncraft_core",
  "meloncraft_nbt",
- "meloncraft_protocol_types",
 ]
 
 [[package]]
