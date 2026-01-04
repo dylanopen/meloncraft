@@ -6,6 +6,7 @@ pub struct ItemTag {
     pub entries: Vec<i32>,
 }
 
+#[derive(Debug, Clone)]
 pub struct RegistryTags {
     pub registry_name: Identifier,
     pub tags: Vec<ItemTag>,
