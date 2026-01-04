@@ -1,3 +1,4 @@
+mod allow_player_listings;
 mod chat_colors;
 mod chat_mode;
 mod displayed_skin_parts;
@@ -9,6 +10,7 @@ mod username;
 mod uuid;
 mod view_distance;
 
+pub use allow_player_listings::AllowPlayerListings;
 pub use chat_colors::ChatColors;
 pub use chat_mode::ChatMode;
 pub use displayed_skin_parts::DisplayedSkinParts;
