@@ -1,5 +1,6 @@
 mod chat_colors;
 mod chat_mode;
+mod displayed_skin_parts;
 mod game_profile;
 mod locale;
 mod username;
@@ -8,6 +9,7 @@ mod view_distance;
 
 pub use chat_colors::ChatColors;
 pub use chat_mode::ChatMode;
+pub use displayed_skin_parts::DisplayedSkinParts;
 pub use game_profile::GameProfile;
 pub use game_profile::GameProfileProperties;
 pub use locale::Locale;
