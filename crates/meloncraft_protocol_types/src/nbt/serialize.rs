@@ -2,16 +2,11 @@ use crate::ProtocolType;
 use meloncraft_nbt::NbtTag;
 use meloncraft_nbt::NbtValue;
 
-pub fn root(tag: NbtTag) -> Vec<u8> {
+pub fn tag(tag: NbtTag) -> Vec<u8> {
     let mut output = Vec::new();
-    let root_compound = tag.value;
-    if let NbtValue::Root(compound_tag) = root_compound {
-        output.push(10); // Tag ID for Compound/Root
-        output.append(&mut string(tag.key)); // Empty name for root
-        output.append(&mut tag_compound(compound_tag));
-    } else {
-        panic!("Root value must be of type Root");
-    }
+    output.push(tag.value.to_id());
+    output.extend(string(tag.key)); // Empty name for root
+    output.extend(value(tag.value));
     output
 }
 
@@ -26,8 +21,7 @@ fn value(payload: NbtValue) -> Vec<u8> {
         NbtValue::ArrayU8(p) => byte_array(p),
         NbtValue::String(p) => string(p),
         NbtValue::List(p) => list(p),
-        NbtValue::Compound(p) => tag_compound(p),
-        NbtValue::Root(_) => panic!("Root tag cannot be nested"),
+        NbtValue::Compound(p) => compound(p),
         NbtValue::ArrayI32(p) => int_array(p),
         NbtValue::ArrayI64(p) => long_array(p),
     }
@@ -71,8 +65,7 @@ pub fn list(payload: Vec<NbtValue>) -> Vec<u8> {
             NbtValue::ArrayU8(p) => output.append(&mut byte_array(p)),
             NbtValue::String(p) => output.append(&mut string(p)),
             NbtValue::List(p) => output.append(&mut list(p)),
-            NbtValue::Compound(p) => output.append(&mut tag_compound(p)),
-            NbtValue::Root(_) => panic!("Root tag cannot be in a list"),
+            NbtValue::Compound(p) => output.append(&mut compound(p)),
             NbtValue::ArrayI32(p) => output.append(&mut int_array(p)),
             NbtValue::ArrayI64(p) => output.append(&mut long_array(p)),
         }
@@ -80,8 +73,8 @@ pub fn list(payload: Vec<NbtValue>) -> Vec<u8> {
     output
 }
 
-pub fn tag_compound(payload: Vec<NbtTag>) -> Vec<u8> {
-    let mut output = Vec::new();
+pub fn compound(payload: Vec<NbtTag>) -> Vec<u8> {
+    let mut output = vec![];
     for tag in payload {
         output.push(tag.value.to_id());
         output.append(&mut string(tag.key.clone()));
@@ -121,7 +114,7 @@ mod tests {
     fn test_serialize_root() {
         let root_tag = NbtTag {
             key: String::new(),
-            value: NbtValue::Root(vec![
+            value: NbtValue::Compound(vec![
                 NbtTag::new("byteTag".to_string(), NbtValue::U8(42)),
                 NbtTag::new(
                     "stringTag".to_string(),
@@ -130,7 +123,7 @@ mod tests {
             ]),
         };
 
-        let serialized = root(root_tag);
+        let serialized = tag(root_tag);
         let expected: Vec<u8> = vec![
             10, // Compound/root tag ID
             0, 0, // Length of empty string for root name

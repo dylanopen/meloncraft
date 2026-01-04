@@ -2,7 +2,6 @@ use crate::tag::NbtTag;
 
 #[derive(Debug, Clone, PartialEq, PartialOrd)]
 pub enum NbtValue {
-    Root(Vec<NbtTag>),
     U8(u8),
     I16(i16),
     I32(i32),
@@ -51,10 +50,8 @@ impl NbtValue {
     }
 
     pub fn get(&self, key: &str) -> Option<&NbtValue> {
-        let compound = match self {
-            NbtValue::Compound(compound) => compound,
-            NbtValue::Root(compound) => compound,
-            _ => return None,
+        let NbtValue::Compound(compound) = self else {
+            return None;
         };
         for tag in compound {
             if tag.key == key {
@@ -65,10 +62,8 @@ impl NbtValue {
     }
 
     pub fn get_mut(&mut self, key: &str) -> Option<&mut NbtValue> {
-        let compound = match self {
-            NbtValue::Compound(compound) => compound,
-            NbtValue::Root(compound) => compound,
-            _ => return None,
+        let NbtValue::Compound(compound) = self else {
+            return None;
         };
         for tag in compound {
             if tag.key == key {
@@ -90,7 +85,6 @@ impl NbtValue {
             NbtValue::String(_) => 8,
             NbtValue::List(_) => 9,
             NbtValue::Compound(_) => 10,
-            NbtValue::Root(_) => 10, // internally, a compound
             NbtValue::ArrayI32(_) => 11,
             NbtValue::ArrayI64(_) => 12,
         }
