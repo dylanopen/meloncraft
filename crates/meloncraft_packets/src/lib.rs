@@ -42,6 +42,7 @@ impl Plugin for MeloncraftPacketsPlugin {
         app.add_message::<clientbound::configuration::SetFeatureFlags>();
         app.add_message::<clientbound::configuration::UpdateTags>();
         app.add_message::<clientbound::configuration::SelectKnownPacks>();
+        app.add_message::<clientbound::configuration::CustomReportDetails>();
 
         app.add_systems(Update, read_new_packets);
 
@@ -79,6 +80,7 @@ impl Plugin for MeloncraftPacketsPlugin {
                 forward_clientbound_packet::<clientbound::configuration::Transfer>,
                 forward_clientbound_packet::<clientbound::configuration::SetFeatureFlags>,
                 forward_clientbound_packet::<clientbound::configuration::SelectKnownPacks>,
+                forward_clientbound_packet::<clientbound::configuration::CustomReportDetails>,
             ),
         );
     }

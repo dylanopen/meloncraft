@@ -1,5 +1,6 @@
 mod add_resource_pack;
 mod cookie_request;
+mod custom_report_details;
 mod disconnect;
 mod finish_configuration;
 mod keep_alive;
@@ -15,6 +16,7 @@ mod update_tags;
 
 pub use add_resource_pack::AddResourcePack;
 pub use cookie_request::CookieRequest;
+pub use custom_report_details::CustomReportDetails;
 pub use disconnect::Disconnect;
 pub use finish_configuration::FinishConfiguration;
 pub use keep_alive::KeepAlive;
