@@ -11,7 +11,8 @@ members = [
     "crates/meloncraft_nbt",
     "crates/meloncraft_login",
     "crates/meloncraft_registry",
-    "crates/meloncraft_core"
+    "crates/meloncraft_core",
+    "crates/meloncraft_text"
 ]
 exclude = [
     "examples"
@@ -39,6 +40,7 @@ meloncraft_nbt = { path = "crates/meloncraft_nbt" }
 meloncraft_login = { path = "crates/meloncraft_login" }
 meloncraft_registry = { path = "crates/meloncraft_registry" }
 meloncraft_core = { path = "crates/meloncraft_core" }
+meloncraft_text = { path = "crates/meloncraft_text" }
 
 lazy_static = "1.5.0"
 
@@ -54,3 +56,4 @@ meloncraft_nbt = { workspace = true }
 meloncraft_login = { workspace = true }
 meloncraft_registry = { workspace = true }
 meloncraft_core = { workspace = true }
+meloncraft_text = { workspace = true }
