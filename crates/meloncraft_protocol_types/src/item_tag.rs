@@ -4,7 +4,7 @@ use meloncraft_registry::ItemTag;
 impl ProtocolType for ItemTag {
     fn net_serialize(&self) -> Vec<u8> {
         let mut output = self.name.net_serialize();
-        output.extend(PrefixedArray(self.entries).net_serialize());
+        output.extend(PrefixedArray(self.entries.clone()).net_serialize());
         output
     }
 

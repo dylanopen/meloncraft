@@ -40,6 +40,7 @@ impl Plugin for MeloncraftPacketsPlugin {
         app.add_message::<clientbound::configuration::StoreCookie>();
         app.add_message::<clientbound::configuration::Transfer>();
         app.add_message::<clientbound::configuration::SetFeatureFlags>();
+        app.add_message::<clientbound::configuration::UpdateTags>();
 
         app.add_systems(Update, read_new_packets);
 

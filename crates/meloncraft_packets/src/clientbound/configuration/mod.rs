@@ -10,6 +10,7 @@ mod reset_chat;
 mod set_feature_flags;
 mod store_cookie;
 mod transfer;
+mod update_tags;
 
 pub use add_resource_pack::AddResourcePack;
 pub use cookie_request::CookieRequest;
@@ -23,3 +24,4 @@ pub use reset_chat::ResetChat;
 pub use set_feature_flags::SetFeatureFlags;
 pub use store_cookie::StoreCookie;
 pub use transfer::Transfer;
+pub use update_tags::UpdateTags;

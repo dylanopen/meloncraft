@@ -4,7 +4,7 @@ use meloncraft_registry::{ItemTag, RegistryTags};
 impl ProtocolType for RegistryTags {
     fn net_serialize(&self) -> Vec<u8> {
         let mut output = self.registry_name.net_serialize();
-        output.extend(PrefixedArray(self.tags).net_serialize());
+        output.extend(PrefixedArray(self.tags.clone()).net_serialize());
         output
     }
 
