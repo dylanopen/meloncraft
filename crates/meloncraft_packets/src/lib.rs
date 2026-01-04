@@ -26,6 +26,7 @@ impl Plugin for MeloncraftPacketsPlugin {
         app.add_message::<serverbound::configuration::FinishConfiguration>();
         app.add_message::<serverbound::configuration::KeepAlive>();
         app.add_message::<serverbound::configuration::Pong>();
+        app.add_message::<serverbound::configuration::ResourcePackResponse>();
 
         app.add_message::<clientbound::status::StatusResponse>();
         app.add_message::<clientbound::status::Pong>();
@@ -74,6 +75,7 @@ impl Plugin for MeloncraftPacketsPlugin {
                     forward_serverbound_packet::<serverbound::configuration::FinishConfiguration>,
                     forward_serverbound_packet::<serverbound::configuration::KeepAlive>,
                     forward_serverbound_packet::<serverbound::configuration::Pong>,
+                    forward_serverbound_packet::<serverbound::configuration::ResourcePackResponse>,
                 ),
             ),
         );
