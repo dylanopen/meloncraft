@@ -11,7 +11,9 @@ impl ProtocolType for PauseMenuLabel {
 
     fn net_deserialize(_data: &mut Vec<u8>) -> Result<Self, ()> {
         todo!(
-            "It seems unnecessary to implement deserialization, as it will be complicated due to varying types, and we will never receive this data, only send it."
+            "It seems unnecessary to implement deserialization,\
+            as it will be complicated due to varying types, and\
+            we will never receive this data, only send it."
         );
     }
 }

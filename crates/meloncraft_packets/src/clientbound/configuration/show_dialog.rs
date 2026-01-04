@@ -22,7 +22,7 @@ impl ClientboundPacket for ShowDialog {
     }
 
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let mut data = self.dialog.net_serialize();
+        let data = self.dialog.net_serialize();
         Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
