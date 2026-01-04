@@ -2,6 +2,7 @@ mod nbt;
 
 mod boolean;
 mod byte;
+mod datapack_metadata;
 mod f32;
 mod f64;
 mod game_profile;
