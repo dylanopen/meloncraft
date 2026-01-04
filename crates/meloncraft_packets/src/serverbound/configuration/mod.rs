@@ -19,6 +19,9 @@ pub use resource_pack_response::ResourcePackResponse;
 mod select_known_packs;
 pub use select_known_packs::SelectKnownPacks;
 
+mod accept_code_of_conduct;
+pub use accept_code_of_conduct::AcceptCodeOfConduct;
+
 pub fn register_packets(app: &mut bevy::app::App) {
     use crate::serverbound_messenger::fwd;
     use bevy::app::PreUpdate;
@@ -43,4 +46,7 @@ pub fn register_packets(app: &mut bevy::app::App) {
 
     app.add_message::<SelectKnownPacks>();
     app.add_systems(PreUpdate, fwd::<SelectKnownPacks>);
+
+    app.add_message::<AcceptCodeOfConduct>();
+    app.add_systems(PreUpdate, fwd::<AcceptCodeOfConduct>);
 }
