@@ -1,6 +1,7 @@
 mod nbt;
 
 mod boolean;
+mod builtin_pause_menu_label;
 mod byte;
 mod datapack_metadata;
 mod disconnect_report;
