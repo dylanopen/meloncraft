@@ -1,6 +1,7 @@
 use meloncraft_text::NbtText;
 
 #[derive(Debug, Clone)]
+#[repr(i32)]
 pub enum BuiltinPauseMenuLabel {
     BugReport,
     CommunityGuidelines,
