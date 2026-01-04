@@ -1,7 +1,7 @@
 use crate::{PrefixedArray, ProtocolBuffer, ProtocolType};
-use meloncraft_registry::RegistryTag;
+use meloncraft_registry::ItemTag;
 
-impl ProtocolType for RegistryTag {
+impl ProtocolType for ItemTag {
     fn net_serialize(&self) -> Vec<u8> {
         let mut output = self.name.net_serialize();
         output.extend(PrefixedArray(self.entries.clone()).net_serialize());
