@@ -1,20 +1,6 @@
 [workspace]
 resolver = "3"
-members = [
-    "crates/meloncraft_network",
-    "crates/meloncraft_packets",
-    "crates/meloncraft_protocol_types",
-    "crates/meloncraft_client",
-    "crates/meloncraft_handshaking",
-    "crates/meloncraft_server_list",
-    "crates/meloncraft_player",
-    "crates/meloncraft_nbt",
-    "crates/meloncraft_login",
-    "crates/meloncraft_registry",
-    "crates/meloncraft_core",
-    "crates/meloncraft_text",
-    "crates/meloncraft_default_registries"
-]
+members = ["crates/meloncraft_network", "crates/meloncraft_packets", "crates/meloncraft_protocol_types", "crates/meloncraft_client", "crates/meloncraft_handshaking", "crates/meloncraft_server_list", "crates/meloncraft_player", "crates/meloncraft_nbt", "crates/meloncraft_login", "crates/meloncraft_registry", "crates/meloncraft_core", "crates/meloncraft_text", "crates/meloncraft_default_registries", "crates/meloncraft_generator"]
 exclude = [
     "examples"
 ]
