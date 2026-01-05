@@ -1,12 +1,15 @@
 mod encryption;
-mod listener;
+mod login_acknowledged;
+mod login_start;
 mod verify;
 
 pub use encryption::EncryptionMode;
 
-use crate::listener::login_offline_unencrypted_listener;
+use crate::login_acknowledged::login_acknowledged_listener;
+use crate::login_start::login_offline_unencrypted_listener;
 use crate::verify::verify_encryption;
 use bevy::app::{App, Plugin, PostStartup, Update};
+use bevy::prelude::IntoScheduleConfigs;
 
 pub struct MeloncraftLoginPlugin;
 
@@ -14,5 +17,6 @@ impl Plugin for MeloncraftLoginPlugin {
     fn build(&self, app: &mut App) {
         app.add_systems(PostStartup, verify_encryption);
         app.add_systems(Update, login_offline_unencrypted_listener);
+        app.add_systems(Update, login_acknowledged_listener);
     }
 }
