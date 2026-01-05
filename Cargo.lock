@@ -755,6 +755,7 @@ version = "0.1.0"
 dependencies = [
  "meloncraft_client",
  "meloncraft_core",
+ "meloncraft_default_registries",
  "meloncraft_handshaking",
  "meloncraft_login",
  "meloncraft_nbt",
@@ -780,6 +781,14 @@ name = "meloncraft_core"
 version = "0.1.0"
 dependencies = [
  "meloncraft_text",
+]
+
+[[package]]
+name = "meloncraft_default_registries"
+version = "0.1.0"
+dependencies = [
+ "meloncraft_core",
+ "meloncraft_registry",
 ]
 
 [[package]]

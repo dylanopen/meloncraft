@@ -1,0 +1,8 @@
+[package]
+name = "meloncraft_default_registries"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+meloncraft_core = { workspace = true }
+meloncraft_registry = { workspace = true }
