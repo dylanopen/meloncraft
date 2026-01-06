@@ -1,5 +1,5 @@
-mod serialize;
 mod deserialize;
+mod serialize;
 
 use crate::{ProtocolBuffer, ProtocolType};
 use meloncraft_nbt::{NbtTag, NbtValue};
@@ -62,4 +62,3 @@ mod tests {
         assert_eq!(original_tag.key, deserialized_tag.key);
     }
 }
-

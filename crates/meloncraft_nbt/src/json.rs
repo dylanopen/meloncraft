@@ -114,19 +114,31 @@ impl From<NbtValue> for JsonValue {
             }
             NbtValue::String(nbt_string) => JsonValue::String((*nbt_string).clone()),
             NbtValue::ArrayU8(nbt_array_u8) => {
-                let vals: Vec<JsonValue> = nbt_array_u8.iter().map(|v| JsonValue::Number(serde_json::Number::from(*v))).collect();
+                let vals: Vec<JsonValue> = nbt_array_u8
+                    .iter()
+                    .map(|v| JsonValue::Number(serde_json::Number::from(*v)))
+                    .collect();
                 JsonValue::Array(vals)
             }
             NbtValue::ArrayI32(nbt_array_i32) => {
-                let vals: Vec<JsonValue> = nbt_array_i32.iter().map(|v| JsonValue::Number(serde_json::Number::from(*v))).collect();
+                let vals: Vec<JsonValue> = nbt_array_i32
+                    .iter()
+                    .map(|v| JsonValue::Number(serde_json::Number::from(*v)))
+                    .collect();
                 JsonValue::Array(vals)
             }
             NbtValue::ArrayI64(nbt_array_i64) => {
-                let vals: Vec<JsonValue> = nbt_array_i64.iter().map(|v| JsonValue::Number(serde_json::Number::from(*v))).collect();
+                let vals: Vec<JsonValue> = nbt_array_i64
+                    .iter()
+                    .map(|v| JsonValue::Number(serde_json::Number::from(*v)))
+                    .collect();
                 JsonValue::Array(vals)
             }
             NbtValue::List(nbt_list) => {
-                let vals: Vec<JsonValue> = nbt_list.iter().map(|v| JsonValue::from(v.clone())).collect();
+                let vals: Vec<JsonValue> = nbt_list
+                    .iter()
+                    .map(|v| JsonValue::from(v.clone()))
+                    .collect();
                 JsonValue::Array(vals)
             }
             NbtValue::Compound(nbt_compound) => {
@@ -168,4 +180,3 @@ mod tests {
         assert_eq!(original_nbt, converted_nbt);
     }
 }
-

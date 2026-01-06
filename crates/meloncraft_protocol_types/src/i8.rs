@@ -6,7 +6,7 @@ impl ProtocolType for i8 {
     }
 
     fn net_deserialize(data: &mut Vec<u8>) -> Result<Self, ()> {
-        if data.len() < 1 {
+        if data.is_empty() {
             return Err(());
         }
         let arg_data = data.drain(0..1);

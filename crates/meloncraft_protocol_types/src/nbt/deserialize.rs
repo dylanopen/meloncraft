@@ -34,51 +34,49 @@ pub fn value(tag_type: u8, data: &mut Vec<u8>) -> Result<NbtValue, ()> {
         1 => {
             let val: u8 = data.net_deserialize()?;
             Ok(NbtValue::U8(NbtU8(val)))
-        },
+        }
         2 => {
             let val: i16 = data.net_deserialize()?;
             Ok(NbtValue::I16(meloncraft_nbt::NbtI16(val)))
-        },
+        }
         3 => {
             let val: i32 = data.net_deserialize()?;
             Ok(NbtValue::I32(meloncraft_nbt::NbtI32(val)))
-        },
+        }
         4 => {
             let val: i64 = data.net_deserialize()?;
             Ok(NbtValue::I64(meloncraft_nbt::NbtI64(val)))
-        },
+        }
         5 => {
             let val: f32 = data.net_deserialize()?;
             Ok(NbtValue::F32(meloncraft_nbt::NbtF32(val)))
-        },
+        }
         6 => {
             let val: f64 = data.net_deserialize()?;
             Ok(NbtValue::F64(meloncraft_nbt::NbtF64(val)))
-        },
+        }
         7 => {
             let length: i32 = data.net_deserialize()?;
             byte_array(length, data)
-        },
+        }
         8 => {
             let string = string(data)?;
             Ok(NbtValue::String(meloncraft_nbt::NbtString(string)))
-        },
+        }
         9 => {
             let list_tag_type = tagtype(data)?;
             let size: i32 = data.net_deserialize()?;
             list(list_tag_type, size, data)
-        },
-        10 => {
-            compound(data)
-        },
+        }
+        10 => compound(data),
         11 => {
             let length: i32 = data.net_deserialize()?;
             int_array(length, data)
-        },
+        }
         12 => {
             let length: i32 = data.net_deserialize()?;
             long_array(length, data)
-        },
+        }
         _ => Err(()),
     }
 }
@@ -142,4 +140,3 @@ fn compound(data: &mut Vec<u8>) -> Result<NbtValue, ()> {
     }
     Ok(NbtValue::Compound(NbtCompound(tags)))
 }
-
