@@ -29,6 +29,7 @@ meloncraft_registry = { path = "crates/meloncraft_registry" }
 meloncraft_default_registries = { path = "crates/meloncraft_default_registries" }
 meloncraft_core = { path = "crates/meloncraft_core" }
 meloncraft_text = { path = "crates/meloncraft_text" }
+meloncraft_generator = { path = "crates/meloncraft_generator" }
 
 lazy_static = "1.5.0"
 
@@ -46,3 +47,4 @@ meloncraft_registry = { workspace = true }
 meloncraft_default_registries = { workspace = true }
 meloncraft_core = { workspace = true }
 meloncraft_text = { workspace = true }
+meloncraft_generator = { workspace = true }

@@ -8,6 +8,7 @@ pub struct MeloncraftDefaultRegistriesPlugin;
 
 impl Plugin for MeloncraftDefaultRegistriesPlugin {
     fn build(&self, app: &mut bevy::app::App) {
+        meloncraft_generator::generate_data();
         let raw_registries = RawRegistries::default();
         dbg!(&raw_registries.0.0);
         app.insert_resource(raw_registries);

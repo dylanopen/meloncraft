@@ -1247,6 +1247,7 @@ dependencies = [
  "meloncraft_client",
  "meloncraft_core",
  "meloncraft_default_registries",
+ "meloncraft_generator",
  "meloncraft_handshaking",
  "meloncraft_login",
  "meloncraft_nbt",
@@ -1280,6 +1281,7 @@ version = "0.1.0"
 dependencies = [
  "bevy",
  "meloncraft_core",
+ "meloncraft_generator",
  "meloncraft_nbt",
  "meloncraft_protocol_types",
  "meloncraft_registry",

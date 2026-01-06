@@ -9,3 +9,4 @@ meloncraft_core = { workspace = true }
 meloncraft_nbt = { workspace = true }
 meloncraft_protocol_types = { workspace = true }
 meloncraft_registry = { workspace = true }
+meloncraft_generator = { workspace = true }

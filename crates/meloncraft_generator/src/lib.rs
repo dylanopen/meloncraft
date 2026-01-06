@@ -22,7 +22,7 @@ fn copy_dir_all(src: impl AsRef<Path>, dst: impl AsRef<Path>) -> io::Result<()> 
     Ok(())
 }
 
-fn main() {
+pub fn generate_data() {
     // 1.21.10
 
     fs::create_dir_all("generated/jar").unwrap();
@@ -30,33 +30,40 @@ fn main() {
     fs::create_dir_all("generated/bundler").unwrap();
     fs::create_dir_all("generated/registries").unwrap();
 
-    println!("Downloading server jar from mojang.com...");
     if !fs::exists("generated/jar/bundler.jar").unwrap() {
+        println!("Downloading server jar from mojang.com...");
         download_jar();
     }
 
-    println!("Extracting server jar from downloaded bundle jar...");
-    let mut root_zip = ZipArchive::new(File::open("generated/jar/bundler.jar").unwrap()).unwrap();
-    root_zip.extract("generated/bundler").unwrap();
-    fs::copy(
-        "generated/bundler/META-INF/versions/1.21.10/server-1.21.10.jar",
-        "generated/jar/server.jar",
-    )
-    .unwrap();
+    if !fs::exists("generated/jar/server.jar").unwrap() {
+        println!("Extracting server jar from downloaded bundle jar...");
+        let mut root_zip =
+            ZipArchive::new(File::open("generated/jar/bundler.jar").unwrap()).unwrap();
+        root_zip.extract("generated/bundler").unwrap();
+        fs::copy(
+            "generated/bundler/META-INF/versions/1.21.10/server-1.21.10.jar",
+            "generated/jar/server.jar",
+        )
+        .unwrap();
+    }
 
-    println!("Extracting files from inner server jar...");
-    let mut bundler_zip = ZipArchive::new(File::open("generated/jar/server.jar").unwrap()).unwrap();
-    bundler_zip.extract("generated/server").unwrap();
+    if !fs::exists("generated/registries.nbt").unwrap() {
+        println!("Generating registries.nbt...:");
+        println!("Extracting files from inner server jar...");
+        let mut bundler_zip =
+            ZipArchive::new(File::open("generated/jar/server.jar").unwrap()).unwrap();
+        bundler_zip.extract("generated/server").unwrap();
 
-    println!("Copying registry files to generated/registries...");
-    copy_dir_all("generated/server/data/minecraft/", "generated/registries/").unwrap();
+        println!("Copying registry files to generated/registries...");
+        copy_dir_all("generated/server/data/minecraft/", "generated/registries/").unwrap();
 
-    println!("Concatenating registries...");
-    let json: serde_json::value::Value =
-        read_registry(String::from("generated/registries/")).unwrap();
-    let nbt: NbtValue = json.try_into().unwrap();
-    let nbt_bytes = nbt.net_serialize();
-    fs::write("generated/registries.nbt", nbt_bytes).unwrap();
+        println!("Concatenating registries...");
+        let json: serde_json::value::Value =
+            read_registry(String::from("generated/registries/")).unwrap();
+        let nbt: NbtValue = json.try_into().unwrap();
+        let nbt_bytes = nbt.net_serialize();
+        fs::write("generated/registries.nbt", nbt_bytes).unwrap();
+    }
 }
 
 fn read_registry(path: String) -> io::Result<JsonValue> {
