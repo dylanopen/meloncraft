@@ -1286,6 +1286,8 @@ dependencies = [
 name = "meloncraft_generator"
 version = "0.1.0"
 dependencies = [
+ "meloncraft_nbt",
+ "meloncraft_protocol_types",
  "reqwest",
  "serde_json",
  "zip",
@@ -1313,6 +1315,9 @@ dependencies = [
 [[package]]
 name = "meloncraft_nbt"
 version = "0.1.0"
+dependencies = [
+ "serde_json",
+]
 
 [[package]]
 name = "meloncraft_network"

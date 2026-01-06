@@ -1,6 +1,6 @@
+use bevy::prelude::Resource;
 use std::net::TcpListener;
 use std::ops::{Deref, DerefMut};
-use bevy::prelude::Resource;
 
 #[derive(Resource)]
 pub struct ConnectionListener(pub TcpListener);
@@ -17,4 +17,3 @@ impl DerefMut for ConnectionListener {
         &mut self.0
     }
 }
-

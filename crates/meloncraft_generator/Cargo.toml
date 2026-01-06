@@ -9,5 +9,8 @@ default-features = false
 features = ["blocking"]
 
 [dependencies]
+meloncraft_nbt = { workspace = true }
+meloncraft_protocol_types = { workspace = true }
 zip = "7.0.0"
 serde_json = "0.9.10"
+

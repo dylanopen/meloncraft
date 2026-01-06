@@ -10,7 +10,7 @@ pub fn tag(tag: NbtTag) -> Vec<u8> {
     output
 }
 
-fn value(payload: NbtValue) -> Vec<u8> {
+pub fn value(payload: NbtValue) -> Vec<u8> {
     match payload {
         NbtValue::U8(p) => p.net_serialize(),
         NbtValue::I16(p) => p.net_serialize(),

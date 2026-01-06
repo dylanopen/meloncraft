@@ -1,7 +1,7 @@
 mod handle_intention;
 
-use bevy::app::{App, Update};
 use bevy::app::Plugin;
+use bevy::app::{App, Update};
 
 pub struct MeloncraftHandshakingPlugin;
 

@@ -10,6 +10,7 @@ mod f64;
 mod i16;
 mod i32;
 mod i64;
+mod json;
 mod list;
 mod string;
 mod u8;
