@@ -1278,7 +1278,10 @@ dependencies = [
 name = "meloncraft_default_registries"
 version = "0.1.0"
 dependencies = [
+ "bevy",
  "meloncraft_core",
+ "meloncraft_nbt",
+ "meloncraft_protocol_types",
  "meloncraft_registry",
 ]
 
