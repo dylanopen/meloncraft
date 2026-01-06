@@ -50,16 +50,10 @@ pub trait ServerboundPacket: Sized + Message + Debug + Clone {
 
     fn validate(
         incoming: &ServerboundNetworkPacket,
-        client_connections: &Query<&ClientConnection>,
     ) -> Result<(), ServerboundPacketParseError> {
-        let Ok(client_connection) = client_connections.get(incoming.client) else {
-            return Err(ServerboundPacketParseError::ClientNonExistent {
-                packet_client: incoming.client,
-            });
-        };
-        if client_connection.state != Self::state() {
+        if incoming.state != Self::state() {
             return Err(ServerboundPacketParseError::UnmatchedState {
-                packet_state: client_connection.state,
+                packet_state: incoming.state,
                 required_state: Self::state(),
             });
         }
@@ -74,9 +68,8 @@ pub trait ServerboundPacket: Sized + Message + Debug + Clone {
 
     fn from_packet(
         incoming: &ServerboundNetworkPacket,
-        client_connections: &Query<&ClientConnection>,
     ) -> Option<Self> {
-        Self::validate(incoming, client_connections).ok()?;
+        Self::validate(incoming).ok()?;
         Some(Self::deserialize(incoming).unwrap())
     }
 }

@@ -1,5 +1,5 @@
 use crate::SERVERBOUND_PACKETS;
-use crate::packet::ServerboundNetworkPacketReceived;
+use crate::packet::{ServerboundNetworkPacket, ServerboundNetworkPacketReceived};
 use crate::tcp_reader::handle_client;
 use bevy::prelude::{Commands, MessageWriter, Query};
 use meloncraft_client::connection::{CLIENT_CONNECTIONS, ClientConnection};
@@ -8,7 +8,7 @@ use std::thread;
 
 pub fn connection_manager(
     mut commands: Commands,
-    client_connection_ecs: Query<&ClientConnection>,
+    mut client_connection_ecs: Query<&mut ClientConnection>,
     mut incoming_packet_mw: MessageWriter<ServerboundNetworkPacketReceived>,
 ) {
     if client_connection_ecs.iter().len() < CLIENT_CONNECTIONS.lock().unwrap().len() {
@@ -31,9 +31,22 @@ pub fn connection_manager(
     }
 
     for packet in SERVERBOUND_PACKETS.lock().unwrap().iter() {
+        let mut client = client_connection_ecs.get_mut(packet.client).unwrap();
         incoming_packet_mw.write(ServerboundNetworkPacketReceived {
-            packet: packet.clone(),
+            packet: ServerboundNetworkPacket {
+                client: packet.client,
+                id: packet.id,
+                len: packet.len,
+                data: packet.data.clone(),
+                state: client.state,
+            },
         });
+
+        // move to the Configuration state upon receiving LoginAcknowledged
+        // (0x03) packet
+        if packet.id == 0x03 && client.state == ConnectionState::Login {
+            client.state = ConnectionState::Configuration;
+        }
     }
     SERVERBOUND_PACKETS.lock().unwrap().clear();
 }

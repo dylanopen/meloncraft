@@ -18,5 +18,6 @@ pub fn client_information_listener(
             packet.allow_player_listings,
             packet.particle_rendering_mode.clone(),
         ));
+        dbg!("Received client information from client: {:?}", packet);
     }
 }

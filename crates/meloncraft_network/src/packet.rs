@@ -1,4 +1,5 @@
 use bevy::prelude::{Entity, Message};
+use meloncraft_client::connection_state::ConnectionState;
 
 #[derive(Clone, Debug)]
 pub struct ServerboundNetworkPacket {
@@ -6,6 +7,7 @@ pub struct ServerboundNetworkPacket {
     pub len: i32,
     pub id: i32,
     pub data: Vec<u8>,
+    pub state: ConnectionState,
 }
 
 #[derive(Message)]

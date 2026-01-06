@@ -138,5 +138,6 @@ fn compound(data: &mut Vec<u8>) -> Result<NbtValue, ()> {
         let value = value(tag_type, data)?;
         tags.push(NbtTag::new(key, value));
     }
+    dbg!(&tags);
     Ok(NbtValue::Compound(NbtCompound(tags)))
 }

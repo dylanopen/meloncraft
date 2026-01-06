@@ -11,7 +11,9 @@ pub fn tag(tag: NbtTag) -> Vec<u8> {
 }
 
 pub fn value(payload: NbtValue) -> Vec<u8> {
-    match payload {
+    let mut output = Vec::new();
+    output.extend(payload.to_id().net_serialize());
+    output.extend(match payload {
         NbtValue::U8(p) => p.net_serialize(),
         NbtValue::I16(p) => p.net_serialize(),
         NbtValue::I32(p) => p.net_serialize(),
@@ -24,7 +26,8 @@ pub fn value(payload: NbtValue) -> Vec<u8> {
         NbtValue::Compound(p) => compound((*p).clone()),
         NbtValue::ArrayI32(p) => int_array((*p).clone()),
         NbtValue::ArrayI64(p) => long_array((*p).clone()),
-    }
+    });
+    output
 }
 
 pub fn byte_array(payload: Vec<u8>) -> Vec<u8> {

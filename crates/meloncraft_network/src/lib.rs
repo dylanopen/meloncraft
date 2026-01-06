@@ -1,7 +1,7 @@
 use crate::connection_listener::ConnectionListener;
 use crate::connection_manager::connection_manager;
 use crate::packet::{
-    ClientboundNetworkPacket, ClientboundNetworkPacketReceived, ServerboundNetworkPacket,
+    ClientboundNetworkPacket, ClientboundNetworkPacketReceived,
     ServerboundNetworkPacketReceived,
 };
 use crate::tcp_reader::receive_new_clients;
@@ -12,6 +12,8 @@ use std::net::TcpListener;
 use std::sync::Mutex;
 use std::thread;
 
+use self::tcp_reader::ServerboundTcpPacket;
+
 pub mod connection_listener;
 mod connection_manager;
 pub mod packet;
@@ -19,7 +21,7 @@ pub mod tcp_reader;
 mod tcp_writer;
 
 lazy_static! {
-    pub static ref SERVERBOUND_PACKETS: Mutex<Vec<ServerboundNetworkPacket>> = {
+    pub static ref SERVERBOUND_PACKETS: Mutex<Vec<ServerboundTcpPacket>> = {
         let packets = Vec::new();
         Mutex::new(packets)
     };

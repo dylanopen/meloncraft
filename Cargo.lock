@@ -1311,8 +1311,12 @@ version = "0.1.0"
 dependencies = [
  "bevy",
  "meloncraft_client",
+ "meloncraft_core",
+ "meloncraft_default_registries",
+ "meloncraft_nbt",
  "meloncraft_packets",
  "meloncraft_player",
+ "meloncraft_registry",
 ]
 
 [[package]]

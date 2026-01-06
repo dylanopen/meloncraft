@@ -1,8 +1,8 @@
 use meloncraft_core::Identifier;
-use meloncraft_nbt::NbtTag;
+use meloncraft_nbt::NbtValue;
 
 #[derive(Debug, Clone)]
 pub struct RegistryEntry {
     pub id: Identifier,
-    pub data: Option<NbtTag>,
+    pub data: Option<NbtValue>,
 }
