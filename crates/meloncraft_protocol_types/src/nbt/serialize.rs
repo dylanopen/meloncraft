@@ -50,10 +50,10 @@ pub fn list(payload: Vec<NbtValue>) -> Vec<u8> {
         output.append(&mut 0i32.net_serialize()); // Length 0
         return output;
     }
-    let tag_id = payload[0].to_id();
-    output.push(tag_id);
+    let tag_id: u8 = payload[0].to_id();
+    output.extend(tag_id.net_serialize());
     let length = payload.len() as i32;
-    output.append(&mut length.net_serialize());
+    output.extend(length.net_serialize());
     for item in payload {
         match item {
             NbtValue::U8(p) => output.append(&mut p.net_serialize()),
