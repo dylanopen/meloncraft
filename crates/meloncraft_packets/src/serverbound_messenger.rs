@@ -1,6 +1,5 @@
 use crate::ServerboundPacket;
 use bevy::prelude::{Message, MessageReader, MessageWriter};
-use meloncraft_network::SERVERBOUND_PACKETS;
 use meloncraft_network::packet::ServerboundNetworkPacketReceived;
 use std::fmt::Debug;
 
@@ -14,4 +13,3 @@ pub fn fwd<T: Message + ServerboundPacket + Debug>(
         }
     }
 }
-

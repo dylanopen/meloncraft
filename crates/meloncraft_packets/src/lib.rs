@@ -6,7 +6,7 @@ pub mod clientbound_messenger;
 pub mod serverbound;
 pub mod serverbound_messenger;
 
-use bevy::app::{App, Plugin, PreUpdate};
+use bevy::app::{App, Plugin};
 pub use serverbound_packet::ServerboundPacket;
 
 pub struct MeloncraftPacketsPlugin;
