@@ -22,10 +22,12 @@ pub use select_known_packs::SelectKnownPacks;
 mod accept_code_of_conduct;
 pub use accept_code_of_conduct::AcceptCodeOfConduct;
 
+mod acknowledge_finish_configuration;
+pub use acknowledge_finish_configuration::AcknowledgeFinishConfiguration;
+
 pub fn register_packets(app: &mut bevy::app::App) {
     use crate::serverbound_messenger::fwd;
     use bevy::app::PreUpdate;
-
     app.add_message::<ClientInformation>();
     app.add_systems(PreUpdate, fwd::<ClientInformation>);
 
@@ -49,4 +51,7 @@ pub fn register_packets(app: &mut bevy::app::App) {
 
     app.add_message::<AcceptCodeOfConduct>();
     app.add_systems(PreUpdate, fwd::<AcceptCodeOfConduct>);
+
+    app.add_message::<AcknowledgeFinishConfiguration>();
+    app.add_systems(PreUpdate, fwd::<AcknowledgeFinishConfiguration>);
 }
