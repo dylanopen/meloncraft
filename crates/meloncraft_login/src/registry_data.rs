@@ -13,18 +13,41 @@ use meloncraft_network::packet::{ClientboundNetworkPacket, ClientboundNetworkPac
 pub fn send_registry_data(
     mut login_acknowledged_pr: MessageReader<LoginAcknowledged>,
     mut network_pw: MessageWriter<ClientboundNetworkPacketReceived>,
-    raw_registries: Res<RawRegistries>,
 ) {
     for packet in login_acknowledged_pr.read() {
-        network_pw.write(send_raw_registry(packet.client, vec![0x18,0x6D,0x69,0x6E,0x65,0x63,0x72,0x61,0x66,0x74,0x3A,0x64,0x69,0x6D,0x65,0x6E,0x73,0x69,0x6F,0x6E,0x5F,0x74,0x79,0x70,0x65,0x04,0x13,0x6D,0x69,0x6E,0x65,0x63,0x72,0x61,0x66,0x74,0x3A,0x6F,0x76,0x65,0x72,0x77,0x6F,0x72,0x6C,0x64,0x00,0x19,0x6D,0x69,0x6E,0x65,0x63,0x72,0x61,0x66,0x74,0x3A,0x6F,0x76,0x65,0x72,0x77,0x6F,0x72,0x6C,0x64,0x5F,0x63,0x61,0x76,0x65,0x73,0x00,0x11,0x6D,0x69,0x6E,0x65,0x63,0x72,0x61,0x66,0x74,0x3A,0x74,0x68,0x65,0x5F,0x65,0x6E,0x64,0x00,0x14,0x6D,0x69,0x6E,0x65,0x63,0x72,0x61,0x66,0x74,0x3A,0x74,0x68,0x65,0x5F,0x6E,0x65,0x74,0x68,0x65,0x72,0x00]));
+        // This really could be the most cursed code I've ever written, but it works for and I don't care
+        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/banner_pattern.nbt").to_vec()));
+        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/cat_variant.nbt").to_vec()));
+        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/chat_type.nbt").to_vec()));
+        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/chicken_variant.nbt").to_vec()));
+        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/cow_variant.nbt").to_vec()));
+        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/damage_type.nbt").to_vec()));
+        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/dialog.nbt").to_vec()));
+        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/dimension_type.nbt").to_vec()));
+        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/enchantment.nbt").to_vec()));
+        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/frog_variant.nbt").to_vec()));
+        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/instrument.nbt").to_vec()));
+        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/jukebox_song.nbt").to_vec()));
+        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/painting_variant.nbt").to_vec()));
+        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/pig_variant.nbt").to_vec()));
+        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/test_environment.nbt").to_vec()));
+        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/test_instance.nbt").to_vec()));
+        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/trim_material.nbt").to_vec()));
+        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/trim_pattern.nbt").to_vec()));
+        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/wolf_sound_variant.nbt").to_vec()));
+        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/wolf_variant.nbt").to_vec()));
+        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/worldgen.biome.nbt").to_vec()));
+        // TODO: send update tags packet, data is in the registry_nbt folder.
     }
 }
 
 fn send_raw_registry(client: Entity, packet_data: Vec<u8>) -> ClientboundNetworkPacketReceived {
+    let mut data = packet_data.clone();
+    data.remove(0); // Remove the packet ID byte
     ClientboundNetworkPacketReceived { packet: ClientboundNetworkPacket {
         client,
         id: RegistryData::id(),
-        data: packet_data,
+        data,
     }}
 }
 
