@@ -25,6 +25,7 @@ meloncraft_server_list = { path = "crates/meloncraft_server_list" }
 meloncraft_player = { path = "crates/meloncraft_player" }
 meloncraft_nbt = { path = "crates/meloncraft_nbt" }
 meloncraft_login = { path = "crates/meloncraft_login" }
+meloncraft_init_play = { path = "crates/meloncraft_init_play" }
 meloncraft_registry = { path = "crates/meloncraft_registry" }
 meloncraft_default_registries = { path = "crates/meloncraft_default_registries" }
 meloncraft_core = { path = "crates/meloncraft_core" }
@@ -43,6 +44,7 @@ meloncraft_server_list = { workspace = true }
 meloncraft_player = { workspace = true }
 meloncraft_nbt = { workspace = true }
 meloncraft_login = { workspace = true }
+meloncraft_init_play = { workspace = true }
 meloncraft_registry = { workspace = true }
 meloncraft_default_registries = { workspace = true }
 meloncraft_core = { workspace = true }

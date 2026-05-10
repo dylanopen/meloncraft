@@ -3,6 +3,7 @@ pub use meloncraft_core as core;
 pub use meloncraft_default_registries as default_registries;
 pub use meloncraft_handshaking as handshaking;
 pub use meloncraft_login as login;
+pub use meloncraft_init_play as init_play;
 pub use meloncraft_nbt as nbt;
 pub use meloncraft_network as network;
 pub use meloncraft_packets as packets;

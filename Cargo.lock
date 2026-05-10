@@ -1249,6 +1249,7 @@ dependencies = [
  "meloncraft_default_registries",
  "meloncraft_generator",
  "meloncraft_handshaking",
+ "meloncraft_init_play",
  "meloncraft_login",
  "meloncraft_nbt",
  "meloncraft_network",
@@ -1305,6 +1306,22 @@ dependencies = [
  "bevy",
  "meloncraft_client",
  "meloncraft_packets",
+]
+
+[[package]]
+name = "meloncraft_init_play"
+version = "0.1.0"
+dependencies = [
+ "bevy",
+ "meloncraft_client",
+ "meloncraft_core",
+ "meloncraft_default_registries",
+ "meloncraft_nbt",
+ "meloncraft_network",
+ "meloncraft_packets",
+ "meloncraft_player",
+ "meloncraft_protocol_types",
+ "meloncraft_registry",
 ]
 
 [[package]]
