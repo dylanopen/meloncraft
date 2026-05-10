@@ -2,8 +2,8 @@ mod client_information;
 mod encryption;
 mod login_acknowledged;
 mod login_start;
-mod verify;
 mod registry_data;
+mod verify;
 
 pub use encryption::EncryptionMode;
 

@@ -47,41 +47,41 @@ impl TryFrom<JsonValue> for NbtValue {
                     nbt_vals.push(NbtValue::try_from(val)?);
                 }
 
-                let mut u8_vals = Vec::new();
-                for nbt_val in &nbt_vals {
-                    if let NbtValue::U8(u8_val) = nbt_val {
-                        u8_vals.push(**u8_val);
-                    } else {
-                        break;
-                    }
-                }
-                if u8_vals.len() == nbt_vals.len() {
-                    return Ok(NbtValue::ArrayU8(NbtArrayU8(u8_vals)));
-                }
-
-                let mut i32_vals = Vec::new();
-                for nbt_val in &nbt_vals {
-                    if let NbtValue::I32(i32_val) = nbt_val {
-                        i32_vals.push(**i32_val);
-                    } else {
-                        break;
-                    }
-                }
-                if i32_vals.len() == nbt_vals.len() {
-                    return Ok(NbtValue::ArrayI32(crate::NbtArrayI32(i32_vals)));
-                }
-
-                let mut i64_vals = Vec::new();
-                for nbt_val in &nbt_vals {
-                    if let NbtValue::I64(i64_val) = nbt_val {
-                        i64_vals.push(**i64_val);
-                    } else {
-                        break;
-                    }
-                }
-                if i64_vals.len() == nbt_vals.len() {
-                    return Ok(NbtValue::ArrayI64(crate::NbtArrayI64(i64_vals)));
-                }
+                // let mut u8_vals = Vec::new();
+                // for nbt_val in &nbt_vals {
+                //     if let NbtValue::U8(u8_val) = nbt_val {
+                //         u8_vals.push(**u8_val);
+                //     } else {
+                //         break;
+                //     }
+                // }
+                // if u8_vals.len() == nbt_vals.len() {
+                //     return Ok(NbtValue::ArrayU8(NbtArrayU8(u8_vals)));
+                // }
+                //
+                // let mut i32_vals = Vec::new();
+                // for nbt_val in &nbt_vals {
+                //     if let NbtValue::I32(i32_val) = nbt_val {
+                //         i32_vals.push(**i32_val);
+                //     } else {
+                //         break;
+                //     }
+                // }
+                // if i32_vals.len() == nbt_vals.len() {
+                //     return Ok(NbtValue::ArrayI32(crate::NbtArrayI32(i32_vals)));
+                // }
+                //
+                // let mut i64_vals = Vec::new();
+                // for nbt_val in &nbt_vals {
+                //     if let NbtValue::I64(i64_val) = nbt_val {
+                //         i64_vals.push(**i64_val);
+                //     } else {
+                //         break;
+                //     }
+                // }
+                // if i64_vals.len() == nbt_vals.len() {
+                //     return Ok(NbtValue::ArrayI64(crate::NbtArrayI64(i64_vals)));
+                // }
 
                 Ok(NbtValue::List(NbtList(nbt_vals)))
             }

@@ -4,7 +4,7 @@ use meloncraft_registry::RegistryEntry;
 impl ProtocolType for RegistryEntry {
     fn net_serialize(&self) -> Vec<u8> {
         let mut output = self.id.net_serialize();
-        output.extend(self.data.net_serialize());
+        //output.extend(self.data.net_serialize());
         output
     }
 
