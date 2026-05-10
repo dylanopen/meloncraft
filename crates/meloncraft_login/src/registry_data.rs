@@ -4,6 +4,7 @@ use bevy::ecs::system::Res;
 use meloncraft_core::Identifier;
 use meloncraft_default_registries::raw::RawRegistries;
 use meloncraft_nbt::{NbtCompound, NbtValue};
+use meloncraft_packets::{clientbound, serverbound};
 use meloncraft_packets::clientbound::configuration::RegistryData;
 use meloncraft_packets::clientbound_packet::ClientboundPacket;
 use meloncraft_packets::serverbound::login::LoginAcknowledged;
@@ -11,32 +12,40 @@ use meloncraft_registry::RegistryEntry;
 use meloncraft_network::packet::{ClientboundNetworkPacket, ClientboundNetworkPacketReceived};
 
 pub fn send_registry_data(
-    mut login_acknowledged_pr: MessageReader<LoginAcknowledged>,
+    mut select_known_packs_spr: MessageReader<serverbound::configuration::SelectKnownPacks>,
     mut network_pw: MessageWriter<ClientboundNetworkPacketReceived>,
 ) {
-    for packet in login_acknowledged_pr.read() {
-        // This really could be the most cursed code I've ever written, but it works for and I don't care
-        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/banner_pattern.nbt").to_vec()));
-        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/cat_variant.nbt").to_vec()));
-        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/chat_type.nbt").to_vec()));
-        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/chicken_variant.nbt").to_vec()));
-        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/cow_variant.nbt").to_vec()));
-        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/damage_type.nbt").to_vec()));
-        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/dialog.nbt").to_vec()));
-        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/dimension_type.nbt").to_vec()));
-        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/enchantment.nbt").to_vec()));
-        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/frog_variant.nbt").to_vec()));
-        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/instrument.nbt").to_vec()));
-        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/jukebox_song.nbt").to_vec()));
-        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/painting_variant.nbt").to_vec()));
-        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/pig_variant.nbt").to_vec()));
-        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/test_environment.nbt").to_vec()));
-        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/test_instance.nbt").to_vec()));
-        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/trim_material.nbt").to_vec()));
-        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/trim_pattern.nbt").to_vec()));
-        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/wolf_sound_variant.nbt").to_vec()));
-        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/wolf_variant.nbt").to_vec()));
-        network_pw.write(send_raw_registry(packet.client, include_bytes!("../registry_nbt/worldgen.biome.nbt").to_vec()));
+    for packet in select_known_packs_spr.read() {
+        // This really could be the most cursed code I've ever written, but it works for now and I don't care.
+
+        let registry_packets = vec![
+            include_bytes!("../registry_nbt/banner_pattern.nbt").to_vec(),
+            include_bytes!("../registry_nbt/cat_variant.nbt").to_vec(),
+            include_bytes!("../registry_nbt/chat_type.nbt").to_vec(),
+            include_bytes!("../registry_nbt/chicken_variant.nbt").to_vec(),
+            include_bytes!("../registry_nbt/cow_variant.nbt").to_vec(),
+            include_bytes!("../registry_nbt/damage_type.nbt").to_vec(),
+            include_bytes!("../registry_nbt/dialog.nbt").to_vec(),
+            include_bytes!("../registry_nbt/dimension_type.nbt").to_vec(),
+            include_bytes!("../registry_nbt/enchantment.nbt").to_vec(),
+            include_bytes!("../registry_nbt/frog_variant.nbt").to_vec(),
+            include_bytes!("../registry_nbt/instrument.nbt").to_vec(),
+            include_bytes!("../registry_nbt/jukebox_song.nbt").to_vec(),
+            include_bytes!("../registry_nbt/painting_variant.nbt").to_vec(),
+            include_bytes!("../registry_nbt/pig_variant.nbt").to_vec(),
+            include_bytes!("../registry_nbt/test_environment.nbt").to_vec(),
+            include_bytes!("../registry_nbt/test_instance.nbt").to_vec(),
+            include_bytes!("../registry_nbt/trim_material.nbt").to_vec(),
+            include_bytes!("../registry_nbt/trim_pattern.nbt").to_vec(),
+            include_bytes!("../registry_nbt/wolf_sound_variant.nbt").to_vec(),
+            include_bytes!("../registry_nbt/wolf_variant.nbt").to_vec(),
+            include_bytes!("../registry_nbt/worldgen.biome.nbt").to_vec(),
+        ];
+
+        for packet_data in registry_packets {
+            network_pw.write(send_raw_registry(packet.client, packet_data));
+        }
+
         // TODO: send update tags packet, data is in the registry_nbt folder.
     }
 }
