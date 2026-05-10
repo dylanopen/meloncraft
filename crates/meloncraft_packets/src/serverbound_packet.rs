@@ -1,6 +1,5 @@
 use bevy::ecs::message::Message;
-use bevy::prelude::{Entity, Query};
-use meloncraft_client::connection::ClientConnection;
+use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::ServerboundNetworkPacket;
 use std::fmt::{Debug, Display};
@@ -48,9 +47,7 @@ pub trait ServerboundPacket: Sized + Message + Debug + Clone {
     fn state() -> ConnectionState;
     fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self>;
 
-    fn validate(
-        incoming: &ServerboundNetworkPacket,
-    ) -> Result<(), ServerboundPacketParseError> {
+    fn validate(incoming: &ServerboundNetworkPacket) -> Result<(), ServerboundPacketParseError> {
         if incoming.state != Self::state() {
             return Err(ServerboundPacketParseError::UnmatchedState {
                 packet_state: incoming.state,
@@ -66,9 +63,7 @@ pub trait ServerboundPacket: Sized + Message + Debug + Clone {
         Ok(())
     }
 
-    fn from_packet(
-        incoming: &ServerboundNetworkPacket,
-    ) -> Option<Self> {
+    fn from_packet(incoming: &ServerboundNetworkPacket) -> Option<Self> {
         Self::validate(incoming).ok()?;
         Some(Self::deserialize(incoming).unwrap())
     }

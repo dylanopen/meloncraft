@@ -1,4 +1,4 @@
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct DatapackMetadata {
     pub namespace: String,
     pub id: String,

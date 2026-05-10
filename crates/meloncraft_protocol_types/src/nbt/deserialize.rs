@@ -118,15 +118,14 @@ fn long_array(length: i32, data: &mut Vec<u8>) -> Result<NbtValue, ()> {
 }
 
 fn list(tag_type: u8, size: i32, data: &mut Vec<u8>) -> Result<NbtValue, ()> {
-    let finish_len = data.len() - size as usize;
+    // dbg!("deserializing list");
     let mut list_items = Vec::new();
-    while data.len() > finish_len {
+    while list_items.len() < size as usize {
         let item = value(tag_type, data)?;
         list_items.push(item);
     }
     Ok(NbtValue::List(NbtList(list_items)))
 }
-
 fn compound(data: &mut Vec<u8>) -> Result<NbtValue, ()> {
     let mut tags = Vec::new();
     loop {
@@ -138,6 +137,5 @@ fn compound(data: &mut Vec<u8>) -> Result<NbtValue, ()> {
         let value = value(tag_type, data)?;
         tags.push(NbtTag::new(key, value));
     }
-    dbg!(&tags);
     Ok(NbtValue::Compound(NbtCompound(tags)))
 }

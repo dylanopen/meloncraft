@@ -1316,8 +1316,10 @@ dependencies = [
  "meloncraft_core",
  "meloncraft_default_registries",
  "meloncraft_nbt",
+ "meloncraft_network",
  "meloncraft_packets",
  "meloncraft_player",
+ "meloncraft_protocol_types",
  "meloncraft_registry",
 ]
 

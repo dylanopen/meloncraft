@@ -8,18 +8,20 @@ impl<T: ProtocolType> ProtocolType for PrefixedArray<T> {
         for value in &self.0 {
             body.append(&mut value.net_serialize());
         }
-        let length = VarInt(body.len() as i32);
+        let length = VarInt(self.0.len() as i32);
         let mut serial = length.net_serialize();
+        println!("PrefixedArray body length: {:x?}", body.len());
+        println!("PrefixedArray length: {:x?}", serial);
         serial.append(&mut body);
         serial
     }
     fn net_deserialize(data: &mut Vec<u8>) -> Result<Self, ()> {
         let length: VarInt = data.net_deserialize()?;
         let length = length.0;
-        let target_length = data.len() - length as usize;
-        let mut values = Vec::new();
-        while data.len() > target_length {
-            values.push(data.net_deserialize()?);
+        let mut values = Vec::with_capacity(length as usize);
+        for _ in 0..length {
+            let value = T::net_deserialize(data)?;
+            values.push(value);
         }
         Ok(PrefixedArray(values))
     }
@@ -30,3 +32,82 @@ impl<T: ProtocolType> From<Vec<T>> for PrefixedArray<T> {
         Self(values)
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::byte::Byte;
+    #[test]
+    fn test_prefixed_array_serialize() {
+        let array = PrefixedArray(vec![Byte(1), Byte(2), Byte(3)]);
+        let serialized = array.net_serialize();
+        let expected = vec![3, 1, 2, 3];
+        assert_eq!(serialized, expected);
+    }
+    #[test]
+    fn test_prefixed_array_deserialize() {
+        let mut data = vec![3, 1, 2, 3];
+        let deserialized = PrefixedArray::<Byte>::net_deserialize(&mut data).unwrap();
+        let expected = PrefixedArray(vec![Byte(1), Byte(2), Byte(3)]);
+        assert_eq!(deserialized.0, expected.0);
+    }
+    #[test]
+    fn test_serialize_prefixed_array_string() {
+        let array = PrefixedArray(vec!["hello".to_string(), "world".to_string()]);
+        let serialized = array.net_serialize();
+        let expected = vec![
+            2, 5, b'h', b'e', b'l', b'l', b'o', 5, b'w', b'o', b'r', b'l', b'd',
+        ];
+        assert_eq!(serialized, expected);
+    }
+    #[test]
+    fn test_deserialize_prefixed_array_string() {
+        let mut data = vec![2, 5, b'h', b'e', b'l', b'l', b'o', 5, b'w', b'o', b'r', b'l', b'd'];
+        let deserialized = PrefixedArray::<String>::net_deserialize(&mut data).unwrap();
+        let expected = PrefixedArray(vec!["hello".to_string(), "world".to_string()]);
+        assert_eq!(deserialized.0, expected.0);
+    }
+    #[test]
+    fn test_prefixed_array_deserialize_empty() {
+        let mut data = vec![0];
+        let deserialized = PrefixedArray::<Byte>::net_deserialize(&mut data).unwrap();
+        let expected = PrefixedArray(vec![]);
+        assert_eq!(deserialized.0, expected.0);
+    }
+    #[test]
+    fn test_single_item_prefixed_array_serialize() {
+        let array = PrefixedArray(vec![Byte(42)]);
+        let serialized = array.net_serialize();
+        let expected = vec![1, 42];
+        assert_eq!(serialized, expected);
+    }
+    #[test]
+    fn test_single_item_prefixed_array_deserialize() {
+        let mut data = vec![1, 42];
+        let deserialized = PrefixedArray::<Byte>::net_deserialize(&mut data).unwrap();
+        let expected = PrefixedArray(vec![Byte(42)]);
+        assert_eq!(deserialized.0, expected.0);
+    }
+    #[test]
+    fn test_empty_prefixed_array_serialize() {
+        let array = PrefixedArray::<Byte>(vec![]);
+        let serialized = array.net_serialize();
+        let expected = vec![0];
+        assert_eq!(serialized, expected);
+    }
+    #[test]
+    fn test_empty_prefixed_array_deserialize() {
+        let mut data = vec![0];
+        let deserialized = PrefixedArray::<Byte>::net_deserialize(&mut data).unwrap();
+        let expected = PrefixedArray(vec![]);
+        assert_eq!(deserialized.0, expected.0);
+    }
+    #[test]
+    fn test_prefixed_array_serde() {
+        let array = PrefixedArray(vec![Byte(10), Byte(20), Byte(30)]);
+        let serialized = array.net_serialize();
+        let deserialized = PrefixedArray::<Byte>::net_deserialize(&mut serialized.clone()).unwrap();
+        assert_eq!(array.0, deserialized.0);
+    }
+}
+

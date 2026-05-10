@@ -47,41 +47,41 @@ impl TryFrom<JsonValue> for NbtValue {
                     nbt_vals.push(NbtValue::try_from(val)?);
                 }
 
-                let mut u8_vals = Vec::new();
-                for nbt_val in &nbt_vals {
-                    if let NbtValue::U8(u8_val) = nbt_val {
-                        u8_vals.push(**u8_val);
-                    } else {
-                        break;
-                    }
-                }
-                if u8_vals.len() == nbt_vals.len() {
-                    return Ok(NbtValue::ArrayU8(NbtArrayU8(u8_vals)));
-                }
-
-                let mut i32_vals = Vec::new();
-                for nbt_val in &nbt_vals {
-                    if let NbtValue::I32(i32_val) = nbt_val {
-                        i32_vals.push(**i32_val);
-                    } else {
-                        break;
-                    }
-                }
-                if i32_vals.len() == nbt_vals.len() {
-                    return Ok(NbtValue::ArrayI32(crate::NbtArrayI32(i32_vals)));
-                }
-
-                let mut i64_vals = Vec::new();
-                for nbt_val in &nbt_vals {
-                    if let NbtValue::I64(i64_val) = nbt_val {
-                        i64_vals.push(**i64_val);
-                    } else {
-                        break;
-                    }
-                }
-                if i64_vals.len() == nbt_vals.len() {
-                    return Ok(NbtValue::ArrayI64(crate::NbtArrayI64(i64_vals)));
-                }
+                // let mut u8_vals = Vec::new();
+                // for nbt_val in &nbt_vals {
+                //     if let NbtValue::U8(u8_val) = nbt_val {
+                //         u8_vals.push(**u8_val);
+                //     } else {
+                //         break;
+                //     }
+                // }
+                // if u8_vals.len() == nbt_vals.len() {
+                //     return Ok(NbtValue::ArrayU8(NbtArrayU8(u8_vals)));
+                // }
+                //
+                // let mut i32_vals = Vec::new();
+                // for nbt_val in &nbt_vals {
+                //     if let NbtValue::I32(i32_val) = nbt_val {
+                //         i32_vals.push(**i32_val);
+                //     } else {
+                //         break;
+                //     }
+                // }
+                // if i32_vals.len() == nbt_vals.len() {
+                //     return Ok(NbtValue::ArrayI32(crate::NbtArrayI32(i32_vals)));
+                // }
+                //
+                // let mut i64_vals = Vec::new();
+                // for nbt_val in &nbt_vals {
+                //     if let NbtValue::I64(i64_val) = nbt_val {
+                //         i64_vals.push(**i64_val);
+                //     } else {
+                //         break;
+                //     }
+                // }
+                // if i64_vals.len() == nbt_vals.len() {
+                //     return Ok(NbtValue::ArrayI64(crate::NbtArrayI64(i64_vals)));
+                // }
 
                 Ok(NbtValue::List(NbtList(nbt_vals)))
             }
@@ -102,7 +102,7 @@ impl TryFrom<JsonValue> for NbtValue {
 impl From<NbtValue> for JsonValue {
     fn from(value: NbtValue) -> Self {
         match value {
-            NbtValue::U8(nbt_u8) => JsonValue::Bool(*nbt_u8 != 0),
+            NbtValue::U8(nbt_u8) => JsonValue::Number(serde_json::Number::from(nbt_u8.0)),
             NbtValue::I16(nbt_i16) => JsonValue::Number(serde_json::Number::from(*nbt_i16)),
             NbtValue::I32(nbt_i32) => JsonValue::Number(serde_json::Number::from(*nbt_i32)),
             NbtValue::I64(nbt_i64) => JsonValue::Number(serde_json::Number::from(*nbt_i64)),
@@ -155,6 +155,8 @@ impl From<NbtValue> for JsonValue {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use serde_json::Map;
+    use std::collections::HashMap;
     #[test]
     fn test_nbt_to_json_and_back() {
         let original_nbt = NbtValue::Compound(NbtCompound(vec![
@@ -178,5 +180,38 @@ mod tests {
         let json_value: JsonValue = JsonValue::from(original_nbt.clone());
         let converted_nbt = NbtValue::try_from(json_value).unwrap();
         assert_eq!(original_nbt, converted_nbt);
+    }
+
+    #[test]
+    fn test_json_to_nbt_and_back() {
+        let mut json_map = Map::new();
+
+        let mut object_1 = Map::new();
+        object_1.insert("name".to_string(), JsonValue::String("Example".to_string()));
+        object_1.insert(
+            "age".to_string(),
+            JsonValue::Number(serde_json::Number::from(25)),
+        );
+        object_1.insert("is_student".to_string(), JsonValue::Bool(false));
+
+        let mut object_2 = Map::new();
+        object_2.insert(
+            "scores".to_string(),
+            JsonValue::Array(vec![
+                JsonValue::Number(serde_json::Number::from(85)),
+                JsonValue::Number(serde_json::Number::from(90)),
+                JsonValue::Number(serde_json::Number::from(78)),
+            ]),
+        );
+
+        json_map.insert("person".to_string(), JsonValue::Object(object_1));
+        json_map.insert("details".to_string(), JsonValue::Object(object_2));
+
+        let original_json = JsonValue::Object(json_map);
+        dbg!(&original_json);
+
+        let nbt_value = NbtValue::try_from(original_json.clone()).unwrap();
+        let converted_json = JsonValue::from(nbt_value);
+        assert_eq!(original_json, converted_json);
     }
 }

@@ -1,7 +1,5 @@
 use crate::encryption::EncryptionMode;
-use bevy::prelude::{MessageReader, MessageWriter, Query, Res};
-use meloncraft_client::connection::ClientConnection;
-use meloncraft_client::connection_state::ConnectionState;
+use bevy::prelude::{MessageReader, MessageWriter, Res};
 use meloncraft_packets::clientbound::login::LoginSuccess;
 use meloncraft_packets::serverbound::login::LoginStart;
 use meloncraft_player::GameProfile;
@@ -9,7 +7,6 @@ use meloncraft_player::GameProfile;
 pub fn login_offline_unencrypted_listener(
     mut login_start_pr: MessageReader<LoginStart>,
     encryption_mode: Res<EncryptionMode>,
-    mut client_connections: Query<&mut ClientConnection>,
     mut login_success_pw: MessageWriter<LoginSuccess>,
 ) {
     if *encryption_mode != EncryptionMode::OfflineUnencrypted {

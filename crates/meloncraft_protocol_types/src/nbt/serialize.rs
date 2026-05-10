@@ -1,6 +1,6 @@
 use crate::ProtocolType;
-use meloncraft_nbt::NbtTag;
 use meloncraft_nbt::NbtValue;
+use meloncraft_nbt::{NbtCompound, NbtTag};
 
 pub fn tag(tag: NbtTag) -> Vec<u8> {
     let mut output = Vec::new();
@@ -11,9 +11,7 @@ pub fn tag(tag: NbtTag) -> Vec<u8> {
 }
 
 pub fn value(payload: NbtValue) -> Vec<u8> {
-    let mut output = Vec::new();
-    output.extend(payload.to_id().net_serialize());
-    output.extend(match payload {
+    match payload {
         NbtValue::U8(p) => p.net_serialize(),
         NbtValue::I16(p) => p.net_serialize(),
         NbtValue::I32(p) => p.net_serialize(),
@@ -26,8 +24,7 @@ pub fn value(payload: NbtValue) -> Vec<u8> {
         NbtValue::Compound(p) => compound((*p).clone()),
         NbtValue::ArrayI32(p) => int_array((*p).clone()),
         NbtValue::ArrayI64(p) => long_array((*p).clone()),
-    });
-    output
+    }
 }
 
 pub fn byte_array(payload: Vec<u8>) -> Vec<u8> {
@@ -46,17 +43,36 @@ pub fn string(payload: String) -> Vec<u8> {
     output
 }
 
-pub fn list(payload: Vec<NbtValue>) -> Vec<u8> {
+pub fn list(mut payload: Vec<NbtValue>) -> Vec<u8> {
     let mut output = Vec::new();
     if payload.is_empty() {
+        output.push(10); // Default to Compound type for empty list
+        output.extend(0i32.net_serialize());
         output.push(0); // Tag ID for end tag
         output.append(&mut 0i32.net_serialize()); // Length 0
         return output;
     }
-    let tag_id = payload[0].to_id();
-    output.push(tag_id);
+
+    // check if all same type
+    if !payload.iter().all(|v| v.to_id() == payload[0].to_id()) {
+        // make all same type by converting to compound of key "":
+        for value in payload.iter_mut() {
+            if let NbtValue::Compound(_) = value {
+                continue;
+            } else {
+                let new_compound = vec![NbtTag {
+                    key: "".to_string(),
+                    value: value.clone(),
+                }];
+                *value = NbtValue::Compound(NbtCompound(new_compound));
+            }
+        }
+    }
+
+    let tag_id: u8 = payload[0].to_id();
+    output.extend(tag_id.net_serialize());
     let length = payload.len() as i32;
-    output.append(&mut length.net_serialize());
+    output.extend(length.net_serialize());
     for item in payload {
         match item {
             NbtValue::U8(p) => output.append(&mut p.net_serialize()),

@@ -20,3 +20,20 @@ impl ProtocolType for DatapackMetadata {
         })
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn test_serde_datapack_metadata() {
+        let metadata = DatapackMetadata {
+            namespace: "example_namespace".to_string(),
+            id: "example_id".to_string(),
+            version: "42.9.8".to_string(),
+        };
+        let serialized = metadata.net_serialize();
+        let deserialized = DatapackMetadata::net_deserialize(&mut serialized.clone()).unwrap();
+        assert_eq!(metadata, deserialized);
+    }
+}
+
