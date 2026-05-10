@@ -23,6 +23,7 @@ impl ClientboundPacket for SelectKnownPacks {
 
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let data = PrefixedArray(self.known_packs.clone()).net_serialize();
+        println!("Serialized SelectKnownPacks: {:x?}", data);
         Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
