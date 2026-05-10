@@ -32,6 +32,7 @@ mod u8;
 mod ubyte;
 mod uuid;
 mod varint;
+mod location;
 
 pub use byte::Byte;
 pub use prefixed_array::PrefixedArray;
@@ -39,3 +40,4 @@ pub use protocol_type::ProtocolBuffer;
 pub use protocol_type::ProtocolType;
 pub use ubyte::UByte;
 pub use varint::VarInt;
+pub use location::NetworkLocation;
