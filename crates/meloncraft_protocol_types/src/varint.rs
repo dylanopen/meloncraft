@@ -1,5 +1,6 @@
 use crate::ProtocolType;
 
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub struct VarInt(pub i32);
 
 const SEGMENT_BITS: u32 = 0x7F;
