@@ -47,6 +47,13 @@ pub fn send_registry_data(
         }
 
         // TODO: send update tags packet, data is in the registry_nbt folder.
+        let mut update_tags_data = include_bytes!("../registry_nbt/update_tags.nbt").to_vec();
+        update_tags_data.remove(0); // Remove packet ID byte
+        network_pw.write(ClientboundNetworkPacketReceived { packet: ClientboundNetworkPacket {
+            client: packet.client,
+            id: 0x0D,
+            data: update_tags_data,
+        }});
     }
 }
 
