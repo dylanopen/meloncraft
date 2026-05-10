@@ -1,14 +1,13 @@
 use bevy::prelude::{MessageReader, MessageWriter};
-use meloncraft_core::datapack::DatapackMetadata;
-use meloncraft_packets::clientbound::configuration::{FinishConfiguration, SelectKnownPacks};
-use meloncraft_packets::serverbound::configuration::ClientInformation;
+use meloncraft_packets::clientbound::configuration::FinishConfiguration;
+use meloncraft_packets::serverbound::configuration::SelectKnownPacks;
 
 pub fn finish_configuration(
-    mut login_start_pr: MessageReader<ClientInformation>,
-    mut finish_configuration_cpw: MessageWriter<FinishConfiguration>,
+    mut login_start_pr: MessageReader<SelectKnownPacks>,
+    mut finish_configuration_pw: MessageWriter<FinishConfiguration>,
 ) {
     for packet in login_start_pr.read() {
-        finish_configuration_cpw.write(FinishConfiguration {
+        finish_configuration_pw.write(FinishConfiguration {
             client: packet.client
         });
     }
