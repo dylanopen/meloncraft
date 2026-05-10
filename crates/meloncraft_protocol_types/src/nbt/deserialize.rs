@@ -118,7 +118,6 @@ fn long_array(length: i32, data: &mut Vec<u8>) -> Result<NbtValue, ()> {
 }
 
 fn list(tag_type: u8, size: i32, data: &mut Vec<u8>) -> Result<NbtValue, ()> {
-    // dbg!("deserializing list");
     let mut list_items = Vec::new();
     while list_items.len() < size as usize {
         let item = value(tag_type, data)?;

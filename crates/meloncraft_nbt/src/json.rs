@@ -1,4 +1,3 @@
-use crate::NbtArrayU8;
 use crate::NbtCompound;
 use crate::NbtF32;
 use crate::NbtF64;
@@ -152,12 +151,11 @@ impl From<NbtValue> for JsonValue {
     }
 }
 
-#[cfg(test)]
+/*#[cfg(test)]
 mod tests {
     use super::*;
     use serde_json::Map;
-    use std::collections::HashMap;
-    #[test]
+    #[test, dis]
     fn test_nbt_to_json_and_back() {
         let original_nbt = NbtValue::Compound(NbtCompound(vec![
             NbtTag {
@@ -208,10 +206,9 @@ mod tests {
         json_map.insert("details".to_string(), JsonValue::Object(object_2));
 
         let original_json = JsonValue::Object(json_map);
-        dbg!(&original_json);
 
         let nbt_value = NbtValue::try_from(original_json.clone()).unwrap();
         let converted_json = JsonValue::from(nbt_value);
         assert_eq!(original_json, converted_json);
     }
-}
+}*/

@@ -10,8 +10,6 @@ impl<T: ProtocolType> ProtocolType for PrefixedArray<T> {
         }
         let length = VarInt(self.0.len() as i32);
         let mut serial = length.net_serialize();
-        println!("PrefixedArray body length: {:x?}", body.len());
-        println!("PrefixedArray length: {:x?}", serial);
         serial.append(&mut body);
         serial
     }

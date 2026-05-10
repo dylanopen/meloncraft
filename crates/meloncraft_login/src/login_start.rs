@@ -20,6 +20,5 @@ pub fn login_offline_unencrypted_listener(
                 uuid: packet.uuid.clone(),
             },
         });
-        dbg!();
     }
 }
