@@ -14,3 +14,4 @@ impl ProtocolType for DisconnectReport {
         Ok(Self { title, description })
     }
 }
+
