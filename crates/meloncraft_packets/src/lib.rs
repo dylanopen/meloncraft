@@ -21,5 +21,6 @@ impl Plugin for MeloncraftPacketsPlugin {
         clientbound::status::register_packets(app);
         clientbound::login::register_packets(app);
         clientbound::configuration::register_packets(app);
+        clientbound::play::register_packets(app);
     }
 }
