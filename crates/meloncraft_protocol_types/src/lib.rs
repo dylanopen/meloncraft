@@ -43,6 +43,6 @@ pub use protocol_type::ProtocolType;
 pub use ubyte::UByte;
 pub use varint::VarInt;
 pub use location::NetworkLocation;
-pub use game_event::GameEvent;
+pub use game_event::GameEventType;
 pub use player_action::*;
 

@@ -1,7 +1,7 @@
 use meloncraft_core::{DemoEventType, GameMode, WeatherIntensity};
 
 #[derive(Debug, Clone)]
-pub enum GameEvent {
+pub enum GameEventType {
     NoRespawnBlockAvailable,
     BeginRaining,
     EndRaining,
