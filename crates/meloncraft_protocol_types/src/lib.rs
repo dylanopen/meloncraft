@@ -33,6 +33,7 @@ mod ubyte;
 mod uuid;
 mod varint;
 mod location;
+mod player_action;
 
 pub use byte::Byte;
 pub use prefixed_array::PrefixedArray;
@@ -41,3 +42,5 @@ pub use protocol_type::ProtocolType;
 pub use ubyte::UByte;
 pub use varint::VarInt;
 pub use location::NetworkLocation;
+pub use player_action::*;
+

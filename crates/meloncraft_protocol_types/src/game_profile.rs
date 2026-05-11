@@ -21,7 +21,7 @@ impl ProtocolType for GameProfile {
 
 impl ProtocolType for GameProfileProperties {
     fn net_serialize(&self) -> Vec<u8> {
-        todo!()
+        todo!() // we don't need to do this yet I don't think
     }
 
     fn net_deserialize(_data: &mut Vec<u8>) -> Result<Self, ()> {
