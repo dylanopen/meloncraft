@@ -8,7 +8,8 @@ use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_core::Identifier;
 use meloncraft_packets::clientbound;
 use meloncraft_packets::serverbound::configuration::AcknowledgeFinishConfiguration;
-use meloncraft_protocol_types::PrefixedArray;
+use meloncraft_player::{GameProfile, Username, Uuid};
+use meloncraft_protocol_types::{AddPlayerAction, PlayerAction, PrefixedArray};
 
 pub struct MeloncraftInitPlayPlugin;
 
@@ -19,6 +20,7 @@ impl Plugin for MeloncraftInitPlayPlugin {
             play_login,
         ).chain()); // reverse order so that the login packet is sent before the position sync
                     // otherwise bevy might read the messages the wrong way, so send position then login
+        app.add_systems(Update, player_info_update);
     }
 }
 
@@ -78,6 +80,31 @@ fn sync_position(
             yaw: 0.0,
             pitch: 0.0,
             teleport_id: 0,
+        });
+    }
+}
+
+fn player_info_update(
+    mut login_play_pr: MessageReader<clientbound::play::Login>,
+    mut player_info_update_pw: MessageWriter<clientbound::play::PlayerInfoUpdate>,
+    client_profile_q: Query<&GameProfile>
+) {
+    for login_packet in login_play_pr.read() {
+        let profile = client_profile_q.get(login_packet.client).unwrap();
+        player_info_update_pw.write(clientbound::play::PlayerInfoUpdate {
+            client: login_packet.client,
+            action_mask: 0x01,
+            players: vec![
+                (
+                    profile.uuid.clone(),
+                    vec![
+                        PlayerAction::AddPlayer(AddPlayerAction {
+                            name: profile.username.clone(),
+                            game_profile_properties: vec![],
+                        }),
+                    ],
+                ),
+            ],
         });
     }
 }
