@@ -16,11 +16,10 @@ pub struct MeloncraftInitPlayPlugin;
 impl Plugin for MeloncraftInitPlayPlugin {
     fn build(&self, app: &mut App) {
         app.add_systems(Update, (
-            sync_position,
-            play_login,
-        ).chain()); // reverse order so that the login packet is sent before the position sync
-                    // otherwise bevy might read the messages the wrong way, so send position then login
-        app.add_systems(Update, player_info_update);
+                game_event_player_info_update,
+                sync_position, // reverse order so that the login packet is sent before the position sync
+                play_login,    // otherwise bevy might read the messages the wrong way, so send position then login
+        ).chain()); 
     }
 }
 
@@ -84,9 +83,10 @@ fn sync_position(
     }
 }
 
-fn player_info_update(
+fn game_event_player_info_update(
     mut login_play_pr: MessageReader<clientbound::play::Login>,
     mut player_info_update_pw: MessageWriter<clientbound::play::PlayerInfoUpdate>,
+    mut game_event_pw: MessageWriter<clientbound::play::GameEvent>,
     client_profile_q: Query<&GameProfile>
 ) {
     for login_packet in login_play_pr.read() {
@@ -98,14 +98,17 @@ fn player_info_update(
                 (
                     profile.uuid.clone(),
                     vec![
-                        PlayerAction::AddPlayer(AddPlayerAction {
-                            name: profile.username.clone(),
-                            game_profile_properties: vec![],
-                        }),
+                    PlayerAction::AddPlayer(AddPlayerAction {
+                        name: profile.username.clone(),
+                        game_profile_properties: vec![],
+                    }),
                     ],
                 ),
             ],
         });
+        game_event_pw.write(clientbound::play::GameEvent {
+            client: login_packet.client,
+            event: meloncraft_protocol_types::GameEventType::WaitForChunks,
+        });
     }
 }
-
