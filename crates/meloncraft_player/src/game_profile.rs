@@ -7,6 +7,7 @@ pub struct GameProfile {
     pub username: String,
 }
 
+#[derive(Debug, Clone)]
 pub struct GameProfileProperties {
     pub _name: String,
     pub _value: String,
