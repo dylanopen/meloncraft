@@ -7,6 +7,9 @@ pub use synchronize_player_position::SynchronizePlayerPosition;
 mod player_info_update;
 pub use player_info_update::PlayerInfoUpdate;
 
+mod game_event;
+pub use game_event::GameEvent;
+
 pub fn register_packets(app: &mut bevy::app::App) {
     use crate::clientbound_messenger::fwd;
     use bevy::app::PostUpdate;
@@ -19,4 +22,7 @@ pub fn register_packets(app: &mut bevy::app::App) {
 
     app.add_message::<PlayerInfoUpdate>();
     app.add_systems(PostUpdate, fwd::<PlayerInfoUpdate>);
+
+    app.add_message::<GameEvent>();
+    app.add_systems(PostUpdate, fwd::<GameEvent>);
 }
