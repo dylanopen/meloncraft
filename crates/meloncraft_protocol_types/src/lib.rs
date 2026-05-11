@@ -33,6 +33,7 @@ mod ubyte;
 mod uuid;
 mod varint;
 mod location;
+pub mod game_event;
 mod player_action;
 
 pub use byte::Byte;
@@ -42,5 +43,6 @@ pub use protocol_type::ProtocolType;
 pub use ubyte::UByte;
 pub use varint::VarInt;
 pub use location::NetworkLocation;
+pub use game_event::GameEvent;
 pub use player_action::*;
 
