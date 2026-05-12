@@ -6,7 +6,7 @@ pub struct CyanCarpet {
 
 
 impl BlockState for CyanCarpet {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 12703;
         panic!("Invalid block state")
     }

@@ -6,7 +6,7 @@ pub struct SlimeBlock {
 
 
 impl BlockState for SlimeBlock {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 12330;
         panic!("Invalid block state")
     }

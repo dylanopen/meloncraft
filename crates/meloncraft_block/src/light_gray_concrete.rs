@@ -6,7 +6,7 @@ pub struct LightGrayConcrete {
 
 
 impl BlockState for LightGrayConcrete {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 14836;
         panic!("Invalid block state")
     }

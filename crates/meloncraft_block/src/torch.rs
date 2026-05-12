@@ -6,7 +6,7 @@ pub struct Torch {
 
 
 impl BlockState for Torch {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 3169;
         panic!("Invalid block state")
     }

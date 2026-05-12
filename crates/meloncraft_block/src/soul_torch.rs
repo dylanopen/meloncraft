@@ -6,7 +6,7 @@ pub struct SoulTorch {
 
 
 impl BlockState for SoulTorch {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 6805;
         panic!("Invalid block state")
     }

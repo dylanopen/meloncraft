@@ -7,9 +7,9 @@ pub struct SculkCatalyst {
 
 
 impl BlockState for SculkCatalyst {
-    fn to_id(self) -> i32 {
-        if block_state.r#bloom == false { return 25098; }
-        if block_state.r#bloom == true { return 25097; }
+    fn to_id(&self) -> i32 {
+        if self.r#bloom == false { return 25098; }
+        if self.r#bloom == true { return 25097; }
         panic!("Invalid block state")
     }
 

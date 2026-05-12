@@ -7,9 +7,9 @@ pub struct CaveVinesPlant {
 
 
 impl BlockState for CaveVinesPlant {
-    fn to_id(self) -> i32 {
-        if block_state.r#berries == false { return 27607; }
-        if block_state.r#berries == true { return 27606; }
+    fn to_id(&self) -> i32 {
+        if self.r#berries == false { return 27607; }
+        if self.r#berries == true { return 27606; }
         panic!("Invalid block state")
     }
 

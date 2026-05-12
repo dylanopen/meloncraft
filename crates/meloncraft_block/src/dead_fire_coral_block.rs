@@ -6,7 +6,7 @@ pub struct DeadFireCoralBlock {
 
 
 impl BlockState for DeadFireCoralBlock {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 14938;
         panic!("Invalid block state")
     }

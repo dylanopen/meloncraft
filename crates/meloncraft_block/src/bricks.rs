@@ -6,7 +6,7 @@ pub struct Bricks {
 
 
 impl BlockState for Bricks {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 2139;
         panic!("Invalid block state")
     }

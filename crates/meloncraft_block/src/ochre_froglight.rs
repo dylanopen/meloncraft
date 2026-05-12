@@ -14,10 +14,10 @@ pub enum Axis {
 }
 
 impl BlockState for OchreFroglight {
-    fn to_id(self) -> i32 {
-        if block_state.r#axis == Axis::X { return 29380; }
-        if block_state.r#axis == Axis::Z { return 29382; }
-        if block_state.r#axis == Axis::Y { return 29381; }
+    fn to_id(&self) -> i32 {
+        if self.r#axis == Axis::X { return 29380; }
+        if self.r#axis == Axis::Y { return 29381; }
+        if self.r#axis == Axis::Z { return 29382; }
         panic!("Invalid block state")
     }
 
@@ -27,14 +27,14 @@ impl BlockState for OchreFroglight {
                 r#axis: Axis::X,
             });
         }
-        if state_id == 29382 {
-            return Some(OchreFroglight {
-                r#axis: Axis::Z,
-            });
-        }
         if state_id == 29381 {
             return Some(OchreFroglight {
                 r#axis: Axis::Y,
+            });
+        }
+        if state_id == 29382 {
+            return Some(OchreFroglight {
+                r#axis: Axis::Z,
             });
         }
         return None;

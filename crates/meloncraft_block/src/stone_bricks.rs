@@ -6,7 +6,7 @@ pub struct StoneBricks {
 
 
 impl BlockState for StoneBricks {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 7553;
         panic!("Invalid block state")
     }

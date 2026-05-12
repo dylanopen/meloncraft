@@ -14,10 +14,10 @@ pub enum Axis {
 }
 
 impl BlockState for StrippedWarpedStem {
-    fn to_id(self) -> i32 {
-        if block_state.r#axis == Axis::X { return 20746; }
-        if block_state.r#axis == Axis::Y { return 20747; }
-        if block_state.r#axis == Axis::Z { return 20748; }
+    fn to_id(&self) -> i32 {
+        if self.r#axis == Axis::X { return 20746; }
+        if self.r#axis == Axis::Z { return 20748; }
+        if self.r#axis == Axis::Y { return 20747; }
         panic!("Invalid block state")
     }
 
@@ -27,14 +27,14 @@ impl BlockState for StrippedWarpedStem {
                 r#axis: Axis::X,
             });
         }
-        if state_id == 20747 {
-            return Some(StrippedWarpedStem {
-                r#axis: Axis::Y,
-            });
-        }
         if state_id == 20748 {
             return Some(StrippedWarpedStem {
                 r#axis: Axis::Z,
+            });
+        }
+        if state_id == 20747 {
+            return Some(StrippedWarpedStem {
+                r#axis: Axis::Y,
             });
         }
         return None;

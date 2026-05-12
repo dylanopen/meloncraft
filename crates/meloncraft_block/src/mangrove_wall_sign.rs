@@ -2,8 +2,8 @@ use crate::BlockState;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct MangroveWallSign {
-    pub r#facing: Facing,
     pub waterlogged: bool,
+    pub r#facing: Facing,
 }
 
 
@@ -16,29 +16,35 @@ pub enum Facing {
 }
 
 impl BlockState for MangroveWallSign {
-    fn to_id(self) -> i32 {
-        if block_state.r#facing == Facing::East && block_state.r#waterlogged == true { return 5696; }
-        if block_state.r#facing == Facing::South && block_state.r#waterlogged == true { return 5692; }
-        if block_state.r#waterlogged == true && block_state.r#facing == Facing::North { return 5690; }
-        if block_state.r#waterlogged == false && block_state.r#facing == Facing::South { return 5693; }
-        if block_state.r#facing == Facing::East && block_state.r#waterlogged == false { return 5697; }
-        if block_state.r#facing == Facing::West && block_state.r#waterlogged == false { return 5695; }
-        if block_state.r#waterlogged == true && block_state.r#facing == Facing::West { return 5694; }
-        if block_state.r#facing == Facing::North && block_state.r#waterlogged == false { return 5691; }
+    fn to_id(&self) -> i32 {
+        if self.r#waterlogged == true && self.r#facing == Facing::South { return 5692; }
+        if self.r#waterlogged == true && self.r#facing == Facing::East { return 5696; }
+        if self.r#facing == Facing::North && self.r#waterlogged == false { return 5691; }
+        if self.r#waterlogged == true && self.r#facing == Facing::North { return 5690; }
+        if self.r#waterlogged == false && self.r#facing == Facing::East { return 5697; }
+        if self.r#facing == Facing::West && self.r#waterlogged == true { return 5694; }
+        if self.r#facing == Facing::West && self.r#waterlogged == false { return 5695; }
+        if self.r#waterlogged == false && self.r#facing == Facing::South { return 5693; }
         panic!("Invalid block state")
     }
 
     fn from_id(state_id: i32) -> Option<Self> {
-        if state_id == 5696 {
-            return Some(MangroveWallSign {
-                r#facing: Facing::East,
-                r#waterlogged: true,
-            });
-        }
         if state_id == 5692 {
             return Some(MangroveWallSign {
-                r#facing: Facing::South,
                 r#waterlogged: true,
+                r#facing: Facing::South,
+            });
+        }
+        if state_id == 5696 {
+            return Some(MangroveWallSign {
+                r#waterlogged: true,
+                r#facing: Facing::East,
+            });
+        }
+        if state_id == 5691 {
+            return Some(MangroveWallSign {
+                r#facing: Facing::North,
+                r#waterlogged: false,
             });
         }
         if state_id == 5690 {
@@ -47,16 +53,16 @@ impl BlockState for MangroveWallSign {
                 r#facing: Facing::North,
             });
         }
-        if state_id == 5693 {
-            return Some(MangroveWallSign {
-                r#waterlogged: false,
-                r#facing: Facing::South,
-            });
-        }
         if state_id == 5697 {
             return Some(MangroveWallSign {
-                r#facing: Facing::East,
                 r#waterlogged: false,
+                r#facing: Facing::East,
+            });
+        }
+        if state_id == 5694 {
+            return Some(MangroveWallSign {
+                r#facing: Facing::West,
+                r#waterlogged: true,
             });
         }
         if state_id == 5695 {
@@ -65,16 +71,10 @@ impl BlockState for MangroveWallSign {
                 r#waterlogged: false,
             });
         }
-        if state_id == 5694 {
+        if state_id == 5693 {
             return Some(MangroveWallSign {
-                r#waterlogged: true,
-                r#facing: Facing::West,
-            });
-        }
-        if state_id == 5691 {
-            return Some(MangroveWallSign {
-                r#facing: Facing::North,
                 r#waterlogged: false,
+                r#facing: Facing::South,
             });
         }
         return None;

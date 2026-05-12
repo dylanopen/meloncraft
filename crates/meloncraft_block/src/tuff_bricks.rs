@@ -6,7 +6,7 @@ pub struct TuffBricks {
 
 
 impl BlockState for TuffBricks {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 24073;
         panic!("Invalid block state")
     }

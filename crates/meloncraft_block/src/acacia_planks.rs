@@ -6,7 +6,7 @@ pub struct AcaciaPlanks {
 
 
 impl BlockState for AcaciaPlanks {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 19;
         panic!("Invalid block state")
     }

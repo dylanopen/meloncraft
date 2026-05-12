@@ -6,7 +6,7 @@ pub struct QuartzBlock {
 
 
 impl BlockState for QuartzBlock {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 11121;
         panic!("Invalid block state")
     }

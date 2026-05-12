@@ -6,7 +6,7 @@ pub struct SnowBlock {
 
 
 impl BlockState for SnowBlock {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 6727;
         panic!("Invalid block state")
     }

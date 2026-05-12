@@ -6,7 +6,7 @@ pub struct DripstoneBlock {
 
 
 impl BlockState for DripstoneBlock {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 27553;
         panic!("Invalid block state")
     }

@@ -6,7 +6,7 @@ pub struct BuddingAmethyst {
 
 
 impl BlockState for BuddingAmethyst {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 23201;
         panic!("Invalid block state")
     }

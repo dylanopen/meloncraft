@@ -8,19 +8,19 @@ pub struct WeatheredCopperLantern {
 
 
 impl BlockState for WeatheredCopperLantern {
-    fn to_id(self) -> i32 {
-        if block_state.r#hanging == false && block_state.r#waterlogged == true { return 20653; }
-        if block_state.r#hanging == true && block_state.r#waterlogged == true { return 20651; }
-        if block_state.r#waterlogged == false && block_state.r#hanging == true { return 20652; }
-        if block_state.r#hanging == false && block_state.r#waterlogged == false { return 20654; }
+    fn to_id(&self) -> i32 {
+        if self.r#waterlogged == false && self.r#hanging == false { return 20654; }
+        if self.r#hanging == true && self.r#waterlogged == true { return 20651; }
+        if self.r#waterlogged == true && self.r#hanging == false { return 20653; }
+        if self.r#waterlogged == false && self.r#hanging == true { return 20652; }
         panic!("Invalid block state")
     }
 
     fn from_id(state_id: i32) -> Option<Self> {
-        if state_id == 20653 {
+        if state_id == 20654 {
             return Some(WeatheredCopperLantern {
+                r#waterlogged: false,
                 r#hanging: false,
-                r#waterlogged: true,
             });
         }
         if state_id == 20651 {
@@ -29,16 +29,16 @@ impl BlockState for WeatheredCopperLantern {
                 r#waterlogged: true,
             });
         }
+        if state_id == 20653 {
+            return Some(WeatheredCopperLantern {
+                r#waterlogged: true,
+                r#hanging: false,
+            });
+        }
         if state_id == 20652 {
             return Some(WeatheredCopperLantern {
                 r#waterlogged: false,
                 r#hanging: true,
-            });
-        }
-        if state_id == 20654 {
-            return Some(WeatheredCopperLantern {
-                r#hanging: false,
-                r#waterlogged: false,
             });
         }
         return None;

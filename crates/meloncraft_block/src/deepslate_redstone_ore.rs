@@ -7,9 +7,9 @@ pub struct DeepslateRedstoneOre {
 
 
 impl BlockState for DeepslateRedstoneOre {
-    fn to_id(self) -> i32 {
-        if block_state.r#lit == true { return 6682; }
-        if block_state.r#lit == false { return 6683; }
+    fn to_id(&self) -> i32 {
+        if self.r#lit == true { return 6682; }
+        if self.r#lit == false { return 6683; }
         panic!("Invalid block state")
     }
 

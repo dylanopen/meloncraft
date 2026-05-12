@@ -6,7 +6,7 @@ pub struct Terracotta {
 
 
 impl BlockState for Terracotta {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 12710;
         panic!("Invalid block state")
     }

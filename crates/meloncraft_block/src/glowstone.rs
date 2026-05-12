@@ -6,7 +6,7 @@ pub struct Glowstone {
 
 
 impl BlockState for Glowstone {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 6815;
         panic!("Invalid block state")
     }

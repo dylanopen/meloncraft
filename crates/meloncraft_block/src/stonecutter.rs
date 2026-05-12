@@ -15,23 +15,23 @@ pub enum Facing {
 }
 
 impl BlockState for Stonecutter {
-    fn to_id(self) -> i32 {
-        if block_state.r#facing == Facing::North { return 20599; }
-        if block_state.r#facing == Facing::East { return 20602; }
-        if block_state.r#facing == Facing::West { return 20601; }
-        if block_state.r#facing == Facing::South { return 20600; }
+    fn to_id(&self) -> i32 {
+        if self.r#facing == Facing::South { return 20600; }
+        if self.r#facing == Facing::North { return 20599; }
+        if self.r#facing == Facing::West { return 20601; }
+        if self.r#facing == Facing::East { return 20602; }
         panic!("Invalid block state")
     }
 
     fn from_id(state_id: i32) -> Option<Self> {
+        if state_id == 20600 {
+            return Some(Stonecutter {
+                r#facing: Facing::South,
+            });
+        }
         if state_id == 20599 {
             return Some(Stonecutter {
                 r#facing: Facing::North,
-            });
-        }
-        if state_id == 20602 {
-            return Some(Stonecutter {
-                r#facing: Facing::East,
             });
         }
         if state_id == 20601 {
@@ -39,9 +39,9 @@ impl BlockState for Stonecutter {
                 r#facing: Facing::West,
             });
         }
-        if state_id == 20600 {
+        if state_id == 20602 {
             return Some(Stonecutter {
-                r#facing: Facing::South,
+                r#facing: Facing::East,
             });
         }
         return None;

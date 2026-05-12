@@ -6,7 +6,7 @@ pub struct PaleMossBlock {
 
 
 impl BlockState for PaleMossBlock {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 29501;
         panic!("Invalid block state")
     }

@@ -16,47 +16,35 @@ pub enum Facing {
 }
 
 impl BlockState for DarkOakWallSign {
-    fn to_id(self) -> i32 {
-        if block_state.r#facing == Facing::South && block_state.r#waterlogged == true { return 5676; }
-        if block_state.r#facing == Facing::South && block_state.r#waterlogged == false { return 5677; }
-        if block_state.r#waterlogged == true && block_state.r#facing == Facing::East { return 5680; }
-        if block_state.r#waterlogged == false && block_state.r#facing == Facing::North { return 5675; }
-        if block_state.r#waterlogged == true && block_state.r#facing == Facing::North { return 5674; }
-        if block_state.r#facing == Facing::West && block_state.r#waterlogged == true { return 5678; }
-        if block_state.r#waterlogged == false && block_state.r#facing == Facing::East { return 5681; }
-        if block_state.r#facing == Facing::West && block_state.r#waterlogged == false { return 5679; }
+    fn to_id(&self) -> i32 {
+        if self.r#waterlogged == true && self.r#facing == Facing::North { return 5674; }
+        if self.r#facing == Facing::East && self.r#waterlogged == false { return 5681; }
+        if self.r#waterlogged == false && self.r#facing == Facing::South { return 5677; }
+        if self.r#facing == Facing::West && self.r#waterlogged == true { return 5678; }
+        if self.r#waterlogged == false && self.r#facing == Facing::West { return 5679; }
+        if self.r#facing == Facing::South && self.r#waterlogged == true { return 5676; }
+        if self.r#facing == Facing::East && self.r#waterlogged == true { return 5680; }
+        if self.r#facing == Facing::North && self.r#waterlogged == false { return 5675; }
         panic!("Invalid block state")
     }
 
     fn from_id(state_id: i32) -> Option<Self> {
-        if state_id == 5676 {
-            return Some(DarkOakWallSign {
-                r#facing: Facing::South,
-                r#waterlogged: true,
-            });
-        }
-        if state_id == 5677 {
-            return Some(DarkOakWallSign {
-                r#facing: Facing::South,
-                r#waterlogged: false,
-            });
-        }
-        if state_id == 5680 {
-            return Some(DarkOakWallSign {
-                r#waterlogged: true,
-                r#facing: Facing::East,
-            });
-        }
-        if state_id == 5675 {
-            return Some(DarkOakWallSign {
-                r#waterlogged: false,
-                r#facing: Facing::North,
-            });
-        }
         if state_id == 5674 {
             return Some(DarkOakWallSign {
                 r#waterlogged: true,
                 r#facing: Facing::North,
+            });
+        }
+        if state_id == 5681 {
+            return Some(DarkOakWallSign {
+                r#facing: Facing::East,
+                r#waterlogged: false,
+            });
+        }
+        if state_id == 5677 {
+            return Some(DarkOakWallSign {
+                r#waterlogged: false,
+                r#facing: Facing::South,
             });
         }
         if state_id == 5678 {
@@ -65,15 +53,27 @@ impl BlockState for DarkOakWallSign {
                 r#waterlogged: true,
             });
         }
-        if state_id == 5681 {
-            return Some(DarkOakWallSign {
-                r#waterlogged: false,
-                r#facing: Facing::East,
-            });
-        }
         if state_id == 5679 {
             return Some(DarkOakWallSign {
+                r#waterlogged: false,
                 r#facing: Facing::West,
+            });
+        }
+        if state_id == 5676 {
+            return Some(DarkOakWallSign {
+                r#facing: Facing::South,
+                r#waterlogged: true,
+            });
+        }
+        if state_id == 5680 {
+            return Some(DarkOakWallSign {
+                r#facing: Facing::East,
+                r#waterlogged: true,
+            });
+        }
+        if state_id == 5675 {
+            return Some(DarkOakWallSign {
+                r#facing: Facing::North,
                 r#waterlogged: false,
             });
         }

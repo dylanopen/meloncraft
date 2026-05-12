@@ -15,11 +15,11 @@ pub enum Facing {
 }
 
 impl BlockState for SoulWallTorch {
-    fn to_id(self) -> i32 {
-        if block_state.r#facing == Facing::South { return 6807; }
-        if block_state.r#facing == Facing::East { return 6809; }
-        if block_state.r#facing == Facing::North { return 6806; }
-        if block_state.r#facing == Facing::West { return 6808; }
+    fn to_id(&self) -> i32 {
+        if self.r#facing == Facing::South { return 6807; }
+        if self.r#facing == Facing::North { return 6806; }
+        if self.r#facing == Facing::West { return 6808; }
+        if self.r#facing == Facing::East { return 6809; }
         panic!("Invalid block state")
     }
 
@@ -27,11 +27,6 @@ impl BlockState for SoulWallTorch {
         if state_id == 6807 {
             return Some(SoulWallTorch {
                 r#facing: Facing::South,
-            });
-        }
-        if state_id == 6809 {
-            return Some(SoulWallTorch {
-                r#facing: Facing::East,
             });
         }
         if state_id == 6806 {
@@ -42,6 +37,11 @@ impl BlockState for SoulWallTorch {
         if state_id == 6808 {
             return Some(SoulWallTorch {
                 r#facing: Facing::West,
+            });
+        }
+        if state_id == 6809 {
+            return Some(SoulWallTorch {
+                r#facing: Facing::East,
             });
         }
         return None;

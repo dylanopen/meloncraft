@@ -6,7 +6,7 @@ pub struct ChiseledResinBricks {
 
 
 impl BlockState for ChiseledResinBricks {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 9132;
         panic!("Invalid block state")
     }

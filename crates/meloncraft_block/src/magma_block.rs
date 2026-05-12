@@ -6,7 +6,7 @@ pub struct MagmaBlock {
 
 
 impl BlockState for MagmaBlock {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 14643;
         panic!("Invalid block state")
     }

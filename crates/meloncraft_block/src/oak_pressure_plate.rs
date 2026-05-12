@@ -7,9 +7,9 @@ pub struct OakPressurePlate {
 
 
 impl BlockState for OakPressurePlate {
-    fn to_id(self) -> i32 {
-        if block_state.r#powered == false { return 6661; }
-        if block_state.r#powered == true { return 6660; }
+    fn to_id(&self) -> i32 {
+        if self.r#powered == false { return 6661; }
+        if self.r#powered == true { return 6660; }
         panic!("Invalid block state")
     }
 

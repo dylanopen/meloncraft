@@ -14,17 +14,17 @@ pub enum Axis {
 }
 
 impl BlockState for JungleWood {
-    fn to_id(self) -> i32 {
-        if block_state.r#axis == Axis::X { return 210; }
-        if block_state.r#axis == Axis::Y { return 211; }
-        if block_state.r#axis == Axis::Z { return 212; }
+    fn to_id(&self) -> i32 {
+        if self.r#axis == Axis::Z { return 212; }
+        if self.r#axis == Axis::Y { return 211; }
+        if self.r#axis == Axis::X { return 210; }
         panic!("Invalid block state")
     }
 
     fn from_id(state_id: i32) -> Option<Self> {
-        if state_id == 210 {
+        if state_id == 212 {
             return Some(JungleWood {
-                r#axis: Axis::X,
+                r#axis: Axis::Z,
             });
         }
         if state_id == 211 {
@@ -32,9 +32,9 @@ impl BlockState for JungleWood {
                 r#axis: Axis::Y,
             });
         }
-        if state_id == 212 {
+        if state_id == 210 {
             return Some(JungleWood {
-                r#axis: Axis::Z,
+                r#axis: Axis::X,
             });
         }
         return None;

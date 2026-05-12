@@ -6,7 +6,7 @@ pub struct DiamondBlock {
 
 
 impl BlockState for DiamondBlock {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 5108;
         panic!("Invalid block state")
     }

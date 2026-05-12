@@ -16,52 +16,22 @@ pub enum Facing {
 }
 
 impl BlockState for PaleOakWallSign {
-    fn to_id(self) -> i32 {
-        if block_state.r#waterlogged == false && block_state.r#facing == Facing::East { return 5689; }
-        if block_state.r#waterlogged == true && block_state.r#facing == Facing::North { return 5682; }
-        if block_state.r#facing == Facing::East && block_state.r#waterlogged == true { return 5688; }
-        if block_state.r#facing == Facing::South && block_state.r#waterlogged == true { return 5684; }
-        if block_state.r#waterlogged == false && block_state.r#facing == Facing::North { return 5683; }
-        if block_state.r#facing == Facing::South && block_state.r#waterlogged == false { return 5685; }
-        if block_state.r#facing == Facing::West && block_state.r#waterlogged == true { return 5686; }
-        if block_state.r#waterlogged == false && block_state.r#facing == Facing::West { return 5687; }
+    fn to_id(&self) -> i32 {
+        if self.r#facing == Facing::North && self.r#waterlogged == false { return 5683; }
+        if self.r#facing == Facing::West && self.r#waterlogged == true { return 5686; }
+        if self.r#waterlogged == true && self.r#facing == Facing::North { return 5682; }
+        if self.r#waterlogged == false && self.r#facing == Facing::West { return 5687; }
+        if self.r#facing == Facing::East && self.r#waterlogged == true { return 5688; }
+        if self.r#facing == Facing::South && self.r#waterlogged == false { return 5685; }
+        if self.r#waterlogged == true && self.r#facing == Facing::South { return 5684; }
+        if self.r#facing == Facing::East && self.r#waterlogged == false { return 5689; }
         panic!("Invalid block state")
     }
 
     fn from_id(state_id: i32) -> Option<Self> {
-        if state_id == 5689 {
-            return Some(PaleOakWallSign {
-                r#waterlogged: false,
-                r#facing: Facing::East,
-            });
-        }
-        if state_id == 5682 {
-            return Some(PaleOakWallSign {
-                r#waterlogged: true,
-                r#facing: Facing::North,
-            });
-        }
-        if state_id == 5688 {
-            return Some(PaleOakWallSign {
-                r#facing: Facing::East,
-                r#waterlogged: true,
-            });
-        }
-        if state_id == 5684 {
-            return Some(PaleOakWallSign {
-                r#facing: Facing::South,
-                r#waterlogged: true,
-            });
-        }
         if state_id == 5683 {
             return Some(PaleOakWallSign {
-                r#waterlogged: false,
                 r#facing: Facing::North,
-            });
-        }
-        if state_id == 5685 {
-            return Some(PaleOakWallSign {
-                r#facing: Facing::South,
                 r#waterlogged: false,
             });
         }
@@ -71,10 +41,40 @@ impl BlockState for PaleOakWallSign {
                 r#waterlogged: true,
             });
         }
+        if state_id == 5682 {
+            return Some(PaleOakWallSign {
+                r#waterlogged: true,
+                r#facing: Facing::North,
+            });
+        }
         if state_id == 5687 {
             return Some(PaleOakWallSign {
                 r#waterlogged: false,
                 r#facing: Facing::West,
+            });
+        }
+        if state_id == 5688 {
+            return Some(PaleOakWallSign {
+                r#facing: Facing::East,
+                r#waterlogged: true,
+            });
+        }
+        if state_id == 5685 {
+            return Some(PaleOakWallSign {
+                r#facing: Facing::South,
+                r#waterlogged: false,
+            });
+        }
+        if state_id == 5684 {
+            return Some(PaleOakWallSign {
+                r#waterlogged: true,
+                r#facing: Facing::South,
+            });
+        }
+        if state_id == 5689 {
+            return Some(PaleOakWallSign {
+                r#facing: Facing::East,
+                r#waterlogged: false,
             });
         }
         return None;

@@ -6,7 +6,7 @@ pub struct CoalOre {
 
 
 impl BlockState for CoalOre {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 133;
         panic!("Invalid block state")
     }

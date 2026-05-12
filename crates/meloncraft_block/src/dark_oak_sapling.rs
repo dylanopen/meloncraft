@@ -7,9 +7,9 @@ pub struct DarkOakSapling {
 
 
 impl BlockState for DarkOakSapling {
-    fn to_id(self) -> i32 {
-        if block_state.r#stage == 0 { return 41; }
-        if block_state.r#stage == 1 { return 42; }
+    fn to_id(&self) -> i32 {
+        if self.r#stage == 0 { return 41; }
+        if self.r#stage == 1 { return 42; }
         panic!("Invalid block state")
     }
 

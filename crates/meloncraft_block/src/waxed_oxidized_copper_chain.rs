@@ -2,8 +2,8 @@ use crate::BlockState;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct WaxedOxidizedCopperChain {
-    pub waterlogged: bool,
     pub r#axis: Axis,
+    pub waterlogged: bool,
 }
 
 
@@ -15,13 +15,13 @@ pub enum Axis {
 }
 
 impl BlockState for WaxedOxidizedCopperChain {
-    fn to_id(self) -> i32 {
-        if block_state.r#axis == Axis::Z && block_state.r#waterlogged == false { return 8098; }
-        if block_state.r#waterlogged == true && block_state.r#axis == Axis::Y { return 8095; }
-        if block_state.r#axis == Axis::Y && block_state.r#waterlogged == false { return 8096; }
-        if block_state.r#axis == Axis::Z && block_state.r#waterlogged == true { return 8097; }
-        if block_state.r#axis == Axis::X && block_state.r#waterlogged == false { return 8094; }
-        if block_state.r#waterlogged == true && block_state.r#axis == Axis::X { return 8093; }
+    fn to_id(&self) -> i32 {
+        if self.r#axis == Axis::Z && self.r#waterlogged == false { return 8098; }
+        if self.r#axis == Axis::Y && self.r#waterlogged == true { return 8095; }
+        if self.r#waterlogged == false && self.r#axis == Axis::X { return 8094; }
+        if self.r#axis == Axis::Y && self.r#waterlogged == false { return 8096; }
+        if self.r#axis == Axis::X && self.r#waterlogged == true { return 8093; }
+        if self.r#axis == Axis::Z && self.r#waterlogged == true { return 8097; }
         panic!("Invalid block state")
     }
 
@@ -34,8 +34,14 @@ impl BlockState for WaxedOxidizedCopperChain {
         }
         if state_id == 8095 {
             return Some(WaxedOxidizedCopperChain {
-                r#waterlogged: true,
                 r#axis: Axis::Y,
+                r#waterlogged: true,
+            });
+        }
+        if state_id == 8094 {
+            return Some(WaxedOxidizedCopperChain {
+                r#waterlogged: false,
+                r#axis: Axis::X,
             });
         }
         if state_id == 8096 {
@@ -44,22 +50,16 @@ impl BlockState for WaxedOxidizedCopperChain {
                 r#waterlogged: false,
             });
         }
+        if state_id == 8093 {
+            return Some(WaxedOxidizedCopperChain {
+                r#axis: Axis::X,
+                r#waterlogged: true,
+            });
+        }
         if state_id == 8097 {
             return Some(WaxedOxidizedCopperChain {
                 r#axis: Axis::Z,
                 r#waterlogged: true,
-            });
-        }
-        if state_id == 8094 {
-            return Some(WaxedOxidizedCopperChain {
-                r#axis: Axis::X,
-                r#waterlogged: false,
-            });
-        }
-        if state_id == 8093 {
-            return Some(WaxedOxidizedCopperChain {
-                r#waterlogged: true,
-                r#axis: Axis::X,
             });
         }
         return None;

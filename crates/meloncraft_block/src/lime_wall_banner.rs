@@ -15,11 +15,11 @@ pub enum Facing {
 }
 
 impl BlockState for LimeWallBanner {
-    fn to_id(self) -> i32 {
-        if block_state.r#facing == Facing::East { return 13004; }
-        if block_state.r#facing == Facing::West { return 13003; }
-        if block_state.r#facing == Facing::North { return 13001; }
-        if block_state.r#facing == Facing::South { return 13002; }
+    fn to_id(&self) -> i32 {
+        if self.r#facing == Facing::East { return 13004; }
+        if self.r#facing == Facing::West { return 13003; }
+        if self.r#facing == Facing::North { return 13001; }
+        if self.r#facing == Facing::South { return 13002; }
         panic!("Invalid block state")
     }
 

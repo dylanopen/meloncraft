@@ -6,7 +6,7 @@ pub struct RedSandstone {
 
 
 impl BlockState for RedSandstone {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 13045;
         panic!("Invalid block state")
     }

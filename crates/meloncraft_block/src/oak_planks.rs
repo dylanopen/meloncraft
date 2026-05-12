@@ -6,7 +6,7 @@ pub struct OakPlanks {
 
 
 impl BlockState for OakPlanks {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 15;
         panic!("Invalid block state")
     }

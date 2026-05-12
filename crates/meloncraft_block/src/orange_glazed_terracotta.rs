@@ -15,11 +15,11 @@ pub enum Facing {
 }
 
 impl BlockState for OrangeGlazedTerracotta {
-    fn to_id(self) -> i32 {
-        if block_state.r#facing == Facing::West { return 14770; }
-        if block_state.r#facing == Facing::East { return 14771; }
-        if block_state.r#facing == Facing::North { return 14768; }
-        if block_state.r#facing == Facing::South { return 14769; }
+    fn to_id(&self) -> i32 {
+        if self.r#facing == Facing::West { return 14770; }
+        if self.r#facing == Facing::North { return 14768; }
+        if self.r#facing == Facing::South { return 14769; }
+        if self.r#facing == Facing::East { return 14771; }
         panic!("Invalid block state")
     }
 
@@ -27,11 +27,6 @@ impl BlockState for OrangeGlazedTerracotta {
         if state_id == 14770 {
             return Some(OrangeGlazedTerracotta {
                 r#facing: Facing::West,
-            });
-        }
-        if state_id == 14771 {
-            return Some(OrangeGlazedTerracotta {
-                r#facing: Facing::East,
             });
         }
         if state_id == 14768 {
@@ -42,6 +37,11 @@ impl BlockState for OrangeGlazedTerracotta {
         if state_id == 14769 {
             return Some(OrangeGlazedTerracotta {
                 r#facing: Facing::South,
+            });
+        }
+        if state_id == 14771 {
+            return Some(OrangeGlazedTerracotta {
+                r#facing: Facing::East,
             });
         }
         return None;

@@ -6,7 +6,7 @@ pub struct Diorite {
 
 
 impl BlockState for Diorite {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 4;
         panic!("Invalid block state")
     }

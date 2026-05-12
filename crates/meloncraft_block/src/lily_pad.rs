@@ -6,7 +6,7 @@ pub struct LilyPad {
 
 
 impl BlockState for LilyPad {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 8719;
         panic!("Invalid block state")
     }

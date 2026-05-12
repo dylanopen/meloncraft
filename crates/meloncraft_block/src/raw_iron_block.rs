@@ -6,7 +6,7 @@ pub struct RawIronBlock {
 
 
 impl BlockState for RawIronBlock {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 29375;
         panic!("Invalid block state")
     }

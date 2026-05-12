@@ -14,10 +14,10 @@ pub enum Axis {
 }
 
 impl BlockState for DarkOakLog {
-    fn to_id(self) -> i32 {
-        if block_state.r#axis == Axis::X { return 154; }
-        if block_state.r#axis == Axis::Y { return 155; }
-        if block_state.r#axis == Axis::Z { return 156; }
+    fn to_id(&self) -> i32 {
+        if self.r#axis == Axis::X { return 154; }
+        if self.r#axis == Axis::Y { return 155; }
+        if self.r#axis == Axis::Z { return 156; }
         panic!("Invalid block state")
     }
 

@@ -14,19 +14,14 @@ pub enum Axis {
 }
 
 impl BlockState for AcaciaWood {
-    fn to_id(self) -> i32 {
-        if block_state.r#axis == Axis::Y { return 214; }
-        if block_state.r#axis == Axis::Z { return 215; }
-        if block_state.r#axis == Axis::X { return 213; }
+    fn to_id(&self) -> i32 {
+        if self.r#axis == Axis::Z { return 215; }
+        if self.r#axis == Axis::X { return 213; }
+        if self.r#axis == Axis::Y { return 214; }
         panic!("Invalid block state")
     }
 
     fn from_id(state_id: i32) -> Option<Self> {
-        if state_id == 214 {
-            return Some(AcaciaWood {
-                r#axis: Axis::Y,
-            });
-        }
         if state_id == 215 {
             return Some(AcaciaWood {
                 r#axis: Axis::Z,
@@ -35,6 +30,11 @@ impl BlockState for AcaciaWood {
         if state_id == 213 {
             return Some(AcaciaWood {
                 r#axis: Axis::X,
+            });
+        }
+        if state_id == 214 {
+            return Some(AcaciaWood {
+                r#axis: Axis::Y,
             });
         }
         return None;

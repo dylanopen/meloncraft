@@ -6,7 +6,7 @@ pub struct BambooMosaic {
 
 
 impl BlockState for BambooMosaic {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 28;
         panic!("Invalid block state")
     }

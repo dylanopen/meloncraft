@@ -6,7 +6,7 @@ pub struct LimeWool {
 
 
 impl BlockState for LimeWool {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 2098;
         panic!("Invalid block state")
     }

@@ -6,7 +6,7 @@ pub struct PurpleCarpet {
 
 
 impl BlockState for PurpleCarpet {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 12704;
         panic!("Invalid block state")
     }

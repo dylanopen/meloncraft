@@ -6,7 +6,7 @@ pub struct Calcite {
 
 
 impl BlockState for Calcite {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 24485;
         panic!("Invalid block state")
     }

@@ -6,7 +6,7 @@ pub struct BambooPlanks {
 
 
 impl BlockState for BambooPlanks {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 27;
         panic!("Invalid block state")
     }

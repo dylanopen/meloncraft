@@ -6,7 +6,7 @@ pub struct PolishedGranite {
 
 
 impl BlockState for PolishedGranite {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 3;
         panic!("Invalid block state")
     }

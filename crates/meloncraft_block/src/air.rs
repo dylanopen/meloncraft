@@ -6,7 +6,7 @@ pub struct Air {
 
 
 impl BlockState for Air {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 0;
         panic!("Invalid block state")
     }

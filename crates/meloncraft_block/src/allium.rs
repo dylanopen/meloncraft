@@ -6,7 +6,7 @@ pub struct Allium {
 
 
 impl BlockState for Allium {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 2125;
         panic!("Invalid block state")
     }

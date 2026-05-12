@@ -6,7 +6,7 @@ pub struct StructureVoid {
 
 
 impl BlockState for StructureVoid {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 14649;
         panic!("Invalid block state")
     }

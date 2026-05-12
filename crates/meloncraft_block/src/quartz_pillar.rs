@@ -14,22 +14,22 @@ pub enum Axis {
 }
 
 impl BlockState for QuartzPillar {
-    fn to_id(self) -> i32 {
-        if block_state.r#axis == Axis::Z { return 11125; }
-        if block_state.r#axis == Axis::Y { return 11124; }
-        if block_state.r#axis == Axis::X { return 11123; }
+    fn to_id(&self) -> i32 {
+        if self.r#axis == Axis::Y { return 11124; }
+        if self.r#axis == Axis::Z { return 11125; }
+        if self.r#axis == Axis::X { return 11123; }
         panic!("Invalid block state")
     }
 
     fn from_id(state_id: i32) -> Option<Self> {
-        if state_id == 11125 {
-            return Some(QuartzPillar {
-                r#axis: Axis::Z,
-            });
-        }
         if state_id == 11124 {
             return Some(QuartzPillar {
                 r#axis: Axis::Y,
+            });
+        }
+        if state_id == 11125 {
+            return Some(QuartzPillar {
+                r#axis: Axis::Z,
             });
         }
         if state_id == 11123 {

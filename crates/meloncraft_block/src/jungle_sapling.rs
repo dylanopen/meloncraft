@@ -7,9 +7,9 @@ pub struct JungleSapling {
 
 
 impl BlockState for JungleSapling {
-    fn to_id(self) -> i32 {
-        if block_state.r#stage == 0 { return 35; }
-        if block_state.r#stage == 1 { return 36; }
+    fn to_id(&self) -> i32 {
+        if self.r#stage == 0 { return 35; }
+        if self.r#stage == 1 { return 36; }
         panic!("Invalid block state")
     }
 

@@ -6,7 +6,7 @@ pub struct CrackedNetherBricks {
 
 
 impl BlockState for CrackedNetherBricks {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 22892;
         panic!("Invalid block state")
     }

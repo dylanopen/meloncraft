@@ -17,25 +17,25 @@ pub enum Facing {
 }
 
 impl BlockState for BlackShulkerBox {
-    fn to_id(self) -> i32 {
-        if block_state.r#facing == Facing::Up { return 14762; }
-        if block_state.r#facing == Facing::East { return 14759; }
-        if block_state.r#facing == Facing::South { return 14760; }
-        if block_state.r#facing == Facing::West { return 14761; }
-        if block_state.r#facing == Facing::Down { return 14763; }
-        if block_state.r#facing == Facing::North { return 14758; }
+    fn to_id(&self) -> i32 {
+        if self.r#facing == Facing::West { return 14761; }
+        if self.r#facing == Facing::North { return 14758; }
+        if self.r#facing == Facing::South { return 14760; }
+        if self.r#facing == Facing::Up { return 14762; }
+        if self.r#facing == Facing::Down { return 14763; }
+        if self.r#facing == Facing::East { return 14759; }
         panic!("Invalid block state")
     }
 
     fn from_id(state_id: i32) -> Option<Self> {
-        if state_id == 14762 {
+        if state_id == 14761 {
             return Some(BlackShulkerBox {
-                r#facing: Facing::Up,
+                r#facing: Facing::West,
             });
         }
-        if state_id == 14759 {
+        if state_id == 14758 {
             return Some(BlackShulkerBox {
-                r#facing: Facing::East,
+                r#facing: Facing::North,
             });
         }
         if state_id == 14760 {
@@ -43,9 +43,9 @@ impl BlockState for BlackShulkerBox {
                 r#facing: Facing::South,
             });
         }
-        if state_id == 14761 {
+        if state_id == 14762 {
             return Some(BlackShulkerBox {
-                r#facing: Facing::West,
+                r#facing: Facing::Up,
             });
         }
         if state_id == 14763 {
@@ -53,9 +53,9 @@ impl BlockState for BlackShulkerBox {
                 r#facing: Facing::Down,
             });
         }
-        if state_id == 14758 {
+        if state_id == 14759 {
             return Some(BlackShulkerBox {
-                r#facing: Facing::North,
+                r#facing: Facing::East,
             });
         }
         return None;

@@ -6,7 +6,7 @@ pub struct WitherRose {
 
 
 impl BlockState for WitherRose {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 2133;
         panic!("Invalid block state")
     }

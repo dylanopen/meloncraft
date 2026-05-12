@@ -13,9 +13,9 @@ pub enum Half {
 }
 
 impl BlockState for Sunflower {
-    fn to_id(self) -> i32 {
-        if block_state.r#half == Half::Lower { return 12714; }
-        if block_state.r#half == Half::Upper { return 12713; }
+    fn to_id(&self) -> i32 {
+        if self.r#half == Half::Lower { return 12714; }
+        if self.r#half == Half::Upper { return 12713; }
         panic!("Invalid block state")
     }
 

@@ -6,7 +6,7 @@ pub struct AncientDebris {
 
 
 impl BlockState for AncientDebris {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 21617;
         panic!("Invalid block state")
     }

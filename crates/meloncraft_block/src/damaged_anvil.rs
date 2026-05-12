@@ -15,18 +15,18 @@ pub enum Facing {
 }
 
 impl BlockState for DamagedAnvil {
-    fn to_id(self) -> i32 {
-        if block_state.r#facing == Facing::East { return 11004; }
-        if block_state.r#facing == Facing::North { return 11001; }
-        if block_state.r#facing == Facing::South { return 11002; }
-        if block_state.r#facing == Facing::West { return 11003; }
+    fn to_id(&self) -> i32 {
+        if self.r#facing == Facing::West { return 11003; }
+        if self.r#facing == Facing::North { return 11001; }
+        if self.r#facing == Facing::East { return 11004; }
+        if self.r#facing == Facing::South { return 11002; }
         panic!("Invalid block state")
     }
 
     fn from_id(state_id: i32) -> Option<Self> {
-        if state_id == 11004 {
+        if state_id == 11003 {
             return Some(DamagedAnvil {
-                r#facing: Facing::East,
+                r#facing: Facing::West,
             });
         }
         if state_id == 11001 {
@@ -34,14 +34,14 @@ impl BlockState for DamagedAnvil {
                 r#facing: Facing::North,
             });
         }
+        if state_id == 11004 {
+            return Some(DamagedAnvil {
+                r#facing: Facing::East,
+            });
+        }
         if state_id == 11002 {
             return Some(DamagedAnvil {
                 r#facing: Facing::South,
-            });
-        }
-        if state_id == 11003 {
-            return Some(DamagedAnvil {
-                r#facing: Facing::West,
             });
         }
         return None;

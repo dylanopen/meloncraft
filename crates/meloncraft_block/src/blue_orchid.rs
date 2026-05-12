@@ -6,7 +6,7 @@ pub struct BlueOrchid {
 
 
 impl BlockState for BlueOrchid {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 2124;
         panic!("Invalid block state")
     }

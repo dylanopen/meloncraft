@@ -6,7 +6,7 @@ pub struct DiamondOre {
 
 
 impl BlockState for DiamondOre {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 5106;
         panic!("Invalid block state")
     }

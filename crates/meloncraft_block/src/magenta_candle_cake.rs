@@ -7,9 +7,9 @@ pub struct MagentaCandleCake {
 
 
 impl BlockState for MagentaCandleCake {
-    fn to_id(self) -> i32 {
-        if block_state.r#lit == false { return 23173; }
-        if block_state.r#lit == true { return 23172; }
+    fn to_id(&self) -> i32 {
+        if self.r#lit == false { return 23173; }
+        if self.r#lit == true { return 23172; }
         panic!("Invalid block state")
     }
 

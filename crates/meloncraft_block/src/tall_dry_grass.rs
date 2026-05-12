@@ -6,7 +6,7 @@ pub struct TallDryGrass {
 
 
 impl BlockState for TallDryGrass {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 2053;
         panic!("Invalid block state")
     }

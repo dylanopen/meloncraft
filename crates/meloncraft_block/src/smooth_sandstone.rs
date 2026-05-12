@@ -6,7 +6,7 @@ pub struct SmoothSandstone {
 
 
 impl BlockState for SmoothSandstone {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 13279;
         panic!("Invalid block state")
     }

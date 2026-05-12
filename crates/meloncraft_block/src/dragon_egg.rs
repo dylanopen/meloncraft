@@ -6,7 +6,7 @@ pub struct DragonEgg {
 
 
 impl BlockState for DragonEgg {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 9277;
         panic!("Invalid block state")
     }

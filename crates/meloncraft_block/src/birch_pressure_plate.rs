@@ -7,9 +7,9 @@ pub struct BirchPressurePlate {
 
 
 impl BlockState for BirchPressurePlate {
-    fn to_id(self) -> i32 {
-        if block_state.r#powered == false { return 6665; }
-        if block_state.r#powered == true { return 6664; }
+    fn to_id(&self) -> i32 {
+        if self.r#powered == false { return 6665; }
+        if self.r#powered == true { return 6664; }
         panic!("Invalid block state")
     }
 

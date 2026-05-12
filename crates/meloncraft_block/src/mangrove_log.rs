@@ -14,10 +14,10 @@ pub enum Axis {
 }
 
 impl BlockState for MangroveLog {
-    fn to_id(self) -> i32 {
-        if block_state.r#axis == Axis::Y { return 161; }
-        if block_state.r#axis == Axis::Z { return 162; }
-        if block_state.r#axis == Axis::X { return 160; }
+    fn to_id(&self) -> i32 {
+        if self.r#axis == Axis::Y { return 161; }
+        if self.r#axis == Axis::Z { return 162; }
+        if self.r#axis == Axis::X { return 160; }
         panic!("Invalid block state")
     }
 

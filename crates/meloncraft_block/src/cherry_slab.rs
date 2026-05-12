@@ -15,21 +15,27 @@ pub enum Type {
 }
 
 impl BlockState for CherrySlab {
-    fn to_id(self) -> i32 {
-        if block_state.r#waterlogged == false && block_state.r#type == Type::Top { return 13159; }
-        if block_state.r#type == Type::Bottom && block_state.r#waterlogged == false { return 13161; }
-        if block_state.r#waterlogged == true && block_state.r#type == Type::Bottom { return 13160; }
-        if block_state.r#waterlogged == false && block_state.r#type == Type::Double { return 13163; }
-        if block_state.r#type == Type::Double && block_state.r#waterlogged == true { return 13162; }
-        if block_state.r#type == Type::Top && block_state.r#waterlogged == true { return 13158; }
+    fn to_id(&self) -> i32 {
+        if self.r#type == Type::Top && self.r#waterlogged == true { return 13158; }
+        if self.r#type == Type::Bottom && self.r#waterlogged == true { return 13160; }
+        if self.r#type == Type::Bottom && self.r#waterlogged == false { return 13161; }
+        if self.r#waterlogged == true && self.r#type == Type::Double { return 13162; }
+        if self.r#waterlogged == false && self.r#type == Type::Double { return 13163; }
+        if self.r#type == Type::Top && self.r#waterlogged == false { return 13159; }
         panic!("Invalid block state")
     }
 
     fn from_id(state_id: i32) -> Option<Self> {
-        if state_id == 13159 {
+        if state_id == 13158 {
             return Some(CherrySlab {
-                r#waterlogged: false,
                 r#type: Type::Top,
+                r#waterlogged: true,
+            });
+        }
+        if state_id == 13160 {
+            return Some(CherrySlab {
+                r#type: Type::Bottom,
+                r#waterlogged: true,
             });
         }
         if state_id == 13161 {
@@ -38,10 +44,10 @@ impl BlockState for CherrySlab {
                 r#waterlogged: false,
             });
         }
-        if state_id == 13160 {
+        if state_id == 13162 {
             return Some(CherrySlab {
                 r#waterlogged: true,
-                r#type: Type::Bottom,
+                r#type: Type::Double,
             });
         }
         if state_id == 13163 {
@@ -50,16 +56,10 @@ impl BlockState for CherrySlab {
                 r#type: Type::Double,
             });
         }
-        if state_id == 13162 {
-            return Some(CherrySlab {
-                r#type: Type::Double,
-                r#waterlogged: true,
-            });
-        }
-        if state_id == 13158 {
+        if state_id == 13159 {
             return Some(CherrySlab {
                 r#type: Type::Top,
-                r#waterlogged: true,
+                r#waterlogged: false,
             });
         }
         return None;

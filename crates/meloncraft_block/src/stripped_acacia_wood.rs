@@ -14,10 +14,10 @@ pub enum Axis {
 }
 
 impl BlockState for StrippedAcaciaWood {
-    fn to_id(self) -> i32 {
-        if block_state.r#axis == Axis::X { return 237; }
-        if block_state.r#axis == Axis::Y { return 238; }
-        if block_state.r#axis == Axis::Z { return 239; }
+    fn to_id(&self) -> i32 {
+        if self.r#axis == Axis::X { return 237; }
+        if self.r#axis == Axis::Z { return 239; }
+        if self.r#axis == Axis::Y { return 238; }
         panic!("Invalid block state")
     }
 
@@ -27,14 +27,14 @@ impl BlockState for StrippedAcaciaWood {
                 r#axis: Axis::X,
             });
         }
-        if state_id == 238 {
-            return Some(StrippedAcaciaWood {
-                r#axis: Axis::Y,
-            });
-        }
         if state_id == 239 {
             return Some(StrippedAcaciaWood {
                 r#axis: Axis::Z,
+            });
+        }
+        if state_id == 238 {
+            return Some(StrippedAcaciaWood {
+                r#axis: Axis::Y,
             });
         }
         return None;

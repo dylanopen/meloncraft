@@ -6,7 +6,7 @@ pub struct NetheriteBlock {
 
 
 impl BlockState for NetheriteBlock {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 21616;
         panic!("Invalid block state")
     }

@@ -7,9 +7,9 @@ pub struct PaleHangingMoss {
 
 
 impl BlockState for PaleHangingMoss {
-    fn to_id(self) -> i32 {
-        if block_state.r#tip == true { return 29664; }
-        if block_state.r#tip == false { return 29665; }
+    fn to_id(&self) -> i32 {
+        if self.r#tip == true { return 29664; }
+        if self.r#tip == false { return 29665; }
         panic!("Invalid block state")
     }
 

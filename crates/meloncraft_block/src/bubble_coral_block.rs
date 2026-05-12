@@ -6,7 +6,7 @@ pub struct BubbleCoralBlock {
 
 
 impl BlockState for BubbleCoralBlock {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 14942;
         panic!("Invalid block state")
     }

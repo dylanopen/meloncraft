@@ -6,7 +6,7 @@ pub struct RedConcrete {
 
 
 impl BlockState for RedConcrete {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 14842;
         panic!("Invalid block state")
     }

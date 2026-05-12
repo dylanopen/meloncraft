@@ -6,7 +6,7 @@ pub struct Frogspawn {
 
 
 impl BlockState for Frogspawn {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 29389;
         panic!("Invalid block state")
     }

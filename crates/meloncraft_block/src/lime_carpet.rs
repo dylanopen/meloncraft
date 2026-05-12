@@ -6,7 +6,7 @@ pub struct LimeCarpet {
 
 
 impl BlockState for LimeCarpet {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 12699;
         panic!("Invalid block state")
     }

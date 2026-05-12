@@ -6,7 +6,7 @@ pub struct NetherWartBlock {
 
 
 impl BlockState for NetherWartBlock {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 14644;
         panic!("Invalid block state")
     }

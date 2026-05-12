@@ -6,7 +6,7 @@ pub struct Melon {
 
 
 impl BlockState for Melon {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 8132;
         panic!("Invalid block state")
     }

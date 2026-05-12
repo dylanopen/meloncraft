@@ -6,7 +6,7 @@ pub struct LimeStainedGlass {
 
 
 impl BlockState for LimeStainedGlass {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 6902;
         panic!("Invalid block state")
     }

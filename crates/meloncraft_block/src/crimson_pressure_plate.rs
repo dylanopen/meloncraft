@@ -7,9 +7,9 @@ pub struct CrimsonPressurePlate {
 
 
 impl BlockState for CrimsonPressurePlate {
-    fn to_id(self) -> i32 {
-        if block_state.r#powered == false { return 20845; }
-        if block_state.r#powered == true { return 20844; }
+    fn to_id(&self) -> i32 {
+        if self.r#powered == false { return 20845; }
+        if self.r#powered == true { return 20844; }
         panic!("Invalid block state")
     }
 

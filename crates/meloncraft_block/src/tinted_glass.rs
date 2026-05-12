@@ -6,7 +6,7 @@ pub struct TintedGlass {
 
 
 impl BlockState for TintedGlass {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 24486;
         panic!("Invalid block state")
     }

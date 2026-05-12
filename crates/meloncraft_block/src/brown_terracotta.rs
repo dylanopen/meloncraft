@@ -6,7 +6,7 @@ pub struct BrownTerracotta {
 
 
 impl BlockState for BrownTerracotta {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 11254;
         panic!("Invalid block state")
     }

@@ -6,7 +6,7 @@ pub struct KelpPlant {
 
 
 impl BlockState for KelpPlant {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 14886;
         panic!("Invalid block state")
     }

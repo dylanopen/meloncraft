@@ -6,7 +6,7 @@ pub struct BambooSapling {
 
 
 impl BlockState for BambooSapling {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 15076;
         panic!("Invalid block state")
     }

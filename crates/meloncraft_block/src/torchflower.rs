@@ -6,7 +6,7 @@ pub struct Torchflower {
 
 
 impl BlockState for Torchflower {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 2122;
         panic!("Invalid block state")
     }

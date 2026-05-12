@@ -7,9 +7,9 @@ pub struct Conduit {
 
 
 impl BlockState for Conduit {
-    fn to_id(self) -> i32 {
-        if block_state.r#waterlogged == true { return 15074; }
-        if block_state.r#waterlogged == false { return 15075; }
+    fn to_id(&self) -> i32 {
+        if self.r#waterlogged == true { return 15074; }
+        if self.r#waterlogged == false { return 15075; }
         panic!("Invalid block state")
     }
 

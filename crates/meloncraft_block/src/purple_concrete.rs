@@ -6,7 +6,7 @@ pub struct PurpleConcrete {
 
 
 impl BlockState for PurpleConcrete {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 14838;
         panic!("Invalid block state")
     }

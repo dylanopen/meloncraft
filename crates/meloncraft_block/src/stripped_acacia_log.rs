@@ -14,10 +14,10 @@ pub enum Axis {
 }
 
 impl BlockState for StrippedAcaciaLog {
-    fn to_id(self) -> i32 {
-        if block_state.r#axis == Axis::Z { return 182; }
-        if block_state.r#axis == Axis::X { return 180; }
-        if block_state.r#axis == Axis::Y { return 181; }
+    fn to_id(&self) -> i32 {
+        if self.r#axis == Axis::Z { return 182; }
+        if self.r#axis == Axis::X { return 180; }
+        if self.r#axis == Axis::Y { return 181; }
         panic!("Invalid block state")
     }
 

@@ -6,7 +6,7 @@ pub struct WarpedWartBlock {
 
 
 impl BlockState for WarpedWartBlock {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 20757;
         panic!("Invalid block state")
     }

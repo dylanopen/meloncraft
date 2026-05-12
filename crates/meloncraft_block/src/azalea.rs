@@ -6,7 +6,7 @@ pub struct Azalea {
 
 
 impl BlockState for Azalea {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 27609;
         panic!("Invalid block state")
     }

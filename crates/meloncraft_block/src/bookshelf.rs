@@ -6,7 +6,7 @@ pub struct Bookshelf {
 
 
 impl BlockState for Bookshelf {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 2142;
         panic!("Invalid block state")
     }

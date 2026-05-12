@@ -6,7 +6,7 @@ pub struct OrangeTulip {
 
 
 impl BlockState for OrangeTulip {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 2128;
         panic!("Invalid block state")
     }

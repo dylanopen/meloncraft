@@ -6,7 +6,7 @@ pub struct WaxedOxidizedChiseledCopper {
 
 
 impl BlockState for WaxedOxidizedChiseledCopper {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 25121;
         panic!("Invalid block state")
     }

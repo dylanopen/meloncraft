@@ -6,7 +6,7 @@ pub struct Bedrock {
 
 
 impl BlockState for Bedrock {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 85;
         panic!("Invalid block state")
     }

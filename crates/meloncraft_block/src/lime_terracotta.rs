@@ -6,7 +6,7 @@ pub struct LimeTerracotta {
 
 
 impl BlockState for LimeTerracotta {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 11247;
         panic!("Invalid block state")
     }

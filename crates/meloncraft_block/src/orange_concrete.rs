@@ -6,7 +6,7 @@ pub struct OrangeConcrete {
 
 
 impl BlockState for OrangeConcrete {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 14829;
         panic!("Invalid block state")
     }

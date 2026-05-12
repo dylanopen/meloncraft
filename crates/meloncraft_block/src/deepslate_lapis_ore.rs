@@ -6,7 +6,7 @@ pub struct DeepslateLapisOre {
 
 
 impl BlockState for DeepslateLapisOre {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 564;
         panic!("Invalid block state")
     }

@@ -6,7 +6,7 @@ pub struct Poppy {
 
 
 impl BlockState for Poppy {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 2123;
         panic!("Invalid block state")
     }

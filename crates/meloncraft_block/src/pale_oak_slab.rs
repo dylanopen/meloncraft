@@ -15,20 +15,20 @@ pub enum Type {
 }
 
 impl BlockState for PaleOakSlab {
-    fn to_id(self) -> i32 {
-        if block_state.r#type == Type::Top && block_state.r#waterlogged == false { return 13171; }
-        if block_state.r#type == Type::Bottom && block_state.r#waterlogged == true { return 13172; }
-        if block_state.r#type == Type::Bottom && block_state.r#waterlogged == false { return 13173; }
-        if block_state.r#type == Type::Double && block_state.r#waterlogged == false { return 13175; }
-        if block_state.r#type == Type::Top && block_state.r#waterlogged == true { return 13170; }
-        if block_state.r#waterlogged == true && block_state.r#type == Type::Double { return 13174; }
+    fn to_id(&self) -> i32 {
+        if self.r#type == Type::Bottom && self.r#waterlogged == false { return 13173; }
+        if self.r#type == Type::Bottom && self.r#waterlogged == true { return 13172; }
+        if self.r#type == Type::Top && self.r#waterlogged == false { return 13171; }
+        if self.r#waterlogged == true && self.r#type == Type::Double { return 13174; }
+        if self.r#waterlogged == false && self.r#type == Type::Double { return 13175; }
+        if self.r#type == Type::Top && self.r#waterlogged == true { return 13170; }
         panic!("Invalid block state")
     }
 
     fn from_id(state_id: i32) -> Option<Self> {
-        if state_id == 13171 {
+        if state_id == 13173 {
             return Some(PaleOakSlab {
-                r#type: Type::Top,
+                r#type: Type::Bottom,
                 r#waterlogged: false,
             });
         }
@@ -38,28 +38,28 @@ impl BlockState for PaleOakSlab {
                 r#waterlogged: true,
             });
         }
-        if state_id == 13173 {
-            return Some(PaleOakSlab {
-                r#type: Type::Bottom,
-                r#waterlogged: false,
-            });
-        }
-        if state_id == 13175 {
-            return Some(PaleOakSlab {
-                r#type: Type::Double,
-                r#waterlogged: false,
-            });
-        }
-        if state_id == 13170 {
+        if state_id == 13171 {
             return Some(PaleOakSlab {
                 r#type: Type::Top,
-                r#waterlogged: true,
+                r#waterlogged: false,
             });
         }
         if state_id == 13174 {
             return Some(PaleOakSlab {
                 r#waterlogged: true,
                 r#type: Type::Double,
+            });
+        }
+        if state_id == 13175 {
+            return Some(PaleOakSlab {
+                r#waterlogged: false,
+                r#type: Type::Double,
+            });
+        }
+        if state_id == 13170 {
+            return Some(PaleOakSlab {
+                r#type: Type::Top,
+                r#waterlogged: true,
             });
         }
         return None;

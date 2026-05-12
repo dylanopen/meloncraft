@@ -5,7 +5,7 @@ use std::io::Write;
 const OUTPUT_DIR: &str = "../../crates/meloncraft_block/src";
 
 fn main() {
-    let raw_block_states = std::fs::read_to_string("../../generated/blocks.json").unwrap();
+    let raw_block_states = std::fs::read_to_string("src/blocks.json").unwrap();
     let bs_json = json::parse(&raw_block_states).unwrap();
 
     let _ = fs::remove_dir_all(OUTPUT_DIR);
@@ -115,7 +115,7 @@ impl BlockState for _BlockName_ {
 
     let block_state_count = block_states.len();
 
-    states_output.push_str("    fn to_id(self) -> i32 {\n");
+    states_output.push_str("    fn to_id(&self) -> i32 {\n");
     
     for (id, block_state) in &mut *block_states {
         if block_state_count == 1 {
@@ -139,7 +139,7 @@ impl BlockState for _BlockName_ {
             } else {
                 format!("{}::{}", snake_to_upper_camel_case(property_name), snake_to_upper_camel_case(property_value))
             };
-            states_output.push_str(&format!("block_state.r#{} == {}", property_name, matched_value));
+            states_output.push_str(&format!("self.r#{} == {}", property_name, matched_value));
         }
         states_output.push_str(&format!(" {{ return {}; }}\n", id));
     }
@@ -192,18 +192,20 @@ fn snake_to_upper_camel_case(s: &str) -> String {
 fn write_block_state_matcher(block_state_ids: &HashMap<String, Vec<i32>>) {
     let mut output = String::new();
 
-    output.push_str("pub fn block_state_id_to_block_name(id: i32) -> Option<BlockState> {\n");
+    output.push_str("use crate::BlockState;\n\n");
+    output.push_str("pub fn id_to_block_state(id: i32) -> Option<Box<dyn BlockState>> {\n");
     output.push_str("    match id {\n");
     for (block_name, state_ids) in block_state_ids {
         for state_id in state_ids {
-            output.push_str(&format!("        {} => {}::from_id(id),\n", state_id, snake_to_upper_camel_case(&block_name.replace("minecraft:", ""))));
+            let block_name = block_name.replace("minecraft:", "");
+            output.push_str(&format!("        {} => Some(Box::new(crate::{}::{}::from_id(id)?)),\n", state_id, &block_name, snake_to_upper_camel_case(&block_name)));
         }
     }
     output.push_str("        _ => None,\n");
     output.push_str("    }\n");
     output.push_str("}\n");
 
-    std::fs::write(format!("{}/matcher.rs", OUTPUT_DIR), output).unwrap();
+    fs::write(format!("{}/matcher.rs", OUTPUT_DIR), output).unwrap();
 }
 
 fn write_lib_rs(block_names: Vec<String>) {
@@ -215,9 +217,9 @@ fn write_lib_rs(block_names: Vec<String>) {
     output.push_str("pub use block_state::*;\n");
 
     fs::write(format!("{}/block_state.rs", OUTPUT_DIR), "\
-pub trait BlockState {\n\
-    fn from_id(state_id: i32) -> Option<Self> where Self: Sized;\n
-    fn to_id(&self) -> i32 where Self: Sized;\n
+    pub trait BlockState {
+    fn to_id(&self) -> i32 where Self: Sized;
+    fn from_id(state_id: i32) -> Option<Self> where Self: Sized;
 }\n").unwrap();
 
     for block_name in block_names {

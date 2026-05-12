@@ -7,9 +7,9 @@ pub struct MangroveRoots {
 
 
 impl BlockState for MangroveRoots {
-    fn to_id(self) -> i32 {
-        if block_state.r#waterlogged == false { return 164; }
-        if block_state.r#waterlogged == true { return 163; }
+    fn to_id(&self) -> i32 {
+        if self.r#waterlogged == false { return 164; }
+        if self.r#waterlogged == true { return 163; }
         panic!("Invalid block state")
     }
 

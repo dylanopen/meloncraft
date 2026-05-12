@@ -14,14 +14,19 @@ pub enum Axis {
 }
 
 impl BlockState for Deepslate {
-    fn to_id(self) -> i32 {
-        if block_state.r#axis == Axis::Z { return 27723; }
-        if block_state.r#axis == Axis::X { return 27721; }
-        if block_state.r#axis == Axis::Y { return 27722; }
+    fn to_id(&self) -> i32 {
+        if self.r#axis == Axis::Y { return 27722; }
+        if self.r#axis == Axis::Z { return 27723; }
+        if self.r#axis == Axis::X { return 27721; }
         panic!("Invalid block state")
     }
 
     fn from_id(state_id: i32) -> Option<Self> {
+        if state_id == 27722 {
+            return Some(Deepslate {
+                r#axis: Axis::Y,
+            });
+        }
         if state_id == 27723 {
             return Some(Deepslate {
                 r#axis: Axis::Z,
@@ -30,11 +35,6 @@ impl BlockState for Deepslate {
         if state_id == 27721 {
             return Some(Deepslate {
                 r#axis: Axis::X,
-            });
-        }
-        if state_id == 27722 {
-            return Some(Deepslate {
-                r#axis: Axis::Y,
             });
         }
         return None;

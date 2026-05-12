@@ -17,20 +17,20 @@ pub enum Facing {
 }
 
 impl BlockState for YellowShulkerBox {
-    fn to_id(self) -> i32 {
-        if block_state.r#facing == Facing::North { return 14692; }
-        if block_state.r#facing == Facing::South { return 14694; }
-        if block_state.r#facing == Facing::West { return 14695; }
-        if block_state.r#facing == Facing::East { return 14693; }
-        if block_state.r#facing == Facing::Down { return 14697; }
-        if block_state.r#facing == Facing::Up { return 14696; }
+    fn to_id(&self) -> i32 {
+        if self.r#facing == Facing::East { return 14693; }
+        if self.r#facing == Facing::South { return 14694; }
+        if self.r#facing == Facing::West { return 14695; }
+        if self.r#facing == Facing::North { return 14692; }
+        if self.r#facing == Facing::Up { return 14696; }
+        if self.r#facing == Facing::Down { return 14697; }
         panic!("Invalid block state")
     }
 
     fn from_id(state_id: i32) -> Option<Self> {
-        if state_id == 14692 {
+        if state_id == 14693 {
             return Some(YellowShulkerBox {
-                r#facing: Facing::North,
+                r#facing: Facing::East,
             });
         }
         if state_id == 14694 {
@@ -43,19 +43,19 @@ impl BlockState for YellowShulkerBox {
                 r#facing: Facing::West,
             });
         }
-        if state_id == 14693 {
+        if state_id == 14692 {
             return Some(YellowShulkerBox {
-                r#facing: Facing::East,
-            });
-        }
-        if state_id == 14697 {
-            return Some(YellowShulkerBox {
-                r#facing: Facing::Down,
+                r#facing: Facing::North,
             });
         }
         if state_id == 14696 {
             return Some(YellowShulkerBox {
                 r#facing: Facing::Up,
+            });
+        }
+        if state_id == 14697 {
+            return Some(YellowShulkerBox {
+                r#facing: Facing::Down,
             });
         }
         return None;

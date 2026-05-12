@@ -14,19 +14,14 @@ pub enum Axis {
 }
 
 impl BlockState for OakLog {
-    fn to_id(self) -> i32 {
-        if block_state.r#axis == Axis::X { return 136; }
-        if block_state.r#axis == Axis::Y { return 137; }
-        if block_state.r#axis == Axis::Z { return 138; }
+    fn to_id(&self) -> i32 {
+        if self.r#axis == Axis::Y { return 137; }
+        if self.r#axis == Axis::Z { return 138; }
+        if self.r#axis == Axis::X { return 136; }
         panic!("Invalid block state")
     }
 
     fn from_id(state_id: i32) -> Option<Self> {
-        if state_id == 136 {
-            return Some(OakLog {
-                r#axis: Axis::X,
-            });
-        }
         if state_id == 137 {
             return Some(OakLog {
                 r#axis: Axis::Y,
@@ -35,6 +30,11 @@ impl BlockState for OakLog {
         if state_id == 138 {
             return Some(OakLog {
                 r#axis: Axis::Z,
+            });
+        }
+        if state_id == 136 {
+            return Some(OakLog {
+                r#axis: Axis::X,
             });
         }
         return None;

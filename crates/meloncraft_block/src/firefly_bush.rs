@@ -6,7 +6,7 @@ pub struct FireflyBush {
 
 
 impl BlockState for FireflyBush {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 29670;
         panic!("Invalid block state")
     }

@@ -6,7 +6,7 @@ pub struct EndPortal {
 
 
 impl BlockState for EndPortal {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 9267;
         panic!("Invalid block state")
     }

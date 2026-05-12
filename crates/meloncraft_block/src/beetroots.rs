@@ -7,15 +7,20 @@ pub struct Beetroots {
 
 
 impl BlockState for Beetroots {
-    fn to_id(self) -> i32 {
-        if block_state.r#age == 0 { return 14609; }
-        if block_state.r#age == 3 { return 14612; }
-        if block_state.r#age == 2 { return 14611; }
-        if block_state.r#age == 1 { return 14610; }
+    fn to_id(&self) -> i32 {
+        if self.r#age == 1 { return 14610; }
+        if self.r#age == 0 { return 14609; }
+        if self.r#age == 3 { return 14612; }
+        if self.r#age == 2 { return 14611; }
         panic!("Invalid block state")
     }
 
     fn from_id(state_id: i32) -> Option<Self> {
+        if state_id == 14610 {
+            return Some(Beetroots {
+                r#age: 1,
+            });
+        }
         if state_id == 14609 {
             return Some(Beetroots {
                 r#age: 0,
@@ -29,11 +34,6 @@ impl BlockState for Beetroots {
         if state_id == 14611 {
             return Some(Beetroots {
                 r#age: 2,
-            });
-        }
-        if state_id == 14610 {
-            return Some(Beetroots {
-                r#age: 1,
             });
         }
         return None;

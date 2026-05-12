@@ -6,7 +6,7 @@ pub struct PinkCarpet {
 
 
 impl BlockState for PinkCarpet {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 12700;
         panic!("Invalid block state")
     }

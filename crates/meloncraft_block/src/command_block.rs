@@ -18,39 +18,51 @@ pub enum Facing {
 }
 
 impl BlockState for CommandBlock {
-    fn to_id(self) -> i32 {
-        if block_state.r#conditional == true && block_state.r#facing == Facing::West { return 9770; }
-        if block_state.r#facing == Facing::Down && block_state.r#conditional == true { return 9772; }
-        if block_state.r#facing == Facing::North && block_state.r#conditional == false { return 9773; }
-        if block_state.r#conditional == false && block_state.r#facing == Facing::West { return 9776; }
-        if block_state.r#conditional == true && block_state.r#facing == Facing::South { return 9769; }
-        if block_state.r#facing == Facing::South && block_state.r#conditional == false { return 9775; }
-        if block_state.r#conditional == true && block_state.r#facing == Facing::Up { return 9771; }
-        if block_state.r#facing == Facing::North && block_state.r#conditional == true { return 9767; }
-        if block_state.r#conditional == false && block_state.r#facing == Facing::Down { return 9778; }
-        if block_state.r#conditional == true && block_state.r#facing == Facing::East { return 9768; }
-        if block_state.r#facing == Facing::East && block_state.r#conditional == false { return 9774; }
-        if block_state.r#facing == Facing::Up && block_state.r#conditional == false { return 9777; }
+    fn to_id(&self) -> i32 {
+        if self.r#conditional == true && self.r#facing == Facing::South { return 9769; }
+        if self.r#facing == Facing::West && self.r#conditional == true { return 9770; }
+        if self.r#conditional == false && self.r#facing == Facing::East { return 9774; }
+        if self.r#conditional == false && self.r#facing == Facing::Up { return 9777; }
+        if self.r#facing == Facing::East && self.r#conditional == true { return 9768; }
+        if self.r#conditional == false && self.r#facing == Facing::West { return 9776; }
+        if self.r#conditional == true && self.r#facing == Facing::Down { return 9772; }
+        if self.r#conditional == false && self.r#facing == Facing::North { return 9773; }
+        if self.r#conditional == true && self.r#facing == Facing::Up { return 9771; }
+        if self.r#conditional == false && self.r#facing == Facing::South { return 9775; }
+        if self.r#conditional == false && self.r#facing == Facing::Down { return 9778; }
+        if self.r#facing == Facing::North && self.r#conditional == true { return 9767; }
         panic!("Invalid block state")
     }
 
     fn from_id(state_id: i32) -> Option<Self> {
+        if state_id == 9769 {
+            return Some(CommandBlock {
+                r#conditional: true,
+                r#facing: Facing::South,
+            });
+        }
         if state_id == 9770 {
             return Some(CommandBlock {
-                r#conditional: true,
                 r#facing: Facing::West,
-            });
-        }
-        if state_id == 9772 {
-            return Some(CommandBlock {
-                r#facing: Facing::Down,
                 r#conditional: true,
             });
         }
-        if state_id == 9773 {
+        if state_id == 9774 {
             return Some(CommandBlock {
-                r#facing: Facing::North,
                 r#conditional: false,
+                r#facing: Facing::East,
+            });
+        }
+        if state_id == 9777 {
+            return Some(CommandBlock {
+                r#conditional: false,
+                r#facing: Facing::Up,
+            });
+        }
+        if state_id == 9768 {
+            return Some(CommandBlock {
+                r#facing: Facing::East,
+                r#conditional: true,
             });
         }
         if state_id == 9776 {
@@ -59,16 +71,16 @@ impl BlockState for CommandBlock {
                 r#facing: Facing::West,
             });
         }
-        if state_id == 9769 {
+        if state_id == 9772 {
             return Some(CommandBlock {
                 r#conditional: true,
-                r#facing: Facing::South,
+                r#facing: Facing::Down,
             });
         }
-        if state_id == 9775 {
+        if state_id == 9773 {
             return Some(CommandBlock {
-                r#facing: Facing::South,
                 r#conditional: false,
+                r#facing: Facing::North,
             });
         }
         if state_id == 9771 {
@@ -77,10 +89,10 @@ impl BlockState for CommandBlock {
                 r#facing: Facing::Up,
             });
         }
-        if state_id == 9767 {
+        if state_id == 9775 {
             return Some(CommandBlock {
-                r#facing: Facing::North,
-                r#conditional: true,
+                r#conditional: false,
+                r#facing: Facing::South,
             });
         }
         if state_id == 9778 {
@@ -89,22 +101,10 @@ impl BlockState for CommandBlock {
                 r#facing: Facing::Down,
             });
         }
-        if state_id == 9768 {
+        if state_id == 9767 {
             return Some(CommandBlock {
+                r#facing: Facing::North,
                 r#conditional: true,
-                r#facing: Facing::East,
-            });
-        }
-        if state_id == 9774 {
-            return Some(CommandBlock {
-                r#facing: Facing::East,
-                r#conditional: false,
-            });
-        }
-        if state_id == 9777 {
-            return Some(CommandBlock {
-                r#facing: Facing::Up,
-                r#conditional: false,
             });
         }
         return None;

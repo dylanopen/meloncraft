@@ -6,7 +6,7 @@ pub struct WarpedFungus {
 
 
 impl BlockState for WarpedFungus {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 20756;
         panic!("Invalid block state")
     }

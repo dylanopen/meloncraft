@@ -6,7 +6,7 @@ pub struct LightGrayWool {
 
 
 impl BlockState for LightGrayWool {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 2101;
         panic!("Invalid block state")
     }

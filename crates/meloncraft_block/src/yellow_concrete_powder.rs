@@ -6,7 +6,7 @@ pub struct YellowConcretePowder {
 
 
 impl BlockState for YellowConcretePowder {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 14848;
         panic!("Invalid block state")
     }

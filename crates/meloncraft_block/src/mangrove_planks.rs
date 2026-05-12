@@ -6,7 +6,7 @@ pub struct MangrovePlanks {
 
 
 impl BlockState for MangrovePlanks {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 26;
         panic!("Invalid block state")
     }

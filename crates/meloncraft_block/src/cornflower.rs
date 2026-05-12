@@ -6,7 +6,7 @@ pub struct Cornflower {
 
 
 impl BlockState for Cornflower {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 2132;
         panic!("Invalid block state")
     }

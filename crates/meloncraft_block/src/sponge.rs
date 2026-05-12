@@ -6,7 +6,7 @@ pub struct Sponge {
 
 
 impl BlockState for Sponge {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 560;
         panic!("Invalid block state")
     }

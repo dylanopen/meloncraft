@@ -2,8 +2,8 @@ use crate::BlockState;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Dropper {
-    pub r#facing: Facing,
     pub triggered: bool,
+    pub r#facing: Facing,
 }
 
 
@@ -18,39 +18,27 @@ pub enum Facing {
 }
 
 impl BlockState for Dropper {
-    fn to_id(self) -> i32 {
-        if block_state.r#facing == Facing::Up && block_state.r#triggered == true { return 11238; }
-        if block_state.r#triggered == false && block_state.r#facing == Facing::West { return 11237; }
-        if block_state.r#triggered == false && block_state.r#facing == Facing::Up { return 11239; }
-        if block_state.r#facing == Facing::Down && block_state.r#triggered == true { return 11240; }
-        if block_state.r#facing == Facing::North && block_state.r#triggered == true { return 11230; }
-        if block_state.r#facing == Facing::North && block_state.r#triggered == false { return 11231; }
-        if block_state.r#facing == Facing::Down && block_state.r#triggered == false { return 11241; }
-        if block_state.r#facing == Facing::South && block_state.r#triggered == false { return 11235; }
-        if block_state.r#facing == Facing::South && block_state.r#triggered == true { return 11234; }
-        if block_state.r#facing == Facing::West && block_state.r#triggered == true { return 11236; }
-        if block_state.r#facing == Facing::East && block_state.r#triggered == true { return 11232; }
-        if block_state.r#facing == Facing::East && block_state.r#triggered == false { return 11233; }
+    fn to_id(&self) -> i32 {
+        if self.r#facing == Facing::Up && self.r#triggered == false { return 11239; }
+        if self.r#facing == Facing::Down && self.r#triggered == true { return 11240; }
+        if self.r#facing == Facing::Down && self.r#triggered == false { return 11241; }
+        if self.r#facing == Facing::South && self.r#triggered == true { return 11234; }
+        if self.r#facing == Facing::West && self.r#triggered == true { return 11236; }
+        if self.r#triggered == false && self.r#facing == Facing::North { return 11231; }
+        if self.r#facing == Facing::South && self.r#triggered == false { return 11235; }
+        if self.r#facing == Facing::East && self.r#triggered == true { return 11232; }
+        if self.r#facing == Facing::East && self.r#triggered == false { return 11233; }
+        if self.r#facing == Facing::West && self.r#triggered == false { return 11237; }
+        if self.r#facing == Facing::Up && self.r#triggered == true { return 11238; }
+        if self.r#facing == Facing::North && self.r#triggered == true { return 11230; }
         panic!("Invalid block state")
     }
 
     fn from_id(state_id: i32) -> Option<Self> {
-        if state_id == 11238 {
-            return Some(Dropper {
-                r#facing: Facing::Up,
-                r#triggered: true,
-            });
-        }
-        if state_id == 11237 {
-            return Some(Dropper {
-                r#triggered: false,
-                r#facing: Facing::West,
-            });
-        }
         if state_id == 11239 {
             return Some(Dropper {
-                r#triggered: false,
                 r#facing: Facing::Up,
+                r#triggered: false,
             });
         }
         if state_id == 11240 {
@@ -59,27 +47,9 @@ impl BlockState for Dropper {
                 r#triggered: true,
             });
         }
-        if state_id == 11230 {
-            return Some(Dropper {
-                r#facing: Facing::North,
-                r#triggered: true,
-            });
-        }
-        if state_id == 11231 {
-            return Some(Dropper {
-                r#facing: Facing::North,
-                r#triggered: false,
-            });
-        }
         if state_id == 11241 {
             return Some(Dropper {
                 r#facing: Facing::Down,
-                r#triggered: false,
-            });
-        }
-        if state_id == 11235 {
-            return Some(Dropper {
-                r#facing: Facing::South,
                 r#triggered: false,
             });
         }
@@ -95,6 +65,18 @@ impl BlockState for Dropper {
                 r#triggered: true,
             });
         }
+        if state_id == 11231 {
+            return Some(Dropper {
+                r#triggered: false,
+                r#facing: Facing::North,
+            });
+        }
+        if state_id == 11235 {
+            return Some(Dropper {
+                r#facing: Facing::South,
+                r#triggered: false,
+            });
+        }
         if state_id == 11232 {
             return Some(Dropper {
                 r#facing: Facing::East,
@@ -105,6 +87,24 @@ impl BlockState for Dropper {
             return Some(Dropper {
                 r#facing: Facing::East,
                 r#triggered: false,
+            });
+        }
+        if state_id == 11237 {
+            return Some(Dropper {
+                r#facing: Facing::West,
+                r#triggered: false,
+            });
+        }
+        if state_id == 11238 {
+            return Some(Dropper {
+                r#facing: Facing::Up,
+                r#triggered: true,
+            });
+        }
+        if state_id == 11230 {
+            return Some(Dropper {
+                r#facing: Facing::North,
+                r#triggered: true,
             });
         }
         return None;

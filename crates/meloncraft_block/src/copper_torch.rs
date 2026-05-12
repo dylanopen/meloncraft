@@ -6,7 +6,7 @@ pub struct CopperTorch {
 
 
 impl BlockState for CopperTorch {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 6810;
         panic!("Invalid block state")
     }

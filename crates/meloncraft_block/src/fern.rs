@@ -6,7 +6,7 @@ pub struct Fern {
 
 
 impl BlockState for Fern {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 2049;
         panic!("Invalid block state")
     }

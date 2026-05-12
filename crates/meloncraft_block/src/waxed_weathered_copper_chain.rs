@@ -2,8 +2,8 @@ use crate::BlockState;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct WaxedWeatheredCopperChain {
-    pub r#axis: Axis,
     pub waterlogged: bool,
+    pub r#axis: Axis,
 }
 
 
@@ -15,13 +15,13 @@ pub enum Axis {
 }
 
 impl BlockState for WaxedWeatheredCopperChain {
-    fn to_id(self) -> i32 {
-        if block_state.r#axis == Axis::Z && block_state.r#waterlogged == false { return 8092; }
-        if block_state.r#axis == Axis::X && block_state.r#waterlogged == false { return 8088; }
-        if block_state.r#axis == Axis::Y && block_state.r#waterlogged == false { return 8090; }
-        if block_state.r#axis == Axis::Y && block_state.r#waterlogged == true { return 8089; }
-        if block_state.r#waterlogged == true && block_state.r#axis == Axis::X { return 8087; }
-        if block_state.r#axis == Axis::Z && block_state.r#waterlogged == true { return 8091; }
+    fn to_id(&self) -> i32 {
+        if self.r#axis == Axis::Z && self.r#waterlogged == false { return 8092; }
+        if self.r#waterlogged == false && self.r#axis == Axis::Y { return 8090; }
+        if self.r#axis == Axis::Y && self.r#waterlogged == true { return 8089; }
+        if self.r#axis == Axis::X && self.r#waterlogged == true { return 8087; }
+        if self.r#waterlogged == false && self.r#axis == Axis::X { return 8088; }
+        if self.r#waterlogged == true && self.r#axis == Axis::Z { return 8091; }
         panic!("Invalid block state")
     }
 
@@ -32,16 +32,10 @@ impl BlockState for WaxedWeatheredCopperChain {
                 r#waterlogged: false,
             });
         }
-        if state_id == 8088 {
-            return Some(WaxedWeatheredCopperChain {
-                r#axis: Axis::X,
-                r#waterlogged: false,
-            });
-        }
         if state_id == 8090 {
             return Some(WaxedWeatheredCopperChain {
-                r#axis: Axis::Y,
                 r#waterlogged: false,
+                r#axis: Axis::Y,
             });
         }
         if state_id == 8089 {
@@ -52,14 +46,20 @@ impl BlockState for WaxedWeatheredCopperChain {
         }
         if state_id == 8087 {
             return Some(WaxedWeatheredCopperChain {
+                r#axis: Axis::X,
                 r#waterlogged: true,
+            });
+        }
+        if state_id == 8088 {
+            return Some(WaxedWeatheredCopperChain {
+                r#waterlogged: false,
                 r#axis: Axis::X,
             });
         }
         if state_id == 8091 {
             return Some(WaxedWeatheredCopperChain {
-                r#axis: Axis::Z,
                 r#waterlogged: true,
+                r#axis: Axis::Z,
             });
         }
         return None;

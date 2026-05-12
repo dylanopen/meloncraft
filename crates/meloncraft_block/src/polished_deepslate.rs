@@ -6,7 +6,7 @@ pub struct PolishedDeepslate {
 
 
 impl BlockState for PolishedDeepslate {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 28135;
         panic!("Invalid block state")
     }

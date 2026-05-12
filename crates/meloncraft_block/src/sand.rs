@@ -6,7 +6,7 @@ pub struct Sand {
 
 
 impl BlockState for Sand {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 118;
         panic!("Invalid block state")
     }

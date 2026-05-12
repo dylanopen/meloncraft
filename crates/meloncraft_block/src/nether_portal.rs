@@ -13,9 +13,9 @@ pub enum Axis {
 }
 
 impl BlockState for NetherPortal {
-    fn to_id(self) -> i32 {
-        if block_state.r#axis == Axis::X { return 6816; }
-        if block_state.r#axis == Axis::Z { return 6817; }
+    fn to_id(&self) -> i32 {
+        if self.r#axis == Axis::X { return 6816; }
+        if self.r#axis == Axis::Z { return 6817; }
         panic!("Invalid block state")
     }
 

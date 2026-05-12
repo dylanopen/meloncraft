@@ -7,9 +7,9 @@ pub struct WaxedWeatheredCopperGrate {
 
 
 impl BlockState for WaxedWeatheredCopperGrate {
-    fn to_id(self) -> i32 {
-        if block_state.r#waterlogged == true { return 26857; }
-        if block_state.r#waterlogged == false { return 26858; }
+    fn to_id(&self) -> i32 {
+        if self.r#waterlogged == true { return 26857; }
+        if self.r#waterlogged == false { return 26858; }
         panic!("Invalid block state")
     }
 

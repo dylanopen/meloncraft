@@ -6,7 +6,7 @@ pub struct SoulSand {
 
 
 impl BlockState for SoulSand {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 6797;
         panic!("Invalid block state")
     }

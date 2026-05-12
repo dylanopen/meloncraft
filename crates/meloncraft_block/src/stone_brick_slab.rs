@@ -2,8 +2,8 @@ use crate::BlockState;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct StoneBrickSlab {
-    pub r#type: Type,
     pub waterlogged: bool,
+    pub r#type: Type,
 }
 
 
@@ -15,51 +15,51 @@ pub enum Type {
 }
 
 impl BlockState for StoneBrickSlab {
-    fn to_id(self) -> i32 {
-        if block_state.r#type == Type::Double && block_state.r#waterlogged == true { return 13240; }
-        if block_state.r#waterlogged == true && block_state.r#type == Type::Top { return 13236; }
-        if block_state.r#type == Type::Bottom && block_state.r#waterlogged == true { return 13238; }
-        if block_state.r#type == Type::Top && block_state.r#waterlogged == false { return 13237; }
-        if block_state.r#type == Type::Bottom && block_state.r#waterlogged == false { return 13239; }
-        if block_state.r#waterlogged == false && block_state.r#type == Type::Double { return 13241; }
+    fn to_id(&self) -> i32 {
+        if self.r#waterlogged == false && self.r#type == Type::Top { return 13237; }
+        if self.r#type == Type::Top && self.r#waterlogged == true { return 13236; }
+        if self.r#waterlogged == true && self.r#type == Type::Bottom { return 13238; }
+        if self.r#waterlogged == false && self.r#type == Type::Double { return 13241; }
+        if self.r#waterlogged == true && self.r#type == Type::Double { return 13240; }
+        if self.r#type == Type::Bottom && self.r#waterlogged == false { return 13239; }
         panic!("Invalid block state")
     }
 
     fn from_id(state_id: i32) -> Option<Self> {
-        if state_id == 13240 {
+        if state_id == 13237 {
             return Some(StoneBrickSlab {
-                r#type: Type::Double,
-                r#waterlogged: true,
+                r#waterlogged: false,
+                r#type: Type::Top,
             });
         }
         if state_id == 13236 {
             return Some(StoneBrickSlab {
-                r#waterlogged: true,
                 r#type: Type::Top,
+                r#waterlogged: true,
             });
         }
         if state_id == 13238 {
             return Some(StoneBrickSlab {
-                r#type: Type::Bottom,
                 r#waterlogged: true,
-            });
-        }
-        if state_id == 13237 {
-            return Some(StoneBrickSlab {
-                r#type: Type::Top,
-                r#waterlogged: false,
-            });
-        }
-        if state_id == 13239 {
-            return Some(StoneBrickSlab {
                 r#type: Type::Bottom,
-                r#waterlogged: false,
             });
         }
         if state_id == 13241 {
             return Some(StoneBrickSlab {
                 r#waterlogged: false,
                 r#type: Type::Double,
+            });
+        }
+        if state_id == 13240 {
+            return Some(StoneBrickSlab {
+                r#waterlogged: true,
+                r#type: Type::Double,
+            });
+        }
+        if state_id == 13239 {
+            return Some(StoneBrickSlab {
+                r#type: Type::Bottom,
+                r#waterlogged: false,
             });
         }
         return None;

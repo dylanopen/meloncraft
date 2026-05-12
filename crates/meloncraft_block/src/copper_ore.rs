@@ -6,7 +6,7 @@ pub struct CopperOre {
 
 
 impl BlockState for CopperOre {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 25111;
         panic!("Invalid block state")
     }

@@ -14,10 +14,10 @@ pub enum Axis {
 }
 
 impl BlockState for CherryWood {
-    fn to_id(self) -> i32 {
-        if block_state.r#axis == Axis::Y { return 217; }
-        if block_state.r#axis == Axis::Z { return 218; }
-        if block_state.r#axis == Axis::X { return 216; }
+    fn to_id(&self) -> i32 {
+        if self.r#axis == Axis::Y { return 217; }
+        if self.r#axis == Axis::Z { return 218; }
+        if self.r#axis == Axis::X { return 216; }
         panic!("Invalid block state")
     }
 

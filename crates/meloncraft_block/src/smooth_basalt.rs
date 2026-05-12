@@ -6,7 +6,7 @@ pub struct SmoothBasalt {
 
 
 impl BlockState for SmoothBasalt {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 29374;
         panic!("Invalid block state")
     }

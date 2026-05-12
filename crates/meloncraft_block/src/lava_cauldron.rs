@@ -6,7 +6,7 @@ pub struct LavaCauldron {
 
 
 impl BlockState for LavaCauldron {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 9263;
         panic!("Invalid block state")
     }

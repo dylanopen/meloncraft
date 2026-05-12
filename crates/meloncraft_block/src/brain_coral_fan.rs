@@ -7,9 +7,9 @@ pub struct BrainCoralFan {
 
 
 impl BlockState for BrainCoralFan {
-    fn to_id(self) -> i32 {
-        if block_state.r#waterlogged == true { return 14977; }
-        if block_state.r#waterlogged == false { return 14978; }
+    fn to_id(&self) -> i32 {
+        if self.r#waterlogged == true { return 14977; }
+        if self.r#waterlogged == false { return 14978; }
         panic!("Invalid block state")
     }
 

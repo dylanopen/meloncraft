@@ -6,7 +6,7 @@ pub struct Blackstone {
 
 
 impl BlockState for Blackstone {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 21629;
         panic!("Invalid block state")
     }

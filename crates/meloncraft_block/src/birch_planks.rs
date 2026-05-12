@@ -6,7 +6,7 @@ pub struct BirchPlanks {
 
 
 impl BlockState for BirchPlanks {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 17;
         panic!("Invalid block state")
     }

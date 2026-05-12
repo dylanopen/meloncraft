@@ -6,7 +6,7 @@ pub struct MossyCobblestone {
 
 
 impl BlockState for MossyCobblestone {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 3167;
         panic!("Invalid block state")
     }

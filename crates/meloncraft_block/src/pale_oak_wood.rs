@@ -14,10 +14,10 @@ pub enum Axis {
 }
 
 impl BlockState for PaleOakWood {
-    fn to_id(self) -> i32 {
-        if block_state.r#axis == Axis::X { return 22; }
-        if block_state.r#axis == Axis::Y { return 23; }
-        if block_state.r#axis == Axis::Z { return 24; }
+    fn to_id(&self) -> i32 {
+        if self.r#axis == Axis::X { return 22; }
+        if self.r#axis == Axis::Y { return 23; }
+        if self.r#axis == Axis::Z { return 24; }
         panic!("Invalid block state")
     }
 

@@ -7,9 +7,9 @@ pub struct CherrySapling {
 
 
 impl BlockState for CherrySapling {
-    fn to_id(self) -> i32 {
-        if block_state.r#stage == 0 { return 39; }
-        if block_state.r#stage == 1 { return 40; }
+    fn to_id(&self) -> i32 {
+        if self.r#stage == 0 { return 39; }
+        if self.r#stage == 1 { return 40; }
         panic!("Invalid block state")
     }
 

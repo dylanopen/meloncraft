@@ -6,7 +6,7 @@ pub struct Andesite {
 
 
 impl BlockState for Andesite {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 6;
         panic!("Invalid block state")
     }

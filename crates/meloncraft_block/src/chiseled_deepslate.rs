@@ -6,7 +6,7 @@ pub struct ChiseledDeepslate {
 
 
 impl BlockState for ChiseledDeepslate {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 29368;
         panic!("Invalid block state")
     }

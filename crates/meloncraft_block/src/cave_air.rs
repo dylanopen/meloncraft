@@ -6,7 +6,7 @@ pub struct CaveAir {
 
 
 impl BlockState for CaveAir {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 15091;
         panic!("Invalid block state")
     }

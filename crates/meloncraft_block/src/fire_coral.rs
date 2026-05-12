@@ -7,9 +7,9 @@ pub struct FireCoral {
 
 
 impl BlockState for FireCoral {
-    fn to_id(self) -> i32 {
-        if block_state.r#waterlogged == false { return 14962; }
-        if block_state.r#waterlogged == true { return 14961; }
+    fn to_id(&self) -> i32 {
+        if self.r#waterlogged == false { return 14962; }
+        if self.r#waterlogged == true { return 14961; }
         panic!("Invalid block state")
     }
 

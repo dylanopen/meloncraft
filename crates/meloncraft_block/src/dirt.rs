@@ -6,7 +6,7 @@ pub struct Dirt {
 
 
 impl BlockState for Dirt {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 10;
         panic!("Invalid block state")
     }

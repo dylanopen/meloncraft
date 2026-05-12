@@ -6,7 +6,7 @@ pub struct AmethystBlock {
 
 
 impl BlockState for AmethystBlock {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 23200;
         panic!("Invalid block state")
     }

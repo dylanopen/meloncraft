@@ -6,7 +6,7 @@ pub struct Pumpkin {
 
 
 impl BlockState for Pumpkin {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 8131;
         panic!("Invalid block state")
     }

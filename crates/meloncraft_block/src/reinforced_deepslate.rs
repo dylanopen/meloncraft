@@ -6,7 +6,7 @@ pub struct ReinforcedDeepslate {
 
 
 impl BlockState for ReinforcedDeepslate {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 29390;
         panic!("Invalid block state")
     }

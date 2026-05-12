@@ -6,7 +6,7 @@ pub struct EmeraldBlock {
 
 
 impl BlockState for EmeraldBlock {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 9526;
         panic!("Invalid block state")
     }

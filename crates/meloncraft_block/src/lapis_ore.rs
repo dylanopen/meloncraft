@@ -6,7 +6,7 @@ pub struct LapisOre {
 
 
 impl BlockState for LapisOre {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 563;
         panic!("Invalid block state")
     }

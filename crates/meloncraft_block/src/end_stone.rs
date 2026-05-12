@@ -6,7 +6,7 @@ pub struct EndStone {
 
 
 impl BlockState for EndStone {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 9276;
         panic!("Invalid block state")
     }

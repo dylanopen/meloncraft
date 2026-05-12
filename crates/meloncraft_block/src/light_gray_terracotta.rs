@@ -6,7 +6,7 @@ pub struct LightGrayTerracotta {
 
 
 impl BlockState for LightGrayTerracotta {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 11250;
         panic!("Invalid block state")
     }

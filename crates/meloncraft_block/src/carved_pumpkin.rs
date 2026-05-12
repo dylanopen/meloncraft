@@ -15,11 +15,11 @@ pub enum Facing {
 }
 
 impl BlockState for CarvedPumpkin {
-    fn to_id(self) -> i32 {
-        if block_state.r#facing == Facing::West { return 6820; }
-        if block_state.r#facing == Facing::North { return 6818; }
-        if block_state.r#facing == Facing::South { return 6819; }
-        if block_state.r#facing == Facing::East { return 6821; }
+    fn to_id(&self) -> i32 {
+        if self.r#facing == Facing::West { return 6820; }
+        if self.r#facing == Facing::North { return 6818; }
+        if self.r#facing == Facing::South { return 6819; }
+        if self.r#facing == Facing::East { return 6821; }
         panic!("Invalid block state")
     }
 

@@ -15,27 +15,21 @@ pub enum Type {
 }
 
 impl BlockState for CutCopperSlab {
-    fn to_id(self) -> i32 {
-        if block_state.r#waterlogged == false && block_state.r#type == Type::Top { return 25464; }
-        if block_state.r#type == Type::Double && block_state.r#waterlogged == false { return 25468; }
-        if block_state.r#type == Type::Bottom && block_state.r#waterlogged == false { return 25466; }
-        if block_state.r#type == Type::Top && block_state.r#waterlogged == true { return 25463; }
-        if block_state.r#waterlogged == true && block_state.r#type == Type::Double { return 25467; }
-        if block_state.r#type == Type::Bottom && block_state.r#waterlogged == true { return 25465; }
+    fn to_id(&self) -> i32 {
+        if self.r#type == Type::Top && self.r#waterlogged == true { return 25463; }
+        if self.r#type == Type::Bottom && self.r#waterlogged == false { return 25466; }
+        if self.r#type == Type::Bottom && self.r#waterlogged == true { return 25465; }
+        if self.r#waterlogged == true && self.r#type == Type::Double { return 25467; }
+        if self.r#waterlogged == false && self.r#type == Type::Double { return 25468; }
+        if self.r#type == Type::Top && self.r#waterlogged == false { return 25464; }
         panic!("Invalid block state")
     }
 
     fn from_id(state_id: i32) -> Option<Self> {
-        if state_id == 25464 {
+        if state_id == 25463 {
             return Some(CutCopperSlab {
-                r#waterlogged: false,
                 r#type: Type::Top,
-            });
-        }
-        if state_id == 25468 {
-            return Some(CutCopperSlab {
-                r#type: Type::Double,
-                r#waterlogged: false,
+                r#waterlogged: true,
             });
         }
         if state_id == 25466 {
@@ -44,9 +38,9 @@ impl BlockState for CutCopperSlab {
                 r#waterlogged: false,
             });
         }
-        if state_id == 25463 {
+        if state_id == 25465 {
             return Some(CutCopperSlab {
-                r#type: Type::Top,
+                r#type: Type::Bottom,
                 r#waterlogged: true,
             });
         }
@@ -56,10 +50,16 @@ impl BlockState for CutCopperSlab {
                 r#type: Type::Double,
             });
         }
-        if state_id == 25465 {
+        if state_id == 25468 {
             return Some(CutCopperSlab {
-                r#type: Type::Bottom,
-                r#waterlogged: true,
+                r#waterlogged: false,
+                r#type: Type::Double,
+            });
+        }
+        if state_id == 25464 {
+            return Some(CutCopperSlab {
+                r#type: Type::Top,
+                r#waterlogged: false,
             });
         }
         return None;

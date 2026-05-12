@@ -14,22 +14,22 @@ pub enum Axis {
 }
 
 impl BlockState for StrippedCherryLog {
-    fn to_id(self) -> i32 {
-        if block_state.r#axis == Axis::Y { return 184; }
-        if block_state.r#axis == Axis::X { return 183; }
-        if block_state.r#axis == Axis::Z { return 185; }
+    fn to_id(&self) -> i32 {
+        if self.r#axis == Axis::X { return 183; }
+        if self.r#axis == Axis::Y { return 184; }
+        if self.r#axis == Axis::Z { return 185; }
         panic!("Invalid block state")
     }
 
     fn from_id(state_id: i32) -> Option<Self> {
-        if state_id == 184 {
-            return Some(StrippedCherryLog {
-                r#axis: Axis::Y,
-            });
-        }
         if state_id == 183 {
             return Some(StrippedCherryLog {
                 r#axis: Axis::X,
+            });
+        }
+        if state_id == 184 {
+            return Some(StrippedCherryLog {
+                r#axis: Axis::Y,
             });
         }
         if state_id == 185 {

@@ -6,7 +6,7 @@ pub struct OrangeCarpet {
 
 
 impl BlockState for OrangeCarpet {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 12695;
         panic!("Invalid block state")
     }

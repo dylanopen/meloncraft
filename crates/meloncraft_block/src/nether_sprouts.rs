@@ -6,7 +6,7 @@ pub struct NetherSprouts {
 
 
 impl BlockState for NetherSprouts {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 20759;
         panic!("Invalid block state")
     }

@@ -7,9 +7,9 @@ pub struct HornCoralFan {
 
 
 impl BlockState for HornCoralFan {
-    fn to_id(self) -> i32 {
-        if block_state.r#waterlogged == false { return 14984; }
-        if block_state.r#waterlogged == true { return 14983; }
+    fn to_id(&self) -> i32 {
+        if self.r#waterlogged == false { return 14984; }
+        if self.r#waterlogged == true { return 14983; }
         panic!("Invalid block state")
     }
 

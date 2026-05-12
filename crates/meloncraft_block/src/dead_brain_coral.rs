@@ -7,21 +7,21 @@ pub struct DeadBrainCoral {
 
 
 impl BlockState for DeadBrainCoral {
-    fn to_id(self) -> i32 {
-        if block_state.r#waterlogged == false { return 14948; }
-        if block_state.r#waterlogged == true { return 14947; }
+    fn to_id(&self) -> i32 {
+        if self.r#waterlogged == true { return 14947; }
+        if self.r#waterlogged == false { return 14948; }
         panic!("Invalid block state")
     }
 
     fn from_id(state_id: i32) -> Option<Self> {
-        if state_id == 14948 {
-            return Some(DeadBrainCoral {
-                r#waterlogged: false,
-            });
-        }
         if state_id == 14947 {
             return Some(DeadBrainCoral {
                 r#waterlogged: true,
+            });
+        }
+        if state_id == 14948 {
+            return Some(DeadBrainCoral {
+                r#waterlogged: false,
             });
         }
         return None;

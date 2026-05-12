@@ -7,9 +7,9 @@ pub struct Tnt {
 
 
 impl BlockState for Tnt {
-    fn to_id(self) -> i32 {
-        if block_state.r#unstable == true { return 2140; }
-        if block_state.r#unstable == false { return 2141; }
+    fn to_id(&self) -> i32 {
+        if self.r#unstable == true { return 2140; }
+        if self.r#unstable == false { return 2141; }
         panic!("Invalid block state")
     }
 

@@ -6,7 +6,7 @@ pub struct CactusFlower {
 
 
 impl BlockState for CactusFlower {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 6744;
         panic!("Invalid block state")
     }

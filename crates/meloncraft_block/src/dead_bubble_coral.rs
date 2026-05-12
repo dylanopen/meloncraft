@@ -7,9 +7,9 @@ pub struct DeadBubbleCoral {
 
 
 impl BlockState for DeadBubbleCoral {
-    fn to_id(self) -> i32 {
-        if block_state.r#waterlogged == false { return 14950; }
-        if block_state.r#waterlogged == true { return 14949; }
+    fn to_id(&self) -> i32 {
+        if self.r#waterlogged == false { return 14950; }
+        if self.r#waterlogged == true { return 14949; }
         panic!("Invalid block state")
     }
 

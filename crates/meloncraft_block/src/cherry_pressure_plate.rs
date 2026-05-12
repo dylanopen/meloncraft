@@ -7,9 +7,9 @@ pub struct CherryPressurePlate {
 
 
 impl BlockState for CherryPressurePlate {
-    fn to_id(self) -> i32 {
-        if block_state.r#powered == false { return 6671; }
-        if block_state.r#powered == true { return 6670; }
+    fn to_id(&self) -> i32 {
+        if self.r#powered == false { return 6671; }
+        if self.r#powered == true { return 6670; }
         panic!("Invalid block state")
     }
 

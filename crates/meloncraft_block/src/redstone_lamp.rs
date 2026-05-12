@@ -7,9 +7,9 @@ pub struct RedstoneLamp {
 
 
 impl BlockState for RedstoneLamp {
-    fn to_id(self) -> i32 {
-        if block_state.r#lit == false { return 9279; }
-        if block_state.r#lit == true { return 9278; }
+    fn to_id(&self) -> i32 {
+        if self.r#lit == false { return 9279; }
+        if self.r#lit == true { return 9278; }
         panic!("Invalid block state")
     }
 

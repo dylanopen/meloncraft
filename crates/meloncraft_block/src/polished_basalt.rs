@@ -14,14 +14,19 @@ pub enum Axis {
 }
 
 impl BlockState for PolishedBasalt {
-    fn to_id(self) -> i32 {
-        if block_state.r#axis == Axis::Z { return 6804; }
-        if block_state.r#axis == Axis::X { return 6802; }
-        if block_state.r#axis == Axis::Y { return 6803; }
+    fn to_id(&self) -> i32 {
+        if self.r#axis == Axis::Y { return 6803; }
+        if self.r#axis == Axis::Z { return 6804; }
+        if self.r#axis == Axis::X { return 6802; }
         panic!("Invalid block state")
     }
 
     fn from_id(state_id: i32) -> Option<Self> {
+        if state_id == 6803 {
+            return Some(PolishedBasalt {
+                r#axis: Axis::Y,
+            });
+        }
         if state_id == 6804 {
             return Some(PolishedBasalt {
                 r#axis: Axis::Z,
@@ -30,11 +35,6 @@ impl BlockState for PolishedBasalt {
         if state_id == 6802 {
             return Some(PolishedBasalt {
                 r#axis: Axis::X,
-            });
-        }
-        if state_id == 6803 {
-            return Some(PolishedBasalt {
-                r#axis: Axis::Y,
             });
         }
         return None;

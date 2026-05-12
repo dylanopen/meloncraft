@@ -6,7 +6,7 @@ pub struct RedstoneBlock {
 
 
 impl BlockState for RedstoneBlock {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 11109;
         panic!("Invalid block state")
     }

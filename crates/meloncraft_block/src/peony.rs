@@ -13,9 +13,9 @@ pub enum Half {
 }
 
 impl BlockState for Peony {
-    fn to_id(self) -> i32 {
-        if block_state.r#half == Half::Lower { return 12720; }
-        if block_state.r#half == Half::Upper { return 12719; }
+    fn to_id(&self) -> i32 {
+        if self.r#half == Half::Lower { return 12720; }
+        if self.r#half == Half::Upper { return 12719; }
         panic!("Invalid block state")
     }
 

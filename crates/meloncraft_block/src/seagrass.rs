@@ -6,7 +6,7 @@ pub struct Seagrass {
 
 
 impl BlockState for Seagrass {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 2054;
         panic!("Invalid block state")
     }

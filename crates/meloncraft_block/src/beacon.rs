@@ -6,7 +6,7 @@ pub struct Beacon {
 
 
 impl BlockState for Beacon {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 9779;
         panic!("Invalid block state")
     }

@@ -6,7 +6,7 @@ pub struct Glass {
 
 
 impl BlockState for Glass {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 562;
         panic!("Invalid block state")
     }

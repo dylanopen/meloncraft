@@ -6,7 +6,7 @@ pub struct GoldOre {
 
 
 impl BlockState for GoldOre {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 129;
         panic!("Invalid block state")
     }

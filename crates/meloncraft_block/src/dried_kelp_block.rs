@@ -6,7 +6,7 @@ pub struct DriedKelpBlock {
 
 
 impl BlockState for DriedKelpBlock {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 14887;
         panic!("Invalid block state")
     }

@@ -7,9 +7,9 @@ pub struct BrownCandleCake {
 
 
 impl BlockState for BrownCandleCake {
-    fn to_id(self) -> i32 {
-        if block_state.r#lit == true { return 23192; }
-        if block_state.r#lit == false { return 23193; }
+    fn to_id(&self) -> i32 {
+        if self.r#lit == true { return 23192; }
+        if self.r#lit == false { return 23193; }
         panic!("Invalid block state")
     }
 

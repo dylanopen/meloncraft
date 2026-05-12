@@ -6,7 +6,7 @@ pub struct PinkWool {
 
 
 impl BlockState for PinkWool {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 2099;
         panic!("Invalid block state")
     }

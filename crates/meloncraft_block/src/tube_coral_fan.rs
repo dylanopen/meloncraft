@@ -7,9 +7,9 @@ pub struct TubeCoralFan {
 
 
 impl BlockState for TubeCoralFan {
-    fn to_id(self) -> i32 {
-        if block_state.r#waterlogged == true { return 14975; }
-        if block_state.r#waterlogged == false { return 14976; }
+    fn to_id(&self) -> i32 {
+        if self.r#waterlogged == true { return 14975; }
+        if self.r#waterlogged == false { return 14976; }
         panic!("Invalid block state")
     }
 

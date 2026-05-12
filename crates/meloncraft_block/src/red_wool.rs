@@ -6,7 +6,7 @@ pub struct RedWool {
 
 
 impl BlockState for RedWool {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 2107;
         panic!("Invalid block state")
     }

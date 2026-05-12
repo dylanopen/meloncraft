@@ -13,9 +13,9 @@ pub enum Half {
 }
 
 impl BlockState for RoseBush {
-    fn to_id(self) -> i32 {
-        if block_state.r#half == Half::Upper { return 12717; }
-        if block_state.r#half == Half::Lower { return 12718; }
+    fn to_id(&self) -> i32 {
+        if self.r#half == Half::Upper { return 12717; }
+        if self.r#half == Half::Lower { return 12718; }
         panic!("Invalid block state")
     }
 

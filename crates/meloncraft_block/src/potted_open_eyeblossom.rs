@@ -6,7 +6,7 @@ pub struct PottedOpenEyeblossom {
 
 
 impl BlockState for PottedOpenEyeblossom {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 29668;
         panic!("Invalid block state")
     }

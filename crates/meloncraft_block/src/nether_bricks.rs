@@ -6,7 +6,7 @@ pub struct NetherBricks {
 
 
 impl BlockState for NetherBricks {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 9133;
         panic!("Invalid block state")
     }

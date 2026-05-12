@@ -6,7 +6,7 @@ pub struct TestInstanceBlock {
 
 
 impl BlockState for TestInstanceBlock {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 21540;
         panic!("Invalid block state")
     }

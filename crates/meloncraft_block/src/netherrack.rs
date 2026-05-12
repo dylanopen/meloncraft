@@ -6,7 +6,7 @@ pub struct Netherrack {
 
 
 impl BlockState for Netherrack {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 6796;
         panic!("Invalid block state")
     }

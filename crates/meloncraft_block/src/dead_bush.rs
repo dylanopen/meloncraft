@@ -6,7 +6,7 @@ pub struct DeadBush {
 
 
 impl BlockState for DeadBush {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 2050;
         panic!("Invalid block state")
     }

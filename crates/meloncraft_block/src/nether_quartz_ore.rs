@@ -6,7 +6,7 @@ pub struct NetherQuartzOre {
 
 
 impl BlockState for NetherQuartzOre {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 11110;
         panic!("Invalid block state")
     }

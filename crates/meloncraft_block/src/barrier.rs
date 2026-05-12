@@ -7,9 +7,9 @@ pub struct Barrier {
 
 
 impl BlockState for Barrier {
-    fn to_id(self) -> i32 {
-        if block_state.r#waterlogged == false { return 12332; }
-        if block_state.r#waterlogged == true { return 12331; }
+    fn to_id(&self) -> i32 {
+        if self.r#waterlogged == false { return 12332; }
+        if self.r#waterlogged == true { return 12331; }
         panic!("Invalid block state")
     }
 

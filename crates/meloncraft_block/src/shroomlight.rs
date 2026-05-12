@@ -6,7 +6,7 @@ pub struct Shroomlight {
 
 
 impl BlockState for Shroomlight {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 20774;
         panic!("Invalid block state")
     }

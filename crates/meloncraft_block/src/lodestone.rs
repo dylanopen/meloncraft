@@ -6,7 +6,7 @@ pub struct Lodestone {
 
 
 impl BlockState for Lodestone {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 21628;
         panic!("Invalid block state")
     }

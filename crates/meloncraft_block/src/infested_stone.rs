@@ -6,7 +6,7 @@ pub struct InfestedStone {
 
 
 impl BlockState for InfestedStone {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 7559;
         panic!("Invalid block state")
     }

@@ -7,9 +7,9 @@ pub struct YellowCandleCake {
 
 
 impl BlockState for YellowCandleCake {
-    fn to_id(self) -> i32 {
-        if block_state.r#lit == true { return 23176; }
-        if block_state.r#lit == false { return 23177; }
+    fn to_id(&self) -> i32 {
+        if self.r#lit == true { return 23176; }
+        if self.r#lit == false { return 23177; }
         panic!("Invalid block state")
     }
 

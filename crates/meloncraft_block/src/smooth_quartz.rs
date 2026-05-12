@@ -6,7 +6,7 @@ pub struct SmoothQuartz {
 
 
 impl BlockState for SmoothQuartz {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 13280;
         panic!("Invalid block state")
     }

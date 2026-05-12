@@ -6,7 +6,7 @@ pub struct Bush {
 
 
 impl BlockState for Bush {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 2051;
         panic!("Invalid block state")
     }

@@ -6,7 +6,7 @@ pub struct Obsidian {
 
 
 impl BlockState for Obsidian {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 3168;
         panic!("Invalid block state")
     }

@@ -6,7 +6,7 @@ pub struct CrackedDeepslateBricks {
 
 
 impl BlockState for CrackedDeepslateBricks {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 29369;
         panic!("Invalid block state")
     }

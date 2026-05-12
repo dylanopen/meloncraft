@@ -6,7 +6,7 @@ pub struct MudBricks {
 
 
 impl BlockState for MudBricks {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 7558;
         panic!("Invalid block state")
     }

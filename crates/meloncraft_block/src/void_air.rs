@@ -6,7 +6,7 @@ pub struct VoidAir {
 
 
 impl BlockState for VoidAir {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 15090;
         panic!("Invalid block state")
     }

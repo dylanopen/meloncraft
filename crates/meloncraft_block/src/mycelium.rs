@@ -7,9 +7,9 @@ pub struct Mycelium {
 
 
 impl BlockState for Mycelium {
-    fn to_id(self) -> i32 {
-        if block_state.r#snowy == true { return 8717; }
-        if block_state.r#snowy == false { return 8718; }
+    fn to_id(&self) -> i32 {
+        if self.r#snowy == true { return 8717; }
+        if self.r#snowy == false { return 8718; }
         panic!("Invalid block state")
     }
 

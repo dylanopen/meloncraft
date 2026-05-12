@@ -6,7 +6,7 @@ pub struct Sculk {
 
 
 impl BlockState for Sculk {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 24968;
         panic!("Invalid block state")
     }

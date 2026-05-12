@@ -7,9 +7,9 @@ pub struct BubbleColumn {
 
 
 impl BlockState for BubbleColumn {
-    fn to_id(self) -> i32 {
-        if block_state.r#drag == true { return 15092; }
-        if block_state.r#drag == false { return 15093; }
+    fn to_id(&self) -> i32 {
+        if self.r#drag == true { return 15092; }
+        if self.r#drag == false { return 15093; }
         panic!("Invalid block state")
     }
 

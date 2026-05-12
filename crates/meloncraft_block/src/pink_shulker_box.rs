@@ -17,13 +17,13 @@ pub enum Facing {
 }
 
 impl BlockState for PinkShulkerBox {
-    fn to_id(self) -> i32 {
-        if block_state.r#facing == Facing::North { return 14704; }
-        if block_state.r#facing == Facing::Up { return 14708; }
-        if block_state.r#facing == Facing::West { return 14707; }
-        if block_state.r#facing == Facing::Down { return 14709; }
-        if block_state.r#facing == Facing::East { return 14705; }
-        if block_state.r#facing == Facing::South { return 14706; }
+    fn to_id(&self) -> i32 {
+        if self.r#facing == Facing::North { return 14704; }
+        if self.r#facing == Facing::East { return 14705; }
+        if self.r#facing == Facing::South { return 14706; }
+        if self.r#facing == Facing::Down { return 14709; }
+        if self.r#facing == Facing::West { return 14707; }
+        if self.r#facing == Facing::Up { return 14708; }
         panic!("Invalid block state")
     }
 
@@ -31,21 +31,6 @@ impl BlockState for PinkShulkerBox {
         if state_id == 14704 {
             return Some(PinkShulkerBox {
                 r#facing: Facing::North,
-            });
-        }
-        if state_id == 14708 {
-            return Some(PinkShulkerBox {
-                r#facing: Facing::Up,
-            });
-        }
-        if state_id == 14707 {
-            return Some(PinkShulkerBox {
-                r#facing: Facing::West,
-            });
-        }
-        if state_id == 14709 {
-            return Some(PinkShulkerBox {
-                r#facing: Facing::Down,
             });
         }
         if state_id == 14705 {
@@ -56,6 +41,21 @@ impl BlockState for PinkShulkerBox {
         if state_id == 14706 {
             return Some(PinkShulkerBox {
                 r#facing: Facing::South,
+            });
+        }
+        if state_id == 14709 {
+            return Some(PinkShulkerBox {
+                r#facing: Facing::Down,
+            });
+        }
+        if state_id == 14707 {
+            return Some(PinkShulkerBox {
+                r#facing: Facing::West,
+            });
+        }
+        if state_id == 14708 {
+            return Some(PinkShulkerBox {
+                r#facing: Facing::Up,
             });
         }
         return None;

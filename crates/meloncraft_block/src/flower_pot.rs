@@ -6,7 +6,7 @@ pub struct FlowerPot {
 
 
 impl BlockState for FlowerPot {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 10428;
         panic!("Invalid block state")
     }

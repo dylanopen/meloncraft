@@ -13,9 +13,9 @@ pub enum Half {
 }
 
 impl BlockState for PitcherPlant {
-    fn to_id(self) -> i32 {
-        if block_state.r#half == Half::Lower { return 14608; }
-        if block_state.r#half == Half::Upper { return 14607; }
+    fn to_id(&self) -> i32 {
+        if self.r#half == Half::Lower { return 14608; }
+        if self.r#half == Half::Upper { return 14607; }
         panic!("Invalid block state")
     }
 

@@ -7,9 +7,9 @@ pub struct Podzol {
 
 
 impl BlockState for Podzol {
-    fn to_id(self) -> i32 {
-        if block_state.r#snowy == false { return 13; }
-        if block_state.r#snowy == true { return 12; }
+    fn to_id(&self) -> i32 {
+        if self.r#snowy == false { return 13; }
+        if self.r#snowy == true { return 12; }
         panic!("Invalid block state")
     }
 

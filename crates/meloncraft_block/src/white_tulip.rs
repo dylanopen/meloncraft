@@ -6,7 +6,7 @@ pub struct WhiteTulip {
 
 
 impl BlockState for WhiteTulip {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 2129;
         panic!("Invalid block state")
     }

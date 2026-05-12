@@ -6,7 +6,7 @@ pub struct WarpedRoots {
 
 
 impl BlockState for WarpedRoots {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 20758;
         panic!("Invalid block state")
     }

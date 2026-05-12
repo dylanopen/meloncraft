@@ -14,10 +14,10 @@ pub enum Axis {
 }
 
 impl BlockState for CherryLog {
-    fn to_id(self) -> i32 {
-        if block_state.r#axis == Axis::X { return 151; }
-        if block_state.r#axis == Axis::Z { return 153; }
-        if block_state.r#axis == Axis::Y { return 152; }
+    fn to_id(&self) -> i32 {
+        if self.r#axis == Axis::X { return 151; }
+        if self.r#axis == Axis::Y { return 152; }
+        if self.r#axis == Axis::Z { return 153; }
         panic!("Invalid block state")
     }
 
@@ -27,14 +27,14 @@ impl BlockState for CherryLog {
                 r#axis: Axis::X,
             });
         }
-        if state_id == 153 {
-            return Some(CherryLog {
-                r#axis: Axis::Z,
-            });
-        }
         if state_id == 152 {
             return Some(CherryLog {
                 r#axis: Axis::Y,
+            });
+        }
+        if state_id == 153 {
+            return Some(CherryLog {
+                r#axis: Axis::Z,
             });
         }
         return None;

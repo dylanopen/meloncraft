@@ -2,8 +2,8 @@ use crate::BlockState;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct DeadTubeCoralWallFan {
-    pub waterlogged: bool,
     pub r#facing: Facing,
+    pub waterlogged: bool,
 }
 
 
@@ -16,22 +16,52 @@ pub enum Facing {
 }
 
 impl BlockState for DeadTubeCoralWallFan {
-    fn to_id(self) -> i32 {
-        if block_state.r#facing == Facing::North && block_state.r#waterlogged == true { return 14985; }
-        if block_state.r#facing == Facing::North && block_state.r#waterlogged == false { return 14986; }
-        if block_state.r#waterlogged == true && block_state.r#facing == Facing::South { return 14987; }
-        if block_state.r#waterlogged == true && block_state.r#facing == Facing::West { return 14989; }
-        if block_state.r#facing == Facing::West && block_state.r#waterlogged == false { return 14990; }
-        if block_state.r#facing == Facing::East && block_state.r#waterlogged == false { return 14992; }
-        if block_state.r#facing == Facing::East && block_state.r#waterlogged == true { return 14991; }
-        if block_state.r#waterlogged == false && block_state.r#facing == Facing::South { return 14988; }
+    fn to_id(&self) -> i32 {
+        if self.r#facing == Facing::South && self.r#waterlogged == false { return 14988; }
+        if self.r#facing == Facing::West && self.r#waterlogged == true { return 14989; }
+        if self.r#facing == Facing::East && self.r#waterlogged == true { return 14991; }
+        if self.r#waterlogged == false && self.r#facing == Facing::East { return 14992; }
+        if self.r#facing == Facing::West && self.r#waterlogged == false { return 14990; }
+        if self.r#facing == Facing::South && self.r#waterlogged == true { return 14987; }
+        if self.r#facing == Facing::North && self.r#waterlogged == false { return 14986; }
+        if self.r#facing == Facing::North && self.r#waterlogged == true { return 14985; }
         panic!("Invalid block state")
     }
 
     fn from_id(state_id: i32) -> Option<Self> {
-        if state_id == 14985 {
+        if state_id == 14988 {
             return Some(DeadTubeCoralWallFan {
-                r#facing: Facing::North,
+                r#facing: Facing::South,
+                r#waterlogged: false,
+            });
+        }
+        if state_id == 14989 {
+            return Some(DeadTubeCoralWallFan {
+                r#facing: Facing::West,
+                r#waterlogged: true,
+            });
+        }
+        if state_id == 14991 {
+            return Some(DeadTubeCoralWallFan {
+                r#facing: Facing::East,
+                r#waterlogged: true,
+            });
+        }
+        if state_id == 14992 {
+            return Some(DeadTubeCoralWallFan {
+                r#waterlogged: false,
+                r#facing: Facing::East,
+            });
+        }
+        if state_id == 14990 {
+            return Some(DeadTubeCoralWallFan {
+                r#facing: Facing::West,
+                r#waterlogged: false,
+            });
+        }
+        if state_id == 14987 {
+            return Some(DeadTubeCoralWallFan {
+                r#facing: Facing::South,
                 r#waterlogged: true,
             });
         }
@@ -41,40 +71,10 @@ impl BlockState for DeadTubeCoralWallFan {
                 r#waterlogged: false,
             });
         }
-        if state_id == 14987 {
+        if state_id == 14985 {
             return Some(DeadTubeCoralWallFan {
+                r#facing: Facing::North,
                 r#waterlogged: true,
-                r#facing: Facing::South,
-            });
-        }
-        if state_id == 14989 {
-            return Some(DeadTubeCoralWallFan {
-                r#waterlogged: true,
-                r#facing: Facing::West,
-            });
-        }
-        if state_id == 14990 {
-            return Some(DeadTubeCoralWallFan {
-                r#facing: Facing::West,
-                r#waterlogged: false,
-            });
-        }
-        if state_id == 14992 {
-            return Some(DeadTubeCoralWallFan {
-                r#facing: Facing::East,
-                r#waterlogged: false,
-            });
-        }
-        if state_id == 14991 {
-            return Some(DeadTubeCoralWallFan {
-                r#facing: Facing::East,
-                r#waterlogged: true,
-            });
-        }
-        if state_id == 14988 {
-            return Some(DeadTubeCoralWallFan {
-                r#waterlogged: false,
-                r#facing: Facing::South,
             });
         }
         return None;

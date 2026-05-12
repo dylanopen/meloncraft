@@ -6,7 +6,7 @@ pub struct RedCarpet {
 
 
 impl BlockState for RedCarpet {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 12708;
         panic!("Invalid block state")
     }

@@ -14,22 +14,22 @@ pub enum Axis {
 }
 
 impl BlockState for StrippedDarkOakLog {
-    fn to_id(self) -> i32 {
-        if block_state.r#axis == Axis::Z { return 188; }
-        if block_state.r#axis == Axis::X { return 186; }
-        if block_state.r#axis == Axis::Y { return 187; }
+    fn to_id(&self) -> i32 {
+        if self.r#axis == Axis::X { return 186; }
+        if self.r#axis == Axis::Z { return 188; }
+        if self.r#axis == Axis::Y { return 187; }
         panic!("Invalid block state")
     }
 
     fn from_id(state_id: i32) -> Option<Self> {
-        if state_id == 188 {
-            return Some(StrippedDarkOakLog {
-                r#axis: Axis::Z,
-            });
-        }
         if state_id == 186 {
             return Some(StrippedDarkOakLog {
                 r#axis: Axis::X,
+            });
+        }
+        if state_id == 188 {
+            return Some(StrippedDarkOakLog {
+                r#axis: Axis::Z,
             });
         }
         if state_id == 187 {

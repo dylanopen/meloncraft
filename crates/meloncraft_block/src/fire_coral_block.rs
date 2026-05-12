@@ -6,7 +6,7 @@ pub struct FireCoralBlock {
 
 
 impl BlockState for FireCoralBlock {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 14943;
         panic!("Invalid block state")
     }

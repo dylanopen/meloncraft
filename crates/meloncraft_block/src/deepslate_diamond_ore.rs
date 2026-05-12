@@ -6,7 +6,7 @@ pub struct DeepslateDiamondOre {
 
 
 impl BlockState for DeepslateDiamondOre {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 5107;
         panic!("Invalid block state")
     }

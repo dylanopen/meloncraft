@@ -6,7 +6,7 @@ pub struct PottedCrimsonRoots {
 
 
 impl BlockState for PottedCrimsonRoots {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 21626;
         panic!("Invalid block state")
     }

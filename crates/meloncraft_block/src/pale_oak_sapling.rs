@@ -7,9 +7,9 @@ pub struct PaleOakSapling {
 
 
 impl BlockState for PaleOakSapling {
-    fn to_id(self) -> i32 {
-        if block_state.r#stage == 0 { return 43; }
-        if block_state.r#stage == 1 { return 44; }
+    fn to_id(&self) -> i32 {
+        if self.r#stage == 0 { return 43; }
+        if self.r#stage == 1 { return 44; }
         panic!("Invalid block state")
     }
 

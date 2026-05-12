@@ -6,7 +6,7 @@ pub struct WarpedNylium {
 
 
 impl BlockState for WarpedNylium {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 20755;
         panic!("Invalid block state")
     }

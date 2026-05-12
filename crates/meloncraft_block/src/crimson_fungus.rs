@@ -6,7 +6,7 @@ pub struct CrimsonFungus {
 
 
 impl BlockState for CrimsonFungus {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 20773;
         panic!("Invalid block state")
     }

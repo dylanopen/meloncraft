@@ -6,7 +6,7 @@ pub struct EnchantingTable {
 
 
 impl BlockState for EnchantingTable {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 9250;
         panic!("Invalid block state")
     }

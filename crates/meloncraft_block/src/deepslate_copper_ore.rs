@@ -6,7 +6,7 @@ pub struct DeepslateCopperOre {
 
 
 impl BlockState for DeepslateCopperOre {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 25112;
         panic!("Invalid block state")
     }

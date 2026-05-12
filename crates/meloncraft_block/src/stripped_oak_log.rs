@@ -14,10 +14,10 @@ pub enum Axis {
 }
 
 impl BlockState for StrippedOakLog {
-    fn to_id(self) -> i32 {
-        if block_state.r#axis == Axis::Y { return 193; }
-        if block_state.r#axis == Axis::Z { return 194; }
-        if block_state.r#axis == Axis::X { return 192; }
+    fn to_id(&self) -> i32 {
+        if self.r#axis == Axis::Y { return 193; }
+        if self.r#axis == Axis::X { return 192; }
+        if self.r#axis == Axis::Z { return 194; }
         panic!("Invalid block state")
     }
 
@@ -27,14 +27,14 @@ impl BlockState for StrippedOakLog {
                 r#axis: Axis::Y,
             });
         }
-        if state_id == 194 {
-            return Some(StrippedOakLog {
-                r#axis: Axis::Z,
-            });
-        }
         if state_id == 192 {
             return Some(StrippedOakLog {
                 r#axis: Axis::X,
+            });
+        }
+        if state_id == 194 {
+            return Some(StrippedOakLog {
+                r#axis: Axis::Z,
             });
         }
         return None;

@@ -6,7 +6,7 @@ pub struct MagentaCarpet {
 
 
 impl BlockState for MagentaCarpet {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 12696;
         panic!("Invalid block state")
     }

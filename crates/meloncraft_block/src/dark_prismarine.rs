@@ -6,7 +6,7 @@ pub struct DarkPrismarine {
 
 
 impl BlockState for DarkPrismarine {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 12431;
         panic!("Invalid block state")
     }

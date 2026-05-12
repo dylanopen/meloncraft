@@ -2,8 +2,8 @@ use crate::BlockState;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct MangroveSlab {
-    pub r#type: Type,
     pub waterlogged: bool,
+    pub r#type: Type,
 }
 
 
@@ -15,33 +15,21 @@ pub enum Type {
 }
 
 impl BlockState for MangroveSlab {
-    fn to_id(self) -> i32 {
-        if block_state.r#waterlogged == false && block_state.r#type == Type::Double { return 13181; }
-        if block_state.r#waterlogged == true && block_state.r#type == Type::Top { return 13176; }
-        if block_state.r#type == Type::Bottom && block_state.r#waterlogged == false { return 13179; }
-        if block_state.r#waterlogged == true && block_state.r#type == Type::Bottom { return 13178; }
-        if block_state.r#type == Type::Top && block_state.r#waterlogged == false { return 13177; }
-        if block_state.r#type == Type::Double && block_state.r#waterlogged == true { return 13180; }
+    fn to_id(&self) -> i32 {
+        if self.r#waterlogged == false && self.r#type == Type::Bottom { return 13179; }
+        if self.r#waterlogged == true && self.r#type == Type::Bottom { return 13178; }
+        if self.r#waterlogged == true && self.r#type == Type::Top { return 13176; }
+        if self.r#waterlogged == false && self.r#type == Type::Double { return 13181; }
+        if self.r#waterlogged == false && self.r#type == Type::Top { return 13177; }
+        if self.r#type == Type::Double && self.r#waterlogged == true { return 13180; }
         panic!("Invalid block state")
     }
 
     fn from_id(state_id: i32) -> Option<Self> {
-        if state_id == 13181 {
-            return Some(MangroveSlab {
-                r#waterlogged: false,
-                r#type: Type::Double,
-            });
-        }
-        if state_id == 13176 {
-            return Some(MangroveSlab {
-                r#waterlogged: true,
-                r#type: Type::Top,
-            });
-        }
         if state_id == 13179 {
             return Some(MangroveSlab {
-                r#type: Type::Bottom,
                 r#waterlogged: false,
+                r#type: Type::Bottom,
             });
         }
         if state_id == 13178 {
@@ -50,10 +38,22 @@ impl BlockState for MangroveSlab {
                 r#type: Type::Bottom,
             });
         }
+        if state_id == 13176 {
+            return Some(MangroveSlab {
+                r#waterlogged: true,
+                r#type: Type::Top,
+            });
+        }
+        if state_id == 13181 {
+            return Some(MangroveSlab {
+                r#waterlogged: false,
+                r#type: Type::Double,
+            });
+        }
         if state_id == 13177 {
             return Some(MangroveSlab {
-                r#type: Type::Top,
                 r#waterlogged: false,
+                r#type: Type::Top,
             });
         }
         if state_id == 13180 {

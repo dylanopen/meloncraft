@@ -15,20 +15,15 @@ pub enum Facing {
 }
 
 impl BlockState for LightBlueWallBanner {
-    fn to_id(self) -> i32 {
-        if block_state.r#facing == Facing::East { return 12996; }
-        if block_state.r#facing == Facing::West { return 12995; }
-        if block_state.r#facing == Facing::North { return 12993; }
-        if block_state.r#facing == Facing::South { return 12994; }
+    fn to_id(&self) -> i32 {
+        if self.r#facing == Facing::West { return 12995; }
+        if self.r#facing == Facing::North { return 12993; }
+        if self.r#facing == Facing::East { return 12996; }
+        if self.r#facing == Facing::South { return 12994; }
         panic!("Invalid block state")
     }
 
     fn from_id(state_id: i32) -> Option<Self> {
-        if state_id == 12996 {
-            return Some(LightBlueWallBanner {
-                r#facing: Facing::East,
-            });
-        }
         if state_id == 12995 {
             return Some(LightBlueWallBanner {
                 r#facing: Facing::West,
@@ -37,6 +32,11 @@ impl BlockState for LightBlueWallBanner {
         if state_id == 12993 {
             return Some(LightBlueWallBanner {
                 r#facing: Facing::North,
+            });
+        }
+        if state_id == 12996 {
+            return Some(LightBlueWallBanner {
+                r#facing: Facing::East,
             });
         }
         if state_id == 12994 {

@@ -6,7 +6,7 @@ pub struct HoneycombBlock {
 
 
 impl BlockState for HoneycombBlock {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 21615;
         panic!("Invalid block state")
     }

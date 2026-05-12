@@ -6,7 +6,7 @@ pub struct PinkTulip {
 
 
 impl BlockState for PinkTulip {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 2130;
         panic!("Invalid block state")
     }

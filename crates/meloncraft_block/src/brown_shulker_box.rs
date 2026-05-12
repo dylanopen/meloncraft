@@ -17,20 +17,20 @@ pub enum Facing {
 }
 
 impl BlockState for BrownShulkerBox {
-    fn to_id(self) -> i32 {
-        if block_state.r#facing == Facing::South { return 14742; }
-        if block_state.r#facing == Facing::North { return 14740; }
-        if block_state.r#facing == Facing::East { return 14741; }
-        if block_state.r#facing == Facing::West { return 14743; }
-        if block_state.r#facing == Facing::Up { return 14744; }
-        if block_state.r#facing == Facing::Down { return 14745; }
+    fn to_id(&self) -> i32 {
+        if self.r#facing == Facing::East { return 14741; }
+        if self.r#facing == Facing::North { return 14740; }
+        if self.r#facing == Facing::South { return 14742; }
+        if self.r#facing == Facing::West { return 14743; }
+        if self.r#facing == Facing::Up { return 14744; }
+        if self.r#facing == Facing::Down { return 14745; }
         panic!("Invalid block state")
     }
 
     fn from_id(state_id: i32) -> Option<Self> {
-        if state_id == 14742 {
+        if state_id == 14741 {
             return Some(BrownShulkerBox {
-                r#facing: Facing::South,
+                r#facing: Facing::East,
             });
         }
         if state_id == 14740 {
@@ -38,9 +38,9 @@ impl BlockState for BrownShulkerBox {
                 r#facing: Facing::North,
             });
         }
-        if state_id == 14741 {
+        if state_id == 14742 {
             return Some(BrownShulkerBox {
-                r#facing: Facing::East,
+                r#facing: Facing::South,
             });
         }
         if state_id == 14743 {

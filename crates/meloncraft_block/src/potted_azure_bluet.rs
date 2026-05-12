@@ -6,7 +6,7 @@ pub struct PottedAzureBluet {
 
 
 impl BlockState for PottedAzureBluet {
-    fn to_id(self) -> i32 {
+    fn to_id(&self) -> i32 {
         return 10444;
         panic!("Invalid block state")
     }

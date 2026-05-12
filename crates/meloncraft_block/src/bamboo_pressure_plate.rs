@@ -7,21 +7,21 @@ pub struct BambooPressurePlate {
 
 
 impl BlockState for BambooPressurePlate {
-    fn to_id(self) -> i32 {
-        if block_state.r#powered == true { return 6678; }
-        if block_state.r#powered == false { return 6679; }
+    fn to_id(&self) -> i32 {
+        if self.r#powered == false { return 6679; }
+        if self.r#powered == true { return 6678; }
         panic!("Invalid block state")
     }
 
     fn from_id(state_id: i32) -> Option<Self> {
-        if state_id == 6678 {
-            return Some(BambooPressurePlate {
-                r#powered: true,
-            });
-        }
         if state_id == 6679 {
             return Some(BambooPressurePlate {
                 r#powered: false,
+            });
+        }
+        if state_id == 6678 {
+            return Some(BambooPressurePlate {
+                r#powered: true,
             });
         }
         return None;

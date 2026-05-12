@@ -16,41 +16,29 @@ pub enum Facing {
 }
 
 impl BlockState for SpruceWallHangingSign {
-    fn to_id(self) -> i32 {
-        if block_state.r#waterlogged == true && block_state.r#facing == Facing::East { return 6488; }
-        if block_state.r#waterlogged == true && block_state.r#facing == Facing::West { return 6486; }
-        if block_state.r#facing == Facing::East && block_state.r#waterlogged == false { return 6489; }
-        if block_state.r#waterlogged == true && block_state.r#facing == Facing::South { return 6484; }
-        if block_state.r#waterlogged == true && block_state.r#facing == Facing::North { return 6482; }
-        if block_state.r#facing == Facing::South && block_state.r#waterlogged == false { return 6485; }
-        if block_state.r#facing == Facing::West && block_state.r#waterlogged == false { return 6487; }
-        if block_state.r#facing == Facing::North && block_state.r#waterlogged == false { return 6483; }
+    fn to_id(&self) -> i32 {
+        if self.r#facing == Facing::West && self.r#waterlogged == false { return 6487; }
+        if self.r#facing == Facing::East && self.r#waterlogged == true { return 6488; }
+        if self.r#waterlogged == true && self.r#facing == Facing::North { return 6482; }
+        if self.r#waterlogged == true && self.r#facing == Facing::South { return 6484; }
+        if self.r#waterlogged == true && self.r#facing == Facing::West { return 6486; }
+        if self.r#facing == Facing::South && self.r#waterlogged == false { return 6485; }
+        if self.r#waterlogged == false && self.r#facing == Facing::North { return 6483; }
+        if self.r#facing == Facing::East && self.r#waterlogged == false { return 6489; }
         panic!("Invalid block state")
     }
 
     fn from_id(state_id: i32) -> Option<Self> {
-        if state_id == 6488 {
+        if state_id == 6487 {
             return Some(SpruceWallHangingSign {
-                r#waterlogged: true,
-                r#facing: Facing::East,
-            });
-        }
-        if state_id == 6486 {
-            return Some(SpruceWallHangingSign {
-                r#waterlogged: true,
                 r#facing: Facing::West,
-            });
-        }
-        if state_id == 6489 {
-            return Some(SpruceWallHangingSign {
-                r#facing: Facing::East,
                 r#waterlogged: false,
             });
         }
-        if state_id == 6484 {
+        if state_id == 6488 {
             return Some(SpruceWallHangingSign {
+                r#facing: Facing::East,
                 r#waterlogged: true,
-                r#facing: Facing::South,
             });
         }
         if state_id == 6482 {
@@ -59,21 +47,33 @@ impl BlockState for SpruceWallHangingSign {
                 r#facing: Facing::North,
             });
         }
+        if state_id == 6484 {
+            return Some(SpruceWallHangingSign {
+                r#waterlogged: true,
+                r#facing: Facing::South,
+            });
+        }
+        if state_id == 6486 {
+            return Some(SpruceWallHangingSign {
+                r#waterlogged: true,
+                r#facing: Facing::West,
+            });
+        }
         if state_id == 6485 {
             return Some(SpruceWallHangingSign {
                 r#facing: Facing::South,
                 r#waterlogged: false,
             });
         }
-        if state_id == 6487 {
-            return Some(SpruceWallHangingSign {
-                r#facing: Facing::West,
-                r#waterlogged: false,
-            });
-        }
         if state_id == 6483 {
             return Some(SpruceWallHangingSign {
+                r#waterlogged: false,
                 r#facing: Facing::North,
+            });
+        }
+        if state_id == 6489 {
+            return Some(SpruceWallHangingSign {
+                r#facing: Facing::East,
                 r#waterlogged: false,
             });
         }
