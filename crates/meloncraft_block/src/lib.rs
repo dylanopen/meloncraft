@@ -1,3 +1,6 @@
+#![allow(clippy::all)]
+#![allow(unreachable_code)]
+
 pub mod matcher;
 pub use matcher::*;
 pub mod block_state;

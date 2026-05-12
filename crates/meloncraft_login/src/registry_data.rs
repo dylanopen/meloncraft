@@ -1,14 +1,8 @@
 use bevy::ecs::entity::Entity;
 use bevy::ecs::message::{MessageReader, MessageWriter};
-use bevy::ecs::system::Res;
-use meloncraft_core::Identifier;
-use meloncraft_default_registries::raw::RawRegistries;
-use meloncraft_nbt::{NbtCompound, NbtValue};
-use meloncraft_packets::{clientbound, serverbound};
+use meloncraft_packets::serverbound;
 use meloncraft_packets::clientbound::configuration::RegistryData;
 use meloncraft_packets::clientbound_packet::ClientboundPacket;
-use meloncraft_packets::serverbound::login::LoginAcknowledged;
-use meloncraft_registry::RegistryEntry;
 use meloncraft_network::packet::{ClientboundNetworkPacket, ClientboundNetworkPacketReceived};
 
 pub fn send_registry_data(

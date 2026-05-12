@@ -2,13 +2,13 @@ use bevy::app::{App, Plugin, Update};
 use bevy::ecs::entity::Entity;
 use bevy::ecs::message::{MessageReader, MessageWriter};
 use bevy::ecs::schedule::IntoScheduleConfigs as _;
-use bevy::ecs::system::{Query, ResMut};
+use bevy::ecs::system::Query;
 use meloncraft_client::connection::ClientConnection;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_core::Identifier;
 use meloncraft_packets::clientbound;
 use meloncraft_packets::serverbound::configuration::AcknowledgeFinishConfiguration;
-use meloncraft_player::{GameProfile, Username, Uuid};
+use meloncraft_player::GameProfile;
 use meloncraft_protocol_types::{AddPlayerAction, PlayerAction, PrefixedArray};
 
 pub struct MeloncraftInitPlayPlugin;
