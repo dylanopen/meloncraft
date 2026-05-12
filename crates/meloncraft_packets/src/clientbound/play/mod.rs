@@ -10,6 +10,9 @@ pub use player_info_update::PlayerInfoUpdate;
 mod game_event;
 pub use game_event::GameEvent;
 
+mod chunk_data;
+pub use chunk_data::ChunkData;
+
 pub fn register_packets(app: &mut bevy::app::App) {
     use crate::clientbound_messenger::fwd;
     use bevy::app::PostUpdate;
@@ -25,4 +28,7 @@ pub fn register_packets(app: &mut bevy::app::App) {
 
     app.add_message::<GameEvent>();
     app.add_systems(PostUpdate, fwd::<GameEvent>);
+
+    app.add_message::<ChunkData>();
+    app.add_systems(PostUpdate, fwd::<ChunkData>);
 }
