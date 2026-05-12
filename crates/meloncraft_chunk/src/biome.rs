@@ -1,3 +1,4 @@
+#[derive(Debug, Clone, PartialEq, Eq, Hash)]
 pub struct Biome {
     pub state_id: i32,
 }

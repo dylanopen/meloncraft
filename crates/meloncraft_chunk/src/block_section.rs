@@ -1,6 +1,7 @@
 use crate::biome::Biome;
 use crate::block::Block;
 
+#[derive(Debug, Clone)]
 pub struct ChunkBlockSection {
     pub block_count: i16,
     pub blocks: [Block; 4096],

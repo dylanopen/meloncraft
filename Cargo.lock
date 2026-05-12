@@ -1385,6 +1385,7 @@ name = "meloncraft_packets"
 version = "0.1.0"
 dependencies = [
  "bevy",
+ "meloncraft_chunk",
  "meloncraft_client",
  "meloncraft_core",
  "meloncraft_nbt",
