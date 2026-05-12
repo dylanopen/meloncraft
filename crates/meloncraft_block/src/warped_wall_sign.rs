@@ -1,0 +1,83 @@
+use crate::BlockState;
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct WarpedWallSign {
+    pub r#facing: Facing,
+    pub waterlogged: bool,
+}
+
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum Facing {
+    North,
+    South,
+    West,
+    East,
+}
+
+impl BlockState for WarpedWallSign {
+    fn to_id(self) -> i32 {
+        if block_state.r#facing == Facing::East && block_state.r#waterlogged == false { return 21519; }
+        if block_state.r#waterlogged == true && block_state.r#facing == Facing::East { return 21518; }
+        if block_state.r#waterlogged == true && block_state.r#facing == Facing::South { return 21514; }
+        if block_state.r#facing == Facing::North && block_state.r#waterlogged == false { return 21513; }
+        if block_state.r#facing == Facing::North && block_state.r#waterlogged == true { return 21512; }
+        if block_state.r#waterlogged == true && block_state.r#facing == Facing::West { return 21516; }
+        if block_state.r#waterlogged == false && block_state.r#facing == Facing::South { return 21515; }
+        if block_state.r#waterlogged == false && block_state.r#facing == Facing::West { return 21517; }
+        panic!("Invalid block state")
+    }
+
+    fn from_id(state_id: i32) -> Option<Self> {
+        if state_id == 21519 {
+            return Some(WarpedWallSign {
+                r#facing: Facing::East,
+                r#waterlogged: false,
+            });
+        }
+        if state_id == 21518 {
+            return Some(WarpedWallSign {
+                r#waterlogged: true,
+                r#facing: Facing::East,
+            });
+        }
+        if state_id == 21514 {
+            return Some(WarpedWallSign {
+                r#waterlogged: true,
+                r#facing: Facing::South,
+            });
+        }
+        if state_id == 21513 {
+            return Some(WarpedWallSign {
+                r#facing: Facing::North,
+                r#waterlogged: false,
+            });
+        }
+        if state_id == 21512 {
+            return Some(WarpedWallSign {
+                r#facing: Facing::North,
+                r#waterlogged: true,
+            });
+        }
+        if state_id == 21516 {
+            return Some(WarpedWallSign {
+                r#waterlogged: true,
+                r#facing: Facing::West,
+            });
+        }
+        if state_id == 21515 {
+            return Some(WarpedWallSign {
+                r#waterlogged: false,
+                r#facing: Facing::South,
+            });
+        }
+        if state_id == 21517 {
+            return Some(WarpedWallSign {
+                r#waterlogged: false,
+                r#facing: Facing::West,
+            });
+        }
+        return None;
+    }
+}
+

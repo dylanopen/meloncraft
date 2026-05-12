@@ -1,0 +1,342 @@
+use crate::BlockState;
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct LightGrayStainedGlassPane {
+    pub west: bool,
+    pub north: bool,
+    pub waterlogged: bool,
+    pub east: bool,
+    pub south: bool,
+}
+
+
+impl BlockState for LightGrayStainedGlassPane {
+    fn to_id(self) -> i32 {
+        if block_state.r#west == false && block_state.r#north == false && block_state.r#south == false && block_state.r#waterlogged == false && block_state.r#east == true { return 11529; }
+        if block_state.r#east == true && block_state.r#north == true && block_state.r#waterlogged == true && block_state.r#south == false && block_state.r#west == true { return 11518; }
+        if block_state.r#north == true && block_state.r#west == false && block_state.r#waterlogged == false && block_state.r#east == false && block_state.r#south == true { return 11533; }
+        if block_state.r#east == false && block_state.r#south == true && block_state.r#waterlogged == true && block_state.r#north == true && block_state.r#west == false { return 11531; }
+        if block_state.r#east == true && block_state.r#north == true && block_state.r#west == true && block_state.r#waterlogged == false && block_state.r#south == true { return 11516; }
+        if block_state.r#east == true && block_state.r#north == true && block_state.r#west == false && block_state.r#south == false && block_state.r#waterlogged == false { return 11521; }
+        if block_state.r#south == false && block_state.r#north == true && block_state.r#east == false && block_state.r#waterlogged == true && block_state.r#west == false { return 11535; }
+        if block_state.r#waterlogged == false && block_state.r#north == true && block_state.r#west == true && block_state.r#east == true && block_state.r#south == false { return 11520; }
+        if block_state.r#north == true && block_state.r#south == false && block_state.r#west == true && block_state.r#east == false && block_state.r#waterlogged == false { return 11536; }
+        if block_state.r#west == false && block_state.r#south == false && block_state.r#north == true && block_state.r#waterlogged == false && block_state.r#east == false { return 11537; }
+        if block_state.r#east == false && block_state.r#west == true && block_state.r#south == false && block_state.r#north == false && block_state.r#waterlogged == true { return 11542; }
+        if block_state.r#east == false && block_state.r#west == true && block_state.r#waterlogged == true && block_state.r#north == false && block_state.r#south == true { return 11538; }
+        if block_state.r#waterlogged == true && block_state.r#south == true && block_state.r#west == false && block_state.r#north == false && block_state.r#east == true { return 11523; }
+        if block_state.r#east == false && block_state.r#waterlogged == true && block_state.r#south == false && block_state.r#west == false && block_state.r#north == false { return 11543; }
+        if block_state.r#west == true && block_state.r#east == true && block_state.r#south == false && block_state.r#north == false && block_state.r#waterlogged == false { return 11528; }
+        if block_state.r#east == false && block_state.r#north == false && block_state.r#west == true && block_state.r#south == false && block_state.r#waterlogged == false { return 11544; }
+        if block_state.r#south == false && block_state.r#west == false && block_state.r#north == true && block_state.r#waterlogged == true && block_state.r#east == true { return 11519; }
+        if block_state.r#west == true && block_state.r#north == false && block_state.r#south == true && block_state.r#waterlogged == false && block_state.r#east == true { return 11524; }
+        if block_state.r#north == false && block_state.r#east == false && block_state.r#waterlogged == false && block_state.r#west == false && block_state.r#south == true { return 11541; }
+        if block_state.r#east == false && block_state.r#north == false && block_state.r#waterlogged == false && block_state.r#west == false && block_state.r#south == false { return 11545; }
+        if block_state.r#south == true && block_state.r#west == true && block_state.r#east == true && block_state.r#north == false && block_state.r#waterlogged == true { return 11522; }
+        if block_state.r#waterlogged == true && block_state.r#east == true && block_state.r#west == false && block_state.r#north == true && block_state.r#south == true { return 11515; }
+        if block_state.r#east == true && block_state.r#west == true && block_state.r#waterlogged == true && block_state.r#north == true && block_state.r#south == true { return 11514; }
+        if block_state.r#east == true && block_state.r#waterlogged == false && block_state.r#north == false && block_state.r#west == false && block_state.r#south == true { return 11525; }
+        if block_state.r#east == false && block_state.r#north == true && block_state.r#west == true && block_state.r#waterlogged == true && block_state.r#south == true { return 11530; }
+        if block_state.r#east == false && block_state.r#south == true && block_state.r#waterlogged == false && block_state.r#north == false && block_state.r#west == true { return 11540; }
+        if block_state.r#west == false && block_state.r#south == true && block_state.r#east == true && block_state.r#north == true && block_state.r#waterlogged == false { return 11517; }
+        if block_state.r#west == false && block_state.r#east == false && block_state.r#waterlogged == true && block_state.r#north == false && block_state.r#south == true { return 11539; }
+        if block_state.r#waterlogged == true && block_state.r#south == false && block_state.r#west == true && block_state.r#north == false && block_state.r#east == true { return 11526; }
+        if block_state.r#north == true && block_state.r#east == false && block_state.r#south == true && block_state.r#waterlogged == false && block_state.r#west == true { return 11532; }
+        if block_state.r#north == false && block_state.r#waterlogged == true && block_state.r#south == false && block_state.r#east == true && block_state.r#west == false { return 11527; }
+        if block_state.r#south == false && block_state.r#north == true && block_state.r#waterlogged == true && block_state.r#west == true && block_state.r#east == false { return 11534; }
+        panic!("Invalid block state")
+    }
+
+    fn from_id(state_id: i32) -> Option<Self> {
+        if state_id == 11529 {
+            return Some(LightGrayStainedGlassPane {
+                r#west: false,
+                r#north: false,
+                r#south: false,
+                r#waterlogged: false,
+                r#east: true,
+            });
+        }
+        if state_id == 11518 {
+            return Some(LightGrayStainedGlassPane {
+                r#east: true,
+                r#north: true,
+                r#waterlogged: true,
+                r#south: false,
+                r#west: true,
+            });
+        }
+        if state_id == 11533 {
+            return Some(LightGrayStainedGlassPane {
+                r#north: true,
+                r#west: false,
+                r#waterlogged: false,
+                r#east: false,
+                r#south: true,
+            });
+        }
+        if state_id == 11531 {
+            return Some(LightGrayStainedGlassPane {
+                r#east: false,
+                r#south: true,
+                r#waterlogged: true,
+                r#north: true,
+                r#west: false,
+            });
+        }
+        if state_id == 11516 {
+            return Some(LightGrayStainedGlassPane {
+                r#east: true,
+                r#north: true,
+                r#west: true,
+                r#waterlogged: false,
+                r#south: true,
+            });
+        }
+        if state_id == 11521 {
+            return Some(LightGrayStainedGlassPane {
+                r#east: true,
+                r#north: true,
+                r#west: false,
+                r#south: false,
+                r#waterlogged: false,
+            });
+        }
+        if state_id == 11535 {
+            return Some(LightGrayStainedGlassPane {
+                r#south: false,
+                r#north: true,
+                r#east: false,
+                r#waterlogged: true,
+                r#west: false,
+            });
+        }
+        if state_id == 11520 {
+            return Some(LightGrayStainedGlassPane {
+                r#waterlogged: false,
+                r#north: true,
+                r#west: true,
+                r#east: true,
+                r#south: false,
+            });
+        }
+        if state_id == 11536 {
+            return Some(LightGrayStainedGlassPane {
+                r#north: true,
+                r#south: false,
+                r#west: true,
+                r#east: false,
+                r#waterlogged: false,
+            });
+        }
+        if state_id == 11537 {
+            return Some(LightGrayStainedGlassPane {
+                r#west: false,
+                r#south: false,
+                r#north: true,
+                r#waterlogged: false,
+                r#east: false,
+            });
+        }
+        if state_id == 11542 {
+            return Some(LightGrayStainedGlassPane {
+                r#east: false,
+                r#west: true,
+                r#south: false,
+                r#north: false,
+                r#waterlogged: true,
+            });
+        }
+        if state_id == 11538 {
+            return Some(LightGrayStainedGlassPane {
+                r#east: false,
+                r#west: true,
+                r#waterlogged: true,
+                r#north: false,
+                r#south: true,
+            });
+        }
+        if state_id == 11523 {
+            return Some(LightGrayStainedGlassPane {
+                r#waterlogged: true,
+                r#south: true,
+                r#west: false,
+                r#north: false,
+                r#east: true,
+            });
+        }
+        if state_id == 11543 {
+            return Some(LightGrayStainedGlassPane {
+                r#east: false,
+                r#waterlogged: true,
+                r#south: false,
+                r#west: false,
+                r#north: false,
+            });
+        }
+        if state_id == 11528 {
+            return Some(LightGrayStainedGlassPane {
+                r#west: true,
+                r#east: true,
+                r#south: false,
+                r#north: false,
+                r#waterlogged: false,
+            });
+        }
+        if state_id == 11544 {
+            return Some(LightGrayStainedGlassPane {
+                r#east: false,
+                r#north: false,
+                r#west: true,
+                r#south: false,
+                r#waterlogged: false,
+            });
+        }
+        if state_id == 11519 {
+            return Some(LightGrayStainedGlassPane {
+                r#south: false,
+                r#west: false,
+                r#north: true,
+                r#waterlogged: true,
+                r#east: true,
+            });
+        }
+        if state_id == 11524 {
+            return Some(LightGrayStainedGlassPane {
+                r#west: true,
+                r#north: false,
+                r#south: true,
+                r#waterlogged: false,
+                r#east: true,
+            });
+        }
+        if state_id == 11541 {
+            return Some(LightGrayStainedGlassPane {
+                r#north: false,
+                r#east: false,
+                r#waterlogged: false,
+                r#west: false,
+                r#south: true,
+            });
+        }
+        if state_id == 11545 {
+            return Some(LightGrayStainedGlassPane {
+                r#east: false,
+                r#north: false,
+                r#waterlogged: false,
+                r#west: false,
+                r#south: false,
+            });
+        }
+        if state_id == 11522 {
+            return Some(LightGrayStainedGlassPane {
+                r#south: true,
+                r#west: true,
+                r#east: true,
+                r#north: false,
+                r#waterlogged: true,
+            });
+        }
+        if state_id == 11515 {
+            return Some(LightGrayStainedGlassPane {
+                r#waterlogged: true,
+                r#east: true,
+                r#west: false,
+                r#north: true,
+                r#south: true,
+            });
+        }
+        if state_id == 11514 {
+            return Some(LightGrayStainedGlassPane {
+                r#east: true,
+                r#west: true,
+                r#waterlogged: true,
+                r#north: true,
+                r#south: true,
+            });
+        }
+        if state_id == 11525 {
+            return Some(LightGrayStainedGlassPane {
+                r#east: true,
+                r#waterlogged: false,
+                r#north: false,
+                r#west: false,
+                r#south: true,
+            });
+        }
+        if state_id == 11530 {
+            return Some(LightGrayStainedGlassPane {
+                r#east: false,
+                r#north: true,
+                r#west: true,
+                r#waterlogged: true,
+                r#south: true,
+            });
+        }
+        if state_id == 11540 {
+            return Some(LightGrayStainedGlassPane {
+                r#east: false,
+                r#south: true,
+                r#waterlogged: false,
+                r#north: false,
+                r#west: true,
+            });
+        }
+        if state_id == 11517 {
+            return Some(LightGrayStainedGlassPane {
+                r#west: false,
+                r#south: true,
+                r#east: true,
+                r#north: true,
+                r#waterlogged: false,
+            });
+        }
+        if state_id == 11539 {
+            return Some(LightGrayStainedGlassPane {
+                r#west: false,
+                r#east: false,
+                r#waterlogged: true,
+                r#north: false,
+                r#south: true,
+            });
+        }
+        if state_id == 11526 {
+            return Some(LightGrayStainedGlassPane {
+                r#waterlogged: true,
+                r#south: false,
+                r#west: true,
+                r#north: false,
+                r#east: true,
+            });
+        }
+        if state_id == 11532 {
+            return Some(LightGrayStainedGlassPane {
+                r#north: true,
+                r#east: false,
+                r#south: true,
+                r#waterlogged: false,
+                r#west: true,
+            });
+        }
+        if state_id == 11527 {
+            return Some(LightGrayStainedGlassPane {
+                r#north: false,
+                r#waterlogged: true,
+                r#south: false,
+                r#east: true,
+                r#west: false,
+            });
+        }
+        if state_id == 11534 {
+            return Some(LightGrayStainedGlassPane {
+                r#south: false,
+                r#north: true,
+                r#waterlogged: true,
+                r#west: true,
+                r#east: false,
+            });
+        }
+        return None;
+    }
+}
+
