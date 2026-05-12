@@ -1244,6 +1244,7 @@ dependencies = [
 name = "meloncraft"
 version = "0.1.0"
 dependencies = [
+ "meloncraft_chunk",
  "meloncraft_client",
  "meloncraft_core",
  "meloncraft_default_registries",
@@ -1260,6 +1261,10 @@ dependencies = [
  "meloncraft_server_list",
  "meloncraft_text",
 ]
+
+[[package]]
+name = "meloncraft_chunk"
+version = "0.1.0"
 
 [[package]]
 name = "meloncraft_client"
