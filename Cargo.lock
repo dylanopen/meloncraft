@@ -1406,6 +1406,7 @@ dependencies = [
 name = "meloncraft_protocol_types"
 version = "0.1.0"
 dependencies = [
+ "meloncraft_chunk",
  "meloncraft_core",
  "meloncraft_nbt",
  "meloncraft_player",

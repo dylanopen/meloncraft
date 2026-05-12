@@ -35,6 +35,7 @@ mod varint;
 mod location;
 pub mod game_event;
 mod player_action;
+mod chunk_block_section;
 
 pub use byte::Byte;
 pub use prefixed_array::PrefixedArray;

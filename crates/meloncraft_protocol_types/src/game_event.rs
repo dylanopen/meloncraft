@@ -33,7 +33,7 @@ impl ProtocolType for GameEventType {
             GameEventType::NoRespawnBlockAvailable => (0, 0f32),
             GameEventType::BeginRaining => (1, 0f32),
             GameEventType::EndRaining => (2, 0f32),
-            GameEventType::ChangeGameMode(mode) => (3, (u8::from(*mode)) as f32),
+            GameEventType::ChangeGameMode(mode) => (3, u8::from(*mode) as f32),
             GameEventType::WinGame(ShouldShowCredits(show_credits)) => (4, if *show_credits { 1.0 } else { 0.0 }),
             GameEventType::DemoEvent(event) => (5, (*event as u8) as f32),
             GameEventType::ArrowHitPlayer => (6, 0f32),
