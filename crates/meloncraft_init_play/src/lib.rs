@@ -3,6 +3,11 @@ use bevy::ecs::entity::Entity;
 use bevy::ecs::message::{MessageReader, MessageWriter};
 use bevy::ecs::schedule::IntoScheduleConfigs as _;
 use bevy::ecs::system::Query;
+use meloncraft_block::BlockState;
+use meloncraft_block::stone::Stone;
+use meloncraft_chunk::biome::Biome;
+use meloncraft_chunk::block::Block;
+use meloncraft_chunk::block_section::ChunkBlockSection;
 use meloncraft_client::connection::ClientConnection;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_core::Identifier;
@@ -10,16 +15,18 @@ use meloncraft_packets::clientbound;
 use meloncraft_packets::serverbound::configuration::AcknowledgeFinishConfiguration;
 use meloncraft_player::GameProfile;
 use meloncraft_protocol_types::{AddPlayerAction, PlayerAction, PrefixedArray};
+use meloncraft_protocol_types::bitset::BitSet;
 
 pub struct MeloncraftInitPlayPlugin;
 
 impl Plugin for MeloncraftInitPlayPlugin {
     fn build(&self, app: &mut App) {
         app.add_systems(Update, (
-                game_event_player_info_update,
-                sync_position, // reverse order so that the login packet is sent before the position sync
-                play_login,    // otherwise bevy might read the messages the wrong way, so send position then login
-        ).chain()); 
+            send_chunks,
+            game_event_player_info_update,
+            sync_position, // reverse order so that the login packet is sent before the position sync
+            play_login,    // otherwise bevy might read the messages the wrong way, so send position then login
+        ).chain());
     }
 }
 
@@ -98,10 +105,10 @@ fn game_event_player_info_update(
                 (
                     profile.uuid.clone(),
                     vec![
-                    PlayerAction::AddPlayer(AddPlayerAction {
-                        name: profile.username.clone(),
-                        game_profile_properties: vec![],
-                    }),
+                        PlayerAction::AddPlayer(AddPlayerAction {
+                            name: profile.username.clone(),
+                            game_profile_properties: vec![],
+                        }),
                     ],
                 ),
             ],
@@ -110,5 +117,39 @@ fn game_event_player_info_update(
             client: login_packet.client,
             event: meloncraft_protocol_types::GameEventType::WaitForChunks,
         });
+    }
+}
+
+fn send_chunks(
+    mut game_event_pr: MessageReader<clientbound::play::GameEvent>,
+    mut chunk_data_pw: MessageWriter<clientbound::play::ChunkData>,
+) {
+    for packet in game_event_pr.read() {
+        let mut chunk_block_sections = Vec::new();
+        for _ in 0..24 {
+            chunk_block_sections.push(ChunkBlockSection {
+                block_count: 16 * 16 * 16,
+                blocks: [Block::new(Stone {}.to_id()); 16 * 16 * 16],
+                biomes: [Biome::new(40); 64],
+            });
+        }
+        for z in -10..10 {
+            for x in -10..10 {
+                chunk_data_pw.write(clientbound::play::ChunkData {
+                    client: packet.client,
+                    chunk_x: x,
+                    chunk_z: z,
+                    data: chunk_block_sections.clone(),
+                    light: meloncraft_protocol_types::chunk_lighting::ChunkLighting {
+                        sky_mask: BitSet::with_capacity(26),
+                        block_mask: BitSet::with_capacity(26),
+                        empty_sky_mask: BitSet::with_capacity(26),
+                        empty_block_mask: BitSet::with_capacity(26),
+                        sky_data: vec![],
+                        block_data: vec![],
+                    },
+                });
+            }
+        }
     }
 }
