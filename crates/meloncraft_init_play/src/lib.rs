@@ -123,8 +123,15 @@ fn game_event_player_info_update(
 fn send_chunks(
     mut game_event_pr: MessageReader<clientbound::play::GameEvent>,
     mut chunk_data_pw: MessageWriter<clientbound::play::ChunkData>,
+    mut set_center_chunk_pw: MessageWriter<clientbound::play::SetCenterChunk>,
 ) {
     for packet in game_event_pr.read() {
+        set_center_chunk_pw.write(clientbound::play::SetCenterChunk {
+            client: packet.client,
+            x: 0,
+            z: 0,
+        });
+
         let mut chunk_block_sections = Vec::new();
         for _ in 0..24 {
             chunk_block_sections.push(ChunkBlockSection {
@@ -133,8 +140,8 @@ fn send_chunks(
                 biomes: [Biome::new(40); 64],
             });
         }
-        for z in -10..10 {
-            for x in -10..10 {
+        for z in -10..=10 {
+            for x in -10..=10 {
                 chunk_data_pw.write(clientbound::play::ChunkData {
                     client: packet.client,
                     chunk_x: x,
