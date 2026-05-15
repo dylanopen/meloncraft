@@ -6,13 +6,9 @@ edition = "2024"
 [dependencies]
 bevy = { workspace = true }
 meloncraft_core = { workspace = true }
-meloncraft_nbt = { workspace = true }
-meloncraft_registry = { workspace = true }
-meloncraft_default_registries = { workspace = true }
 meloncraft_protocol_types = { workspace = true }
 meloncraft_player = { workspace = true }
 meloncraft_packets = { workspace = true }
 meloncraft_client = { workspace = true }
-meloncraft_network = { workspace = true }
 meloncraft_block = { workspace = true }
 meloncraft_chunk = { workspace = true }

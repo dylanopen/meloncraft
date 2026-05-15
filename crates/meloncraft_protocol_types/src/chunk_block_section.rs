@@ -9,37 +9,35 @@ impl ProtocolType for ChunkBlockSection {
         let mut output = Vec::new();
         output.extend(self.block_count.net_serialize());
 
-        // blocks:
-        output.extend(BITS_PER_BLOCK_ENTRY.net_serialize());
-        let mut current_long = 0u64;
-        let mut entries_in_long = 0;
-        for block in &self.blocks {
-            current_long <<= 15;
-            current_long |= (block.state_id as u64) & 0x7FFF;
-            entries_in_long += 1;
-            if entries_in_long >= 64 / BITS_PER_BLOCK_ENTRY {
-                output.extend(current_long.net_serialize());
-                current_long = 0;
-                entries_in_long = 0;
-            }
-        }
-        if entries_in_long > 0 {
-            output.extend(current_long.net_serialize());
-        }
+        dbg!(output.len());
 
-        // biomes:
-        output.extend(BITS_PER_BIOME_ENTRY.net_serialize());
-        current_long = 0;
-        entries_in_long = 0;
-        for biome in &self.biomes {
-            current_long <<= 7;
-            current_long |= (biome.state_id as u64) & 0x7FFF;
-            entries_in_long += 1;
-            if entries_in_long >= 64 / BITS_PER_BIOME_ENTRY {
-                output.extend(current_long.net_serialize());
-                current_long = 0;
-                entries_in_long = 0;
+        // Some code was adapted from Oxide: thank you, as without it, I was completely lost with this serialization <3
+        // https://git.thetxt.io/thetxt/oxide/src/lib/src/packets/clientbound/play.rs
+        let mut data_iter = self.blocks.into_iter();
+        let entries_per_long = 64 / BITS_PER_BLOCK_ENTRY;
+        let bits_per_entry = BITS_PER_BLOCK_ENTRY;
+        output.push(bits_per_entry);
+        while data_iter.len() != 0 {
+            let mut entry: u64 = 0;
+            for i in 0..entries_per_long {
+                if let Some(next) = data_iter.next() {
+                    entry += (next.state_id as u64) << (i * bits_per_entry) as u64;
+                }
             }
+            output.extend(entry.net_serialize());
+        }
+        let mut data_iter = self.biomes.into_iter();
+        let entries_per_long = 64 / BITS_PER_BIOME_ENTRY;
+        let bits_per_entry = BITS_PER_BIOME_ENTRY;
+        output.push(bits_per_entry);
+        while data_iter.len() != 0 {
+            let mut entry: u64 = 0;
+            for i in 0..entries_per_long {
+                if let Some(next) = data_iter.next() {
+                    entry += (next.state_id as u64) << (i * bits_per_entry) as u64;
+                }
+            }
+            output.extend(entry.net_serialize());
         }
 
         output

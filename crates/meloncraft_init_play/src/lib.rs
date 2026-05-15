@@ -4,7 +4,7 @@ use bevy::ecs::message::{MessageReader, MessageWriter};
 use bevy::ecs::schedule::IntoScheduleConfigs as _;
 use bevy::ecs::system::Query;
 use meloncraft_block::BlockState;
-use meloncraft_block::stone::Stone;
+use meloncraft_block::dirt::Dirt;
 use meloncraft_chunk::biome::Biome;
 use meloncraft_chunk::block::Block;
 use meloncraft_chunk::block_section::ChunkBlockSection;
@@ -134,11 +134,10 @@ fn send_chunks(
 
         let mut chunk_block_sections = Vec::new();
         for _ in 0..24 {
-            chunk_block_sections.push(ChunkBlockSection {
-                block_count: 16 * 16 * 16,
-                blocks: [Block::new(Stone {}.to_id()); 16 * 16 * 16],
-                biomes: [Biome::new(40); 64],
-            });
+            chunk_block_sections.push(ChunkBlockSection::new(
+                [Block::new(Dirt{}.to_id()); 16 * 16 * 16],
+                [Biome::new(40); 64]
+            ));
         }
         for z in -10..=10 {
             for x in -10..=10 {
