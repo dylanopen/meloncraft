@@ -59,7 +59,6 @@ impl ProtocolType for VarInt {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::ProtocolBuffer;
 
     // Example cases taken from https://minecraft.wiki/w/Java_Edition_protocol/Packets#VarInt_and_VarLong
     #[test]
