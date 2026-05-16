@@ -6,12 +6,12 @@ use meloncraft_network::packet::ClientboundNetworkPacket;
 use meloncraft_protocol_types::ProtocolType;
 
 #[derive(Message, Debug, Clone)]
-pub struct SetCompression {
+pub struct ClientboundSetCompression {
     pub entity: Entity,
     pub threshold: i32,
 }
 
-impl ClientboundPacket for SetCompression {
+impl ClientboundPacket for ClientboundSetCompression {
     fn id() -> i32 {
         0x03
     }

@@ -7,12 +7,12 @@ use meloncraft_player::Uuid;
 use meloncraft_protocol_types::ProtocolType;
 
 #[derive(Message, Clone, Debug)]
-pub struct RemoveResourcePack {
+pub struct ClientboundRemoveResourcePack {
     pub client: Entity,
     pub resource_pack_uuid: Uuid,
 }
 
-impl ClientboundPacket for RemoveResourcePack {
+impl ClientboundPacket for ClientboundRemoveResourcePack {
     fn id() -> i32 {
         0x08
     }

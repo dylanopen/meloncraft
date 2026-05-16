@@ -6,7 +6,7 @@ use meloncraft_protocol_types::{ProtocolType, VarInt};
 use crate::clientbound_packet::ClientboundPacket;
 
 #[derive(Message, Debug, Clone)]
-pub struct SynchronizePlayerPosition {
+pub struct ClientboundSynchronizePlayerPosition {
     pub client: Entity,
     pub teleport_id: i32,
     pub x: f64,
@@ -19,7 +19,7 @@ pub struct SynchronizePlayerPosition {
     pub pitch: f32,
 }
 
-impl ClientboundPacket for SynchronizePlayerPosition {
+impl ClientboundPacket for ClientboundSynchronizePlayerPosition {
     fn id() -> i32 {
         0x46
     }

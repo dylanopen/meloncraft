@@ -7,12 +7,12 @@ use meloncraft_network::packet::ClientboundNetworkPacket;
 use meloncraft_protocol_types::ProtocolType;
 
 #[derive(Message, Debug, Clone)]
-pub struct ShowDialog {
+pub struct ClientboundShowDialog {
     pub client: Entity,
     pub dialog: NbtTag,
 }
 
-impl ClientboundPacket for ShowDialog {
+impl ClientboundPacket for ClientboundShowDialog {
     fn id() -> i32 {
         0x12
     }

@@ -5,12 +5,12 @@ use meloncraft_network::packet::ClientboundNetworkPacket;
 use meloncraft_protocol_types::ProtocolType;
 
 #[derive(Message, Debug, Clone)]
-pub struct Pong {
+pub struct ClientboundPong {
     pub client: Entity,
     pub timestamp: i64,
 }
 
-impl ClientboundPacket for Pong {
+impl ClientboundPacket for ClientboundPong {
     fn id() -> i32 {
         0x01
     }

@@ -7,12 +7,12 @@ use meloncraft_network::packet::ClientboundNetworkPacket;
 use meloncraft_protocol_types::{PrefixedArray, ProtocolType};
 
 #[derive(Message, Debug, Clone)]
-pub struct SelectKnownPacks {
+pub struct ClientboundSelectKnownPacks {
     pub client: Entity,
     pub known_packs: Vec<DatapackMetadata>,
 }
 
-impl ClientboundPacket for SelectKnownPacks {
+impl ClientboundPacket for ClientboundSelectKnownPacks {
     fn id() -> i32 {
         0x0E
     }

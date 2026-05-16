@@ -7,12 +7,12 @@ use meloncraft_network::packet::ClientboundNetworkPacket;
 use meloncraft_protocol_types::{PrefixedArray, ProtocolType};
 
 #[derive(Message, Debug, Clone)]
-pub struct CustomReportDetails {
+pub struct ClientboundCustomReportDetails {
     pub client: Entity,
     pub report: Vec<DisconnectReport>,
 }
 
-impl ClientboundPacket for CustomReportDetails {
+impl ClientboundPacket for ClientboundCustomReportDetails {
     fn id() -> i32 {
         0x0F
     }

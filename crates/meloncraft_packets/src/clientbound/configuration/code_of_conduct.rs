@@ -6,12 +6,12 @@ use meloncraft_network::packet::ClientboundNetworkPacket;
 use meloncraft_protocol_types::ProtocolType;
 
 #[derive(Message, Debug, Clone)]
-pub struct CodeOfConduct {
+pub struct ClientboundCodeOfConduct {
     pub client: Entity,
     pub code_of_conduct: String,
 }
 
-impl ClientboundPacket for CodeOfConduct {
+impl ClientboundPacket for ClientboundCodeOfConduct {
     fn id() -> i32 {
         0x13
     }

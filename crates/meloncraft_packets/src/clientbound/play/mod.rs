@@ -1,40 +1,40 @@
 mod login;
-pub use login::Login;
+pub use login::ClientboundPlayLogin;
 
 mod synchronize_player_position;
-pub use synchronize_player_position::SynchronizePlayerPosition;
+pub use synchronize_player_position::ClientboundSynchronizePlayerPosition;
 
 mod player_info_update;
-pub use player_info_update::PlayerInfoUpdate;
+pub use player_info_update::ClientboundPlayerInfoUpdate;
 
 mod game_event;
-pub use game_event::GameEvent;
+pub use game_event::ClientboundGameEvent;
 
 mod chunk_data;
-pub use chunk_data::ChunkData;
+pub use chunk_data::ClientboundChunkData;
 
 mod set_center_chunk;
-pub use set_center_chunk::SetCenterChunk;
+pub use set_center_chunk::ClientboundSetCenterChunk;
 
 pub fn register_packets(app: &mut bevy::app::App) {
     use crate::clientbound_messenger::fwd;
     use bevy::app::PostUpdate;
 
-    app.add_message::<Login>();
-    app.add_systems(PostUpdate, fwd::<Login>);
+    app.add_message::<ClientboundPlayLogin>();
+    app.add_systems(PostUpdate, fwd::<ClientboundPlayLogin>);
 
-    app.add_message::<SynchronizePlayerPosition>();
-    app.add_systems(PostUpdate, fwd::<SynchronizePlayerPosition>);
+    app.add_message::<ClientboundSynchronizePlayerPosition>();
+    app.add_systems(PostUpdate, fwd::<ClientboundSynchronizePlayerPosition>);
 
-    app.add_message::<PlayerInfoUpdate>();
-    app.add_systems(PostUpdate, fwd::<PlayerInfoUpdate>);
+    app.add_message::<ClientboundPlayerInfoUpdate>();
+    app.add_systems(PostUpdate, fwd::<ClientboundPlayerInfoUpdate>);
 
-    app.add_message::<GameEvent>();
-    app.add_systems(PostUpdate, fwd::<GameEvent>);
+    app.add_message::<ClientboundGameEvent>();
+    app.add_systems(PostUpdate, fwd::<ClientboundGameEvent>);
 
-    app.add_message::<ChunkData>();
-    app.add_systems(PostUpdate, fwd::<ChunkData>);
+    app.add_message::<ClientboundChunkData>();
+    app.add_systems(PostUpdate, fwd::<ClientboundChunkData>);
 
-    app.add_message::<SetCenterChunk>();
-    app.add_systems(PostUpdate, fwd::<SetCenterChunk>);
+    app.add_message::<ClientboundSetCenterChunk>();
+    app.add_systems(PostUpdate, fwd::<ClientboundSetCenterChunk>);
 }

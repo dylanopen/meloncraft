@@ -9,13 +9,13 @@ use meloncraft_protocol_types::{PrefixedArray, ProtocolType};
 use meloncraft_registry::RegistryEntry;
 
 #[derive(Message, Debug, Clone)]
-pub struct RegistryData {
+pub struct ClientboundRegistryData {
     pub client: Entity,
     pub registry_id: Identifier,
     pub registry_entries: Vec<RegistryEntry>,
 }
 
-impl ClientboundPacket for RegistryData {
+impl ClientboundPacket for ClientboundRegistryData {
     fn id() -> i32 {
         0x07
     }

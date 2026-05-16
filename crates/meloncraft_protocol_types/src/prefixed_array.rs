@@ -104,8 +104,8 @@ mod tests {
     #[test]
     fn test_prefixed_array_serde() {
         let array = PrefixedArray(vec![Byte(10), Byte(20), Byte(30)]);
-        let serialized = array.net_serialize();
-        let deserialized = PrefixedArray::<Byte>::net_deserialize(&mut serialized.clone()).unwrap();
+        let mut serialized = array.net_serialize();
+        let deserialized = PrefixedArray::<Byte>::net_deserialize(&mut serialized).unwrap();
         assert_eq!(array.0, deserialized.0);
     }
 }

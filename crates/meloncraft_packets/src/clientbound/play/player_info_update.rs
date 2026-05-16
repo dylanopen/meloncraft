@@ -8,13 +8,13 @@ use meloncraft_protocol_types::{PlayerAction, ProtocolType, VarInt};
 use crate::clientbound_packet::ClientboundPacket;
 
 #[derive(Message, Debug, Clone)]
-pub struct PlayerInfoUpdate {
+pub struct ClientboundPlayerInfoUpdate {
     pub client: Entity,
     pub action_mask: u8,
     pub players: Vec<(Uuid, Vec<PlayerAction>)>,
 }
 
-impl ClientboundPacket for PlayerInfoUpdate {
+impl ClientboundPacket for ClientboundPlayerInfoUpdate {
     fn id() -> i32 {
         0x44
     }

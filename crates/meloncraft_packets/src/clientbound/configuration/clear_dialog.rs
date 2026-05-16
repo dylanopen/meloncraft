@@ -5,11 +5,11 @@ use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::ClientboundNetworkPacket;
 
 #[derive(Message, Debug, Clone)]
-pub struct ClearDialog {
+pub struct ClientboundClearDialog {
     pub client: Entity,
 }
 
-impl ClientboundPacket for ClearDialog {
+impl ClientboundPacket for ClientboundClearDialog {
     fn id() -> i32 {
         0x11
     }

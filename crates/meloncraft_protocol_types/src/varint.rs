@@ -10,18 +10,18 @@ impl ProtocolType for VarInt {
     fn net_serialize(&self) -> Vec<u8> {
         let mut output: Vec<u8> = Vec::new();
 
-        let mut uvalue: u32 = self.0.try_into().unwrap();
+        let mut unsigned_value: u32 = self.0.try_into().unwrap();
         loop {
-            let mut byte = (uvalue & SEGMENT_BITS).try_into().unwrap();
-            uvalue >>= 7;
+            let mut byte = (unsigned_value & SEGMENT_BITS).try_into().unwrap();
+            unsigned_value >>= 7;
 
-            if uvalue != 0 {
+            if unsigned_value != 0 {
                 byte |= CONTINUE_BIT;
             }
 
             output.push(byte);
 
-            if uvalue == 0 {
+            if unsigned_value == 0 {
                 break;
             }
         }
@@ -87,11 +87,11 @@ mod tests {
     }
     #[test]
     fn test_serialize_varint_2097151() {
-        assert_eq!(VarInt(2097151).net_serialize(), vec![0xff, 0xff, 0x7f]);
+        assert_eq!(VarInt(2_097_151).net_serialize(), vec![0xff, 0xff, 0x7f]);
     }
     #[test]
     fn test_serialize_varint_2147483647() {
-        assert_eq!(VarInt(2147483647).net_serialize(), vec![0xff, 0xff, 0xff, 0xff, 0x07]);
+        assert_eq!(VarInt(2_147_483_647).net_serialize(), vec![0xff, 0xff, 0xff, 0xff, 0x07]);
     }
     #[test]
     fn test_serialize_varint_neg1() {
@@ -99,7 +99,7 @@ mod tests {
     }
     #[test]
     fn test_serialize_varint_neg2147483648() {
-        assert_eq!(VarInt(-2147483648).net_serialize(), vec![0x80, 0x80, 0x80, 0x80, 0x08]);
+        assert_eq!(VarInt(-2_147_483_648).net_serialize(), vec![0x80, 0x80, 0x80, 0x80, 0x08]);
     }
 
     #[test]
@@ -128,11 +128,11 @@ mod tests {
     }
     #[test]
     fn test_deserialize_varint_2097151() {
-        assert_eq!(VarInt::net_deserialize(&mut vec![0xff, 0xff, 0x7f]).unwrap().0, 2097151);
+        assert_eq!(VarInt::net_deserialize(&mut vec![0xff, 0xff, 0x7f]).unwrap().0, 2_097_151);
     }
     #[test]
     fn test_deserialize_varint_2147483647() {
-        assert_eq!(VarInt::net_deserialize(&mut vec![0xff, 0xff, 0xff, 0xff, 0x07]).unwrap().0, 2147483647);
+        assert_eq!(VarInt::net_deserialize(&mut vec![0xff, 0xff, 0xff, 0xff, 0x07]).unwrap().0, 2_147_483_647);
     }
     #[test]
     fn test_deserialize_varint_neg1() {
@@ -140,6 +140,6 @@ mod tests {
     }
     #[test]
     fn test_deserialize_varint_neg2147483648() {
-        assert_eq!(VarInt::net_deserialize(&mut vec![0x80, 0x80, 0x80, 0x80, 0x08]).unwrap().0, -2147483648);
+        assert_eq!(VarInt::net_deserialize(&mut vec![0x80, 0x80, 0x80, 0x80, 0x08]).unwrap().0, -2_147_483_648);
     }
 }

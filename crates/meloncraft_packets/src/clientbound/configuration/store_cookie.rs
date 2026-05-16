@@ -7,13 +7,13 @@ use meloncraft_network::packet::ClientboundNetworkPacket;
 use meloncraft_protocol_types::{Byte, PrefixedArray, ProtocolType};
 
 #[derive(Message, Debug, Clone)]
-pub struct StoreCookie {
+pub struct ClientboundStoreCookie {
     pub client: Entity,
     pub key: Identifier,
     pub value: Vec<Byte>,
 }
 
-impl ClientboundPacket for StoreCookie {
+impl ClientboundPacket for ClientboundStoreCookie {
     fn id() -> i32 {
         0x0A
     }

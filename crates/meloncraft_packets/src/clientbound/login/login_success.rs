@@ -7,12 +7,12 @@ use meloncraft_player::GameProfile;
 use meloncraft_protocol_types::ProtocolType;
 
 #[derive(Message, Debug, Clone)]
-pub struct LoginSuccess {
+pub struct ClientboundLoginSuccess {
     pub client: Entity,
     pub game_profile: GameProfile,
 }
 
-impl ClientboundPacket for LoginSuccess {
+impl ClientboundPacket for ClientboundLoginSuccess {
     fn id() -> i32 {
         0x02
     }

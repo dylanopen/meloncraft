@@ -5,12 +5,12 @@ use meloncraft_protocol_types::{GameEventType, ProtocolType};
 use crate::clientbound_packet::ClientboundPacket;
 
 #[derive(Message, Debug, Clone)]
-pub struct GameEvent {
+pub struct ClientboundGameEvent {
     pub client: Entity,
     pub event: GameEventType,
 }
 
-impl ClientboundPacket for GameEvent {
+impl ClientboundPacket for ClientboundGameEvent {
     fn id() -> i32 {
         0x26
     }

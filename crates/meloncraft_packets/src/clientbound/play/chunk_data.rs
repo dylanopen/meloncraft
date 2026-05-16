@@ -8,7 +8,7 @@ use meloncraft_protocol_types::chunk_lighting::ChunkLighting;
 use crate::clientbound_packet::ClientboundPacket;
 
 #[derive(Message, Debug, Clone)]
-pub struct ChunkData {
+pub struct ClientboundChunkData {
     pub client: Entity,
     pub chunk_x: i32,
     pub chunk_z: i32,
@@ -18,7 +18,7 @@ pub struct ChunkData {
     // TODO: heightmap and block entities
 }
 
-impl ClientboundPacket for ChunkData {
+impl ClientboundPacket for ClientboundChunkData {
     fn id() -> i32 {
         0x2C
     }

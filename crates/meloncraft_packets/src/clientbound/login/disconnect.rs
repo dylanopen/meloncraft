@@ -7,12 +7,12 @@ use meloncraft_protocol_types::ProtocolType;
 use meloncraft_text::JsonText;
 
 #[derive(Message, Debug, Clone)]
-pub struct Disconnect {
+pub struct ClientboundLoginDisconnect {
     pub client: Entity,
     pub reason: JsonText,
 }
 
-impl ClientboundPacket for Disconnect {
+impl ClientboundPacket for ClientboundLoginDisconnect {
     fn id() -> i32 {
         0x00
     }

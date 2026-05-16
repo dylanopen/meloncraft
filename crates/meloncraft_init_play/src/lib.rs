@@ -32,13 +32,13 @@ impl Plugin for MeloncraftInitPlayPlugin {
 
 fn play_login(
     mut ack_finish_config_pr: MessageReader<AcknowledgeFinishConfiguration>,
-    mut login_pw: MessageWriter<clientbound::play::Login>,
+    mut login_pw: MessageWriter<clientbound::play::ClientboundPlayLogin>,
     mut client_connection_q: Query<(&mut ClientConnection, Entity)>,
 ) {
     for ack_packet in ack_finish_config_pr.read() {
         let mut client_connection = client_connection_q.get_mut(ack_packet.client).unwrap().0;
         client_connection.state = ConnectionState::Play;
-        login_pw.write(clientbound::play::Login {
+        login_pw.write(clientbound::play::ClientboundPlayLogin {
             client: ack_packet.client,
             entity_id: 1,
             is_hardcore: false,
@@ -71,11 +71,11 @@ fn play_login(
 }
 
 fn sync_position(
-    mut login_play_pr: MessageReader<clientbound::play::Login>,
-    mut synchronize_player_position_pw: MessageWriter<clientbound::play::SynchronizePlayerPosition>,
+    mut login_play_pr: MessageReader<clientbound::play::ClientboundPlayLogin>,
+    mut synchronize_player_position_pw: MessageWriter<clientbound::play::ClientboundSynchronizePlayerPosition>,
 ) {
     for login_packet in login_play_pr.read() {
-        synchronize_player_position_pw.write(clientbound::play::SynchronizePlayerPosition {
+        synchronize_player_position_pw.write(clientbound::play::ClientboundSynchronizePlayerPosition {
             client: login_packet.client,
             x: 42.0,
             y: 64.0,
@@ -91,14 +91,14 @@ fn sync_position(
 }
 
 fn game_event_player_info_update(
-    mut login_play_pr: MessageReader<clientbound::play::Login>,
-    mut player_info_update_pw: MessageWriter<clientbound::play::PlayerInfoUpdate>,
-    mut game_event_pw: MessageWriter<clientbound::play::GameEvent>,
+    mut login_play_pr: MessageReader<clientbound::play::ClientboundPlayLogin>,
+    mut player_info_update_pw: MessageWriter<clientbound::play::ClientboundPlayerInfoUpdate>,
+    mut game_event_pw: MessageWriter<clientbound::play::ClientboundGameEvent>,
     client_profile_q: Query<&GameProfile>
 ) {
     for login_packet in login_play_pr.read() {
         let profile = client_profile_q.get(login_packet.client).unwrap();
-        player_info_update_pw.write(clientbound::play::PlayerInfoUpdate {
+        player_info_update_pw.write(clientbound::play::ClientboundPlayerInfoUpdate {
             client: login_packet.client,
             action_mask: 0x01,
             players: vec![
@@ -113,7 +113,7 @@ fn game_event_player_info_update(
                 ),
             ],
         });
-        game_event_pw.write(clientbound::play::GameEvent {
+        game_event_pw.write(clientbound::play::ClientboundGameEvent {
             client: login_packet.client,
             event: meloncraft_protocol_types::GameEventType::WaitForChunks,
         });
@@ -121,12 +121,12 @@ fn game_event_player_info_update(
 }
 
 fn send_chunks(
-    mut game_event_pr: MessageReader<clientbound::play::GameEvent>,
-    mut chunk_data_pw: MessageWriter<clientbound::play::ChunkData>,
-    mut set_center_chunk_pw: MessageWriter<clientbound::play::SetCenterChunk>,
+    mut game_event_pr: MessageReader<clientbound::play::ClientboundGameEvent>,
+    mut chunk_data_pw: MessageWriter<clientbound::play::ClientboundChunkData>,
+    mut set_center_chunk_pw: MessageWriter<clientbound::play::ClientboundSetCenterChunk>,
 ) {
     for packet in game_event_pr.read() {
-        set_center_chunk_pw.write(clientbound::play::SetCenterChunk {
+        set_center_chunk_pw.write(clientbound::play::ClientboundSetCenterChunk {
             client: packet.client,
             x: 0,
             z: 0,
@@ -141,7 +141,7 @@ fn send_chunks(
         }
         for z in -10..=10 {
             for x in -10..=10 {
-                chunk_data_pw.write(clientbound::play::ChunkData {
+                chunk_data_pw.write(clientbound::play::ClientboundChunkData {
                     client: packet.client,
                     chunk_x: x,
                     chunk_z: z,

@@ -7,12 +7,12 @@ use meloncraft_network::packet::ClientboundNetworkPacket;
 use meloncraft_protocol_types::{PrefixedArray, ProtocolType};
 
 #[derive(Message, Debug, Clone)]
-pub struct ServerLinks {
+pub struct ClientboundServerLinks {
     pub client: Entity,
     pub links: Vec<PauseMenuLink>,
 }
 
-impl ClientboundPacket for ServerLinks {
+impl ClientboundPacket for ClientboundServerLinks {
     fn id() -> i32 {
         0x10
     }

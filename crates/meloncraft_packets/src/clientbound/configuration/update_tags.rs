@@ -7,12 +7,12 @@ use meloncraft_protocol_types::{PrefixedArray, ProtocolType};
 use meloncraft_registry::RegistryTags;
 
 #[derive(Message, Debug, Clone)]
-pub struct UpdateTags {
+pub struct ClientboundUpdateTags {
     pub client: Entity,
     registries: Vec<RegistryTags>,
 }
 
-impl ClientboundPacket for UpdateTags {
+impl ClientboundPacket for ClientboundUpdateTags {
     fn id() -> i32 {
         0x0D
     }

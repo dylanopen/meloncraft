@@ -6,13 +6,13 @@ use meloncraft_network::packet::ClientboundNetworkPacket;
 use meloncraft_protocol_types::{ProtocolType, VarInt};
 
 #[derive(Message, Debug, Clone)]
-pub struct Transfer {
+pub struct ClientboundTransfer {
     pub client: Entity,
     pub hostname: String,
     pub port: u16,
 }
 
-impl ClientboundPacket for Transfer {
+impl ClientboundPacket for ClientboundTransfer {
     fn id() -> i32 {
         0x0B
     }

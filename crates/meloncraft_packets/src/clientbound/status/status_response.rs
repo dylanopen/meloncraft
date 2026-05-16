@@ -5,7 +5,7 @@ use meloncraft_network::packet::ClientboundNetworkPacket;
 use meloncraft_protocol_types::ProtocolType;
 
 #[derive(Message, Debug, Clone)]
-pub struct StatusResponse {
+pub struct ClientboundStatusResponse {
     pub client: Entity,
     pub version_name: String,
     pub version_protocol: u32,
@@ -15,7 +15,7 @@ pub struct StatusResponse {
     pub enforces_secure_chat: bool,
 }
 
-impl ClientboundPacket for StatusResponse {
+impl ClientboundPacket for ClientboundStatusResponse {
     fn id() -> i32 {
         0x00
     }

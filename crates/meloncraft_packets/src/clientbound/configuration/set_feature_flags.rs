@@ -7,12 +7,12 @@ use meloncraft_network::packet::ClientboundNetworkPacket;
 use meloncraft_protocol_types::{PrefixedArray, ProtocolType};
 
 #[derive(Message, Debug, Clone)]
-pub struct SetFeatureFlags {
+pub struct ClientboundSetFeatureFlags {
     pub client: Entity,
     pub feature_flags: Vec<Identifier>,
 }
 
-impl ClientboundPacket for SetFeatureFlags {
+impl ClientboundPacket for ClientboundSetFeatureFlags {
     fn id() -> i32 {
         0x0C
     }

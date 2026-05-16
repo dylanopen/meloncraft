@@ -1,7 +1,7 @@
 use bevy::ecs::entity::Entity;
 use bevy::ecs::message::{MessageReader, MessageWriter};
 use meloncraft_packets::serverbound;
-use meloncraft_packets::clientbound::configuration::RegistryData;
+use meloncraft_packets::clientbound::configuration::ClientboundRegistryData;
 use meloncraft_packets::clientbound_packet::ClientboundPacket;
 use meloncraft_network::packet::{ClientboundNetworkPacket, ClientboundNetworkPacketReceived};
 
@@ -56,7 +56,7 @@ fn send_raw_registry(client: Entity, packet_data: Vec<u8>) -> ClientboundNetwork
     data.remove(0); // Remove the packet ID byte
     ClientboundNetworkPacketReceived { packet: ClientboundNetworkPacket {
         client,
-        id: RegistryData::id(),
+        id: ClientboundRegistryData::id(),
         data,
     }}
 }

@@ -8,7 +8,7 @@ use meloncraft_protocol_types::ProtocolType;
 use meloncraft_text::NbtText;
 
 #[derive(Message, Debug, Clone)]
-pub struct AddResourcePack {
+pub struct ClientboundAddResourcePack {
     pub client: Entity,
     pub resource_pack_uuid: Uuid,
     pub url: String,
@@ -17,7 +17,7 @@ pub struct AddResourcePack {
     pub prompt_message: Option<NbtText>,
 }
 
-impl ClientboundPacket for AddResourcePack {
+impl ClientboundPacket for ClientboundAddResourcePack {
     fn id() -> i32 {
         0x09
     }

@@ -7,7 +7,7 @@ use meloncraft_protocol_types::{NetworkLocation, PrefixedArray, ProtocolType, Va
 
 #[expect(clippy::struct_excessive_bools, reason = "It's a packet: we need all those bools, and it's not a state machine.")]
 #[derive(Message, Debug, Clone)]
-pub struct Login {
+pub struct ClientboundPlayLogin {
     pub client: Entity,
     pub entity_id: i32,
     pub is_hardcore: bool,
@@ -33,7 +33,7 @@ pub struct Login {
     pub enforces_secure_chat: bool,
 }
 
-impl ClientboundPacket for Login {
+impl ClientboundPacket for ClientboundPlayLogin {
     fn id() -> i32 {
         0x30
     }

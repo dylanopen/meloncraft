@@ -6,13 +6,13 @@ use meloncraft_protocol_types::{ProtocolType, VarInt};
 use crate::clientbound_packet::ClientboundPacket;
 
 #[derive(Message, Debug, Clone)]
-pub struct SetCenterChunk {
+pub struct ClientboundSetCenterChunk {
     pub client: Entity,
     pub x: i32,
     pub z: i32,
 }
 
-impl ClientboundPacket for SetCenterChunk {
+impl ClientboundPacket for ClientboundSetCenterChunk {
     fn id() -> i32 {
         0x5C
     }

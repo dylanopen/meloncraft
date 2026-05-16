@@ -6,7 +6,7 @@ use meloncraft_network::packet::ClientboundNetworkPacket;
 use meloncraft_protocol_types::{Byte, PrefixedArray, ProtocolType};
 
 #[derive(Message, Debug, Clone)]
-pub struct EncryptionRequest {
+pub struct ClientboundEncryptionRequest {
     pub client: Entity,
     pub server_id: String,
     pub public_key: Vec<Byte>,
@@ -14,7 +14,7 @@ pub struct EncryptionRequest {
     pub should_authenticate: bool,
 }
 
-impl ClientboundPacket for EncryptionRequest {
+impl ClientboundPacket for ClientboundEncryptionRequest {
     fn id() -> i32 {
         0x01
     }
