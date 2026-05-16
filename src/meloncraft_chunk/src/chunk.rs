@@ -1,5 +1,6 @@
-use std::any::Any;
+use crate::biome::Biome;
 use crate::block::Block;
+use crate::block_section::ChunkBlockSection;
 
 pub struct Chunk {
     blocks: Vec<Block>,
@@ -45,5 +46,19 @@ impl Chunk {
     #[must_use]
     pub fn is_empty(&self) -> bool {
         return self.blocks.iter().all(|b| return b.state_id == 0); // 0 is air, I'm not importing block to tell us that.
+    }
+
+    #[must_use]
+    pub fn to_chunk_sections(&self) -> Vec<ChunkBlockSection> {
+        let mut sections = Vec::new();
+        let biomes = [Biome::new(40); 64]; // temporarily set all biomes to plains
+        #[expect(clippy::indexing_slicing, reason = "Bounds are already manually checked, by iterating only over self.get_height()")]
+        for i in 0..self.get_height() {
+            let mut section_blocks = [Block::new(0); 4096];
+            section_blocks.copy_from_slice(&self.blocks[i*16*16..(i+1)*16*16]);
+            let section = ChunkBlockSection::new(section_blocks, biomes);
+            sections.push(section);
+        }
+        return sections;
     }
 }
