@@ -42,8 +42,6 @@ fn main() {
 
     write_block_state_matcher(&block_state_ids);
     write_lib_rs(block_state_ids.keys().map(|k| k.replace("minecraft:", "")).collect());
-
-    //println!("{:#?}", all_properties);
 }
 
 fn write_block_properties(block_name: &str, block_properties: HashMap<String, Vec<String>>) {

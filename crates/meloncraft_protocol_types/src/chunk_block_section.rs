@@ -9,8 +9,6 @@ impl ProtocolType for ChunkBlockSection {
         let mut output = Vec::new();
         output.extend(self.block_count.net_serialize());
 
-        dbg!(output.len());
-
         // Some code was adapted from Oxide: thank you, as without it, I was completely lost with this serialization <3
         // https://git.thetxt.io/thetxt/oxide/src/lib/src/packets/clientbound/play.rs
         let mut data_iter = self.blocks.into_iter();
