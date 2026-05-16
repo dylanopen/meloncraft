@@ -15,4 +15,5 @@ pub use meloncraft_text as text;
 pub use meloncraft_block as block;
 pub use meloncraft_chunk as chunk;
 pub use meloncraft_world as world;
+pub use meloncraft_world_manager as world_manager;
 pub use meloncraft_join as join;

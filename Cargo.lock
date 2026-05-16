@@ -1275,6 +1275,7 @@ dependencies = [
  "meloncraft_server_list",
  "meloncraft_text",
  "meloncraft_world",
+ "meloncraft_world_manager",
 ]
 
 [[package]]
@@ -1451,6 +1452,10 @@ dependencies = [
  "bevy",
  "meloncraft_chunk",
 ]
+
+[[package]]
+name = "meloncraft_world_manager"
+version = "0.1.0"
 
 [[package]]
 name = "memchr"
