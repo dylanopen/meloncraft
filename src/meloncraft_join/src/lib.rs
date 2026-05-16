@@ -1,3 +1,5 @@
+mod state;
+
 use bevy::app::{App, Plugin};
 use meloncraft_handshaking::MeloncraftHandshakingPlugin;
 
