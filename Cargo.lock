@@ -1405,6 +1405,7 @@ dependencies = [
  "meloncraft_chunk",
  "meloncraft_client",
  "meloncraft_core",
+ "meloncraft_entity_position",
  "meloncraft_nbt",
  "meloncraft_network",
  "meloncraft_player",
