@@ -4,6 +4,9 @@ pub use confirm_teleportation::ServerboundConfirmTeleportation;
 mod query_block_entity_tag;
 pub use query_block_entity_tag::ServerboundQueryBlockEntityTag;
 
+mod bundle_item_selected;
+pub use bundle_item_selected::ServerboundBundleItemSelected;
+
 use bevy::app::App;
 
 pub fn register_serverbound_play_packets(app: &mut App) {
@@ -12,7 +15,10 @@ pub fn register_serverbound_play_packets(app: &mut App) {
 
     app.add_message::<ServerboundConfirmTeleportation>();
     app.add_systems(PreUpdate, fwd::<ServerboundConfirmTeleportation>);
-    
+
     app.add_message::<ServerboundQueryBlockEntityTag>();
     app.add_systems(PreUpdate, fwd::<ServerboundQueryBlockEntityTag>);
+    
+    app.add_message::<ServerboundBundleItemSelected>();
+    app.add_systems(PreUpdate, fwd::<ServerboundBundleItemSelected>);
 }
