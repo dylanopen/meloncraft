@@ -21,6 +21,7 @@ pub enum NbtValue {
 }
 
 impl NbtValue {
+    #[must_use]
     pub fn get_compound_children(&self) -> Option<&Vec<NbtTag>> {
         if let NbtValue::Compound(compound) = self {
             Some(compound)
@@ -37,6 +38,7 @@ impl NbtValue {
         }
     }
 
+    #[must_use]
     pub fn get_list_children(&self) -> Option<&Vec<NbtValue>> {
         if let NbtValue::List(list) = self {
             Some(list)
@@ -53,6 +55,7 @@ impl NbtValue {
         }
     }
 
+    #[must_use]
     pub fn get(&self, key: &str) -> Option<&NbtValue> {
         let NbtValue::Compound(compound) = self else {
             return None;
@@ -77,6 +80,7 @@ impl NbtValue {
         None
     }
 
+    #[must_use]
     pub const fn to_id(&self) -> u8 {
         match self {
             NbtValue::U8(_) => 1,

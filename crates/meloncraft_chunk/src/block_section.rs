@@ -9,12 +9,14 @@ pub struct ChunkBlockSection {
 }
 
 impl ChunkBlockSection {
+    #[must_use]
     pub fn new(blocks: [Block; 4096], biomes: [Biome; 64]) -> Self {
         let block_count = sum_non_air_blocks(&blocks);
         Self { block_count, blocks, biomes }
     }
 }
 
+#[must_use]
 pub fn sum_non_air_blocks(blocks: &[Block; 4096]) -> i16 {
-    blocks.iter().filter(|block| block.state_id != 0).count() as i16
+    blocks.iter().filter(|block| block.state_id != 0).count().try_into().unwrap()
 }

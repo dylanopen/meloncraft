@@ -36,7 +36,7 @@ impl ServerboundPacket for ClientInformation {
         let client = packet.client;
         let locale = Locale(data.net_deserialize().unwrap());
         let view_distance: Byte = data.net_deserialize().unwrap();
-        let view_distance = ViewDistance(view_distance.0 as u8);
+        let view_distance = ViewDistance(view_distance.0.try_into().unwrap());
         let chat_mode: VarInt = data.net_deserialize().unwrap();
         let chat_mode = ChatMode::try_from(chat_mode.0).unwrap();
         let chat_colors: bool = data.net_deserialize().unwrap();

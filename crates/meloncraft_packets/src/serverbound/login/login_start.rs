@@ -26,6 +26,6 @@ impl ServerboundPacket for LoginStart {
         let client = incoming.client;
         let name = String::net_deserialize(&mut incoming.data).unwrap();
         let uuid = Uuid::net_deserialize(&mut incoming.data).unwrap();
-        Some(Self { client, uuid, name })
+        Some(Self { client, name, uuid })
     }
 }

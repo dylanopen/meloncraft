@@ -9,7 +9,7 @@ impl<T: ProtocolType> ProtocolType for PrefixedArray<T> {
         for value in &self.0 {
             body.append(&mut value.net_serialize());
         }
-        let length = VarInt(self.0.len() as i32);
+        let length = VarInt(self.0.len().try_into().unwrap());
         let mut serial = length.net_serialize();
         serial.append(&mut body);
         serial
@@ -17,7 +17,7 @@ impl<T: ProtocolType> ProtocolType for PrefixedArray<T> {
     fn net_deserialize(data: &mut Vec<u8>) -> Result<Self, ()> {
         let length: VarInt = data.net_deserialize()?;
         let length = length.0;
-        let mut values = Vec::with_capacity(length as usize);
+        let mut values = Vec::with_capacity(length.try_into().unwrap());
         for _ in 0..length {
             let value = T::net_deserialize(data)?;
             values.push(value);

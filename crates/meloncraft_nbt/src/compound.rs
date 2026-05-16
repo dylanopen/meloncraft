@@ -24,11 +24,12 @@ impl From<Vec<NbtTag>> for NbtCompound {
 }
 
 impl NbtCompound {
+    #[must_use]
     pub fn get(&self, key: &str) -> Option<&NbtTag> {
-        if !key.contains("/") {
+        if !key.contains('/') {
             return self.0.iter().find(|tag| tag.key == key);
         }
-        let mut tree: Vec<&str> = key.split("/").collect();
+        let mut tree: Vec<&str> = key.split('/').collect();
         let mut current_compound = self;
         while !tree.is_empty() {
             if tree.len() == 1 {
@@ -42,15 +43,16 @@ impl NbtCompound {
         None
     }
 
+    #[must_use]
     pub fn get_value(&self, key: &str) -> Option<&NbtValue> {
         self.get(key).map(|tag| &tag.value)
     }
 
     pub fn get_mut(&mut self, key: &str) -> Option<&mut NbtTag> {
-        if !key.contains("/") {
+        if !key.contains('/') {
             return self.0.iter_mut().find(|tag| tag.key == key);
         }
-        let mut tree: Vec<&str> = key.split("/").collect();
+        let mut tree: Vec<&str> = key.split('/').collect();
         let mut current_compound = self;
         while !tree.is_empty() {
             if tree.len() == 1 {
@@ -84,18 +86,22 @@ impl NbtCompound {
         }
     }
 
+    #[must_use]
     pub fn contains_key(&self, key: &str) -> bool {
         self.0.iter().any(|tag| tag.key == key)
     }
 
+    #[must_use]
     pub fn contains_value(&self, value: &NbtValue) -> bool {
         self.0.iter().any(|tag| &tag.value == value)
     }
 
+    #[must_use]
     pub const fn len(&self) -> usize {
         self.0.len()
     }
 
+    #[must_use]
     pub const fn is_empty(&self) -> bool {
         self.0.is_empty()
     }
@@ -104,10 +110,12 @@ impl NbtCompound {
         self.0.clear();
     }
 
+    #[must_use]
     pub fn keys(&self) -> Vec<&str> {
         self.0.iter().map(|tag| tag.key.as_str()).collect()
     }
 
+    #[must_use]
     pub fn values(&self) -> Vec<&crate::NbtValue> {
         self.0.iter().map(|tag| &tag.value).collect()
     }

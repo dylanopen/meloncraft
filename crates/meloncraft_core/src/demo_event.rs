@@ -33,3 +33,23 @@ impl TryFrom<u8> for DemoEventType {
     }
 }
 
+
+impl From<DemoEventType> for f32 {
+    fn from(demo_event_type: DemoEventType) -> Self {
+        u8::from(demo_event_type).into()
+    }
+}
+
+impl TryFrom<f32> for DemoEventType {
+    type Error = ();
+    fn try_from(value: f32) -> Result<Self, Self::Error> {
+        match value {
+            0.0 => Ok(DemoEventType::WelcomeToDemoScreen),
+            101.0 => Ok(DemoEventType::MovementControls),
+            102.0 => Ok(DemoEventType::JumpControl),
+            103.0 => Ok(DemoEventType::InventoryControl),
+            104.0 => Ok(DemoEventType::DemoOver),
+            _ => Err(()),
+        }
+    }
+}

@@ -1,3 +1,5 @@
+#![expect(clippy::non_std_lazy_statics, reason = "I will use LazyLock soon, but for now, lazy_static! works.")]
+
 use crate::connection_state::ConnectionState;
 use bevy::ecs::component::Component;
 use lazy_static::lazy_static;
@@ -20,6 +22,7 @@ impl Clone for ClientConnection {
         }
     }
 }
+
 lazy_static! {
     pub static ref CLIENT_CONNECTIONS: Mutex<Vec<TcpStream>> = {
         let client_connections = Vec::new();

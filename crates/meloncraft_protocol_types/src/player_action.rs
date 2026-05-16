@@ -19,6 +19,7 @@ pub enum PlayerAction {
 }
 
 impl PlayerAction {
+    #[must_use]
     pub const fn mask(&self) -> u8 {
         match self {
             PlayerAction::AddPlayer(_) => 0x01,

@@ -9,7 +9,7 @@ pub struct GameProfile {
 
 #[derive(Debug, Clone)]
 pub struct GameProfileProperties {
-    pub _name: String,
-    pub _value: String,
-    pub _signature: Option<String>,
+    pub name: String,
+    pub value: String,
+    pub signature: Option<String>,
 }

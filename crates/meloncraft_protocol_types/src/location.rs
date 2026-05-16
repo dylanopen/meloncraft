@@ -9,7 +9,7 @@ pub struct NetworkLocation {
 
 impl ProtocolType for NetworkLocation {
     fn net_serialize(&self) -> Vec<u8> {
-        let long: i64 = ((self.x as i64 & 0x3FFFFFF) << 38) | ((self.z as i64 & 0x3FFFFFF) << 12) | (self.y as i64 & 0xFFF);
+        let long: i64 = ((i64::from(self.x) & 0x03FF_FFFF) << 38) | ((i64::from(self.z) & 0x03FF_FFFF) << 12) | (i64::from(self.y) & 0xFFF);
         long.net_serialize()
     }
 

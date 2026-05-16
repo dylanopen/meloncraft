@@ -9,7 +9,7 @@ use std::net::TcpStream;
 fn send_packet(stream: &mut TcpStream, packet_id: i32, mut data: Vec<u8>) {
     let mut response: Vec<u8> = VarInt(packet_id).net_serialize();
     response.append(&mut data);
-    let mut length_prefixed_response: Vec<u8> = VarInt(response.len() as i32).net_serialize();
+    let mut length_prefixed_response: Vec<u8> = VarInt(response.len().try_into().unwrap()).net_serialize();
     length_prefixed_response.append(&mut response);
 
     stream

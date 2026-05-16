@@ -18,7 +18,7 @@ fn tagtype(data: &mut Vec<u8>) -> Result<u8, ()> {
 }
 
 fn string(data: &mut Vec<u8>) -> Result<String, ()> {
-    let length: usize = i32::net_deserialize(data)? as usize;
+    let length: usize = i16::net_deserialize(data)?.try_into().unwrap();
     if data.len() < length {
         return Err(());
     }
@@ -80,10 +80,10 @@ pub fn value(tag_type: u8, data: &mut Vec<u8>) -> Result<NbtValue, ()> {
 }
 
 fn byte_array(length: i32, data: &mut Vec<u8>) -> Result<NbtValue, ()> {
-    if data.len() < length as usize {
+    if data.len() < length.try_into().unwrap(){
         return Err(());
     }
-    let mut bytes = Vec::with_capacity(length as usize);
+    let mut bytes = Vec::with_capacity(length.try_into().unwrap());
     for _ in 0..length {
         let byte: u8 = data.net_deserialize()?;
         bytes.push(byte);
@@ -92,10 +92,11 @@ fn byte_array(length: i32, data: &mut Vec<u8>) -> Result<NbtValue, ()> {
 }
 
 fn int_array(length: i32, data: &mut Vec<u8>) -> Result<NbtValue, ()> {
-    if data.len() < (length as usize) * 4 {
+    let length: usize = length.try_into().unwrap();
+    if data.len() < length * 4 {
         return Err(());
     }
-    let mut ints = Vec::with_capacity(length as usize);
+    let mut ints = Vec::with_capacity(length);
     for _ in 0..length {
         let int: i32 = data.net_deserialize()?;
         ints.push(int);
@@ -104,10 +105,11 @@ fn int_array(length: i32, data: &mut Vec<u8>) -> Result<NbtValue, ()> {
 }
 
 fn long_array(length: i32, data: &mut Vec<u8>) -> Result<NbtValue, ()> {
-    if data.len() < (length as usize) * 8 {
+    let length: usize = length.try_into().unwrap();
+    if data.len() < length * 8 {
         return Err(());
     }
-    let mut longs = Vec::with_capacity(length as usize);
+    let mut longs = Vec::with_capacity(length);
     for _ in 0..length {
         let long: i64 = data.net_deserialize()?;
         longs.push(long);
@@ -117,7 +119,7 @@ fn long_array(length: i32, data: &mut Vec<u8>) -> Result<NbtValue, ()> {
 
 fn list(tag_type: u8, size: i32, data: &mut Vec<u8>) -> Result<NbtValue, ()> {
     let mut list_items = Vec::new();
-    while list_items.len() < size as usize {
+    while list_items.len() < size.try_into().unwrap() {
         let item = value(tag_type, data)?;
         list_items.push(item);
     }

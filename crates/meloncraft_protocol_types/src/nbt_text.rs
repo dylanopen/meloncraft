@@ -6,10 +6,10 @@ impl ProtocolType for NbtText {
     fn net_serialize(&self) -> Vec<u8> {
         match self {
             NbtText::Plain(nbt) => {
-                NbtTag::new("".to_owned(), NbtValue::String(nbt.clone())).net_serialize()
+                NbtTag::new(String::new(), NbtValue::String(nbt.clone())).net_serialize()
             }
             NbtText::Formatted(nbt) => {
-                NbtTag::new("".to_owned(), NbtValue::Compound(nbt.clone())).net_serialize()
+                NbtTag::new(String::new(), NbtValue::Compound(nbt.clone())).net_serialize()
             }
         }
     }

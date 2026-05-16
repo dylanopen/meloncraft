@@ -6,25 +6,30 @@ pub struct BitSet {
 }
 
 impl BitSet {
+    #[must_use]
     pub const fn is_empty(&self) -> bool {
         self.bits.is_empty()
     }
 
+    #[must_use]
     pub fn with_capacity(capacity: usize) -> Self {
         BitSet {
             bits: vec![0; capacity.div_ceil(64)],
         }
     }
 
+    #[must_use]
     pub const fn capacity(&self) -> usize {
         self.bits.len() * 64
     }
 
+    #[must_use]
     pub fn get(&mut self, pos: usize) -> bool {
         let (index, bit_pos) = self.get_location(pos);
         (self.bits[index] & (1 << bit_pos)) != 0
     }
 
+    #[must_use]
     pub fn get_location(&mut self, pos: usize) -> (usize, usize) {
         let index = pos / 64;
         let bit_pos = pos % 64;
@@ -57,8 +62,8 @@ impl BitSet {
 impl ProtocolType for BitSet {
     fn net_serialize(&self) -> Vec<u8> {
         let mut serial = Vec::new();
-        for long_bits in self.bits.iter() {
-            serial.push(*long_bits)
+        for long_bits in &self.bits {
+            serial.push(*long_bits);
         }
         PrefixedArray(serial).net_serialize()
     }
@@ -66,7 +71,7 @@ impl ProtocolType for BitSet {
     fn net_deserialize(data: &mut Vec<u8>) -> Result<Self, ()> {
         let mut bits = Vec::new();
         let longs: Vec<i64> = PrefixedArray::net_deserialize(data)?.0;
-        for long in longs.iter() {
+        for long in &longs {
             bits.push(*long);
         }
         Ok(BitSet { bits })

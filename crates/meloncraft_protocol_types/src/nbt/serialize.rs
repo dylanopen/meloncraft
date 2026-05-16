@@ -18,7 +18,7 @@ pub fn value(payload: NbtValue) -> Vec<u8> {
         NbtValue::I64(p) => p.net_serialize(),
         NbtValue::F32(p) => p.net_serialize(),
         NbtValue::F64(p) => p.net_serialize(),
-        NbtValue::ArrayU8(p) => byte_array((*p).clone()),
+        NbtValue::ArrayU8(p) => byte_array(&p),
         NbtValue::String(p) => string((*p).clone()),
         NbtValue::List(p) => list((*p).clone()),
         NbtValue::Compound(p) => compound((*p).clone()),
@@ -27,19 +27,19 @@ pub fn value(payload: NbtValue) -> Vec<u8> {
     }
 }
 
-pub fn byte_array(payload: Vec<u8>) -> Vec<u8> {
+pub fn byte_array(payload: &[u8]) -> Vec<u8> {
     let mut output = Vec::new();
-    let length = payload.len() as i32;
-    output.append(&mut length.net_serialize());
-    output.append(&mut payload.to_vec());
+    let length: i32 = payload.len().try_into().unwrap();
+    output.extend(length.net_serialize());
+    output.extend(payload.to_vec());
     output
 }
 
 pub fn string(payload: String) -> Vec<u8> {
     let mut output = Vec::new();
-    let length = payload.len() as i16;
-    output.append(&mut length.net_serialize());
-    output.append(&mut payload.into_bytes());
+    let length: i16 = payload.len().try_into().unwrap();
+    output.extend(length.net_serialize());
+    output.extend(payload.into_bytes());
     output
 }
 
@@ -56,12 +56,10 @@ pub fn list(mut payload: Vec<NbtValue>) -> Vec<u8> {
     // check if all same type
     if !payload.iter().all(|v| v.to_id() == payload[0].to_id()) {
         // make all same type by converting to compound of key "":
-        for value in payload.iter_mut() {
-            if let NbtValue::Compound(_) = value {
-                continue;
-            } else {
+        for value in &mut payload {
+            if let NbtValue::Compound(_) = value {} else {
                 let new_compound = vec![NbtTag {
-                    key: "".to_string(),
+                    key: String::new(),
                     value: value.clone(),
                 }];
                 *value = NbtValue::Compound(NbtCompound(new_compound));
@@ -71,7 +69,7 @@ pub fn list(mut payload: Vec<NbtValue>) -> Vec<u8> {
 
     let tag_id: u8 = payload[0].to_id();
     output.extend(tag_id.net_serialize());
-    let length = payload.len() as i32;
+    let length: i32 = payload.len().try_into().unwrap();
     output.extend(length.net_serialize());
     for item in payload {
         match item {
@@ -81,7 +79,7 @@ pub fn list(mut payload: Vec<NbtValue>) -> Vec<u8> {
             NbtValue::I64(p) => output.append(&mut p.net_serialize()),
             NbtValue::F32(p) => output.append(&mut p.net_serialize()),
             NbtValue::F64(p) => output.append(&mut p.net_serialize()),
-            NbtValue::ArrayU8(p) => output.append(&mut byte_array((*p).clone())),
+            NbtValue::ArrayU8(p) => output.append(&mut byte_array(&p)),
             NbtValue::String(p) => output.append(&mut string((*p).clone())),
             NbtValue::List(p) => output.append(&mut list((*p).clone())),
             NbtValue::Compound(p) => output.append(&mut compound((*p).clone())),
@@ -105,7 +103,7 @@ pub fn compound(payload: Vec<NbtTag>) -> Vec<u8> {
 
 pub fn int_array(payload: Vec<i32>) -> Vec<u8> {
     let mut output = Vec::new();
-    let length = payload.len() as i32;
+    let length: i32 = payload.len().try_into().unwrap();
     output.append(&mut length.net_serialize());
     for item in payload {
         output.append(&mut item.net_serialize());
@@ -115,7 +113,7 @@ pub fn int_array(payload: Vec<i32>) -> Vec<u8> {
 
 pub fn long_array(payload: Vec<i64>) -> Vec<u8> {
     let mut output = Vec::new();
-    let length = payload.len() as i32;
+    let length: i32 = payload.len().try_into().unwrap();
     output.append(&mut length.net_serialize());
     for item in payload {
         output.append(&mut item.net_serialize());

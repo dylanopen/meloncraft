@@ -21,7 +21,7 @@ impl ProtocolType for ChunkBlockSection {
             let mut entry: u64 = 0;
             for i in 0..entries_per_long {
                 if let Some(next) = data_iter.next() {
-                    entry += (next.state_id as u64) << (i * bits_per_entry) as u64;
+                    entry += u64::try_from(next.state_id).unwrap() << u64::from(i * bits_per_entry);
                 }
             }
             output.extend(entry.net_serialize());
@@ -34,7 +34,7 @@ impl ProtocolType for ChunkBlockSection {
             let mut entry: u64 = 0;
             for i in 0..entries_per_long {
                 if let Some(next) = data_iter.next() {
-                    entry += (next.state_id as u64) << (i * bits_per_entry) as u64;
+                    entry += u64::try_from(next.state_id).unwrap() << u64::from(i * bits_per_entry);
                 }
             }
             output.extend(entry.net_serialize());

@@ -25,7 +25,7 @@ pub fn connection_manager(
                     })
                     .id();
                 let thread_connection = client_connection.try_clone().unwrap();
-                thread::spawn(move || handle_client(thread_connection, entity));
+                thread::spawn(move || handle_client(&thread_connection, entity));
             }
         }
     }

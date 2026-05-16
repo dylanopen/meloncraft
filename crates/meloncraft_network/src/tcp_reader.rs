@@ -14,15 +14,15 @@ pub struct ServerboundTcpPacket {
     pub data: Vec<u8>,
 }
 
-const VARINT_CONTINUE_BIT: u8 = 0b10000000;
+const VARINT_CONTINUE_BIT: u8 = 0b1000_0000;
 const CONNECTION_SLEEP_DURATION: u64 = 20;
 const SECOND_PACKET_SLEEP_DURATION: u64 = 50;
 
-pub fn handle_client(stream: TcpStream, entity: Entity) {
+pub fn handle_client(stream: &TcpStream, entity: Entity) {
     let mut iters = 0;
     let mut stream = stream.try_clone().unwrap();
     stream
-        .set_read_timeout(Some(Duration::from_millis(15000)))
+        .set_read_timeout(Some(Duration::from_secs(15)))
         .unwrap();
     let mut buf_reader = BufReader::new(&mut stream);
     loop {
@@ -47,7 +47,7 @@ pub fn handle_client(stream: TcpStream, entity: Entity) {
             continue; // no more packets left to read
         };
         let length = length.0;
-        let mut raw_packet: Vec<u8> = vec![0; length as usize];
+        let mut raw_packet: Vec<u8> = vec![0; length.try_into().unwrap()];
         if buf_reader.read_exact(&mut raw_packet).is_err() {
             println!("Client {entity} disconnected due to failing to stream packets");
             break;
@@ -68,7 +68,7 @@ pub fn handle_client(stream: TcpStream, entity: Entity) {
     }
 }
 
-pub fn receive_new_clients(tcp_listener: TcpListener) {
+pub fn receive_new_clients(tcp_listener: &TcpListener) {
     loop {
         for stream in tcp_listener.incoming() {
             match stream {
@@ -76,7 +76,7 @@ pub fn receive_new_clients(tcp_listener: TcpListener) {
                     CLIENT_CONNECTIONS.lock().unwrap().push(stream);
                 }
                 Err(e) => {
-                    eprintln!("Failed to establish TCP connection with new client: {e}")
+                    eprintln!("Failed to establish TCP connection with new client: {e}");
                 }
             }
         }

@@ -10,9 +10,9 @@ impl ProtocolType for VarInt {
     fn net_serialize(&self) -> Vec<u8> {
         let mut output: Vec<u8> = Vec::new();
 
-        let mut uvalue = self.0 as u32;
+        let mut uvalue: u32 = self.0.try_into().unwrap();
         loop {
-            let mut byte = (uvalue & SEGMENT_BITS) as u8;
+            let mut byte = (uvalue & SEGMENT_BITS).try_into().unwrap();
             uvalue >>= 7;
 
             if uvalue != 0 {
@@ -40,7 +40,7 @@ impl ProtocolType for VarInt {
 
         loop {
             current_byte = data.remove(0);
-            value |= (current_byte as i32 & SEGMENT_BITS as i32) << position;
+            value |= (i32::from(current_byte) & i32::try_from(SEGMENT_BITS).unwrap()) << position;
 
             if (current_byte & CONTINUE_BIT) == 0 {
                 break;

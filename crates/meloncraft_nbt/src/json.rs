@@ -20,19 +20,20 @@ impl TryFrom<JsonValue> for NbtValue {
             JsonValue::String(val) => Ok(NbtValue::String(NbtString(val))),
             JsonValue::Number(val) => {
                 if let Some(i) = val.as_i64() {
-                    if i <= u8::MAX as i64 && i >= u8::MIN as i64 {
-                        return Ok(NbtValue::U8(NbtU8(i as u8)));
+                    if i <= u8::MAX.into() && i >= u8::MIN.into() {
+                        return Ok(NbtValue::U8(NbtU8(i.try_into().unwrap())));
                     }
-                    if i <= i16::MAX as i64 && i >= i16::MIN as i64 {
-                        return Ok(NbtValue::I16(NbtI16(i as i16)));
+                    if i <= i16::MAX.into() && i >= i16::MIN.into() {
+                        return Ok(NbtValue::I16(NbtI16(i.try_into().unwrap())));
                     }
-                    if i <= i32::MAX as i64 && i >= i32::MIN as i64 {
-                        return Ok(NbtValue::I32(crate::NbtI32(i as i32)));
+                    if i <= i32::MAX.into() && i >= i32::MIN.into() {
+                        return Ok(NbtValue::I32(crate::NbtI32(i.try_into().unwrap())));
                     }
                     return Ok(NbtValue::I64(crate::NbtI64(i)));
                 }
                 if let Some(f) = val.as_f64() {
-                    if f as f32 as f64 == f {
+                    #[allow(clippy::cast_possible_truncation, reason = "That's exactly what we're testing for, we want to see if it gets changed")]
+                    if (f64::from(f as f32) - f) <= 0.000_001 {
                         // convert to f32 if possible without a loss of precision
                         return Ok(NbtValue::F32(NbtF32(f as f32)));
                     }
@@ -107,7 +108,7 @@ impl From<NbtValue> for JsonValue {
             NbtValue::I32(nbt_i32) => JsonValue::Number(serde_json::Number::from(*nbt_i32)),
             NbtValue::I64(nbt_i64) => JsonValue::Number(serde_json::Number::from(*nbt_i64)),
             NbtValue::F32(nbt_f32) => {
-                JsonValue::Number(serde_json::Number::from_f64(*nbt_f32 as f64).unwrap())
+                JsonValue::Number(serde_json::Number::from_f64((*nbt_f32).into()).unwrap())
             }
             NbtValue::F64(nbt_f64) => {
                 JsonValue::Number(serde_json::Number::from_f64(*nbt_f64).unwrap())

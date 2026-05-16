@@ -5,6 +5,7 @@ use meloncraft_core::Identifier;
 use meloncraft_network::packet::ClientboundNetworkPacket;
 use meloncraft_protocol_types::{NetworkLocation, PrefixedArray, ProtocolType, VarInt};
 
+#[expect(clippy::struct_excessive_bools, reason = "It's a packet: we need all those bools, and it's not a state machine.")]
 #[derive(Message, Debug, Clone)]
 pub struct Login {
     pub client: Entity,
