@@ -1,6 +1,6 @@
 use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
-use meloncraft_player::{GameProfile, Locale, ClientViewDistance, ChatMode, ChatColors, DisplayedSkinParts, MainHand, EnableTextFiltering};
+use meloncraft_player::{GameProfile, Locale, ClientViewDistance, ChatMode, ChatColors, DisplayedSkinParts, MainHand, EnableTextFiltering, AllowPlayerListings};
 
 #[derive(Message, Debug, Clone)]
 pub struct OfflineLoggedIn {
@@ -50,3 +50,8 @@ pub struct ClientEnableTextFilteringReceived {
     pub enable_text_filtering: EnableTextFiltering,
 }
 
+#[derive(Message, Debug, Clone)]
+pub struct ClientAllowPlayerListingsReceived {
+    pub client: Entity,
+    pub allow_player_listings: AllowPlayerListings,
+}
