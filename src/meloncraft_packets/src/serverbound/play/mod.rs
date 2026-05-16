@@ -7,6 +7,9 @@ pub use query_block_entity_tag::ServerboundQueryBlockEntityTag;
 mod bundle_item_selected;
 pub use bundle_item_selected::ServerboundBundleItemSelected;
 
+mod change_difficulty;
+pub use change_difficulty::ServerboundChangeDifficulty;
+
 use bevy::app::App;
 
 pub fn register_serverbound_play_packets(app: &mut App) {
@@ -18,7 +21,10 @@ pub fn register_serverbound_play_packets(app: &mut App) {
 
     app.add_message::<ServerboundQueryBlockEntityTag>();
     app.add_systems(PreUpdate, fwd::<ServerboundQueryBlockEntityTag>);
-    
+
     app.add_message::<ServerboundBundleItemSelected>();
     app.add_systems(PreUpdate, fwd::<ServerboundBundleItemSelected>);
+
+    app.add_message::<ServerboundChangeDifficulty>();
+    app.add_systems(PreUpdate, fwd::<ServerboundChangeDifficulty>);
 }
