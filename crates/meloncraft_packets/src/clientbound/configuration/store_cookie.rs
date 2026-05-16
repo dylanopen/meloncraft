@@ -4,28 +4,28 @@ use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_core::Identifier;
 use meloncraft_network::packet::ClientboundNetworkPacket;
-use meloncraft_protocol_types::{Byte, PrefixedArray, ProtocolType};
+use meloncraft_protocol_types::{Byte, PrefixedArray, ProtocolType as _};
 
 #[derive(Message, Debug, Clone)]
-pub struct StoreCookie {
+pub struct ClientboundStoreCookie {
     pub client: Entity,
     pub key: Identifier,
     pub value: Vec<Byte>,
 }
 
-impl ClientboundPacket for StoreCookie {
+impl ClientboundPacket for ClientboundStoreCookie {
     fn id() -> i32 {
-        0x0A
+        return 0x0A
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Configuration
+        return ConnectionState::Configuration
     }
 
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let mut data = self.key.net_serialize();
         data.extend(PrefixedArray(self.value.clone()).net_serialize());
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data,

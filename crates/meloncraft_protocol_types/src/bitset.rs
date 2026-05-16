@@ -1,53 +1,57 @@
 use crate::{PrefixedArray, ProtocolType};
 
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Default)]
 pub struct BitSet {
-    pub(crate) bits: Vec<i64>,
+    pub bits: Vec<i64>,
 }
 
 impl BitSet {
-    pub fn new() -> Self {
-        BitSet { bits: Vec::new() }
+    #[must_use]
+    pub const fn is_empty(&self) -> bool {
+        return self.bits.is_empty();
     }
 
-    pub fn is_empty(&self) -> bool {
-        self.bits.is_empty()
-    }
-
+    #[must_use]
     pub fn with_capacity(capacity: usize) -> Self {
-        BitSet {
-            bits: vec![0; (capacity+63) / 64],
-        }
+        return BitSet {
+            bits: vec![0; capacity.div_ceil(64)],
+        };
     }
 
-    pub fn capacity(&self) -> usize {
-        self.bits.len() * 64
+    #[must_use]
+    pub const fn capacity(&self) -> usize {
+        return self.bits.len() * 64;
     }
 
+    #[must_use]
     pub fn get(&mut self, pos: usize) -> bool {
         let (index, bit_pos) = self.get_location(pos);
-        (self.bits[index] & (1 << bit_pos)) != 0
+        return (self.bits.get(index).unwrap() & (1 << bit_pos)) != 0;
     }
 
+    #[must_use]
     pub fn get_location(&mut self, pos: usize) -> (usize, usize) {
         let index = pos / 64;
         let bit_pos = pos % 64;
         if index >= self.bits.len() {
             self.bits.resize(index + 1, 0);
         }
-        (index, bit_pos)
+        return (index, bit_pos);
     }
 
+    #[expect(clippy::indexing_slicing, reason = "Much simpler to mutate value than .get_mut(index).unwrap()")]
     pub fn set(&mut self, pos: usize) {
         let (index, bit_pos) = self.get_location(pos);
         self.bits[index] |= 1 << bit_pos;
     }
 
+    #[expect(clippy::indexing_slicing, reason = "Much simpler to mutate value than .get_mut(index).unwrap()")]
     pub fn unset(&mut self, pos: usize) {
         let (index, bit_pos) = self.get_location(pos);
         self.bits[index] &= !(1 << bit_pos);
     }
 
+    #[expect(clippy::indexing_slicing, reason = "Much simpler to mutate value than .get_mut(index).unwrap()")]
     pub fn toggle(&mut self, pos: usize) {
         let (index, bit_pos) = self.get_location(pos);
         self.bits[index] ^= 1 << bit_pos;
@@ -58,43 +62,22 @@ impl BitSet {
     }
 }
 
-// Pretty sure this should be a stream of bits, in inverse order.
-// impl ProtocolType for BitSet {
-//     fn net_serialize(&self) -> Vec<u8> {
-//         let mut serial = Vec::new();
-//         for long_bits in self.bits.iter().rev() {
-//             serial.push(long_bits.reverse_bits())
-//         }
-//         PrefixedArray(serial).net_serialize()
-//     }
-//
-//     fn net_deserialize(data: &mut Vec<u8>) -> Result<Self, ()> {
-//         let mut bits = Vec::new();
-//         let longs: Vec<u64> = PrefixedArray::net_deserialize(data)?.0;
-//         for long in longs.iter().rev() {
-//             bits.push(long.reverse_bits());
-//         }
-//         Ok(BitSet { bits })
-//     }
-// }
-
-// but maybe not, let's try this instead:
 impl ProtocolType for BitSet {
     fn net_serialize(&self) -> Vec<u8> {
         let mut serial = Vec::new();
-        for long_bits in self.bits.iter() {
-            serial.push(*long_bits)
+        for long_bits in &self.bits {
+            serial.push(*long_bits);
         }
-        PrefixedArray(serial).net_serialize()
+        return PrefixedArray(serial).net_serialize();
     }
 
     fn net_deserialize(data: &mut Vec<u8>) -> Result<Self, ()> {
         let mut bits = Vec::new();
         let longs: Vec<i64> = PrefixedArray::net_deserialize(data)?.0;
-        for long in longs.iter() {
+        for long in &longs {
             bits.push(*long);
         }
-        Ok(BitSet { bits })
+        return Ok(BitSet { bits });
     }
 }
 
@@ -104,16 +87,16 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_bitset_create() {
-        let mut bitset = BitSet::new();
+    fn bitset_create() {
+        let mut bitset = BitSet::default();
         assert!(bitset.is_empty());
         assert_eq!(bitset.capacity(), 0);
-        assert_eq!(bitset.get(0), false);
+        assert!(!bitset.get(0));
     }
 
     #[test]
-    fn test_bitset_set() {
-        let mut bitset = BitSet::new();
+    fn bitset_set() {
+        let mut bitset = BitSet::default();
         bitset.set(3);
         assert_eq!(bitset.capacity(), 64);
         assert_eq!(bitset.bits[0], 8);
@@ -121,8 +104,8 @@ mod tests {
     }
 
     #[test]
-    fn test_bitset_unset() {
-        let mut bitset = BitSet::new();
+    fn bitset_unset() {
+        let mut bitset = BitSet::default();
         bitset.set(2);
         assert_eq!(bitset.bits[0], 4);
         bitset.unset(2);
@@ -130,30 +113,30 @@ mod tests {
     }
 
     #[test]
-    fn test_bitset_get() {
-        let mut bitset = BitSet::new();
+    fn bitset_get() {
+        let mut bitset = BitSet::default();
         bitset.set(1);
-        assert_eq!(bitset.get(1), true);
+        assert!(bitset.get(1));
         bitset.set(2);
-        assert_eq!(bitset.get(0), false);
+        assert!(!bitset.get(0));
     }
 
     #[test]
-    fn test_bitset_toggle() {
-        let mut bitset = BitSet::new();
+    fn bitset_toggle() {
+        let mut bitset = BitSet::default();
         bitset.toggle(2);
-        assert_eq!(bitset.get( 2), true);
+        assert!(bitset.get( 2));
         bitset.toggle(2);
-        assert_eq!(bitset.get(2), false);
+        assert!(!bitset.get(2));
     }
 
     #[test]
-    fn test_bitset_clear() {
-        let mut bitset = BitSet::new();
+    fn bitset_clear() {
+        let mut bitset = BitSet::default();
         bitset.set(1);
         bitset.set(68);
-        assert_eq!(bitset.get(1), true);
-        assert_eq!(bitset.get(68), true);
+        assert!(bitset.get(1));
+        assert!(bitset.get(68));
         assert_eq!(bitset.capacity(), 128);
         bitset.clear();
         assert_eq!(bitset.capacity(), 0);
@@ -162,8 +145,8 @@ mod tests {
     }
 
     #[test]
-    fn test_bitset_serialize() {
-        let mut bitset = BitSet::new();
+    fn bitset_serialize() {
+        let mut bitset = BitSet::default();
         bitset.set(1);
         bitset.set(64);
         let mut serialized = bitset.net_serialize();
@@ -174,8 +157,8 @@ mod tests {
     }
 
     #[test]
-    fn test_bitset_serde() {
-        let mut bitset = BitSet::new();
+    fn bitset_serde() {
+        let mut bitset = BitSet::default();
         bitset.set(1);
         bitset.set(65);
         let serialized = bitset.net_serialize();

@@ -5,22 +5,22 @@ use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::ServerboundNetworkPacket;
 
 #[derive(Message, Debug, Clone)]
-pub struct LoginAcknowledged {
+pub struct ServerboundLoginAcknowledged {
     pub client: Entity,
 }
 
-impl ServerboundPacket for LoginAcknowledged {
+impl ServerboundPacket for ServerboundLoginAcknowledged {
     fn id() -> i32 {
-        0x03
+        return 0x03
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Login
+        return ConnectionState::Login
     }
 
-    fn deserialize(incoming: &ServerboundNetworkPacket) -> Option<Self> {
-        Some(Self {
-            client: incoming.client,
+    fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
+        return Some(Self {
+            client: packet.client,
         })
     }
 }

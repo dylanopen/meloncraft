@@ -2,20 +2,20 @@ use crate::ServerboundPacket;
 use bevy::prelude::{Entity, Message};
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::ServerboundNetworkPacket;
-use meloncraft_protocol_types::ProtocolBuffer;
+use meloncraft_protocol_types::ProtocolBuffer as _;
 
 #[derive(Message, Debug, Clone)]
-pub struct KeepAlive {
+pub struct ServerboundConfigurationKeepAlive {
     pub client: Entity,
     pub id: i64,
 }
 
-impl ServerboundPacket for KeepAlive {
+impl ServerboundPacket for ServerboundConfigurationKeepAlive {
     fn id() -> i32 {
-        0x04
+        return 0x04
     }
     fn state() -> ConnectionState {
-        ConnectionState::Configuration
+        return ConnectionState::Configuration
     }
 
     fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
@@ -23,6 +23,6 @@ impl ServerboundPacket for KeepAlive {
         let client = packet.client;
         let id = data.net_deserialize().unwrap();
 
-        Some(Self { client, id })
+        return Some(Self { client, id })
     }
 }

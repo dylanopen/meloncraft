@@ -1,13 +1,13 @@
 pub mod raw;
 
-use bevy::app::Plugin;
+use bevy::app::{App, Plugin};
 
 use self::raw::RawRegistries;
 
 pub struct MeloncraftDefaultRegistriesPlugin;
 
 impl Plugin for MeloncraftDefaultRegistriesPlugin {
-    fn build(&self, app: &mut bevy::app::App) {
+    fn build(&self, app: &mut App) {
         meloncraft_generator::generate_data();
         let raw_registries = RawRegistries::default();
         app.insert_resource(raw_registries);

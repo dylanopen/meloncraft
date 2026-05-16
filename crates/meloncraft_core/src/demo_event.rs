@@ -9,27 +9,47 @@ pub enum DemoEventType {
 
 impl From<DemoEventType> for u8 {
     fn from(value: DemoEventType) -> Self {
-        match value {
+        return match value {
             DemoEventType::WelcomeToDemoScreen => 0,
             DemoEventType::MovementControls => 101,
             DemoEventType::JumpControl => 102,
             DemoEventType::InventoryControl => 103,
             DemoEventType::DemoOver => 104,
-        }
+        };
     }
 }
 
 impl TryFrom<u8> for DemoEventType {
     type Error = ();
     fn try_from(value: u8) -> Result<Self, Self::Error> {
-        match value {
+        return match value {
             0 => Ok(DemoEventType::WelcomeToDemoScreen),
             101 => Ok(DemoEventType::MovementControls),
             102 => Ok(DemoEventType::JumpControl),
             103 => Ok(DemoEventType::InventoryControl),
             104 => Ok(DemoEventType::DemoOver),
             _ => Err(()),
-        }
+        };
     }
 }
 
+
+impl From<DemoEventType> for f32 {
+    fn from(demo_event_type: DemoEventType) -> Self {
+        return u8::from(demo_event_type).into();
+    }
+}
+
+impl TryFrom<f32> for DemoEventType {
+    type Error = ();
+    fn try_from(value: f32) -> Result<Self, Self::Error> {
+        return match value {
+            0.0 => Ok(DemoEventType::WelcomeToDemoScreen),
+            101.0 => Ok(DemoEventType::MovementControls),
+            102.0 => Ok(DemoEventType::JumpControl),
+            103.0 => Ok(DemoEventType::InventoryControl),
+            104.0 => Ok(DemoEventType::DemoOver),
+            _ => Err(()),
+        };
+    }
+}

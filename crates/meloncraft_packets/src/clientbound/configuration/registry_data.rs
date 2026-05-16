@@ -5,23 +5,23 @@ use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_core::Identifier;
 use meloncraft_nbt::{NbtCompound, NbtTag, NbtValue};
 use meloncraft_network::packet::ClientboundNetworkPacket;
-use meloncraft_protocol_types::{PrefixedArray, ProtocolType};
+use meloncraft_protocol_types::{PrefixedArray, ProtocolType as _};
 use meloncraft_registry::RegistryEntry;
 
 #[derive(Message, Debug, Clone)]
-pub struct RegistryData {
+pub struct ClientboundRegistryData {
     pub client: Entity,
     pub registry_id: Identifier,
     pub registry_entries: Vec<RegistryEntry>,
 }
 
-impl ClientboundPacket for RegistryData {
+impl ClientboundPacket for ClientboundRegistryData {
     fn id() -> i32 {
-        0x07
+        return 0x07
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Configuration
+        return ConnectionState::Configuration
     }
 
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
@@ -36,7 +36,7 @@ impl ClientboundPacket for RegistryData {
             entries_data.extend(entry_compound.net_serialize());
         }
         data.extend(PrefixedArray(entries_data).net_serialize());
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data,

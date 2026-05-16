@@ -3,25 +3,25 @@ use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::ClientboundNetworkPacket;
-use meloncraft_protocol_types::ProtocolType;
+use meloncraft_protocol_types::ProtocolType as _;
 
 #[derive(Message, Debug, Clone)]
-pub struct SetCompression {
+pub struct ClientboundSetCompression {
     pub entity: Entity,
     pub threshold: i32,
 }
 
-impl ClientboundPacket for SetCompression {
+impl ClientboundPacket for ClientboundSetCompression {
     fn id() -> i32 {
-        0x03
+        return 0x03
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Login
+        return ConnectionState::Login
     }
 
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.entity,
             id: Self::id(),
             data: self.threshold.net_serialize(),

@@ -5,8 +5,8 @@ use bevy::prelude::{MessageReader, MessageWriter};
 use meloncraft::handshaking::MeloncraftHandshakingPlugin;
 use meloncraft::network::MeloncraftNetworkPlugin;
 use meloncraft::packets::MeloncraftPacketsPlugin;
-use meloncraft::packets::clientbound::login::Disconnect;
-use meloncraft::packets::serverbound::login::LoginStart;
+use meloncraft::packets::clientbound::login::ClientboundLoginDisconnect;
+use meloncraft::packets::serverbound::login::ServerboundLoginStart;
 use meloncraft::server_list::MeloncraftServerListPlugin;
 use meloncraft::server_list::max_players::MaxPlayers;
 use meloncraft::server_list::motd::Motd;
@@ -32,13 +32,13 @@ pub fn main() {
     app.run();
 }
 
-fn login_listener(mut pr: MessageReader<LoginStart>, mut pw: MessageWriter<Disconnect>) {
+fn login_listener(mut pr: MessageReader<ServerboundLoginStart>, mut pw: MessageWriter<ClientboundLoginDisconnect>) {
     for packet in pr.read() {
         println!(
             "{} tried to log-in! This example only adds serverlist functionality.",
             packet.name
         );
-        pw.write(Disconnect {
+        pw.write(ClientboundLoginDisconnect {
             client: packet.client,
             reason: JsonText {
                 data:

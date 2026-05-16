@@ -1,4 +1,5 @@
-use std::fmt::Display;
+use core::fmt;
+use core::fmt::Display;
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub enum ConnectionState {
@@ -10,13 +11,13 @@ pub enum ConnectionState {
 }
 
 impl Display for ConnectionState {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match self {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        return match self {
             ConnectionState::Handshaking => write!(f, "Handshaking"),
             ConnectionState::Status => write!(f, "Status"),
             ConnectionState::Login => write!(f, "Login"),
             ConnectionState::Configuration => write!(f, "Configuration"),
             ConnectionState::Play => write!(f, "Play"),
-        }
+        };
     }
 }

@@ -1,5 +1,5 @@
 use meloncraft_nbt::NbtValue;
-use meloncraft_protocol_types::ProtocolType;
+use meloncraft_protocol_types::ProtocolType as _;
 use serde_json::{Map, value::Value as JsonValue};
 use std::fs::File;
 use std::io::Read;

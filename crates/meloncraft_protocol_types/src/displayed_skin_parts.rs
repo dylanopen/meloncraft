@@ -4,15 +4,15 @@ use meloncraft_player::DisplayedSkinParts;
 // This may be wrong. The endian-ness matters here, and may be incorrect.
 impl ProtocolType for DisplayedSkinParts {
     fn net_serialize(&self) -> Vec<u8> {
-        vec![
-            self.cape as u8
-                + self.jacket as u8 * 0x02
-                + self.left_sleeve as u8 * 0x04
-                + self.right_sleeve as u8 * 0x08
-                + self.left_pants_leg as u8 * 0x10
-                + self.right_pants_leg as u8 * 0x20
-                + self.hat as u8 * 0x40,
-        ]
+        return vec![
+            u8::from(self.cape)
+                + u8::from(self.jacket) * 0x02
+                + u8::from(self.left_sleeve) * 0x04
+                + u8::from(self.right_sleeve) * 0x08
+                + u8::from(self.left_pants_leg) * 0x10
+                + u8::from(self.right_pants_leg) * 0x20
+                + u8::from(self.hat) * 0x40,
+        ];
     }
 
     fn net_deserialize(data: &mut Vec<u8>) -> Result<Self, ()> {
@@ -22,7 +22,7 @@ impl ProtocolType for DisplayedSkinParts {
         let arg_data = data.drain(0..1);
         let byte = u8::from_be_bytes(arg_data.as_slice().try_into().map_err(|_| ())?);
 
-        Ok(DisplayedSkinParts {
+        return Ok(DisplayedSkinParts {
             cape: (byte & 0x01) != 0,
             jacket: (byte & 0x02) != 0,
             left_sleeve: (byte & 0x04) != 0,
@@ -30,7 +30,7 @@ impl ProtocolType for DisplayedSkinParts {
             left_pants_leg: (byte & 0x10) != 0,
             right_pants_leg: (byte & 0x20) != 0,
             hat: (byte & 0x40) != 0,
-        })
+        });
     }
 }
 
@@ -40,7 +40,7 @@ mod tests {
     use meloncraft_player::DisplayedSkinParts;
 
     #[test]
-    fn test_displayed_skin_parts_serialization() {
+    fn displayed_skin_parts_serialization() {
         let parts = DisplayedSkinParts {
             cape: true,
             jacket: false,
@@ -52,9 +52,9 @@ mod tests {
         };
 
         let serialized = parts.net_serialize();
-        assert_eq!(serialized, vec![0b01010101]);
+        assert_eq!(serialized, vec![0b0101_0101]);
 
-        let mut data = serialized.clone();
+        let mut data = serialized;
         let deserialized = DisplayedSkinParts::net_deserialize(&mut data).unwrap();
         assert_eq!(deserialized, parts);
     }

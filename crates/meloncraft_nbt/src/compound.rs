@@ -1,5 +1,5 @@
 use crate::{NbtTag, NbtValue};
-use std::ops::{Deref, DerefMut};
+use core::ops::{Deref, DerefMut};
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct NbtCompound(pub Vec<NbtTag>);
@@ -7,65 +7,67 @@ pub struct NbtCompound(pub Vec<NbtTag>);
 impl Deref for NbtCompound {
     type Target = Vec<NbtTag>;
     fn deref(&self) -> &Self::Target {
-        &self.0
+        return &self.0;
     }
 }
 
 impl DerefMut for NbtCompound {
     fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
+        return &mut self.0;
     }
 }
 
 impl From<Vec<NbtTag>> for NbtCompound {
     fn from(value: Vec<NbtTag>) -> Self {
-        Self(value)
+        return Self(value);
     }
 }
 
 impl NbtCompound {
+    #[must_use]
     pub fn get(&self, key: &str) -> Option<&NbtTag> {
-        if !key.contains("/") {
-            return self.0.iter().find(|tag| tag.key == key);
+        if !key.contains('/') {
+            return self.0.iter().find(|tag| return tag.key == key);
         }
-        let mut tree: Vec<&str> = key.split("/").collect();
+        let mut tree: Vec<&str> = key.split('/').collect();
         let mut current_compound = self;
         while !tree.is_empty() {
             if tree.len() == 1 {
-                return current_compound.get(tree[0]);
+                return current_compound.get(tree.first()?);
             }
             let NbtValue::Compound(compound) = current_compound.get_value(tree.remove(0))? else {
                 return None;
             };
             current_compound = compound;
         };
-        None
+        return None;
     }
 
+    #[must_use]
     pub fn get_value(&self, key: &str) -> Option<&NbtValue> {
-        self.get(key).map(|tag| &tag.value)
+        return self.get(key).map(|tag| return &tag.value);
     }
 
     pub fn get_mut(&mut self, key: &str) -> Option<&mut NbtTag> {
-        if !key.contains("/") {
-            return self.0.iter_mut().find(|tag| tag.key == key);
+        if !key.contains('/') {
+            return self.0.iter_mut().find(|tag| return tag.key == key);
         }
-        let mut tree: Vec<&str> = key.split("/").collect();
+        let mut tree: Vec<&str> = key.split('/').collect();
         let mut current_compound = self;
         while !tree.is_empty() {
             if tree.len() == 1 {
-                return current_compound.get_mut(tree[0]);
+                return current_compound.get_mut(tree.first()?);
             }
             let NbtValue::Compound(compound) = current_compound.get_value_mut(tree.remove(0))? else {
                 return None;
             };
             current_compound = compound;
         };
-        None
+        return None;
     }
 
     pub fn get_value_mut(&mut self, key: &str) -> Option<&mut NbtValue> {
-        self.get_mut(key).map(|tag| &mut tag.value)
+        return self.get_mut(key).map(|tag| return &mut tag.value);
     }
 
     pub fn insert(&mut self, tag: NbtTag) {
@@ -77,42 +79,47 @@ impl NbtCompound {
     }
 
     pub fn remove(&mut self, key: &str) -> Option<NbtTag> {
-        if let Some(pos) = self.0.iter().position(|tag| tag.key == key) {
-            Some(self.0.remove(pos))
-        } else {
-            None
+        if let Some(pos) = self.0.iter().position(|tag| return tag.key == key) {
+            return Some(self.0.remove(pos));
         }
+        return None;
     }
 
+    #[must_use]
     pub fn contains_key(&self, key: &str) -> bool {
-        self.0.iter().any(|tag| tag.key == key)
+        return self.0.iter().any(|tag| return tag.key == key);
     }
 
+    #[must_use]
     pub fn contains_value(&self, value: &NbtValue) -> bool {
-        self.0.iter().any(|tag| &tag.value == value)
+        return self.0.iter().any(|tag| return &tag.value == value);
     }
 
-    pub fn len(&self) -> usize {
-        self.0.len()
+    #[must_use]
+    pub const fn len(&self) -> usize {
+        return self.0.len();
     }
 
-    pub fn is_empty(&self) -> bool {
-        self.0.is_empty()
+    #[must_use]
+    pub const fn is_empty(&self) -> bool {
+        return self.0.is_empty();
     }
 
     pub fn clear(&mut self) {
-        self.0.clear();
+        return self.0.clear();
     }
 
+    #[must_use]
     pub fn keys(&self) -> Vec<&str> {
-        self.0.iter().map(|tag| tag.key.as_str()).collect()
+        return self.0.iter().map(|tag| return tag.key.as_str()).collect();
     }
 
+    #[must_use]
     pub fn values(&self) -> Vec<&crate::NbtValue> {
-        self.0.iter().map(|tag| &tag.value).collect()
+        return self.0.iter().map(|tag| return &tag.value).collect();
     }
 
     pub fn values_mut(&mut self) -> Vec<&mut crate::NbtValue> {
-        self.0.iter_mut().map(|tag| &mut tag.value).collect()
+        return self.0.iter_mut().map(|tag| return &mut tag.value).collect();
     }
 }

@@ -1,29 +1,31 @@
 use bevy::ecs::entity::Entity;
 use bevy::ecs::message::Message;
-use meloncraft_protocol_types::{GameEventType, ProtocolType};
+use meloncraft_client::connection_state::ConnectionState;
+use meloncraft_network::packet::ClientboundNetworkPacket;
+use meloncraft_protocol_types::{GameEventType, ProtocolType as _};
 
 use crate::clientbound_packet::ClientboundPacket;
 
 #[derive(Message, Debug, Clone)]
-pub struct GameEvent {
+pub struct ClientboundGameEvent {
     pub client: Entity,
     pub event: GameEventType,
 }
 
-impl ClientboundPacket for GameEvent {
+impl ClientboundPacket for ClientboundGameEvent {
     fn id() -> i32 {
-        0x26
+        return 0x26
     }
 
-    fn state() -> meloncraft_client::connection_state::ConnectionState {
-        meloncraft_client::connection_state::ConnectionState::Play
+    fn state() -> ConnectionState {
+        return ConnectionState::Play
     }
 
-    fn serialize(&self) -> Option<meloncraft_network::packet::ClientboundNetworkPacket> {
+    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let mut data = Vec::new();
         data.extend(self.event.net_serialize());
 
-        Some(meloncraft_network::packet::ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data,

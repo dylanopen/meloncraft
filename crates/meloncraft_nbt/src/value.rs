@@ -21,38 +21,37 @@ pub enum NbtValue {
 }
 
 impl NbtValue {
+    #[must_use]
     pub fn get_compound_children(&self) -> Option<&Vec<NbtTag>> {
         if let NbtValue::Compound(compound) = self {
-            Some(compound)
-        } else {
-            None
+            return Some(compound);
         }
+        return None;
     }
 
     pub fn get_compound_children_mut(&mut self) -> Option<&mut Vec<NbtTag>> {
         if let NbtValue::Compound(compound) = self {
-            Some(compound)
-        } else {
-            None
+            return Some(compound);
         }
+        return None;
     }
 
+    #[must_use]
     pub fn get_list_children(&self) -> Option<&Vec<NbtValue>> {
         if let NbtValue::List(list) = self {
-            Some(list)
-        } else {
-            None
+            return Some(list);
         }
+        return None;
     }
 
     pub fn get_list_children_mut(&mut self) -> Option<&mut Vec<NbtValue>> {
         if let NbtValue::List(list) = self {
-            Some(list)
-        } else {
-            None
+            return Some(list);
         }
+        return None;
     }
 
+    #[must_use]
     pub fn get(&self, key: &str) -> Option<&NbtValue> {
         let NbtValue::Compound(compound) = self else {
             return None;
@@ -62,7 +61,7 @@ impl NbtValue {
                 return Some(&tag.value);
             }
         }
-        None
+        return None;
     }
 
     pub fn get_mut(&mut self, key: &str) -> Option<&mut NbtValue> {
@@ -74,11 +73,12 @@ impl NbtValue {
                 return Some(&mut tag.value);
             }
         }
-        None
+        return None;
     }
 
-    pub fn to_id(&self) -> u8 {
-        match self {
+    #[must_use]
+    pub const fn to_id(&self) -> u8 {
+        return match self {
             NbtValue::U8(_) => 1,
             NbtValue::I16(_) => 2,
             NbtValue::I32(_) => 3,
@@ -91,6 +91,6 @@ impl NbtValue {
             NbtValue::Compound(_) => 10,
             NbtValue::ArrayI32(_) => 11,
             NbtValue::ArrayI64(_) => 12,
-        }
+        };
     }
 }

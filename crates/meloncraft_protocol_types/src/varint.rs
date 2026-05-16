@@ -10,23 +10,23 @@ impl ProtocolType for VarInt {
     fn net_serialize(&self) -> Vec<u8> {
         let mut output: Vec<u8> = Vec::new();
 
-        let mut uvalue = self.0 as u32;
+        let mut unsigned_value = self.0.cast_unsigned();
         loop {
-            let mut byte = (uvalue & SEGMENT_BITS) as u8;
-            uvalue >>= 7;
+            let mut byte = (unsigned_value & SEGMENT_BITS).try_into().unwrap();
+            unsigned_value >>= 7;
 
-            if uvalue != 0 {
+            if unsigned_value != 0 {
                 byte |= CONTINUE_BIT;
             }
 
             output.push(byte);
 
-            if uvalue == 0 {
+            if unsigned_value == 0 {
                 break;
             }
         }
 
-        output
+        return output;
     }
 
     fn net_deserialize(data: &mut Vec<u8>) -> Result<Self, ()> {
@@ -40,7 +40,7 @@ impl ProtocolType for VarInt {
 
         loop {
             current_byte = data.remove(0);
-            value |= (current_byte as i32 & SEGMENT_BITS as i32) << position;
+            value |= (i32::from(current_byte) & i32::try_from(SEGMENT_BITS).unwrap()) << position;
 
             if (current_byte & CONTINUE_BIT) == 0 {
                 break;
@@ -52,7 +52,7 @@ impl ProtocolType for VarInt {
                 return Err(());
             }
         }
-        Ok(Self(value))
+        return Ok(Self(value));
     }
 }
 
@@ -62,84 +62,84 @@ mod tests {
 
     // Example cases taken from https://minecraft.wiki/w/Java_Edition_protocol/Packets#VarInt_and_VarLong
     #[test]
-    fn test_serialize_varint_0() {
+    fn serialize_varint_0() {
         assert_eq!(VarInt(0).net_serialize(), vec![0x00]);
     }
     #[test]
-    fn test_serialize_varint_1() {
+    fn serialize_varint_1() {
         assert_eq!(VarInt(1).net_serialize(), vec![0x01]);
     }
     #[test]
-    fn test_serialize_varint_127() {
+    fn serialize_varint_127() {
         assert_eq!(VarInt(127).net_serialize(), vec![0x7f]);
     }
     #[test]
-    fn test_serialize_varint_128() {
+    fn serialize_varint_128() {
         assert_eq!(VarInt(128).net_serialize(), vec![0x80, 0x01]);
     }
     #[test]
-    fn test_serialize_varint_255() {
+    fn serialize_varint_255() {
         assert_eq!(VarInt(255).net_serialize(), vec![0xff, 0x01]);
     }
     #[test]
-    fn test_serialize_varint_25565() {
+    fn serialize_varint_25565() {
         assert_eq!(VarInt(25565).net_serialize(), vec![0xdd, 0xc7, 0x01]);
     }
     #[test]
-    fn test_serialize_varint_2097151() {
-        assert_eq!(VarInt(2097151).net_serialize(), vec![0xff, 0xff, 0x7f]);
+    fn serialize_varint_2097151() {
+        assert_eq!(VarInt(2_097_151).net_serialize(), vec![0xff, 0xff, 0x7f]);
     }
     #[test]
-    fn test_serialize_varint_2147483647() {
-        assert_eq!(VarInt(2147483647).net_serialize(), vec![0xff, 0xff, 0xff, 0xff, 0x07]);
+    fn serialize_varint_2147483647() {
+        assert_eq!(VarInt(2_147_483_647).net_serialize(), vec![0xff, 0xff, 0xff, 0xff, 0x07]);
     }
     #[test]
-    fn test_serialize_varint_neg1() {
+    fn serialize_varint_neg1() {
         assert_eq!(VarInt(-1).net_serialize(), vec![0xff, 0xff, 0xff, 0xff, 0x0f]);
     }
     #[test]
-    fn test_serialize_varint_neg2147483648() {
-        assert_eq!(VarInt(-2147483648).net_serialize(), vec![0x80, 0x80, 0x80, 0x80, 0x08]);
+    fn serialize_varint_neg2147483648() {
+        assert_eq!(VarInt(-2_147_483_648).net_serialize(), vec![0x80, 0x80, 0x80, 0x80, 0x08]);
     }
 
     #[test]
-    fn test_deserialize_varint_0() {
+    fn deserialize_varint_0() {
         assert_eq!(VarInt::net_deserialize(&mut vec![0x00]).unwrap().0, 0);
     }
     #[test]
-    fn test_deserialize_varint_1() {
+    fn deserialize_varint_1() {
         assert_eq!(VarInt::net_deserialize(&mut vec![0x01]).unwrap().0, 1);
     }
     #[test]
-    fn test_deserialize_varint_127() {
+    fn deserialize_varint_127() {
         assert_eq!(VarInt::net_deserialize(&mut vec![0x7f]).unwrap().0, 127);
     }
     #[test]
-    fn test_deserialize_varint_128() {
+    fn deserialize_varint_128() {
         assert_eq!(VarInt::net_deserialize(&mut vec![0x80, 0x01]).unwrap().0, 128);
     }
     #[test]
-    fn test_deserialize_varint_255() {
+    fn deserialize_varint_255() {
         assert_eq!(VarInt::net_deserialize(&mut vec![0xff, 0x01]).unwrap().0, 255);
     }
     #[test]
-    fn test_deserialize_varint_25565() {
+    fn deserialize_varint_25565() {
         assert_eq!(VarInt::net_deserialize(&mut vec![0xdd, 0xc7, 0x01]).unwrap().0, 25565);
     }
     #[test]
-    fn test_deserialize_varint_2097151() {
-        assert_eq!(VarInt::net_deserialize(&mut vec![0xff, 0xff, 0x7f]).unwrap().0, 2097151);
+    fn deserialize_varint_2097151() {
+        assert_eq!(VarInt::net_deserialize(&mut vec![0xff, 0xff, 0x7f]).unwrap().0, 2_097_151);
     }
     #[test]
-    fn test_deserialize_varint_2147483647() {
-        assert_eq!(VarInt::net_deserialize(&mut vec![0xff, 0xff, 0xff, 0xff, 0x07]).unwrap().0, 2147483647);
+    fn deserialize_varint_2147483647() {
+        assert_eq!(VarInt::net_deserialize(&mut vec![0xff, 0xff, 0xff, 0xff, 0x07]).unwrap().0, 2_147_483_647);
     }
     #[test]
-    fn test_deserialize_varint_neg1() {
+    fn deserialize_varint_neg1() {
         assert_eq!(VarInt::net_deserialize(&mut vec![0xff, 0xff, 0xff, 0xff, 0x0f]).unwrap().0, -1);
     }
     #[test]
-    fn test_deserialize_varint_neg2147483648() {
-        assert_eq!(VarInt::net_deserialize(&mut vec![0x80, 0x80, 0x80, 0x80, 0x08]).unwrap().0, -2147483648);
+    fn deserialize_varint_neg2147483648() {
+        assert_eq!(VarInt::net_deserialize(&mut vec![0x80, 0x80, 0x80, 0x80, 0x08]).unwrap().0, -2_147_483_648);
     }
 }

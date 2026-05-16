@@ -3,10 +3,10 @@ use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::ServerboundNetworkPacket;
-use meloncraft_protocol_types::{ProtocolType, VarInt};
+use meloncraft_protocol_types::{ProtocolType as _, VarInt};
 
 #[derive(Message, Debug, Clone)]
-pub struct Intention {
+pub struct ServerboundIntention {
     pub client: Entity,
     pub protocol_version: i32,
     pub server_address: String,
@@ -14,15 +14,15 @@ pub struct Intention {
     pub next_state: ConnectionState,
 }
 
-impl ServerboundPacket for Intention {
+impl ServerboundPacket for ServerboundIntention {
     fn id() -> i32 {
-        0x00
+        return 0x00
     }
     fn state() -> ConnectionState {
-        ConnectionState::Handshaking
+        return ConnectionState::Handshaking
     }
-    fn deserialize(incoming: &ServerboundNetworkPacket) -> Option<Self> {
-        let mut incoming = incoming.clone();
+    fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
+        let mut incoming = packet.clone();
         let protocol_version = VarInt::net_deserialize(&mut incoming.data).unwrap().0;
         let server_address = String::net_deserialize(&mut incoming.data).unwrap();
         let server_port = u16::net_deserialize(&mut incoming.data).unwrap();
@@ -32,7 +32,7 @@ impl ServerboundPacket for Intention {
             _ => return None, // TODO: log this
         };
 
-        Some(Intention {
+        return Some(ServerboundIntention {
             client: incoming.client,
             protocol_version,
             server_address,

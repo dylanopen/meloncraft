@@ -7,10 +7,10 @@ use meloncraft_player::{
     AllowPlayerListings, ChatColors, ChatMode, DisplayedSkinParts, EnableTextFiltering, Locale,
     MainHand, ParticleRenderingMode, ViewDistance,
 };
-use meloncraft_protocol_types::{Byte, ProtocolBuffer, VarInt};
+use meloncraft_protocol_types::{Byte, ProtocolBuffer as _, VarInt};
 
 #[derive(Message, Debug, Clone)]
-pub struct ClientInformation {
+pub struct ServerboundClientInformation {
     pub client: Entity,
     pub locale: Locale,
     pub view_distance: ViewDistance,
@@ -23,12 +23,12 @@ pub struct ClientInformation {
     pub particle_rendering_mode: ParticleRenderingMode,
 }
 
-impl ServerboundPacket for ClientInformation {
+impl ServerboundPacket for ServerboundClientInformation {
     fn id() -> i32 {
-        0x00
+        return 0x00
     }
     fn state() -> ConnectionState {
-        ConnectionState::Configuration
+        return ConnectionState::Configuration
     }
 
     fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
@@ -36,7 +36,7 @@ impl ServerboundPacket for ClientInformation {
         let client = packet.client;
         let locale = Locale(data.net_deserialize().unwrap());
         let view_distance: Byte = data.net_deserialize().unwrap();
-        let view_distance = ViewDistance(view_distance.0 as u8);
+        let view_distance = ViewDistance(view_distance.0.try_into().unwrap());
         let chat_mode: VarInt = data.net_deserialize().unwrap();
         let chat_mode = ChatMode::try_from(chat_mode.0).unwrap();
         let chat_colors: bool = data.net_deserialize().unwrap();
@@ -50,7 +50,7 @@ impl ServerboundPacket for ClientInformation {
         let particle_rendering_mode =
             ParticleRenderingMode::try_from(particle_rendering_mode.0).unwrap();
 
-        Some(Self {
+        return Some(Self {
             client,
             locale,
             view_distance,

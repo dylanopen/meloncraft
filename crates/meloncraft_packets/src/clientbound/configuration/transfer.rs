@@ -3,28 +3,28 @@ use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::ClientboundNetworkPacket;
-use meloncraft_protocol_types::{ProtocolType, VarInt};
+use meloncraft_protocol_types::{ProtocolType as _, VarInt};
 
 #[derive(Message, Debug, Clone)]
-pub struct Transfer {
+pub struct ClientboundTransfer {
     pub client: Entity,
     pub hostname: String,
     pub port: u16,
 }
 
-impl ClientboundPacket for Transfer {
+impl ClientboundPacket for ClientboundTransfer {
     fn id() -> i32 {
-        0x0B
+        return 0x0B
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Configuration
+        return ConnectionState::Configuration
     }
 
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let mut data = self.hostname.net_serialize();
         data.extend(VarInt(self.port.into()).net_serialize());
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data,

@@ -4,19 +4,19 @@ use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::ServerboundNetworkPacket;
 
 #[derive(Message, Debug, Clone)]
-pub struct AcknowledgeFinishConfiguration {
+pub struct ServerboundAcknowledgeFinishConfiguration {
     pub client: Entity,
 }
 
-impl ServerboundPacket for AcknowledgeFinishConfiguration {
+impl ServerboundPacket for ServerboundAcknowledgeFinishConfiguration {
     fn id() -> i32 {
-        0x03
+        return 0x03
     }
     fn state() -> ConnectionState {
-        ConnectionState::Configuration
+        return ConnectionState::Configuration
     }
-    fn deserialize(incoming: &ServerboundNetworkPacket) -> Option<Self> {
-        let client = incoming.client;
-        Some(AcknowledgeFinishConfiguration { client })
+    fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
+        let client = packet.client;
+        return Some(ServerboundAcknowledgeFinishConfiguration { client })
     }
 }

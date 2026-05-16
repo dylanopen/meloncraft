@@ -4,28 +4,28 @@ use bevy::ecs::message::Message;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::ServerboundNetworkPacket;
 use meloncraft_player::Uuid;
-use meloncraft_protocol_types::ProtocolType;
+use meloncraft_protocol_types::ProtocolType as _;
 
 #[derive(Message, Debug, Clone)]
-pub struct LoginStart {
+pub struct ServerboundLoginStart {
     pub client: Entity,
     pub name: String,
     pub uuid: Uuid,
 }
 
-impl ServerboundPacket for LoginStart {
+impl ServerboundPacket for ServerboundLoginStart {
     fn id() -> i32 {
-        0x00
+        return 0x00
     }
     fn state() -> ConnectionState {
-        ConnectionState::Login
+        return ConnectionState::Login
     }
 
-    fn deserialize(incoming: &ServerboundNetworkPacket) -> Option<Self> {
-        let mut incoming = incoming.clone();
+    fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
+        let mut incoming = packet.clone();
         let client = incoming.client;
         let name = String::net_deserialize(&mut incoming.data).unwrap();
         let uuid = Uuid::net_deserialize(&mut incoming.data).unwrap();
-        Some(Self { client, uuid, name })
+        return Some(Self { client, name, uuid })
     }
 }

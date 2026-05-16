@@ -9,8 +9,6 @@ impl ProtocolType for ChunkBlockSection {
         let mut output = Vec::new();
         output.extend(self.block_count.net_serialize());
 
-        dbg!(output.len());
-
         // Some code was adapted from Oxide: thank you, as without it, I was completely lost with this serialization <3
         // https://git.thetxt.io/thetxt/oxide/src/lib/src/packets/clientbound/play.rs
         let mut data_iter = self.blocks.into_iter();
@@ -21,7 +19,7 @@ impl ProtocolType for ChunkBlockSection {
             let mut entry: u64 = 0;
             for i in 0..entries_per_long {
                 if let Some(next) = data_iter.next() {
-                    entry += (next.state_id as u64) << (i * bits_per_entry) as u64;
+                    entry += u64::try_from(next.state_id).unwrap() << u64::from(i * bits_per_entry);
                 }
             }
             output.extend(entry.net_serialize());
@@ -34,13 +32,13 @@ impl ProtocolType for ChunkBlockSection {
             let mut entry: u64 = 0;
             for i in 0..entries_per_long {
                 if let Some(next) = data_iter.next() {
-                    entry += (next.state_id as u64) << (i * bits_per_entry) as u64;
+                    entry += u64::try_from(next.state_id).unwrap() << u64::from(i * bits_per_entry);
                 }
             }
             output.extend(entry.net_serialize());
         }
 
-        output
+        return output;
     }
 
     fn net_deserialize(_data: &mut Vec<u8>) -> Result<Self, ()> {

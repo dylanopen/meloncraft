@@ -4,21 +4,21 @@ use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::ServerboundNetworkPacket;
 
 #[derive(Message, Debug, Clone)]
-pub struct AcceptCodeOfConduct {
+pub struct ServerboundAcceptCodeOfConduct {
     pub client: Entity,
 }
 
-impl ServerboundPacket for AcceptCodeOfConduct {
+impl ServerboundPacket for ServerboundAcceptCodeOfConduct {
     fn id() -> i32 {
-        0x09
+        return 0x09
     }
     fn state() -> ConnectionState {
-        ConnectionState::Configuration
+        return ConnectionState::Configuration
     }
 
     fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
         let client = packet.client;
 
-        Some(Self { client })
+        return Some(Self { client })
     }
 }

@@ -1,8 +1,8 @@
 use bevy::prelude::{Commands, MessageReader};
-use meloncraft_packets::serverbound::configuration::ClientInformation;
+use meloncraft_packets::ServerboundClientInformation;
 
 pub fn client_information_listener(
-    mut login_acknowledged_pr: MessageReader<ClientInformation>,
+    mut login_acknowledged_pr: MessageReader<ServerboundClientInformation>,
     mut commands: Commands,
 ) {
     for packet in login_acknowledged_pr.read() {

@@ -1,6 +1,6 @@
 use bevy::prelude::Component;
 
-#[derive(Component, Debug, Clone, Copy, PartialEq)]
+#[derive(Component, Debug, Clone, Copy, Eq, PartialEq)]
 #[repr(i32)]
 pub enum MainHand {
     Left = 0,
@@ -11,10 +11,10 @@ impl TryFrom<i32> for MainHand {
     type Error = ();
 
     fn try_from(value: i32) -> Result<Self, Self::Error> {
-        match value {
+        return match value {
             0 => Ok(MainHand::Left),
             1 => Ok(MainHand::Right),
             _ => Err(()),
-        }
+        };
     }
 }

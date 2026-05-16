@@ -1,4 +1,4 @@
-use crate::{PrefixedArray, ProtocolBuffer, ProtocolType};
+use crate::{PrefixedArray, ProtocolBuffer as _, ProtocolType};
 use meloncraft_player::{GameProfile, GameProfileProperties};
 
 impl ProtocolType for GameProfile {
@@ -8,14 +8,14 @@ impl ProtocolType for GameProfile {
         output.extend(self.username.net_serialize());
         let properties: Vec<GameProfileProperties> = Vec::new();
         output.extend(PrefixedArray(properties).net_serialize());
-        output
+        return output;
     }
 
     fn net_deserialize(data: &mut Vec<u8>) -> Result<Self, ()> {
         let uuid = data.net_deserialize()?;
         let username = data.net_deserialize()?;
         let _properties: PrefixedArray<GameProfileProperties> = data.net_deserialize()?;
-        Ok(GameProfile { uuid, username })
+        return Ok(GameProfile { uuid, username });
     }
 }
 

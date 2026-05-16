@@ -1,3 +1,5 @@
+#![expect(clippy::non_std_lazy_statics, reason = "I will use LazyLock soon, but for now, lazy_static! works.")]
+
 use crate::connection_listener::ConnectionListener;
 use crate::connection_manager::connection_manager;
 use crate::packet::{
@@ -38,7 +40,7 @@ impl Plugin for MeloncraftNetworkPlugin {
         let connection_listener = ConnectionListener(TcpListener::bind("127.0.0.1:25565").unwrap());
 
         let tcp_listener = connection_listener.0.try_clone().unwrap();
-        thread::spawn(move || receive_new_clients(tcp_listener.try_clone().unwrap()));
+        thread::spawn(move || receive_new_clients(&tcp_listener));
 
         app.add_message::<ServerboundNetworkPacketReceived>();
         app.add_message::<ClientboundNetworkPacketReceived>();

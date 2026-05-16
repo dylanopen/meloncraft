@@ -3,26 +3,26 @@ use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::ClientboundNetworkPacket;
-use meloncraft_protocol_types::ProtocolType;
+use meloncraft_protocol_types::ProtocolType as _;
 
 #[derive(Message, Debug, Clone)]
-pub struct Ping {
+pub struct ClientboundPing {
     pub client: Entity,
     pub id: i32,
 }
 
-impl ClientboundPacket for Ping {
+impl ClientboundPacket for ClientboundPing {
     fn id() -> i32 {
-        0x05
+        return 0x05
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Configuration
+        return ConnectionState::Configuration
     }
 
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let data = self.id.net_serialize();
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data,

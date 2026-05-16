@@ -4,26 +4,26 @@ use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_nbt::NbtTag;
 use meloncraft_network::packet::ClientboundNetworkPacket;
-use meloncraft_protocol_types::ProtocolType;
+use meloncraft_protocol_types::ProtocolType as _;
 
 #[derive(Message, Debug, Clone)]
-pub struct ShowDialog {
+pub struct ClientboundShowDialog {
     pub client: Entity,
     pub dialog: NbtTag,
 }
 
-impl ClientboundPacket for ShowDialog {
+impl ClientboundPacket for ClientboundShowDialog {
     fn id() -> i32 {
-        0x12
+        return 0x12
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Configuration
+        return ConnectionState::Configuration
     }
 
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let data = self.dialog.net_serialize();
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data,

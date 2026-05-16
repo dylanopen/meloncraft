@@ -5,22 +5,22 @@ use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::ClientboundNetworkPacket;
 
 #[derive(Message, Debug, Clone)]
-pub struct ResetChat {
+pub struct ClientboundResetChat {
     pub client: Entity,
 }
 
-impl ClientboundPacket for ResetChat {
+impl ClientboundPacket for ClientboundResetChat {
     fn id() -> i32 {
-        0x06
+        return 0x06
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Configuration
+        return ConnectionState::Configuration
     }
 
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let data = Vec::new();
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data,

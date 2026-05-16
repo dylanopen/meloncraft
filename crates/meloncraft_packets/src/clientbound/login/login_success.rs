@@ -4,25 +4,25 @@ use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::ClientboundNetworkPacket;
 use meloncraft_player::GameProfile;
-use meloncraft_protocol_types::ProtocolType;
+use meloncraft_protocol_types::ProtocolType as _;
 
 #[derive(Message, Debug, Clone)]
-pub struct LoginSuccess {
+pub struct ClientboundLoginSuccess {
     pub client: Entity,
     pub game_profile: GameProfile,
 }
 
-impl ClientboundPacket for LoginSuccess {
+impl ClientboundPacket for ClientboundLoginSuccess {
     fn id() -> i32 {
-        0x02
+        return 0x02
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Login
+        return ConnectionState::Login
     }
 
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data: self.game_profile.net_serialize(),

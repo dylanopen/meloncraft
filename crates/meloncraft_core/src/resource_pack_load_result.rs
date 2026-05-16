@@ -15,7 +15,7 @@ impl TryFrom<i32> for ResourcePackLoadResult {
     type Error = ();
 
     fn try_from(value: i32) -> Result<Self, Self::Error> {
-        match value {
+        return match value {
             0 => Ok(ResourcePackLoadResult::Success),
             1 => Ok(ResourcePackLoadResult::Declined),
             2 => Ok(ResourcePackLoadResult::Failed),
@@ -25,6 +25,6 @@ impl TryFrom<i32> for ResourcePackLoadResult {
             6 => Ok(ResourcePackLoadResult::ReloadFailed),
             7 => Ok(ResourcePackLoadResult::Discarded),
             _ => Err(()),
-        }
+        };
     }
 }

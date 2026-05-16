@@ -4,7 +4,7 @@
 use meloncraft_nbt::NbtTag;
 use meloncraft_player::GameProfileProperties;
 
-use crate::{PrefixedArray, ProtocolBuffer, ProtocolType};
+use crate::{PrefixedArray, ProtocolBuffer as _, ProtocolType};
 
 #[derive(Debug, Clone)]
 pub enum PlayerAction {
@@ -19,8 +19,9 @@ pub enum PlayerAction {
 }
 
 impl PlayerAction {
-    pub fn mask(&self) -> u8 {
-        match self {
+    #[must_use]
+    pub const fn mask(&self) -> u8 {
+        return match self {
             PlayerAction::AddPlayer(_) => 0x01,
             PlayerAction::InitializeChat(_) => 0x02,
             PlayerAction::UpdateGameMode(_) => 0x04,
@@ -29,7 +30,7 @@ impl PlayerAction {
             PlayerAction::UpdateDisplayName(_) => 0x20,
             PlayerAction::UpdateListPriority(_) => 0x40,
             PlayerAction::UpdateHat(_) => 0x80,
-        }
+        };
     }
 }
 
@@ -52,13 +53,13 @@ impl ProtocolType for AddPlayerAction {
         let mut output = Vec::new();
         output.extend(self.name.net_serialize());
         output.extend(PrefixedArray(self.game_profile_properties.clone()).net_serialize());
-        output
+        return output;
     }
 
     fn net_deserialize(data: &mut Vec<u8>) -> Result<Self, ()> {
         let name = data.net_deserialize()?;
         let game_profile_properties: PrefixedArray<GameProfileProperties> = data.net_deserialize()?;
-        Ok(AddPlayerAction { name, game_profile_properties: game_profile_properties.0 })
+        return Ok(AddPlayerAction { name, game_profile_properties: game_profile_properties.0 });
     }
 }
 
@@ -69,7 +70,7 @@ impl ProtocolType for InitializeChatAction {
         output.extend(self.public_key_expiry_time.net_serialize());
         output.extend(PrefixedArray(self.encoded_public_key.clone()).net_serialize());
         output.extend(PrefixedArray(self.public_key_signature.clone()).net_serialize());
-        output
+        return output;
     }
 
     fn net_deserialize(data: &mut Vec<u8>) -> Result<Self, ()> {
@@ -77,12 +78,12 @@ impl ProtocolType for InitializeChatAction {
         let public_key_expiry_time = data.net_deserialize()?;
         let encoded_public_key: PrefixedArray<u8> = data.net_deserialize()?;
         let public_key_signature: PrefixedArray<u8> = data.net_deserialize()?;
-        Ok(InitializeChatAction {
+        return Ok(InitializeChatAction {
             session_id,
             public_key_expiry_time,
             encoded_public_key: encoded_public_key.0,
             public_key_signature: public_key_signature.0
-        })
+        });
     }
 }
 
@@ -106,7 +107,7 @@ Update Hat 	0x80 	Visible 	Boolean 	Whether the player's hat skin layer is shown
 
 impl ProtocolType for PlayerAction {
     fn net_serialize(&self) -> Vec<u8> {
-        match self {
+        return match self {
             PlayerAction::AddPlayer(action) => {
                 action.net_serialize()
             },
@@ -131,7 +132,7 @@ impl ProtocolType for PlayerAction {
             PlayerAction::UpdateHat(visible) => {
                 visible.net_serialize()
             }
-        }
+        };
     }
 
     fn net_deserialize(_data: &mut Vec<u8>) -> Result<Self, ()> {

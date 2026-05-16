@@ -1,22 +1,24 @@
 mod encryption_response;
-pub use encryption_response::EncryptionResponse;
+
+use bevy::app::App;
+pub use encryption_response::ServerboundEncryptionResponse;
 
 mod login_acknowledged;
-pub use login_acknowledged::LoginAcknowledged;
+pub use login_acknowledged::ServerboundLoginAcknowledged;
 
 mod login_start;
-pub use login_start::LoginStart;
+pub use login_start::ServerboundLoginStart;
 
-pub fn register_packets(app: &mut bevy::app::App) {
+pub fn register_serverbound_login_packets(app: &mut App) {
     use crate::serverbound_messenger::fwd;
     use bevy::app::PreUpdate;
 
-    app.add_message::<LoginStart>();
-    app.add_systems(PreUpdate, fwd::<LoginStart>);
+    app.add_message::<ServerboundLoginStart>();
+    app.add_systems(PreUpdate, fwd::<ServerboundLoginStart>);
 
-    app.add_message::<EncryptionResponse>();
-    app.add_systems(PreUpdate, fwd::<EncryptionResponse>);
+    app.add_message::<ServerboundEncryptionResponse>();
+    app.add_systems(PreUpdate, fwd::<ServerboundEncryptionResponse>);
 
-    app.add_message::<LoginAcknowledged>();
-    app.add_systems(PreUpdate, fwd::<LoginAcknowledged>);
+    app.add_message::<ServerboundLoginAcknowledged>();
+    app.add_systems(PreUpdate, fwd::<ServerboundLoginAcknowledged>);
 }

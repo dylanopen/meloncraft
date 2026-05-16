@@ -5,3 +5,6 @@ edition = "2024"
 
 [dependencies]
 meloncraft_text = { workspace = true }
+
+[lints]
+workspace = true

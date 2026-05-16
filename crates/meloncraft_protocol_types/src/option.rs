@@ -1,4 +1,4 @@
-use crate::{ProtocolBuffer, ProtocolType};
+use crate::{ProtocolBuffer as _, ProtocolType};
 
 impl<T: ProtocolType> ProtocolType for Option<T> {
     fn net_serialize(&self) -> Vec<u8> {
@@ -10,15 +10,14 @@ impl<T: ProtocolType> ProtocolType for Option<T> {
                 output.extend(v.net_serialize());
             }
         }
-        output
+        return output;
     }
 
     fn net_deserialize(data: &mut Vec<u8>) -> Result<Self, ()> {
         let present = data.net_deserialize().unwrap();
         if present {
-            Ok(Some(data.net_deserialize()?))
-        } else {
-            Ok(None)
+            return Ok(Some(data.net_deserialize()?));
         }
+        return Ok(None); // this looks really stupid, but it's saying 'successfully deserialized, the value was null'
     }
 }

@@ -4,7 +4,8 @@ pub struct Block {
 }
 
 impl Block {
-    pub fn new(state_id: i32) -> Self {
-        Self { state_id }
+    #[must_use]
+    pub const fn new(state_id: i32) -> Self {
+        return Block { state_id };
     }
 }

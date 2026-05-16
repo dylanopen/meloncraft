@@ -3,10 +3,11 @@ use bevy::prelude::{Entity, Message};
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_core::Identifier;
 use meloncraft_network::packet::ClientboundNetworkPacket;
-use meloncraft_protocol_types::{NetworkLocation, PrefixedArray, ProtocolType, VarInt};
+use meloncraft_protocol_types::{NetworkLocation, PrefixedArray, ProtocolType as _, VarInt};
 
+#[expect(clippy::struct_excessive_bools, reason = "It's a packet: we need all those bools, and it's not a state machine.")]
 #[derive(Message, Debug, Clone)]
-pub struct Login {
+pub struct ClientboundPlayLogin {
     pub client: Entity,
     pub entity_id: i32,
     pub is_hardcore: bool,
@@ -32,12 +33,12 @@ pub struct Login {
     pub enforces_secure_chat: bool,
 }
 
-impl ClientboundPacket for Login {
+impl ClientboundPacket for ClientboundPlayLogin {
     fn id() -> i32 {
-        0x30
+        return 0x30
     }
     fn state() -> ConnectionState {
-        ConnectionState::Play
+        return ConnectionState::Play
     }
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let mut data = Vec::new();
@@ -66,7 +67,7 @@ impl ClientboundPacket for Login {
         data.extend(VarInt(self.portal_cooldown).net_serialize());
         data.extend(VarInt(self.sea_level).net_serialize());
         data.extend(self.enforces_secure_chat.net_serialize());
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data,

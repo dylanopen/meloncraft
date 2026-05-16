@@ -1,4 +1,4 @@
-use crate::{ProtocolBuffer, ProtocolType};
+use crate::{ProtocolBuffer as _, ProtocolType};
 use meloncraft_core::datapack::DatapackMetadata;
 
 impl ProtocolType for DatapackMetadata {
@@ -6,18 +6,18 @@ impl ProtocolType for DatapackMetadata {
         let mut output = self.namespace.net_serialize();
         output.extend(self.id.net_serialize());
         output.extend(self.version.net_serialize());
-        output
+        return output;
     }
 
     fn net_deserialize(data: &mut Vec<u8>) -> Result<Self, ()> {
         let namespace = data.net_deserialize()?;
         let id = data.net_deserialize()?;
         let version = data.net_deserialize()?;
-        Ok(Self {
+        return Ok(Self {
             namespace,
             id,
             version,
-        })
+        });
     }
 }
 
@@ -25,7 +25,7 @@ impl ProtocolType for DatapackMetadata {
 mod tests {
     use super::*;
     #[test]
-    fn test_serde_datapack_metadata() {
+    fn serde_datapack_metadata() {
         let metadata = DatapackMetadata {
             namespace: "example_namespace".to_string(),
             id: "example_id".to_string(),

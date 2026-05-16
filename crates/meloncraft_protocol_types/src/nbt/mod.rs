@@ -1,27 +1,27 @@
 mod deserialize;
 mod serialize;
 
-use crate::{ProtocolBuffer, ProtocolType};
+use crate::{ProtocolBuffer as _, ProtocolType};
 use meloncraft_nbt::{NbtTag, NbtValue};
 
 impl ProtocolType for NbtTag {
     fn net_serialize(&self) -> Vec<u8> {
-        serialize::tag(self.clone())
+        return serialize::tag(self.clone());
     }
 
     fn net_deserialize(data: &mut Vec<u8>) -> Result<Self, ()> {
-        deserialize::tag(data)
+        return deserialize::tag(data);
     }
 }
 
 impl ProtocolType for NbtValue {
     fn net_serialize(&self) -> Vec<u8> {
-        serialize::value(self.clone())
+        return serialize::value(self.clone());
     }
 
     fn net_deserialize(data: &mut Vec<u8>) -> Result<Self, ()> {
         let tag_type = data.net_deserialize()?;
-        deserialize::value(tag_type, data)
+        return deserialize::value(tag_type, data);
     }
 }
 
@@ -33,7 +33,7 @@ mod tests {
     use meloncraft_nbt::NbtValue;
 
     #[test]
-    fn test_serialize_deserialize() {
+    fn serialize_deserialize() {
         // very complex NBT tag:
 
         let original_tag = NbtTag {

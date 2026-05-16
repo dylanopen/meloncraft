@@ -7,7 +7,8 @@ pub struct NbtTag {
 }
 
 impl NbtTag {
-    pub fn new(key: String, value: NbtValue) -> Self {
-        NbtTag { key, value }
+    #[must_use]
+    pub const fn new(key: String, value: NbtValue) -> Self {
+        return NbtTag { key, value };
     }
 }

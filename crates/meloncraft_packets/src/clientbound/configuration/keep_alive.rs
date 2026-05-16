@@ -5,21 +5,21 @@ use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::ClientboundNetworkPacket;
 
 #[derive(Message, Debug, Clone)]
-pub struct KeepAlive {
+pub struct ClientboundKeepAlive {
     pub client: Entity,
 }
 
-impl ClientboundPacket for KeepAlive {
+impl ClientboundPacket for ClientboundKeepAlive {
     fn id() -> i32 {
-        0x04
+        return 0x04
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Configuration
+        return ConnectionState::Configuration
     }
 
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data: Vec::new(),

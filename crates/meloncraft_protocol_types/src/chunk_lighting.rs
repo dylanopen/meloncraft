@@ -1,5 +1,5 @@
 use crate::bitset::BitSet;
-use crate::{PrefixedArray, ProtocolBuffer, ProtocolType};
+use crate::{PrefixedArray, ProtocolBuffer as _, ProtocolType};
 use crate::chunk_section_light_data::ChunkSectionLightData;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -21,7 +21,7 @@ impl ProtocolType for ChunkLighting {
         serial.extend(self.empty_block_mask.net_serialize());
         serial.extend(PrefixedArray(self.sky_data.clone()).net_serialize());
         serial.extend(PrefixedArray(self.block_data.clone()).net_serialize());
-        serial
+        return serial;
     }
 
     fn net_deserialize(data: &mut Vec<u8>) -> Result<Self, ()> {
@@ -32,14 +32,14 @@ impl ProtocolType for ChunkLighting {
         let sky_data = PrefixedArray::net_deserialize(data)?.0;
         let block_data = PrefixedArray::net_deserialize(data)?.0;
 
-        Ok(Self {
+        return Ok(Self {
             sky_mask,
             block_mask,
             empty_sky_mask,
             empty_block_mask,
             sky_data,
             block_data,
-        })
+        });
     }
 }
 
@@ -50,7 +50,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_chunk_lighting_serde() {
+    fn chunk_lighting_serde() {
         let chunk_lighting = ChunkLighting {
             sky_mask: BitSet { bits: vec![0b10101010, 0b01010101] },
             block_mask: BitSet { bits: vec![0b11110000, 0b00001111] },

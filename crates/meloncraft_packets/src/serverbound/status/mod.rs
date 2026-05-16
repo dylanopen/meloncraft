@@ -1,16 +1,18 @@
 mod status_request;
-pub use status_request::StatusRequest;
+
+use bevy::app::App;
+pub use status_request::ServerboundStatusRequest;
 
 mod ping;
-pub use ping::Ping;
+pub use ping::ServerboundStatusPing;
 
-pub fn register_packets(app: &mut bevy::app::App) {
+pub fn register_serverbound_status_packets(app: &mut App) {
     use crate::serverbound_messenger::fwd;
     use bevy::app::PreUpdate;
 
-    app.add_message::<StatusRequest>();
-    app.add_systems(PreUpdate, fwd::<StatusRequest>);
+    app.add_message::<ServerboundStatusRequest>();
+    app.add_systems(PreUpdate, fwd::<ServerboundStatusRequest>);
 
-    app.add_message::<Ping>();
-    app.add_systems(PreUpdate, fwd::<Ping>);
+    app.add_message::<ServerboundStatusPing>();
+    app.add_systems(PreUpdate, fwd::<ServerboundStatusPing>);
 }

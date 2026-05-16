@@ -1,11 +1,12 @@
 use crate::SERVERBOUND_PACKETS;
 use bevy::prelude::Entity;
 use meloncraft_client::connection::CLIENT_CONNECTIONS;
-use meloncraft_protocol_types::{ProtocolType, VarInt};
-use std::io::{BufReader, Read};
+use meloncraft_protocol_types::{ProtocolType as _, VarInt};
+use std::io::{BufReader, Read as _};
 use std::net::{TcpListener, TcpStream};
+use std::thread;
 use std::thread::sleep;
-use std::time::Duration;
+use core::time::Duration;
 
 pub struct ServerboundTcpPacket {
     pub client: Entity,
@@ -14,15 +15,15 @@ pub struct ServerboundTcpPacket {
     pub data: Vec<u8>,
 }
 
-const VARINT_CONTINUE_BIT: u8 = 0b10000000;
+const VARINT_CONTINUE_BIT: u8 = 0b1000_0000;
 const CONNECTION_SLEEP_DURATION: u64 = 20;
 const SECOND_PACKET_SLEEP_DURATION: u64 = 50;
 
-pub fn handle_client(stream: TcpStream, entity: Entity) {
+pub fn handle_client(stream: &TcpStream, entity: Entity) {
     let mut iters = 0;
     let mut stream = stream.try_clone().unwrap();
     stream
-        .set_read_timeout(Some(Duration::from_millis(15000)))
+        .set_read_timeout(Some(Duration::from_secs(15)))
         .unwrap();
     let mut buf_reader = BufReader::new(&mut stream);
     loop {
@@ -33,12 +34,12 @@ pub fn handle_client(stream: TcpStream, entity: Entity) {
         iters += 1;
         let mut length_bytes = Vec::new();
         loop {
-            let mut single_byte_buf = vec![0u8; 1];
+            let mut single_byte_buf = vec![0_u8; 1];
             if buf_reader.read_exact(&mut single_byte_buf).is_err() {
                 break; // no more packets to read
             }
-            length_bytes.push(single_byte_buf[0]);
-            if single_byte_buf[0] & VARINT_CONTINUE_BIT == 0 {
+            length_bytes.push(*single_byte_buf.first().unwrap());
+            if single_byte_buf.first().unwrap() & VARINT_CONTINUE_BIT == 0 {
                 break; // no more data in varint to read
             }
         }
@@ -47,7 +48,7 @@ pub fn handle_client(stream: TcpStream, entity: Entity) {
             continue; // no more packets left to read
         };
         let length = length.0;
-        let mut raw_packet: Vec<u8> = vec![0; length as usize];
+        let mut raw_packet: Vec<u8> = vec![0; length.try_into().unwrap()];
         if buf_reader.read_exact(&mut raw_packet).is_err() {
             println!("Client {entity} disconnected due to failing to stream packets");
             break;
@@ -68,7 +69,7 @@ pub fn handle_client(stream: TcpStream, entity: Entity) {
     }
 }
 
-pub fn receive_new_clients(tcp_listener: TcpListener) {
+pub fn receive_new_clients(tcp_listener: &TcpListener) -> ! {
     loop {
         for stream in tcp_listener.incoming() {
             match stream {
@@ -76,9 +77,10 @@ pub fn receive_new_clients(tcp_listener: TcpListener) {
                     CLIENT_CONNECTIONS.lock().unwrap().push(stream);
                 }
                 Err(e) => {
-                    eprintln!("Failed to establish TCP connection with new client: {e}")
+                    eprintln!("Failed to establish TCP connection with new client: {e}");
                 }
             }
         }
+        thread::sleep(Duration::from_millis(CONNECTION_SLEEP_DURATION));
     }
 }

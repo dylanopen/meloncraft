@@ -30,24 +30,24 @@ impl ProtocolType for GameEventType {
     fn net_serialize(&self) -> Vec<u8> {
         let mut data = Vec::new();
         let (id, value) = match self {
-            GameEventType::NoRespawnBlockAvailable => (0, 0f32),
-            GameEventType::BeginRaining => (1, 0f32),
-            GameEventType::EndRaining => (2, 0f32),
-            GameEventType::ChangeGameMode(mode) => (3, u8::from(*mode) as f32),
+            GameEventType::NoRespawnBlockAvailable => (0, 0_f32),
+            GameEventType::BeginRaining => (1, 0_f32),
+            GameEventType::EndRaining => (2, 0_f32),
+            GameEventType::ChangeGameMode(mode) => (3, u8::from(*mode).into()),
             GameEventType::WinGame(ShouldShowCredits(show_credits)) => (4, if *show_credits { 1.0 } else { 0.0 }),
-            GameEventType::DemoEvent(event) => (5, (*event as u8) as f32),
-            GameEventType::ArrowHitPlayer => (6, 0f32),
+            GameEventType::DemoEvent(event) => (5, (*event).into()),
+            GameEventType::ArrowHitPlayer => (6, 0_f32),
             GameEventType::RainLevelChange(intensity) => (7, intensity.0),
             GameEventType::ThunderLevelChange(intensity) => (8, intensity.0),
-            GameEventType::PufferfishSting => (9, 0f32),
-            GameEventType::ElderGuardianAppearance => (10, 0f32),
+            GameEventType::PufferfishSting => (9, 0_f32),
+            GameEventType::ElderGuardianAppearance => (10, 0_f32),
             GameEventType::EnableRespawnScreen(ShouldShowRespawnScreen(show_screen)) => (11, if *show_screen { 0.0 } else { 1.0 }), // because... minecraft.
             GameEventType::LimitedCrafting(enabled) => (12, if *enabled { 1.0 } else { 0.0 }),
-            GameEventType::WaitForChunks => (13, 0f32),
+            GameEventType::WaitForChunks => (13, 0_f32),
         };
         data.push(id);
         data.extend(value.net_serialize());
-        data
+        return data;
     }
 
     fn net_deserialize(data: &mut Vec<u8>) -> Result<Self, ()> {
@@ -58,13 +58,13 @@ impl ProtocolType for GameEventType {
         }
         let id = data.remove(0);
         let value = f32::net_deserialize(data)?;
-        let event = match id {
+        return Ok(match id {
             0 => GameEventType::NoRespawnBlockAvailable,
             1 => GameEventType::BeginRaining,
             2 => GameEventType::EndRaining,
-            3 => GameEventType::ChangeGameMode(GameMode::try_from(value as u8).map_err(|_| ())?),
+            3 => GameEventType::ChangeGameMode(value.try_into()?),
             4 => GameEventType::WinGame(ShouldShowCredits(value != 0.0)),
-            5 => GameEventType::DemoEvent(DemoEventType::try_from(value as u8).map_err(|_| ())?),
+            5 => GameEventType::DemoEvent(value.try_into()?),
             6 => GameEventType::ArrowHitPlayer,
             7 => GameEventType::RainLevelChange(WeatherIntensity(value)),
             8 => GameEventType::ThunderLevelChange(WeatherIntensity(value)),
@@ -74,8 +74,7 @@ impl ProtocolType for GameEventType {
             12 => GameEventType::LimitedCrafting(value != 0.0),
             13 => GameEventType::WaitForChunks,
             _ => return Err(()),
-        };
-        Ok(event)
+        });
     }
 }
 
