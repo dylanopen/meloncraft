@@ -1,3 +1,4 @@
+pub mod messages;
 pub mod marker;
 
 use bevy::app::{App, Plugin};
