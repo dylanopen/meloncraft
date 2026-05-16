@@ -17,3 +17,4 @@ pub use meloncraft_chunk as chunk;
 pub use meloncraft_world as world;
 pub use meloncraft_world_manager as world_manager;
 pub use meloncraft_join as join;
+pub use meloncraft_entity_position as entity_position;

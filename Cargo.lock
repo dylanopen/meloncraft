@@ -1262,6 +1262,7 @@ dependencies = [
  "meloncraft_client",
  "meloncraft_core",
  "meloncraft_default_registries",
+ "meloncraft_entity_position",
  "meloncraft_handshaking",
  "meloncraft_init_play",
  "meloncraft_join",
@@ -1312,6 +1313,10 @@ dependencies = [
  "meloncraft_protocol_types",
  "meloncraft_registry",
 ]
+
+[[package]]
+name = "meloncraft_entity_position"
+version = "0.1.0"
 
 [[package]]
 name = "meloncraft_generator"
