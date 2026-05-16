@@ -2,6 +2,7 @@ use crate::ServerboundPacket;
 use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
+use meloncraft_client::intention_type::IntentionType;
 use meloncraft_network::packet::ServerboundNetworkPacket;
 use meloncraft_protocol_types::{ProtocolType as _, VarInt};
 
@@ -11,7 +12,7 @@ pub struct ServerboundIntention {
     pub protocol_version: i32,
     pub server_address: String,
     pub server_port: u16,
-    pub next_state: ConnectionState,
+    pub next_state: IntentionType,
 }
 
 impl ServerboundPacket for ServerboundIntention {
@@ -27,9 +28,10 @@ impl ServerboundPacket for ServerboundIntention {
         let server_address = String::net_deserialize(&mut incoming.data).unwrap();
         let server_port = u16::net_deserialize(&mut incoming.data).unwrap();
         let next_state = match VarInt::net_deserialize(&mut incoming.data).unwrap().0 {
-            1 => ConnectionState::Status,
-            2 | 3 => ConnectionState::Login,
-            _ => return None, // TODO: log this
+            1 => IntentionType::Status,
+            2 => IntentionType::Login,
+            3 => IntentionType::Transfer,
+            _ => return None, // Invalid next state sent by client, we should ignore their connection. TODO: log this
         };
 
         return Some(ServerboundIntention {
