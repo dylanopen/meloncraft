@@ -1,6 +1,6 @@
 use meloncraft_nbt::{NbtCompound, NbtI16, NbtI32, NbtList, NbtTag, NbtU8, NbtValue};
 
-use crate::{ProtocolBuffer, ProtocolType};
+use crate::{ProtocolBuffer as _, ProtocolType as _};
 
 pub fn tag(data: &mut Vec<u8>) -> Result<NbtTag, ()> {
     let tag_type = tagtype(data)?;

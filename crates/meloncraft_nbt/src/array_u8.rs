@@ -1,4 +1,4 @@
-use std::ops::{Deref, DerefMut};
+use core::ops::{Deref, DerefMut};
 
 #[derive(Debug, Clone, Eq, PartialEq)]
 pub struct NbtArrayU8(pub Vec<u8>);

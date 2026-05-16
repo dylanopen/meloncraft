@@ -1,4 +1,4 @@
-use crate::{ProtocolBuffer, ProtocolType, VarInt};
+use crate::{ProtocolBuffer as _, ProtocolType, VarInt};
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct PrefixedArray<T: ProtocolType>(pub Vec<T>);

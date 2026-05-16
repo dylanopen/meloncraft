@@ -1,5 +1,5 @@
 use crate::{NbtTag, NbtValue};
-use std::ops::{Deref, DerefMut};
+use core::ops::{Deref, DerefMut};
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct NbtCompound(pub Vec<NbtTag>);

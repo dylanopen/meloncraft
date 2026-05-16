@@ -1,9 +1,9 @@
 use crate::packet::{ClientboundNetworkPacket, ClientboundNetworkPacketReceived};
 use bevy::prelude::{Entity, MessageReader, Query};
 use meloncraft_client::connection::ClientConnection;
-use meloncraft_protocol_types::{ProtocolType, VarInt};
+use meloncraft_protocol_types::{ProtocolType as _, VarInt};
 use std::collections::HashMap;
-use std::io::Write;
+use std::io::Write as _;
 use std::net::TcpStream;
 
 fn send_packet(stream: &mut TcpStream, packet_id: i32, mut data: Vec<u8>) {

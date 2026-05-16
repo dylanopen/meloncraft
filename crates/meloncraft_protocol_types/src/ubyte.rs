@@ -1,4 +1,4 @@
-use crate::{ProtocolBuffer, ProtocolType};
+use crate::{ProtocolBuffer as _, ProtocolType};
 
 #[derive(Debug, Clone, Copy, Eq, PartialEq, Ord, PartialOrd, Hash)]
 pub struct UByte(pub u8);

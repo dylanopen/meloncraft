@@ -4,7 +4,7 @@ use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_core::datapack::DatapackMetadata;
 use meloncraft_network::packet::ServerboundNetworkPacket;
-use meloncraft_protocol_types::{PrefixedArray, ProtocolBuffer};
+use meloncraft_protocol_types::{PrefixedArray, ProtocolBuffer as _};
 
 #[derive(Message, Debug, Clone)]
 pub struct ServerboundSelectKnownPacks {

@@ -2,7 +2,7 @@ use bevy::ecs::entity::Entity;
 use bevy::ecs::message::Message;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::ClientboundNetworkPacket;
-use meloncraft_protocol_types::{ProtocolType, VarInt};
+use meloncraft_protocol_types::{ProtocolType as _, VarInt};
 
 use crate::clientbound_packet::ClientboundPacket;
 
@@ -40,7 +40,7 @@ impl ClientboundPacket for ClientboundSynchronizePlayerPosition {
         data.extend(self.velocity_z.net_serialize());
         data.extend(self.yaw.net_serialize());
         data.extend(self.pitch.net_serialize());
-        data.extend(0i32.net_serialize()); // teleport flags, I think 0 will work fine?
+        data.extend(0_i32.net_serialize()); // teleport flags, I think 0 will work fine?
         Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),

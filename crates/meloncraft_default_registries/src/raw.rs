@@ -2,7 +2,7 @@ use std::fs;
 
 use bevy::ecs::resource::Resource;
 use meloncraft_nbt::NbtCompound;
-use meloncraft_protocol_types::ProtocolBuffer;
+use meloncraft_protocol_types::ProtocolBuffer as _;
 
 #[derive(Resource, Debug)]
 pub struct RawRegistries(pub NbtCompound);

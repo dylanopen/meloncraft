@@ -1,4 +1,4 @@
-use crate::{PrefixedArray, ProtocolBuffer, ProtocolType};
+use crate::{PrefixedArray, ProtocolBuffer as _, ProtocolType};
 use meloncraft_player::{GameProfile, GameProfileProperties};
 
 impl ProtocolType for GameProfile {

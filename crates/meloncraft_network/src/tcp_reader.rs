@@ -1,12 +1,12 @@
 use crate::SERVERBOUND_PACKETS;
 use bevy::prelude::Entity;
 use meloncraft_client::connection::CLIENT_CONNECTIONS;
-use meloncraft_protocol_types::{ProtocolType, VarInt};
-use std::io::{BufReader, Read};
+use meloncraft_protocol_types::{ProtocolType as _, VarInt};
+use std::io::{BufReader, Read as _};
 use std::net::{TcpListener, TcpStream};
 use std::thread;
 use std::thread::sleep;
-use std::time::Duration;
+use core::time::Duration;
 
 pub struct ServerboundTcpPacket {
     pub client: Entity,
@@ -34,7 +34,7 @@ pub fn handle_client(stream: &TcpStream, entity: Entity) {
         iters += 1;
         let mut length_bytes = Vec::new();
         loop {
-            let mut single_byte_buf = vec![0u8; 1];
+            let mut single_byte_buf = vec![0_u8; 1];
             if buf_reader.read_exact(&mut single_byte_buf).is_err() {
                 break; // no more packets to read
             }

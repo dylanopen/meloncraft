@@ -1,4 +1,4 @@
-use crate::{ProtocolBuffer, ProtocolType};
+use crate::{ProtocolBuffer as _, ProtocolType};
 
 impl<T: ProtocolType> ProtocolType for Option<T> {
     fn net_serialize(&self) -> Vec<u8> {

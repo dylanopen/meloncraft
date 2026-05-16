@@ -2,7 +2,7 @@ use crate::clientbound_packet::ClientboundPacket;
 use bevy::prelude::{Entity, Message};
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::ClientboundNetworkPacket;
-use meloncraft_protocol_types::ProtocolType;
+use meloncraft_protocol_types::ProtocolType as _;
 
 #[derive(Message, Debug, Clone)]
 pub struct ClientboundStatusResponse {

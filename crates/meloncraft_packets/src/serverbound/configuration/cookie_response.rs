@@ -3,7 +3,7 @@ use bevy::prelude::{Entity, Message};
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_core::Identifier;
 use meloncraft_network::packet::ServerboundNetworkPacket;
-use meloncraft_protocol_types::{Byte, PrefixedArray, ProtocolBuffer, ProtocolType};
+use meloncraft_protocol_types::{Byte, PrefixedArray, ProtocolBuffer as _, ProtocolType as _};
 
 #[derive(Message, Debug, Clone)]
 pub struct ServerboundCookieResponse {

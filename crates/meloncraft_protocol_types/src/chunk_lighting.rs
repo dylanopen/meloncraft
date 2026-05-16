@@ -1,5 +1,5 @@
 use crate::bitset::BitSet;
-use crate::{PrefixedArray, ProtocolBuffer, ProtocolType};
+use crate::{PrefixedArray, ProtocolBuffer as _, ProtocolType};
 use crate::chunk_section_light_data::ChunkSectionLightData;
 
 #[derive(Debug, Clone, PartialEq, Eq)]

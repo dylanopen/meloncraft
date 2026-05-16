@@ -1,5 +1,5 @@
 use crate::NbtValue;
-use std::ops::{Deref, DerefMut};
+use core::ops::{Deref, DerefMut};
 
 #[derive(Debug, Clone, PartialEq)]
 pub struct NbtList(pub Vec<NbtValue>);

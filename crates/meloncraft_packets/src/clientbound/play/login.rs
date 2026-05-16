@@ -3,7 +3,7 @@ use bevy::prelude::{Entity, Message};
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_core::Identifier;
 use meloncraft_network::packet::ClientboundNetworkPacket;
-use meloncraft_protocol_types::{NetworkLocation, PrefixedArray, ProtocolType, VarInt};
+use meloncraft_protocol_types::{NetworkLocation, PrefixedArray, ProtocolType as _, VarInt};
 
 #[expect(clippy::struct_excessive_bools, reason = "It's a packet: we need all those bools, and it's not a state machine.")]
 #[derive(Message, Debug, Clone)]

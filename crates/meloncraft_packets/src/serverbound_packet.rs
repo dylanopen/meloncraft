@@ -3,7 +3,7 @@ use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::ServerboundNetworkPacket;
-use std::fmt::{Debug, Display};
+use core::fmt::{Debug, Display};
 
 #[derive(Debug)]
 pub enum ServerboundPacketParseError {

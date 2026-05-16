@@ -1,4 +1,4 @@
-use crate::{ProtocolBuffer, ProtocolType};
+use crate::{ProtocolBuffer as _, ProtocolType};
 use meloncraft_text::JsonText;
 
 impl ProtocolType for JsonText {

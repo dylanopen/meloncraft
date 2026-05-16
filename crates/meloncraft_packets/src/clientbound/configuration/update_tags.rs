@@ -3,7 +3,7 @@ use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::ClientboundNetworkPacket;
-use meloncraft_protocol_types::{PrefixedArray, ProtocolType};
+use meloncraft_protocol_types::{PrefixedArray, ProtocolType as _};
 use meloncraft_registry::RegistryTags;
 
 #[derive(Message, Debug, Clone)]

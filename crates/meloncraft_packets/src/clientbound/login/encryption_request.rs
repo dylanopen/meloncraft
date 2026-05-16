@@ -3,7 +3,7 @@ use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::ClientboundNetworkPacket;
-use meloncraft_protocol_types::{Byte, PrefixedArray, ProtocolType};
+use meloncraft_protocol_types::{Byte, PrefixedArray, ProtocolType as _};
 
 #[derive(Message, Debug, Clone)]
 pub struct ClientboundEncryptionRequest {

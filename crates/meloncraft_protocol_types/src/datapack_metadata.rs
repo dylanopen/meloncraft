@@ -1,4 +1,4 @@
-use crate::{ProtocolBuffer, ProtocolType};
+use crate::{ProtocolBuffer as _, ProtocolType};
 use meloncraft_core::datapack::DatapackMetadata;
 
 impl ProtocolType for DatapackMetadata {

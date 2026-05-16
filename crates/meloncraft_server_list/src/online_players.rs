@@ -1,5 +1,5 @@
 use bevy::ecs::resource::Resource;
-use std::ops::{Deref, DerefMut};
+use core::ops::{Deref, DerefMut};
 
 #[derive(Resource)]
 pub struct OnlinePlayers(pub u32);

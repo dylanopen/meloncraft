@@ -1,4 +1,4 @@
-use std::ops::{Deref, DerefMut};
+use core::ops::{Deref, DerefMut};
 
 #[derive(Debug, Clone, Eq, PartialEq)]
 pub struct NbtArrayI32(pub Vec<i32>);

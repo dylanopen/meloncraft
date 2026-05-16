@@ -1,4 +1,4 @@
-use crate::{ProtocolBuffer, ProtocolType, VarInt};
+use crate::{ProtocolBuffer as _, ProtocolType, VarInt};
 use meloncraft_core::pause_menu::BuiltinPauseMenuLabel;
 
 impl ProtocolType for BuiltinPauseMenuLabel {

@@ -5,7 +5,7 @@ use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_core::Identifier;
 use meloncraft_nbt::{NbtCompound, NbtTag, NbtValue};
 use meloncraft_network::packet::ClientboundNetworkPacket;
-use meloncraft_protocol_types::{PrefixedArray, ProtocolType};
+use meloncraft_protocol_types::{PrefixedArray, ProtocolType as _};
 use meloncraft_registry::RegistryEntry;
 
 #[derive(Message, Debug, Clone)]

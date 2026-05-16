@@ -1,7 +1,7 @@
 mod deserialize;
 mod serialize;
 
-use crate::{ProtocolBuffer, ProtocolType};
+use crate::{ProtocolBuffer as _, ProtocolType};
 use meloncraft_nbt::{NbtTag, NbtValue};
 
 impl ProtocolType for NbtTag {

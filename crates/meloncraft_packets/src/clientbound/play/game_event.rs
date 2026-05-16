@@ -2,7 +2,7 @@ use bevy::ecs::entity::Entity;
 use bevy::ecs::message::Message;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::ClientboundNetworkPacket;
-use meloncraft_protocol_types::{GameEventType, ProtocolType};
+use meloncraft_protocol_types::{GameEventType, ProtocolType as _};
 
 use crate::clientbound_packet::ClientboundPacket;
 

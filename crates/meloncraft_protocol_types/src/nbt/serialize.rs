@@ -1,4 +1,4 @@
-use crate::ProtocolType;
+use crate::ProtocolType as _;
 use meloncraft_nbt::NbtValue;
 use meloncraft_nbt::{NbtCompound, NbtTag};
 
@@ -47,9 +47,9 @@ pub fn list(mut payload: Vec<NbtValue>) -> Vec<u8> {
     let mut output = Vec::new();
     if payload.is_empty() {
         output.push(10); // Default to Compound type for empty list
-        output.extend(0i32.net_serialize());
+        output.extend(0_i32.net_serialize());
         output.push(0); // Tag ID for end tag
-        output.append(&mut 0i32.net_serialize()); // Length 0
+        output.append(&mut 0_i32.net_serialize()); // Length 0
         return output;
     }
 

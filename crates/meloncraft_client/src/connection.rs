@@ -3,7 +3,8 @@
 use crate::connection_state::ConnectionState;
 use bevy::ecs::component::Component;
 use lazy_static::lazy_static;
-use std::net::{SocketAddr, TcpStream};
+use core::net::SocketAddr;
+use std::net::TcpStream;
 use std::sync::Mutex;
 
 #[derive(Component, Debug)]

@@ -1,4 +1,4 @@
-use crate::{PrefixedArray, ProtocolBuffer, ProtocolType};
+use crate::{PrefixedArray, ProtocolBuffer as _, ProtocolType};
 use meloncraft_registry::{ItemTag, RegistryTags};
 
 impl ProtocolType for RegistryTags {

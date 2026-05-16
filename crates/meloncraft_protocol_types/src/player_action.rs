@@ -4,7 +4,7 @@
 use meloncraft_nbt::NbtTag;
 use meloncraft_player::GameProfileProperties;
 
-use crate::{PrefixedArray, ProtocolBuffer, ProtocolType};
+use crate::{PrefixedArray, ProtocolBuffer as _, ProtocolType};
 
 #[derive(Debug, Clone)]
 pub enum PlayerAction {

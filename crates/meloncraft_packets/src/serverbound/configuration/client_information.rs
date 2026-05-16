@@ -7,7 +7,7 @@ use meloncraft_player::{
     AllowPlayerListings, ChatColors, ChatMode, DisplayedSkinParts, EnableTextFiltering, Locale,
     MainHand, ParticleRenderingMode, ViewDistance,
 };
-use meloncraft_protocol_types::{Byte, ProtocolBuffer, VarInt};
+use meloncraft_protocol_types::{Byte, ProtocolBuffer as _, VarInt};
 
 #[derive(Message, Debug, Clone)]
 pub struct ServerboundClientInformation {
