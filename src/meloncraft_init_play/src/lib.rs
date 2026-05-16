@@ -5,17 +5,16 @@ use bevy::ecs::schedule::IntoScheduleConfigs as _;
 use bevy::ecs::system::Query;
 use meloncraft_block::BlockState;
 use meloncraft_block::dirt::Dirt;
-use meloncraft_chunk::biome::Biome;
 use meloncraft_chunk::block::Block;
-use meloncraft_chunk::block_section::ChunkBlockSection;
+use meloncraft_chunk::Chunk;
 use meloncraft_client::connection::ClientConnection;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_core::Identifier;
-use meloncraft_packets::{ClientboundChunkData, ClientboundGameEvent, ClientboundPlayLogin, ClientboundPlayerInfoUpdate, ClientboundSetCenterChunk, ClientboundSynchronizePlayerPosition};
+use meloncraft_packets::{ClientboundGameEvent, ClientboundPlayLogin, ClientboundPlayerInfoUpdate, ClientboundSetCenterChunk, ClientboundSynchronizePlayerPosition};
 use meloncraft_packets::ServerboundAcknowledgeFinishConfiguration;
 use meloncraft_player::GameProfile;
 use meloncraft_protocol_types::{AddPlayerAction, PlayerAction, PrefixedArray};
-use meloncraft_protocol_types::bitset::BitSet;
+use meloncraft_world_manager::messages::SendChunk;
 
 pub struct MeloncraftInitPlayPlugin;
 
@@ -122,7 +121,7 @@ fn game_event_player_info_update(
 
 fn send_chunks(
     mut game_event_pr: MessageReader<ClientboundGameEvent>,
-    mut chunk_data_pw: MessageWriter<ClientboundChunkData>,
+    mut send_chunk_mw: MessageWriter<SendChunk>,
     mut set_center_chunk_pw: MessageWriter<ClientboundSetCenterChunk>,
 ) {
     for packet in game_event_pr.read() {
@@ -132,28 +131,14 @@ fn send_chunks(
             z: 0,
         });
 
-        let mut chunk_block_sections = Vec::new();
-        for _ in 0..24 {
-            chunk_block_sections.push(ChunkBlockSection::new(
-                [Block::new(Dirt{}.to_id()); 16 * 16 * 16],
-                [Biome::new(40); 64]
-            ));
-        }
         for z in -10..=10 {
             for x in -10..=10 {
-                chunk_data_pw.write(ClientboundChunkData {
+                let chunk = Chunk::new(vec![Block::new(Dirt{}.to_id()); 16*16*384]);
+                send_chunk_mw.write(SendChunk {
                     client: packet.client,
                     chunk_x: x,
                     chunk_z: z,
-                    data: chunk_block_sections.clone(),
-                    light: meloncraft_protocol_types::chunk_lighting::ChunkLighting {
-                        sky_mask: BitSet::with_capacity(26),
-                        block_mask: BitSet::with_capacity(26),
-                        empty_sky_mask: BitSet::with_capacity(26),
-                        empty_block_mask: BitSet::with_capacity(26),
-                        sky_data: vec![],
-                        block_data: vec![],
-                    },
+                    chunk,
                 });
             }
         }

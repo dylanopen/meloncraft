@@ -5,6 +5,7 @@ use bevy::app::{App, Plugin, Update};
 use meloncraft_handshaking::MeloncraftHandshakingPlugin;
 use meloncraft_init_play::MeloncraftInitPlayPlugin;
 use meloncraft_login::MeloncraftLoginPlugin;
+use meloncraft_world_manager::MeloncraftWorldManagerPlugin;
 
 pub struct MeloncraftJoinPlugin;
 
@@ -14,6 +15,7 @@ impl Plugin for MeloncraftJoinPlugin {
             MeloncraftHandshakingPlugin,
             MeloncraftLoginPlugin,
             MeloncraftInitPlayPlugin,
+            MeloncraftWorldManagerPlugin,
         ));
 
         app.add_systems(Update, (

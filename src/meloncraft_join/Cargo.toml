@@ -9,6 +9,7 @@ meloncraft_handshaking = { workspace = true }
 meloncraft_login = { workspace = true }
 meloncraft_packets = { workspace = true }
 meloncraft_init_play = { workspace = true }
+meloncraft_world_manager = { workspace = true }
 
 [lints]
 workspace = true

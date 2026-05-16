@@ -1345,6 +1345,7 @@ dependencies = [
  "meloncraft_packets",
  "meloncraft_player",
  "meloncraft_protocol_types",
+ "meloncraft_world_manager",
 ]
 
 [[package]]
@@ -1356,6 +1357,7 @@ dependencies = [
  "meloncraft_init_play",
  "meloncraft_login",
  "meloncraft_packets",
+ "meloncraft_world_manager",
 ]
 
 [[package]]

@@ -17,7 +17,7 @@ impl Chunk {
 
     #[must_use]
     pub const fn get_height(&self) -> usize {
-        return self.blocks.len() / (16*16);
+        return self.blocks.len() / (16*16*16);
     }
 
     #[must_use]
@@ -56,7 +56,7 @@ impl Chunk {
         #[expect(clippy::indexing_slicing, reason = "Bounds are already manually checked, by iterating only over self.get_height()")]
         for i in 0..self.get_height() {
             let mut section_blocks = [Block::new(0); 4096];
-            section_blocks.copy_from_slice(&self.blocks[i*16*16..(i+1)*16*16]);
+            section_blocks.copy_from_slice(&self.blocks[i*16*16*16..(i+1)*16*16*16]);
             let section = ChunkBlockSection::new(section_blocks, biomes);
             sections.push(section);
         }

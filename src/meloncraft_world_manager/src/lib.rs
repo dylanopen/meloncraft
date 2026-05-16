@@ -12,6 +12,8 @@ impl Plugin for MeloncraftWorldManagerPlugin {
     fn build(&self, app: &mut App) {
         app.insert_resource(Overworld(World::default()));
 
+        app.add_message::<messages::SendChunk>();
+
         app.add_systems(Update, sender::send_chunk);
     }
 }
