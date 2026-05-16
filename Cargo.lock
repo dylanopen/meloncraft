@@ -1345,6 +1345,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "meloncraft_join"
+version = "0.1.0"
+dependencies = [
+ "bevy",
+ "meloncraft_handshaking",
+]
+
+[[package]]
 name = "meloncraft_login"
 version = "0.1.0"
 dependencies = [

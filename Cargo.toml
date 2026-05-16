@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["src/meloncraft_network", "src/meloncraft_packets", "src/meloncraft_protocol_types", "src/meloncraft_client", "src/meloncraft_handshaking", "src/meloncraft_server_list", "src/meloncraft_player", "src/meloncraft_nbt", "src/meloncraft_login", "src/meloncraft_registry", "src/meloncraft_core", "src/meloncraft_text", "src/meloncraft_default_registries", "src/meloncraft_generator", "src/meloncraft_chunk", "tools/block_state_generator", "src/meloncraft_block"]
+members = ["src/meloncraft_network", "src/meloncraft_packets", "src/meloncraft_protocol_types", "src/meloncraft_client", "src/meloncraft_handshaking", "src/meloncraft_server_list", "src/meloncraft_player", "src/meloncraft_nbt", "src/meloncraft_login", "src/meloncraft_registry", "src/meloncraft_core", "src/meloncraft_text", "src/meloncraft_default_registries", "src/meloncraft_generator", "src/meloncraft_chunk", "tools/block_state_generator", "src/meloncraft_block", "src/meloncraft_join"]
 exclude = [
     "examples"
 ]

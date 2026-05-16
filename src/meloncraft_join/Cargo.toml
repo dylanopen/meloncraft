@@ -1,0 +1,11 @@
+[package]
+name = "meloncraft_join"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+bevy = { workspace = true }
+meloncraft_handshaking = { workspace = true }
+
+[lints]
+workspace = true
