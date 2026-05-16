@@ -1,5 +1,5 @@
 use bevy::prelude::{MessageReader, MessageWriter, Res};
-use meloncraft_world::messages::{ChunkRequest, GenerateChunk, SendChunk};
+use meloncraft_world::messages::{ChunkGenerated, ChunkRequest, GenerateChunk, SendChunk};
 use crate::marker::Overworld;
 
 pub fn send_requested_chunks(
@@ -22,6 +22,22 @@ pub fn send_requested_chunks(
                 requested_by: request.client,
                 chunk_x: request.chunk_x,
                 chunk_z: request.chunk_z,
+            });
+        }
+    }
+}
+
+pub fn send_generated_chunks(
+    mut generated_chunk_mr: MessageReader<ChunkGenerated>,
+    mut send_chunk_mw: MessageWriter<SendChunk>,
+) {
+    for generated_chunk in generated_chunk_mr.read() {
+        if let Some(requested_by) = generated_chunk.requested_by {
+            send_chunk_mw.write(SendChunk {
+                client: requested_by,
+                chunk_x: generated_chunk.chunk_x,
+                chunk_z: generated_chunk.chunk_z,
+                chunk: generated_chunk.chunk.clone(),
             });
         }
     }

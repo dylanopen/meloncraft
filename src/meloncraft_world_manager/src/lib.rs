@@ -14,5 +14,6 @@ impl Plugin for MeloncraftWorldManagerPlugin {
 
         app.add_systems(Update, sender::send_chunk);
         app.add_systems(Update, request_forwarding::send_requested_chunks);
+        app.add_systems(Update, request_forwarding::send_generated_chunks);
     }
 }
