@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["crates/meloncraft_network", "crates/meloncraft_packets", "crates/meloncraft_protocol_types", "crates/meloncraft_client", "crates/meloncraft_handshaking", "crates/meloncraft_server_list", "crates/meloncraft_player", "crates/meloncraft_nbt", "crates/meloncraft_login", "crates/meloncraft_registry", "crates/meloncraft_core", "crates/meloncraft_text", "crates/meloncraft_default_registries", "crates/meloncraft_generator", "crates/meloncraft_chunk", "tools/block_state_generator", "crates/meloncraft_block"]
+members = ["src/meloncraft_network", "src/meloncraft_packets", "src/meloncraft_protocol_types", "src/meloncraft_client", "src/meloncraft_handshaking", "src/meloncraft_server_list", "src/meloncraft_player", "src/meloncraft_nbt", "src/meloncraft_login", "src/meloncraft_registry", "src/meloncraft_core", "src/meloncraft_text", "src/meloncraft_default_registries", "src/meloncraft_generator", "src/meloncraft_chunk", "tools/block_state_generator", "src/meloncraft_block"]
 exclude = [
     "examples"
 ]
@@ -16,23 +16,23 @@ version = "0.1.0"
 edition = "2024"
 
 [workspace.dependencies]
-meloncraft_protocol_types = { path = "crates/meloncraft_protocol_types" }
-meloncraft_network = { path = "crates/meloncraft_network" }
-meloncraft_client = { path = "crates/meloncraft_client" }
-meloncraft_packets = { path = "crates/meloncraft_packets" }
-meloncraft_handshaking = { path = "crates/meloncraft_handshaking" }
-meloncraft_server_list = { path = "crates/meloncraft_server_list" }
-meloncraft_player = { path = "crates/meloncraft_player" }
-meloncraft_nbt = { path = "crates/meloncraft_nbt" }
-meloncraft_login = { path = "crates/meloncraft_login" }
-meloncraft_init_play = { path = "crates/meloncraft_init_play" }
-meloncraft_registry = { path = "crates/meloncraft_registry" }
-meloncraft_default_registries = { path = "crates/meloncraft_default_registries" }
-meloncraft_core = { path = "crates/meloncraft_core" }
-meloncraft_text = { path = "crates/meloncraft_text" }
-meloncraft_generator = { path = "crates/meloncraft_generator" }
-meloncraft_block = { path = "crates/meloncraft_block" }
-meloncraft_chunk = { path = "crates/meloncraft_chunk" }
+meloncraft_protocol_types = { path = "src/meloncraft_protocol_types" }
+meloncraft_network = { path = "src/meloncraft_network" }
+meloncraft_client = { path = "src/meloncraft_client" }
+meloncraft_packets = { path = "src/meloncraft_packets" }
+meloncraft_handshaking = { path = "src/meloncraft_handshaking" }
+meloncraft_server_list = { path = "src/meloncraft_server_list" }
+meloncraft_player = { path = "src/meloncraft_player" }
+meloncraft_nbt = { path = "src/meloncraft_nbt" }
+meloncraft_login = { path = "src/meloncraft_login" }
+meloncraft_init_play = { path = "src/meloncraft_init_play" }
+meloncraft_registry = { path = "src/meloncraft_registry" }
+meloncraft_default_registries = { path = "src/meloncraft_default_registries" }
+meloncraft_core = { path = "src/meloncraft_core" }
+meloncraft_text = { path = "src/meloncraft_text" }
+meloncraft_generator = { path = "src/meloncraft_generator" }
+meloncraft_block = { path = "src/meloncraft_block" }
+meloncraft_chunk = { path = "src/meloncraft_chunk" }
 
 lazy_static = "1.5.0"
 
