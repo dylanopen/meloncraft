@@ -4,12 +4,18 @@ mod save_client_info;
 
 use bevy::app::{App, Plugin, Update};
 use meloncraft_handshaking::MeloncraftHandshakingPlugin;
+use meloncraft_init_play::MeloncraftInitPlayPlugin;
+use meloncraft_login::MeloncraftLoginPlugin;
 
 pub struct MeloncraftJoinPlugin;
 
 impl Plugin for MeloncraftJoinPlugin {
     fn build(&self, app: &mut App) {
-        app.add_plugins(MeloncraftHandshakingPlugin);
+        app.add_plugins((
+            MeloncraftHandshakingPlugin,
+            MeloncraftLoginPlugin,
+            MeloncraftInitPlayPlugin,
+        ));
 
         app.add_systems(Update, (
             login_start::save_profile,
