@@ -37,5 +37,14 @@ impl Plugin for MeloncraftLoginPlugin {
         );
 
         app.add_message::<messages::OfflineLoggedIn>();
+        app.add_message::<messages::ClientLocaleReceived>();
+        app.add_message::<messages::ClientViewDistanceReceived>();
+        app.add_message::<messages::ClientChatModeReceived>();
+        app.add_message::<messages::ClientChatColorsReceived>();
+        app.add_message::<messages::ClientDisplayedSkinPartsReceived>();
+        app.add_message::<messages::ClientMainHandReceived>();
+        app.add_message::<messages::ClientEnableTextFilteringReceived>();
+        app.add_message::<messages::ClientAllowPlayerListingsReceived>();
+        app.add_message::<messages::ClientParticleRenderingModeReceived>();
     }
 }
