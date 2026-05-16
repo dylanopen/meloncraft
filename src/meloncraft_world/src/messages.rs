@@ -11,8 +11,16 @@ pub struct ChunkRequest {
 
 #[derive(Message, Debug, Clone, Eq, PartialEq)]
 pub struct ChunkGenerated {
-    requested_by: Entity,
+    requested_by: Option<Entity>,
     chunk_x: i32,
     chunk_z: i32,
     chunk: Chunk,
+}
+
+#[derive(Message, Debug, Clone)]
+pub struct SendChunk {
+    pub client: Entity,
+    pub chunk_x: i32,
+    pub chunk_z: i32,
+    pub chunk: Chunk,
 }

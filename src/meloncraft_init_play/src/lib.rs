@@ -14,7 +14,7 @@ use meloncraft_packets::{ClientboundGameEvent, ClientboundPlayLogin, Clientbound
 use meloncraft_packets::ServerboundAcknowledgeFinishConfiguration;
 use meloncraft_player::GameProfile;
 use meloncraft_protocol_types::{AddPlayerAction, PlayerAction, PrefixedArray};
-use meloncraft_world_manager::messages::SendChunk;
+use meloncraft_world::messages::SendChunk;
 
 pub struct MeloncraftInitPlayPlugin;
 

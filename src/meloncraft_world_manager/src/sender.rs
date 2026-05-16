@@ -1,6 +1,6 @@
 use bevy::prelude::{MessageReader, MessageWriter};
-use crate::messages::SendChunk;
 use meloncraft_packets::ClientboundChunkData;
+use meloncraft_world::messages::SendChunk;
 use meloncraft_protocol_types::bitset::BitSet;
 use meloncraft_protocol_types::chunk_lighting::ChunkLighting;
 

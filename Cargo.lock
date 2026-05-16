@@ -1345,7 +1345,7 @@ dependencies = [
  "meloncraft_packets",
  "meloncraft_player",
  "meloncraft_protocol_types",
- "meloncraft_world_manager",
+ "meloncraft_world",
 ]
 
 [[package]]
@@ -1460,9 +1460,9 @@ name = "meloncraft_world_manager"
 version = "0.1.0"
 dependencies = [
  "bevy",
- "meloncraft_chunk",
  "meloncraft_packets",
  "meloncraft_protocol_types",
+ "meloncraft_world",
 ]
 
 [[package]]
