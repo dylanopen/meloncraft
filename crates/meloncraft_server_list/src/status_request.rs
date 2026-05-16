@@ -3,10 +3,10 @@ use crate::motd::Motd;
 use crate::online_players::OnlinePlayers;
 use bevy::prelude::{MessageReader, MessageWriter, Res};
 use meloncraft_packets::ClientboundStatusResponse;
-use meloncraft_packets::serverbound::status::StatusRequest;
+use meloncraft_packets::ServerboundStatusRequest;
 
 pub fn respond_to_status_request(
-    mut status_pr: MessageReader<StatusRequest>,
+    mut status_pr: MessageReader<ServerboundStatusRequest>,
     mut status_pw: MessageWriter<ClientboundStatusResponse>,
     motd: Res<Motd>,
     max_players: Res<MaxPlayers>,

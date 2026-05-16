@@ -6,13 +6,13 @@ use meloncraft_network::packet::ServerboundNetworkPacket;
 use meloncraft_protocol_types::{Byte, PrefixedArray, ProtocolBuffer};
 
 #[derive(Message, Debug, Clone)]
-pub struct EncryptionResponse {
+pub struct ServerboundEncryptionResponse {
     pub client: Entity,
     pub shared_secret: Vec<Byte>, // bytes are stored as i8s in the
     pub verify_token: Vec<Byte>,  // mc protocol for some reason
 }
 
-impl ServerboundPacket for EncryptionResponse {
+impl ServerboundPacket for ServerboundEncryptionResponse {
     fn id() -> i32 {
         0x01
     }

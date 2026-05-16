@@ -7,13 +7,13 @@ use meloncraft_player::Uuid;
 use meloncraft_protocol_types::ProtocolType;
 
 #[derive(Message, Debug, Clone)]
-pub struct LoginStart {
+pub struct ServerboundLoginStart {
     pub client: Entity,
     pub name: String,
     pub uuid: Uuid,
 }
 
-impl ServerboundPacket for LoginStart {
+impl ServerboundPacket for ServerboundLoginStart {
     fn id() -> i32 {
         0x00
     }

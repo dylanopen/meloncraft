@@ -5,12 +5,12 @@ use meloncraft_network::packet::ServerboundNetworkPacket;
 use meloncraft_protocol_types::ProtocolBuffer;
 
 #[derive(Message, Debug, Clone)]
-pub struct Pong {
+pub struct ServerboundConfigurationPong {
     pub client: Entity,
     pub id: i32,
 }
 
-impl ServerboundPacket for Pong {
+impl ServerboundPacket for ServerboundConfigurationPong {
     fn id() -> i32 {
         0x05
     }

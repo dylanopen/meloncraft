@@ -12,7 +12,7 @@ use meloncraft_client::connection::ClientConnection;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_core::Identifier;
 use meloncraft_packets::{ClientboundChunkData, ClientboundGameEvent, ClientboundPlayLogin, ClientboundPlayerInfoUpdate, ClientboundSetCenterChunk, ClientboundSynchronizePlayerPosition};
-use meloncraft_packets::serverbound::configuration::AcknowledgeFinishConfiguration;
+use meloncraft_packets::ServerboundAcknowledgeFinishConfiguration;
 use meloncraft_player::GameProfile;
 use meloncraft_protocol_types::{AddPlayerAction, PlayerAction, PrefixedArray};
 use meloncraft_protocol_types::bitset::BitSet;
@@ -31,7 +31,7 @@ impl Plugin for MeloncraftInitPlayPlugin {
 }
 
 fn play_login(
-    mut ack_finish_config_pr: MessageReader<AcknowledgeFinishConfiguration>,
+    mut ack_finish_config_pr: MessageReader<ServerboundAcknowledgeFinishConfiguration>,
     mut login_pw: MessageWriter<ClientboundPlayLogin>,
     mut client_connection_q: Query<(&mut ClientConnection, Entity)>,
 ) {

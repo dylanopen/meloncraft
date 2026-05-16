@@ -7,13 +7,13 @@ use meloncraft_player::Uuid;
 use meloncraft_protocol_types::{ProtocolBuffer, VarInt};
 
 #[derive(Message, Debug, Clone)]
-pub struct ResourcePackResponse {
+pub struct ServerboundResourcePackResponse {
     pub client: Entity,
     pub uuid: Uuid,
     pub load_result: ResourcePackLoadResult,
 }
 
-impl ServerboundPacket for ResourcePackResponse {
+impl ServerboundPacket for ServerboundResourcePackResponse {
     fn id() -> i32 {
         0x06
     }

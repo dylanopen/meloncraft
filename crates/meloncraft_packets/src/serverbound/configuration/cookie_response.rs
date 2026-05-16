@@ -6,13 +6,13 @@ use meloncraft_network::packet::ServerboundNetworkPacket;
 use meloncraft_protocol_types::{Byte, PrefixedArray, ProtocolBuffer, ProtocolType};
 
 #[derive(Message, Debug, Clone)]
-pub struct CookieResponse {
+pub struct ServerboundCookieResponse {
     pub client: Entity,
     pub key: Identifier,
     pub value: Vec<Byte>,
 }
 
-impl ServerboundPacket for CookieResponse {
+impl ServerboundPacket for ServerboundCookieResponse {
     fn id() -> i32 {
         0x01
     }

@@ -6,7 +6,7 @@ use meloncraft_network::packet::ServerboundNetworkPacket;
 use meloncraft_protocol_types::{ProtocolType, VarInt};
 
 #[derive(Message, Debug, Clone)]
-pub struct Intention {
+pub struct ServerboundIntention {
     pub client: Entity,
     pub protocol_version: i32,
     pub server_address: String,
@@ -14,7 +14,7 @@ pub struct Intention {
     pub next_state: ConnectionState,
 }
 
-impl ServerboundPacket for Intention {
+impl ServerboundPacket for ServerboundIntention {
     fn id() -> i32 {
         0x00
     }
@@ -32,7 +32,7 @@ impl ServerboundPacket for Intention {
             _ => return None, // TODO: log this
         };
 
-        Some(Intention {
+        Some(ServerboundIntention {
             client: incoming.client,
             protocol_version,
             server_address,

@@ -10,7 +10,7 @@ use meloncraft_player::{
 use meloncraft_protocol_types::{Byte, ProtocolBuffer, VarInt};
 
 #[derive(Message, Debug, Clone)]
-pub struct ClientInformation {
+pub struct ServerboundClientInformation {
     pub client: Entity,
     pub locale: Locale,
     pub view_distance: ViewDistance,
@@ -23,7 +23,7 @@ pub struct ClientInformation {
     pub particle_rendering_mode: ParticleRenderingMode,
 }
 
-impl ServerboundPacket for ClientInformation {
+impl ServerboundPacket for ServerboundClientInformation {
     fn id() -> i32 {
         0x00
     }

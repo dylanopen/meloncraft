@@ -5,12 +5,12 @@ use meloncraft_network::packet::ServerboundNetworkPacket;
 use meloncraft_protocol_types::ProtocolType;
 
 #[derive(Message, Debug, Clone)]
-pub struct Ping {
+pub struct ServerboundStatusPing {
     pub client: Entity,
     pub timestamp: i64,
 }
 
-impl ServerboundPacket for Ping {
+impl ServerboundPacket for ServerboundStatusPing {
     fn id() -> i32 {
         0x01
     }
@@ -21,6 +21,6 @@ impl ServerboundPacket for Ping {
         let mut incoming = incoming.clone();
         let client = incoming.client;
         let timestamp = i64::net_deserialize(&mut incoming.data).unwrap();
-        Some(Ping { client, timestamp })
+        Some(ServerboundStatusPing { client, timestamp })
     }
 }

@@ -2,11 +2,11 @@ use crate::encryption::EncryptionMode;
 use bevy::ecs::system::Commands;
 use bevy::prelude::{MessageReader, MessageWriter, Res};
 use meloncraft_packets::ClientboundLoginSuccess;
-use meloncraft_packets::serverbound::login::LoginStart;
+use meloncraft_packets::ServerboundLoginStart;
 use meloncraft_player::GameProfile;
 
 pub fn login_offline_unencrypted_listener(
-    mut login_start_pr: MessageReader<LoginStart>,
+    mut login_start_pr: MessageReader<ServerboundLoginStart>,
     encryption_mode: Res<EncryptionMode>,
     mut login_success_pw: MessageWriter<ClientboundLoginSuccess>,
     mut commands: Commands,

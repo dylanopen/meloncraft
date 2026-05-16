@@ -5,12 +5,12 @@ use meloncraft_network::packet::ServerboundNetworkPacket;
 use meloncraft_protocol_types::ProtocolBuffer;
 
 #[derive(Message, Debug, Clone)]
-pub struct KeepAlive {
+pub struct ServerboundConfigurationKeepAlive {
     pub client: Entity,
     pub id: i64,
 }
 
-impl ServerboundPacket for KeepAlive {
+impl ServerboundPacket for ServerboundConfigurationKeepAlive {
     fn id() -> i32 {
         0x04
     }

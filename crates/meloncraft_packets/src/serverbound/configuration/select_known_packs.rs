@@ -7,12 +7,12 @@ use meloncraft_network::packet::ServerboundNetworkPacket;
 use meloncraft_protocol_types::{PrefixedArray, ProtocolBuffer};
 
 #[derive(Message, Debug, Clone)]
-pub struct SelectKnownPacks {
+pub struct ServerboundSelectKnownPacks {
     pub client: Entity,
     pub known_packs: Vec<DatapackMetadata>,
 }
 
-impl ServerboundPacket for SelectKnownPacks {
+impl ServerboundPacket for ServerboundSelectKnownPacks {
     fn id() -> i32 {
         0x07
     }

@@ -11,16 +11,17 @@ pub use serverbound_packet::ServerboundPacket;
 pub use clientbound_packet::ClientboundPacket;
 
 pub use clientbound::*;
+pub use serverbound::*;
 
 pub struct MeloncraftPacketsPlugin;
 
 impl Plugin for MeloncraftPacketsPlugin {
     fn build(&self, app: &mut App) {
-        serverbound::handshaking::register_packets(app);
-        serverbound::status::register_packets(app);
-        serverbound::login::register_packets(app);
-        serverbound::configuration::register_packets(app);
-        serverbound::play::register_packets(app);
+        register_serverbound_handshaking_packets(app);
+        register_serverbound_status_packets(app);
+        register_serverbound_login_packets(app);
+        register_serverbound_configuration_packets(app);
+        register_serverbound_play_packets(app);
 
         register_clientbound_status_packets(app);
         register_clientbound_login_packets(app);

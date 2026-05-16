@@ -5,12 +5,12 @@ use meloncraft_network::packet::ServerboundNetworkPacket;
 use meloncraft_protocol_types::{ProtocolType, VarInt};
 
 #[derive(Message, Debug, Clone)]
-pub struct ConfirmTeleportation {
+pub struct ServerboundConfirmTeleportation {
     pub client: Entity,
     pub teleport_id: i32,
 }
 
-impl ServerboundPacket for ConfirmTeleportation {
+impl ServerboundPacket for ServerboundConfirmTeleportation {
     fn id() -> i32 {
         0x00
     }
