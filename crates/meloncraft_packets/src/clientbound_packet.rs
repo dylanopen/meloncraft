@@ -9,6 +9,6 @@ pub trait ClientboundPacket: Sized + Message + Debug + Clone {
     fn serialize(&self) -> Option<ClientboundNetworkPacket>;
 
     fn to_packet(&self) -> Option<ClientboundNetworkPacket> {
-        self.serialize()
+        return self.serialize();
     }
 }

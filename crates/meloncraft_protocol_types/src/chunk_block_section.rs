@@ -38,7 +38,7 @@ impl ProtocolType for ChunkBlockSection {
             output.extend(entry.net_serialize());
         }
 
-        output
+        return output;
     }
 
     fn net_deserialize(_data: &mut Vec<u8>) -> Result<Self, ()> {

@@ -7,14 +7,14 @@ pub fn tag(data: &mut Vec<u8>) -> Result<NbtTag, ()> {
     let key = string(data)?;
     let value = value(tag_type, data)?;
 
-    Ok(meloncraft_nbt::NbtTag::new(key, value))
+    return Ok(meloncraft_nbt::NbtTag::new(key, value));
 }
 
 fn tagtype(data: &mut Vec<u8>) -> Result<u8, ()> {
     if data.is_empty() {
         return Err(());
     }
-    data.net_deserialize()
+    return data.net_deserialize();
 }
 
 fn string(data: &mut Vec<u8>) -> Result<String, ()> {
@@ -23,12 +23,12 @@ fn string(data: &mut Vec<u8>) -> Result<String, ()> {
         return Err(());
     }
     let string_bytes = data.drain(0..length).collect::<Vec<u8>>();
-    String::from_utf8(string_bytes)
-        .map_or(Err(()), Ok)
+    return String::from_utf8(string_bytes)
+        .map_or(Err(()), Ok);
 }
 
 pub fn value(tag_type: u8, data: &mut Vec<u8>) -> Result<NbtValue, ()> {
-    match tag_type {
+    return match tag_type {
         1 => {
             let val: u8 = data.net_deserialize()?;
             Ok(NbtValue::U8(NbtU8(val)))
@@ -76,7 +76,7 @@ pub fn value(tag_type: u8, data: &mut Vec<u8>) -> Result<NbtValue, ()> {
             long_array(length, data)
         }
         _ => Err(()),
-    }
+    };
 }
 
 fn byte_array(length: i32, data: &mut Vec<u8>) -> Result<NbtValue, ()> {
@@ -88,7 +88,7 @@ fn byte_array(length: i32, data: &mut Vec<u8>) -> Result<NbtValue, ()> {
         let byte: u8 = data.net_deserialize()?;
         bytes.push(byte);
     }
-    Ok(NbtValue::ArrayU8(meloncraft_nbt::NbtArrayU8(bytes)))
+    return Ok(NbtValue::ArrayU8(meloncraft_nbt::NbtArrayU8(bytes)));
 }
 
 fn int_array(length: i32, data: &mut Vec<u8>) -> Result<NbtValue, ()> {
@@ -101,7 +101,7 @@ fn int_array(length: i32, data: &mut Vec<u8>) -> Result<NbtValue, ()> {
         let int: i32 = data.net_deserialize()?;
         ints.push(int);
     }
-    Ok(NbtValue::ArrayI32(meloncraft_nbt::NbtArrayI32(ints)))
+    return Ok(NbtValue::ArrayI32(meloncraft_nbt::NbtArrayI32(ints)));
 }
 
 fn long_array(length: i32, data: &mut Vec<u8>) -> Result<NbtValue, ()> {
@@ -114,7 +114,7 @@ fn long_array(length: i32, data: &mut Vec<u8>) -> Result<NbtValue, ()> {
         let long: i64 = data.net_deserialize()?;
         longs.push(long);
     }
-    Ok(NbtValue::ArrayI64(meloncraft_nbt::NbtArrayI64(longs)))
+    return Ok(NbtValue::ArrayI64(meloncraft_nbt::NbtArrayI64(longs)));
 }
 
 fn list(tag_type: u8, size: i32, data: &mut Vec<u8>) -> Result<NbtValue, ()> {
@@ -123,7 +123,7 @@ fn list(tag_type: u8, size: i32, data: &mut Vec<u8>) -> Result<NbtValue, ()> {
         let item = value(tag_type, data)?;
         list_items.push(item);
     }
-    Ok(NbtValue::List(NbtList(list_items)))
+    return Ok(NbtValue::List(NbtList(list_items)));
 }
 fn compound(data: &mut Vec<u8>) -> Result<NbtValue, ()> {
     let mut tags = Vec::new();
@@ -136,5 +136,5 @@ fn compound(data: &mut Vec<u8>) -> Result<NbtValue, ()> {
         let value = value(tag_type, data)?;
         tags.push(NbtTag::new(key, value));
     }
-    Ok(NbtValue::Compound(NbtCompound(tags)))
+    return Ok(NbtValue::Compound(NbtCompound(tags)));
 }

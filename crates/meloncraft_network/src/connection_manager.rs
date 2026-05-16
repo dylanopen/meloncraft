@@ -15,7 +15,7 @@ pub fn connection_manager(
         let client_connections = CLIENT_CONNECTIONS.lock().unwrap();
         for client_connection in client_connections.iter() {
             if !client_connection_ecs.iter().any(|c| {
-                c.tcp_stream.peer_addr().unwrap() == client_connection.peer_addr().unwrap()
+                return c.tcp_stream.peer_addr().unwrap() == client_connection.peer_addr().unwrap();
             }) {
                 let entity = commands
                     .spawn(ClientConnection {

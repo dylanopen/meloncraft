@@ -11,6 +11,6 @@ pub trait ProtocolBuffer<T: ProtocolType>: Sized {
 
 impl<T: ProtocolType> ProtocolBuffer<T> for &mut Vec<u8> {
     fn net_deserialize(self) -> Result<T, ()> {
-        T::net_deserialize(self)
+        return T::net_deserialize(self);
     }
 }

@@ -7,11 +7,11 @@ pub fn tag(tag: NbtTag) -> Vec<u8> {
     output.push(tag.value.to_id());
     output.extend(string(tag.key)); // Empty name for root
     output.extend(value(tag.value));
-    output
+    return output;
 }
 
 pub fn value(payload: NbtValue) -> Vec<u8> {
-    match payload {
+    return match payload {
         NbtValue::U8(p) => p.net_serialize(),
         NbtValue::I16(p) => p.net_serialize(),
         NbtValue::I32(p) => p.net_serialize(),
@@ -24,7 +24,7 @@ pub fn value(payload: NbtValue) -> Vec<u8> {
         NbtValue::Compound(p) => compound((*p).clone()),
         NbtValue::ArrayI32(p) => int_array((*p).clone()),
         NbtValue::ArrayI64(p) => long_array((*p).clone()),
-    }
+    };
 }
 
 pub fn byte_array(payload: &[u8]) -> Vec<u8> {
@@ -32,7 +32,7 @@ pub fn byte_array(payload: &[u8]) -> Vec<u8> {
     let length: i32 = payload.len().try_into().unwrap();
     output.extend(length.net_serialize());
     output.extend(payload.to_vec());
-    output
+    return output;
 }
 
 pub fn string(payload: String) -> Vec<u8> {
@@ -40,7 +40,7 @@ pub fn string(payload: String) -> Vec<u8> {
     let length: i16 = payload.len().try_into().unwrap();
     output.extend(length.net_serialize());
     output.extend(payload.into_bytes());
-    output
+    return output;
 }
 
 pub fn list(mut payload: Vec<NbtValue>) -> Vec<u8> {
@@ -54,7 +54,7 @@ pub fn list(mut payload: Vec<NbtValue>) -> Vec<u8> {
     }
 
     // check if all same type
-    if !payload.iter().all(|v| v.to_id() == payload.first().unwrap().to_id()) {
+    if !payload.iter().all(|v| return v.to_id() == payload.first().unwrap().to_id()) {
         // make all same type by converting to compound of key "":
         for value in &mut payload {
             if let NbtValue::Compound(_) = value {} else {
@@ -87,7 +87,7 @@ pub fn list(mut payload: Vec<NbtValue>) -> Vec<u8> {
             NbtValue::ArrayI64(p) => output.append(&mut long_array((*p).clone())),
         }
     }
-    output
+    return output;
 }
 
 pub fn compound(payload: Vec<NbtTag>) -> Vec<u8> {
@@ -98,7 +98,7 @@ pub fn compound(payload: Vec<NbtTag>) -> Vec<u8> {
         output.append(&mut value(tag.value.clone()));
     }
     output.push(0); // End tag
-    output
+    return output;
 }
 
 pub fn int_array(payload: Vec<i32>) -> Vec<u8> {
@@ -108,7 +108,7 @@ pub fn int_array(payload: Vec<i32>) -> Vec<u8> {
     for item in payload {
         output.append(&mut item.net_serialize());
     }
-    output
+    return output;
 }
 
 pub fn long_array(payload: Vec<i64>) -> Vec<u8> {
@@ -118,7 +118,7 @@ pub fn long_array(payload: Vec<i64>) -> Vec<u8> {
     for item in payload {
         output.append(&mut item.net_serialize());
     }
-    output
+    return output;
 }
 
 #[cfg(test)]
@@ -128,7 +128,7 @@ mod tests {
     use meloncraft_nbt::NbtValue;
 
     #[test]
-    fn test_serialize_root() {
+    fn serialize_root() {
         let root_tag = NbtTag {
             key: String::new(),
             value: NbtValue::Compound(

@@ -47,7 +47,7 @@ impl ProtocolType for GameEventType {
         };
         data.push(id);
         data.extend(value.net_serialize());
-        data
+        return data;
     }
 
     fn net_deserialize(data: &mut Vec<u8>) -> Result<Self, ()> {
@@ -58,7 +58,7 @@ impl ProtocolType for GameEventType {
         }
         let id = data.remove(0);
         let value = f32::net_deserialize(data)?;
-        let event = match id {
+        return Ok(match id {
             0 => GameEventType::NoRespawnBlockAvailable,
             1 => GameEventType::BeginRaining,
             2 => GameEventType::EndRaining,
@@ -74,8 +74,7 @@ impl ProtocolType for GameEventType {
             12 => GameEventType::LimitedCrafting(value != 0.0),
             13 => GameEventType::WaitForChunks,
             _ => return Err(()),
-        };
-        Ok(event)
+        });
     }
 }
 

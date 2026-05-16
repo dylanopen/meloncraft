@@ -14,7 +14,7 @@ impl TryFrom<JsonValue> for NbtValue {
     type Error = ();
 
     fn try_from(value: serde_json::Value) -> Result<Self, ()> {
-        match value {
+        return match value {
             JsonValue::Null => Err(()),
             JsonValue::Bool(val) => Ok(NbtValue::U8(if val { NbtU8(1) } else { NbtU8(0) })),
             JsonValue::String(val) => Ok(NbtValue::String(NbtString(val))),
@@ -46,44 +46,7 @@ impl TryFrom<JsonValue> for NbtValue {
                 for val in vals {
                     nbt_vals.push(NbtValue::try_from(val)?);
                 }
-
-                // let mut u8_vals = Vec::new();
-                // for nbt_val in &nbt_vals {
-                //     if let NbtValue::U8(u8_val) = nbt_val {
-                //         u8_vals.push(**u8_val);
-                //     } else {
-                //         break;
-                //     }
-                // }
-                // if u8_vals.len() == nbt_vals.len() {
-                //     return Ok(NbtValue::ArrayU8(NbtArrayU8(u8_vals)));
-                // }
-                //
-                // let mut i32_vals = Vec::new();
-                // for nbt_val in &nbt_vals {
-                //     if let NbtValue::I32(i32_val) = nbt_val {
-                //         i32_vals.push(**i32_val);
-                //     } else {
-                //         break;
-                //     }
-                // }
-                // if i32_vals.len() == nbt_vals.len() {
-                //     return Ok(NbtValue::ArrayI32(crate::NbtArrayI32(i32_vals)));
-                // }
-                //
-                // let mut i64_vals = Vec::new();
-                // for nbt_val in &nbt_vals {
-                //     if let NbtValue::I64(i64_val) = nbt_val {
-                //         i64_vals.push(**i64_val);
-                //     } else {
-                //         break;
-                //     }
-                // }
-                // if i64_vals.len() == nbt_vals.len() {
-                //     return Ok(NbtValue::ArrayI64(crate::NbtArrayI64(i64_vals)));
-                // }
-
-                Ok(NbtValue::List(NbtList(nbt_vals)))
+                return Ok(NbtValue::List(NbtList(nbt_vals)));
             }
             JsonValue::Object(obj) => {
                 let mut children = Vec::new();
@@ -93,9 +56,9 @@ impl TryFrom<JsonValue> for NbtValue {
                         value: NbtValue::try_from(val)?,
                     });
                 }
-                Ok(NbtValue::Compound(NbtCompound(children)))
+                return Ok(NbtValue::Compound(NbtCompound(children)));
             }
-        }
+        };
     }
 }
 
@@ -103,51 +66,47 @@ impl TryFrom<JsonValue> for NbtValue {
 impl From<NbtValue> for JsonValue {
     fn from(value: NbtValue) -> Self {
         match value {
-            NbtValue::U8(nbt_u8) => JsonValue::Number(serde_json::Number::from(nbt_u8.0)),
-            NbtValue::I16(nbt_i16) => JsonValue::Number(serde_json::Number::from(*nbt_i16)),
-            NbtValue::I32(nbt_i32) => JsonValue::Number(serde_json::Number::from(*nbt_i32)),
-            NbtValue::I64(nbt_i64) => JsonValue::Number(serde_json::Number::from(*nbt_i64)),
-            NbtValue::F32(nbt_f32) => {
-                JsonValue::Number(serde_json::Number::from_f64((*nbt_f32).into()).unwrap())
-            }
-            NbtValue::F64(nbt_f64) => {
-                JsonValue::Number(serde_json::Number::from_f64(*nbt_f64).unwrap())
-            }
-            NbtValue::String(nbt_string) => JsonValue::String((*nbt_string).clone()),
+            NbtValue::U8(nbt_u8) => return JsonValue::Number(serde_json::Number::from(nbt_u8.0)),
+            NbtValue::I16(nbt_i16) => return JsonValue::Number(serde_json::Number::from(*nbt_i16)),
+            NbtValue::I32(nbt_i32) => return JsonValue::Number(serde_json::Number::from(*nbt_i32)),
+            NbtValue::I64(nbt_i64) => return JsonValue::Number(serde_json::Number::from(*nbt_i64)),
+            NbtValue::F32(nbt_f32) => return JsonValue::Number(serde_json::Number::from_f64((*nbt_f32).into()).unwrap()),
+            NbtValue::F64(nbt_f64) => return JsonValue::Number(serde_json::Number::from_f64(*nbt_f64).unwrap()),
+            NbtValue::String(nbt_string) => return JsonValue::String((*nbt_string).clone()),
             NbtValue::ArrayU8(nbt_array_u8) => {
                 let vals: Vec<JsonValue> = nbt_array_u8
                     .iter()
-                    .map(|v| JsonValue::Number(serde_json::Number::from(*v)))
+                    .map(|v| return JsonValue::Number(serde_json::Number::from(*v)))
                     .collect();
-                JsonValue::Array(vals)
+                return JsonValue::Array(vals);
             }
             NbtValue::ArrayI32(nbt_array_i32) => {
                 let vals: Vec<JsonValue> = nbt_array_i32
                     .iter()
-                    .map(|v| JsonValue::Number(serde_json::Number::from(*v)))
+                    .map(|v| return JsonValue::Number(serde_json::Number::from(*v)))
                     .collect();
-                JsonValue::Array(vals)
+                return JsonValue::Array(vals);
             }
             NbtValue::ArrayI64(nbt_array_i64) => {
                 let vals: Vec<JsonValue> = nbt_array_i64
                     .iter()
-                    .map(|v| JsonValue::Number(serde_json::Number::from(*v)))
+                    .map(|v| return JsonValue::Number(serde_json::Number::from(*v)))
                     .collect();
-                JsonValue::Array(vals)
+                return JsonValue::Array(vals);
             }
             NbtValue::List(nbt_list) => {
                 let vals: Vec<JsonValue> = nbt_list
                     .iter()
-                    .map(|v| JsonValue::from(v.clone()))
+                    .map(|v| return JsonValue::from(v.clone()))
                     .collect();
-                JsonValue::Array(vals)
+                return JsonValue::Array(vals);
             }
             NbtValue::Compound(nbt_compound) => {
                 let mut map = serde_json::Map::new();
                 for tag in nbt_compound.iter() {
                     map.insert(tag.key.clone(), JsonValue::from(tag.value.clone()));
                 }
-                JsonValue::Object(map)
+                return JsonValue::Object(map);
             }
         }
     }
@@ -158,7 +117,7 @@ mod tests {
     use super::*;
     use serde_json::Map;
     #[test, dis]
-    fn test_nbt_to_json_and_back() {
+    fn nbt_to_json_and_back() {
         let original_nbt = NbtValue::Compound(NbtCompound(vec![
             NbtTag {
                 key: "name".to_string(),
@@ -183,7 +142,7 @@ mod tests {
     }
 
     #[test]
-    fn test_json_to_nbt_and_back() {
+    fn json_to_nbt_and_back() {
         let mut json_map = Map::new();
 
         let mut object_1 = Map::new();

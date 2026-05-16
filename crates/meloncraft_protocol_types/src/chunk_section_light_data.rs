@@ -7,7 +7,7 @@ pub struct ChunkSectionLightData {
 
 impl ProtocolType for ChunkSectionLightData {
     fn net_serialize(&self) -> Vec<u8> {
-        PrefixedArray(self.data.to_vec()).net_serialize()
+        return PrefixedArray(self.data.to_vec()).net_serialize();
     }
 
     fn net_deserialize(data: &mut Vec<u8>) -> Result<Self, ()> {
@@ -17,7 +17,7 @@ impl ProtocolType for ChunkSectionLightData {
         }
         let mut data_array = [0_u8; 2048];
         data_array.copy_from_slice(&array);
-        Ok(Self { data: data_array })
+        return Ok(Self { data: data_array });
     }
 }
 
@@ -28,7 +28,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_chunk_section_light_data_serde() {
+    fn chunk_section_light_data_serde() {
         let light_data = ChunkSectionLightData { data: [1_u8; 2048] };
         let serialized = light_data.net_serialize();
         let deserialized = ChunkSectionLightData::net_deserialize(&mut serialized.clone()).unwrap();

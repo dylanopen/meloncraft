@@ -546,7 +546,7 @@ get_unwrap = "allow" # All code which can panic should explicitly call a panicki
 host_endian_bytes = "forbid"
 if_then_some_else_none = "forbid"
 impl_trait_in_params = "forbid"
-#implicit_return = "forbid"
+implicit_return = "forbid"
 indexing_slicing = "deny" # The only time index slicing is acceptable is when assigning to an element in a collection, e.g. `vec[0] = 5`. Otherwise, it is too easy to accidentally cause panics by indexing out of bounds, and you should use vec.get(0) (and unwrap if you are sure the index is valid). Don't use slicing.
 infinite_loop = "forbid"
 inline_asm_x86_att_syntax = "forbid"
@@ -601,7 +601,7 @@ rest_pat_in_fully_bound_structs = "forbid"
 return_and_then = "forbid"
 same_name_method = "forbid"
 self_named_module_files = "forbid"
-semicolon_inside_block = "forbid"
+semicolon_inside_block = "allow"
 semicolon_outside_block = "forbid"
 separated_literal_suffix = "allow" # 0_i32 is more readable than 0i32.
 shadow_reuse = "allow"

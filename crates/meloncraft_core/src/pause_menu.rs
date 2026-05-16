@@ -18,7 +18,7 @@ pub enum BuiltinPauseMenuLabel {
 impl TryFrom<i32> for BuiltinPauseMenuLabel {
     type Error = ();
     fn try_from(value: i32) -> Result<Self, Self::Error> {
-        match value {
+        return match value {
             0 => Ok(BuiltinPauseMenuLabel::BugReport),
             1 => Ok(BuiltinPauseMenuLabel::CommunityGuidelines),
             2 => Ok(BuiltinPauseMenuLabel::Support),
@@ -30,13 +30,13 @@ impl TryFrom<i32> for BuiltinPauseMenuLabel {
             8 => Ok(BuiltinPauseMenuLabel::News),
             9 => Ok(BuiltinPauseMenuLabel::Announcements),
             _ => Err(()),
-        }
+        };
     }
 }
 
 impl From<BuiltinPauseMenuLabel> for i32 {
     fn from(label: BuiltinPauseMenuLabel) -> Self {
-        match label {
+        return match label {
             BuiltinPauseMenuLabel::BugReport => 0,
             BuiltinPauseMenuLabel::CommunityGuidelines => 1,
             BuiltinPauseMenuLabel::Support => 2,
@@ -47,7 +47,7 @@ impl From<BuiltinPauseMenuLabel> for i32 {
             BuiltinPauseMenuLabel::Forums => 7,
             BuiltinPauseMenuLabel::News => 8,
             BuiltinPauseMenuLabel::Announcements => 9,
-        }
+        };
     }
 }
 

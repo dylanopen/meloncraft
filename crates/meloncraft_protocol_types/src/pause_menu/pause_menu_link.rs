@@ -5,7 +5,7 @@ impl ProtocolType for PauseMenuLink {
     fn net_serialize(&self) -> Vec<u8> {
         let mut output = self.label.net_serialize();
         output.extend(self.url.net_serialize());
-        output
+        return output;
     }
 
     fn net_deserialize(_data: &mut Vec<u8>) -> Result<Self, ()> {
