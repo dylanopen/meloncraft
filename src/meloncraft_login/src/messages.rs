@@ -1,6 +1,6 @@
 use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
-use meloncraft_player::{GameProfile, Locale, ClientViewDistance, ChatMode, ChatColors};
+use meloncraft_player::{GameProfile, Locale, ClientViewDistance, ChatMode, ChatColors, DisplayedSkinParts};
 
 #[derive(Message, Debug, Clone)]
 pub struct OfflineLoggedIn {
@@ -30,4 +30,10 @@ pub struct ClientChatModeReceived {
 pub struct ClientChatColorsReceived {
     pub client: Entity,
     pub chat_colors: ChatColors,
+}
+
+#[derive(Message, Debug, Clone)]
+pub struct ClientDisplayedSkinPartsReceived {
+    pub client: Entity,
+    pub displayed_skin_parts: DisplayedSkinParts,
 }
