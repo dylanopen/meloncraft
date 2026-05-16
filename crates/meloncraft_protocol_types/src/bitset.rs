@@ -1,22 +1,18 @@
 use crate::{PrefixedArray, ProtocolType};
 
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq, Default)]
 pub struct BitSet {
     pub(crate) bits: Vec<i64>,
 }
 
 impl BitSet {
-    pub fn new() -> Self {
-        BitSet { bits: Vec::new() }
-    }
-
     pub fn is_empty(&self) -> bool {
         self.bits.is_empty()
     }
 
     pub fn with_capacity(capacity: usize) -> Self {
         BitSet {
-            bits: vec![0; (capacity+63) / 64],
+            bits: vec![0; capacity.div_ceil(64)],
         }
     }
 
@@ -58,27 +54,6 @@ impl BitSet {
     }
 }
 
-// Pretty sure this should be a stream of bits, in inverse order.
-// impl ProtocolType for BitSet {
-//     fn net_serialize(&self) -> Vec<u8> {
-//         let mut serial = Vec::new();
-//         for long_bits in self.bits.iter().rev() {
-//             serial.push(long_bits.reverse_bits())
-//         }
-//         PrefixedArray(serial).net_serialize()
-//     }
-//
-//     fn net_deserialize(data: &mut Vec<u8>) -> Result<Self, ()> {
-//         let mut bits = Vec::new();
-//         let longs: Vec<u64> = PrefixedArray::net_deserialize(data)?.0;
-//         for long in longs.iter().rev() {
-//             bits.push(long.reverse_bits());
-//         }
-//         Ok(BitSet { bits })
-//     }
-// }
-
-// but maybe not, let's try this instead:
 impl ProtocolType for BitSet {
     fn net_serialize(&self) -> Vec<u8> {
         let mut serial = Vec::new();
@@ -105,15 +80,15 @@ mod tests {
 
     #[test]
     fn test_bitset_create() {
-        let mut bitset = BitSet::new();
+        let mut bitset = BitSet::default();
         assert!(bitset.is_empty());
         assert_eq!(bitset.capacity(), 0);
-        assert_eq!(bitset.get(0), false);
+        assert!(!bitset.get(0));
     }
 
     #[test]
     fn test_bitset_set() {
-        let mut bitset = BitSet::new();
+        let mut bitset = BitSet::default();
         bitset.set(3);
         assert_eq!(bitset.capacity(), 64);
         assert_eq!(bitset.bits[0], 8);
@@ -122,7 +97,7 @@ mod tests {
 
     #[test]
     fn test_bitset_unset() {
-        let mut bitset = BitSet::new();
+        let mut bitset = BitSet::default();
         bitset.set(2);
         assert_eq!(bitset.bits[0], 4);
         bitset.unset(2);
@@ -131,29 +106,29 @@ mod tests {
 
     #[test]
     fn test_bitset_get() {
-        let mut bitset = BitSet::new();
+        let mut bitset = BitSet::default();
         bitset.set(1);
-        assert_eq!(bitset.get(1), true);
+        assert!(bitset.get(1));
         bitset.set(2);
-        assert_eq!(bitset.get(0), false);
+        assert!(!bitset.get(0));
     }
 
     #[test]
     fn test_bitset_toggle() {
-        let mut bitset = BitSet::new();
+        let mut bitset = BitSet::default();
         bitset.toggle(2);
-        assert_eq!(bitset.get( 2), true);
+        assert!(bitset.get( 2));
         bitset.toggle(2);
-        assert_eq!(bitset.get(2), false);
+        assert!(!bitset.get(2));
     }
 
     #[test]
     fn test_bitset_clear() {
-        let mut bitset = BitSet::new();
+        let mut bitset = BitSet::default();
         bitset.set(1);
         bitset.set(68);
-        assert_eq!(bitset.get(1), true);
-        assert_eq!(bitset.get(68), true);
+        assert!(bitset.get(1));
+        assert!(bitset.get(68));
         assert_eq!(bitset.capacity(), 128);
         bitset.clear();
         assert_eq!(bitset.capacity(), 0);
@@ -163,7 +138,7 @@ mod tests {
 
     #[test]
     fn test_bitset_serialize() {
-        let mut bitset = BitSet::new();
+        let mut bitset = BitSet::default();
         bitset.set(1);
         bitset.set(64);
         let mut serialized = bitset.net_serialize();
@@ -175,7 +150,7 @@ mod tests {
 
     #[test]
     fn test_bitset_serde() {
-        let mut bitset = BitSet::new();
+        let mut bitset = BitSet::default();
         bitset.set(1);
         bitset.set(65);
         let serialized = bitset.net_serialize();
