@@ -1,0 +1,13 @@
+[package]
+name = "meloncraft_world_manager"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+bevy = { workspace = true }
+meloncraft_world = { workspace = true }
+meloncraft_packets = { workspace = true }
+meloncraft_protocol_types = { workspace = true }
+
+[lints]
+workspace = true

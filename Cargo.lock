@@ -1264,6 +1264,7 @@ dependencies = [
  "meloncraft_default_registries",
  "meloncraft_handshaking",
  "meloncraft_init_play",
+ "meloncraft_join",
  "meloncraft_login",
  "meloncraft_nbt",
  "meloncraft_network",
@@ -1273,6 +1274,8 @@ dependencies = [
  "meloncraft_registry",
  "meloncraft_server_list",
  "meloncraft_text",
+ "meloncraft_world",
+ "meloncraft_world_manager",
 ]
 
 [[package]]
@@ -1342,6 +1345,19 @@ dependencies = [
  "meloncraft_packets",
  "meloncraft_player",
  "meloncraft_protocol_types",
+ "meloncraft_world",
+]
+
+[[package]]
+name = "meloncraft_join"
+version = "0.1.0"
+dependencies = [
+ "bevy",
+ "meloncraft_handshaking",
+ "meloncraft_init_play",
+ "meloncraft_login",
+ "meloncraft_packets",
+ "meloncraft_world_manager",
 ]
 
 [[package]]
@@ -1351,13 +1367,9 @@ dependencies = [
  "bevy",
  "meloncraft_client",
  "meloncraft_core",
- "meloncraft_default_registries",
- "meloncraft_nbt",
  "meloncraft_network",
  "meloncraft_packets",
  "meloncraft_player",
- "meloncraft_protocol_types",
- "meloncraft_registry",
 ]
 
 [[package]]
@@ -1433,6 +1445,24 @@ name = "meloncraft_text"
 version = "0.1.0"
 dependencies = [
  "meloncraft_nbt",
+]
+
+[[package]]
+name = "meloncraft_world"
+version = "0.1.0"
+dependencies = [
+ "bevy",
+ "meloncraft_chunk",
+]
+
+[[package]]
+name = "meloncraft_world_manager"
+version = "0.1.0"
+dependencies = [
+ "bevy",
+ "meloncraft_packets",
+ "meloncraft_protocol_types",
+ "meloncraft_world",
 ]
 
 [[package]]
