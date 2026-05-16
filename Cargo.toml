@@ -57,11 +57,11 @@ meloncraft_chunk = { workspace = true }
 
 [workspace.lints.clippy]
 # Cargo lints:
-cargo_common_metadata = "allow"
-multiple_crate_versions = "allow"
-negative_feature_names = "allow"
-redundant_feature_names = "allow"
-wildcard_dependencies = "allow"
+cargo_common_metadata = "allow" # When ready to release, will be forbidden
+multiple_crate_versions = "allow" # Meloncraft has two dependencies: bevy and lazy_static, which require different versions of certain crates. Unavoidable for now.
+negative_feature_names = "forbid"
+redundant_feature_names = "forbid"
+wildcard_dependencies = "forbid"
 # Complexity lints:
 bind_instead_of_map = "warn"
 bool_comparison = "warn"
