@@ -3,10 +3,6 @@ use bevy::ecs::entity::Entity;
 use bevy::ecs::message::{MessageReader, MessageWriter};
 use bevy::ecs::schedule::IntoScheduleConfigs as _;
 use bevy::ecs::system::Query;
-use meloncraft_block::BlockState;
-use meloncraft_block::dirt::Dirt;
-use meloncraft_chunk::block::Block;
-use meloncraft_chunk::Chunk;
 use meloncraft_client::connection::ClientConnection;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_core::Identifier;
@@ -14,7 +10,7 @@ use meloncraft_packets::{ClientboundGameEvent, ClientboundPlayLogin, Clientbound
 use meloncraft_packets::ServerboundAcknowledgeFinishConfiguration;
 use meloncraft_player::GameProfile;
 use meloncraft_protocol_types::{AddPlayerAction, PlayerAction, PrefixedArray};
-use meloncraft_world::messages::SendChunk;
+use meloncraft_world::messages::ChunkRequest;
 
 pub struct MeloncraftInitPlayPlugin;
 
@@ -121,7 +117,7 @@ fn game_event_player_info_update(
 
 fn send_chunks(
     mut game_event_pr: MessageReader<ClientboundGameEvent>,
-    mut send_chunk_mw: MessageWriter<SendChunk>,
+    mut chunk_request_mw: MessageWriter<ChunkRequest>,
     mut set_center_chunk_pw: MessageWriter<ClientboundSetCenterChunk>,
 ) {
     for packet in game_event_pr.read() {
@@ -133,12 +129,10 @@ fn send_chunks(
 
         for z in -10..=10 {
             for x in -10..=10 {
-                let chunk = Chunk::new(vec![Block::new(Dirt{}.to_id()); 16*16*384]);
-                send_chunk_mw.write(SendChunk {
+                chunk_request_mw.write(ChunkRequest {
                     client: packet.client,
                     chunk_x: x,
                     chunk_z: z,
-                    chunk,
                 });
             }
         }

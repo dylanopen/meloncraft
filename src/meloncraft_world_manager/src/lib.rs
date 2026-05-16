@@ -1,5 +1,6 @@
 pub mod marker;
 mod sender;
+mod request_forwarding;
 
 use bevy::app::{App, Plugin, Update};
 use meloncraft_world::world::World;
@@ -12,5 +13,6 @@ impl Plugin for MeloncraftWorldManagerPlugin {
         app.insert_resource(Overworld(World::default()));
 
         app.add_systems(Update, sender::send_chunk);
+        app.add_systems(Update, request_forwarding::send_requested_chunks);
     }
 }
