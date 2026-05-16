@@ -34,6 +34,7 @@ pub fn send_packets(
             }
         }
     }
+    #[expect(clippy::iter_over_hash_type, reason = "We don't mind which clients we send packets to first, unordered iteration is fine.")]
     for (client, packets) in client_packets {
         let mut stream = client_connections
             .get_mut(client)

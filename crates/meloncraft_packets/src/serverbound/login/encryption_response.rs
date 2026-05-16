@@ -21,8 +21,8 @@ impl ServerboundPacket for ServerboundEncryptionResponse {
         ConnectionState::Login
     }
 
-    fn deserialize(incoming: &ServerboundNetworkPacket) -> Option<Self> {
-        let mut incoming = incoming.clone();
+    fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
+        let mut incoming = packet.clone();
         let shared_secret: PrefixedArray<Byte> = incoming.data.net_deserialize().unwrap();
         let shared_secret = shared_secret.0;
         let verify_token: PrefixedArray<Byte> = incoming.data.net_deserialize().unwrap();

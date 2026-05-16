@@ -4,6 +4,7 @@ use meloncraft_client::connection::CLIENT_CONNECTIONS;
 use meloncraft_protocol_types::{ProtocolType, VarInt};
 use std::io::{BufReader, Read};
 use std::net::{TcpListener, TcpStream};
+use std::thread;
 use std::thread::sleep;
 use std::time::Duration;
 
@@ -37,8 +38,8 @@ pub fn handle_client(stream: &TcpStream, entity: Entity) {
             if buf_reader.read_exact(&mut single_byte_buf).is_err() {
                 break; // no more packets to read
             }
-            length_bytes.push(single_byte_buf[0]);
-            if single_byte_buf[0] & VARINT_CONTINUE_BIT == 0 {
+            length_bytes.push(*single_byte_buf.first().unwrap());
+            if single_byte_buf.first().unwrap() & VARINT_CONTINUE_BIT == 0 {
                 break; // no more data in varint to read
             }
         }
@@ -68,7 +69,7 @@ pub fn handle_client(stream: &TcpStream, entity: Entity) {
     }
 }
 
-pub fn receive_new_clients(tcp_listener: &TcpListener) {
+pub fn receive_new_clients(tcp_listener: &TcpListener) -> ! {
     loop {
         for stream in tcp_listener.incoming() {
             match stream {
@@ -80,5 +81,6 @@ pub fn receive_new_clients(tcp_listener: &TcpListener) {
                 }
             }
         }
+        thread::sleep(Duration::from_millis(CONNECTION_SLEEP_DURATION));
     }
 }

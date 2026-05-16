@@ -54,7 +54,7 @@ pub fn list(mut payload: Vec<NbtValue>) -> Vec<u8> {
     }
 
     // check if all same type
-    if !payload.iter().all(|v| v.to_id() == payload[0].to_id()) {
+    if !payload.iter().all(|v| v.to_id() == payload.first().unwrap().to_id()) {
         // make all same type by converting to compound of key "":
         for value in &mut payload {
             if let NbtValue::Compound(_) = value {} else {
@@ -67,7 +67,7 @@ pub fn list(mut payload: Vec<NbtValue>) -> Vec<u8> {
         }
     }
 
-    let tag_id: u8 = payload[0].to_id();
+    let tag_id = payload.first().unwrap().to_id();
     output.extend(tag_id.net_serialize());
     let length: i32 = payload.len().try_into().unwrap();
     output.extend(length.net_serialize());

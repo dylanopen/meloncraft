@@ -11,9 +11,9 @@ impl ProtocolType for String {
         if data.len() < length {
             return Err(());
         }
-        let string_bytes = &data.clone()[..length];
+        let string_bytes = data.get(..length).ok_or(())?.to_vec();
         data.drain(..length);
 
-        String::from_utf8(string_bytes.to_vec()).map_err(|_| ())
+        String::from_utf8(string_bytes).map_err(|_| ())
     }
 }

@@ -15,11 +15,11 @@ pub struct ClientConnection {
 
 impl Clone for ClientConnection {
     fn clone(&self) -> Self {
-        return ClientConnection {
+        ClientConnection {
             tcp_stream: self.tcp_stream.try_clone().unwrap(),
             state: self.state,
             address: self.address,
-        };
+        }
     }
 }
 

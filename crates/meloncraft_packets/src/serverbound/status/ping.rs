@@ -17,8 +17,8 @@ impl ServerboundPacket for ServerboundStatusPing {
     fn state() -> ConnectionState {
         ConnectionState::Status
     }
-    fn deserialize(incoming: &ServerboundNetworkPacket) -> Option<Self> {
-        let mut incoming = incoming.clone();
+    fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
+        let mut incoming = packet.clone();
         let client = incoming.client;
         let timestamp = i64::net_deserialize(&mut incoming.data).unwrap();
         Some(ServerboundStatusPing { client, timestamp })

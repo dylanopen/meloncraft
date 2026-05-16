@@ -8,9 +8,9 @@ impl ProtocolType for RegistryEntry {
         output
     }
 
-    fn net_deserialize(bytes: &mut Vec<u8>) -> Result<Self, ()> {
-        let id = bytes.net_deserialize()?;
-        let data = bytes.net_deserialize()?;
-        Ok(Self { id, data })
+    fn net_deserialize(data: &mut Vec<u8>) -> Result<Self, ()> {
+        let id = data.net_deserialize()?;
+        let nbt_value = data.net_deserialize()?;
+        Ok(Self { id, data: nbt_value })
     }
 }

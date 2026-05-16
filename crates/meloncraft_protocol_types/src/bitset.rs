@@ -26,7 +26,7 @@ impl BitSet {
     #[must_use]
     pub fn get(&mut self, pos: usize) -> bool {
         let (index, bit_pos) = self.get_location(pos);
-        (self.bits[index] & (1 << bit_pos)) != 0
+        (self.bits.get(index).unwrap() & (1 << bit_pos)) != 0
     }
 
     #[must_use]
@@ -39,16 +39,19 @@ impl BitSet {
         (index, bit_pos)
     }
 
+    #[expect(clippy::indexing_slicing, reason = "Much simpler to mutate value than .get_mut(index).unwrap()")]
     pub fn set(&mut self, pos: usize) {
         let (index, bit_pos) = self.get_location(pos);
         self.bits[index] |= 1 << bit_pos;
     }
 
+    #[expect(clippy::indexing_slicing, reason = "Much simpler to mutate value than .get_mut(index).unwrap()")]
     pub fn unset(&mut self, pos: usize) {
         let (index, bit_pos) = self.get_location(pos);
         self.bits[index] &= !(1 << bit_pos);
     }
 
+    #[expect(clippy::indexing_slicing, reason = "Much simpler to mutate value than .get_mut(index).unwrap()")]
     pub fn toggle(&mut self, pos: usize) {
         let (index, bit_pos) = self.get_location(pos);
         self.bits[index] ^= 1 << bit_pos;

@@ -33,7 +33,7 @@ impl NbtCompound {
         let mut current_compound = self;
         while !tree.is_empty() {
             if tree.len() == 1 {
-                return current_compound.get(tree[0]);
+                return current_compound.get(tree.first()?);
             }
             let NbtValue::Compound(compound) = current_compound.get_value(tree.remove(0))? else {
                 return None;
@@ -56,7 +56,7 @@ impl NbtCompound {
         let mut current_compound = self;
         while !tree.is_empty() {
             if tree.len() == 1 {
-                return current_compound.get_mut(tree[0]);
+                return current_compound.get_mut(tree.first()?);
             }
             let NbtValue::Compound(compound) = current_compound.get_value_mut(tree.remove(0))? else {
                 return None;

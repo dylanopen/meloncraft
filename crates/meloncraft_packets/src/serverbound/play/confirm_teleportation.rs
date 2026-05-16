@@ -17,8 +17,8 @@ impl ServerboundPacket for ServerboundConfirmTeleportation {
     fn state() -> ConnectionState {
         ConnectionState::Play
     }
-    fn deserialize(incoming: &ServerboundNetworkPacket) -> Option<Self> {
-        let mut incoming = incoming.clone();
+    fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
+        let mut incoming = packet.clone();
         let client = incoming.client;
         let teleport_id = VarInt::net_deserialize(&mut incoming.data).unwrap().0;
         Some(Self { client, teleport_id })

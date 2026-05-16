@@ -15,8 +15,8 @@ impl ServerboundPacket for ServerboundAcknowledgeFinishConfiguration {
     fn state() -> ConnectionState {
         ConnectionState::Configuration
     }
-    fn deserialize(incoming: &ServerboundNetworkPacket) -> Option<Self> {
-        let client = incoming.client;
+    fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
+        let client = packet.client;
         Some(ServerboundAcknowledgeFinishConfiguration { client })
     }
 }

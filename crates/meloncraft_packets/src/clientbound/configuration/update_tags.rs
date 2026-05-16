@@ -9,7 +9,7 @@ use meloncraft_registry::RegistryTags;
 #[derive(Message, Debug, Clone)]
 pub struct ClientboundUpdateTags {
     pub client: Entity,
-    registries: Vec<RegistryTags>,
+    pub registries: Vec<RegistryTags>,
 }
 
 impl ClientboundPacket for ClientboundUpdateTags {

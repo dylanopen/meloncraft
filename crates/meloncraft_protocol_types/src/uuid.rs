@@ -11,7 +11,7 @@ impl ProtocolType for Uuid {
             return Err(());
         }
         let drained_data = data.drain(0..16);
-        let output: u128 = u128::from_be_bytes(drained_data.as_slice().try_into().map_err(|_| ())?);
+        let output = u128::from_be_bytes(drained_data.as_slice().try_into().map_err(|_| ())?);
         Ok(Uuid(output))
     }
 }
