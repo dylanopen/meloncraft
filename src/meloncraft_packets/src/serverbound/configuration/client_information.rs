@@ -5,7 +5,7 @@ use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::ServerboundNetworkPacket;
 use meloncraft_player::{
     AllowPlayerListings, ChatColors, ChatMode, DisplayedSkinParts, EnableTextFiltering, Locale,
-    MainHand, ParticleRenderingMode, ViewDistance,
+    MainHand, ParticleRenderingMode, ClientViewDistance,
 };
 use meloncraft_protocol_types::{Byte, ProtocolBuffer as _, VarInt};
 
@@ -13,7 +13,7 @@ use meloncraft_protocol_types::{Byte, ProtocolBuffer as _, VarInt};
 pub struct ServerboundClientInformation {
     pub client: Entity,
     pub locale: Locale,
-    pub view_distance: ViewDistance,
+    pub view_distance: ClientViewDistance,
     pub chat_mode: ChatMode,
     pub chat_colors: ChatColors,
     pub displayed_skin_parts: DisplayedSkinParts,
@@ -36,7 +36,7 @@ impl ServerboundPacket for ServerboundClientInformation {
         let client = packet.client;
         let locale = Locale(data.net_deserialize().unwrap());
         let view_distance: Byte = data.net_deserialize().unwrap();
-        let view_distance = ViewDistance(view_distance.0.try_into().unwrap());
+        let view_distance = ClientViewDistance(view_distance.0.try_into().unwrap());
         let chat_mode: VarInt = data.net_deserialize().unwrap();
         let chat_mode = ChatMode::try_from(chat_mode.0).unwrap();
         let chat_colors: bool = data.net_deserialize().unwrap();

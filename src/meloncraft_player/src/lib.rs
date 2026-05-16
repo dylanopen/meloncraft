@@ -23,4 +23,4 @@ pub use particle_rendering::ParticleRenderingMode;
 pub use text_filtering::EnableTextFiltering;
 pub use username::Username;
 pub use uuid::Uuid;
-pub use view_distance::ViewDistance;
+pub use view_distance::ClientViewDistance;
