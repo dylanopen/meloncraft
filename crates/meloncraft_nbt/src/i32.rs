@@ -1,6 +1,6 @@
 use std::ops::{Deref, DerefMut};
 
-#[derive(Debug, Clone, PartialEq)]
+#[derive(Debug, Clone, Eq, PartialEq)]
 pub struct NbtI32(pub i32);
 
 impl Deref for NbtI32 {

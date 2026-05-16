@@ -1,6 +1,6 @@
 use meloncraft_nbt::{NbtCompound, NbtList, NbtTag, NbtU8, NbtValue};
 
-use crate::ProtocolBuffer;
+use crate::{ProtocolBuffer, ProtocolType};
 
 pub fn tag(data: &mut Vec<u8>) -> Result<NbtTag, ()> {
     let tag_type = tagtype(data)?;
@@ -18,15 +18,13 @@ fn tagtype(data: &mut Vec<u8>) -> Result<u8, ()> {
 }
 
 fn string(data: &mut Vec<u8>) -> Result<String, ()> {
-    let length: i16 = data.net_deserialize()?;
-    if data.len() < length as usize {
+    let length: usize = i32::net_deserialize(data)? as usize;
+    if data.len() < length {
         return Err(());
     }
-    let string_bytes = data.drain(0..length as usize).collect::<Vec<u8>>();
-    match String::from_utf8(string_bytes) {
-        Ok(string) => Ok(string),
-        Err(_) => Err(()),
-    }
+    let string_bytes = data.drain(0..length).collect::<Vec<u8>>();
+    String::from_utf8(string_bytes)
+        .map_or(Err(()), Ok)
 }
 
 pub fn value(tag_type: u8, data: &mut Vec<u8>) -> Result<NbtValue, ()> {

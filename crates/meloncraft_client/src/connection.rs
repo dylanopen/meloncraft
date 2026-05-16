@@ -12,7 +12,7 @@ pub struct ClientConnection {
 }
 
 impl Clone for ClientConnection {
-    fn clone(&self) -> ClientConnection {
+    fn clone(&self) -> Self {
         ClientConnection {
             tcp_stream: self.tcp_stream.try_clone().unwrap(),
             state: self.state,

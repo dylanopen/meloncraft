@@ -1,6 +1,6 @@
 use bevy::prelude::Component;
 
-#[derive(Component, Debug, Clone, Copy, PartialEq)]
+#[derive(Component, Debug, Clone, Copy, Eq, PartialEq)]
 #[repr(i32)]
 pub enum MainHand {
     Left = 0,

@@ -92,11 +92,11 @@ impl NbtCompound {
         self.0.iter().any(|tag| &tag.value == value)
     }
 
-    pub fn len(&self) -> usize {
+    pub const fn len(&self) -> usize {
         self.0.len()
     }
 
-    pub fn is_empty(&self) -> bool {
+    pub const fn is_empty(&self) -> bool {
         self.0.is_empty()
     }
 

@@ -19,7 +19,7 @@ pub enum PlayerAction {
 }
 
 impl PlayerAction {
-    pub fn mask(&self) -> u8 {
+    pub const fn mask(&self) -> u8 {
         match self {
             PlayerAction::AddPlayer(_) => 0x01,
             PlayerAction::InitializeChat(_) => 0x02,

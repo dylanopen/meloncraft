@@ -98,6 +98,7 @@ impl TryFrom<JsonValue> for NbtValue {
     }
 }
 
+#[expect(clippy::fallible_impl_from)]
 impl From<NbtValue> for JsonValue {
     fn from(value: NbtValue) -> Self {
         match value {

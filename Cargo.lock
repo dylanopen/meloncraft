@@ -1262,7 +1262,6 @@ dependencies = [
  "meloncraft_client",
  "meloncraft_core",
  "meloncraft_default_registries",
- "meloncraft_generator",
  "meloncraft_handshaking",
  "meloncraft_init_play",
  "meloncraft_login",

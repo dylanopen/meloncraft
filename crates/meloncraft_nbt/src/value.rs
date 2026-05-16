@@ -77,7 +77,7 @@ impl NbtValue {
         None
     }
 
-    pub fn to_id(&self) -> u8 {
+    pub const fn to_id(&self) -> u8 {
         match self {
             NbtValue::U8(_) => 1,
             NbtValue::I16(_) => 2,

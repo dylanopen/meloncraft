@@ -6,7 +6,7 @@ pub struct BitSet {
 }
 
 impl BitSet {
-    pub fn is_empty(&self) -> bool {
+    pub const fn is_empty(&self) -> bool {
         self.bits.is_empty()
     }
 
@@ -16,7 +16,7 @@ impl BitSet {
         }
     }
 
-    pub fn capacity(&self) -> usize {
+    pub const fn capacity(&self) -> usize {
         self.bits.len() * 64
     }
 
