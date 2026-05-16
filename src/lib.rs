@@ -14,3 +14,4 @@ pub use meloncraft_server_list as server_list;
 pub use meloncraft_text as text;
 pub use meloncraft_block as block;
 pub use meloncraft_chunk as chunk;
+pub use meloncraft_join as join;
