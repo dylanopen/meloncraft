@@ -1459,6 +1459,8 @@ version = "0.1.0"
 dependencies = [
  "bevy",
  "meloncraft_chunk",
+ "meloncraft_packets",
+ "meloncraft_protocol_types",
 ]
 
 [[package]]
