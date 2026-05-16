@@ -1,3 +1,4 @@
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub struct EntityPositionFlags {
     pub on_ground: bool,
     pub pushing_against_wall: bool,

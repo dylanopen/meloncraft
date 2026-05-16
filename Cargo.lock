@@ -1317,6 +1317,9 @@ dependencies = [
 [[package]]
 name = "meloncraft_entity_position"
 version = "0.1.0"
+dependencies = [
+ "bevy",
+]
 
 [[package]]
 name = "meloncraft_generator"
