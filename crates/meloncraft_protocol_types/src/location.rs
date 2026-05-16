@@ -16,9 +16,9 @@ impl ProtocolType for NetworkLocation {
     fn net_deserialize(data: &mut Vec<u8>) -> Result<Self, ()> {
         let long = i64::net_deserialize(data)?;
         Ok(Self {
-            x: (long >> 38) as i32,
-            y: (long << 52 >> 52) as i32,
-            z: (long << 26 >> 38) as i32,
+            x: (long >> 38).try_into().unwrap(),
+            y: (long << 52 >> 52).try_into().unwrap(),
+            z: (long << 26 >> 38).try_into().unwrap(),
         })
     }
 }

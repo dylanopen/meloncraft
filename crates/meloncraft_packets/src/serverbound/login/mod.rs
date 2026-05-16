@@ -1,4 +1,6 @@
 mod encryption_response;
+
+use bevy::app::App;
 pub use encryption_response::ServerboundEncryptionResponse;
 
 mod login_acknowledged;
@@ -7,7 +9,7 @@ pub use login_acknowledged::ServerboundLoginAcknowledged;
 mod login_start;
 pub use login_start::ServerboundLoginStart;
 
-pub fn register_serverbound_login_packets(app: &mut bevy::app::App) {
+pub fn register_serverbound_login_packets(app: &mut App) {
     use crate::serverbound_messenger::fwd;
     use bevy::app::PreUpdate;
 

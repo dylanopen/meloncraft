@@ -1,4 +1,4 @@
-use meloncraft_nbt::{NbtCompound, NbtList, NbtTag, NbtU8, NbtValue};
+use meloncraft_nbt::{NbtCompound, NbtI16, NbtI32, NbtList, NbtTag, NbtU8, NbtValue};
 
 use crate::{ProtocolBuffer, ProtocolType};
 
@@ -35,11 +35,11 @@ pub fn value(tag_type: u8, data: &mut Vec<u8>) -> Result<NbtValue, ()> {
         }
         2 => {
             let val: i16 = data.net_deserialize()?;
-            Ok(NbtValue::I16(meloncraft_nbt::NbtI16(val)))
+            Ok(NbtValue::I16(NbtI16(val)))
         }
         3 => {
             let val: i32 = data.net_deserialize()?;
-            Ok(NbtValue::I32(meloncraft_nbt::NbtI32(val)))
+            Ok(NbtValue::I32(NbtI32(val)))
         }
         4 => {
             let val: i64 = data.net_deserialize()?;

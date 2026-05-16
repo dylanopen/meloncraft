@@ -35,7 +35,7 @@ impl ProtocolType for GameEventType {
             GameEventType::EndRaining => (2, 0f32),
             GameEventType::ChangeGameMode(mode) => (3, u8::from(*mode).into()),
             GameEventType::WinGame(ShouldShowCredits(show_credits)) => (4, if *show_credits { 1.0 } else { 0.0 }),
-            GameEventType::DemoEvent(event) => (5, (*event as u8).into()),
+            GameEventType::DemoEvent(event) => (5, (*event).into()),
             GameEventType::ArrowHitPlayer => (6, 0f32),
             GameEventType::RainLevelChange(intensity) => (7, intensity.0),
             GameEventType::ThunderLevelChange(intensity) => (8, intensity.0),

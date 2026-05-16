@@ -1,6 +1,7 @@
 use bevy::ecs::entity::Entity;
 use bevy::ecs::message::Message;
 use meloncraft_client::connection_state::ConnectionState;
+use meloncraft_network::packet::ClientboundNetworkPacket;
 use meloncraft_protocol_types::{ProtocolType, VarInt};
 
 use crate::clientbound_packet::ClientboundPacket;
@@ -28,7 +29,7 @@ impl ClientboundPacket for ClientboundSynchronizePlayerPosition {
         ConnectionState::Play
     }
 
-    fn serialize(&self) -> Option<meloncraft_network::packet::ClientboundNetworkPacket> {
+    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let mut data = Vec::new();
         data.extend(VarInt(self.teleport_id).net_serialize());
         data.extend(self.x.net_serialize());
@@ -40,7 +41,7 @@ impl ClientboundPacket for ClientboundSynchronizePlayerPosition {
         data.extend(self.yaw.net_serialize());
         data.extend(self.pitch.net_serialize());
         data.extend(0i32.net_serialize()); // teleport flags, I think 0 will work fine?
-        Some(meloncraft_network::packet::ClientboundNetworkPacket {
+        Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data,

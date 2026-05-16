@@ -1,4 +1,6 @@
 mod client_information;
+
+use bevy::app::App;
 pub use client_information::ServerboundClientInformation;
 
 mod cookie_response;
@@ -25,10 +27,10 @@ pub use accept_code_of_conduct::ServerboundAcceptCodeOfConduct;
 mod acknowledge_finish_configuration;
 pub use acknowledge_finish_configuration::ServerboundAcknowledgeFinishConfiguration;
 
-pub fn register_serverbound_configuration_packets(app: &mut bevy::app::App) {
+pub fn register_serverbound_configuration_packets(app: &mut App) {
     use crate::serverbound_messenger::fwd;
     use bevy::app::PreUpdate;
-    
+
     app.add_message::<ServerboundClientInformation>();
     app.add_systems(PreUpdate, fwd::<ServerboundClientInformation>);
 

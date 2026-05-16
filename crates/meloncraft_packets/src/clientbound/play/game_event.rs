@@ -1,5 +1,7 @@
 use bevy::ecs::entity::Entity;
 use bevy::ecs::message::Message;
+use meloncraft_client::connection_state::ConnectionState;
+use meloncraft_network::packet::ClientboundNetworkPacket;
 use meloncraft_protocol_types::{GameEventType, ProtocolType};
 
 use crate::clientbound_packet::ClientboundPacket;
@@ -15,15 +17,15 @@ impl ClientboundPacket for ClientboundGameEvent {
         0x26
     }
 
-    fn state() -> meloncraft_client::connection_state::ConnectionState {
-        meloncraft_client::connection_state::ConnectionState::Play
+    fn state() -> ConnectionState {
+        ConnectionState::Play
     }
 
-    fn serialize(&self) -> Option<meloncraft_network::packet::ClientboundNetworkPacket> {
+    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let mut data = Vec::new();
         data.extend(self.event.net_serialize());
 
-        Some(meloncraft_network::packet::ClientboundNetworkPacket {
+        Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data,

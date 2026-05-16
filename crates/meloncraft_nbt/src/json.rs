@@ -32,8 +32,8 @@ impl TryFrom<JsonValue> for NbtValue {
                     return Ok(NbtValue::I64(crate::NbtI64(i)));
                 }
                 if let Some(f) = val.as_f64() {
-                    #[allow(clippy::cast_possible_truncation, reason = "That's exactly what we're testing for, we want to see if it gets changed")]
-                    if (f64::from(f as f32) - f) <= 0.000_001 {
+                    #[expect(clippy::as_conversions, clippy::cast_possible_truncation, reason = "This is what we're testing for: we want to see if it gets rounded / is out of bounds")]
+                    if (f64::from(f as f32) - f) <= 0.000_000_1 {
                         // convert to f32 if possible without a loss of precision
                         return Ok(NbtValue::F32(NbtF32(f as f32)));
                     }
@@ -99,7 +99,7 @@ impl TryFrom<JsonValue> for NbtValue {
     }
 }
 
-#[expect(clippy::fallible_impl_from)]
+#[expect(clippy::fallible_impl_from, reason = "This code is not used currently anyway. But all unwraps should be infallible anyway, just due to conversions.")]
 impl From<NbtValue> for JsonValue {
     fn from(value: NbtValue) -> Self {
         match value {

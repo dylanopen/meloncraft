@@ -34,6 +34,23 @@ impl TryFrom<i32> for BuiltinPauseMenuLabel {
     }
 }
 
+impl From<BuiltinPauseMenuLabel> for i32 {
+    fn from(label: BuiltinPauseMenuLabel) -> Self {
+        match label {
+            BuiltinPauseMenuLabel::BugReport => 0,
+            BuiltinPauseMenuLabel::CommunityGuidelines => 1,
+            BuiltinPauseMenuLabel::Support => 2,
+            BuiltinPauseMenuLabel::Status => 3,
+            BuiltinPauseMenuLabel::Feedback => 4,
+            BuiltinPauseMenuLabel::Community => 5,
+            BuiltinPauseMenuLabel::Website => 6,
+            BuiltinPauseMenuLabel::Forums => 7,
+            BuiltinPauseMenuLabel::News => 8,
+            BuiltinPauseMenuLabel::Announcements => 9,
+        }
+    }
+}
+
 #[derive(Debug, Clone)]
 pub struct CustomPauseMenuLabel(pub NbtText);
 

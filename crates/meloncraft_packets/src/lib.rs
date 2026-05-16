@@ -1,3 +1,5 @@
+extern crate core;
+
 pub mod clientbound_packet;
 pub mod serverbound_packet;
 

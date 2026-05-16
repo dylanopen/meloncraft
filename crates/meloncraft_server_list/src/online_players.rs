@@ -17,7 +17,6 @@ impl DerefMut for OnlinePlayers {
     }
 }
 
-#[expect(clippy::derivable_impls)]
 impl Default for OnlinePlayers {
     fn default() -> Self {
         Self(0)

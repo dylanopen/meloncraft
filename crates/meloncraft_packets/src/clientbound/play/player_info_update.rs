@@ -35,7 +35,7 @@ impl ClientboundPacket for ClientboundPlayerInfoUpdate {
             }
         }
 
-        Some(meloncraft_network::packet::ClientboundNetworkPacket {
+        Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data,

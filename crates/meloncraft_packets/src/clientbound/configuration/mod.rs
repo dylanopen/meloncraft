@@ -1,4 +1,6 @@
 pub mod add_resource_pack;
+
+use bevy::app::App;
 pub use add_resource_pack::ClientboundAddResourcePack;
 
 pub mod clear_dialog;
@@ -55,7 +57,7 @@ pub use transfer::ClientboundTransfer;
 pub mod update_tags;
 pub use update_tags::ClientboundUpdateTags;
 
-pub fn register_clientbound_configuration_packets(app: &mut bevy::app::App) {
+pub fn register_clientbound_configuration_packets(app: &mut App) {
     use crate::clientbound_messenger::fwd;
     use bevy::app::PostUpdate;
 

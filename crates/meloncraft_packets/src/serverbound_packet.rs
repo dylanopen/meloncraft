@@ -1,3 +1,4 @@
+use core::fmt;
 use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
@@ -20,7 +21,7 @@ pub enum ServerboundPacketParseError {
 }
 
 impl Display for ServerboundPacketParseError {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
             ServerboundPacketParseError::ClientNonExistent {
                 packet_client: client,

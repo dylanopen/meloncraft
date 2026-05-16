@@ -2,7 +2,7 @@ use crate::{PrefixedArray, ProtocolType};
 
 #[derive(Debug, Clone, PartialEq, Eq, Default)]
 pub struct BitSet {
-    pub(crate) bits: Vec<i64>,
+    pub bits: Vec<i64>,
 }
 
 impl BitSet {

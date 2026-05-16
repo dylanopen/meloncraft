@@ -1,4 +1,6 @@
 mod login;
+
+use bevy::app::App;
 pub use login::ClientboundPlayLogin;
 
 mod synchronize_player_position;
@@ -16,7 +18,7 @@ pub use chunk_data::ClientboundChunkData;
 mod set_center_chunk;
 pub use set_center_chunk::ClientboundSetCenterChunk;
 
-pub fn register_clientbound_play_packets(app: &mut bevy::app::App) {
+pub fn register_clientbound_play_packets(app: &mut App) {
     use crate::clientbound_messenger::fwd;
     use bevy::app::PostUpdate;
 

@@ -6,6 +6,6 @@ pub struct Biome {
 impl Biome {
     #[must_use]
     pub const fn new(state_id: i32) -> Self {
-        Self { state_id }
+        return Self { state_id };
     }
 }

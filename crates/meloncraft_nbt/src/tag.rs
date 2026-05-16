@@ -9,6 +9,6 @@ pub struct NbtTag {
 impl NbtTag {
     #[must_use]
     pub const fn new(key: String, value: NbtValue) -> Self {
-        NbtTag { key, value }
+        return NbtTag { key, value };
     }
 }

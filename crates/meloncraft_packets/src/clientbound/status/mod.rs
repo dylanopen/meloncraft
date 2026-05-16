@@ -1,10 +1,12 @@
 mod status_response;
+
+use bevy::app::App;
 pub use status_response::ClientboundStatusResponse;
 
 mod pong;
 pub use pong::ClientboundPong;
 
-pub fn register_clientbound_status_packets(app: &mut bevy::app::App) {
+pub fn register_clientbound_status_packets(app: &mut App) {
     use crate::clientbound_messenger::fwd;
     use bevy::app::PostUpdate;
 
