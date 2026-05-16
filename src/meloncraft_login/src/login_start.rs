@@ -4,7 +4,7 @@ use meloncraft_packets::ServerboundLoginStart;
 use meloncraft_player::GameProfile;
 use crate::messages::OfflineLoggedIn;
 
-pub fn login_offline_unencrypted_listener(
+pub fn login_offline_unencrypted_fwd(
     mut login_start_pr: MessageReader<ServerboundLoginStart>,
     encryption_mode: Res<EncryptionMode>,
     mut offline_logged_in_mw: MessageWriter<OfflineLoggedIn>,
