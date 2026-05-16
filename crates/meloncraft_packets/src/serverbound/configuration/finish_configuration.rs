@@ -10,15 +10,15 @@ pub struct ServerboundFinishConfiguration {
 
 impl ServerboundPacket for ServerboundFinishConfiguration {
     fn id() -> i32 {
-        0x03
+        return 0x03
     }
     fn state() -> ConnectionState {
-        ConnectionState::Configuration
+        return ConnectionState::Configuration
     }
 
     fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
         let client = packet.client;
 
-        Some(Self { client })
+        return Some(Self { client })
     }
 }

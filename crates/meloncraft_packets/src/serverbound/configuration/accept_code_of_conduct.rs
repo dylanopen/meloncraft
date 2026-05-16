@@ -10,15 +10,15 @@ pub struct ServerboundAcceptCodeOfConduct {
 
 impl ServerboundPacket for ServerboundAcceptCodeOfConduct {
     fn id() -> i32 {
-        0x09
+        return 0x09
     }
     fn state() -> ConnectionState {
-        ConnectionState::Configuration
+        return ConnectionState::Configuration
     }
 
     fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
         let client = packet.client;
 
-        Some(Self { client })
+        return Some(Self { client })
     }
 }

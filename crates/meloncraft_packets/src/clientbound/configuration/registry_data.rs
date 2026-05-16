@@ -17,11 +17,11 @@ pub struct ClientboundRegistryData {
 
 impl ClientboundPacket for ClientboundRegistryData {
     fn id() -> i32 {
-        0x07
+        return 0x07
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Configuration
+        return ConnectionState::Configuration
     }
 
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
@@ -36,7 +36,7 @@ impl ClientboundPacket for ClientboundRegistryData {
             entries_data.extend(entry_compound.net_serialize());
         }
         data.extend(PrefixedArray(entries_data).net_serialize());
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data,

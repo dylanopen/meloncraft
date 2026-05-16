@@ -14,10 +14,10 @@ pub struct ServerboundCookieResponse {
 
 impl ServerboundPacket for ServerboundCookieResponse {
     fn id() -> i32 {
-        0x01
+        return 0x01
     }
     fn state() -> ConnectionState {
-        ConnectionState::Configuration
+        return ConnectionState::Configuration
     }
 
     fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
@@ -26,6 +26,6 @@ impl ServerboundPacket for ServerboundCookieResponse {
         let key = data.net_deserialize().unwrap();
         let value = PrefixedArray::<Byte>::net_deserialize(&mut data).unwrap().0;
 
-        Some(Self { client, key, value })
+        return Some(Self { client, key, value })
     }
 }

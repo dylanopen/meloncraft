@@ -14,16 +14,16 @@ pub struct ClientboundUpdateTags {
 
 impl ClientboundPacket for ClientboundUpdateTags {
     fn id() -> i32 {
-        0x0D
+        return 0x0D
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Configuration
+        return ConnectionState::Configuration
     }
 
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let data = PrefixedArray(self.registries.clone()).net_serialize();
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data,

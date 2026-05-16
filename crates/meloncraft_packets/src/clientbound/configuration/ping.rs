@@ -13,16 +13,16 @@ pub struct ClientboundPing {
 
 impl ClientboundPacket for ClientboundPing {
     fn id() -> i32 {
-        0x05
+        return 0x05
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Configuration
+        return ConnectionState::Configuration
     }
 
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let data = self.id.net_serialize();
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data,

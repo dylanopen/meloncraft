@@ -14,17 +14,17 @@ pub struct ClientboundTransfer {
 
 impl ClientboundPacket for ClientboundTransfer {
     fn id() -> i32 {
-        0x0B
+        return 0x0B
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Configuration
+        return ConnectionState::Configuration
     }
 
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let mut data = self.hostname.net_serialize();
         data.extend(VarInt(self.port.into()).net_serialize());
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data,

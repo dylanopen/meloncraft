@@ -14,11 +14,11 @@ pub struct ClientboundSetCenterChunk {
 
 impl ClientboundPacket for ClientboundSetCenterChunk {
     fn id() -> i32 {
-        0x5C
+        return 0x5C
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Play
+        return ConnectionState::Play
     }
 
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
@@ -27,7 +27,7 @@ impl ClientboundPacket for ClientboundSetCenterChunk {
         data.extend(VarInt(self.x).net_serialize());
         data.extend(VarInt(self.z).net_serialize());
 
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data,

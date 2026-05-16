@@ -14,17 +14,17 @@ pub struct ClientboundCookieRequest {
 
 impl ClientboundPacket for ClientboundCookieRequest {
     fn id() -> i32 {
-        0x00
+        return 0x00
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Configuration
+        return ConnectionState::Configuration
     }
 
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let mut data = Vec::new();
         data.append(&mut self.key.net_serialize());
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data,

@@ -14,16 +14,16 @@ pub struct ClientboundShowDialog {
 
 impl ClientboundPacket for ClientboundShowDialog {
     fn id() -> i32 {
-        0x12
+        return 0x12
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Configuration
+        return ConnectionState::Configuration
     }
 
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let data = self.dialog.net_serialize();
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data,

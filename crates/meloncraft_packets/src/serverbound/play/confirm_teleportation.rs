@@ -12,15 +12,15 @@ pub struct ServerboundConfirmTeleportation {
 
 impl ServerboundPacket for ServerboundConfirmTeleportation {
     fn id() -> i32 {
-        0x00
+        return 0x00
     }
     fn state() -> ConnectionState {
-        ConnectionState::Play
+        return ConnectionState::Play
     }
     fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
         let mut incoming = packet.clone();
         let client = incoming.client;
         let teleport_id = VarInt::net_deserialize(&mut incoming.data).unwrap().0;
-        Some(Self { client, teleport_id })
+        return Some(Self { client, teleport_id })
     }
 }

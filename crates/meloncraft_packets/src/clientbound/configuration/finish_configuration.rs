@@ -11,15 +11,15 @@ pub struct ClientboundFinishConfiguration {
 
 impl ClientboundPacket for ClientboundFinishConfiguration {
     fn id() -> i32 {
-        0x03
+        return 0x03
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Configuration
+        return ConnectionState::Configuration
     }
 
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data: Vec::new(),

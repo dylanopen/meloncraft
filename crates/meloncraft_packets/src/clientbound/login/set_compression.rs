@@ -13,15 +13,15 @@ pub struct ClientboundSetCompression {
 
 impl ClientboundPacket for ClientboundSetCompression {
     fn id() -> i32 {
-        0x03
+        return 0x03
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Login
+        return ConnectionState::Login
     }
 
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.entity,
             id: Self::id(),
             data: self.threshold.net_serialize(),

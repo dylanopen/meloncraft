@@ -14,16 +14,16 @@ pub struct ClientboundCustomReportDetails {
 
 impl ClientboundPacket for ClientboundCustomReportDetails {
     fn id() -> i32 {
-        0x0F
+        return 0x0F
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Configuration
+        return ConnectionState::Configuration
     }
 
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let data = PrefixedArray(self.report.clone()).net_serialize();
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data,

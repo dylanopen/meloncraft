@@ -15,10 +15,10 @@ pub struct ServerboundLoginStart {
 
 impl ServerboundPacket for ServerboundLoginStart {
     fn id() -> i32 {
-        0x00
+        return 0x00
     }
     fn state() -> ConnectionState {
-        ConnectionState::Login
+        return ConnectionState::Login
     }
 
     fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
@@ -26,6 +26,6 @@ impl ServerboundPacket for ServerboundLoginStart {
         let client = incoming.client;
         let name = String::net_deserialize(&mut incoming.data).unwrap();
         let uuid = Uuid::net_deserialize(&mut incoming.data).unwrap();
-        Some(Self { client, name, uuid })
+        return Some(Self { client, name, uuid })
     }
 }

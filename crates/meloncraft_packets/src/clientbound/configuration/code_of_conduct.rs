@@ -13,16 +13,16 @@ pub struct ClientboundCodeOfConduct {
 
 impl ClientboundPacket for ClientboundCodeOfConduct {
     fn id() -> i32 {
-        0x13
+        return 0x13
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Configuration
+        return ConnectionState::Configuration
     }
 
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let data = self.code_of_conduct.net_serialize();
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data,

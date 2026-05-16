@@ -14,16 +14,16 @@ pub struct ClientboundSelectKnownPacks {
 
 impl ClientboundPacket for ClientboundSelectKnownPacks {
     fn id() -> i32 {
-        0x0E
+        return 0x0E
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Configuration
+        return ConnectionState::Configuration
     }
 
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let data = PrefixedArray(self.known_packs.clone()).net_serialize();
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data,

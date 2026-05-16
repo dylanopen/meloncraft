@@ -12,10 +12,10 @@ pub struct ServerboundConfigurationKeepAlive {
 
 impl ServerboundPacket for ServerboundConfigurationKeepAlive {
     fn id() -> i32 {
-        0x04
+        return 0x04
     }
     fn state() -> ConnectionState {
-        ConnectionState::Configuration
+        return ConnectionState::Configuration
     }
 
     fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
@@ -23,6 +23,6 @@ impl ServerboundPacket for ServerboundConfigurationKeepAlive {
         let client = packet.client;
         let id = data.net_deserialize().unwrap();
 
-        Some(Self { client, id })
+        return Some(Self { client, id })
     }
 }

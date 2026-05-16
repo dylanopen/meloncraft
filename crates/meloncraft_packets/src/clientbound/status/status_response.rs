@@ -17,10 +17,10 @@ pub struct ClientboundStatusResponse {
 
 impl ClientboundPacket for ClientboundStatusResponse {
     fn id() -> i32 {
-        0x00
+        return 0x00
     }
     fn state() -> ConnectionState {
-        ConnectionState::Status
+        return ConnectionState::Status
     }
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let json = format!(
@@ -32,7 +32,7 @@ impl ClientboundPacket for ClientboundStatusResponse {
             self.description,
             self.enforces_secure_chat,
         );
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data: json.net_serialize(),

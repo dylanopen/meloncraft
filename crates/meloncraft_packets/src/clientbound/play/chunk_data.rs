@@ -20,11 +20,11 @@ pub struct ClientboundChunkData {
 
 impl ClientboundPacket for ClientboundChunkData {
     fn id() -> i32 {
-        0x2C
+        return 0x2C
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Play
+        return ConnectionState::Play
     }
 
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
@@ -43,7 +43,7 @@ impl ClientboundPacket for ClientboundChunkData {
         data.extend(VarInt(0).net_serialize()); // block entities array length 0, again, not strictly required
         data.extend(self.light.clone().net_serialize());
 
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data,

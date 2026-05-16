@@ -7,18 +7,18 @@ pub struct OnlinePlayers(pub u32);
 impl Deref for OnlinePlayers {
     type Target = u32;
     fn deref(&self) -> &Self::Target {
-        &self.0
+        return &self.0;
     }
 }
 
 impl DerefMut for OnlinePlayers {
     fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.0
+        return &mut self.0;
     }
 }
 
 impl Default for OnlinePlayers {
     fn default() -> Self {
-        Self(0)
+        return Self(0);
     }
 }

@@ -14,15 +14,15 @@ pub struct ClientboundConfigurationDisconnect {
 
 impl ClientboundPacket for ClientboundConfigurationDisconnect {
     fn id() -> i32 {
-        0x02
+        return 0x02
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Configuration
+        return ConnectionState::Configuration
     }
 
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data: self.reason.net_serialize(),

@@ -15,17 +15,17 @@ pub struct ClientboundStoreCookie {
 
 impl ClientboundPacket for ClientboundStoreCookie {
     fn id() -> i32 {
-        0x0A
+        return 0x0A
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Configuration
+        return ConnectionState::Configuration
     }
 
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let mut data = self.key.net_serialize();
         data.extend(PrefixedArray(self.value.clone()).net_serialize());
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data,

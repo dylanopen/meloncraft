@@ -16,10 +16,10 @@ pub struct ServerboundIntention {
 
 impl ServerboundPacket for ServerboundIntention {
     fn id() -> i32 {
-        0x00
+        return 0x00
     }
     fn state() -> ConnectionState {
-        ConnectionState::Handshaking
+        return ConnectionState::Handshaking
     }
     fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
         let mut incoming = packet.clone();
@@ -32,7 +32,7 @@ impl ServerboundPacket for ServerboundIntention {
             _ => return None, // TODO: log this
         };
 
-        Some(ServerboundIntention {
+        return Some(ServerboundIntention {
             client: incoming.client,
             protocol_version,
             server_address,

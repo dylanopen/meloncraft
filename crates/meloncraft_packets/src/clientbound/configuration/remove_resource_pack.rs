@@ -14,15 +14,15 @@ pub struct ClientboundRemoveResourcePack {
 
 impl ClientboundPacket for ClientboundRemoveResourcePack {
     fn id() -> i32 {
-        0x08
+        return 0x08
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Configuration
+        return ConnectionState::Configuration
     }
 
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data: self.resource_pack_uuid.net_serialize(),

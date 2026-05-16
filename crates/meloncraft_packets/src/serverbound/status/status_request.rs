@@ -11,13 +11,13 @@ pub struct ServerboundStatusRequest {
 
 impl ServerboundPacket for ServerboundStatusRequest {
     fn id() -> i32 {
-        0x00
+        return 0x00
     }
     fn state() -> ConnectionState {
-        ConnectionState::Status
+        return ConnectionState::Status
     }
     fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
-        Some(ServerboundStatusRequest {
+        return Some(ServerboundStatusRequest {
             client: packet.client,
         })
     }

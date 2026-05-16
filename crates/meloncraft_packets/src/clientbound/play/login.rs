@@ -35,10 +35,10 @@ pub struct ClientboundPlayLogin {
 
 impl ClientboundPacket for ClientboundPlayLogin {
     fn id() -> i32 {
-        0x30
+        return 0x30
     }
     fn state() -> ConnectionState {
-        ConnectionState::Play
+        return ConnectionState::Play
     }
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let mut data = Vec::new();
@@ -67,7 +67,7 @@ impl ClientboundPacket for ClientboundPlayLogin {
         data.extend(VarInt(self.portal_cooldown).net_serialize());
         data.extend(VarInt(self.sea_level).net_serialize());
         data.extend(self.enforces_secure_chat.net_serialize());
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data,

@@ -19,11 +19,11 @@ pub struct ClientboundAddResourcePack {
 
 impl ClientboundPacket for ClientboundAddResourcePack {
     fn id() -> i32 {
-        0x09
+        return 0x09
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Configuration
+        return ConnectionState::Configuration
     }
 
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
@@ -32,7 +32,7 @@ impl ClientboundPacket for ClientboundAddResourcePack {
         data.extend(self.sha1_hash.net_serialize());
         data.extend(self.force_accept.net_serialize());
         data.extend(self.prompt_message.net_serialize());
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data,

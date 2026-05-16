@@ -14,15 +14,15 @@ pub struct ClientboundLoginSuccess {
 
 impl ClientboundPacket for ClientboundLoginSuccess {
     fn id() -> i32 {
-        0x02
+        return 0x02
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Login
+        return ConnectionState::Login
     }
 
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data: self.game_profile.net_serialize(),

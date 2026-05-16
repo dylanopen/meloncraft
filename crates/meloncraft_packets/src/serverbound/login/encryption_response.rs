@@ -14,11 +14,11 @@ pub struct ServerboundEncryptionResponse {
 
 impl ServerboundPacket for ServerboundEncryptionResponse {
     fn id() -> i32 {
-        0x01
+        return 0x01
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Login
+        return ConnectionState::Login
     }
 
     fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
@@ -27,7 +27,7 @@ impl ServerboundPacket for ServerboundEncryptionResponse {
         let shared_secret = shared_secret.0;
         let verify_token: PrefixedArray<Byte> = incoming.data.net_deserialize().unwrap();
         let verify_token = verify_token.0;
-        Some(Self {
+        return Some(Self {
             client: incoming.client,
             shared_secret,
             verify_token,

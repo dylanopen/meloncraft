@@ -14,16 +14,16 @@ pub struct ClientboundServerLinks {
 
 impl ClientboundPacket for ClientboundServerLinks {
     fn id() -> i32 {
-        0x10
+        return 0x10
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Configuration
+        return ConnectionState::Configuration
     }
 
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let data = PrefixedArray(self.links.clone()).net_serialize();
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data,

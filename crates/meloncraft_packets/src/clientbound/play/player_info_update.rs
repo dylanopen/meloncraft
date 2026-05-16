@@ -16,11 +16,11 @@ pub struct ClientboundPlayerInfoUpdate {
 
 impl ClientboundPacket for ClientboundPlayerInfoUpdate {
     fn id() -> i32 {
-        0x44
+        return 0x44
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Play
+        return ConnectionState::Play
     }
 
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
@@ -35,7 +35,7 @@ impl ClientboundPacket for ClientboundPlayerInfoUpdate {
             }
         }
 
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data,

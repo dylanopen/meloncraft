@@ -22,11 +22,11 @@ pub struct ClientboundSynchronizePlayerPosition {
 
 impl ClientboundPacket for ClientboundSynchronizePlayerPosition {
     fn id() -> i32 {
-        0x46
+        return 0x46
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Play
+        return ConnectionState::Play
     }
 
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
@@ -41,7 +41,7 @@ impl ClientboundPacket for ClientboundSynchronizePlayerPosition {
         data.extend(self.yaw.net_serialize());
         data.extend(self.pitch.net_serialize());
         data.extend(0_i32.net_serialize()); // teleport flags, I think 0 will work fine?
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data,

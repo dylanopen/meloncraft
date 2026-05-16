@@ -12,15 +12,15 @@ pub struct ServerboundStatusPing {
 
 impl ServerboundPacket for ServerboundStatusPing {
     fn id() -> i32 {
-        0x01
+        return 0x01
     }
     fn state() -> ConnectionState {
-        ConnectionState::Status
+        return ConnectionState::Status
     }
     fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
         let mut incoming = packet.clone();
         let client = incoming.client;
         let timestamp = i64::net_deserialize(&mut incoming.data).unwrap();
-        Some(ServerboundStatusPing { client, timestamp })
+        return Some(ServerboundStatusPing { client, timestamp })
     }
 }

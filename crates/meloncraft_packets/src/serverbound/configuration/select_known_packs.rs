@@ -14,11 +14,11 @@ pub struct ServerboundSelectKnownPacks {
 
 impl ServerboundPacket for ServerboundSelectKnownPacks {
     fn id() -> i32 {
-        0x07
+        return 0x07
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Configuration
+        return ConnectionState::Configuration
     }
 
     fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
@@ -26,7 +26,7 @@ impl ServerboundPacket for ServerboundSelectKnownPacks {
         let client = packet.client;
         let known_packs: PrefixedArray<DatapackMetadata> = data.net_deserialize().unwrap();
         let known_packs = known_packs.0;
-        Some(Self {
+        return Some(Self {
             client,
             known_packs,
         })

@@ -12,13 +12,13 @@ pub struct ClientboundPong {
 
 impl ClientboundPacket for ClientboundPong {
     fn id() -> i32 {
-        0x01
+        return 0x01
     }
     fn state() -> ConnectionState {
-        ConnectionState::Status
+        return ConnectionState::Status
     }
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data: self.timestamp.net_serialize(),

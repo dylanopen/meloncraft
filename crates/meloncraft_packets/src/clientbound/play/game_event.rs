@@ -14,18 +14,18 @@ pub struct ClientboundGameEvent {
 
 impl ClientboundPacket for ClientboundGameEvent {
     fn id() -> i32 {
-        0x26
+        return 0x26
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Play
+        return ConnectionState::Play
     }
 
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let mut data = Vec::new();
         data.extend(self.event.net_serialize());
 
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data,

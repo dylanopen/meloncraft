@@ -14,16 +14,16 @@ pub struct ClientboundSetFeatureFlags {
 
 impl ClientboundPacket for ClientboundSetFeatureFlags {
     fn id() -> i32 {
-        0x0C
+        return 0x0C
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Configuration
+        return ConnectionState::Configuration
     }
 
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let data = PrefixedArray(self.feature_flags.clone()).net_serialize();
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data,

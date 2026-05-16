@@ -25,10 +25,10 @@ pub struct ServerboundClientInformation {
 
 impl ServerboundPacket for ServerboundClientInformation {
     fn id() -> i32 {
-        0x00
+        return 0x00
     }
     fn state() -> ConnectionState {
-        ConnectionState::Configuration
+        return ConnectionState::Configuration
     }
 
     fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
@@ -50,7 +50,7 @@ impl ServerboundPacket for ServerboundClientInformation {
         let particle_rendering_mode =
             ParticleRenderingMode::try_from(particle_rendering_mode.0).unwrap();
 
-        Some(Self {
+        return Some(Self {
             client,
             locale,
             view_distance,

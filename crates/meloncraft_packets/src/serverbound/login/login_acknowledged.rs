@@ -11,15 +11,15 @@ pub struct ServerboundLoginAcknowledged {
 
 impl ServerboundPacket for ServerboundLoginAcknowledged {
     fn id() -> i32 {
-        0x03
+        return 0x03
     }
 
     fn state() -> ConnectionState {
-        ConnectionState::Login
+        return ConnectionState::Login
     }
 
     fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
-        Some(Self {
+        return Some(Self {
             client: packet.client,
         })
     }

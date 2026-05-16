@@ -15,10 +15,10 @@ pub struct ServerboundResourcePackResponse {
 
 impl ServerboundPacket for ServerboundResourcePackResponse {
     fn id() -> i32 {
-        0x06
+        return 0x06
     }
     fn state() -> ConnectionState {
-        ConnectionState::Configuration
+        return ConnectionState::Configuration
     }
 
     fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
@@ -28,7 +28,7 @@ impl ServerboundPacket for ServerboundResourcePackResponse {
         let load_result: VarInt = data.net_deserialize().unwrap();
         let load_result = ResourcePackLoadResult::try_from(load_result.0).unwrap();
 
-        Some(Self {
+        return Some(Self {
             client,
             uuid,
             load_result,

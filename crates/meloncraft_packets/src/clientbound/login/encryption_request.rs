@@ -16,10 +16,10 @@ pub struct ClientboundEncryptionRequest {
 
 impl ClientboundPacket for ClientboundEncryptionRequest {
     fn id() -> i32 {
-        0x01
+        return 0x01
     }
     fn state() -> ConnectionState {
-        ConnectionState::Login
+        return ConnectionState::Login
     }
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let mut serial = Vec::new();
@@ -28,7 +28,7 @@ impl ClientboundPacket for ClientboundEncryptionRequest {
         serial.append(&mut PrefixedArray::from(self.verify_token.clone()).net_serialize());
         serial.append(&mut self.should_authenticate.net_serialize());
 
-        Some(ClientboundNetworkPacket {
+        return Some(ClientboundNetworkPacket {
             client: self.client,
             id: Self::id(),
             data: serial,

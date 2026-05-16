@@ -10,13 +10,13 @@ pub struct ServerboundAcknowledgeFinishConfiguration {
 
 impl ServerboundPacket for ServerboundAcknowledgeFinishConfiguration {
     fn id() -> i32 {
-        0x03
+        return 0x03
     }
     fn state() -> ConnectionState {
-        ConnectionState::Configuration
+        return ConnectionState::Configuration
     }
     fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
         let client = packet.client;
-        Some(ServerboundAcknowledgeFinishConfiguration { client })
+        return Some(ServerboundAcknowledgeFinishConfiguration { client })
     }
 }
