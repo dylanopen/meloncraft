@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["src/meloncraft_network", "src/meloncraft_packets", "src/meloncraft_protocol_types", "src/meloncraft_client", "src/meloncraft_handshaking", "src/meloncraft_server_list", "src/meloncraft_player", "src/meloncraft_nbt", "src/meloncraft_login", "src/meloncraft_registry", "src/meloncraft_core", "src/meloncraft_text", "src/meloncraft_default_registries", "src/meloncraft_generator", "src/meloncraft_chunk", "tools/block_state_generator", "src/meloncraft_block", "src/meloncraft_join"]
+members = ["src/meloncraft_network", "src/meloncraft_packets", "src/meloncraft_protocol_types", "src/meloncraft_client", "src/meloncraft_handshaking", "src/meloncraft_server_list", "src/meloncraft_player", "src/meloncraft_nbt", "src/meloncraft_login", "src/meloncraft_registry", "src/meloncraft_core", "src/meloncraft_text", "src/meloncraft_default_registries", "src/meloncraft_generator", "src/meloncraft_chunk", "tools/block_state_generator", "src/meloncraft_block", "src/meloncraft_join", "src/meloncraft_world"]
 exclude = [
     "examples"
 ]
@@ -34,6 +34,7 @@ meloncraft_generator = { path = "src/meloncraft_generator" }
 meloncraft_block = { path = "src/meloncraft_block" }
 meloncraft_chunk = { path = "src/meloncraft_chunk" }
 meloncraft_join = { path = "src/meloncraft_join" }
+meloncraft_world = { path = "src/meloncraft_world" }
 
 lazy_static = "1.5.0"
 
@@ -56,6 +57,7 @@ meloncraft_text = { workspace = true }
 meloncraft_block = { workspace = true }
 meloncraft_chunk = { workspace = true }
 meloncraft_join = { workspace = true }
+meloncraft_world = { workspace = true }
 
 [workspace.lints.clippy]
 
