@@ -33,6 +33,6 @@ impl Plugin for MeloncraftLoginPlugin {
         );
         app.add_systems(Update, (select_known_packs, send_registry_data, finish_configuration).chain());
         
-        app.add_message::<messages::OfflineLoginStarted>();
+        app.add_message::<messages::OfflineLoggedIn>();
     }
 }

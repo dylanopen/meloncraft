@@ -1,37 +1,21 @@
 use crate::encryption::EncryptionMode;
-use bevy::ecs::system::Commands;
 use bevy::prelude::{MessageReader, MessageWriter, Res};
-use meloncraft_packets::ClientboundLoginSuccess;
 use meloncraft_packets::ServerboundLoginStart;
 use meloncraft_player::GameProfile;
-use crate::messages::OfflineLoginStarted;
+use crate::messages::OfflineLoggedIn;
 
 pub fn login_offline_unencrypted_listener(
     mut login_start_pr: MessageReader<ServerboundLoginStart>,
     encryption_mode: Res<EncryptionMode>,
-    mut offline_login_started_mw: MessageWriter<OfflineLoginStarted>,
-    mut login_success_pw: MessageWriter<ClientboundLoginSuccess>,
-    mut commands: Commands,
+    mut offline_logged_in_mw: MessageWriter<OfflineLoggedIn>,
 ) {
     if *encryption_mode != EncryptionMode::OfflineUnencrypted {
         return; // we only handle offline-mode and unencrypted in this system
     }
     for packet in login_start_pr.read() {
-        offline_login_started_mw.write(OfflineLoginStarted {
+        offline_logged_in_mw.write(OfflineLoggedIn {
             client: packet.client,
             profile: GameProfile {
-                username: packet.name.clone(),
-                uuid: packet.uuid.clone(),
-            },
-        });
-
-        commands.entity(packet.client).insert(GameProfile {
-            username: packet.name.clone(),
-            uuid: packet.uuid.clone(),
-        });
-        login_success_pw.write(ClientboundLoginSuccess {
-            client: packet.client,
-            game_profile: GameProfile {
                 username: packet.name.clone(),
                 uuid: packet.uuid.clone(),
             },

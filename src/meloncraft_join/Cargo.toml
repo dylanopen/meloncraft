@@ -6,6 +6,8 @@ edition = "2024"
 [dependencies]
 bevy = { workspace = true }
 meloncraft_handshaking = { workspace = true }
+meloncraft_login = { workspace = true }
+meloncraft_packets = { workspace = true }
 
 [lints]
 workspace = true
