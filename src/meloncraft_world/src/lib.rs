@@ -1,5 +1,6 @@
 use bevy::app::{App, Plugin};
 
+pub mod world;
 pub mod messages;
 
 pub struct MeloncraftWorldPlugin;
