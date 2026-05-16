@@ -1,19 +1,19 @@
 use crate::ServerboundPacket;
 use bevy::prelude::{Entity, Message};
 use meloncraft_client::connection_state::ConnectionState;
+use meloncraft_core::GameMode;
 use meloncraft_network::packet::ServerboundNetworkPacket;
-use meloncraft_protocol_types::{ProtocolType as _, VarInt};
+use meloncraft_protocol_types::ProtocolType as _;
 
 #[derive(Message, Debug, Clone)]
-pub struct ServerboundBundleItemSelected {
+pub struct ServerboundChangeGamemode {
     pub client: Entity,
-    pub inventory_slot: i32,
-    pub bundle_slot: i32,
+    pub new_gamemode: GameMode,
 }
 
-impl ServerboundPacket for ServerboundBundleItemSelected {
+impl ServerboundPacket for ServerboundChangeGamemode {
     fn id() -> i32 {
-        return 0x02
+        return 0x04
     }
     fn state() -> ConnectionState {
         return ConnectionState::Play
@@ -22,13 +22,11 @@ impl ServerboundPacket for ServerboundBundleItemSelected {
         let mut incoming = packet.clone();
         let client = incoming.client;
 
-        let inventory_slot = VarInt::net_deserialize(&mut incoming.data).unwrap().0;
-        let bundle_slot = VarInt::net_deserialize(&mut incoming.data).unwrap().0;
+        let new_gamemode = u8::net_deserialize(&mut incoming.data).ok()?.try_into().ok()?;
 
         return Some(Self {
             client,
-            inventory_slot,
-            bundle_slot
+            new_gamemode,
         })
     }
 }

@@ -10,6 +10,9 @@ pub use bundle_item_selected::ServerboundBundleItemSelected;
 mod change_difficulty;
 pub use change_difficulty::ServerboundChangeDifficulty;
 
+mod change_gamemode;
+pub use change_gamemode::ServerboundChangeGamemode;
+
 use bevy::app::App;
 
 pub fn register_serverbound_play_packets(app: &mut App) {
@@ -27,4 +30,7 @@ pub fn register_serverbound_play_packets(app: &mut App) {
 
     app.add_message::<ServerboundChangeDifficulty>();
     app.add_systems(PreUpdate, fwd::<ServerboundChangeDifficulty>);
+    
+    app.add_message::<ServerboundChangeGamemode>();
+    app.add_systems(PreUpdate, fwd::<ServerboundChangeGamemode>);
 }
