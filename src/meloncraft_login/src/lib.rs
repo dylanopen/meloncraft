@@ -6,6 +6,7 @@ mod known_packs;
 mod registry_data;
 mod verify;
 mod finish;
+pub mod messages;
 
 pub use encryption::EncryptionMode;
 
@@ -31,5 +32,7 @@ impl Plugin for MeloncraftLoginPlugin {
             (login_acknowledged_listener, client_information_listener).chain(),
         );
         app.add_systems(Update, (select_known_packs, send_registry_data, finish_configuration).chain());
+        
+        app.add_message::<messages::OfflineLoginStarted>();
     }
 }
