@@ -1,11 +1,9 @@
-pub mod configuration;
-pub mod login;
-pub mod status;
-pub mod play;
+mod configuration;
+mod login;
+mod status;
+mod play;
 
-pub mod all {
-    pub use super::configuration::*;
-    pub use super::login::*;
-    pub use super::status::*;
-    pub use super::play::*;
-}
+pub use configuration::*;
+pub use login::*;
+pub use status::*;
+pub use play::*;

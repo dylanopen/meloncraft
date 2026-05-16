@@ -1,7 +1,7 @@
 use crate::encryption::EncryptionMode;
 use bevy::ecs::system::Commands;
 use bevy::prelude::{MessageReader, MessageWriter, Res};
-use meloncraft_packets::clientbound::login::ClientboundLoginSuccess;
+use meloncraft_packets::ClientboundLoginSuccess;
 use meloncraft_packets::serverbound::login::LoginStart;
 use meloncraft_player::GameProfile;
 

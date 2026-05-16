@@ -55,7 +55,7 @@ pub use transfer::ClientboundTransfer;
 pub mod update_tags;
 pub use update_tags::ClientboundUpdateTags;
 
-pub fn register_packets(app: &mut bevy::app::App) {
+pub fn register_clientbound_configuration_packets(app: &mut bevy::app::App) {
     use crate::clientbound_messenger::fwd;
     use bevy::app::PostUpdate;
 

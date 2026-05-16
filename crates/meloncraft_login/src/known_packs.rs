@@ -1,6 +1,6 @@
 use bevy::prelude::{MessageReader, MessageWriter};
 use meloncraft_core::datapack::DatapackMetadata;
-use meloncraft_packets::clientbound::configuration::ClientboundSelectKnownPacks;
+use meloncraft_packets::ClientboundSelectKnownPacks;
 use meloncraft_packets::serverbound::configuration::ClientInformation;
 
 pub fn select_known_packs(

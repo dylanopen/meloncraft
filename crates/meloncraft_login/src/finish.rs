@@ -1,5 +1,5 @@
 use bevy::prelude::{MessageReader, MessageWriter};
-use meloncraft_packets::clientbound::configuration::ClientboundFinishConfiguration;
+use meloncraft_packets::ClientboundFinishConfiguration;
 use meloncraft_packets::serverbound::configuration::SelectKnownPacks;
 
 pub fn finish_configuration(

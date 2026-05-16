@@ -2,7 +2,7 @@ use crate::max_players::MaxPlayers;
 use crate::motd::Motd;
 use crate::online_players::OnlinePlayers;
 use bevy::prelude::{MessageReader, MessageWriter, Res};
-use meloncraft_packets::clientbound::status::ClientboundStatusResponse;
+use meloncraft_packets::ClientboundStatusResponse;
 use meloncraft_packets::serverbound::status::StatusRequest;
 
 pub fn respond_to_status_request(

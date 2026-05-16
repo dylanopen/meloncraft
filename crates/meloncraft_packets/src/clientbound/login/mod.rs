@@ -10,7 +10,7 @@ pub use login_success::ClientboundLoginSuccess;
 mod set_compression;
 pub use set_compression::ClientboundSetCompression;
 
-pub fn register_packets(app: &mut bevy::app::App) {
+pub fn register_clientbound_login_packets(app: &mut bevy::app::App) {
     use crate::clientbound_messenger::fwd;
     use bevy::app::PostUpdate;
 
