@@ -1,7 +1,10 @@
 mod confirm_teleportation;
+pub use confirm_teleportation::ServerboundConfirmTeleportation;
+
+mod query_block_entity_tag;
+pub use query_block_entity_tag::ServerboundQueryBlockEntityTag;
 
 use bevy::app::App;
-pub use confirm_teleportation::ServerboundConfirmTeleportation;
 
 pub fn register_serverbound_play_packets(app: &mut App) {
     use crate::serverbound_messenger::fwd;
@@ -9,4 +12,7 @@ pub fn register_serverbound_play_packets(app: &mut App) {
 
     app.add_message::<ServerboundConfirmTeleportation>();
     app.add_systems(PreUpdate, fwd::<ServerboundConfirmTeleportation>);
+    
+    app.add_message::<ServerboundQueryBlockEntityTag>();
+    app.add_systems(PreUpdate, fwd::<ServerboundQueryBlockEntityTag>);
 }
