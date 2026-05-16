@@ -2,6 +2,7 @@ use crate::biome::Biome;
 use crate::block::Block;
 use crate::block_section::ChunkBlockSection;
 
+#[derive(Debug, Clone, Eq, PartialEq)]
 pub struct Chunk {
     blocks: Vec<Block>,
 }
