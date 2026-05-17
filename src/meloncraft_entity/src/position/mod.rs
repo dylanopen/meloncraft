@@ -1,6 +1,7 @@
 use bevy::ecs::component::Component;
 
 pub mod flags;
+pub mod last;
 
 use crate::position::flags::EntityPositionFlags;
 
