@@ -1,5 +1,6 @@
 use crate::ServerboundPacket;
 use bevy::prelude::{Entity, Message};
+use bevy::math::DVec3;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_entity::position::{EntityPosition, flags::EntityPositionFlags};
 use meloncraft_network::packet::ServerboundNetworkPacket;
@@ -30,7 +31,10 @@ impl ServerboundPacket for ServerboundSetPlayerPosition {
 
         return Some(Self {
             client,
-            position: EntityPosition { x, y, z, flags }
+            position: EntityPosition {
+                location: DVec3::new(x, y, z),
+                flags
+            }
         })
     }
 }
