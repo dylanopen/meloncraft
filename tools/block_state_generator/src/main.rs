@@ -2,7 +2,7 @@ use std::collections::HashMap;
 use std::fs;
 use std::io::Write;
 
-const OUTPUT_DIR: &str = "../../crates/meloncraft_block/src";
+const OUTPUT_DIR: &str = "../../crates/meloncraft_blockstate_registry/src";
 
 fn main() {
     let raw_block_states = std::fs::read_to_string("src/blocks.json").unwrap();
