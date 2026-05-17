@@ -1415,6 +1415,9 @@ name = "meloncraft_packet_forwarding"
 version = "0.1.0"
 dependencies = [
  "bevy",
+ "meloncraft_block",
+ "meloncraft_packets",
+ "meloncraft_player",
 ]
 
 [[package]]
@@ -1455,6 +1458,7 @@ dependencies = [
 name = "meloncraft_protocol_types"
 version = "0.1.0"
 dependencies = [
+ "bevy",
  "meloncraft_chunk",
  "meloncraft_core",
  "meloncraft_nbt",
