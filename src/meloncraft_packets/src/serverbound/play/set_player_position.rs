@@ -1,7 +1,7 @@
 use crate::ServerboundPacket;
 use bevy::prelude::{Entity, Message};
 use meloncraft_client::connection_state::ConnectionState;
-use meloncraft_entity_position::{EntityPosition, EntityPositionFlags};
+use meloncraft_entity::{EntityPosition, EntityPositionFlags};
 use meloncraft_network::packet::ServerboundNetworkPacket;
 use meloncraft_protocol_types::{ProtocolBuffer as _, ProtocolType as _};
 

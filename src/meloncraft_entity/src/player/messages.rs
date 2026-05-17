@@ -1,6 +1,6 @@
 use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
-use crate::EntityPosition;
+use crate::position::EntityPosition;
 
 #[derive(Debug, Clone, Message)]
 pub struct PlayerMoved {

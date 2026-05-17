@@ -1262,7 +1262,7 @@ dependencies = [
  "meloncraft_client",
  "meloncraft_core",
  "meloncraft_default_registries",
- "meloncraft_entity_position",
+ "meloncraft_entity",
  "meloncraft_handshaking",
  "meloncraft_init_play",
  "meloncraft_join",
@@ -1315,7 +1315,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "meloncraft_entity_position"
+name = "meloncraft_entity"
 version = "0.1.0"
 dependencies = [
  "bevy",
@@ -1405,7 +1405,7 @@ dependencies = [
  "meloncraft_chunk",
  "meloncraft_client",
  "meloncraft_core",
- "meloncraft_entity_position",
+ "meloncraft_entity",
  "meloncraft_nbt",
  "meloncraft_network",
  "meloncraft_player",
