@@ -17,7 +17,7 @@ pub struct ServerboundTcpPacket {
 
 const VARINT_CONTINUE_BIT: u8 = 0b1000_0000;
 const CONNECTION_SLEEP_DURATION: u64 = 20;
-const SECOND_PACKET_SLEEP_DURATION: u64 = 50;
+const SECOND_PACKET_SLEEP_DURATION: u64 = 50+10; // This is needed so that the state change can apply before the next packet is processed.
 
 pub fn handle_client(stream: &TcpStream, entity: Entity) {
     let mut iters = 0;

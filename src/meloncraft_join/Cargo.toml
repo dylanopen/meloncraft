@@ -7,6 +7,7 @@ edition = "2024"
 bevy = { workspace = true }
 meloncraft_handshaking = { workspace = true }
 meloncraft_login = { workspace = true }
+meloncraft_client = { workspace = true }
 meloncraft_packets = { workspace = true }
 meloncraft_init_play = { workspace = true }
 meloncraft_world_manager = { workspace = true }

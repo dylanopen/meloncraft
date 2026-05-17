@@ -1373,6 +1373,7 @@ name = "meloncraft_join"
 version = "0.1.0"
 dependencies = [
  "bevy",
+ "meloncraft_client",
  "meloncraft_handshaking",
  "meloncraft_init_play",
  "meloncraft_login",
@@ -1415,6 +1416,8 @@ version = "0.1.0"
 dependencies = [
  "bevy",
  "meloncraft_block",
+ "meloncraft_client",
+ "meloncraft_handshaking",
  "meloncraft_packets",
  "meloncraft_player",
 ]
