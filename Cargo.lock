@@ -1284,6 +1284,9 @@ dependencies = [
 [[package]]
 name = "meloncraft_block"
 version = "0.1.0"
+dependencies = [
+ "bevy",
+]
 
 [[package]]
 name = "meloncraft_blockstate_registry"
