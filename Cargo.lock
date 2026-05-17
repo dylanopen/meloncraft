@@ -1425,6 +1425,9 @@ dependencies = [
 [[package]]
 name = "meloncraft_player_state"
 version = "0.1.0"
+dependencies = [
+ "bevy",
+]
 
 [[package]]
 name = "meloncraft_protocol_types"
