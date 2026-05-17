@@ -10,6 +10,6 @@ meloncraft_protocol_types = { workspace = true }
 meloncraft_player = { workspace = true }
 meloncraft_packets = { workspace = true }
 meloncraft_client = { workspace = true }
-meloncraft_block = { workspace = true }
+meloncraft_blockstate_registry = { workspace = true }
 meloncraft_chunk = { workspace = true }
 meloncraft_world = { workspace = true }

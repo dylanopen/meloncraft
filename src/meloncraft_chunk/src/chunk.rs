@@ -1,6 +1,6 @@
 use crate::biome::Biome;
-use crate::block::Block;
 use crate::block_section::ChunkBlockSection;
+use meloncraft_block::block::Block;
 
 #[derive(Debug, Clone, Eq, PartialEq)]
 pub struct Chunk {

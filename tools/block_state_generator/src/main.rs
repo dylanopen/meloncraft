@@ -2,7 +2,7 @@ use std::collections::HashMap;
 use std::fs;
 use std::io::Write;
 
-const OUTPUT_DIR: &str = "../../crates/meloncraft_block/src";
+const OUTPUT_DIR: &str = "../../crates/meloncraft_blockstate_registry/src";
 
 fn main() {
     let raw_block_states = std::fs::read_to_string("src/blocks.json").unwrap();
@@ -209,9 +209,9 @@ fn write_block_state_matcher(block_state_ids: &HashMap<String, Vec<i32>>) {
 fn write_lib_rs(block_names: Vec<String>) {
     let mut output = String::new();
 
-    output.push_str("pub mod matcher;\n");
+    output.push_str("pub position matcher;\n");
     output.push_str("pub use matcher::*;\n");
-    output.push_str("pub mod block_state;\n");
+    output.push_str("pub position block_state;\n");
     output.push_str("pub use block_state::*;\n");
 
     fs::write(format!("{}/block_state.rs", OUTPUT_DIR), "\
@@ -221,7 +221,7 @@ fn write_lib_rs(block_names: Vec<String>) {
 }\n").unwrap();
 
     for block_name in block_names {
-        output.push_str(&format!("pub mod {};\n", block_name));
+        output.push_str(&format!("pub position {};\n", block_name));
     }
 
     std::fs::write(format!("{}/lib.rs", OUTPUT_DIR), output).unwrap();

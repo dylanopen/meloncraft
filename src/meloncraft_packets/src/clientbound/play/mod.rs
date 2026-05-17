@@ -18,6 +18,12 @@ pub use chunk_data::ClientboundChunkData;
 mod set_center_chunk;
 pub use set_center_chunk::ClientboundSetCenterChunk;
 
+mod acknowledge_block_change;
+pub use acknowledge_block_change::ClientboundAcknowledgeBlockChange;
+
+mod block_update;
+pub use block_update::ClientboundBlockUpdate;
+
 pub fn register_clientbound_play_packets(app: &mut App) {
     use crate::clientbound_messenger::fwd;
     use bevy::app::PostUpdate;
@@ -39,4 +45,10 @@ pub fn register_clientbound_play_packets(app: &mut App) {
 
     app.add_message::<ClientboundSetCenterChunk>();
     app.add_systems(PostUpdate, fwd::<ClientboundSetCenterChunk>);
+
+    app.add_message::<ClientboundAcknowledgeBlockChange>();
+    app.add_systems(PostUpdate, fwd::<ClientboundAcknowledgeBlockChange>);
+
+    app.add_message::<ClientboundBlockUpdate>();
+    app.add_systems(PostUpdate, fwd::<ClientboundBlockUpdate>);
 }

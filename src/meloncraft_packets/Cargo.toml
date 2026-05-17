@@ -14,6 +14,8 @@ meloncraft_registry = { workspace = true }
 meloncraft_text = { workspace = true }
 meloncraft_nbt = { workspace = true }
 meloncraft_chunk = { workspace = true }
+meloncraft_entity = { workspace = true }
+meloncraft_block = { workspace = true }
 
 [lints]
 workspace = true

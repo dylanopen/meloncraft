@@ -1,5 +1,5 @@
 use crate::biome::Biome;
-use crate::block::Block;
+use meloncraft_block::block::Block;
 
 #[derive(Debug, Clone)]
 pub struct ChunkBlockSection {

@@ -1258,18 +1258,22 @@ name = "meloncraft"
 version = "0.1.0"
 dependencies = [
  "meloncraft_block",
+ "meloncraft_blockstate_registry",
  "meloncraft_chunk",
  "meloncraft_client",
  "meloncraft_core",
  "meloncraft_default_registries",
+ "meloncraft_entity",
  "meloncraft_handshaking",
  "meloncraft_init_play",
  "meloncraft_join",
  "meloncraft_login",
  "meloncraft_nbt",
  "meloncraft_network",
+ "meloncraft_packet_forwarding",
  "meloncraft_packets",
  "meloncraft_player",
+ "meloncraft_player_state",
  "meloncraft_protocol_types",
  "meloncraft_registry",
  "meloncraft_server_list",
@@ -1281,10 +1285,20 @@ dependencies = [
 [[package]]
 name = "meloncraft_block"
 version = "0.1.0"
+dependencies = [
+ "bevy",
+]
+
+[[package]]
+name = "meloncraft_blockstate_registry"
+version = "0.1.0"
 
 [[package]]
 name = "meloncraft_chunk"
 version = "0.1.0"
+dependencies = [
+ "meloncraft_block",
+]
 
 [[package]]
 name = "meloncraft_client"
@@ -1314,6 +1328,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "meloncraft_entity"
+version = "0.1.0"
+dependencies = [
+ "bevy",
+]
+
+[[package]]
 name = "meloncraft_generator"
 version = "0.1.0"
 dependencies = [
@@ -1338,7 +1359,7 @@ name = "meloncraft_init_play"
 version = "0.1.0"
 dependencies = [
  "bevy",
- "meloncraft_block",
+ "meloncraft_blockstate_registry",
  "meloncraft_chunk",
  "meloncraft_client",
  "meloncraft_core",
@@ -1390,13 +1411,25 @@ dependencies = [
 ]
 
 [[package]]
+name = "meloncraft_packet_forwarding"
+version = "0.1.0"
+dependencies = [
+ "bevy",
+ "meloncraft_block",
+ "meloncraft_packets",
+ "meloncraft_player",
+]
+
+[[package]]
 name = "meloncraft_packets"
 version = "0.1.0"
 dependencies = [
  "bevy",
+ "meloncraft_block",
  "meloncraft_chunk",
  "meloncraft_client",
  "meloncraft_core",
+ "meloncraft_entity",
  "meloncraft_nbt",
  "meloncraft_network",
  "meloncraft_player",
@@ -1413,9 +1446,20 @@ dependencies = [
 ]
 
 [[package]]
+name = "meloncraft_player_state"
+version = "0.1.0"
+dependencies = [
+ "bevy",
+ "meloncraft_entity",
+ "meloncraft_packets",
+ "meloncraft_player",
+]
+
+[[package]]
 name = "meloncraft_protocol_types"
 version = "0.1.0"
 dependencies = [
+ "bevy",
  "meloncraft_chunk",
  "meloncraft_core",
  "meloncraft_nbt",

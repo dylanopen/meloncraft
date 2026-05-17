@@ -7,8 +7,8 @@ use meloncraft_player::GameProfileProperties;
 use crate::{PrefixedArray, ProtocolBuffer as _, ProtocolType};
 
 #[derive(Debug, Clone)]
-pub enum PlayerAction {
-    	AddPlayer(AddPlayerAction),
+pub enum ClientPlayerAction {
+    AddPlayer(AddPlayerAction),
 	InitializeChat(Option<InitializeChatAction>),
 	UpdateGameMode(i32),
 	UpdateListed(bool),
@@ -18,18 +18,18 @@ pub enum PlayerAction {
 	UpdateHat(bool),
 }
 
-impl PlayerAction {
+impl ClientPlayerAction {
     #[must_use]
     pub const fn mask(&self) -> u8 {
         return match self {
-            PlayerAction::AddPlayer(_) => 0x01,
-            PlayerAction::InitializeChat(_) => 0x02,
-            PlayerAction::UpdateGameMode(_) => 0x04,
-            PlayerAction::UpdateListed(_) => 0x08,
-            PlayerAction::UpdateLatency(_) => 0x10,
-            PlayerAction::UpdateDisplayName(_) => 0x20,
-            PlayerAction::UpdateListPriority(_) => 0x40,
-            PlayerAction::UpdateHat(_) => 0x80,
+            ClientPlayerAction::AddPlayer(_) => 0x01,
+            ClientPlayerAction::InitializeChat(_) => 0x02,
+            ClientPlayerAction::UpdateGameMode(_) => 0x04,
+            ClientPlayerAction::UpdateListed(_) => 0x08,
+            ClientPlayerAction::UpdateLatency(_) => 0x10,
+            ClientPlayerAction::UpdateDisplayName(_) => 0x20,
+            ClientPlayerAction::UpdateListPriority(_) => 0x40,
+            ClientPlayerAction::UpdateHat(_) => 0x80,
         };
     }
 }
@@ -105,31 +105,31 @@ Update List Priority 	0x40 	Priority 	VarInt 	See below.
 Update Hat 	0x80 	Visible 	Boolean 	Whether the player's hat skin layer is shown. 
 */
 
-impl ProtocolType for PlayerAction {
+impl ProtocolType for ClientPlayerAction {
     fn net_serialize(&self) -> Vec<u8> {
         return match self {
-            PlayerAction::AddPlayer(action) => {
+            ClientPlayerAction::AddPlayer(action) => {
                 action.net_serialize()
             },
-            PlayerAction::InitializeChat(action) => {
+            ClientPlayerAction::InitializeChat(action) => {
                 action.net_serialize()
             },
-            PlayerAction::UpdateGameMode(game_mode) => {
+            ClientPlayerAction::UpdateGameMode(game_mode) => {
                 game_mode.net_serialize()
             },
-            PlayerAction::UpdateListed(listed) => {
+            ClientPlayerAction::UpdateListed(listed) => {
                 listed.net_serialize()
             },
-            PlayerAction::UpdateLatency(latency) => {
+            ClientPlayerAction::UpdateLatency(latency) => {
                 latency.net_serialize()
             },
-            PlayerAction::UpdateDisplayName(display_name) => {
+            ClientPlayerAction::UpdateDisplayName(display_name) => {
                 display_name.net_serialize()
             },
-            PlayerAction::UpdateListPriority(priority) => {
+            ClientPlayerAction::UpdateListPriority(priority) => {
                 priority.net_serialize()
             },
-            PlayerAction::UpdateHat(visible) => {
+            ClientPlayerAction::UpdateHat(visible) => {
                 visible.net_serialize()
             }
         };
