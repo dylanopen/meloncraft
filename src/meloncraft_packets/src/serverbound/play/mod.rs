@@ -19,6 +19,9 @@ pub use acknowledge_chat::ServerboundAcknowledgeChat;
 mod set_player_position;
 pub use set_player_position::ServerboundSetPlayerPosition;
 
+mod player_action;
+pub use player_action::ServerboundPlayerAction;
+
 use bevy::app::App;
 
 pub fn register_serverbound_play_packets(app: &mut App) {
@@ -45,4 +48,7 @@ pub fn register_serverbound_play_packets(app: &mut App) {
     
     app.add_message::<ServerboundSetPlayerPosition>();
     app.add_systems(PreUpdate, fwd::<ServerboundSetPlayerPosition>);
+
+    app.add_message::<ServerboundPlayerAction>();
+    app.add_systems(PreUpdate, fwd::<ServerboundPlayerAction>);
 }

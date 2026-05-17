@@ -39,3 +39,17 @@ impl From<PlayerActionStatus> for u8 {
         }
     }
 }
+
+impl From<PlayerActionStatus> for i32 {
+    fn from(value: PlayerActionStatus) -> Self {
+        return u8::from(value).into();
+    }
+}
+
+impl TryFrom<i32> for PlayerActionStatus {
+    type Error = ();
+
+    fn try_from(value: i32) -> Result<Self, Self::Error> {
+        return Self::try_from(u8::try_from(value).map_err(|_| ())?);
+    }
+}
