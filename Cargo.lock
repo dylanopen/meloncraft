@@ -1257,6 +1257,7 @@ dependencies = [
 name = "meloncraft"
 version = "0.1.0"
 dependencies = [
+ "meloncraft_block",
  "meloncraft_blockstate_registry",
  "meloncraft_chunk",
  "meloncraft_client",
@@ -1279,6 +1280,10 @@ dependencies = [
  "meloncraft_world",
  "meloncraft_world_manager",
 ]
+
+[[package]]
+name = "meloncraft_block"
+version = "0.1.0"
 
 [[package]]
 name = "meloncraft_blockstate_registry"

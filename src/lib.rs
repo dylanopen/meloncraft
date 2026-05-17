@@ -19,3 +19,4 @@ pub use meloncraft_world_manager as world_manager;
 pub use meloncraft_join as join;
 pub use meloncraft_entity as entity;
 pub use meloncraft_player_state as player_state;
+pub use meloncraft_block as block;

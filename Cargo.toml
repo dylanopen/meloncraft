@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["src/meloncraft_network", "src/meloncraft_packets", "src/meloncraft_protocol_types", "src/meloncraft_client", "src/meloncraft_handshaking", "src/meloncraft_server_list", "src/meloncraft_player", "src/meloncraft_nbt", "src/meloncraft_login", "src/meloncraft_registry", "src/meloncraft_core", "src/meloncraft_text", "src/meloncraft_default_registries", "src/meloncraft_generator", "src/meloncraft_chunk", "tools/block_state_generator", "src/meloncraft_blockstate_registry", "src/meloncraft_join", "src/meloncraft_world", "src/meloncraft_world_manager", "src/meloncraft_entity", "src/meloncraft_player_state"]
+members = ["src/meloncraft_network", "src/meloncraft_packets", "src/meloncraft_protocol_types", "src/meloncraft_client", "src/meloncraft_handshaking", "src/meloncraft_server_list", "src/meloncraft_player", "src/meloncraft_nbt", "src/meloncraft_login", "src/meloncraft_registry", "src/meloncraft_core", "src/meloncraft_text", "src/meloncraft_default_registries", "src/meloncraft_generator", "src/meloncraft_chunk", "tools/block_state_generator", "src/meloncraft_blockstate_registry", "src/meloncraft_join", "src/meloncraft_world", "src/meloncraft_world_manager", "src/meloncraft_entity", "src/meloncraft_player_state", "src/meloncraft_block"]
 exclude = [
     "examples"
 ]
@@ -38,6 +38,7 @@ meloncraft_world = { path = "src/meloncraft_world" }
 meloncraft_world_manager = { path = "src/meloncraft_world_manager" }
 meloncraft_entity = { path = "src/meloncraft_entity" }
 meloncraft_player_state = { path = "src/meloncraft_player_state" }
+meloncraft_block = { path = "src/meloncraft_block" }
 
 lazy_static = "1.5.0"
 
@@ -64,6 +65,8 @@ meloncraft_world = { workspace = true }
 meloncraft_world_manager = { workspace = true }
 meloncraft_entity = { workspace = true }
 meloncraft_player_state = { workspace = true }
+meloncraft_block = { workspace = true }
+
 
 [workspace.lints.clippy]
 
@@ -290,7 +293,7 @@ debug_assert_with_mut_call = "forbid"
 derive_partial_eq_without_eq = "forbid"
 doc_link_code = "forbid"
 equatable_if_let = "forbid"
-fallible_impl_from = "deny" # In some cases, unwraps/panics are safe in a From impl.
+fallible_impl_from = "deny" # In some cases, unwraps/panics are safe in a From impl and we'd rather crash on invariants we don't know about.
 future_not_send = "forbid"
 imprecise_flops = "forbid"
 iter_on_empty_collections = "forbid"
@@ -329,7 +332,7 @@ uninhabited_references = "forbid"
 unnecessary_struct_initialization = "forbid"
 unused_peekable = "forbid"
 unused_rounding = "forbid"
-use_self = "allow" # Prefer using the structd name for clarity
+use_self = "allow" # Prefer using the struct name for clarity, over Self.
 useless_let_if_seq = "forbid"
 volatile_composites = "forbid"
 while_float = "forbid"
@@ -631,7 +634,7 @@ todo = "allow" # For now. Meloncraft is still *far* from in production.
 try_err = "forbid"
 undocumented_unsafe_blocks = "forbid"
 unimplemented = "forbid"
-unnecessary_safety_comment = "allow"
+unnecessary_safety_comment = "forbid"
 unnecessary_safety_doc = "forbid"
 unnecessary_self_imports = "forbid"
 unneeded_field_pattern = "forbid"
