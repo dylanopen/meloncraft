@@ -1429,6 +1429,7 @@ dependencies = [
  "bevy",
  "meloncraft_entity",
  "meloncraft_packets",
+ "meloncraft_player",
 ]
 
 [[package]]

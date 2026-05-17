@@ -1,7 +1,9 @@
 use bevy::ecs::system::Commands;
-use bevy::prelude::{MessageReader, MessageWriter};
+use bevy::prelude::{MessageReader, MessageWriter, Query, With};
 use meloncraft_entity::player::moved::PlayerMoved;
+use meloncraft_entity::position::EntityPosition;
 use meloncraft_packets::ServerboundSetPlayerPosition;
+use meloncraft_player::GameProfile;
 
 pub fn save_new_location(
     mut player_moved_mr: MessageReader<PlayerMoved>,
@@ -16,11 +18,14 @@ pub fn save_new_location(
 pub fn fwd_player_moved(
     mut set_position_pr: MessageReader<ServerboundSetPlayerPosition>,
     mut player_moved_mw: MessageWriter<PlayerMoved>,
+    existing_positions: Query<&EntityPosition, With<GameProfile>>,
 ) {
     for packet in set_position_pr.read() {
+        let old_position = existing_positions.get(packet.client)
+            .map_or_else(|_| return packet.position.clone(), |old_position| return old_position.clone());
         player_moved_mw.write(PlayerMoved {
             entity: packet.client,
-            old_position: packet.position.clone(), // For now, just set the old position to the new position, but this will cause future bugs so will soon be replaced.
+            old_position,
             new_position: packet.position.clone(),
         });
     }
