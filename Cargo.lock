@@ -1276,6 +1276,7 @@ dependencies = [
  "meloncraft_player_state",
  "meloncraft_protocol_types",
  "meloncraft_registry",
+ "meloncraft_server_info",
  "meloncraft_server_list",
  "meloncraft_text",
  "meloncraft_world",
@@ -1479,11 +1480,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "meloncraft_server_info"
+version = "0.1.0"
+dependencies = [
+ "bevy",
+]
+
+[[package]]
 name = "meloncraft_server_list"
 version = "0.1.0"
 dependencies = [
  "bevy",
  "meloncraft_packets",
+ "meloncraft_server_info",
 ]
 
 [[package]]

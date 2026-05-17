@@ -6,6 +6,7 @@ edition = "2024"
 [dependencies]
 bevy = { workspace = true }
 meloncraft_packets = { workspace = true }
+meloncraft_server_info = { workspace = true }
 
 [lints]
 workspace = true

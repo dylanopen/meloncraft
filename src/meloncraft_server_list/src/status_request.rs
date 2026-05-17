@@ -1,6 +1,6 @@
-use crate::max_players::MaxPlayers;
-use crate::motd::Motd;
-use crate::online_players::OnlinePlayers;
+use meloncraft_server_info::max_players::MaxPlayers;
+use meloncraft_server_info::motd::Motd;
+use meloncraft_server_info::online_players::OnlinePlayers;
 use bevy::prelude::{MessageReader, MessageWriter, Res};
 use meloncraft_packets::ClientboundStatusResponse;
 use meloncraft_packets::ServerboundStatusRequest;
