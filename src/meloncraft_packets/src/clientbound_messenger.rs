@@ -1,6 +1,6 @@
 use crate::clientbound_packet::ClientboundPacket;
 use bevy::prelude::{Message, MessageReader, MessageWriter};
-use meloncraft_network::packet::ClientboundNetworkPacketReceived;
+use crate::network_messages::ClientboundNetworkPacketReceived;
 
 pub fn fwd<T: Message + ClientboundPacket>(
     mut packet_reader: MessageReader<T>,

@@ -2,7 +2,7 @@
 
 use crate::connection_listener::ConnectionListener;
 use crate::connection_manager::connection_manager;
-use crate::packet::{
+use meloncraft_packets::network_messages::{
     ClientboundNetworkPacket, ClientboundNetworkPacketReceived,
     ServerboundNetworkPacketReceived,
 };
@@ -18,7 +18,6 @@ use self::tcp_reader::ServerboundTcpPacket;
 
 pub mod connection_listener;
 pub mod connection_manager;
-pub mod packet;
 pub mod tcp_reader;
 pub mod tcp_writer;
 pub mod client_connections;

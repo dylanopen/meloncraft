@@ -1407,6 +1407,7 @@ dependencies = [
  "bevy",
  "lazy_static",
  "meloncraft_client",
+ "meloncraft_packets",
  "meloncraft_protocol_types",
 ]
 
@@ -1433,7 +1434,6 @@ dependencies = [
  "meloncraft_core",
  "meloncraft_entity",
  "meloncraft_nbt",
- "meloncraft_network",
  "meloncraft_player",
  "meloncraft_protocol_types",
  "meloncraft_registry",

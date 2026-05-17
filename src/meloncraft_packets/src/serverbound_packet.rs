@@ -2,7 +2,7 @@ use core::fmt;
 use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
-use meloncraft_network::packet::ServerboundNetworkPacket;
+use crate::network_messages::ServerboundNetworkPacket;
 use core::fmt::{Debug, Display};
 
 #[derive(Debug)]

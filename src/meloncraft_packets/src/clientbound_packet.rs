@@ -1,6 +1,6 @@
 use bevy::prelude::Message;
 use meloncraft_client::connection_state::ConnectionState;
-use meloncraft_network::packet::ClientboundNetworkPacket;
+use crate::network_messages::ClientboundNetworkPacket;
 use core::fmt::Debug;
 
 pub trait ClientboundPacket: Sized + Message + Debug + Clone {

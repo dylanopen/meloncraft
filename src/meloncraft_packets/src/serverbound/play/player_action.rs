@@ -2,7 +2,7 @@ use crate::ServerboundPacket;
 use bevy::prelude::{Entity, Message};
 use meloncraft_block::face::BlockFaceType;
 use meloncraft_client::connection_state::ConnectionState;
-use meloncraft_network::packet::ServerboundNetworkPacket;
+use crate::network_messages::ServerboundNetworkPacket;
 use meloncraft_player::action_status::PlayerActionStatus;
 use meloncraft_protocol_types::{NetworkLocation, ProtocolType as _, ProtocolBuffer as _, VarInt};
 

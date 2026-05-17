@@ -1,6 +1,6 @@
 use crate::SERVERBOUND_PACKETS;
 use crate::client_connections::CLIENT_CONNECTIONS;
-use crate::packet::{ServerboundNetworkPacket, ServerboundNetworkPacketReceived};
+use meloncraft_packets::network_messages::{ServerboundNetworkPacket, ServerboundNetworkPacketReceived};
 use crate::tcp_reader::handle_client;
 use bevy::prelude::{Commands, MessageWriter, Query};
 use meloncraft_client::connection::ClientConnection;
