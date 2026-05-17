@@ -1427,6 +1427,7 @@ name = "meloncraft_player_state"
 version = "0.1.0"
 dependencies = [
  "bevy",
+ "meloncraft_entity",
  "meloncraft_packets",
 ]
 
