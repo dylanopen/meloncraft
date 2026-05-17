@@ -1,15 +1,3 @@
-use bevy::ecs::component::Component;
-
-
-#[derive(Component, Debug, Clone)]
-pub struct EntityPosition {
-    pub x: f64,
-    pub y: f64,
-    pub z: f64,
-    pub flags: EntityPositionFlags,
-}
-
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub struct EntityPositionFlags {
     pub on_ground: bool,

@@ -113,7 +113,7 @@ impl From<NbtValue> for JsonValue {
 }
 
 /*#[cfg(test)]
-mod tests {
+position tests {
     use super::*;
     use serde_json::Map;
     #[test, dis]
