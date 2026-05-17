@@ -20,3 +20,4 @@ pub use meloncraft_join as join;
 pub use meloncraft_entity as entity;
 pub use meloncraft_player_state as player_state;
 pub use meloncraft_block as block;
+pub use meloncraft_packet_forwarding as packet_forwarding;
