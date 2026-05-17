@@ -1,5 +1,6 @@
 use crate::ServerboundPacket;
 use bevy::prelude::{Entity, Message};
+use meloncraft_block::face::BlockFaceType;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_network::packet::ServerboundNetworkPacket;
 use meloncraft_player::action_status::PlayerActionStatus;
@@ -10,6 +11,7 @@ pub struct ServerboundPlayerAction {
     pub client: Entity,
     pub status: PlayerActionStatus,
     pub block_location: NetworkLocation,
+    pub block_face: BlockFaceType,
     pub sequence: i32,
 }
 
@@ -26,12 +28,14 @@ impl ServerboundPacket for ServerboundPlayerAction {
 
         let status = VarInt::net_deserialize(&mut incoming.data).ok()?.0.try_into().unwrap();
         let block_location = incoming.data.net_deserialize().ok()?;
+        let block_face = u8::net_deserialize(&mut incoming.data).ok()?.try_into().ok()?;
         let sequence = VarInt::net_deserialize(&mut incoming.data).ok()?.0;
 
         return Some(Self {
             client,
             status,
             block_location,
+            block_face,
             sequence,
         })
     }
