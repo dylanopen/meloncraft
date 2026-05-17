@@ -17,10 +17,11 @@ use std::thread;
 use self::tcp_reader::ServerboundTcpPacket;
 
 pub mod connection_listener;
-mod connection_manager;
+pub mod connection_manager;
 pub mod packet;
 pub mod tcp_reader;
-mod tcp_writer;
+pub mod tcp_writer;
+pub mod client_connections;
 
 lazy_static! {
     pub static ref SERVERBOUND_PACKETS: Mutex<Vec<ServerboundTcpPacket>> = {
