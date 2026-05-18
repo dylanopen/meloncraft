@@ -15,6 +15,8 @@ pub enum DemoEventType {
 
     /// Demo screen notification explaining the basic movement controls of the game.
     MovementControls,
+
+    /// Demo screen notification explaining how the client should jump.
     JumpControl,
     InventoryControl,
     DemoOver, // also shows how to take a screenshot
