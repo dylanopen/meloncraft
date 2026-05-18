@@ -40,6 +40,15 @@ pub struct ClientConnection {
     ///   packet's data.
     pub address: SocketAddr,
 
+    /// The TCP connection with the client, as a [`TcpStream`].
+    /// ## Modification
+    /// - You should never use or modify this field manually, as the `meloncraft_packets` crate
+    ///   provides type-safe functions to send packets to the client.
+    /// - It is used by the network crate to send and receive packets to and from the client.
+    ///   Modifying it may break the netcode.
+    /// - If you would like to create a **custom** serverbound or clientbound packet, please
+    ///   see the `meloncraft_packets` crate's source for each packet. Do not interact with the
+    ///   [`TcpStream`] directly.
     pub tcp_stream: TcpStream,
 
     pub state: ConnectionState,
