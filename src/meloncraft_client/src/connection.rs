@@ -1,3 +1,14 @@
+//! Module for the [`ClientConnection`] struct, which is used to store data about a client's
+//! connection to the server.
+//!
+//! Used primarily by the `meloncraft_network` crate to identify clients by their IP address and
+//! connection state, and to send and receive packets to and from the client.
+//! Can also be used by any other plugins which need to:
+//! - Get the IP address of a client.
+//! - Get **or set** the [`ConnectionState`] of a client.
+//!
+//! Primary docs: [`ClientConnection`].
+
 use crate::connection_state::ConnectionState;
 use bevy::ecs::component::Component;
 use core::net::SocketAddr;
