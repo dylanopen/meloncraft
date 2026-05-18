@@ -6,12 +6,14 @@
 /// explain basic Minecraft mechanics, such as movement controls, jump control, inventory control,
 /// etc.
 ///
-/// Used in the GameEvent packet.
+/// Used in the `GameEvent` packet.
 #[derive(Debug, Clone, Copy)]
 pub enum DemoEventType {
 
     /// Notification to welcome the client to the demo screen.
     WelcomeToDemoScreen,
+
+    /// Demo screen notification explaining the basic movement controls of the game.
     MovementControls,
     JumpControl,
     InventoryControl,
