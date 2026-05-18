@@ -32,6 +32,7 @@ pub struct ClientConnection {
     /// - While the network crate should still send clientbound packets to the old address (as the
     ///   [`TcpStream`] is still the same), it may cause issues and modification is still strongly
     ///   discouraged.
+    ///
     /// ## Identification
     /// - This is the main way that the client is identified in netcode.
     /// - When a packet is received from a client, the network crate will check the source IP
@@ -41,6 +42,7 @@ pub struct ClientConnection {
     pub address: SocketAddr,
 
     /// The TCP connection with the client, as a [`TcpStream`].
+    ///
     /// ## Modification
     /// - You should never use or modify this field manually, as the `meloncraft_packets` crate
     ///   provides type-safe functions to send packets to the client.
@@ -51,6 +53,21 @@ pub struct ClientConnection {
     ///   [`TcpStream`] directly.
     pub tcp_stream: TcpStream,
 
+    /// The player's current [`ConnectionState`]. This is currently used to determine how to parse
+    /// serverbound packets. See the [`ConnectionState`] documentation for more information.
+    ///
+    /// The connectionState is specific to each client.
+    /// 
+    /// ## Modification
+    /// You should modify this field whenever a client changes connection state, for example, when
+    /// they finish the [`ConnectionState::Handshaking`] state and move to the
+    /// [`ConnectionState::Login`] state.
+    ///
+    /// There are usually already plugins for Meloncraft which handle this state for you: for
+    /// example, the `meloncraft_packet_forwarding` plugin has a system that listens for the
+    /// `LoginHandshaken` message sent by the `meloncraft_handshaking` crate, and changes the
+    /// client's connection state to [`ConnectionState::Login`] or [`ConnectionState::Status`]
+    /// depending on the client's intention.
     pub state: ConnectionState,
 }
 
