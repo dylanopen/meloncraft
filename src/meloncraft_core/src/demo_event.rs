@@ -19,9 +19,12 @@ pub enum DemoEventType {
     /// Demo screen notification explaining how the client should jump.
     JumpControl,
 
-    /// Demo screen notification explaining how the client can open their inventory (with e)
+    /// Demo screen notification explaining how the client can open their inventory (with e).
     InventoryControl,
-    DemoOver, // also shows how to take a screenshot
+
+    /// Demo screen notification to inform the client that the demo has finished.
+    /// In addition to ending the demo, this also shows the client how to take a screenshot.
+    DemoOver, 
 }
 
 impl From<DemoEventType> for u8 {
