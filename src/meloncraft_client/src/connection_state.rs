@@ -119,6 +119,20 @@ pub enum ConnectionState {
     /// state to [`ConnectionState::Play`].
     Configuration,
 
+    /// The `Play` [`ConnectionState`] is the main state that a client is in when they are playing
+    /// on the server. All packets after the player has joined the world are sent in the `Play`
+    /// state, and the client should be in the `Play` state until they disconnect from the server.
+    ///
+    /// See the documentation for the `meloncraft_packets` crate for the packets sent in this state.
+    ///
+    /// ## Predecessor states
+    /// - **Configuration**: only once the configuration stage has finished and the server has send
+    ///   the `FinishConfiguration` packet should the client's connection state be changed to
+    ///   [`ConnectionState::Play`].
+    /// 
+    /// ## Successive states
+    /// - This state is terminal.
+    /// - No successive states.
     Play,
 }
 
