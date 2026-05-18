@@ -18,6 +18,8 @@ pub enum DemoEventType {
 
     /// Demo screen notification explaining how the client should jump.
     JumpControl,
+
+    /// Demo screen notification explaining how the client can open their inventory (with e)
     InventoryControl,
     DemoOver, // also shows how to take a screenshot
 }
