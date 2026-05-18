@@ -92,6 +92,31 @@ pub enum ConnectionState {
     ///   state, after the client has sent the `LoginStart` packet and received the `LoginSuccess` packet.
     Login,
 
+    /// During the `Configuration` [`ConnectionState`], the client and server tell each other about
+    /// the settings they want to use, share registry and datapack information, and do various other
+    /// things to configure the client's connection to the server before the client will actually be
+    /// able to load into the world.
+    ///
+    /// See the documentation for the `meloncraft_packets` crate for the packets sent in this state.
+    ///
+    /// ## Purpose
+    /// - Server and client share settings and information about the connection, such as view
+    ///   view distance, chat settings, and other **client information**.
+    /// - The server and client exchange info on which datapacks they both know about. The result of
+    ///   this depends on what the server should then send.
+    /// - The server sends any **registries** it wants to use. Either just the IDs if the client
+    ///   knows the pack, or the full data if it doesn't. Currently, only sending the registry
+    ///   structure is supported (not the full data). This may change.
+    /// - Any other information the server or client wants to send.
+    ///
+    /// ## Predecessor states
+    /// **Login**: the client needs to go through the login state *before* it enters the
+    /// configuration state. It enters [`ConnectionState::Configuration`] after the client has sent
+    /// the `LoginAcknowledged` packet.
+    ///
+    /// ## Successive states
+    /// **Play**: when configuration has finished, the server should set the client's connection
+    /// state to [`ConnectionState::Play`].
     Configuration,
 
     Play,
