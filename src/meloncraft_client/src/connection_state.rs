@@ -1,3 +1,10 @@
+//! Module defining the [`ConnectionState`] enum, which is used to represent what type of packets a
+//! specific client is sending and receiving.
+//!
+//! Used by a `ClientConnection` in its `state` field.
+//!
+//! Main docs: [`ConnectionState`].
+
 use core::fmt;
 use core::fmt::Display;
 
