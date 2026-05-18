@@ -1258,7 +1258,6 @@ name = "meloncraft"
 version = "0.1.0"
 dependencies = [
  "meloncraft_block",
- "meloncraft_blockstate_registry",
  "meloncraft_chunk",
  "meloncraft_client",
  "meloncraft_core",
@@ -1289,10 +1288,6 @@ version = "0.1.0"
 dependencies = [
  "bevy",
 ]
-
-[[package]]
-name = "meloncraft_blockstate_registry"
-version = "0.1.0"
 
 [[package]]
 name = "meloncraft_chunk"
@@ -1359,7 +1354,6 @@ name = "meloncraft_init_play"
 version = "0.1.0"
 dependencies = [
  "bevy",
- "meloncraft_blockstate_registry",
  "meloncraft_chunk",
  "meloncraft_client",
  "meloncraft_core",
