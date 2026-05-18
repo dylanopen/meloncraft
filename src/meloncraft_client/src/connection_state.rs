@@ -48,6 +48,20 @@ pub enum ConnectionState {
     /// from the client, to give your systems time to update the client's connection state.
     Handshaking,
 
+    /// The `Status` [`ConnectionState`] is used when a client is querying the server's status,
+    /// when the client is pinging the server in the server list.
+    ///
+    /// ## Predecessor states
+    /// - **Status**: The client can only go to the `Status` state from the `Handshaking` state, by
+    ///   sending the `Intention` packet with the `next_state` field set to `IntentionType::Status`.
+    /// - The client cannot be transferred to the `Status` state from any other state.
+    /// 
+    /// ## Successive states
+    /// - This state is terminal: a client cannot go from the `Status` state to any other
+    ///   [`ConnectionState`], and in the modern protocol (pre-1.7 worked a bit differently), the
+    ///   connection is terminated after the client finishes querying the server's status.
+    /// - No successive states.
+    ///
     Status,
 
     Login,
