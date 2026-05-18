@@ -5,14 +5,16 @@
 ///
 /// See the variants' documentation or the Minecraft wiki for information on what the different
 /// difficulties do.
+/// <https://minecraft.wiki/w/Difficulty>.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum Difficulty {
 
-    /// Peaceful difficulty.
-    /// See [the minecraft.wiki page](https://minecraft.wiki/w/Difficulty#Peaceful) for more
-    /// information about peaceful mode.
+    /// **Peaceful** [`Difficulty`].
+    /// See <https://minecraft.wiki/w/Difficulty#Peaceful> for more information about peaceful mode.
     Peaceful,
 
+    /// **Easy** [`Difficulty`].
+    /// See <https://minecraft.wiki/w/Difficulty#Easy> for more information about easy mode.
     Easy,
 
     Normal,
