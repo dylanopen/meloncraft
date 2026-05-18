@@ -1,3 +1,10 @@
+//! Module for [`DemoEventType`] enum.
+
+/// The type of a demo event.
+///
+/// Demo events are the notifications that appear in the top-right of the client's screen, which
+/// explain basic Minecraft mechanics, such as movement controls, jump control, inventory control,
+/// etc.
 #[derive(Debug, Clone, Copy)]
 pub enum DemoEventType {
     WelcomeToDemoScreen,
