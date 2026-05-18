@@ -1,3 +1,6 @@
+//! The [`IntentionType`] of a handshake packet indicates the client's intention when sending the
+//! handshake packet, mainly used to determine the next connection state of the client.
+
 use core::fmt;
 
 /// The intention type of a handshake packet.
