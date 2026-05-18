@@ -30,6 +30,16 @@ pub enum IntentionType {
     /// server's MOTD, player count, ping, etc.
     Status,
 
+    /// The client intends to log in to the server.
+    ///
+    /// You should update the next state to `ConnectionState::Login` when receiving this
+    /// intention, so that the next packet is parsed as a `Login` packet.
+    /// You should do this even if you don't want them to log in: you should probably disconnect them
+    /// gracefully later on in the `Login` connection state instead of killing the connection now.
+    ///
+    /// This intention is sent when the client clicks on our server from the server list, and is
+    /// trying to log in to the server directly. If they are transferred to our server from another
+    /// server, then they will send [`IntentionType::Transfer`] instead.
     Login,
 
     Transfer,
