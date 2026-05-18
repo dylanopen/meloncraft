@@ -64,6 +64,32 @@ pub enum ConnectionState {
     ///
     Status,
 
+    /// The `Login` [`ConnectionState`] is used when a client is logging in to the server, but
+    /// before they send+receive the configuration needed to join the world.
+    ///
+    /// See the documentation for the `meloncraft_packets` crate for the packets sent in this state.
+    ///
+    /// ## Purpose
+    /// The login state does a few main things:
+    /// - Authenticates the client with Mojang's authentication servers, if the server is in
+    ///   online-mode
+    /// - Configures **encryption** to use when communicating
+    /// - Configures **compression** to send packets with and when to use it (what size the packets
+    ///   need to be before they start being compressed)
+    /// - Configures plugin channels that the client and server can use to send custom payloads to
+    ///   each other. This is mainly used for **mods**.
+    /// - Set any cookies that the server wants to.
+    /// - Collect the player's username and UUID.
+    /// - Various other things that the server may need to get info about the client.
+    ///
+    /// ## Predecessor states
+    /// - **Handshaking**: The client can only go to the `Login` state from the
+    ///   [`ConnectionState::Handshaking`] state, by sending the `Intention` packet with the
+    ///   `next_state` field set to `IntentionType::Login` **or** `IntentionType::Transfer`.
+    ///
+    /// ## Successive states
+    /// - **Configuration**: The client can only go to the `Configuration` state from the `Login`
+    ///   state, after the client has sent the `LoginStart` packet and received the `LoginSuccess` packet.
     Login,
 
     Configuration,
