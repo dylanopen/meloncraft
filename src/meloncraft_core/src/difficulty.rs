@@ -17,6 +17,8 @@ pub enum Difficulty {
     /// See <https://minecraft.wiki/w/Difficulty#Easy> for more information about easy mode.
     Easy,
 
+    /// **Normal** [`Difficulty`].
+    /// See <https://minecraft.wiki/w/Difficulty#Normal> for more information about normal mode.
     Normal,
 
     Hard,
