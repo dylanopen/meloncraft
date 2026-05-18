@@ -5,12 +5,12 @@ use bevy::prelude::{MessageReader, MessageWriter};
 use meloncraft::handshaking::MeloncraftHandshakingPlugin;
 use meloncraft::network::MeloncraftNetworkPlugin;
 use meloncraft::packets::MeloncraftPacketsPlugin;
-use meloncraft::packets::clientbound::login::ClientboundLoginDisconnect;
-use meloncraft::packets::serverbound::login::ServerboundLoginStart;
+use meloncraft::packets::ClientboundLoginDisconnect;
+use meloncraft::packets::ServerboundLoginStart;
 use meloncraft::server_list::MeloncraftServerListPlugin;
-use meloncraft::server_list::max_players::MaxPlayers;
-use meloncraft::server_list::motd::Motd;
-use meloncraft::server_list::online_players::OnlinePlayers;
+use meloncraft::server_info::max_players::MaxPlayers;
+use meloncraft::server_info::motd::Motd;
+use meloncraft::server_info::online_players::OnlinePlayers;
 use meloncraft::text::JsonText;
 use std::time::Duration;
 

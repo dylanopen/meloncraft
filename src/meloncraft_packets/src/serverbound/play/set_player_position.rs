@@ -3,7 +3,7 @@ use bevy::prelude::{Entity, Message};
 use bevy::math::DVec3;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_entity::position::{EntityPosition, flags::EntityPositionFlags};
-use meloncraft_network::packet::ServerboundNetworkPacket;
+use crate::network_messages::ServerboundNetworkPacket;
 use meloncraft_protocol_types::{ProtocolBuffer as _, ProtocolType as _};
 
 #[derive(Message, Debug, Clone)]

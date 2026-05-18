@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["src/meloncraft_network", "src/meloncraft_packets", "src/meloncraft_protocol_types", "src/meloncraft_client", "src/meloncraft_handshaking", "src/meloncraft_server_list", "src/meloncraft_player", "src/meloncraft_nbt", "src/meloncraft_login", "src/meloncraft_registry", "src/meloncraft_core", "src/meloncraft_text", "src/meloncraft_default_registries", "src/meloncraft_generator", "src/meloncraft_chunk", "tools/block_state_generator", "src/meloncraft_blockstate_registry", "src/meloncraft_join", "src/meloncraft_world", "src/meloncraft_world_manager", "src/meloncraft_entity", "src/meloncraft_player_state", "src/meloncraft_block", "src/meloncraft_packet_forwarding"]
+members = ["src/meloncraft_network", "src/meloncraft_packets", "src/meloncraft_protocol_types", "src/meloncraft_client", "src/meloncraft_handshaking", "src/meloncraft_server_list", "src/meloncraft_player", "src/meloncraft_nbt", "src/meloncraft_login", "src/meloncraft_registry", "src/meloncraft_core", "src/meloncraft_text", "src/meloncraft_default_registries", "src/meloncraft_generator", "src/meloncraft_chunk", "tools/block_state_generator", "src/meloncraft_blockstate_registry", "src/meloncraft_join", "src/meloncraft_world", "src/meloncraft_world_manager", "src/meloncraft_entity", "src/meloncraft_player_state", "src/meloncraft_block", "src/meloncraft_packet_forwarding", "src/meloncraft_server_info"]
 exclude = [
     "examples"
 ]
@@ -40,6 +40,7 @@ meloncraft_entity = { path = "src/meloncraft_entity" }
 meloncraft_player_state = { path = "src/meloncraft_player_state" }
 meloncraft_block = { path = "src/meloncraft_block" }
 meloncraft_packet_forwarding = { path = "src/meloncraft_packet_forwarding" }
+meloncraft_server_info = { path = "src/meloncraft_server_info" }
 
 lazy_static = "1.5.0"
 
@@ -68,6 +69,7 @@ meloncraft_entity = { workspace = true }
 meloncraft_player_state = { workspace = true }
 meloncraft_block = { workspace = true }
 meloncraft_packet_forwarding = { workspace = true }
+meloncraft_server_info = { workspace = true }
 
 
 [workspace.lints.clippy]

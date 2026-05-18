@@ -2,7 +2,7 @@ use crate::ServerboundPacket;
 use bevy::ecs::entity::Entity;
 use bevy::ecs::message::Message;
 use meloncraft_client::connection_state::ConnectionState;
-use meloncraft_network::packet::ServerboundNetworkPacket;
+use crate::network_messages::ServerboundNetworkPacket;
 use meloncraft_player::Uuid;
 use meloncraft_protocol_types::ProtocolType as _;
 

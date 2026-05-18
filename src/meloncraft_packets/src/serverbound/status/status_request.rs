@@ -2,7 +2,7 @@ use crate::ServerboundPacket;
 use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
-use meloncraft_network::packet::ServerboundNetworkPacket;
+use crate::network_messages::ServerboundNetworkPacket;
 
 #[derive(Message, Debug, Clone)]
 pub struct ServerboundStatusRequest {

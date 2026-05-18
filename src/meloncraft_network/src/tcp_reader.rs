@@ -1,12 +1,12 @@
 use crate::SERVERBOUND_PACKETS;
 use bevy::prelude::Entity;
-use meloncraft_client::connection::CLIENT_CONNECTIONS;
 use meloncraft_protocol_types::{ProtocolType as _, VarInt};
 use std::io::{BufReader, Read as _};
 use std::net::{TcpListener, TcpStream};
 use std::thread;
 use std::thread::sleep;
 use core::time::Duration;
+use crate::client_connections::CLIENT_CONNECTIONS;
 
 pub struct ServerboundTcpPacket {
     pub client: Entity,
@@ -17,7 +17,7 @@ pub struct ServerboundTcpPacket {
 
 const VARINT_CONTINUE_BIT: u8 = 0b1000_0000;
 const CONNECTION_SLEEP_DURATION: u64 = 20;
-const SECOND_PACKET_SLEEP_DURATION: u64 = 50;
+const SECOND_PACKET_SLEEP_DURATION: u64 = 50+10; // This is needed so that the state change can apply before the next packet is processed.
 
 pub fn handle_client(stream: &TcpStream, entity: Entity) {
     let mut iters = 0;

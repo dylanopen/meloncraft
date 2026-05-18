@@ -1276,6 +1276,7 @@ dependencies = [
  "meloncraft_player_state",
  "meloncraft_protocol_types",
  "meloncraft_registry",
+ "meloncraft_server_info",
  "meloncraft_server_list",
  "meloncraft_text",
  "meloncraft_world",
@@ -1305,7 +1306,6 @@ name = "meloncraft_client"
 version = "0.1.0"
 dependencies = [
  "bevy",
- "lazy_static",
 ]
 
 [[package]]
@@ -1374,6 +1374,7 @@ name = "meloncraft_join"
 version = "0.1.0"
 dependencies = [
  "bevy",
+ "meloncraft_client",
  "meloncraft_handshaking",
  "meloncraft_init_play",
  "meloncraft_login",
@@ -1407,6 +1408,7 @@ dependencies = [
  "bevy",
  "lazy_static",
  "meloncraft_client",
+ "meloncraft_packets",
  "meloncraft_protocol_types",
 ]
 
@@ -1416,6 +1418,8 @@ version = "0.1.0"
 dependencies = [
  "bevy",
  "meloncraft_block",
+ "meloncraft_client",
+ "meloncraft_handshaking",
  "meloncraft_packets",
  "meloncraft_player",
 ]
@@ -1431,7 +1435,6 @@ dependencies = [
  "meloncraft_core",
  "meloncraft_entity",
  "meloncraft_nbt",
- "meloncraft_network",
  "meloncraft_player",
  "meloncraft_protocol_types",
  "meloncraft_registry",
@@ -1477,11 +1480,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "meloncraft_server_info"
+version = "0.1.0"
+dependencies = [
+ "bevy",
+]
+
+[[package]]
 name = "meloncraft_server_list"
 version = "0.1.0"
 dependencies = [
  "bevy",
  "meloncraft_packets",
+ "meloncraft_server_info",
 ]
 
 [[package]]

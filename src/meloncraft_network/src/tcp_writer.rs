@@ -1,4 +1,4 @@
-use crate::packet::{ClientboundNetworkPacket, ClientboundNetworkPacketReceived};
+use meloncraft_packets::network_messages::{ClientboundNetworkPacket, ClientboundNetworkPacketReceived};
 use bevy::prelude::{Entity, MessageReader, Query};
 use meloncraft_client::connection::ClientConnection;
 use meloncraft_protocol_types::{ProtocolType as _, VarInt};

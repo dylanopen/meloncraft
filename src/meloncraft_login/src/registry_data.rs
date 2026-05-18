@@ -3,7 +3,7 @@ use bevy::ecs::message::{MessageReader, MessageWriter};
 use meloncraft_packets::ServerboundSelectKnownPacks;
 use meloncraft_packets::ClientboundRegistryData;
 use meloncraft_packets::clientbound_packet::ClientboundPacket;
-use meloncraft_network::packet::{ClientboundNetworkPacket, ClientboundNetworkPacketReceived};
+use meloncraft_packets::network_messages::{ClientboundNetworkPacket, ClientboundNetworkPacketReceived};
 
 pub fn send_registry_data(
     mut select_known_packs_spr: MessageReader<ServerboundSelectKnownPacks>,

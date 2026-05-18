@@ -2,7 +2,7 @@
 
 use crate::connection_listener::ConnectionListener;
 use crate::connection_manager::connection_manager;
-use crate::packet::{
+use meloncraft_packets::network_messages::{
     ClientboundNetworkPacket, ClientboundNetworkPacketReceived,
     ServerboundNetworkPacketReceived,
 };
@@ -17,10 +17,10 @@ use std::thread;
 use self::tcp_reader::ServerboundTcpPacket;
 
 pub mod connection_listener;
-mod connection_manager;
-pub mod packet;
+pub mod connection_manager;
 pub mod tcp_reader;
-mod tcp_writer;
+pub mod tcp_writer;
+pub mod client_connections;
 
 lazy_static! {
     pub static ref SERVERBOUND_PACKETS: Mutex<Vec<ServerboundTcpPacket>> = {

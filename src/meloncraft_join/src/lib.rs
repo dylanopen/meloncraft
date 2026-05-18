@@ -1,5 +1,6 @@
 mod login_start;
 mod save_client_info;
+mod handshaking;
 
 use bevy::app::{App, Plugin, Update};
 use meloncraft_handshaking::MeloncraftHandshakingPlugin;
@@ -16,6 +17,12 @@ impl Plugin for MeloncraftJoinPlugin {
             MeloncraftLoginPlugin,
             MeloncraftInitPlayPlugin,
             MeloncraftWorldManagerPlugin,
+        ));
+        
+        app.add_systems(Update, (
+            handshaking::update_connection_state_status,
+            handshaking::update_connection_state_login,
+            handshaking::update_connection_state_transfer,
         ));
 
         app.add_systems(Update, (

@@ -1,6 +1,6 @@
 use crate::ServerboundPacket;
 use bevy::prelude::{Message, MessageReader, MessageWriter};
-use meloncraft_network::packet::ServerboundNetworkPacketReceived;
+use crate::network_messages::ServerboundNetworkPacketReceived;
 use core::fmt::Debug;
 
 pub fn fwd<T: Message + ServerboundPacket + Debug>(
