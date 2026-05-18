@@ -5,15 +5,15 @@ exclude = [
     "examples"
 ]
 
-[workspace.dependencies.bevy]
-version = "0.17.3"
-default-features = false
-features = ["debug"]
-
 [package]
 name = "meloncraft"
 version = "0.1.0"
 edition = "2024"
+
+[workspace.dependencies.bevy]
+version = "0.17.3"
+default-features = false
+features = ["debug"]
 
 [workspace.dependencies]
 meloncraft_protocol_types = { path = "src/meloncraft_protocol_types" }
@@ -72,10 +72,29 @@ meloncraft_packet_forwarding = { workspace = true }
 meloncraft_server_info = { workspace = true }
 
 
+[workspace.lints.rust]
+missing_docs = "forbid"
+unused_doc_comment = "forbid"
+invalid_doc_attributes = "forbid"
+
+[workspace.lints.rustdoc]
+bare_urls = "forbid"
+invalid_html_tags = "forbid"
+private_doc_tests = "forbid"
+unescaped_backticks = "forbid"
+unportable_markdown = "forbid"
+broken_intra_doc_links = "forbid"
+invalid_rust_codeblocks = "forbid"
+private_intra_doc_links = "forbid"
+missing_crate_level_docs = "forbid"
+redundant_explicit_links = "forbid"
+missing_doc_code_examples = "forbid"
+invalid_codeblock_attributes = "forbid"
+
 [workspace.lints.clippy]
 
 # Cargo lints:
-cargo_common_metadata = "allow" # When ready to release, will be forbidden
+cargo_common_metadata = "forbid"
 multiple_crate_versions = "allow" # Meloncraft has two dependencies: bevy and lazy_static, which require different versions of certain crates. Unavoidable for now.
 negative_feature_names = "forbid"
 redundant_feature_names = "forbid"
@@ -295,7 +314,6 @@ coerce_container_to_any = "forbid"
 collection_is_never_read = "forbid"
 debug_assert_with_mut_call = "forbid"
 derive_partial_eq_without_eq = "forbid"
-doc_link_code = "forbid"
 equatable_if_let = "forbid"
 fallible_impl_from = "deny" # In some cases, unwraps/panics are safe in a From impl and we'd rather crash on invariants we don't know about.
 future_not_send = "forbid"
@@ -325,7 +343,6 @@ single_option_map = "forbid"
 string_lit_as_bytes = "forbid"
 suboptimal_flops = "forbid"
 suspicious_operation_groupings = "forbid"
-too_long_first_doc_paragraph = "forbid"
 trailing_empty_array = "forbid"
 trait_duplication_in_bounds = "forbid"
 transmute_undefined_repr = "forbid"
@@ -359,10 +376,6 @@ comparison_chain = "forbid"
 copy_iterator = "forbid"
 decimal_bitwise_operands = "forbid"
 default_trait_access = "forbid"
-doc_broken_link = "forbid"
-doc_comment_double_space_linebreaks = "forbid"
-doc_link_with_quotes = "forbid"
-doc_markdown = "forbid"
 duration_suboptimal_units = "forbid"
 elidable_lifetime_names = "forbid"
 empty_enums = "forbid"
@@ -527,7 +540,7 @@ alloc_instead_of_core = "forbid"
 allow_attributes = "forbid"
 allow_attributes_without_reason = "forbid"
 arbitrary_source_item_ordering = "allow" # We really don't care about the order of fields in a struct, for example. It's often better for them to be packed together for performance, or to match the protocol.
-arithmetic_side_effects = "allow" # I don't think we need Clippy telling us `3+4` is dangerous...
+arithmetic_side_effects = "allow" # I don't think we need Clippy telling us `x+1` is dangerous...
 as_conversions = "deny" # There are some cases when as conversions are necessary. But they should be avoided at all costs.
 as_pointer_underscore = "forbid"
 as_underscore = "forbid"
@@ -543,8 +556,6 @@ default_numeric_fallback = "allow" # `7` is perfectly fine instead of `7_i32`, s
 default_union_representation = "forbid"
 deref_by_slicing = "forbid"
 disallowed_script_idents = "forbid"
-doc_include_without_cfg = "forbid"
-doc_paragraphs_missing_punctuation = "forbid"
 else_if_without_else = "forbid"
 empty_drop = "forbid"
 empty_enum_variants_with_brackets = "forbid"
@@ -576,16 +587,16 @@ let_underscore_must_use = "forbid"
 let_underscore_untyped = "forbid"
 little_endian_bytes = "forbid"
 lossy_float_literal = "forbid"
-map_err_ignore = "allow" # This will be forbidden upon changing net_deserialize to return the error, not just Result<Self, ()>. Until then, this is banned in future code but allowed in existing code.
+map_err_ignore = "allow" # This will be forbidden upon changing net_deserialize to return the error, not just Result<Self, ()>. Until then, this is banned in future code outside protocol_types and packets but allowed in existing code.
 map_with_unused_argument_over_ranges = "forbid"
 mem_forget = "forbid"
 min_ident_chars = "allow" # Short identifiers can sometimes be fine (e.g. x,y, r,g,b, pr,pw), but are discouraged.
 missing_assert_message = "forbid"
 missing_asserts_for_indexing = "forbid"
-missing_inline_in_public_items = "allow"
+missing_inline_in_public_items = "allow" # The compiler is pretty good at inlining small functions. If a function is being called often, **you must measure** to check inlining it helps performance, then inline.
 missing_trait_methods = "allow" # If a trait method is provided by default, there's no reason to require it to be manually implemented in all derivatives.
 mixed_read_write_in_expression = "forbid"
-mod_module_files = "allow" # position files are the preferred way to structure modules which contain submodules.
+mod_module_files = "allow" # mod.rs files are the preferred way to structure modules which contain submodules.
 module_name_repetitions = "allow" # It is preferred to repeat a module's name in a struct/enum declaration, if it improves clarity - as the structure's purpose must be clear from just its name, not its module path.
 modulo_arithmetic = "forbid"
 multiple_inherent_impl = "forbid"
@@ -602,8 +613,8 @@ pathbuf_init_then_push = "forbid"
 pattern_type_mismatch = "allow" # It would be better to forbid this, but it makes some pattern matching more difficult (we have to write loads of &s) and just doesn't add much benefit.
 pointer_format = "forbid"
 precedence_bits = "forbid"
-print_stderr = "allow" # We'll implement meloncraft_logger eventually. For now, println! is fine.
-print_stdout = "allow" # eprintln! works for now, as explained above ^^
+print_stderr = "allow" # We'll implement meloncraft_logger eventually. For now, eprintln! is fine.
+print_stdout = "allow" # println! works for now, as explained above ^^
 pub_use = "allow" # public re-exports like this are perfectly fine, and more concise anyway.
 pub_with_shorthand = "forbid"
 pub_without_shorthand = "forbid"
@@ -634,7 +645,7 @@ string_lit_chars_any = "forbid"
 string_slice = "forbid"
 suspicious_xor_used_as_pow = "forbid"
 tests_outside_test_module = "forbid"
-todo = "allow" # For now. Meloncraft is still *far* from in production.
+todo = "forbid"
 try_err = "forbid"
 undocumented_unsafe_blocks = "forbid"
 unimplemented = "forbid"
@@ -674,8 +685,6 @@ disallowed_macros = "forbid"
 disallowed_methods = "forbid"
 disallowed_names = "forbid"
 disallowed_types = "forbid"
-doc_lazy_continuation = "forbid"
-doc_overindented_list_items = "forbid"
 double_must_use = "forbid"
 duplicate_underscore_argument = "forbid"
 enum_variant_names = "forbid"
@@ -786,7 +795,6 @@ single_char_add_str = "forbid"
 single_component_path_imports = "forbid"
 single_match = "forbid"
 string_extend_chars = "forbid"
-tabs_in_doc_comments = "forbid"
 to_digit_is_some = "forbid"
 to_string_trait_impl = "forbid"
 toplevel_ref_arg = "forbid"
@@ -829,13 +837,10 @@ crate_in_macro_def = "forbid"
 crosspointer_transmute = "forbid"
 declare_interior_mutable_const = "forbid"
 deprecated_clippy_cfg_attr = "forbid"
-doc_nested_refdefs = "forbid"
-doc_suspicious_footnotes = "forbid"
 drop_non_drop = "forbid"
 duplicate_mod = "forbid"
 duplicated_attributes = "forbid"
 empty_docs = "forbid"
-empty_line_after_doc_comments = "forbid"
 empty_line_after_outer_attr = "forbid"
 empty_loop = "forbid"
 float_equality_without_abs = "forbid"
@@ -877,7 +882,6 @@ size_of_ref = "forbid"
 suspicious_arithmetic_impl = "forbid"
 suspicious_assignment_formatting = "forbid"
 suspicious_command_arg_space = "forbid"
-suspicious_doc_comments = "forbid"
 suspicious_else_formatting = "forbid"
 suspicious_map = "forbid"
 suspicious_op_assign_impl = "forbid"
@@ -896,7 +900,21 @@ zero_repeat_side_effects = "forbid"
 zombie_processes = "forbid"
 
 # Documentation lints
-missing_panics_doc = "allow"
-missing_errors_doc = "allow"
+missing_panics_doc = "forbid"
+missing_errors_doc = "forbid"
 missing_docs_in_private_items = "allow"
-
+doc_link_code = "forbid"
+too_long_first_doc_paragraph = "forbid"
+doc_broken_link = "forbid"
+doc_comment_double_space_linebreaks = "forbid"
+doc_link_with_quotes = "forbid"
+doc_markdown = "forbid"
+suspicious_doc_comments = "forbid"
+doc_include_without_cfg = "forbid"
+doc_paragraphs_missing_punctuation = "forbid"
+doc_lazy_continuation = "forbid"
+doc_overindented_list_items = "forbid"
+tabs_in_doc_comments = "forbid"
+doc_nested_refdefs = "forbid"
+doc_suspicious_footnotes = "forbid"
+empty_line_after_doc_comments = "forbid"
