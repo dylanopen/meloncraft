@@ -5,8 +5,12 @@
 /// Demo events are the notifications that appear in the top-right of the client's screen, which
 /// explain basic Minecraft mechanics, such as movement controls, jump control, inventory control,
 /// etc.
+///
+/// Used in the GameEvent packet.
 #[derive(Debug, Clone, Copy)]
 pub enum DemoEventType {
+
+    /// Notification to welcome the client to the demo screen.
     WelcomeToDemoScreen,
     MovementControls,
     JumpControl,
