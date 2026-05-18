@@ -27,10 +27,33 @@ use core::fmt::Display;
 ///   or the connection to be terminated.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub enum ConnectionState {
+
+    /// Handshaking is always the first [`ConnectionState`] that a client is in when they connect to
+    /// the server.
+    ///
+    /// There is only one packet in the modern protocol that is sent in the `Handshaking` state, the
+    /// `Intention` packet, which is sent by the **client** (it is a serverbound packet) to indicate
+    /// the client's intention to either query the server's status, log in to the server, or
+    /// transfer to another server.
+    ///
+    /// The packet in this state's primary purpose is to *change* the client's [`ConnectionState`]
+    /// to either [`ConnectionState::Status`], [`ConnectionState::Login`].
+    ///
+    /// The client actually sends its second packet (in a different state) directly after this
+    /// handshaking packet. It is important that you update the state on the first time the
+    /// handshake packet is received, so that the second packet is parsed with the correct
+    /// connection state.\
+    /// To avoid parsing the second packet as a `Handshaking` packet, the default network crate will
+    /// wait `60ms` after receiving the handshake packet before it starts parsing the next packet(s)
+    /// from the client, to give your systems time to update the client's connection state.
     Handshaking,
+
     Status,
+
     Login,
+
     Configuration,
+
     Play,
 }
 
