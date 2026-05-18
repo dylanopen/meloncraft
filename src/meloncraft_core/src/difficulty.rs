@@ -8,6 +8,9 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum Difficulty {
 
+    /// Peaceful difficulty.
+    /// See [the minecraft.wiki page](https://minecraft.wiki/w/Difficulty#Peaceful) for more
+    /// information about peaceful mode.
     Peaceful,
 
     Easy,
