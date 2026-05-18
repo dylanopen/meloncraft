@@ -42,6 +42,20 @@ pub enum IntentionType {
     /// server, then they will send [`IntentionType::Transfer`] instead.
     Login,
 
+    /// The client intends to join our server because they have been sent here *from* another server.
+    ///
+    /// You may want to handle this differently if you don't accept transfers. **However** you
+    /// should still update the client's connection state to `ConnectionState::Login` when receiving
+    /// this intention, so that the next packet is parsed as a `Login` packet.
+    ///
+    /// If you want to do something special for transferred clients, consider adding a component to
+    /// the client's `Entity` when receiving this intention, and then checking for this entity
+    /// during the `Login`, `Configuration` or `Play` connection states (depending on how you want
+    /// to handle it). Consider disconnecting transferred clients during the `Login` state if you
+    /// don't want to accept transfers.
+    ///
+    /// This intention is sent because a different server sent a transfer packet to the client, and
+    /// the target server was ours.
     Transfer,
 }
 
