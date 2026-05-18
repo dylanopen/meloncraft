@@ -20,6 +20,14 @@ use core::fmt;
 #[derive(Debug, Clone, Eq, PartialEq)]
 pub enum IntentionType {
 
+    /// The client intends to query the server's status.
+    ///
+    /// The next packet will be sent in the `Status` connection state, and the clien'ts connection
+    /// state should be updated to suit this (or the packet will be parsed incorrectly).
+    /// **The only state that should follow this is the `Status` connection state.**
+    ///
+    /// This intent is sent when the client is pinging the server in the server list, to get the
+    /// server's MOTD, player count, ping, etc.
     Status,
 
     Login,
