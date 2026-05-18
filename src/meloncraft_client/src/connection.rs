@@ -25,6 +25,19 @@ use std::net::TcpStream;
 #[derive(Component, Debug)]
 pub struct ClientConnection {
     
+    /// The client's IP address, as a [`SocketAddr`].
+    /// 
+    /// ## Modification
+    /// - Modifying this field **will** mean that serverbound packets will be missed from that client.
+    /// - While the network crate should still send clientbound packets to the old address (as the
+    ///   [`TcpStream`] is still the same), it may cause issues and modification is still strongly
+    ///   discouraged.
+    /// ## Identification
+    /// - This is the main way that the client is identified in netcode.
+    /// - When a packet is received from a client, the network crate will check the source IP
+    ///   address of the packet and compare it to the [`address`] field of all [`ClientConnection`]s
+    ///   to find out which client sent the packet, and which client to add to the serverbound
+    ///   packet's data.
     pub address: SocketAddr,
 
     pub tcp_stream: TcpStream,
