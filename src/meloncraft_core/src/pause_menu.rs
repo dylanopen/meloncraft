@@ -114,6 +114,20 @@ impl From<BuiltinPauseMenuLabel> for i32 {
     }
 }
 
+/// Represents a *custom* Minecraft link label (the text) to send in the client's pause menu.
+///
+/// These are the labels that you can customize and send to the client to change the text shown on a
+/// link in the pause menu.
+///
+/// ## Fields
+/// 0. [`NbtText`]: The text shown on the link in the pause menu. This can be formatted with colors,
+///    styles, etc. using [`NbtText`] formatting. See the [`NbtText`] documentation for more
+///    information on how to format text.
+///
+/// ## Packet usage
+/// This struct is used in the [`PauseMenuLabel::Custom`] variant, which is used in the
+/// [`PauseMenuLink`] struct to represent a link with a custom label. See the [`PauseMenuLink`]
+/// documentation for more information on how to build a link with a custom label.
 #[derive(Debug, Clone)]
 pub struct CustomPauseMenuLabel(pub NbtText);
 
