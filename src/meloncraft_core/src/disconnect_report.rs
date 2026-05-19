@@ -12,6 +12,13 @@
 #[derive(Debug, Clone)]
 pub struct DisconnectReport {
 
+    /// The (main) title of the disconnect report shown to the client.
+    /// You should probably keep this as a short summary, and save longer explanations for the
+    /// [`DisconnectReport::description`] field.
+    ///
+    /// ## Constraints
+    /// - The [`DisconnectReport::title`] must be **less than or equal to** `128` characters in
+    ///   length, or packets may fail to send.
     pub title: String,
 
     pub description: String,
