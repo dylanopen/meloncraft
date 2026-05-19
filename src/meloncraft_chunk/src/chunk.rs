@@ -52,6 +52,9 @@ impl Chunk {
     /// ## Parameters
     /// - `blocks`: A `Vec<Block>` of all the blocks in the chunk.
     ///
+    /// ## Returns
+    /// A new [`Chunk`] containing the passed blocks.
+    ///
     /// ## `blocks` constraints
     /// - The length of this `Vec<Block>` must be a multiple of `16*16*16` (4096), as each chunk
     ///   section is 16x16x16 blocks.
@@ -120,6 +123,18 @@ impl Chunk {
         return self.blocks.len() / (16*16);
     }
 
+    /// Get **a reference** to the [`Block`] at the specified `location` in the chunk.
+    /// If you want to edit the block, please use [`Chunk::get_block_mut`] or [`Chunk::set_block`]
+    /// instead.
+    ///
+    /// ## Parameters
+    /// - `location`: An `IVec3` representing the location of the block in the chunk.
+    /// 
+    /// ## Returns
+    /// - `Some(&Block)` if the `location` is valid and within the bounds of the chunk.
+    /// - [`None`] if the `location` is out of bounds, meaning that any of the coordinates are outside
+    ///   the ranges of `0..16` for X and Z, or <code>0..[`Chunk::get_height_in_blocks`]</code> for Y.
+    ///   <code>0..[`Chunk::get_height_in_blocks`]</code> for Y.
     #[must_use]
     pub fn get_block(&self, location: IVec3) -> Option<&Block> {
         let index = Chunk::get_index(location);
