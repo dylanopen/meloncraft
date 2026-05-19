@@ -20,6 +20,14 @@ pub struct DatapackMetadata {
     /// In the datapack name `minecraft:core`, the namespace is `minecraft`.
     pub namespace: String,
 
+    /// The **path** of the datapack's name, which is the part **after** the colon (`:`) in the
+    /// datapack's name.
+    ///
+    /// This is usually the specific name of the datapack, such as `core` for the vanilla core
+    /// datapack.
+    ///
+    /// ## Example
+    /// In the datapack name `minecraft:core`, the path is `core`.
     pub id: String,
 
     pub version: String,
