@@ -136,7 +136,7 @@ impl Chunk {
     ///   the ranges of `0..16` for X and Z, or <code>0..[`Chunk::get_height_in_blocks`]</code> for Y.
     #[must_use]
     pub fn get_block(&self, location: IVec3) -> Option<&Block> {
-        let index = Chunk::get_index(location);
+        let index = self.get_index(location)?;
         return self.blocks.get(index);
     }
 
@@ -154,7 +154,7 @@ impl Chunk {
     ///   the ranges of `0..16` for X and Z, or <code>0..[`Chunk::get_height_in_blocks`]</code> for Y.
     #[must_use]
     pub fn get_block_mut(&mut self, location: IVec3) -> Option<&mut Block> {
-        let index = Chunk::get_index(location);
+        let index = self.get_index(location)?;
         return self.blocks.get_mut(index);
     }
 
@@ -196,7 +196,7 @@ impl Chunk {
     /// - `None` if the block could not be set, for example, because the `location` was out of
     ///   bounds for the chunk.
     pub fn set_block(&mut self, location: IVec3, block: Block) -> Option<()> {
-        let index = Chunk::get_index(location); 
+        let index = self.get_index(location)?; 
         let b = self.blocks.get_mut(index)?;
         *b = block;
         return Some(());
@@ -236,7 +236,37 @@ impl Chunk {
         return sections;
     }
 
-    pub fn get_index(location: IVec3) -> usize {
-        return usize::try_from(location.y * 16*16 + location.z * 16 + location.x).unwrap();
+    /// Get the index into a block array for a block position in a chunk.
+    /// This essentially maps an [`IVec3`], like `(3,71,8)`, and turns it into a single `usize`
+    /// representing the block position in the [`Chunk::blocks`] [`Vec`] of [`Block`]s - a *one
+    /// dimensional index*.
+    ///
+    /// ## Parameters
+    /// - `&self`: the [`Chunk`] containing the block you want the index of. This is currently only
+    ///   used for bounds checking the `y` against the chunk height in blocks.
+    /// - `location`: the *relative* position *inside* the chunk, of which the block index should be
+    ///   returned.
+    ///
+    /// ## Returns
+    /// - `Some(usize)`, the 1D index of the block, if the `location` is valid within the chunk.
+    /// - `None` if the block's `location` is outside the bounds of the chunk.
+    ///
+    /// ## Constraints
+    /// - `location.x` must be between 0 and 15 inclusive.
+    /// - `location.y` must be between 0 and the chunk height in blocks.
+    /// - `location.z` must be between 0 and 15 inclusive.
+    ///
+    /// ## Panics
+    /// - If [`Chunk::get_height_in_blocks`] returns a value too large to convert to a `usize`, this
+    ///   will panic. This is extremely unlikely.
+    /// - If the calculated index does not fit in a `usize`, it will panic.
+    /// - If either of those happen, you have bigger issues than a panic...
+    #[must_use]
+    pub fn get_index(&self, location: IVec3) -> Option<usize> {
+        if location.x >= 16 { return None; }
+        if location.z >= 16 { return None; }
+        if location.y >= self.get_height_in_blocks().try_into().unwrap() { return None; }
+
+        return Some(usize::try_from(location.y * 16*16 + location.z * 16 + location.x).unwrap());
     }
 }
