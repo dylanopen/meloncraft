@@ -1,3 +1,10 @@
+//! Module containing structs and enums for representing links in the client's pause menu.
+//! Main types:
+//! - [`PauseMenuLink`]
+//! - [`PauseMenuLabel`]
+//! - [`BuiltinPauseMenuLabel`]
+//! - [`CustomPauseMenuLabel`]
+
 use meloncraft_text::NbtText;
 
 /// Represents a *default* Minecraft link label to send in the client's pause menu.
