@@ -1,3 +1,14 @@
+//! Module for enum [`BlockFaceType`].
+
+/// The face of a block, often that is being interacted with.
+///
+/// This is defined in absolute directions, e.g. [`BlockFaceType::North`] is always the north face
+/// of a block, it doesn't depend on the client's position or anything like that.
+///
+/// ## Packet usage
+/// Clients send this when breaking or placing blocks, among other interactions.
+/// They are usually represented as a `u8` in packets. See the individual variants for the value
+/// associated with each face.
 #[derive(Debug, Clone)]
 pub enum BlockFaceType {
     Bottom,
