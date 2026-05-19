@@ -59,5 +59,19 @@ pub struct PlayerBrokeBlock {
     /// an `EntityPosition` component, etc.
     pub player: Entity,
 
+    /// The sequence number of the block breaking action, as an `i32`.
+    ///
+    /// The sequence number is used in the `ClientboundAcknowledgeBlockChange` packet, which the
+    /// server sends to the client when that client broke a block.
+    /// You can, for example, listen to this message and respond by acknowledging the block change
+    /// with the same sequence number, to essentially complete the block breaking action for the
+    /// client's view. This doesn't seem to be necessary though, you can also just send a
+    /// `ClientboundBlockUpdate` packet instead, it seems.
+    ///
+    /// The sequence number is incremented by the client every time they break a block. If you send
+    /// a `ClientboundAcknowledgeBlockChange` packet with the same sequence number, the client will
+    /// know you have acknowledged the block change, and will show the block as broken.
+    ///
+    /// Read more: <https://minecraft.wiki/w/Java_Edition_protocol/Packets#Acknowledge_Block_Change>.
     pub sequence: i32,
 }
