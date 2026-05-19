@@ -15,9 +15,11 @@
 pub struct EntityPositionFlags {
     
     /// `true` if the entity's feet are touching the ground, `false` otherwise.
-    /// This is represented by the **least significant bit**.
+    /// This is represented by the **least significant bit**, `0b_0000_0001`.
     pub on_ground: bool,
 
+    /// `true` if the entity is touching / moving into a wall, `false` otherwise.
+    /// This is represented by the **second to least significant bit**, `0b_0000_0010`.
     pub pushing_against_wall: bool,
 }
 
