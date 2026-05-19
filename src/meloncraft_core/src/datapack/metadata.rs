@@ -40,7 +40,7 @@ pub struct DatapackMetadata {
     /// - `MINOR` is incremented for added functionality in a backwards-compatible manner,
     /// - `PATCH` is incremented for backwards-compatible bug fixes.
     ///
-    /// For example, `1.7.2` is a valid datapack version, where `1` is the major version, `7` is the
-    /// minor version, and `2` is the patch.
+    /// For example, `1.20.1` is a valid datapack version, where `1` is the major version, `20` is the
+    /// minor version, and `1` is the patch.
     pub version: String,
 }
