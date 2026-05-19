@@ -131,6 +131,26 @@ impl From<BuiltinPauseMenuLabel> for i32 {
 #[derive(Debug, Clone)]
 pub struct CustomPauseMenuLabel(pub NbtText);
 
+/// Represents a generic link **label** for use in the client's pause menu.
+///
+/// This label can be either:
+/// - A built-in label, see [`PauseMenuLabel::Builtin`]
+/// - A custom label, see [`PauseMenuLabel::Custom`]
+///
+/// ## Packet usage
+/// This enum is used in the [`PauseMenuLink`] struct to represent the label of a link in the pause
+/// menu. See the [`PauseMenuLink`] documentation for more information on how to build a link with
+/// either a built-in or custom label.
+///
+/// ## Example usage
+/// ```rust
+/// use meloncraft_text::NbtText;
+/// use meloncraft_text::pause_menu::{BuiltinPauseMenuLabel, CustomPauseMenuLabel, PauseMenuLabel, PauseMenuLink};
+/// let link = PauseMenuLink {
+///     label: PauseMenuLabel::Custom(CustomPauseMenuLabel(NbtText::from("Click here for support!"))),
+///     url: "https://example.com".to_string(),
+/// };
+/// ```
 #[derive(Debug, Clone)]
 pub enum PauseMenuLabel {
     Builtin(BuiltinPauseMenuLabel),
