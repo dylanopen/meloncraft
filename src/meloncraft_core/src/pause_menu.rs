@@ -195,5 +195,11 @@ pub struct PauseMenuLink {
     /// clicks on to open the URL, so it should be descriptive of the URL it's linking to.
     pub label: PauseMenuLabel,
 
+    /// The URL of the link, which is just a string representing the URL that the client will open
+    /// when they click on the link in the pause menu.
+    ///
+    /// ## Constraints
+    /// - The URL should be a valid URL that the client can open. It should probably start with
+    ///   `http://` or `https://`.
     pub url: String,
 }
