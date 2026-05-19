@@ -27,24 +27,54 @@ use meloncraft_text::NbtText;
 #[derive(Debug, Clone)]
 pub enum BuiltinPauseMenuLabel {
 
+    /// A built-in [`PauseMenuLabel`] shown on connection error screens.
+    /// Built-in label ID: `0`.
+    /// See [`BuiltinPauseMenuLabel`] for docs on what default labels are and how to use them.
     BugReport,
 
+    /// A built-in [`PauseMenuLabel`] that can be shown in the pause menu.
+    /// Built-in label ID: `1`.
+    /// See [`BuiltinPauseMenuLabel`] for docs on what default labels are and how to use them.
     CommunityGuidelines,
 
+    /// A built-in [`PauseMenuLabel`] that can be shown in the pause menu.
+    /// Built-in label ID: `2`.
+    /// See [`BuiltinPauseMenuLabel`] for docs on what default labels are and how to use them.
     Support,
 
+    /// A built-in [`PauseMenuLabel`] that can be shown in the pause menu.
+    /// Built-in label ID: `3`.
+    /// See [`BuiltinPauseMenuLabel`] for docs on what default labels are and how to use them.
     Status,
     
+    /// A built-in [`PauseMenuLabel`] that can be shown in the pause menu.
+    /// Built-in label ID: `4`.
+    /// See [`BuiltinPauseMenuLabel`] for docs on what default labels are and how to use them.
     Feedback,
 
+    /// A built-in [`PauseMenuLabel`] that can be shown in the pause menu.
+    /// Built-in label ID: `5`.
+    /// See [`BuiltinPauseMenuLabel`] for docs on what default labels are and how to use them.
     Community,
 
+    /// A built-in [`PauseMenuLabel`] that can be shown in the pause menu.
+    /// Built-in label ID: `6`.
+    /// See [`BuiltinPauseMenuLabel`] for docs on what default labels are and how to use them.
     Website,
 
+    /// A built-in [`PauseMenuLabel`] that can be shown in the pause menu.
+    /// Built-in label ID: `7`.
+    /// See [`BuiltinPauseMenuLabel`] for docs on what default labels are and how to use them.
     Forums,
 
+    /// A built-in [`PauseMenuLabel`] that can be shown in the pause menu.
+    /// Built-in label ID: `8`.
+    /// See [`BuiltinPauseMenuLabel`] for docs on what default labels are and how to use them.
     News,
 
+    /// A built-in [`PauseMenuLabel`] that can be shown in the pause menu.
+    /// Built-in label ID: `9`.
+    /// See [`BuiltinPauseMenuLabel`] for docs on what default labels are and how to use them.
     Announcements,
 }
 
