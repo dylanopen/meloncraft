@@ -34,6 +34,11 @@ pub enum BlockFaceType {
     /// - **ID in packets: `2`**.
     North,
 
+    /// - The south face of a block.
+    /// - Opposite to the [`BlockFaceType::North`] face.
+    /// - This is the closest face to the positive Z direction.
+    /// - **Offset: `+Z`.**
+    /// - **ID in packets: `3`**.
     South,
 
     West,
