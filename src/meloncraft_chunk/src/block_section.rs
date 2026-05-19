@@ -22,6 +22,13 @@ use meloncraft_block::block::Block;
 #[derive(Debug, Clone)]
 pub struct ChunkBlockSection {
 
+    /// The number of non-air blocks in the [`ChunkBlockSection`].
+    /// This is automatically calculated when calling [`ChunkBlockSection::new`].
+    /// See [`sum_non_air_blocks`] for more information on how it is calculated.
+    ///
+    /// ## Packet usage
+    /// The block count is required in some clientbound packets, so it is calculated and stored
+    /// here.
     pub block_count: i16,
 
     pub blocks: [Block; 4096],
