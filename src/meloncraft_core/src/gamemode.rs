@@ -14,18 +14,22 @@
 pub enum GameMode {
 
     /// Represents the `Survival` game mode for a player.
+    /// Survival mode has the ID `0` or `0.0` in packets.
     /// See <https://minecraft.wiki/w/Game_mode#Survival>.
     Survival,
 
     /// Represents the `Creative` game mode for a player.
+    /// Creative mode has the ID `1` or `1.0` in packets.
     /// See <https://minecraft.wiki/w/Game_mode#Creative>.
     Creative,
 
     /// Represents the `Adventure` game mode for a player.
+    /// Adventure mode has the ID `2` or `2.0` in packets.
     /// See <https://minecraft.wiki/w/Game_mode#Adventure>.
     Adventure,
 
     /// Represents the `Spectator` game mode for a player.
+    /// Spectator mode has the ID `3` or `3.0` in packets.
     /// See <https://minecraft.wiki/w/Game_mode#Spectator>.
     Spectator,
 }
