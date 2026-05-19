@@ -71,6 +71,21 @@ impl ChunkBlockSection {
     }
 }
 
+/// Calculates the total number of non-air blocks in an array of 4096 [`Block`]s.
+///
+/// Currently, this calculates the sum of every single block in the array, with the only exception
+/// being air. This may change as more research is done into the purpose of this value in the
+/// protocol.
+///
+/// ## Parameters
+/// - `blocks`: a *reference* to the array of blocks to sum. Must be length 4096.
+///
+/// ## Returns
+/// - An `i16` (short) representing the total number of non-air blocks in the chunk section array.
+/// 
+/// ## Panics
+/// - The only unwrap is in converting the non-air count from a `usize` to an `i32`. By type check,
+///   this is at most 4096, so **panics should be impossible**.
 #[must_use]
 pub fn sum_non_air_blocks(blocks: &[Block; 4096]) -> i16 {
     return blocks.iter().filter(|block| return block.state_id != 0).count().try_into().unwrap();
