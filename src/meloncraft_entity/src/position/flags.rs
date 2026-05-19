@@ -1,6 +1,21 @@
+//! Module for struct [`EntityPositionFlags`].
+
+/// Stores extra metadata about the player's position. Some packets require these flags to be sent
+/// alongside the player's location.
+///
+/// ## Flags
+/// - [`EntityPositionFlags::on_ground`]
+/// - [`EntityPositionFlags::pushing_against_wall`]
+/// 
+/// ## Serialization
+/// [`From`] is implemented bidirectionally between [`EntityPositionFlags`] and `u8`. It is
+/// converted into a bitset of values: see the individual fields for information about how they are
+/// serialized and deserialized.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub struct EntityPositionFlags {
+    
     pub on_ground: bool,
+
     pub pushing_against_wall: bool,
 }
 
