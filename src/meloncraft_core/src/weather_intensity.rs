@@ -1,3 +1,5 @@
+//! Module for struct [`WeatherIntensity`].
+
 /// Represents the intensity of rain or thunder in the game world.
 /// 
 /// ## Fields
