@@ -10,7 +10,17 @@
 /// `ClientboundSelectKnownPacks` and `ServerboundSelectKnownPacks`.
 #[derive(Debug, Clone, Eq, PartialEq)]
 pub struct DatapackMetadata {
+
+    /// The **namespcae** of the datapack's name, which is the part **before** the colon (`:`) in
+    /// the datapack's name.
+    ///
+    /// This is usually `minecraft` for vanilla datapacks.
+    ///
+    /// ## Example
+    /// In the datapack name `minecraft:core`, the namespace is `minecraft`.
     pub namespace: String,
+
     pub id: String,
+
     pub version: String,
 }
