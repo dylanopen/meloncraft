@@ -1293,6 +1293,7 @@ dependencies = [
 name = "meloncraft_chunk"
 version = "0.1.0"
 dependencies = [
+ "bevy",
  "meloncraft_block",
 ]
 

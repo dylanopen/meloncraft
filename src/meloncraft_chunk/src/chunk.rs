@@ -1,5 +1,6 @@
 use crate::biome::Biome;
 use crate::block_section::ChunkBlockSection;
+use bevy::math::IVec3;
 use meloncraft_block::block::Block;
 
 #[derive(Debug, Clone, Eq, PartialEq)]
@@ -21,14 +22,14 @@ impl Chunk {
     }
 
     #[must_use]
-    pub fn get_block(&self, x: usize, z: usize, y: usize) -> Option<&Block> {
-        let index = y * 16*16 + z * 16 + x;
+    pub fn get_block(&self, location: IVec3) -> Option<&Block> {
+        let index = Chunk::get_index(location);
         return self.blocks.get(index);
     }
 
     #[must_use]
-    pub fn get_block_mut(&mut self, x: usize, z: usize, y: usize) -> Option<&mut Block> {
-        let index = y * 16*16 + z * 16 + x;
+    pub fn get_block_mut(&mut self, location: IVec3) -> Option<&mut Block> {
+        let index = Chunk::get_index(location);
         return self.blocks.get_mut(index);
     }
 
@@ -37,8 +38,8 @@ impl Chunk {
         return &self.blocks;
     }
 
-    pub fn set_block(&mut self, x: usize, z: usize, y: usize, block: Block) -> Option<()> {
-        let index = y * 16*16 + z * 16 + x;
+    pub fn set_block(&mut self, location: IVec3, block: Block) -> Option<()> {
+        let index = Chunk::get_index(location); 
         let b = self.blocks.get_mut(index)?;
         *b = block;
         return Some(());
@@ -61,5 +62,9 @@ impl Chunk {
             sections.push(section);
         }
         return sections;
+    }
+
+    fn get_index(location: IVec3) -> usize {
+        return usize::try_from(location.y * 16*16 + location.z * 16 + location.x).unwrap();
     }
 }
