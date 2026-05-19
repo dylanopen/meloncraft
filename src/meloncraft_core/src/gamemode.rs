@@ -13,6 +13,8 @@
 #[derive(Debug, Clone, Copy)]
 pub enum GameMode {
 
+    /// Represents the `Survival` game mode for a player.
+    /// See <https://minecraft.wiki/w/Game_mode#Survival>.
     Survival,
 
     Creative,
