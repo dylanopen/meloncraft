@@ -11,19 +11,34 @@
 pub enum DemoEventType {
 
     /// Notification to welcome the client to the demo screen.
+    /// This is usually the **first** demo event sent.
+    /// - Predecessor: None
+    /// - Successor: [`DemoEventType::MovementControls`]
     WelcomeToDemoScreen,
 
     /// Demo screen notification explaining the basic movement controls of the game.
+    /// This is usually the **second** demo event sent.
+    /// - Predecessor: [`DemoEventType::WelcomeToDemoScreen`]
+    /// - Successor: [`DemoEventType::JumpControl`]
     MovementControls,
 
     /// Demo screen notification explaining how the client should jump.
+    /// This is usually the **third** demo event sent.
+    /// - Predecessor: [`DemoEventType::MovementControls`]
+    /// - Successor: [`DemoEventType::InventoryControl`]
     JumpControl,
 
     /// Demo screen notification explaining how the client can open their inventory (with e).
+    /// This is usually the **fourth** demo event sent.
+    /// - Predecessor: [`DemoEventType::JumpControl`]
+    /// - Successor: [`DemoEventType::DemoOver`]
     InventoryControl,
 
     /// Demo screen notification to inform the client that the demo has finished.
     /// In addition to ending the demo, this also shows the client how to take a screenshot.
+    /// This is usually the **fifth** and **final** demo event sent.
+    /// - Predecessor: [`DemoEventType::InventoryControl`]
+    /// - Successor: None
     DemoOver, 
 }
 
