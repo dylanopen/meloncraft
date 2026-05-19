@@ -8,6 +8,10 @@ use bevy::prelude::Entity;
 ///
 /// You should listen to this event if you want to do something when *any* block is broken,
 /// regardless of the cause.
+///
+/// No information about the block is sent with this message, except for the block's position. You
+/// may want to use other components and messages to, say, get the block type from a `Chunk` /
+/// `World`.
 /// 
 /// ## Alternatives
 /// - If you want to respond only when a player breaks a block, and ignore other causes, listen to
@@ -15,6 +19,12 @@ use bevy::prelude::Entity;
 ///   other info.
 #[derive(Message, Debug, Clone)]
 pub struct BlockBroken {
+
+    /// The location of the block that was broken, as an [`IVec3`].
+    /// The coordinates are in block coordinates, not chunk coordinates. These will be the same as
+    /// are visible in the client's F3 menu.
+    ///
+    /// As blocks are discrete, their positions are integers, so stored as an [`IVec3`].
     pub block_location: IVec3,
 }
 
