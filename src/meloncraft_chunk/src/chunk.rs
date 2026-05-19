@@ -47,6 +47,37 @@ pub struct Chunk {
 }
 
 impl Chunk {
+    /// Creates a new `Chunk` with the specified blocks.
+    ///
+    /// ## Parameters
+    /// - `blocks`: A `Vec<Block>` of all the blocks in the chunk.
+    ///
+    /// ## `blocks` constraints
+    /// - The length of this `Vec<Block>` must be a multiple of `16*16*16` (4096), as each chunk
+    ///   section is 16x16x16 blocks.
+    /// - The height of the chunk is determined by the length of this `Vec<Block>`, divided by
+    ///   `4096`. For details, see [`Chunk::get_height`].
+    /// - All [`Block`]s in the chunk must be valid block states, meaning that their `state_id` field
+    ///   must be a valid block state ID as defined in the internal registries.
+    /// - The chunk blocks must be stored in the correct order.
+    ///
+    /// ## Block ordering
+    /// The blocks are stored in **XZY** order, which means that the X coordinate changes the
+    /// fastest, followed by Z, and then Y changing the slowest. You should view the source code
+    /// for the [`Chunk::get_index`] function for more information on how the block locations are
+    /// mapped to the indices in this `Vec<Block>`.
+    ///
+    /// ## Example
+    /// ```rust
+    /// use meloncraft_block::block::Block;
+    /// use meloncraft_chunk::chunk::Chunk;
+    /// use bevy::math::IVec3;
+    /// let blocks = vec![Block::new(1); 16*16*16*4]; // 4 chunk sections of stone blocks
+    /// let chunk = Chunk::new(blocks);
+    /// assert_eq!(chunk.get_height(), 4);
+    /// assert_eq!(chunk.get_block(IVec3::new(0, 0, 0)).unwrap().state_id, 1);
+    /// assert_eq!(chunk.get_block(IVec3::new(15, 0, 8)).unwrap().state_id, 1);
+    /// ```
     #[must_use]
     pub const fn new(blocks: Vec<Block>) -> Self {
         return Chunk {
