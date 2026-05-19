@@ -11,11 +11,23 @@
 /// associated with each face.
 #[derive(Debug, Clone)]
 pub enum BlockFaceType {
+
+    /// - The bottom face of a block.
+    /// - Opposite to the [`BlockFaceType::Top`] face.
+    /// - This is the closest face to the negative Y direction - closest to the void at the bottom
+    ///   of the world.
+    /// - **Offset: `-Y`.**
+    /// - **ID in packets: `0`**.
     Bottom,
+
     Top,
+
     North,
+
     South,
+
     West,
+
     East,
 }
 
