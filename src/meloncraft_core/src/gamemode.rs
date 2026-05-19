@@ -1,8 +1,24 @@
+//! Module for enum [`GameMode`].
+
+/// The game mode of a player.
+/// This determines how the player interacts with the world, entities, etc.
+/// See <https://minecraft.wiki/w/Game_mode> for more information.
+///
+/// ## Packet usage
+/// - Most packets that use the [`GameMode`] enum internally convert the [`GameMode`] to a `u8` (or
+///   from a `u8` to a [`GameMode`]) before sending (or after receiving) the packet.
+/// - Some packets, such as the `ClientboundGameEvent` packet, represent it as an `f32`.
+/// - `From` is implemented bidirectionally for both `u8` and `f32`.
+/// - See the individual variants to find the number associated with each game mode.
 #[derive(Debug, Clone, Copy)]
 pub enum GameMode {
+
     Survival,
+
     Creative,
+
     Adventure,
+
     Spectator,
 }
 
