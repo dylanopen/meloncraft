@@ -158,6 +158,25 @@ impl Chunk {
         return self.blocks.get_mut(index);
     }
 
+    /// Get a list of all the blocks in the chunk.
+    ///
+    /// ## Block order
+    /// The blocks are stored in a specific order, as follows:
+    /// - The blocks are stored in **XZY** order, which means that the X coordinate changes the
+    ///   fastest, followed by Z, and then Y changing the slowest. You should view the source code
+    ///   for the [`Chunk::get_index`] function for more information on how the block locations are
+    ///   mapped to the indices in this `Vec<Block>`.
+    /// - It is recommended to just use [`Chunk::get_index`] instead of doing the calculations
+    ///   yourself.
+    ///
+    /// ## Returns
+    /// - A *reference* to a [`Vec`] of [`Block`]s.
+    /// - Currently, this field just returns an immutable reference to the [`Chunk::blocks`] private
+    ///   field.
+    ///
+    /// ## Restrictions
+    /// While you are free to call this method, it is recommended to instead use the other provided
+    /// methods for interacting with chunks and use this as a 'last resort'.
     #[must_use]
     pub const fn get_blocks(&self) -> &Vec<Block> {
         return &self.blocks;
@@ -172,7 +191,7 @@ impl Chunk {
 
     #[must_use]
     pub fn is_empty(&self) -> bool {
-        return self.blocks.iter().all(|b| return b.state_id == 0); // 0 is air, I'm not importing block to tell us that.
+        return self.blocks.iter().all(|b| return b.state_id == 0); // 0 is air, I'm not importing blockstate_registry to tell us that.
     }
 
     #[must_use]
@@ -189,7 +208,7 @@ impl Chunk {
         return sections;
     }
 
-    fn get_index(location: IVec3) -> usize {
+    pub fn get_index(location: IVec3) -> usize {
         return usize::try_from(location.y * 16*16 + location.z * 16 + location.x).unwrap();
     }
 }
