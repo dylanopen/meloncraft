@@ -30,5 +30,17 @@ pub struct DatapackMetadata {
     /// In the datapack name `minecraft:core`, the path is `core`.
     pub id: String,
 
+    /// The version of the datapack, which is just a string representing the version of the
+    /// datapack.
+    ///
+    /// ## Format
+    /// The datapack version should follow semantic versioning, consisting of three parts:
+    /// `MAJOR.MINOR.PATCH`, where:
+    /// - `MAJOR` is incremented for incompatible API changes,
+    /// - `MINOR` is incremented for added functionality in a backwards-compatible manner,
+    /// - `PATCH` is incremented for backwards-compatible bug fixes.
+    ///
+    /// For example, `1.7.2` is a valid datapack version, where `1` is the major version, `7` is the
+    /// minor version, and `2` is the patch.
     pub version: String,
 }
