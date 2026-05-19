@@ -1,3 +1,5 @@
+//! Module for messages [`BlockBroken`] and [`PlayerBrokeBlock`].
+
 use bevy::ecs::message::Message;
 use bevy::math::IVec3;
 use bevy::prelude::Entity;
