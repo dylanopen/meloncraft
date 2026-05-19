@@ -5,7 +5,7 @@
 /// stores its current state, represented by an `i32` value.
 ///
 /// The location or any extra data about a biome should be stored by whatever
-/// struct contains this [`Block`], e.g. a chunk-related struct.
+/// struct contains this [`Biome`], e.g. a chunk-related struct.
 ///
 /// ## Packet usage
 /// Packets should use the [`Biome::state_id`] field, which is a unique ID as defined in the
@@ -22,6 +22,7 @@
 ///   registry. Using an invalid `state_id` **will** likely cause the vanilla client to *CRASH*.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub struct Biome {
+
     /// The numerical ID that the Minecraft client understands as the biome's state.
     /// This ID is unique to every biome type, and the IDs and their biome names & details are sent
     /// during `configuration` in the `RegistryData` packet. Please decompile the Minecraft datapack
@@ -35,6 +36,18 @@ pub struct Biome {
 }
 
 impl Biome {
+
+    /// Creates a new [`Biome`] with the specified `state_id`.
+    ///
+    /// ## Parameters
+    /// - `state_id`: The numerical ID that the Minecraft client understands as the biome's state.
+    /// - This function does not check if the `state_id` is valid, so make sure to use a valid biome
+    ///   state ID, otherwise the vanilla client may *CRASH* when it receives a packet with an invalid
+    ///   biome state ID.
+    ///
+    /// ## Returns
+    /// A new `Biome` object, wrapping the specified state ID.
+    /// *This will be returned even if the biome state is invalid*.
     #[must_use]
     pub const fn new(state_id: i32) -> Self {
         return Self { state_id };

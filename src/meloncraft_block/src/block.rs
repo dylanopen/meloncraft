@@ -46,7 +46,7 @@ pub struct Block {
 
 impl Block {
     #[must_use]
-    /// Creates a new `Block` with the specified `state_id`.
+    /// Creates a new [`Block`] with the specified `state_id`.
     /// ## Parameters
     /// - `state_id`: The numerical ID that the Minecraft client understands as the block's state.
     ///   This ID is unique to every block state type. Look at the `meloncraft_blockstate_registry`
@@ -54,6 +54,10 @@ impl Block {
     /// - This function does not check if the `state_id` is valid, so make sure to use a valid block
     ///   state ID, otherwise the vanilla client may *CRASH* when it receives a packet with an invalid
     ///   block state ID.
+    ///
+    /// ## Returns
+    /// A new `Block` object, wrapping the specified state ID.
+    /// *This will be returned even if the block state is invalid*.
     ///
     /// ## Example
     /// ```rust
