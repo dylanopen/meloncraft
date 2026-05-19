@@ -85,8 +85,17 @@ impl Chunk {
         };
     }
 
+    /// Get the height, in **number of chunk sections**, of the chunk.
+    ///
+    /// The number of chunk *sections* represented by the chunk is equal to
+    /// the number of blocks, divided by `4096` (16*16*16).
+    /// This is because a chunk section is 16 blocks in width and length, and 16 blocks in height,
+    /// for a total of 4096 blocks per chunk section.
+    ///
+    /// This method will return a value 16 times smaller than the [`Chunk::get_height_in_blocks`]
+    /// method, which returns the height in blocks (a value 16x larger).
     #[must_use]
-    pub const fn get_height(&self) -> usize {
+    pub const fn get_height_in_chunks(&self) -> usize {
         return self.blocks.len() / (16*16*16);
     }
 
@@ -124,7 +133,7 @@ impl Chunk {
         let mut sections = Vec::new();
         let biomes = [Biome::new(40); 64]; // temporarily set all biomes to plains
         #[expect(clippy::indexing_slicing, reason = "Bounds are already manually checked, by iterating only over self.get_height()")]
-        for i in 0..self.get_height() {
+        for i in 0..self.get_height_in_chunks() {
             let mut section_blocks = [Block::new(0); 4096];
             section_blocks.copy_from_slice(&self.blocks[i*16*16*16..(i+1)*16*16*16]);
             let section = ChunkBlockSection::new(section_blocks, biomes);

@@ -16,10 +16,10 @@ pub fn send_chunk(
             data: send_chunk.chunk.to_chunk_sections(),
             // Lighting is purely temporary:
             light: ChunkLighting {
-                sky_mask: BitSet::with_capacity(send_chunk.chunk.get_height() + 2),
-                block_mask: BitSet::with_capacity(send_chunk.chunk.get_height() + 2),
-                empty_sky_mask: BitSet::with_capacity(send_chunk.chunk.get_height() + 2),
-                empty_block_mask: BitSet::with_capacity(send_chunk.chunk.get_height() + 2),
+                sky_mask: BitSet::with_capacity(send_chunk.chunk.get_height_in_chunks() + 2),
+                block_mask: BitSet::with_capacity(send_chunk.chunk.get_height_in_chunks() + 2),
+                empty_sky_mask: BitSet::with_capacity(send_chunk.chunk.get_height_in_chunks() + 2),
+                empty_block_mask: BitSet::with_capacity(send_chunk.chunk.get_height_in_chunks() + 2),
                 sky_data: vec![],
                 block_data: vec![],
             },
