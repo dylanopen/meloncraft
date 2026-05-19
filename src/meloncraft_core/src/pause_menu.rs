@@ -142,6 +142,9 @@ pub enum PauseMenuLabel {
     /// one is the ID (encoded in [`BuiltinPauseMenuLabel`]) variants.
     ///
     /// See the [`BuiltinPauseMenuLabel`] documentation for more information.
+    ///
+    /// ## Fields
+    /// 0. [`BuiltinPauseMenuLabel`]: the built-in label variant to use as the label of a link.
     Builtin(BuiltinPauseMenuLabel),
 
     /// Represents a custom label to use as the label of a link in the pause menu.
@@ -151,9 +154,37 @@ pub enum PauseMenuLabel {
     /// text of the label.
     ///
     /// See the [`CustomPauseMenuLabel`] documentation for more information.
+    ///
+    /// ## Fields
+    /// 0. [`CustomPauseMenuLabel`]: the custom label to use as the label of a link.
     Custom(CustomPauseMenuLabel),
 }
 
+/// Represents the link text and URL to send in the client's pause menu.
+///
+/// This is the highest-level struct for representing a link: it stores:
+/// - The label of the link, which can be either a built-in label (see [`BuiltinPauseMenuLabel`]) or
+///   a custom label (see [`CustomPauseMenuLabel`]), wrapped in the [`PauseMenuLabel`] enum.
+/// - The URL of the link, which is just a string representing the URL that the client will open when
+///   they click on the link in the pause menu.
+///
+/// ## Packet usage
+/// This struct is used in two main packets:
+/// - `ClientboundConfigurationServerLinks`: during the configuration stage, you can send a list of
+///   [`PauseMenuLink`]s to the client to show them in the pause menu.
+/// - `ClientboundPlayServerLinks`: during the play stage, you can also send a list of
+///   [`PauseMenuLink`]s to the client to show in the pause menu. This is useful if you want to change
+///   the links shown in the pause menu after the configuration stage, or if you want to show
+///   different links in the pause menu for different players.
+///
+/// ## Example
+/// ```rust
+/// use meloncraft_core::pause_menu::{PauseMenuLink, PauseMenuLabel, BuiltinPauseMenuLabel};
+/// let link = PauseMenuLink {
+///     label: PauseMenuLabel::Builtin(BuiltinPauseMenuLabel::Support),
+///     url: "https://support.minecraft.net/".to_string(),
+/// };
+/// ```
 #[derive(Debug, Clone)]
 pub struct PauseMenuLink {
     pub label: PauseMenuLabel,
