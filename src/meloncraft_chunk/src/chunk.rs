@@ -94,9 +94,30 @@ impl Chunk {
     ///
     /// This method will return a value 16 times smaller than the [`Chunk::get_height_in_blocks`]
     /// method, which returns the height in blocks (a value 16x larger).
+    ///
+    /// Examples:
+    /// - A chunk with 4096 blocks (1 chunk section) will return `1`.
+    /// - A chunk with 8192 blocks (2 chunk sections) will return `2`.
+    /// - If the value 6 is returned, that means the chunk has 6 chunk sections, which is 96 blocks
+    ///   in height (6 * 16).
     #[must_use]
     pub const fn get_height_in_chunks(&self) -> usize {
         return self.blocks.len() / (16*16*16);
+    }
+
+    /// Get the height of the chunk in **number of blocks upwards**.
+    /// 
+    /// In the default vanilla overworld, this is 384 blocks.
+    ///
+    /// The number of chunk sections is 16 times this value (as each [`ChunkBlockSection`] is made
+    /// up of 16 layers of blocks. You should use the [`Chunk::get_height_in_chunks`] for this
+    /// purpose, though.
+    ///
+    /// This method will return a value 16 times larger than the [`Chunk::get_height_in_chunks`]
+    /// method, which returns the height in chunk sections (each chunk section is 16 blocks).
+    #[must_use]
+    pub const fn get_height_in_blocks(&self) -> usize {
+        return self.blocks.len() / (16*16);
     }
 
     #[must_use]
