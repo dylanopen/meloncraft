@@ -14,6 +14,8 @@
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub struct EntityPositionFlags {
     
+    /// `true` if the entity's feet are touching the ground, `false` otherwise.
+    /// This is represented by the **least significant bit**.
     pub on_ground: bool,
 
     pub pushing_against_wall: bool,
