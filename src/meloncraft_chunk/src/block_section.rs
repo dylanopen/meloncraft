@@ -37,6 +37,11 @@ pub struct ChunkBlockSection {
     /// This is stored when calling [`ChunkBlockSection::new`].
     pub blocks: [Block; 4096],
 
+    /// A set-length array of [`Biome`]s in the chunk.
+    /// Each biome entry in this field takes up a 4x4x4 cube area. For example, the biome at index
+    /// `2` is the biome strecthing from x=8-11, y=0-3 and z=0-3.
+    /// As a chunk section is always `16x16x16` blocks, each section has `4x4x4=64` biome entries.
+    /// This is stored when calling [`ChunkBlockSection::new`].
     pub biomes: [Biome; 64],
 }
 
