@@ -31,6 +31,10 @@ pub struct ChunkBlockSection {
     /// here.
     pub block_count: i16,
 
+    /// A set-length array of [`Block`]s in the chunk.
+    /// As a chunk section is always `16x16x16=4096` blocks, that is the length of the array and it
+    /// cannot be resized.
+    /// This is stored when calling [`ChunkBlockSection::new`].
     pub blocks: [Block; 4096],
 
     pub biomes: [Biome; 64],
