@@ -20,6 +20,11 @@ pub enum BlockFaceType {
     /// - **ID in packets: `0`**.
     Bottom,
 
+    /// - The top face of a block.
+    /// - Opposite to the [`BlockFaceType::Bottom`] face.
+    /// - This is the closest face to the positive Y direction - closest to the sky at the top of the world.
+    /// - **Offset: `+Y`.**
+    /// - **ID in packets: `1`**.
     Top,
 
     North,
