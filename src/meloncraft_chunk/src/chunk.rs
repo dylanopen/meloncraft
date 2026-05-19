@@ -1,8 +1,18 @@
+//! Module for struct [`Chunk`].
+
 use crate::biome::Biome;
 use crate::block_section::ChunkBlockSection;
 use bevy::math::IVec3;
 use meloncraft_block::block::Block;
 
+/// A chunk of blocks, which is 16 blocks in width and length, and a variable height (384 blocks in
+/// the vanilla overworld).
+///
+/// This is the main struct for storing blocks in the world. It contains a `Vec<Block>` of all the
+/// blocks in the chunk, as well as methods for getting and setting blocks at specific locations,
+/// and converting the chunk into the [`ChunkBlockSection`] format used in the chunk data packets.
+///
+/// See the individual methods for more information.
 #[derive(Debug, Clone, Eq, PartialEq)]
 pub struct Chunk {
     blocks: Vec<Block>,
