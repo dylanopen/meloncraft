@@ -2,7 +2,7 @@
 
 use crate::biome::Biome;
 use crate::block_section::ChunkBlockSection;
-use bevy::math::IVec3;
+use bevy::math::UVec3;
 use meloncraft_block::block::Block;
 
 /// A chunk of blocks, which is 16 blocks in width and length, and a variable height (384 blocks in
@@ -74,12 +74,12 @@ impl Chunk {
     /// ```rust
     /// use meloncraft_block::block::Block;
     /// use meloncraft_chunk::chunk::Chunk;
-    /// use bevy::math::IVec3;
+    /// use bevy::math::UVec3;
     /// let blocks = vec![Block::new(1); 16*16*16*4]; // 4 chunk sections of stone blocks
     /// let chunk = Chunk::new(blocks);
     /// assert_eq!(chunk.get_height(), 4);
-    /// assert_eq!(chunk.get_block(IVec3::new(0, 0, 0)).unwrap().state_id, 1);
-    /// assert_eq!(chunk.get_block(IVec3::new(15, 0, 8)).unwrap().state_id, 1);
+    /// assert_eq!(chunk.get_block(UVec3::new(0, 0, 0)).unwrap().state_id, 1);
+    /// assert_eq!(chunk.get_block(UVec3::new(15, 0, 8)).unwrap().state_id, 1);
     /// ```
     #[must_use]
     pub const fn new(blocks: Vec<Block>) -> Self {
@@ -128,14 +128,14 @@ impl Chunk {
     /// instead.
     ///
     /// ## Parameters
-    /// - `location`: An [`IVec3`] representing the location of the block in the chunk.
+    /// - `location`: An [`UVec3`] representing the location of the block in the chunk.
     /// 
     /// ## Returns
     /// - `Some(&Block)` if the `location` is valid and within the bounds of the chunk.
     /// - [`None`] if the `location` is out of bounds, meaning that any of the coordinates are outside
     ///   the ranges of `0..16` for X and Z, or <code>0..[`Chunk::get_height_in_blocks`]</code> for Y.
     #[must_use]
-    pub fn get_block(&self, location: IVec3) -> Option<&Block> {
+    pub fn get_block(&self, location: UVec3) -> Option<&Block> {
         let index = self.get_index(location)?;
         return self.blocks.get(index);
     }
@@ -146,14 +146,14 @@ impl Chunk {
     /// To replace the block without checking the old block, you can use [`Chunk::set_block`].
     ///
     /// ## Parameters
-    /// - `location`: An [`IVec3`] representing the location of the block in the chunk.
+    /// - `location`: An [`UVec3`] representing the location of the block in the chunk.
     ///
     /// ## Returns
     /// - `Some(&mut Block)` if the `location` is valid and within the bounds of the chunk.
     /// - [`None`] if the `location` is out of bounds, meaning that any of the coordinates are outside
     ///   the ranges of `0..16` for X and Z, or <code>0..[`Chunk::get_height_in_blocks`]</code> for Y.
     #[must_use]
-    pub fn get_block_mut(&mut self, location: IVec3) -> Option<&mut Block> {
+    pub fn get_block_mut(&mut self, location: UVec3) -> Option<&mut Block> {
         let index = self.get_index(location)?;
         return self.blocks.get_mut(index);
     }
@@ -188,14 +188,14 @@ impl Chunk {
     ///
     /// ## Parameters
     /// - `&mut self`: the [`Chunk`] to operate on.
-    /// - `location`: the position of the block, as a Bevy [`IVec3`]
+    /// - `location`: the position of the block, as a Bevy [`UVec3`]
     /// - `block`: the new [`Block`] to put at that position.
     ///
     /// ## Returns
     /// - `()` if the block was set sucessfully.
     /// - `None` if the block could not be set, for example, because the `location` was out of
     ///   bounds for the chunk.
-    pub fn set_block(&mut self, location: IVec3, block: Block) -> Option<()> {
+    pub fn set_block(&mut self, location: UVec3, block: Block) -> Option<()> {
         let index = self.get_index(location)?; 
         let b = self.blocks.get_mut(index)?;
         *b = block;
@@ -237,7 +237,7 @@ impl Chunk {
     }
 
     /// Get the index into a block array for a block position in a chunk.
-    /// This essentially maps an [`IVec3`], like `(3,71,8)`, and turns it into a single `usize`
+    /// This essentially maps an [`UVec3`], like `(3,71,8)`, and turns it into a single `usize`
     /// representing the block position in the [`Chunk::blocks`] [`Vec`] of [`Block`]s - a *one
     /// dimensional index*.
     ///
@@ -262,7 +262,7 @@ impl Chunk {
     /// - If the calculated index does not fit in a `usize`, it will panic.
     /// - If either of those happen, you have bigger issues than a panic...
     #[must_use]
-    pub fn get_index(&self, location: IVec3) -> Option<usize> {
+    pub fn get_index(&self, location: UVec3) -> Option<usize> {
         if location.x >= 16 { return None; }
         if location.z >= 16 { return None; }
         if location.y >= self.get_height_in_blocks().try_into().unwrap() { return None; }
