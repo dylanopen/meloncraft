@@ -22,6 +22,15 @@
 ///   registry. Using an invalid `state_id` **will** likely cause the vanilla client to *CRASH*.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub struct Biome {
+    /// The numerical ID that the Minecraft client understands as the biome's state.
+    /// This ID is unique to every biome type, and the IDs and their biome names & details are sent
+    /// during `configuration` in the `RegistryData` packet. Please decompile the Minecraft datapack
+    /// to find out the ID of a specific packet.
+    ///
+    /// Use the [`Biome::new`] constructor to create a new `Biome` with a specific `state_id`.
+    /// 
+    /// ## Packet usage
+    /// Packets should use this field, which is a unique ID as defined in sent biome registry.
     pub state_id: i32,
 }
 
