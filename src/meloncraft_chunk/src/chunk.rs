@@ -13,8 +13,36 @@ use meloncraft_block::block::Block;
 /// and converting the chunk into the [`ChunkBlockSection`] format used in the chunk data packets.
 ///
 /// See the individual methods for more information.
+///
+/// This struct cannot be manually constructed. Please use the [`Chunk::new`] function, then the
+/// provided methods to interact with the blocks in the chunk.
 #[derive(Debug, Clone, Eq, PartialEq)]
 pub struct Chunk {
+    /// A `Vec<Block>` of all the blocks in the chunk. 
+    ///
+    /// ## Block order
+    /// The blocks are stored in a specific order, as follows:
+    /// - The blocks are stored in **XZY** order, which means that the X coordinate changes the
+    ///   fastest, followed by Z, and then Y changing the slowest. You should view the source code
+    ///   for the [`Chunk::get_index`] function for more information on how the block locations are
+    ///   mapped to the indices in this `Vec<Block>`.
+    ///
+    /// Library users do not need to interact with this field directly, instead, functions for
+    /// safely getting and setting blocks at specific locations are provided, which handle the
+    /// indexing and bounds checking for you.
+    ///
+    /// You can also convert the chunk into the [`ChunkBlockSection`] format used in the chunk data
+    /// packets using the [`Chunk::to_chunk_sections`] method, which also handles the indexing and
+    /// formatting for you.
+    ///
+    /// ## Constraints
+    /// - The length of this `Vec<Block>` must be a multiple of `16*16*16` (4096), as each chunk
+    ///   section is 16x16x16 blocks.
+    /// - The height of the chunk is determined by the length of this `Vec<Block>`, divided by `4096`.
+    ///   For details, see [`Chunk::get_height`].
+    /// - All blocks in the chunk must be valid block states, meaning that their `state_id` field
+    ///   must be a valid block state ID as defined in the internal registries.
+    /// - The chunk blocks must be stored in the correct order, as defined above.
     blocks: Vec<Block>,
 }
 
