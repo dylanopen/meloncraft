@@ -17,6 +17,8 @@ pub enum GameMode {
     /// See <https://minecraft.wiki/w/Game_mode#Survival>.
     Survival,
 
+    /// Represents the `Creative` game mode for a player.
+    /// See <https://minecraft.wiki/w/Game_mode#Creative>.
     Creative,
 
     Adventure,
