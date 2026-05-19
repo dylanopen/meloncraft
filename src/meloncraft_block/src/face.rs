@@ -9,6 +9,18 @@
 /// Clients send this when breaking or placing blocks, among other interactions.
 /// They are usually represented as a `u8` in packets. See the individual variants for the value
 /// associated with each face.
+///
+/// ## Identification
+/// - Each face type is associated with an ID.
+/// - The ID of each face type is documented in the individual variants. See the documentation of
+///   each variant for more information on the ID of each face type, and the `From` and `TryFrom`
+///   implementations for converting between the enum and its integer representation.
+/// 
+/// ## Offsets
+/// Each face type is associated with an offset from the block's position. For example, the
+/// `North` face is associated with the offset `-Z`, since it's the face of the block that is closest to the negative Z direction. The offsets of each face type are
+/// documented in the individual variants.
+/// See the documentation of each variant for more information on the offset of each face type.
 #[derive(Debug, Clone)]
 pub enum BlockFaceType {
 
