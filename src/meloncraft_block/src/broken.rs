@@ -28,9 +28,25 @@ pub struct BlockBroken {
     pub block_location: IVec3,
 }
 
+/// Message sent whenever a block is broken by a player.
+///
+/// You should listen to this event if you want to respond only when a player breaks a block, and
+/// ignore other causes. 
+///
+/// This message contains the submessage for the [`BlockBroken`] message, as well as the `Entity` of
+/// the player who broke the block, and the [sequence number](`PlayerBrokeBlock::sequence`) of the
+/// block breaking action.
+///
+/// ## Alternatives
+/// - If you want to respond to *any* block breaking, regardless of the cause, listen to the
+///   [`BlockBroken`] message instead, which is sent whenever a block is broken by any cause, and does
+///   not contain the player or sequence info.
 #[derive(Message, Debug, Clone)]
 pub struct PlayerBrokeBlock {
+
     pub block_broken: BlockBroken,
+
     pub player: Entity,
+
     pub sequence: i32,
 }
