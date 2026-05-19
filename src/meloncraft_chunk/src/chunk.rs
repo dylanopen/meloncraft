@@ -128,19 +128,30 @@ impl Chunk {
     /// instead.
     ///
     /// ## Parameters
-    /// - `location`: An `IVec3` representing the location of the block in the chunk.
+    /// - `location`: An [`IVec3`] representing the location of the block in the chunk.
     /// 
     /// ## Returns
     /// - `Some(&Block)` if the `location` is valid and within the bounds of the chunk.
     /// - [`None`] if the `location` is out of bounds, meaning that any of the coordinates are outside
     ///   the ranges of `0..16` for X and Z, or <code>0..[`Chunk::get_height_in_blocks`]</code> for Y.
-    ///   <code>0..[`Chunk::get_height_in_blocks`]</code> for Y.
     #[must_use]
     pub fn get_block(&self, location: IVec3) -> Option<&Block> {
         let index = Chunk::get_index(location);
         return self.blocks.get(index);
     }
 
+    /// Get ** a mutable reference** to the [`Block`], at the specified `location` in the chunk.
+    /// If you don't need to edit this block, consider using the [`Chunk::get_block`] method instead
+    /// for an *immutable* reference.
+    /// To replace the block without checking the old block, you can use [`Chunk::set_block`].
+    ///
+    /// ## Parameters
+    /// - `location`: An [`IVec3`] representing the location of the block in the chunk.
+    ///
+    /// ## Returns
+    /// - `Some(&mut Block)` if the `location` is valid and within the bounds of the chunk.
+    /// - [`None`] if the `location` is out of bounds, meaning that any of the coordinates are outside
+    ///   the ranges of `0..16` for X and Z, or <code>0..[`Chunk::get_height_in_blocks`]</code> for Y.
     #[must_use]
     pub fn get_block_mut(&mut self, location: IVec3) -> Option<&mut Block> {
         let index = Chunk::get_index(location);
