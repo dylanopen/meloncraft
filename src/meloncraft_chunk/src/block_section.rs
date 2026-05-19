@@ -47,6 +47,23 @@ pub struct ChunkBlockSection {
 
 impl ChunkBlockSection {
 
+    /// Create a new [`ChunkBlockSection`] with the provided `blocks` and `biomes`.
+    ///
+    /// This function calculates the `block_count` (see [`ChunkBlockSection::block_count`])
+    /// automatically.
+    ///
+    /// ## Parameters
+    /// - `blocks`: an array of [`Block`]s, length `4096`, one for each block in the 16x16x16 cube
+    ///   chunk section. *Their IDs are not verified to be valid.*
+    /// - `biomes`: an array of [`Biome`]s, length `64`, one for each 4x4x4 region in the 16x16x16 cubic
+    ///   chunk section. *Their IDs are also not verified to be valid.*
+    ///
+    /// Again, please note: there is no verification that the [`Block`]s or [`Biome`]s passed in
+    /// have valid state IDs. You should check this yourself.
+    ///
+    /// ## Returns
+    /// - A new [`ChunkBlockSection`] with the provided `blocks` and `biomes`, and an autocalculated
+    ///   `block_count`.
     #[must_use]
     pub fn new(blocks: [Block; 4096], biomes: [Biome; 64]) -> Self {
         let block_count = sum_non_air_blocks(&blocks);
