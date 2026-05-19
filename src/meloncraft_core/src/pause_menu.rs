@@ -144,6 +144,13 @@ pub enum PauseMenuLabel {
     /// See the [`BuiltinPauseMenuLabel`] documentation for more information.
     Builtin(BuiltinPauseMenuLabel),
 
+    /// Represents a custom label to use as the label of a link in the pause menu.
+    /// These are labels that you can customize and send to the client, and the client will display
+    /// the text you sent as the label of the link in the pause menu. To construct one, you need to
+    /// use the [`CustomPauseMenuLabel`] struct, which just wraps an [`NbtText`], representing the
+    /// text of the label.
+    ///
+    /// See the [`CustomPauseMenuLabel`] documentation for more information.
     Custom(CustomPauseMenuLabel),
 }
 
