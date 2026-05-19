@@ -53,6 +53,10 @@ pub struct PlayerBrokeBlock {
     /// [`BlockBroken`] message.
     pub block_broken: BlockBroken,
 
+    /// The Bevy [`Entity`] of the client which broke the block.
+    /// You can use this entity in a query to get other information about the player, for example,
+    /// their username or IP address from their `ClientConnection` component, or their position from
+    /// an `EntityPosition` component, etc.
     pub player: Entity,
 
     pub sequence: i32,
