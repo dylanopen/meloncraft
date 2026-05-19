@@ -15,14 +15,7 @@ use meloncraft_text::NbtText;
 /// To build a [`PauseMenuLink`] with a default label, you can use the [`PauseMenuLabel::Builtin`]
 /// variant, and pass in the default label you want to use.
 /// For example, to build a link with the default `Support` label, you would do:
-/// ```rust
-/// use meloncraft_text::NbtText;
-/// use meloncraft_text::pause_menu::{BuiltinPauseMenuLabel, PauseMenuLabel, PauseMenuLink};
-/// let link = PauseMenuLink {
-///     label: PauseMenuLabel::Builtin(BuiltinPauseMenuLabel::Support),
-///     url: "https://support.myserver.net/".to_string(),
-/// };
-/// ```
+///
 /// See the [`PauseMenuLink`] documentation for more information on how to build a link.
 #[derive(Debug, Clone)]
 pub enum BuiltinPauseMenuLabel {
@@ -141,19 +134,16 @@ pub struct CustomPauseMenuLabel(pub NbtText);
 /// This enum is used in the [`PauseMenuLink`] struct to represent the label of a link in the pause
 /// menu. See the [`PauseMenuLink`] documentation for more information on how to build a link with
 /// either a built-in or custom label.
-///
-/// ## Example usage
-/// ```rust
-/// use meloncraft_text::NbtText;
-/// use meloncraft_text::pause_menu::{BuiltinPauseMenuLabel, CustomPauseMenuLabel, PauseMenuLabel, PauseMenuLink};
-/// let link = PauseMenuLink {
-///     label: PauseMenuLabel::Custom(CustomPauseMenuLabel(NbtText::from("Click here for support!"))),
-///     url: "https://example.com".to_string(),
-/// };
-/// ```
 #[derive(Debug, Clone)]
 pub enum PauseMenuLabel {
+
+    /// Represents a built-in label to use as the label of a link in the pause menu.
+    /// These are labels that the client already knows about, and the only thing needed to construct
+    /// one is the ID (encoded in [`BuiltinPauseMenuLabel`]) variants.
+    ///
+    /// See the [`BuiltinPauseMenuLabel`] documentation for more information.
     Builtin(BuiltinPauseMenuLabel),
+
     Custom(CustomPauseMenuLabel),
 }
 
