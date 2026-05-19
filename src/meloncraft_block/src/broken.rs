@@ -44,6 +44,13 @@ pub struct BlockBroken {
 #[derive(Message, Debug, Clone)]
 pub struct PlayerBrokeBlock {
 
+    /// The submessage for the [`BlockBroken`] message, which contains the block's position.
+    /// This message will be a clone of the [`BlockBroken`] message, also sent after the event
+    /// triggering this message. A [`BlockBroken`] message will always be sent whenever a
+    /// [`PlayerBrokeBlock`] message is sent, but not necessarily the other way around.
+    ///
+    /// See the [`BlockBroken`] documentation for more information on the fields of a
+    /// [`BlockBroken`] message.
     pub block_broken: BlockBroken,
 
     pub player: Entity,
