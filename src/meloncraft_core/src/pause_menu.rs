@@ -1,17 +1,50 @@
 use meloncraft_text::NbtText;
 
+/// Represents a *default* Minecraft link label to send in the client's pause menu.
+///
+/// These are the labels that are already built into the Minecraft client, and you can use them
+/// without needing to worry about the text formatting or length constraints, since the client
+/// already knows about them. They have an ID, which are documented in the individual variants.
+/// 
+/// ## Packet usage
+/// This enum just stores variants and functions for getting the ID of each default label. The enum
+/// used in packets is the [`PauseMenuLink`] enum, which stores a link and a [`PauseMenuLabel`]
+/// (which can be either a default label or a custom label).
+/// 
+/// ## Building a [`PauseMenuLink`]
+/// To build a [`PauseMenuLink`] with a default label, you can use the [`PauseMenuLabel::Builtin`]
+/// variant, and pass in the default label you want to use.
+/// For example, to build a link with the default `Support` label, you would do:
+/// ```rust
+/// use meloncraft_text::NbtText;
+/// use meloncraft_text::pause_menu::{BuiltinPauseMenuLabel, PauseMenuLabel, PauseMenuLink};
+/// let link = PauseMenuLink {
+///     label: PauseMenuLabel::Builtin(BuiltinPauseMenuLabel::Support),
+///     url: "https://support.myserver.net/".to_string(),
+/// };
+/// ```
+/// See the [`PauseMenuLink`] documentation for more information on how to build a link.
 #[derive(Debug, Clone)]
-#[repr(i32)]
 pub enum BuiltinPauseMenuLabel {
+
     BugReport,
+
     CommunityGuidelines,
+
     Support,
+
     Status,
+    
     Feedback,
+
     Community,
+
     Website,
+
     Forums,
+
     News,
+
     Announcements,
 }
 
