@@ -202,6 +202,11 @@ impl Chunk {
         return Some(());
     }
 
+    /// Check whether a chunk contains only air blocks.
+    ///
+    /// ## Returns
+    /// - `true` if the chunk has only air blocks and no other type of block
+    /// - `false` if the chunk has other type(s) of blocks, and not just air.
     #[must_use]
     pub fn is_empty(&self) -> bool {
         return self.blocks.iter().all(|b| return b.state_id == 0); // 0 is air, I'm not importing blockstate_registry to tell us that.
