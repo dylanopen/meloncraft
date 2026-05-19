@@ -21,6 +21,8 @@ pub enum GameMode {
     /// See <https://minecraft.wiki/w/Game_mode#Creative>.
     Creative,
 
+    /// Represents the `Adventure` game mode for a player.
+    /// See <https://minecraft.wiki/w/Game_mode#Adventure>.
     Adventure,
 
     Spectator,
