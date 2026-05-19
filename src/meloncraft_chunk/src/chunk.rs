@@ -182,6 +182,19 @@ impl Chunk {
         return &self.blocks;
     }
 
+    /// Replace the block in this chunk at the specified `location` with the new `block` argument.
+    ///
+    /// This will fully replace the [`Block`] object internally, not just copy fields.
+    ///
+    /// ## Parameters
+    /// - `&mut self`: the [`Chunk`] to operate on.
+    /// - `location`: the position of the block, as a Bevy [`IVec3`]
+    /// - `block`: the new [`Block`] to put at that position.
+    ///
+    /// ## Returns
+    /// - `()` if the block was set sucessfully.
+    /// - `None` if the block could not be set, for example, because the `location` was out of
+    ///   bounds for the chunk.
     pub fn set_block(&mut self, location: IVec3, block: Block) -> Option<()> {
         let index = Chunk::get_index(location); 
         let b = self.blocks.get_mut(index)?;
