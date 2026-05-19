@@ -187,6 +187,13 @@ pub enum PauseMenuLabel {
 /// ```
 #[derive(Debug, Clone)]
 pub struct PauseMenuLink {
+
+    /// The label of the link, which can be either a built-in label (see [`BuiltinPauseMenuLabel`])
+    /// or a custom label (see [`CustomPauseMenuLabel`]), wrapped in the [`PauseMenuLabel`] enum.
+    /// 
+    /// This is the text displayed to the client in the pause menu. It's the part that the client
+    /// clicks on to open the URL, so it should be descriptive of the URL it's linking to.
     pub label: PauseMenuLabel,
+
     pub url: String,
 }
