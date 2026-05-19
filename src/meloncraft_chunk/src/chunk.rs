@@ -212,6 +212,16 @@ impl Chunk {
         return self.blocks.iter().all(|b| return b.state_id == 0); // 0 is air, I'm not importing blockstate_registry to tell us that.
     }
 
+    /// Convert the [`Chunk`] to a [`Vec`] of [`ChunkBlockSection`]s.
+    /// [`ChunkBlockSection`]s store a 16x16x16 cube of blocks, and each chunk can be represented by
+    /// a collection of these chunk sections.
+    ///
+    /// The number of items this returns is the same as the number of chunk sections returned by
+    /// [`Chunk::get_height_in_chunks`].
+    ///
+    /// [`ChunkBlockSection`]s are the main way chunks are represented in the protocol, so this
+    /// function will probably be called at some point if you are sending these chunks over the
+    /// network.
     #[must_use]
     pub fn to_chunk_sections(&self) -> Vec<ChunkBlockSection> {
         let mut sections = Vec::new();
