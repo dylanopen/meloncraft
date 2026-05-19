@@ -46,6 +46,24 @@ pub struct Block {
 
 impl Block {
     #[must_use]
+    /// Creates a new `Block` with the specified `state_id`.
+    /// ## Parameters
+    /// - `state_id`: The numerical ID that the Minecraft client understands as the block's state.
+    ///   This ID is unique to every block state type. Look at the `meloncraft_blockstate_registry`
+    ///   crate for more information about the blockstate IDs.
+    /// - This function does not check if the `state_id` is valid, so make sure to use a valid block
+    ///   state ID, otherwise the vanilla client may *CRASH* when it receives a packet with an invalid
+    ///   block state ID.
+    ///
+    /// ## Example
+    /// ```rust
+    /// use meloncraft_block::block::Block;
+    /// let stone_block = Block::new(1); // Stone has blockstate ID `1`
+    /// let dirt_block = Block::new(2); // Dirt has blockstate ID `2`
+    /// assert_eq!(stone_block.state_id, 1);
+    /// assert_eq!(dirt_block.state_id, 2);
+    /// assert_ne!(stone_block, dirt_block);
+    /// ```
     pub const fn new(state_id: i32) -> Self {
         return Block { state_id };
     }
