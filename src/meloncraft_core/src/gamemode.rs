@@ -25,6 +25,8 @@ pub enum GameMode {
     /// See <https://minecraft.wiki/w/Game_mode#Adventure>.
     Adventure,
 
+    /// Represents the `Spectator` game mode for a player.
+    /// See <https://minecraft.wiki/w/Game_mode#Spectator>.
     Spectator,
 }
 
