@@ -39,6 +39,18 @@ pub struct LoginHandshaken {
     pub player: Entity,
 }
 
+/// Message representing that a client has sent a handshake to the server, with their next
+/// *state intention* being `Login`, but they were *transferred* from a different server to this
+/// one.
+///
+/// You should probably respond to this by updating the client's `ConnectionState` to `Login`, if
+/// they are allowed to log in to the server and you want to enable transfers **to** your server.
+/// You may then want to start the login process, e.g. with a `ClientboundLoginStart` packet.
+///
+/// This is sent when the client is joining the server because another server transferred them here.
+/// If they were not transferred to this server from a different one but instead joined the server
+/// from the Multiplayer server list, a [`LoginHandshaken`] message should be sent instead, not a
+/// [`TransferHandshaken`], because you may want to process these differently.
 #[derive(Message, Clone, Debug)]
 pub struct TransferHandshaken {
 
