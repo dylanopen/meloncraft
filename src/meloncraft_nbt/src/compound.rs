@@ -29,7 +29,17 @@ use core::ops::{Deref, DerefMut};
 /// - See this struct's methods for info on what you can do with a compound.
 /// - Wiki page on NBT: <https://minecraft.wiki/w/NBT_format>.
 #[derive(Debug, Clone, PartialEq)]
-pub struct NbtCompound(pub Vec<NbtTag>);
+pub struct NbtCompound(
+
+    /// A list of [`NbtTag`]s.
+    /// You shouldn't access this field manually. Instead, consider the methods on [`NbtCompound`]
+    /// for getting and setting values *by their [`NbtTag`] key* instead.
+    ///
+    /// As each tag has a key and a value, this is effectively used internally as a `HashMap`.
+    /// As most NBT structures should be small, there shouldn't be any noticable performance difference
+    /// between using a `Vec` and `HashMap` for this purpose.
+    pub Vec<NbtTag>,
+);
 
 impl Deref for NbtCompound {
     type Target = Vec<NbtTag>;
@@ -51,6 +61,7 @@ impl From<Vec<NbtTag>> for NbtCompound {
 }
 
 impl NbtCompound {
+    
     #[must_use]
     pub fn get(&self, key: &str) -> Option<&NbtTag> {
         if !key.contains('/') {
