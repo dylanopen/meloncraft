@@ -1,6 +1,33 @@
+//! Module for struct [`NbtCompound`].
+
 use crate::{NbtTag, NbtValue};
 use core::ops::{Deref, DerefMut};
 
+/// NBT type to represent **a list of [`NbtTag`]s**, accessed like a `HashMap`.
+///
+/// ## Comparison with `NbtList`
+/// An [`NbtTag`] differs from an [`NbtList`](`crate::NbtList`) in a few main ways:
+/// - An `NbtList` can only store data of one [`NbtTag`] type; an `NbtCompound` can store multiple fields
+///   of different types (they are more dynamic).
+/// - An `NbtList` stores a `Vec` of [`NbtValue`]s. They have no keys, are accessed by index, and
+///   are like a `Vec` type.
+/// - An `NbtCompound` stores a `Vec` of [`NbtTag`]s. This means that each NBT element has an
+///   [`NbtTag::key`] which it is referenced by - a bit like a `HashMap`. Indeed, this struct
+///   provides methods for acting on the [`NbtTag`]s in the compoundd similarly to the `HashMap`'s
+///   interface.
+/// 
+/// ## Deref
+/// Dereferencing this (and most other [`NbtValue`](`crate::NbtValue`)s) will yield the wrapped type.
+/// In this case, a `Vec<NbtTag>` representing all the [`NbtTag`] key-[`value`](`NbtValue`) pairs in the array.
+///
+/// ## Serialization
+/// To serialize or deserialize an [`NbtCompound`] to/from a network protocol format, you should use the
+/// traits provided by the `meloncraft_protocol_types` crate, which implements `ProtocolType` on the
+/// [`NbtValue`](`crate::NbtValue`) and [`NbtTag`](`crate::NbtTag`) types.
+///
+/// ## Further reading
+/// - See this struct's methods for info on what you can do with a compound.
+/// - Wiki page on NBT: <https://minecraft.wiki/w/NBT_format>.
 #[derive(Debug, Clone, PartialEq)]
 pub struct NbtCompound(pub Vec<NbtTag>);
 
