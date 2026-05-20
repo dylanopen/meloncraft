@@ -24,5 +24,11 @@ pub struct EntityPosition {
     /// Stored as a bevy [`DVec3`].
     pub location: DVec3,
 
+    /// Extra metadata about the entity's position, such as whether the entity is on the ground or
+    /// pushing against a wall. See [`EntityPositionFlags`] for more information about the flags
+    /// stored in this field.
+    ///
+    /// May be converted to a `u8` bitset for serialization: this is explained in more detail in the
+    /// documentation for [`EntityPositionFlags`].
     pub flags: EntityPositionFlags,
 }
