@@ -62,6 +62,22 @@ impl From<Vec<NbtTag>> for NbtCompound {
 
 impl NbtCompound {
     
+    /// Get a reference to a [`NbtTag`], querying by the [`NbtTag::key`] (a string key).
+    ///
+    /// ## Parameters
+    /// - `key`: an `&str` representing the key (or key path) of the [`NbtTag`] to return from the compound.
+    /// 
+    /// ## Returns
+    /// - `Some(&NbtTag)` with the full tag corresponding to the provided `key`, if that tag exists
+    ///   in the compound.
+    /// - `None` if the compopund does not contain the key (path).
+    ///
+    /// ## Key paths
+    /// - If your provided `key` contains a slash (`/`), then this function will do a *nested*
+    ///   search of all sub-compounds.
+    /// - For example, a key of `biome/plains` will search for a child compound (of this compound)
+    ///   with the key `biome`. If it finds it (else returns null), it will then search *that*
+    ///   compound for an [`NbtTag`] with a key of `plains`, and **return that [`NbtTag`]**.
     #[must_use]
     pub fn get(&self, key: &str) -> Option<&NbtTag> {
         if !key.contains('/') {
