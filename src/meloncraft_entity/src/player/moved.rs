@@ -28,6 +28,13 @@ pub struct PlayerMoved {
     /// component of this player.
     pub entity: Entity,
 
+    /// The position that the player has moved *from*, as an [`EntityPosition`].
+    ///
+    /// When writing this message, you may want to query the player's current position stored in the
+    /// ECS, and use that as the `old_position` field.
+    ///
+    /// When reading, you can use this alongside [`PlayerMoved::new_position`] to, for example,
+    /// calculate the per-tick velocity of the player by subtracting `new_position - old_position`.
     pub old_position: EntityPosition,
 
     pub new_position: EntityPosition,
