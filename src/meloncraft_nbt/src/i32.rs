@@ -1,3 +1,5 @@
+//! Module for struct [`NbtI32`].
+
 use core::ops::{Deref, DerefMut};
 
 /// NBT wrapper to represent a signed 32-bit integer (`i32`).
@@ -13,7 +15,7 @@ use core::ops::{Deref, DerefMut};
 #[derive(Debug, Clone, Eq, PartialEq)]
 pub struct NbtI32(
 
-    /// A `u8` representing the value of this NBT value or tag.
+    /// An `i32` representing the value of this NBT value or tag.
     pub i32,
 );
 
