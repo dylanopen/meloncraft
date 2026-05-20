@@ -8,7 +8,7 @@ use core::ops::{Deref, DerefMut};
 /// much precision as an `f64`, or we use [`NbtF64`](`crate::NbtF64`).
 /// 
 /// ## Deref
-/// Dereferencing this (and most other [`NbtValue`](`crate::NbtValue`)s will yield the wrapped type.
+/// Dereferencing this (and most other [`NbtValue`](`crate::NbtValue`)s) will yield the wrapped type.
 /// In this case, the `f32` representation of the value.
 ///
 /// ## Serialization
