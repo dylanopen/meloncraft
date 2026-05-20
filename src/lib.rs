@@ -1,6 +1,5 @@
 pub use meloncraft_client as client;
 pub use meloncraft_core as core;
-pub use meloncraft_default_registries as default_registries;
 pub use meloncraft_handshaking as handshaking;
 pub use meloncraft_login as login;
 pub use meloncraft_init_play as init_play;

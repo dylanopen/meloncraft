@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["src/meloncraft_network", "src/meloncraft_packets", "src/meloncraft_protocol_types", "src/meloncraft_client", "src/meloncraft_handshaking", "src/meloncraft_server_list", "src/meloncraft_player", "src/meloncraft_nbt", "src/meloncraft_login", "src/meloncraft_registry", "src/meloncraft_core", "src/meloncraft_text", "src/meloncraft_default_registries", "src/meloncraft_generator", "src/meloncraft_chunk", "tools/block_state_generator", "src/meloncraft_join", "src/meloncraft_world", "src/meloncraft_world_manager", "src/meloncraft_entity", "src/meloncraft_player_state", "src/meloncraft_block", "src/meloncraft_packet_forwarding", "src/meloncraft_server_info"]
+members = ["src/meloncraft_network", "src/meloncraft_packets", "src/meloncraft_protocol_types", "src/meloncraft_client", "src/meloncraft_handshaking", "src/meloncraft_server_list", "src/meloncraft_player", "src/meloncraft_nbt", "src/meloncraft_login", "src/meloncraft_registry", "src/meloncraft_core", "src/meloncraft_text", "src/meloncraft_chunk", "tools/block_state_generator", "src/meloncraft_join", "src/meloncraft_world", "src/meloncraft_world_manager", "src/meloncraft_entity", "src/meloncraft_player_state", "src/meloncraft_block", "src/meloncraft_packet_forwarding", "src/meloncraft_server_info"]
 exclude = [
     "examples",
     "src/meloncraft_blockstate_registry"
@@ -31,10 +31,10 @@ meloncraft_nbt = { path = "src/meloncraft_nbt" }
 meloncraft_login = { path = "src/meloncraft_login" }
 meloncraft_init_play = { path = "src/meloncraft_init_play" }
 meloncraft_registry = { path = "src/meloncraft_registry" }
-meloncraft_default_registries = { path = "src/meloncraft_default_registries" }
+#meloncraft_default_registries = { path = "src/meloncraft_default_registries" }
 meloncraft_core = { path = "src/meloncraft_core" }
 meloncraft_text = { path = "src/meloncraft_text" }
-meloncraft_generator = { path = "src/meloncraft_generator" }
+#meloncraft_generator = { path = "src/meloncraft_generator" }
 #meloncraft_blockstate_registry = { path = "src/meloncraft_blockstate_registry" }
 meloncraft_chunk = { path = "src/meloncraft_chunk" }
 meloncraft_join = { path = "src/meloncraft_join" }
@@ -60,7 +60,7 @@ meloncraft_nbt = { workspace = true }
 meloncraft_login = { workspace = true }
 meloncraft_init_play = { workspace = true }
 meloncraft_registry = { workspace = true }
-meloncraft_default_registries = { workspace = true }
+#meloncraft_default_registries = { workspace = true }
 meloncraft_core = { workspace = true }
 meloncraft_text = { workspace = true }
 #meloncraft_generator = { workspace = true }
