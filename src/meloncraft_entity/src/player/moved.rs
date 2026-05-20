@@ -37,5 +37,10 @@ pub struct PlayerMoved {
     /// calculate the per-tick velocity of the player by subtracting `new_position - old_position`.
     pub old_position: EntityPosition,
 
+    /// The position that the player has moved *to*, as an [`EntityPosition`].
+    /// This should be the latest update you have of the player's current position.
+    ///
+    /// When reading, you can use this alongside [`PlayerMoved::old_position`] to, for example,
+    /// calculate the per-tick velocity of the player by subtracting `new_position - old_position`.
     pub new_position: EntityPosition,
 }
