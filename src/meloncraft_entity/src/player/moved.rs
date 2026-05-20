@@ -22,6 +22,10 @@ use crate::position::EntityPosition;
 #[derive(Debug, Clone, Message)]
 pub struct PlayerMoved {
 
+    /// The [`Entity`] representing the player and client that moved, in the ECS.
+    ///
+    /// You should use this, alongside a `Query`, when reading this message if you want to get a
+    /// component of this player.
     pub entity: Entity,
 
     pub old_position: EntityPosition,
