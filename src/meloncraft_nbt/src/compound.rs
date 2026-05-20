@@ -122,7 +122,25 @@ impl NbtCompound {
         return self.get(key)
             .map(|tag| return &tag.value);
     }
-
+    
+    /// Get a ***mutable*** reference to a [`NbtTag`], querying by the [`NbtTag::key`] (a string key).
+    ///
+    /// > Mutable version of [`NbtCompound::get`].
+    ///
+    /// ## Parameters
+    /// - `key`: an `&str` representing the key (or key path) of the [`NbtTag`] to return from the compound.
+    /// 
+    /// ## Returns
+    /// - `Some(&mut NbtTag)` with the full tag corresponding to the provided `key`, if that tag exists
+    ///   in the compound.
+    /// - `None` if the compound does not contain the key (path).
+    ///
+    /// ## Key paths
+    /// - If your provided `key` contains a slash (`/`), then this function will do a *nested*
+    ///   search of all sub-compounds.
+    /// - For example, a key of `biome/plains` will search for a child compound (of this compound)
+    ///   with the key `biome`. If it finds it (else returns null), it will then search *that*
+    ///   compound for an [`NbtTag`] with a key of `plains`, and **return that [`NbtTag`]**.
     pub fn get_mut(&mut self, key: &str) -> Option<&mut NbtTag> {
         if !key.contains('/') {
             return self.0.iter_mut().find(|tag| return tag.key == key);
