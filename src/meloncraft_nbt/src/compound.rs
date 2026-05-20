@@ -124,7 +124,6 @@ impl NbtCompound {
     }
     
     /// Get a ***mutable*** reference to a [`NbtTag`], querying by the [`NbtTag::key`] (a string key).
-    ///
     /// > Mutable version of [`NbtCompound::get`].
     ///
     /// ## Parameters
@@ -159,6 +158,29 @@ impl NbtCompound {
         return None;
     }
 
+    /// Get a ***mutable*** reference to a [`NbtValue`], querying by the [`NbtTag::key`] (a string key).
+    /// > Mutable version of [`NbtCompound::get_value`].
+    ///
+    /// Same as [`NbtCompound::get_mut`], but returns a mutable reference to just the [`value`](`NbtTag::value`) field of the
+    /// [`NbtTag`] (which is of type [`NbtValue`]).
+    /// Use this if you don't need the actual tag and just want the value it stores (you usually
+    /// don't need the tag, unless sending over the network, because you already know the key from
+    /// the `key` parameter passed here).
+    ///
+    /// ## Parameters
+    /// - `key`: an `&str` representing the key (or key path) of the [`NbtTag`]'s [`NbtValue`] to return from the compound.
+    /// 
+    /// ## Returns
+    /// - `Some(&mut NbtValue)` with just the tag's [`NbtValue`] corresponding to the provided `key`, if that tag exists
+    ///   in the compound.
+    /// - `None` if the compound does not contain the key (path).
+    ///
+    /// ## Key paths
+    /// - If your provided `key` contains a slash (`/`), then this function will do a *nested*
+    ///   search of all sub-compounds.
+    /// - For example, a key of `biome/plains` will search for a child compound (of this compound)
+    ///   with the key `biome`. If it finds it (else returns null), it will then search *that*
+    ///   compound for an [`NbtTag`] with a key of `plains`, and **return that tag's [`NbtValue`]**.
     pub fn get_value_mut(&mut self, key: &str) -> Option<&mut NbtValue> {
         return self.get_mut(key).map(|tag| return &mut tag.value);
     }
