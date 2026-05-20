@@ -19,6 +19,16 @@ pub struct StatusHandshaken {
     pub player: Entity,
 }
 
+/// Message representing that a client has sent a handshake to the server, with their next
+/// *intention* being `Login`.
+///
+/// You should probably respond to this by updating the client's `ConnectionState` to `Login`, if
+/// they are allowed to log in to the server.
+///
+/// This is sent when the client is joining the server from the server list page (typing in the IP
+/// themselves). If they were transferred to this server from a different one, a
+/// [`TransferHandshaken`] message should be sent instead, not a [`LoginHandshaken`], because you
+/// may want to process these differently (e.g. if you don't accept transfers).
 #[derive(Message, Clone, Debug)]
 pub struct LoginHandshaken {
 
