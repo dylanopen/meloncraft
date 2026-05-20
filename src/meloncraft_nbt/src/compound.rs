@@ -70,7 +70,7 @@ impl NbtCompound {
     /// ## Returns
     /// - `Some(&NbtTag)` with the full tag corresponding to the provided `key`, if that tag exists
     ///   in the compound.
-    /// - `None` if the compopund does not contain the key (path).
+    /// - `None` if the compound does not contain the key (path).
     ///
     /// ## Key paths
     /// - If your provided `key` contains a slash (`/`), then this function will do a *nested*
@@ -97,9 +97,30 @@ impl NbtCompound {
         return None;
     }
 
+    /// Same as [`NbtCompound::get`], but returns an immutable reference to just the [`value`](`NbtTag::value`) field of the
+    /// [`NbtTag`] (which is of type [`NbtValue`]).
+    /// Use this if you don't need the actual tag and just want the value it stores (you usually
+    /// don't need the tag, unless sending over the network, because you already know the key from
+    /// the `key` parameter passed here).
+    ///
+    /// ## Parameters
+    /// - `key`: an `&str` representing the key (or key path) of the [`NbtTag`]'s [`NbtValue`] to return from the compound.
+    /// 
+    /// ## Returns
+    /// - `Some(&NbtValue)` with just the tag's [`NbtValue`] corresponding to the provided `key`, if that tag exists
+    ///   in the compound.
+    /// - `None` if the compound does not contain the key (path).
+    ///
+    /// ## Key paths
+    /// - If your provided `key` contains a slash (`/`), then this function will do a *nested*
+    ///   search of all sub-compounds.
+    /// - For example, a key of `biome/plains` will search for a child compound (of this compound)
+    ///   with the key `biome`. If it finds it (else returns null), it will then search *that*
+    ///   compound for an [`NbtTag`] with a key of `plains`, and **return that tag's [`NbtValue`]**.
     #[must_use]
     pub fn get_value(&self, key: &str) -> Option<&NbtValue> {
-        return self.get(key).map(|tag| return &tag.value);
+        return self.get(key)
+            .map(|tag| return &tag.value);
     }
 
     pub fn get_mut(&mut self, key: &str) -> Option<&mut NbtTag> {
