@@ -21,6 +21,11 @@ pub struct StatusHandshaken {
 
 #[derive(Message, Clone, Debug)]
 pub struct LoginHandshaken {
+
+    /// The entity that represents the client / player who sent the handshake.
+    /// You can use this in other queries to add or get other components of this player.
+    /// This can be useful if you, for example, want to check their `ClientConnection`'s IP address,
+    /// to check whether they are IP-banned or not.
     pub player: Entity,
 }
 
