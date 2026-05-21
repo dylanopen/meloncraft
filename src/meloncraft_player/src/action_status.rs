@@ -40,6 +40,14 @@ pub enum PlayerActionStatus {
     /// Not sent when a player cancels digging a block. See [`PlayerActionStatus::CancelledDigging`]
     /// for that case.
     FinishedDigging,
+
+    /// **Protocol ID: `3`**.
+    /// A [`PlayerActionStatus`] indicating that a player has dropped an entire stack of items from
+    /// their inventory. This is sent when a player presses the drop key (default `Q`) while
+    /// also holding left control (tbc), in order to drop the entire stack of items they are
+    /// currently holding.
+    ///
+    /// Not sent when dropping a single item. See [`PlayerActionStatus::DropSingleItem`] for that.
     DropItemStack,
     DropSingleItem,
     UpdateHeldItem,
