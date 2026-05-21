@@ -283,6 +283,34 @@ impl NbtValue {
         return None;
     }
 
+    /// Returns the `byte` corresponding to this [`NbtValue`]'s tag type.
+    ///
+    /// For example, an [`NbtF32`] has ID `5`, so this function will return `5` if `self` is an
+    /// [`NbtF32`].
+    ///
+    /// You can find a list of all the different IDs in the [`NbtValue`] struct's **variant**
+    /// documentation or in the Mapping section below.
+    ///
+    /// ## Parameters
+    /// - `&self`: the [`NbtValue`] to get the type ID of.
+    ///
+    /// ## Returns
+    /// - A `u8`, ready for serialization, containing the ID representing the tag type.
+    ///
+    /// ## Mapping
+    /// 
+    /// - `U8` => 1
+    /// - `I16` => 2
+    /// - `I32` => 3
+    /// - `I64` => 4
+    /// - `F32` => 5
+    /// - `F64` => 6
+    /// - `ArrayU8` => 7
+    /// - `String` => 8
+    /// - `List` => 9
+    /// - `Compound` => 10
+    /// - `ArrayI32` => 11
+    /// - `ArrayI64` => 12
     #[must_use]
     pub const fn to_id(&self) -> u8 {
         return match self {
