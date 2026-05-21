@@ -205,6 +205,23 @@ impl NbtValue {
         return None;
     }
 
+    /// Returns a mutable reference to the children of this NBT value if it is a list, or `None` if
+    /// it is not a list. The children of a list are the NBT values contained within it, which are
+    /// **ordered** values of the same type.
+    ///
+    /// > **Mutable version** of [`NbtValue::get_list_children`].
+    ///
+    /// ## Parameters
+    /// - `&mut self`: A mutable reference to this NBT value.
+    ///
+    /// ## Returns
+    /// - `None`: if this NBT value is not a list.
+    /// - `Some(vec![])`: If the list is empty, it returns a mutable reference to an empty vector of (zero) NBT values.
+    /// - `Some(&mut Vec<NbtValue>)`: if this NBT value is a list, it derefs the list to return a *mutable reference to a vector of NBT values*.
+    ///   - That means that **the mutable reference is to the vector**, not to the NBT values
+    ///     themselves.
+    ///   - You should probably use the [`NbtList::values_mut`] type if you want a vector of &mut
+    ///     [`NbtValue`] references (mutable refs on the NBT values, not vec) instead.
     pub fn get_list_children_mut(&mut self) -> Option<&mut Vec<NbtValue>> {
         if let NbtValue::List(list) = self {
             return Some(list);
