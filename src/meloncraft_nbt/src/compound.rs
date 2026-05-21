@@ -266,6 +266,27 @@ impl NbtCompound {
         return self.0.iter().any(|tag| return tag.key == key);
     }
 
+    /// Check if the compound contains a tag with the provided `value`.
+    ///
+    /// ## Parameters
+    /// - `&self`: immutable reference to the [`NbtCompound`] to check for the presence of the tag.
+    /// - `value`: the value of the tag to check for in the compound (see [`NbtTag::value`]).
+    ///
+    /// ## Returns
+    /// - `true` if the compound contains a tag with the provided `value`.
+    /// - `false` if the compound does not contain a tag with the provided `value`.
+    ///
+    /// ## Key checking
+    /// If you want to check whether the compound contains a tag with a specific key, you should
+    /// instead use the [`NbtCompound::contains_key`] method, which checks for the presence of a
+    /// key, not value.
+    ///
+    /// ## Nested search
+    /// Currently, this function **does not** do a nested search. It only checks the tags in the
+    /// current compound, and does not check any child compounds.
+    /// So even if `false` is returned, that value may exist in a child compound. You would need to
+    /// manually check the child compounds for that value if you want to be sure it doesn't exist
+    /// anywhere in the compound.
     #[must_use]
     pub fn contains_value(&self, value: &NbtValue) -> bool {
         return self.0.iter().any(|tag| return &tag.value == value);
