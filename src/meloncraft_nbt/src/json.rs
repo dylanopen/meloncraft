@@ -1,3 +1,7 @@
+//! Type conversions from [`JsonValue`] to [`NbtValue`] and back.
+//! This is currently unused and untested in Meloncraft. It is intended for registry parsing and
+//! code generation.
+
 use crate::NbtCompound;
 use crate::NbtF32;
 use crate::NbtF64;
