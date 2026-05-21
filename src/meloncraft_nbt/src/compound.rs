@@ -308,6 +308,14 @@ impl NbtCompound {
         return self.0.len();
     }
 
+    /// Check if the compound contains no tags.
+    ///
+    /// ## Parameters
+    /// - `&self`: immutable reference to the [`NbtCompound`] to check for emptiness.
+    ///
+    /// ## Returns
+    /// - `true` if the compound contains no tags.
+    /// - `false` if the compound contains at least one tag.
     #[must_use]
     pub const fn is_empty(&self) -> bool {
         return self.0.is_empty();
