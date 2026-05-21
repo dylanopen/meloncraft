@@ -214,6 +214,26 @@ impl NbtCompound {
         }
     }
 
+    /// Remove an [`NbtTag`] from the compound, if it exists, by its key.
+    /// 
+    /// ## Nested key paths
+    /// Note: currently this **does not** support nested key paths like the
+    /// [`get`](`NbtCompound::get`) method (and derivatives) do. This may be added in the future,
+    /// but for now, paths like `biome/plains` to refer to a tag with key `plains` inside a child
+    /// compound with key `biome` are not supported by this method.
+    ///
+    /// ## Parameters
+    /// - `&mut self`: the [`NbtCompound`] to remove the tag from.
+    /// - `key`: the key of the tag to remove from the compound (see [`NbtTag::key`]).
+    ///
+    /// ## Returns
+    /// - `Some(NbtTag)` with the removed tag, if a tag with the provided `key` existed in the compound.
+    /// - `None` if the compound did not contain a tag with the provided `key`.
+    ///
+    /// In many situations, you may want to check whether this method returns [`None`], because in a
+    /// lot of cases, trying to remove a tag that doesn't exist in the compound may be an error.
+    /// If you want to verify that a tag with the provided `key` exists before trying to remove it,
+    /// you can `unwrap` the result, or add proper error handling, instead of silently failing.
     pub fn remove(&mut self, key: &str) -> Option<NbtTag> {
         if let Some(pos) = self.0.iter().position(|tag| return tag.key == key) {
             return Some(self.0.remove(pos));
@@ -221,6 +241,26 @@ impl NbtCompound {
         return None;
     }
 
+    /// Check if the compound contains a tag with the provided `key`.
+    ///
+    /// ## Parameters
+    /// - `&self`: immutable reference to the [`NbtCompound`] to check for the presence of the tag.
+    /// - `key`: the key of the tag to check for in the compound (see [`NbtTag::key`]).
+    ///
+    /// ## Returns
+    /// - `true` if the compound contains a tag with the provided `key`.
+    /// - `false` if the compound does not contain a tag with the provided `key`.
+    /// 
+    /// ## Value checking
+    /// If you want to check whether the compound contains a tag with a specific value, you can use
+    /// the [`contains_value`](`NbtCompound::contains_value`) method instead, which checks whether
+    /// the compound contains a tag with a specific value, regardless of the key.
+    ///
+    /// ## Nested key paths
+    /// Currently this **does not** support nested key paths like the [`get`](`NbtCompound::get`)
+    /// method (and derivatives) do. This may be added in the future, but for now, paths like
+    /// `biome/plains` to refer to a tag with key `plains` inside a child compound with key `biome`
+    /// are not supported by this method.
     #[must_use]
     pub fn contains_key(&self, key: &str) -> bool {
         return self.0.iter().any(|tag| return tag.key == key);
