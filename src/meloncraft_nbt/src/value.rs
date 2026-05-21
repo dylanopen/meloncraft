@@ -155,7 +155,28 @@ impl NbtValue {
         return None;
     }
 
+    /// Returns a mutable reference to the children of this NBT value if it is a compound, or `None`
+    /// if it is not a compound. The children of a compound are the NBT tags contained within it,
+    /// which are **ordered** key-value pairs where the key is a string and the value is an NBT
+    /// value.
+    ///
+    /// > **Mutable version** of [`NbtValue::get_compound_children`].
+    ///
+    /// ## Parameters
+    /// - `&mut self`: A mutable reference to this NBT value.
+    ///
+    /// ## Returns
+    /// - `None`: if this NBT value is not a compound.
+    /// - `Some(vec![])`: If the compound is empty, it returns a mutable reference to an empty
+    ///   vector of (zero) owned tags.
+    /// - `Some(&mut Vec<NbtTag>)`: if this NBT value is a compound, it derefs the compound to
+    ///   return a *mutable reference to a vector of owned tags*.
+    ///   - That means that **the mutable reference is to the vector**, not to the tags themselves
+    ///     (which are owned). You should probably use the [`NbtCompound::tags_mut`] type if you want
+    ///     a vector of &mut [`NbtTag`] references (mutable refs on the tags, not vec) instead.
     pub fn get_compound_children_mut(&mut self) -> Option<&mut Vec<NbtTag>> {
+        // TODO: check whether we can modify the tags: as they're owned and not behind a mutable
+        // reference :/
         if let NbtValue::Compound(compound) = self {
             return Some(compound);
         }
