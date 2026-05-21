@@ -183,6 +183,20 @@ impl NbtValue {
         return None;
     }
 
+    /// Returns a reference to the children of this NBT value if it is a list, or `None` if it is
+    /// not a list. The children of a list are the NBT values contained within it, which are
+    /// **ordered** values of the same type.
+    ///
+    /// ## Parameters
+    /// - `&self`: A reference to this NBT value.
+    ///
+    /// ## Returns
+    /// - `None`: if this NBT value is not a list.
+    /// - `Some(vec![])`: If the list is empty, it returns a reference to an empty vector of (zero) NBT values.
+    /// - `Some(&Vec<NbtValue>)`: if this NBT value is a list, it derefs the list to return a *reference to a vector of NBT values*.
+    ///   - That means that **the reference is to the vector**, not to the NBT values themselves.
+    ///   - You should probably use the [`NbtList::values`] type if you want a vector of &[`NbtValue`]
+    ///     references (refs on the NBT values, not vec) instead.
     #[must_use]
     pub fn get_list_children(&self) -> Option<&Vec<NbtValue>> {
         if let NbtValue::List(list) = self {
