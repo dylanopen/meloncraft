@@ -321,6 +321,13 @@ impl NbtCompound {
         return self.0.is_empty();
     }
 
+    /// Remove all tags from the compound, leaving it empty.
+    ///
+    /// This is effectively the same as setting the variable the compound is stored in to a new empty
+    /// compound, but it modifies the existing compound in-place instead of creating a new one.
+    ///
+    /// ## Parameters
+    /// - `&mut self`: mutable reference to the compound to clear.
     pub fn clear(&mut self) {
         return self.0.clear();
     }
