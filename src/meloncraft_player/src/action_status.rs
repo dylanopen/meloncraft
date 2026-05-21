@@ -58,6 +58,13 @@ pub enum PlayerActionStatus {
     ///
     /// Not sent when dropping an entire stack of items. See [`PlayerActionStatus::DropItemStack`].
     DropSingleItem,
+    
+    /// **Protocol ID: `5`**.
+    /// A [`PlayerActionStatus`] indicating that a player has updated the item they are currently
+    /// holding. This is sent when a player changes the item they are holding in their hand, by
+    /// scrolling the mouse wheel or pressing the number keys to switch hotbar slots.
+    /// It doesn't seem like this is when they move around their inventory (tbc) but only when they
+    /// switch to a different hotbar slot.
     UpdateHeldItem,
     SwapOffhand,
 }
