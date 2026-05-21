@@ -292,6 +292,17 @@ impl NbtCompound {
         return self.0.iter().any(|tag| return &tag.value == value);
     }
 
+    /// Returns the number of tags in the compound.
+    ///
+    /// This returns the total number of *direct* children: it does not sum any [`NbtTag`]s or
+    /// [`NbtValue`]s in child compounds. So if you have a compound with 2 tags, and one of those
+    /// tags is a compound with 3 tags, this will return `2`, not `5`.
+    ///
+    /// ## Parameters
+    /// - `&self`: immutable reference to the [`NbtCompound`] to check the number of tags of.
+    ///
+    /// ## Returns
+    /// - `usize` representing the number of tags in the compound.
     #[must_use]
     pub const fn len(&self) -> usize {
         return self.0.len();
