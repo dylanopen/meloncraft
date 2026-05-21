@@ -1,5 +1,5 @@
 //! Crate containing data types for representing blocks, block metadata, etc. and messages related
-//! to blocks and block events, for the [Meloncraft](https://github.com/dylanopen/meloncraft).
+//! to blocks and block events, for the [Meloncraft](https://github.com/dylanopen/meloncraft)
 //! server implementation.
 //!
 //! See the documentation for the individual modules, structs and enums for more information on the
