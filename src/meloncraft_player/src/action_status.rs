@@ -28,6 +28,17 @@ pub enum PlayerActionStatus {
     /// This is not sent when a player finishes breaking a block. See [`PlayerActionStatus::StartedDigging`]
     /// and [`PlayerActionStatus::FinishedDigging`] for that case.
     CancelledDigging,
+
+    /// **Protocol ID: `2`**.
+    /// A [`PlayerActionStatus`] indicating that a player has *finished* breaking a block. This is
+    /// sent when a player successfully breaks a block, by holding down the mouse button
+    /// until the block is fully broken.
+    /// *It is not sent when a block is instamined.* In that case, only a
+    /// [`PlayerActionStatus::StartedDigging`] is sent. You should treat a `StartedDigging` as a
+    /// `FinishedDigging` if the block they dug can be instamined, since the player has actually
+    /// finished digging the block, as soon as they send the `StartedDigging` packet.
+    /// Not sent when a player cancels digging a block. See [`PlayerActionStatus::CancelledDigging`]
+    /// for that case.
     FinishedDigging,
     DropItemStack,
     DropSingleItem,
