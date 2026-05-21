@@ -8,6 +8,9 @@ use crate::value::NbtValue;
 /// It is essentially a compounded type of both a key (`String`) and a value ([`NbtValue`]).
 /// You are advised to use this struct if you need to store both the NBT's key *and* value.
 ///
+/// Many functions are provided by the [`NbtValue`] struct, instead of here. If you can't find a
+/// function on [`NbtTag`], try finding it in the [`NbtTag::value`] field, which is an [`NbtValue`].
+///
 /// ## Alternatives
 /// - If you just need the value, not the key, use [`NbtValue`].
 /// - If in addition, you know the NBT tag tyep of your data, you can use a specific NBT type from
@@ -26,6 +29,8 @@ pub struct NbtTag {
     /// Some other implementations may use a different string as the key for the root compound.
     pub key: String,
 
+    /// The value of this [`NbtTag`], which is its actual data.
+    /// This can be any of the NBT types, see [`NbtValue`] for more details.
     pub value: NbtValue,
 }
 
