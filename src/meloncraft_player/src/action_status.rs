@@ -66,6 +66,12 @@ pub enum PlayerActionStatus {
     /// It doesn't seem like this is when they move around their inventory (tbc) but only when they
     /// switch to a different hotbar slot.
     UpdateHeldItem,
+
+    /// **Protocol ID: `6`**.
+    /// A [`PlayerActionStatus`] indicating that a player has swapped the item in their mainhand
+    /// with the item in their offhand. This is sent when a player presses the key to swap their
+    /// mainhand with their offhand, or potentially (tbc) when they drag an item from their mainhand
+    /// to their offhand in their inventory.
     SwapOffhand,
 }
 
