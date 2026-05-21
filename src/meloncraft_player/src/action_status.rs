@@ -1,3 +1,16 @@
+//! Module for enum [`PlayerActionStatus`].
+
+/// An enum representing the various types of player actions that can be sent in a
+/// `ServerboundPlayerAction` packet.
+/// 
+/// This includes actions such as starting or finishing digging, dropping items, updating the held
+/// item, and swapping the offhand item, among many other things.
+///
+/// ## Conversions
+/// You can convert this to and from a `u8` or `i32` using the `From` and `TryFrom` traits, which is
+/// useful for converting to and from the raw values used in the Minecraft protocol. The mapping of
+/// enum variants to `u8` values can be found in the documentation for the individual variants of
+/// this struct.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum PlayerActionStatus {
     StartedDigging,
