@@ -44,18 +44,89 @@ use crate::{
 /// See each variant or type's documentation to find out more.
 #[derive(Debug, Clone, PartialEq)]
 pub enum NbtValue {
+
+    /// Protocol ID: `0x01` (1).
+    /// Stores an unsigned 8-bit integer (`u8`), wrapped in an [`NbtU8`] struct.
+    /// See [`NbtU8`] for more information about this type.
     U8(NbtU8),
+
+    /// Protocol ID: `0x02` (2).
+    /// Stores a signed 16-bit integer (`i16`), wrapped in an [`NbtI16`] struct.
+    /// See [`NbtI16`] for more information about this type.
     I16(NbtI16),
+
+    /// Protocol ID: `0x03` (3).
+    /// Stores a signed 32-bit integer (`i32`), wrapped in an [`NbtI32`] struct.
+    /// See [`NbtI32`] for more information about this type.
     I32(NbtI32),
+
+    /// Protocol ID: `0x04` (4).
+    /// Stores a signed 64-bit integer (`i64`), wrapped in an [`NbtI64`] struct.
+    /// See [`NbtI64`] for more information about this type.
     I64(NbtI64),
+
+    /// Protocol ID: `0x05` (5).
+    /// Stores a 32-bit floating point number (`f32`), wrapped in an [`NbtF32`] struct.
+    /// See [`NbtF32`] for more information about this type.
     F32(NbtF32),
+
+    /// Protocol ID: `0x06` (6).
+    /// Stores a 64-bit floating point number (`f64`), wrapped in an [`NbtF64`] struct.
+    /// See [`NbtF64`] for more information about this type.
     F64(NbtF64),
+
+    /// Protocol ID: `0x07` (7).
+    /// Stores an array of unsigned 8-bit integers (`Vec<u8>`), wrapped in an [`NbtArrayU8`] struct.
+    /// This is a **byte array**. It is an efficient way of sending a dynamic list of bytes; it
+    /// cannot store any other type of value. It is different from an [`NbtList`] of
+    /// [`NbtValue::U8`]s, which is a list of unsigned 8-bit integers that is less efficient to
+    /// serialize and deserialize.
+    /// See [`NbtArrayU8`] for more information about this type.
     ArrayU8(NbtArrayU8),
-    ArrayI32(NbtArrayI32),
-    ArrayI64(NbtArrayI64),
+
+    /// Protocol ID: `0x08` (8).
+    /// Stores a string (`String`), wrapped in an [`NbtString`] struct.
+    /// See [`NbtString`] for more information about this type.
     String(NbtString),
+
+    /// Protocol ID: `0x09` (9).
+    /// Stores a list of NBT values (`Vec<NbtValue>`), wrapped in an [`NbtList`] struct.
+    /// This is a **list**. It can store a variable number of NBT values, but all values should be
+    /// of the same type. It is different from an array, which is a more efficient way of storing a
+    /// list of values of a specific type. It is also different from a compound, which is a
+    /// hashmap-like structure that can store values of different types and has string keys.
+    /// Can seemingly hold any type, but only one type per list.
+    /// See [`NbtList`] for more information about this type.
     List(NbtList),
+
+    /// Protocol ID: `0x0A` (10).
+    /// Stores a list of NBT tags (`Vec<NbtTag>`), wrapped in an [`NbtCompound`] struct.
+    /// This is a **compound**. It can store a variable number of NBT tags, which are key-value
+    /// pairs where the key is a string and the value is an NBT value. It is different from a list,
+    /// which is an array-like structure that can only store values of the same type and has no
+    /// keys. It is also different from an array, which is a more efficient way of storing a list of
+    /// values of a specific type and has no keys.
+    /// Can hold multiple different types of values in one compound.
+    /// See [`NbtCompound`] for a detailed breakdown of this NBT type.
     Compound(NbtCompound),
+
+    /// Protocol ID: `0x0B` (11).
+    /// Stores an array of signed 32-bit integers (`Vec<i32>`), wrapped in an [`NbtArrayI32`] struct.
+    /// This is an **integer array**. It is an efficient way of sending a dynamic list of signed
+    /// 32-bit integers; it cannot store any other type of value. It is different from an
+    /// [`NbtList`] of [`NbtValue::I32`]s, which is a list of signed 32-bit integers that is less
+    /// efficient to serialize and deserialize.
+    /// See [`NbtArrayI32`] for more information about this type.
+    ArrayI32(NbtArrayI32),
+
+    /// Protocol ID: `0x0C` (12).
+    /// Stores an array of signed 64-bit integers (`Vec<i64>`), wrapped in an [`NbtArrayI64`]
+    /// struct. This is a **long array**. It is an efficient way of sending a dynamic list of signed
+    /// 64-bit integers; it cannot store any other type of value. It is different from an
+    /// [`NbtList`] of [`NbtValue::I64`]s, which is a list of signed 64-bit integers that is less
+    /// efficient to serialize and deserialize.
+    /// See [`NbtArrayI64`] for more information about this type.
+    ArrayI64(NbtArrayI64),
 }
 
 impl NbtValue {
