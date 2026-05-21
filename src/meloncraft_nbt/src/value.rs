@@ -130,6 +130,23 @@ pub enum NbtValue {
 }
 
 impl NbtValue {
+
+    /// Returns a reference to the children of this NBT value if it is a compound, or `None` if it
+    /// is not a compound. The children of a compound are the NBT tags contained within it, which
+    /// are **ordered** key-value pairs where the key is a string and the value is an NBT value.
+    ///
+    /// ## Parameters
+    /// - `&self`: A reference to this NBT value.
+    ///
+    /// ## Returns
+    /// - `None`: if this NBT value is not a compound.
+    /// - `Some(vec![])`: If the compound is empty, it returns a reference to an empty vector of
+    ///   (zero) owned tags.
+    /// - `Some(&Vec<NbtTag>)`: if this NBT value is a compound, it derefs the compound to return a
+    ///   *reference to a vector of owned tags*.
+    ///   - That means that **the reference is to the vector**, not to the tags themselves (which
+    ///     are owned). You should probably use the [`NbtCompound::tags`] type if you want a vector
+    ///     of &[`NbtTag`] references (refs on the tags, not vec) instead.
     #[must_use]
     pub fn get_compound_children(&self) -> Option<&Vec<NbtTag>> {
         if let NbtValue::Compound(compound) = self {
