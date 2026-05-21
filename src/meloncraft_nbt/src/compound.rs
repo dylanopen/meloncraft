@@ -185,6 +185,27 @@ impl NbtCompound {
         return self.get_mut(key).map(|tag| return &mut tag.value);
     }
 
+    /// Add an [`NbtTag`] to the [`NbtCompound`], or replace an existing one.
+    ///
+    /// ## Replacement
+    /// - If a tag with the same key already exists in the compound, then it will be modified
+    ///   in-place to take the new tag's value and type that was passed in.
+    /// - This means that references to the existing tag will still be valid (of course though, Rust's
+    ///   borrow-checker may prevent you from having any references to the tag when you call this
+    ///   method).
+    /// - The [`NbtTag`] itself is modified with the [`NbtTag::value`] being replaced with the
+    ///   [`NbtValue`] of the passed in `tag` parameter.
+    /// - Ignoring references, this is effectively the same as **removing the existing tag with the
+    ///   same key** and then inserting the new tag.
+    ///
+    /// ## Insertion
+    /// - If a tag with the name of the passed in `tag`'s [`NbtTag::key`] does not already exist in
+    ///   the compound, then the passed in `tag` is simply added to the compound (pushed to the
+    ///   internal `Vec` of [`NbtTag`]s).
+    /// 
+    /// ## Parameters
+    /// - `&mut self`: the [`NbtTag`] to insert into.
+    /// - `tag`: the [`NbtTag`] to insert into the compound. See above for details on how it is added.
     pub fn insert(&mut self, tag: NbtTag) {
         if let Some(existing_tag) = self.get_mut(&tag.key) {
             *existing_tag = tag;
