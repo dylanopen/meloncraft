@@ -49,6 +49,14 @@ pub enum PlayerActionStatus {
     ///
     /// Not sent when dropping a single item. See [`PlayerActionStatus::DropSingleItem`] for that.
     DropItemStack,
+
+    /// **Protocol ID: `4`**.
+    /// A [`PlayerActionStatus`] indicating that a player has dropped a single item from their
+    /// inventory. This is sent when a player presses the drop key (default `Q`) without holding
+    /// left control, in order to drop a single item from the stack of items they are currently
+    /// holding.
+    ///
+    /// Not sent when dropping an entire stack of items. See [`PlayerActionStatus::DropItemStack`].
     DropSingleItem,
     UpdateHeldItem,
     SwapOffhand,
