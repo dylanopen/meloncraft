@@ -35,6 +35,16 @@ pub struct NbtTag {
 }
 
 impl NbtTag {
+
+    /// Creates a new [`NbtTag`] with the given key and value.
+    ///
+    /// ## Parameters
+    /// - `key`: The key for this tag, which may be used to refer to this tag in its parent compound.
+    /// - `value`: The value of this tag, which can be any of the NBT types, see [`NbtValue`] for more details.
+    ///
+    /// ## Returns
+    /// - A new [`NbtTag`] with the given key and value.
+    /// - `NbtTag { key, value }`
     #[must_use]
     pub const fn new(key: String, value: NbtValue) -> Self {
         return NbtTag { key, value };
