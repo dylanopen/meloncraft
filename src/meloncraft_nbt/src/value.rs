@@ -239,7 +239,7 @@ impl NbtValue {
     ///
     /// ## Returns
     /// - `None` if this [`NbtValue`] is not an [`NbtCompound`].
-    /// - `None` if this compound does not contain a key to the
+    /// - `None` if this compound does not contain a tag with the provided key.
     /// - `Some(&NbtValue)`, storing an immutable reference to the [`NbtValue`] matching the key, if
     ///   that key is present.
     #[must_use]
@@ -255,6 +255,22 @@ impl NbtValue {
         return None;
     }
 
+    /// Returns a **mutable** reference to the child of this [`NbtCompound`] if `self` is an
+    /// [`NbtCompound`]; `None` otherwise.
+    ///
+    /// > Mutable variant of [`NbtValue::get`].
+    ///
+    /// ## Parameters
+    /// - `&self`: A mutable reference to this [`NbtValue`].
+    /// - `key`: A string slice representing the tag's key to search for. Any tag with this key will
+    ///   be returned.
+    ///
+    /// ## Returns
+    /// - `None` if this [`NbtValue`] is not an [`NbtCompound`].
+    /// - `None` if this compound does not contain a tag with the provided key.
+    /// - `Some(&mut NbtValue)`, storing a mutable reference to the [`NbtValue`] matching the key, if
+    ///   that key is present.
+    #[must_use]
     pub fn get_mut(&mut self, key: &str) -> Option<&mut NbtValue> {
         let NbtValue::Compound(compound) = self else {
             return None;
