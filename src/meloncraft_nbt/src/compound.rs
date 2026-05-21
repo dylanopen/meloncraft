@@ -332,6 +332,27 @@ impl NbtCompound {
         return self.0.clear();
     }
 
+    /// Get a `Vec` of references to the keys of all tags in the compound.
+    ///
+    /// ## Parameters
+    /// - `&self`: immutable reference to the compound to get the keys of.
+    ///
+    /// ## Returns
+    /// - `Vec<&str>`: a vector of full-length string slices representing the keys of all tags in
+    ///   the compound. The keys are in **the same order** as the tags in the compound.
+    ///
+    /// ## Nesting
+    /// This function is *shallow*, meaning it only returns the keys to the tags directly in the
+    /// compound, and does not return any keys from tags in child compounds. So if you have a
+    /// compound with a tag with key `biome` whose value is a compound with a tag with key `plains`,
+    /// then this function will return a vector containing `biome`, but not `plains`. You would need
+    /// to manually check the child compounds for their keys if you want to get all keys in the
+    /// compound, including nested ones.
+    ///
+    /// ## Comparison to `HashMap::keys()`
+    /// Works basically the same as calling `keys()` on a `HashMap`, but it returns a `Vec` of keys
+    /// instead of an iterator, and the keys are in the same order as the tags in the compound
+    /// (which is not guaranteed to be the case with a `HashMap`).
     #[must_use]
     pub fn keys(&self) -> Vec<&str> {
         return self.0.iter().map(|tag| return tag.key.as_str()).collect();
