@@ -443,4 +443,30 @@ impl NbtCompound {
     pub fn tags(&self) -> Vec<&NbtTag> {
         return self.0.iter().collect();
     }
+
+    /// Get a `Vec` of ***mutable*** references to the **full tags** of all tags in the compound,
+    /// including both keys and values.
+    /// > Mutable version of [`NbtCompound::tags`]. 
+    ///
+    /// Use this if you want mutable references to the full [`NbtTag`]s of the tags in the compound,
+    /// including both keys and values.
+    ///
+    /// ## Parameters
+    /// - `&mut self`: mutable reference to the compound to get the tags of.
+    ///
+    /// ## Returns
+    /// - `Vec<&mut NbtTag>`: a vector of mutable references to the full tags of all tags in the compound. The
+    ///   tags are in **the same order** as the tags in the compound.
+    /// - The references are to the tags, not to the Vec, so the returned value is *a vector of
+    ///   mutable references to the tags*, not *a reference to a vector of tags*.
+    ///
+    /// ## Alternatives
+    /// - If you only want the keys, you can use the [`NbtCompound::keys`] method instead, which returns a `Vec` of just the keys.
+    /// - If you only want the values, you can use the [`NbtCompound::values_mut`] method instead, which returns a `Vec` of just the values.
+    /// - Dereferencing the compound will also give you a `Vec` of the full tags, but this method is
+    ///   more explicit.
+    #[must_use]
+    pub fn tags_mut(&mut self) -> Vec<&mut NbtTag> {
+        return self.0.iter_mut().collect();
+    }
 }
