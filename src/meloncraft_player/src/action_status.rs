@@ -21,6 +21,12 @@ pub enum PlayerActionStatus {
     /// block they dug can be instamined.
     StartedDigging,
 
+    /// **Protocol ID: `1`**.
+    /// A [`PlayerActionStatus`] indicating that a player has *cancelled* breaking a block. This is
+    /// sent when a player starts to break a block but then stops before the block is fully broken,
+    /// e.g. by releasing the mouse button or moving out of range.
+    /// This is not sent when a player finishes breaking a block. See [`PlayerActionStatus::StartedDigging`]
+    /// and [`PlayerActionStatus::FinishedDigging`] for that case.
     CancelledDigging,
     FinishedDigging,
     DropItemStack,
