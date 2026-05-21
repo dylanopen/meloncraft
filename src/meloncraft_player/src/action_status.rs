@@ -13,7 +13,14 @@
 /// this struct.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum PlayerActionStatus {
+
+    /// **Protocol ID: `0`**.
+    /// A [`PlayerActionStatus`] indicating that a player has *started* to break a block.
+    /// This may be the only packet sent for this block, if the block can be instamined. In some
+    /// cases, you should probably treat this as a [`PlayerActionStatus::FinishedDigging`], if the
+    /// block they dug can be instamined.
     StartedDigging,
+
     CancelledDigging,
     FinishedDigging,
     DropItemStack,
