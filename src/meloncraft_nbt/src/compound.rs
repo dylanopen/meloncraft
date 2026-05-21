@@ -358,6 +358,28 @@ impl NbtCompound {
         return self.0.iter().map(|tag| return tag.key.as_str()).collect();
     }
 
+    /// Get a `Vec` of references to the **values** of all tags in the compound.
+    /// 
+    /// Use this if you only want the [`NbtValue`]s of the tags in the compound, and don't care
+    /// about the keys. If you want the keys as well, you should use the [`NbtCompound::tags`]
+    /// method instead, which returns the full tags, including both keys and values.
+    ///
+    /// ## Parameters
+    /// - `&self`: immutable reference to the compound to get the values of.
+    ///
+    /// ## Returns
+    /// - `Vec<&NbtValue>`: a vector of references to the values of all tags in the compound. The
+    ///   values are in **the same order** as the tags in the compound.
+    ///
+    /// ## Nesting
+    /// This function is *shallow*, meaning it only returns the values of the tags directly in the
+    /// compound, and does not return any values from tags in child compounds. You can match for any
+    /// [`NbtCompound`]s or `NbtList`s though and iterate through those, if you want to iterate
+    /// deeply.
+    ///
+    /// ## Comparison to `HashMap::values()`
+    /// Works basically the same as calling `values()` on a `HashMap`, but it returns a `Vec` of
+    /// values instead of an iterator, and the values are in the same order.
     #[must_use]
     pub fn values(&self) -> Vec<&crate::NbtValue> {
         return self.0.iter().map(|tag| return &tag.value).collect();
