@@ -229,6 +229,19 @@ impl NbtValue {
         return None;
     }
 
+    /// Returns an immutable reference to the child of this [`NbtCompound`] if `self` is an
+    /// [`NbtCompound`]; `None` otherwise.
+    ///
+    /// ## Parameters
+    /// - `&self`: An immutable reference to this [`NbtValue`].
+    /// - `key`: A string slice representing the tag's key to search for. Any tag with this key will
+    ///   be returned.
+    ///
+    /// ## Returns
+    /// - `None` if this [`NbtValue`] is not an [`NbtCompound`].
+    /// - `None` if this compound does not contain a key to the
+    /// - `Some(&NbtValue)`, storing an immutable reference to the [`NbtValue`] matching the key, if
+    ///   that key is present.
     #[must_use]
     pub fn get(&self, key: &str) -> Option<&NbtValue> {
         let NbtValue::Compound(compound) = self else {
