@@ -362,7 +362,7 @@ impl NbtCompound {
     /// 
     /// Use this if you only want the [`NbtValue`]s of the tags in the compound, and don't care
     /// about the keys. If you want the keys as well, you should use the [`NbtCompound::tags`]
-    /// method instead, which returns the full tags, including both keys and values.
+    /// method instead, which returns the full tags, including both keys and values (or just deref).
     ///
     /// ## Parameters
     /// - `&self`: immutable reference to the compound to get the values of.
@@ -383,6 +383,33 @@ impl NbtCompound {
     #[must_use]
     pub fn values(&self) -> Vec<&crate::NbtValue> {
         return self.0.iter().map(|tag| return &tag.value).collect();
+    }
+
+    /// Get a `Vec` of references to the **full tags** of all tags in the compound, including both
+    /// keys and values.
+    ///
+    /// Use this if you want the full [`NbtTag`]s of the tags in the compound, including both keys
+    /// and values.
+    ///
+    /// ## Parameters
+    /// - `&self`: immutable reference to the compound to get the tags of.
+    ///
+    /// ## Returns
+    /// - `Vec<&NbtTag>`: a vector of references to the full tags of all tags in the compound. The
+    ///   tags are in **the same order** as the tags in the compound.
+    /// - The references are to the tags, not to the Vec, so the returned value is *a vector of
+    ///   references to the tags*, not *a reference to a vector of tags*.
+    ///
+    /// ## Alternatives
+    /// - If you only want the keys, you can use the [`NbtCompound::keys`] method instead, which
+    ///   returns a `Vec` of just the keys.
+    /// - If you only want the values, you can use the [`NbtCompound::values`] method instead, which
+    ///   returns a `Vec` of just the values.
+    /// - Dereferencing the compound will also give you a `Vec` of the full tags, but this method is
+    ///   more explicit.
+    #[must_use]
+    pub fn tags(&self) -> Vec<&NbtTag> {
+        return self.0.iter().collect();
     }
 
     pub fn values_mut(&mut self) -> Vec<&mut crate::NbtValue> {
