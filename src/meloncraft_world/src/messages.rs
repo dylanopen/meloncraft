@@ -74,6 +74,10 @@ pub struct ChunkGenerated {
     /// since each chunk is 16 blocks wide and chunk coordinates are calculated by dividing block
     /// coordinates by 16 and flooring the result.
     pub chunk_pos: IVec2,
+
+    /// The actual generated chunk data. This should be a fully generated chunk, ready to be sent to
+    /// the client and stored in the world or whatever any listening systems want to do with it.
+    /// See [`Chunk`] for the format of this data structure.
     pub chunk: Chunk,
 }
 
