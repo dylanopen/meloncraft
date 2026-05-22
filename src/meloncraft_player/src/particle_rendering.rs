@@ -33,6 +33,17 @@ pub enum ParticleRenderingMode {
     /// [`ParticleRenderingMode::All`], and more than the number of particles you would send if the
     /// client had [`ParticleRenderingMode::Minimal`].
     Decreased,
+
+    /// The client wants to receive a minimal number of particles.
+    /// **Protocol ID: `2`**.
+    /// This means that they want fewer particles than in both [`ParticleRenderingMode::All`] and
+    /// [`ParticleRenderingMode::Decreased`].
+    ///
+    /// You should send as few particles as possible to the client, whether this is by only sending
+    /// a few particles, limiting it to the most important ones, or just not sending any particles
+    /// at all is up to you.
+    /// You *must* send fewer than the number of particles you would send if the client had either
+    /// [`ParticleRenderingMode::All`] or [`ParticleRenderingMode::Decreased`].
     Minimal,
 }
 
