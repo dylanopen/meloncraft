@@ -6,12 +6,12 @@ impl ProtocolType for DisplayedSkinParts {
     fn net_serialize(&self) -> Vec<u8> {
         return vec![
             u8::from(self.cape)
-                + u8::from(self.jacket) * 0x02
-                + u8::from(self.left_sleeve) * 0x04
-                + u8::from(self.right_sleeve) * 0x08
-                + u8::from(self.left_pants_leg) * 0x10
-                + u8::from(self.right_pants_leg) * 0x20
-                + u8::from(self.hat) * 0x40,
+                | (u8::from(self.jacket) * 0x02)
+                | (u8::from(self.left_sleeve) * 0x04)
+                | (u8::from(self.right_sleeve) * 0x08)
+                | (u8::from(self.left_pants_leg) * 0x10)
+                | (u8::from(self.right_pants_leg) * 0x20)
+                | (u8::from(self.hat) * 0x40),
         ];
     }
 
