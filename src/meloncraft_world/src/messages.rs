@@ -120,8 +120,29 @@ pub struct SendChunk {
     pub chunk: Chunk,
 }
 
+/// Message indicating that a chunk should be generated.
+///
+/// This is typically written in response to a [`ChunkRequest`] message, when the server detects
+/// that a chunk has not been generated yet and needs to be generated in order to be sent to the
+/// client who requested it.
+/// 
+/// To emphasise again: this means a chunk **needs to be generated**. If a chunk has already been
+/// generated, send [`ChunkGenerated`] instead.
+///
+/// # Writing
+/// You should write this message when you want to request a chunk be generated. For example,
+/// in response to a [`ChunkRequest`] message, when the server detects that a chunk has not been
+/// generated yet and needs to be generated in order to be sent to the client who requested it
+/// and stored in the world, by another system.
 #[derive(Message, Debug, Clone)]
 pub struct GenerateChunk {
+
+    /// The client that requested the chunk.
+    /// This should be the entity ID of the player who should be sent the chunks, e.g. the player
+    /// that went within render distance of the chunk and caused it to be loaded, or the player that
+    /// just connected to the server and should be sent chunks.
+    /// This may be read and stored in other messages in order to later send the chunk to the
+    /// correct client.
     pub requested_by: Entity,
     pub chunk_pos: IVec2,
 }
