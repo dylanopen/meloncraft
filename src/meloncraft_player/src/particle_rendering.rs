@@ -2,9 +2,9 @@ use bevy::prelude::Component;
 
 #[derive(Component, Debug, Clone)]
 pub enum ParticleRenderingMode {
-    All = 0,
-    Decreased = 1,
-    Minimal = 2,
+    All,
+    Decreased,
+    Minimal,
 }
 
 impl TryFrom<i32> for ParticleRenderingMode {
@@ -19,3 +19,14 @@ impl TryFrom<i32> for ParticleRenderingMode {
         };
     }
 }
+
+impl From<ParticleRenderingMode> for i32 {
+    fn from(value: ParticleRenderingMode) -> Self {
+        return match value {
+            ParticleRenderingMode::All => 0,
+            ParticleRenderingMode::Decreased => 1,
+            ParticleRenderingMode::Minimal => 2,
+        }
+    }
+}
+
