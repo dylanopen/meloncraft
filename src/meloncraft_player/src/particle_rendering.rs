@@ -15,11 +15,23 @@ use bevy::prelude::Component;
 /// See the variants of this enum for the protocol IDs (as `i32`s) of each variant.
 #[derive(Component, Debug, Clone)]
 pub enum ParticleRenderingMode {
+
     /// The client wants to receive all particles.
     /// **Protocol ID: `0`**.
+    ///
     /// You should probably send all particles on the server (that are close enough to the player)
     /// to the client.
     All,
+
+    /// The client wants to receive a decreased number of particles.
+    /// **Protocol ID: `1`**.
+    /// This means that they want fewer particles than in [`ParticleRenderingMode::All`], but more
+    /// than in [`ParticleRenderingMode::Minimal`]. The 'middle-ground'.
+    ///
+    /// The exact number of particles you should send to the client is up to you, but it should be
+    /// less than the number of particles you would send if the client had
+    /// [`ParticleRenderingMode::All`], and more than the number of particles you would send if the
+    /// client had [`ParticleRenderingMode::Minimal`].
     Decreased,
     Minimal,
 }
