@@ -47,6 +47,35 @@ pub enum ChatMode {
     /// None, the client should send all chat message types to the server when the player has this
     /// chat mode.
     Full,
+
+    /// [`ChatMode`] component variant on a player, indicating that the player would like to receive
+    /// command feedback and system messages, but *not* normal chat messages **or** whispers.
+    ///
+    /// ## Enabled clientbound packets
+    /// The server should send only these types of packets to a player with this chat mode:
+    /// - `ClientboundSystemChatMessage`: Feedback from running a command, such as "Your game mode
+    ///   has been updated to creative." 
+    /// - `CilentboundSystemChatMessageOverlay`: Game state information that is displayed above
+    ///   the hot bar, such as "You may not rest now, the bed is too far away". 
+    ///
+    /// ## Disabled clientbound packets
+    /// The server **should not** send these types of packets to a player with this chat mode:
+    /// - `ClientboundPlayerChatMessage`: Player-initiated chat messages, including the commands
+    ///   /say, /me, /msg, /tell, /w and /teammsg.
+    /// - `ClientboundDisguisedChatMessage`: Messages sent by non-players using the commands /say,
+    ///   /me, /msg, /tell, /w and /teammsg.
+    ///
+    /// ## Enabled serverbound packets
+    /// The *client* will send these types of packets to the server when the player has this chat
+    /// mode:
+    /// - `ServerboundChatCommand`: When the player runs any Minecraft command, such as "/gamemode
+    ///   creative" or "/msg meloncrafter Hello world!".
+    ///
+    /// ## Disabled serverbound packets
+    /// The *client* **will not** send these types of packets to the server when the player has
+    /// this chat mode:
+    /// - `ServerboundChatMessage`: When the player sends a normal chat message, such as "Hello
+    ///   world!".
     CommandsOnly,
     Hidden,
 }
