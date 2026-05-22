@@ -97,6 +97,12 @@ pub struct ChunkGenerated {
 /// and the chunk data itself from the [`SendChunk::chunk`] field.
 #[derive(Message, Debug, Clone)]
 pub struct SendChunk {
+
+    /// The client that requested the chunk.
+    /// This should be the entity ID of the player who should be sent the chunks, e.g. the player
+    /// that went within render distance of the chunk and caused it to be loaded, or the player that
+    /// just connected to the server and should be sent chunks, or maybe just the `requested_by`
+    /// field of a different message, for example.
     pub client: Entity,
     pub chunk_pos: IVec2,
     pub chunk: Chunk,
