@@ -1,5 +1,5 @@
-mod json;
+mod snbt;
 mod nbt;
 
-pub use json::JsonText;
+pub use snbt::SnbtText;
 pub use nbt::NbtText;
