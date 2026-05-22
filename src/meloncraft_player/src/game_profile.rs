@@ -1,3 +1,5 @@
+//! Module for structs [`GameProfile`] and [`GameProfileProperties`].
+
 use crate::Uuid;
 use bevy::prelude::Component;
 
