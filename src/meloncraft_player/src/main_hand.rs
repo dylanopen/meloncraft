@@ -16,8 +16,8 @@ use bevy::prelude::Component;
 #[derive(Component, Debug, Clone, Copy, Eq, PartialEq)]
 #[repr(i32)]
 pub enum MainHand {
-    Left = 0,
-    Right = 1,
+    Left,
+    Right,
 }
 
 impl TryFrom<i32> for MainHand {
@@ -31,3 +31,13 @@ impl TryFrom<i32> for MainHand {
         };
     }
 }
+
+impl From<MainHand> for i32 {
+    fn from(value: MainHand) -> Self {
+        return match value {
+            MainHand::Left => 0,
+            MainHand::Right => 1,
+        }
+    }
+}
+
