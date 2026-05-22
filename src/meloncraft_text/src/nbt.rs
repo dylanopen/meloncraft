@@ -9,6 +9,9 @@ use meloncraft_nbt::{NbtCompound, NbtString};
 /// formatted text, depending on the variant you create.
 #[derive(Debug, Clone)]
 pub enum NbtText {
+
+    /// A plain string, without any formatting.
+    /// This is the simplest form of text; it takes just one [`NbtString`] type.
     Plain(NbtString),
     Formatted(NbtCompound),
 }
