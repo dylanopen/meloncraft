@@ -142,6 +142,21 @@ impl World {
         return &mut self.chunks;
     }
 
+    /// Return the number of chunks currently *stored* in the world.
+    ///
+    /// This is not necessarily the same as the number of chunks currently *loaded* in the world,
+    /// since you probably won't have all chunks loaded at once.
+    ///
+    /// Let's say, in your world, you have two different 9x9 chunk areas loaded around two different
+    /// players, with no chunks loaded anywhere else. In this case, you would have 162 chunks loaded
+    /// in the world, since each 9x9 area contains 81 chunks, and you have two of those areas
+    /// loaded.
+    ///
+    /// ## Parameters
+    /// - `&self`: The world to get the chunk count from, as a reference to a `World` struct.
+    ///
+    /// ## Returns
+    /// - The number of chunks currently stored in the world, as a `usize`.
     #[must_use]
     pub fn get_chunk_count(&self) -> usize {
         return self.chunks.len();
