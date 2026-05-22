@@ -1,4 +1,5 @@
 use bevy::ecs::message::Message;
+use bevy::math::IVec2;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
 use crate::network_messages::ClientboundNetworkPacket;
@@ -8,8 +9,7 @@ use crate::clientbound_packet::ClientboundPacket;
 #[derive(Message, Debug, Clone)]
 pub struct ClientboundSetCenterChunk {
     pub client: Entity,
-    pub x: i32,
-    pub z: i32,
+    pub chunk_pos: IVec2,
 }
 
 impl ClientboundPacket for ClientboundSetCenterChunk {
@@ -24,8 +24,8 @@ impl ClientboundPacket for ClientboundSetCenterChunk {
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let mut data = Vec::new();
 
-        data.extend(VarInt(self.x).net_serialize());
-        data.extend(VarInt(self.z).net_serialize());
+        data.extend(VarInt(self.chunk_pos.x).net_serialize());
+        data.extend(VarInt(self.chunk_pos.y).net_serialize());
 
         return Some(ClientboundNetworkPacket {
             client: self.client,

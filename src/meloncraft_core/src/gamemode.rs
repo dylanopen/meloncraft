@@ -1,8 +1,36 @@
+//! Module for enum [`GameMode`].
+
+/// The game mode of a player.
+/// This determines how the player interacts with the world, entities, etc.
+/// See <https://minecraft.wiki/w/Game_mode> for more information.
+///
+/// ## Packet usage
+/// - Most packets that use the [`GameMode`] enum internally convert the [`GameMode`] to a `u8` (or
+///   from a `u8` to a [`GameMode`]) before sending (or after receiving) the packet.
+/// - Some packets, such as the `ClientboundGameEvent` packet, represent it as an `f32`.
+/// - `From` is implemented bidirectionally for both `u8` and `f32`.
+/// - See the individual variants to find the number associated with each game mode.
 #[derive(Debug, Clone, Copy)]
 pub enum GameMode {
+
+    /// Represents the `Survival` game mode for a player.
+    /// Survival mode has the ID `0` or `0.0` in packets.
+    /// See <https://minecraft.wiki/w/Game_mode#Survival>.
     Survival,
+
+    /// Represents the `Creative` game mode for a player.
+    /// Creative mode has the ID `1` or `1.0` in packets.
+    /// See <https://minecraft.wiki/w/Game_mode#Creative>.
     Creative,
+
+    /// Represents the `Adventure` game mode for a player.
+    /// Adventure mode has the ID `2` or `2.0` in packets.
+    /// See <https://minecraft.wiki/w/Game_mode#Adventure>.
     Adventure,
+
+    /// Represents the `Spectator` game mode for a player.
+    /// Spectator mode has the ID `3` or `3.0` in packets.
+    /// See <https://minecraft.wiki/w/Game_mode#Spectator>.
     Spectator,
 }
 

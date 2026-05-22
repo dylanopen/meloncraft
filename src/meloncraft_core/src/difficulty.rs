@@ -1,8 +1,28 @@
+//! Module for the [`Difficulty`] enum.
+
+/// The [`Difficulty`] enum stores variants for the 4 Minecraft difficulties:
+/// `Peaceful`, `Easy`, `Normal` and `Hard`.
+///
+/// See the variants' documentation or the Minecraft wiki for information on what the different
+/// difficulties do.
+/// <https://minecraft.wiki/w/Difficulty>.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum Difficulty {
+
+    /// **Peaceful** [`Difficulty`].
+    /// See <https://minecraft.wiki/w/Difficulty#Peaceful> for more information about peaceful mode.
     Peaceful,
+
+    /// **Easy** [`Difficulty`].
+    /// See <https://minecraft.wiki/w/Difficulty#Easy> for more information about easy mode.
     Easy,
+
+    /// **Normal** [`Difficulty`].
+    /// See <https://minecraft.wiki/w/Difficulty#Normal> for more information about normal mode.
     Normal,
+
+    /// **Hard** [`Difficulty`].
+    /// See <https://minecraft.wiki/w/Difficulty#Hard> for more information about hard mode.
     Hard,
 }
 

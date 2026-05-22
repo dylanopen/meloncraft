@@ -1,6 +1,5 @@
 pub use meloncraft_client as client;
 pub use meloncraft_core as core;
-pub use meloncraft_default_registries as default_registries;
 pub use meloncraft_handshaking as handshaking;
 pub use meloncraft_login as login;
 pub use meloncraft_init_play as init_play;
@@ -12,7 +11,6 @@ pub use meloncraft_protocol_types as protocol_types;
 pub use meloncraft_registry as registry;
 pub use meloncraft_server_list as server_list;
 pub use meloncraft_text as text;
-pub use meloncraft_blockstate_registry as blockstate_registry;
 pub use meloncraft_chunk as chunk;
 pub use meloncraft_world as world;
 pub use meloncraft_world_manager as world_manager;

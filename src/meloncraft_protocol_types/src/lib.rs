@@ -1,4 +1,6 @@
 mod nbt;
+mod pause_menu;
+mod math;
 
 mod boolean;
 mod byte;
@@ -15,10 +17,9 @@ mod i64;
 mod i8;
 mod identifier;
 mod item_tag;
-mod json_text;
+mod snbt_text;
 mod nbt_text;
 mod option;
-mod pause_menu;
 mod prefixed_array;
 mod protocol_type;
 mod registry_entry;
