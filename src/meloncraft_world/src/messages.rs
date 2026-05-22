@@ -104,7 +104,19 @@ pub struct SendChunk {
     /// just connected to the server and should be sent chunks, or maybe just the `requested_by`
     /// field of a different message, for example.
     pub client: Entity,
+
+    /// The position of the chunk this message refers to.
+    /// Type is a Bevy [`IVec2`], like an `(i32, i32)`.
+    /// This is the chunk position, not the block position; i.e. the coordinates of the chunk in the
+    /// chunk grid, not the coordinates of a block within the chunk. For example, the chunk containing
+    /// the block at block coordinates `(100, 50, -100)` would be at chunk coordinates `(6, -7)`,
+    /// since each chunk is 16 blocks wide and chunk coordinates are calculated by dividing block
+    /// coordinates by 16 and flooring the result.
     pub chunk_pos: IVec2,
+
+    /// The actual chunk block data. This should be a fully generated chunk, ready to be sent to
+    /// the client.
+    /// See [`Chunk`] for the format of this data structure.
     pub chunk: Chunk,
 }
 
