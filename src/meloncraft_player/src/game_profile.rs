@@ -48,6 +48,7 @@ pub struct GameProfile {
     pub username: String,
 }
 
+#[expect(missing_docs, reason = "This struct is currently unused, as it is optional and an empty GameProfileProperties array is acceptable.")]
 #[derive(Debug, Clone)]
 pub struct GameProfileProperties {
     pub name: String,
