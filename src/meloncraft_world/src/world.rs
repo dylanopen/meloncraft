@@ -115,7 +115,7 @@ impl World {
         return self.chunks.contains_key(chunk_pos);
     }
 
-    /// Return a reference to the hashmap of chunks in the world.
+    /// Return a reference to the hashmap of **all** chunks in the world.
     ///
     /// ## Parameters
     /// - `&self`: The world to get the chunks from, as a reference to a `World` struct.
@@ -128,6 +128,15 @@ impl World {
         return &self.chunks;
     }
 
+    /// Return a mutable reference to the hashmap of **all** chunks in the world.
+    /// > Mutable variant of [`World::get_chunks`].
+    ///
+    /// ## Parameters
+    /// - `&mut self`: The world to get the chunks from, as a mutable reference to a `World` struct.
+    ///
+    /// ## Returns
+    /// - A *mutable reference* to the hashmap of chunks in the world, where the key is the chunk's position
+    /// - The mutable reference is to the hashmap itself, not the individual [`Chunk`] elements.
     #[must_use]
     pub const fn get_chunks_mut(&mut self) -> &mut HashMap<IVec2, Chunk> {
         return &mut self.chunks;
