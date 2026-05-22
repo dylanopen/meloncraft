@@ -28,5 +28,10 @@ use bevy::ecs::component::Component;
 /// ## Protocol representation
 /// UUIDs are represented by two consecutive `u64`s. For convenience, `ProtocolType` is implemented
 /// on both [`Uuid`] and `u128`, so you can just call `.net_serialize()` and `.net_deserialize()`.
-#[derive(Component, Debug, Clone)]
-pub struct Uuid(pub u128);
+#[derive(Component, Debug, Clone, PartialEq, Eq, Hash)]
+pub struct Uuid(
+
+    /// The actual numerical (128-bit) UUID value, that identifies the entity.
+    /// See [`Uuid`] for more information.
+    pub u128,
+);
