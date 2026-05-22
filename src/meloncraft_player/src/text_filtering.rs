@@ -18,5 +18,14 @@ use bevy::prelude::Component;
 #[derive(Component, Debug, Clone, Copy)]
 pub struct EnableTextFiltering(
 
+    /// Whether the client has enabled text filtering or not. See [`EnableTextFiltering`].
+    /// - If `true`: The client has enabled text filtering, and the server should filter out any
+    ///   inappropriate text before sending it to the client.
+    /// - If `false`: The client has not enabled text filtering, and the server can send text to the
+    ///   client without filtering it.
+    ///
+    /// ## Protocol representation
+    /// Represented in the protocol as a standard boolean value, see
+    /// `meloncraft_protocol_types::boolean` for more info.
     pub bool,
 );
