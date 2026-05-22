@@ -8,7 +8,7 @@ use bevy::prelude::Component;
 /// Clients can choose which arm they want to use primarily, either left, or right (default).
 ///
 /// This is likely used when forwarding a swing arm packet to all other players, and possibly
-/// others.
+/// others, such as broadcasting the hand a player holds the mainhand item in.
 ///
 /// See the individual variants for the protocol IDs of each hand:
 /// - [`MainHand::Left`]
@@ -16,6 +16,10 @@ use bevy::prelude::Component;
 #[derive(Component, Debug, Clone, Copy, Eq, PartialEq)]
 #[repr(i32)]
 pub enum MainHand {
+
+    /// Indicates that a player's main hand/arm is their *left* hand/arm.
+    /// This is the hand they swing and hold mainhand items in. See [`MainHand`] for more info.
+    /// This is not the default option. The default main hand in Minecraft is [`MainHand::Right`].
     Left,
     Right,
 }
