@@ -81,6 +81,20 @@ pub struct ChunkGenerated {
     pub chunk: Chunk,
 }
 
+/// Message indicating that a chunk should be sent to a client. This is typically written in response to
+/// a [`ChunkRequest`] message, after the chunk has been generated or loaded from storage.
+///
+/// ## Writing
+/// You should write this message when you want to send a chunk to a client. This is typically done
+/// after a chunk has been generated; in response to a [`ChunkGenerated`] message, or loaded from
+/// storage in response to a [`ChunkRequest`] message.
+/// 
+/// ## Reading
+/// You should read this message and do any required logic to send the chunk to the client. This
+/// typically involves writing a clientbound packet message, e.g. a `ClientboundChunkData`
+/// message, with the chunk data from this message. You can get the client to send the chunk
+/// to from the [`SendChunk::client`] field, the chunk's position from the [`SendChunk::chunk_pos`] field,
+/// and the chunk data itself from the [`SendChunk::chunk`] field.
 #[derive(Message, Debug, Clone)]
 pub struct SendChunk {
     pub client: Entity,
