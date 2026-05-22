@@ -1,6 +1,17 @@
+//! Module for struct resource [`MaxPlayers`].
+
 use bevy::ecs::resource::Resource;
 use core::ops::{Deref, DerefMut};
 
+/// The server's *limit* to the *number of players* that can join the server, as a `u32`.
+///
+/// This should be referenced whenever checking whether a player can join, as well as in response to
+/// a status request, as the Minecraft server list shows the number of players currently online, as
+/// well as the maximum number of players that can join the server.
+///
+/// This is a global resource; you can add it with Bevy to change the max number of players.
+/// You should insert this resource to define the player limit of your server, and you can change it at
+/// runtime to change the max player count of your server while it's running.
 #[derive(Resource)]
 pub struct MaxPlayers(pub u32);
 
