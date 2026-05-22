@@ -1,3 +1,5 @@
+//! Bevy messages for world update events, e.g. chunk generation messages.
+
 use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_chunk::Chunk;
