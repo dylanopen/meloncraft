@@ -3,7 +3,7 @@ use bevy::ecs::entity::Entity;
 use bevy::ecs::message::{MessageReader, MessageWriter};
 use bevy::ecs::schedule::IntoScheduleConfigs as _;
 use bevy::ecs::system::Query;
-use bevy::math::{DVec3, IVec2, VectorSpace};
+use bevy::math::{DVec3, IVec2};
 use meloncraft_client::connection::ClientConnection;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_core::Identifier;

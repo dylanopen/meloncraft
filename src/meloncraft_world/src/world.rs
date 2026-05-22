@@ -12,7 +12,7 @@ use meloncraft_chunk::Chunk;
 ///
 /// ### Chunk position
 /// Chunk positions in a [`World`] are calculated from a block position as follows:
-/// ```
+/// ```txt
 /// chunk_x = floor(block_x / 16)
 /// chunk_z = floor(block_z / 16)
 /// ```

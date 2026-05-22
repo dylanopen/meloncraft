@@ -1,6 +1,5 @@
 use crate::ServerboundPacket;
 use bevy::prelude::{Entity, Message};
-use bevy::math::DVec3;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_entity::position::{EntityPosition, flags::EntityPositionFlags};
 use crate::network_messages::ServerboundNetworkPacket;
@@ -14,7 +13,7 @@ pub struct ServerboundSetPlayerPosition {
 
 impl ServerboundPacket for ServerboundSetPlayerPosition {
     fn id() -> i32 {
-        return 0x1D
+        return 0x1Dg
     }
     fn state() -> ConnectionState {
         return ConnectionState::Play

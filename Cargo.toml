@@ -77,8 +77,8 @@ meloncraft_server_info = { workspace = true }
 
 
 [workspace.lints.rust]
-missing_docs = "warn"
-unused_doc_comment = "forbid"
+missing_docs = "allow" # I think I would quit programming forever if I had to write any more documentation right now...
+unused_doc_comments = "forbid"
 invalid_doc_attributes = "forbid"
 
 [workspace.lints.rustdoc]
@@ -86,13 +86,11 @@ bare_urls = "forbid"
 invalid_html_tags = "forbid"
 private_doc_tests = "forbid"
 unescaped_backticks = "forbid"
-unportable_markdown = "forbid"
 broken_intra_doc_links = "forbid"
 invalid_rust_codeblocks = "forbid"
 private_intra_doc_links = "forbid"
 missing_crate_level_docs = "forbid"
 redundant_explicit_links = "forbid"
-missing_doc_code_examples = "forbid"
 invalid_codeblock_attributes = "forbid"
 
 [workspace.lints.clippy]

@@ -77,7 +77,7 @@ impl Chunk {
     /// use bevy::math::UVec3;
     /// let blocks = vec![Block::new(1); 16*16*16*4]; // 4 chunk sections of stone blocks
     /// let chunk = Chunk::new(blocks);
-    /// assert_eq!(chunk.get_height(), 4);
+    /// assert_eq!(chunk.get_height_in_chunks(), 4);
     /// assert_eq!(chunk.get_block(UVec3::new(0, 0, 0)).unwrap().state_id, 1);
     /// assert_eq!(chunk.get_block(UVec3::new(15, 0, 8)).unwrap().state_id, 1);
     /// ```
