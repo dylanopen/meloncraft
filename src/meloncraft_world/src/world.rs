@@ -97,6 +97,19 @@ impl World {
         return self.chunks.get_mut(chunk_pos);
     }
 
+    /// Return `true` if there is a chunk at the specified *chunk* position, else `false`.
+    /// 
+    /// ## Parameters
+    /// - `&self`: The world to check for the chunk, as a reference to a `World` struct.
+    /// - `chunk_pos`: The **chunk** position of the chunk to check for, as an [`IVec2`].
+    ///
+    /// ## Returns
+    /// - `true` if there is a chunk at the specified position.
+    /// - `false` if there is no chunk at the specified position.
+    /// 
+    /// ## Alternatives
+    /// - You can also check for the existence of a chunk by using [`World::get_chunk`] and
+    ///   checking if the result is `Some(&chunk)` or `None`.
     #[must_use]
     pub fn has_chunk(&self, chunk_pos: &IVec2) -> bool {
         return self.chunks.contains_key(chunk_pos);
