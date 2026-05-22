@@ -17,5 +17,22 @@
 /// See [`SnbtText::data`] for more information about the data this type should hold.
 #[derive(Debug, Clone)]
 pub struct SnbtText {
+
+    /// The SNBT string representing the text component. This should be a valid SNBT string,
+    /// following the format specified in the Minecraft wiki, see both:
+    /// - <https://minecraft.wiki/w/Text_component_format>
+    /// - <https://minecraft.wiki/w/NBT_format#SNBT_format>
+    ///
+    /// The string can be formatted or unformatted, but must be in valid SNBT format. For example, a
+    /// simple text component with the text "Hello, world!" would be represented as:
+    /// ```json
+    /// { text: "Hello, world!" }
+    /// ```
+    ///
+    /// You can include additional properties in the SNBT string, such as color, bold, italic, etc.
+    /// For example:
+    /// ```json
+    /// { text: "Hello, world!", color: "aqua", bold: true }
+    /// ```
     pub data: String,
 }
