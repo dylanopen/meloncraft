@@ -18,11 +18,13 @@ use bevy::prelude::Component;
 pub enum MainHand {
 
     /// Indicates that a player's main hand/arm is their *left* hand/arm.
+    /// **Protocol ID: `0`**.
     /// This is the hand they swing and hold mainhand items in. See [`MainHand`] for more info.
     /// This is not the default option. The default main hand in Minecraft is [`MainHand::Right`].
     Left,
 
     /// Indicates that a player's main hand/arm is their *right* hand/arm.
+    /// **Protocol ID: `1`**.
     /// This is the hand they swing and hold mainhand items in. See [`MainHand`] for more info.
     /// This is the default option in Minecraft, but clients can opt-in to change it to
     /// [`MainHand::Left`].
