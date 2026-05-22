@@ -51,6 +51,12 @@ pub struct DisplayedSkinParts {
     ///
     /// **Protocol mask: `0x_10`**, `0b_0001_0000` (fifth-to-least significant bit).
     pub left_pants_leg: bool,
+
+    /// [`DisplayedSkinParts`] field boolean, where the value is:
+    /// - `true` if the player's right pants/trousers leg is visible.
+    /// - `false` if the player's right pants/trousers leg is not visible.
+    ///
+    /// **Protocol mask: `0x_20`**, `0b_0010_0000` (sixth-to-least significant bit).
     pub right_pants_leg: bool,
     pub hat: bool,
 }
