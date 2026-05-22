@@ -19,7 +19,12 @@ use core::ops::{Deref, DerefMut};
 /// In the future, this struct will likely also store the *list of player entities* that are online
 /// on the server, instead of the number of online players.
 #[derive(Resource)]
-pub struct OnlinePlayers(pub u32);
+pub struct OnlinePlayers(
+
+    /// The value of the current number of online players.
+    /// See [`OnlinePlayers`] for more information.
+    pub u32,
+);
 
 impl Deref for OnlinePlayers {
     type Target = u32;
