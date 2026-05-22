@@ -162,6 +162,14 @@ impl World {
         return self.chunks.len();
     }
 
+    /// Return `true` if there are no chunks currently stored in the world, else `false`.
+    ///
+    /// This is not necessarily the same as whether there are no chunks currently *loaded* in the
+    /// world.
+    ///
+    /// ## Internals
+    /// Internally, this checks whether the hashmap [`World::chunks`] is empty or not, since if
+    /// there are no chunks stored in the world, then the world is empty.
     #[must_use]
     pub fn is_empty(&self) -> bool {
         return self.chunks.is_empty();
