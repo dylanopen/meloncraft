@@ -79,6 +79,19 @@ impl World {
         return self.chunks.get(chunk_pos);
     }
 
+    /// Return a mutable reference to the chunk at the specified position, if it exists, else
+    /// `None`.
+    ///
+    /// > Mutable variant of [`World::get_chunk`].
+    ///
+    /// ## Parameters
+    /// - `&mut self`: The world to get the chunk from, as a mutable reference to a `World` struct.
+    /// - `chunk_pos`: The **chunk** position of the chunk to get, as an [`IVec2`].
+    ///
+    /// ## Returns
+    /// - `None` if there is no chunk at the specified position.
+    /// - `Some(&mut chunk)`, a mutable reference to the chunk at the specified position, if it
+    ///   exists.
     #[must_use]
     pub fn get_chunk_mut(&mut self, chunk_pos: &IVec2) -> Option<&mut Chunk> {
         return self.chunks.get_mut(chunk_pos);
