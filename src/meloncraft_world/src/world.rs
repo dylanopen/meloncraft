@@ -22,6 +22,20 @@ use meloncraft_chunk::Chunk;
 /// ready-made world state storage.
 #[derive(Default)]
 pub struct World {
+    /// The chunks in the world, stored as a hashmap where the key is the chunk's position in the world.
+    ///
+    /// The chunk position is a Bevy [`IVec2`], which is an `(i32, i32)` representing the chunk's
+    /// coordinates in the chunk grid. For example, the chunk containing the block at block
+    /// coordinates `(100, 50, -100)` would be at chunk coordinates `(6, -7)`, since each chunk
+    /// is 16 blocks wide and chunk coordinates are calculated by dividing block coordinates by
+    /// 16 and flooring the result.
+    ///
+    /// The chunk data itself is stored in the value of the hashmap, as a [`Chunk`] struct. See the
+    /// `meloncraft_chunk` crate for more information about the `Chunk` struct and how to work with
+    /// it.
+    ///
+    /// Please access this field through the methods provided by the `World` struct, e.g.
+    /// [`World::insert_chunk`], [`World::get_chunk`].
     chunks: HashMap<IVec2, Chunk>,
 }
 
