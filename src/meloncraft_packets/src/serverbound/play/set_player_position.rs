@@ -23,16 +23,14 @@ impl ServerboundPacket for ServerboundSetPlayerPosition {
         let mut incoming = packet.clone();
         let client = incoming.client;
 
-        let x = incoming.data.net_deserialize().ok()?;
-        let y = incoming.data.net_deserialize().ok()?;
-        let z = incoming.data.net_deserialize().ok()?;
+        let location = incoming.data.net_deserialize().ok()?;
         let byte_flags = u8::net_deserialize(&mut incoming.data).ok()?;
         let flags = EntityPositionFlags::from(byte_flags);
 
         return Some(Self {
             client,
             position: EntityPosition {
-                location: DVec3::new(x, y, z),
+                location,
                 flags
             }
         })

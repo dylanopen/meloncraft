@@ -1,5 +1,6 @@
 use bevy::ecs::entity::Entity;
 use bevy::ecs::message::Message;
+use bevy::math::IVec2;
 use meloncraft_chunk::block_section::ChunkBlockSection;
 use meloncraft_client::connection_state::ConnectionState;
 use crate::network_messages::ClientboundNetworkPacket;
@@ -10,8 +11,7 @@ use crate::clientbound_packet::ClientboundPacket;
 #[derive(Message, Debug, Clone)]
 pub struct ClientboundChunkData {
     pub client: Entity,
-    pub chunk_x: i32,
-    pub chunk_z: i32,
+    pub chunk_pos: IVec2,
     pub data: Vec<ChunkBlockSection>,
     pub light: ChunkLighting,
 
@@ -30,8 +30,7 @@ impl ClientboundPacket for ClientboundChunkData {
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let mut data = Vec::new();
 
-        data.extend(self.chunk_x.net_serialize());
-        data.extend(self.chunk_z.net_serialize());
+        data.extend(self.chunk_pos.net_serialize());
         data.extend(VarInt(0).net_serialize()); // heightmap array length 0, as not strictly required
 
         let mut data_bytes = Vec::new();

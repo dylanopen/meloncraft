@@ -3,6 +3,7 @@ use bevy::ecs::entity::Entity;
 use bevy::ecs::message::{MessageReader, MessageWriter};
 use bevy::ecs::schedule::IntoScheduleConfigs as _;
 use bevy::ecs::system::Query;
+use bevy::math::{DVec3, IVec2, VectorSpace};
 use meloncraft_client::connection::ClientConnection;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_core::Identifier;
@@ -72,12 +73,8 @@ fn sync_position(
     for login_packet in login_play_pr.read() {
         synchronize_player_position_pw.write(ClientboundSynchronizePlayerPosition {
             client: login_packet.client,
-            x: 42.0,
-            y: 64.0,
-            z: -42.0,
-            velocity_x: 0.0,
-            velocity_y: 0.0,
-            velocity_z: 0.0,
+            position: DVec3::new(42.0, 64.0, -42.0),
+            velocity: DVec3::ZERO,
             yaw: 0.0,
             pitch: 0.0,
             teleport_id: 0,
@@ -123,16 +120,14 @@ fn send_chunks(
     for packet in game_event_pr.read() {
         set_center_chunk_pw.write(ClientboundSetCenterChunk {
             client: packet.client,
-            x: 0,
-            z: 0,
+            chunk_pos: IVec2::new(0, 0),
         });
 
         for z in -10..=10 {
             for x in -10..=10 {
                 chunk_request_mw.write(ChunkRequest {
                     client: packet.client,
-                    chunk_x: x,
-                    chunk_z: z,
+                    chunk_pos: IVec2::new(x, z),
                 });
             }
         }

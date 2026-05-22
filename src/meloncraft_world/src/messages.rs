@@ -1,6 +1,7 @@
 //! Bevy messages for world update events, e.g. chunk generation messages.
 
 use bevy::ecs::message::Message;
+use bevy::math::IVec2;
 use bevy::prelude::Entity;
 use meloncraft_chunk::Chunk;
 
@@ -27,29 +28,25 @@ pub struct ChunkRequest {
     /// that went within render distance of the chunk and caused it to be loaded, or the player that
     /// just connected to the server and should be sent chunks.
     pub client: Entity,
-    pub chunk_x: i32,
-    pub chunk_z: i32,
+    pub chunk_pos: IVec2,
 }
 
 #[derive(Message, Debug, Clone, Eq, PartialEq)]
 pub struct ChunkGenerated {
     pub requested_by: Option<Entity>,
-    pub chunk_x: i32,
-    pub chunk_z: i32,
+    pub chunk_pos: IVec2,
     pub chunk: Chunk,
 }
 
 #[derive(Message, Debug, Clone)]
 pub struct SendChunk {
     pub client: Entity,
-    pub chunk_x: i32,
-    pub chunk_z: i32,
+    pub chunk_pos: IVec2,
     pub chunk: Chunk,
 }
 
 #[derive(Message, Debug, Clone)]
 pub struct GenerateChunk {
     pub requested_by: Entity,
-    pub chunk_x: i32,
-    pub chunk_z: i32,
+    pub chunk_pos: IVec2,
 }

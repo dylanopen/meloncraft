@@ -11,8 +11,7 @@ pub fn send_chunk(
     for send_chunk in send_chunk_mr.read() {
         chunk_data_pw.write(ClientboundChunkData {
             client: send_chunk.client,
-            chunk_x: send_chunk.chunk_x,
-            chunk_z: send_chunk.chunk_z,
+            chunk_pos: send_chunk.chunk_pos,
             data: send_chunk.chunk.to_chunk_sections(),
             // Lighting is purely temporary:
             light: ChunkLighting {

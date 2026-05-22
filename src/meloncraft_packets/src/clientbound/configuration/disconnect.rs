@@ -4,12 +4,12 @@ use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
 use crate::network_messages::ClientboundNetworkPacket;
 use meloncraft_protocol_types::ProtocolType as _;
-use meloncraft_text::JsonText;
+use meloncraft_text::SnbtText;
 
 #[derive(Message, Clone, Debug)]
 pub struct ClientboundConfigurationDisconnect {
     pub client: Entity,
-    pub reason: JsonText,
+    pub reason: SnbtText,
 }
 
 impl ClientboundPacket for ClientboundConfigurationDisconnect {
