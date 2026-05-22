@@ -52,6 +52,8 @@ impl World {
     /// the world, and `None` will be returned.
     ///
     /// ## Parameters
+    /// - `&mut self`: The world to insert the chunk into, as a mutable reference to a `World`
+    ///   struct.
     /// - `chunk_pos`: The **chunk** position of the chunk to insert at, as an [`IVec2`].
     /// - `chunk`: The chunk to insert, as a [`Chunk`] struct.
     ///
@@ -63,6 +65,15 @@ impl World {
         return self.chunks.insert(chunk_pos, chunk);
     }
 
+    /// Return a reference to the chunk at the specified position, if it exists, else `None`.
+    ///
+    /// ## Parameters
+    /// - `&self`: The world to get the chunk from, as a reference to a `World` struct.
+    /// - `chunk_pos`: The **chunk** position of the chunk to get, as an [`IVec2`].
+    ///
+    /// ## Returns
+    /// - `None` if there is no chunk at the specified position.
+    /// - `Some(&chunk)`, a reference to the chunk at the specified position, if it exists.
     #[must_use]
     pub fn get_chunk(&self, chunk_pos: &IVec2) -> Option<&Chunk> {
         return self.chunks.get(chunk_pos);
