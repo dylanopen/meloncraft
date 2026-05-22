@@ -15,6 +15,10 @@ use bevy::prelude::Component;
 /// See the variants of this enum for the protocol IDs (as `i32`s) of each variant.
 #[derive(Component, Debug, Clone)]
 pub enum ParticleRenderingMode {
+    /// The client wants to receive all particles.
+    /// **Protocol ID: `0`**.
+    /// You should probably send all particles on the server (that are close enough to the player)
+    /// to the client.
     All,
     Decreased,
     Minimal,
