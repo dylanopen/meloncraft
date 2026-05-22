@@ -115,6 +115,14 @@ impl World {
         return self.chunks.contains_key(chunk_pos);
     }
 
+    /// Return a reference to the hashmap of chunks in the world.
+    ///
+    /// ## Parameters
+    /// - `&self`: The world to get the chunks from, as a reference to a `World` struct.
+    ///
+    /// ## Returns
+    /// - A *reference* to the hashmap of chunks in the world, where the key is the chunk's position
+    /// - The reference is to the hashmap itself, not the individual [`Chunk`] elements.
     #[must_use]
     pub const fn get_chunks(&self) -> &HashMap<IVec2, Chunk> {
         return &self.chunks;
