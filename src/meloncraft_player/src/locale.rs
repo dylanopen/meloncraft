@@ -14,4 +14,12 @@ use bevy::prelude::Component;
 /// The locale component has a string which is usually in the format of `language_REGION`, for
 /// example, `en_CA` for *English*, *Canada*.
 #[derive(Component, Debug, Clone)]
-pub struct Locale(pub String);
+pub struct Locale(
+
+    /// The string representing the player's [`Locale`].
+    ///
+    /// ## Format
+    /// This field is usually in the format of `language_REGION`, for example, `en_CA` for
+    /// *English*, *Canada*.
+    pub String
+);
