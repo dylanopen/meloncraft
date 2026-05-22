@@ -1,5 +1,18 @@
+//! Module for enum component [`ParticleRenderingMode`].
+
 use bevy::prelude::Component;
 
+/// The player's choice of particles they want to render.
+/// Depending on the user's configuration, clients may request to only be sent a minimal or 
+/// decreased number of particles.
+///
+/// *This is a component for player entities*.
+///
+/// The server should use this component when sending particle packets to determine which particles
+/// they should send to the client.
+///
+/// ## Protocol representation
+/// See the variants of this enum for the protocol IDs (as `i32`s) of each variant.
 #[derive(Component, Debug, Clone)]
 pub enum ParticleRenderingMode {
     All,
