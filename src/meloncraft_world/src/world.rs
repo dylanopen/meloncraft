@@ -40,8 +40,27 @@ pub struct World {
 }
 
 impl World {
-    pub fn insert_chunk(&mut self, chunk_pos: IVec2, chunk: Chunk) {
-        self.chunks.insert(chunk_pos, chunk);
+
+    /// Inserts a chunk into the world at the specified position.
+    ///
+    /// ## Replacement
+    /// If there is already a chunk at the specified position, it will be replaced by the new chunk,
+    /// and the old chunk will be returned as `Some(old_chunk)`.
+    ///
+    /// ## Insertion
+    /// If there is no chunk at the specified position, the new chunk will simply be inserted into
+    /// the world, and `None` will be returned.
+    ///
+    /// ## Parameters
+    /// - `chunk_pos`: The **chunk** position of the chunk to insert at, as an [`IVec2`].
+    /// - `chunk`: The chunk to insert, as a [`Chunk`] struct.
+    ///
+    /// ## Returns
+    /// - `Some(old_chunk)`: If there was already a chunk at the specified position, the old chunk
+    ///   that was replaced will be returned.
+    /// - `None`: If there was no chunk at the insertion position.
+    pub fn insert_chunk(&mut self, chunk_pos: IVec2, chunk: Chunk) -> Option<Chunk> {
+        return self.chunks.insert(chunk_pos, chunk);
     }
 
     #[must_use]
