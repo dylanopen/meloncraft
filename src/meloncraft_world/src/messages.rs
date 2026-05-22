@@ -39,6 +39,23 @@ pub struct ChunkRequest {
     pub chunk_pos: IVec2,
 }
 
+/// Message indicating that a chunk has been generated, and is ready to store in the world and be sent
+/// to the client who requested it.
+///
+/// ## Writing
+/// You should write this message when a chunk has been generated and is ready to be sent to the client
+/// who requested it. This is typically done by your chunk generation system, after it has generated a
+/// chunk in response to a [`GenerateChunk`] message.
+/// 
+/// ## Reading
+/// You should read this message and do any required logic. You may also wish to forward another
+/// message, e.g.:
+/// - Write a [`SendChunk`] message to send the chunk to the client who requested it. You can get
+///   the client from the [`ChunkGenerated::requested_by`] field, which will be `Some(Entity)` if the
+///   chunk was generated in response to a [`ChunkRequest`] message from a player.
+/// - Store the chunk in the world, e.g. by inserting it into a chunk storage resource. You can get the
+///   chunk's position from the [`ChunkGenerated::chunk_pos`] field, and the chunk data itself from the
+///   [`ChunkGenerated::chunk`] field.
 #[derive(Message, Debug, Clone, Eq, PartialEq)]
 pub struct ChunkGenerated {
     pub requested_by: Option<Entity>,
