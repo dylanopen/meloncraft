@@ -21,5 +21,12 @@ use bevy::ecs::component::Component;
 /// instead of their username.
 #[derive(Component)]
 pub struct Username(
+
+    /// The player's username, as a `String`. This is the human-readable name they have chosen to go
+    /// by.
+    /// See [`Username`] for more info.
+    ///
+    /// ## Protocol representation
+    /// Serialized and deserialized as a normal string.
     pub String
 );
