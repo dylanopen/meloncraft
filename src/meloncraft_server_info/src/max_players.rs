@@ -13,7 +13,12 @@ use core::ops::{Deref, DerefMut};
 /// You should insert this resource to define the player limit of your server, and you can change it at
 /// runtime to change the max player count of your server while it's running.
 #[derive(Resource)]
-pub struct MaxPlayers(pub u32);
+pub struct MaxPlayers(
+
+    /// The `u32` value representing the maximum number of players that can join the server.
+    /// See [`MaxPlayers`] for more information.
+    pub u32,
+);
 
 impl Deref for MaxPlayers {
     type Target = u32;
