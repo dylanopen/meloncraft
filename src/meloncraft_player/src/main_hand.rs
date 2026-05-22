@@ -21,6 +21,11 @@ pub enum MainHand {
     /// This is the hand they swing and hold mainhand items in. See [`MainHand`] for more info.
     /// This is not the default option. The default main hand in Minecraft is [`MainHand::Right`].
     Left,
+
+    /// Indicates that a player's main hand/arm is their *right* hand/arm.
+    /// This is the hand they swing and hold mainhand items in. See [`MainHand`] for more info.
+    /// This is the default option in Minecraft, but clients can opt-in to change it to
+    /// [`MainHand::Left`].
     Right,
 }
 
