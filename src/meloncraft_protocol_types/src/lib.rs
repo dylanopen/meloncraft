@@ -1,5 +1,6 @@
 mod nbt;
 mod pause_menu;
+mod math;
 
 mod boolean;
 mod byte;
@@ -36,7 +37,6 @@ mod location;
 pub mod game_event;
 mod player_action;
 mod chunk_block_section;
-mod ivec2;
 pub mod bitset;
 pub mod chunk_lighting;
 pub mod chunk_section_light_data;
