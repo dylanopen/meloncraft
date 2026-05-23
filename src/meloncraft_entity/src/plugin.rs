@@ -1,18 +1,17 @@
 //! Module for [`MeloncraftEntityPlugin`].
 
 use bevy::app::{App, Plugin};
-use crate::player::plugin::MeloncraftPlayerEntityPlugin;
+use crate::position::moved::EntityMoved;
 
-/// Meloncraft plugin to initialize messages related to entities, as well as adding sub-plugins for
-/// specific types of entities.
+/// Meloncraft plugin to initialize messages related to entities.
 ///
-/// ## Sub-plugins
-/// Adding this plugin will register the following other plugins:
-/// - [`MeloncraftPlayerEntityPlugin`]
+/// ## Registered messages
+/// Adding this plugin will register the following messagse:
+/// - [`EntityMoved`]
 pub struct MeloncraftEntityPlugin;
 
 impl Plugin for MeloncraftEntityPlugin {
     fn build(&self, app: &mut App) {
-        app.add_plugins(MeloncraftPlayerEntityPlugin);
+        app.add_message::<EntityMoved>();
     }
 }
