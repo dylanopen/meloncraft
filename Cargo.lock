@@ -784,6 +784,7 @@ dependencies = [
  "meloncraft_client",
  "meloncraft_core",
  "meloncraft_entity",
+ "meloncraft_entity_state",
  "meloncraft_handshaking",
  "meloncraft_init_play",
  "meloncraft_join",
@@ -845,6 +846,14 @@ name = "meloncraft_entity"
 version = "0.1.0"
 dependencies = [
  "bevy",
+]
+
+[[package]]
+name = "meloncraft_entity_state"
+version = "0.1.0"
+dependencies = [
+ "bevy",
+ "meloncraft_entity",
 ]
 
 [[package]]

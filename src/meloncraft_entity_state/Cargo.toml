@@ -1,0 +1,11 @@
+[package]
+name = "meloncraft_entity_state"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+bevy = { workspace = true }
+meloncraft_entity = { workspace = true }
+
+[lints]
+workspace = true
