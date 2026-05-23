@@ -779,6 +779,7 @@ name = "meloncraft"
 version = "0.1.0"
 dependencies = [
  "meloncraft_block",
+ "meloncraft_block_breaking",
  "meloncraft_chunk",
  "meloncraft_client",
  "meloncraft_core",
@@ -804,6 +805,13 @@ dependencies = [
 
 [[package]]
 name = "meloncraft_block"
+version = "0.1.0"
+dependencies = [
+ "bevy",
+]
+
+[[package]]
+name = "meloncraft_block_breaking"
 version = "0.1.0"
 dependencies = [
  "bevy",
