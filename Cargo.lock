@@ -937,6 +937,7 @@ dependencies = [
  "bevy",
  "meloncraft_block",
  "meloncraft_client",
+ "meloncraft_command",
  "meloncraft_handshaking",
  "meloncraft_packets",
  "meloncraft_player",
