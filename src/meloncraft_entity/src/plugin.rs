@@ -5,7 +5,7 @@ use crate::position::moved::EntityMoved;
 
 /// Meloncraft plugin to initialize messages related to entities.
 ///
-/// ## 
+/// ## Registered messages
 /// Adding this plugin will register the following messagse:
 /// - [`EntityMoved`]
 pub struct MeloncraftEntityPlugin;
