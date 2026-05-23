@@ -1,5 +1,9 @@
 use core::fmt;
 
+/// The log level of a log message. This is used to indicate the severity and type of the message.
+///
+/// They can be used to format logs or filter log messages to only show certain types of messages in
+/// the handler systems.
 pub enum LogLevel {
     Trace,
     Debug,
@@ -11,6 +15,9 @@ pub enum LogLevel {
 }
 
 impl LogLevel {
+
+    /// Returns the string representation of the log level, as it should appear in the log.
+    /// For example, `LogLevel::Info.as_str()` will return `"INFO"`.
     #[must_use]
     pub const fn as_str(&self) -> &'static str {
         match self {
