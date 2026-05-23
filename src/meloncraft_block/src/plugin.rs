@@ -2,10 +2,14 @@
 
 use bevy::app::{App, Plugin};
 use crate::broken::{BlockBroken, PlayerBrokeBlock};
+use crate::set::SetBlock;
 
 /// Plugin to register Bevy messages for the `block` crate.
 ///
 /// ## Registered messages
+/// - **[`SetBlock`]**: Sent when a block is set by any cause. Contains the position of the block
+///   that was set, and the new block type to set the block to. You should listen for this if you
+///   want to do something when *any* block is set, regardless of the cause.
 /// - **[`BlockBroken`]**: Sent when a block is broken by any cause. Contains *just* the block broken's
 ///   position; you should listen for this if you want to do something when *any* block is broken,
 ///   regardless of the cause.
@@ -18,6 +22,7 @@ pub struct MeloncraftBlockPlugin;
 
 impl Plugin for MeloncraftBlockPlugin {
     fn build(&self, app: &mut App) {
+        app.add_message::<SetBlock>();
         app.add_message::<BlockBroken>();
         app.add_message::<PlayerBrokeBlock>();
     }
