@@ -2,7 +2,7 @@
 
 use std::collections::HashMap;
 use bevy::ecs::component::Component;
-use bevy::math::IVec2;
+use bevy::math::{IVec2, IVec3};
 use meloncraft_chunk::Chunk;
 
 /// A struct representing the world, which is a collection of chunks.
@@ -185,11 +185,10 @@ impl World {
     /// - The chunk position (in chunk grid coords) corresponding to the given block position,
     ///   as an [`IVec2`].
     #[must_use]
-    pub fn get_chunk_pos_from_block_pos(block_pos: &IVec2) -> IVec2 {
-        #[expect(clippy::as_conversions, clippy::cast_precision_loss, clippy::cast_possible_truncation, reason = "We need to use floats; if we just truncated, we'd get the wrong result for negative coordinates, e.g. the block at (-1, 0) is in chunk (-1, 0), but if we just truncated, we'd get chunk (0, 0) instead.")]
+    pub const fn get_chunk_pos_from_block_pos(block_pos: &IVec3) -> IVec2 {
         return IVec2::new(
-            (block_pos.x as f32 / 16.0).floor() as i32,
-            (block_pos.y as f32 / 16.0).floor() as i32,
+            block_pos.x.div_euclid(16),
+            block_pos.z.div_euclid(16),
         );
     }
 
@@ -203,7 +202,7 @@ impl World {
     /// - `None` if there is no chunk at the specified block position.
     /// - `Some(&chunk)`, a reference to the chunk at the specified block position, if it exists.
     #[must_use]
-    pub fn get_chunk_at(&self, block_pos: &IVec2) -> Option<&Chunk> {
+    pub fn get_chunk_at(&self, block_pos: &IVec3) -> Option<&Chunk> {
         let chunk_pos = Self::get_chunk_pos_from_block_pos(block_pos);
         return self.get_chunk(&chunk_pos);
     }
@@ -221,7 +220,7 @@ impl World {
     /// - `None` if there is no chunk at the specified block position.
     /// - `Some(&mut chunk)`, a mutable reference to the chunk at the specified block position, if it exists.
     #[must_use]
-    pub fn get_chunk_at_mut(&mut self, block_pos: &IVec2) -> Option<&mut Chunk> {
+    pub fn get_chunk_at_mut(&mut self, block_pos: &IVec3) -> Option<&mut Chunk> {
         let chunk_pos = Self::get_chunk_pos_from_block_pos(block_pos);
         return self.get_chunk_mut(&chunk_pos);
     }
