@@ -9,6 +9,5 @@ pub struct MeloncraftEntityStatePlugin;
 /// on the entity, which can be queried later from the ECS.
 impl Plugin for MeloncraftEntityStatePlugin {
     fn build(&self, app: &mut App) {
-
     }
 }
