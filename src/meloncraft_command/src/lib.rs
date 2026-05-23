@@ -16,3 +16,4 @@
 //! state or external mutable parameters).
 
 pub mod raw;
+pub mod plugin;
