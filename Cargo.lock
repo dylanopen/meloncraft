@@ -815,6 +815,7 @@ name = "meloncraft_block_breaking"
 version = "0.1.0"
 dependencies = [
  "bevy",
+ "meloncraft_block",
 ]
 
 [[package]]
