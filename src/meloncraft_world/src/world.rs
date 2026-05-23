@@ -192,4 +192,19 @@ impl World {
             (block_pos.y as f32 / 16.0).floor() as i32,
         );
     }
+
+    /// Return the actual chunk corresponding to the given block position, if it exists, else `None`.
+    ///
+    /// ## Parameters
+    /// - `&self`: The world to get the chunk from, as a reference to a `World` struct.
+    /// - `block_pos`: The block position to get the chunk from, as an [`IVec2`].
+    ///
+    /// ## Returns
+    /// - `None` if there is no chunk at the specified block position.
+    /// - `Some(&chunk)`, a reference to the chunk at the specified block position, if it exists.
+    #[must_use]
+    pub fn get_chunk_at(&self, block_pos: &IVec2) -> Option<&Chunk> {
+        let chunk_pos = Self::get_chunk_pos_from_block_pos(block_pos);
+        return self.get_chunk(&chunk_pos);
+    }
 }
