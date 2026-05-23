@@ -4,18 +4,18 @@
 use meloncraft_nbt::NbtTag;
 use meloncraft_player::GameProfileProperties;
 
-use crate::{PrefixedArray, ProtocolBuffer as _, ProtocolType};
+use crate::{PrefixedArray, ProtocolBuffer as _, ProtocolType, VarInt};
 
 #[derive(Debug, Clone)]
 pub enum ClientPlayerAction {
     AddPlayer(AddPlayerAction),
-	InitializeChat(Option<InitializeChatAction>),
-	UpdateGameMode(i32),
-	UpdateListed(bool),
-	UpdateLatency(i32),
-	UpdateDisplayName(Option<NbtTag>),
-	UpdateListPriority(i32),
-	UpdateHat(bool),
+    InitializeChat(Option<InitializeChatAction>),
+    UpdateGameMode(i32),
+    UpdateListed(bool),
+    UpdateLatency(i32),
+    UpdateDisplayName(Option<NbtTag>),
+    UpdateListPriority(i32),
+    UpdateHat(bool),
 }
 
 impl ClientPlayerAction {
@@ -87,24 +87,6 @@ impl ProtocolType for InitializeChatAction {
     }
 }
 
-/*
-Action 	Mask 	Field Name 	Type 	Notes
-Add Player 	0x01 	Name 	String (16) 	
-Game profile properties 	Name 	Prefixed Array (16) 	String (64) 	
-Value 	String (32767) 	
-Signature 	Prefixed Optional String (1024) 	
-Initialize Chat 	0x02 	Data 	Chat session ID 	Prefixed Optional 	UUID 	
-Public key expiry time 	Long 	Key expiry time, as a UNIX timestamp in milliseconds. Only sent if Has Signature Data is true.
-Encoded public key 	Prefixed Array (512) of Byte 	The player's public key, in bytes. Only sent if Has Signature Data is true.
-Public key signature 	Prefixed Array (4096) of Byte 	The public key's digital signature. Only sent if Has Signature Data is true.
-Update Game Mode 	0x04 	Game Mode 	VarInt
-Update Listed 	0x08 	Listed 	Boolean 	Whether the player should be listed on the tab list.
-Update Latency 	0x10 	Ping 	VarInt 	Measured in milliseconds.
-Update Display Name 	0x20 	Display Name 	Prefixed Optional Text Component 	Only sent if Has Display Name is true.
-Update List Priority 	0x40 	Priority 	VarInt 	See below.
-Update Hat 	0x80 	Visible 	Boolean 	Whether the player's hat skin layer is shown. 
-*/
-
 impl ProtocolType for ClientPlayerAction {
     fn net_serialize(&self) -> Vec<u8> {
         return match self {
@@ -115,19 +97,19 @@ impl ProtocolType for ClientPlayerAction {
                 action.net_serialize()
             },
             ClientPlayerAction::UpdateGameMode(game_mode) => {
-                game_mode.net_serialize()
+                VarInt(*game_mode).net_serialize()
             },
             ClientPlayerAction::UpdateListed(listed) => {
                 listed.net_serialize()
             },
             ClientPlayerAction::UpdateLatency(latency) => {
-                latency.net_serialize()
+                VarInt(*latency).net_serialize()
             },
             ClientPlayerAction::UpdateDisplayName(display_name) => {
                 display_name.net_serialize()
             },
             ClientPlayerAction::UpdateListPriority(priority) => {
-                priority.net_serialize()
+                VarInt(*priority).net_serialize()
             },
             ClientPlayerAction::UpdateHat(visible) => {
                 visible.net_serialize()
@@ -135,7 +117,8 @@ impl ProtocolType for ClientPlayerAction {
         };
     }
 
+    #[expect(clippy::panic, clippy::panic_in_result_fn, reason = "This feature is currently unimplemented. It should panic when called, but it should not be used in the first place.")]
     fn net_deserialize(_data: &mut Vec<u8>) -> Result<Self, ()> {
-        todo!() // we shouldn't need to do this, should be clientbound only
+        panic!("ClientPlayerAction cannot currently be deserialized. Please implement this if you need it, or open an issue requesting it.");
     }
 }

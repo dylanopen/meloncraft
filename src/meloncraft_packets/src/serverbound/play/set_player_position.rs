@@ -13,7 +13,7 @@ pub struct ServerboundSetPlayerPosition {
 
 impl ServerboundPacket for ServerboundSetPlayerPosition {
     fn id() -> i32 {
-        return 0x1Dg
+        return 0x1D
     }
     fn state() -> ConnectionState {
         return ConnectionState::Play

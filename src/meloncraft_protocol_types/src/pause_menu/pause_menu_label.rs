@@ -9,11 +9,8 @@ impl ProtocolType for PauseMenuLabel {
         };
     }
 
+    #[expect(clippy::panic, clippy::panic_in_result_fn, reason = "This struct shouldn't ever need to be deserialized.")]
     fn net_deserialize(_data: &mut Vec<u8>) -> Result<Self, ()> {
-        todo!(
-            "It seems unnecessary to implement deserialization,\
-            as it will be complicated due to varying types, and\
-            we will never receive this data, only send it."
-        );
+        panic!("Tried to deserialize a PauseMenuLabel, but this struct can't currently be deserialized. If you need this struct to be deserialized, please open an issue or, better yet, a pull request that implements deserialization for this struct.");
     }
 }
