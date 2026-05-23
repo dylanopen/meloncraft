@@ -1017,7 +1017,9 @@ version = "0.1.0"
 dependencies = [
  "bevy",
  "meloncraft_block",
+ "meloncraft_entity",
  "meloncraft_packets",
+ "meloncraft_player",
  "meloncraft_protocol_types",
  "meloncraft_world",
 ]
