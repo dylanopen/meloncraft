@@ -1,15 +1,22 @@
-use bevy::prelude::{MessageReader, MessageWriter, Res};
+use bevy::ecs::query::With;
+use bevy::ecs::system::Query;
+use bevy::prelude::{MessageReader, MessageWriter};
 use meloncraft_world::messages::{ChunkGenerated, ChunkRequest, GenerateChunk, SendChunk};
+use meloncraft_world::world::World;
 use crate::marker::Overworld;
 
+#[expect(clippy::expect_used, reason = "Will soon be replaced with a logger")]
 pub fn send_requested_chunks(
     mut chunk_request_mr: MessageReader<ChunkRequest>,
-    world: Res<Overworld>,
+    world_q: Query<&World, With<Overworld>>,
     mut generate_chunk_mw: MessageWriter<GenerateChunk>,
     mut send_chunk_mw: MessageWriter<SendChunk>,
 ) {
+    let world = world_q.single()
+        .expect("Expected exactly one world with the Overworld component");
+
     for request in chunk_request_mr.read() {
-        let chunk = world.0.get_chunk(&request.chunk_pos);
+        let chunk = world.get_chunk(&request.chunk_pos);
         if let Some(chunk) = chunk {
             send_chunk_mw.write(SendChunk {
                 client: request.client,
