@@ -25,7 +25,7 @@ impl ClientboundPacket for ClientboundPlayerInfoUpdate {
 
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let mut data = Vec::new();
-        data.push(self.action_mask); // 0xFF for all actions
+        data.push(self.action_mask);
         data.extend(VarInt(self.players.len().try_into().unwrap()).net_serialize());
 
         for player in &self.players {

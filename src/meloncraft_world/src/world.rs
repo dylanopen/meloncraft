@@ -1,6 +1,7 @@
 //! Module for struct [`World`].
 
 use std::collections::HashMap;
+use bevy::ecs::component::Component;
 use bevy::math::IVec2;
 use meloncraft_chunk::Chunk;
 
@@ -20,7 +21,7 @@ use meloncraft_chunk::Chunk;
 /// ## state
 /// The world is not state by itself. You can use the `meloncraft_world_manager` crate if you want a
 /// ready-made world state storage.
-#[derive(Default)]
+#[derive(Component, Default)]
 pub struct World {
     /// The chunks in the world, stored as a hashmap where the key is the chunk's position in the world.
     ///

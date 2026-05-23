@@ -41,7 +41,8 @@ impl ProtocolType for ChunkBlockSection {
         return output;
     }
 
+    #[expect(clippy::panic, clippy::panic_in_result_fn, reason = "This struct shouldn't ever need to be deserialized.")]
     fn net_deserialize(_data: &mut Vec<u8>) -> Result<Self, ()> {
-        todo!("Hopefully the client doesn't send chunk sections, as then we will need this to be deserializable at some point.")
+        panic!("Tried to deserialize a ChunkBlockSection, but this struct can't currently be deserialized. If you need this struct to be deserialized, please open an issue or, better yet, a pull request that implements deserialization for this struct.");
     }
 }
