@@ -22,3 +22,4 @@ pub use meloncraft_packet_forwarding as packet_forwarding;
 pub use meloncraft_server_info as server_info;
 pub use meloncraft_block_breaking as block_breaking;
 pub use meloncraft_entity_state as entity_state;
+pub use meloncraft_command as command;
