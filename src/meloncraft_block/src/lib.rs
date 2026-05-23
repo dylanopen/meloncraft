@@ -17,5 +17,6 @@
 
 pub mod block;
 pub mod face;
+pub mod set;
 pub mod broken;
 pub mod plugin;

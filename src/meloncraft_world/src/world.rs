@@ -2,7 +2,7 @@
 
 use std::collections::HashMap;
 use bevy::ecs::component::Component;
-use bevy::math::IVec2;
+use bevy::math::{IVec2, IVec3};
 use meloncraft_chunk::Chunk;
 
 /// A struct representing the world, which is a collection of chunks.
@@ -174,5 +174,54 @@ impl World {
     #[must_use]
     pub fn is_empty(&self) -> bool {
         return self.chunks.is_empty();
+    }
+
+    /// Return the chunk position corresponding to the given block position, as an [`IVec2`].
+    ///
+    /// ## Parameters
+    /// - `block_pos`: The block position to get the chunk position from, as an [`IVec2`].
+    ///
+    /// ## Returns
+    /// - The chunk position (in chunk grid coords) corresponding to the given block position,
+    ///   as an [`IVec2`].
+    #[must_use]
+    pub const fn get_chunk_pos_from_block_pos(block_pos: &IVec3) -> IVec2 {
+        return IVec2::new(
+            block_pos.x.div_euclid(16),
+            block_pos.z.div_euclid(16),
+        );
+    }
+
+    /// Return the actual chunk corresponding to the given block position, if it exists, else `None`.
+    ///
+    /// ## Parameters
+    /// - `&self`: The world to get the chunk from, as a reference to a `World` struct.
+    /// - `block_pos`: The block position to get the chunk from, as an [`IVec2`].
+    ///
+    /// ## Returns
+    /// - `None` if there is no chunk at the specified block position.
+    /// - `Some(&chunk)`, a reference to the chunk at the specified block position, if it exists.
+    #[must_use]
+    pub fn get_chunk_at(&self, block_pos: &IVec3) -> Option<&Chunk> {
+        let chunk_pos = Self::get_chunk_pos_from_block_pos(block_pos);
+        return self.get_chunk(&chunk_pos);
+    }
+
+    /// Return a mutable reference to the actual chunk corresponding to the given block position,
+    /// if it exists, else `None`.
+    ///
+    /// > Mutable variant of [`World::get_chunk_at`].
+    ///
+    /// ## Parameters
+    /// - `&mut self`: The world to get the chunk from, as a mutable reference to a `World` struct.
+    /// - `block_pos`: The block position to get the chunk from, as an [`IVec2`].
+    ///
+    /// ## Returns
+    /// - `None` if there is no chunk at the specified block position.
+    /// - `Some(&mut chunk)`, a mutable reference to the chunk at the specified block position, if it exists.
+    #[must_use]
+    pub fn get_chunk_at_mut(&mut self, block_pos: &IVec3) -> Option<&mut Chunk> {
+        let chunk_pos = Self::get_chunk_pos_from_block_pos(block_pos);
+        return self.get_chunk_mut(&chunk_pos);
     }
 }

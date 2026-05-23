@@ -779,6 +779,7 @@ name = "meloncraft"
 version = "0.1.0"
 dependencies = [
  "meloncraft_block",
+ "meloncraft_block_breaking",
  "meloncraft_chunk",
  "meloncraft_client",
  "meloncraft_core",
@@ -807,6 +808,14 @@ name = "meloncraft_block"
 version = "0.1.0"
 dependencies = [
  "bevy",
+]
+
+[[package]]
+name = "meloncraft_block_breaking"
+version = "0.1.0"
+dependencies = [
+ "bevy",
+ "meloncraft_block",
 ]
 
 [[package]]
@@ -1007,7 +1016,10 @@ name = "meloncraft_world_manager"
 version = "0.1.0"
 dependencies = [
  "bevy",
+ "meloncraft_block",
+ "meloncraft_entity",
  "meloncraft_packets",
+ "meloncraft_player",
  "meloncraft_protocol_types",
  "meloncraft_world",
 ]
