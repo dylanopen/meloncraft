@@ -6,6 +6,7 @@ use bevy::math::DVec3;
 pub mod flags;
 pub mod last;
 pub mod moved;
+pub mod teleport;
 
 use crate::position::flags::EntityPositionFlags;
 

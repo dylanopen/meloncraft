@@ -13,5 +13,6 @@ impl Plugin for MeloncraftEntityStatePlugin {
     fn build(&self, app: &mut App) {
         app.add_systems(Update, movement::save_old_location);
         app.add_systems(Update, movement::save_new_location);
+        app.add_systems(Update, movement::move_on_teleport);
     }
 }
