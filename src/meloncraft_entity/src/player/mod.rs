@@ -3,4 +3,3 @@
 //! Initialization plugin: [`MeloncraftPlayerEntityPlugin`](`plugin::MeloncraftPlayerEntityPlugin`).
 
 pub mod plugin;
-pub mod moved;
