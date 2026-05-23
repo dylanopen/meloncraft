@@ -784,6 +784,7 @@ dependencies = [
  "meloncraft_client",
  "meloncraft_command",
  "meloncraft_core",
+ "meloncraft_default_commands",
  "meloncraft_entity",
  "meloncraft_entity_state",
  "meloncraft_handshaking",
@@ -847,6 +848,16 @@ name = "meloncraft_core"
 version = "0.1.0"
 dependencies = [
  "meloncraft_text",
+]
+
+[[package]]
+name = "meloncraft_default_commands"
+version = "0.1.0"
+dependencies = [
+ "bevy",
+ "meloncraft_command",
+ "meloncraft_entity",
+ "meloncraft_player",
 ]
 
 [[package]]
