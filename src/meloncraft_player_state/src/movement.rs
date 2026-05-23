@@ -32,12 +32,3 @@ pub fn save_new_location(
     }
 }
 
-pub fn save_old_location(
-    mut player_moved_mr: MessageReader<EntityMoved>,
-    mut commands: Commands,
-) {
-    for player_moved in player_moved_mr.read() {
-        commands.entity(player_moved.entity)
-            .insert(LastEntityPosition(player_moved.old_position.clone()));
-    }
-}

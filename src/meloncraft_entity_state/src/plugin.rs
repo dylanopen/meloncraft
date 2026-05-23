@@ -1,6 +1,8 @@
 //! Module for [`MeloncraftEntityStatePlugin`].
 
-use bevy::app::{App, Plugin};
+use bevy::app::{App, Plugin, Update};
+
+use crate::location;
 
 pub struct MeloncraftEntityStatePlugin;
 
@@ -9,5 +11,6 @@ pub struct MeloncraftEntityStatePlugin;
 /// on the entity, which can be queried later from the ECS.
 impl Plugin for MeloncraftEntityStatePlugin {
     fn build(&self, app: &mut App) {
+        app.add_systems(Update, location::save_old_location);
     }
 }
