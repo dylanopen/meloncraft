@@ -856,6 +856,8 @@ version = "0.1.0"
 dependencies = [
  "bevy",
  "meloncraft_command",
+ "meloncraft_entity",
+ "meloncraft_player",
 ]
 
 [[package]]
