@@ -14,3 +14,16 @@ pub fn save_old_location(
             .insert(LastEntityPosition(entity_moved.old_position.clone()));
     }
 }
+
+pub fn save_new_location(
+    mut player_moved_mr: MessageReader<EntityMoved>,
+    mut commands: Commands,
+) {
+    for player_moved in player_moved_mr.read() {
+        commands.entity(player_moved.entity)
+            .insert(player_moved.new_position.clone());
+    }
+}
+
+// TODO: send entity position update packets upon an `EntityMoved` message.
+

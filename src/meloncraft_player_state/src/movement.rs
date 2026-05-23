@@ -1,8 +1,6 @@
-use bevy::ecs::system::Commands;
 use bevy::prelude::{MessageReader, MessageWriter, Query, With};
 use meloncraft_entity::position::moved::EntityMoved;
 use meloncraft_entity::position::EntityPosition;
-use meloncraft_entity::position::last::LastEntityPosition;
 use meloncraft_packets::ServerboundSetPlayerPosition;
 use meloncraft_player::GameProfile;
 
@@ -19,16 +17,6 @@ pub fn fwd_player_moved(
             old_position,
             new_position: packet.position.clone(),
         });
-    }
-}
-
-pub fn save_new_location(
-    mut player_moved_mr: MessageReader<EntityMoved>,
-    mut commands: Commands,
-) {
-    for player_moved in player_moved_mr.read() {
-        commands.entity(player_moved.entity)
-            .insert(player_moved.new_position.clone());
     }
 }
 
