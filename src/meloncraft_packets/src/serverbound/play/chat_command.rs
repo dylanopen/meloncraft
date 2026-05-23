@@ -12,7 +12,7 @@ pub struct ServerboundChatCommand {
 
 impl ServerboundPacket for ServerboundChatCommand {
     fn id() -> i32 {
-        return 0x03
+        return 0x06
     }
     fn state() -> ConnectionState {
         return ConnectionState::Play
