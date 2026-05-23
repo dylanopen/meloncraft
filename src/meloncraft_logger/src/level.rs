@@ -25,3 +25,9 @@ impl LogLevel {
     }
 }
 
+impl fmt::Display for LogLevel {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        return write!(f, "{}", self.as_str());
+    }
+}
+
