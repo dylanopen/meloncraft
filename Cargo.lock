@@ -855,6 +855,7 @@ name = "meloncraft_default_commands"
 version = "0.1.0"
 dependencies = [
  "bevy",
+ "meloncraft_command",
 ]
 
 [[package]]
