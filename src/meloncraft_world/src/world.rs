@@ -175,4 +175,21 @@ impl World {
     pub fn is_empty(&self) -> bool {
         return self.chunks.is_empty();
     }
+
+    /// Return the chunk position corresponding to the given block position, as an [`IVec2`].
+    ///
+    /// ## Parameters
+    /// - `block_pos`: The block position to get the chunk position from, as an [`IVec2`].
+    ///
+    /// ## Returns
+    /// - The chunk position (in chunk grid coords) corresponding to the given block position,
+    ///   as an [`IVec2`].
+    #[must_use]
+    pub fn get_chunk_pos_from_block_pos(block_pos: &IVec2) -> IVec2 {
+        #[expect(clippy::as_conversions, clippy::cast_precision_loss, clippy::cast_possible_truncation, reason = "We need to use floats; if we just truncated, we'd get the wrong result for negative coordinates, e.g. the block at (-1, 0) is in chunk (-1, 0), but if we just truncated, we'd get chunk (0, 0) instead.")]
+        return IVec2::new(
+            (block_pos.x as f32 / 16.0).floor() as i32,
+            (block_pos.y as f32 / 16.0).floor() as i32,
+        );
+    }
 }
