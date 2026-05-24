@@ -29,6 +29,8 @@ mod uuid;
 mod view_distance;
 mod action_status;
 
+pub mod client_action;
+
 pub use allow_player_listings::AllowPlayerListings;
 pub use chat_colors::ChatColors;
 pub use chat_mode::ChatMode;

@@ -34,9 +34,10 @@ mod ubyte;
 mod uuid;
 mod varint;
 mod location;
-pub mod game_event;
 mod player_action;
 mod chunk_block_section;
+
+pub mod game_event;
 pub mod bitset;
 pub mod chunk_lighting;
 pub mod chunk_section_light_data;
@@ -49,5 +50,4 @@ pub use ubyte::UByte;
 pub use varint::VarInt;
 pub use location::NetworkLocation;
 pub use game_event::GameEventType;
-pub use player_action::*;
 

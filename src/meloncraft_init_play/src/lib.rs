@@ -10,7 +10,8 @@ use meloncraft_core::Identifier;
 use meloncraft_packets::{ClientboundGameEvent, ClientboundPlayLogin, ClientboundPlayerInfoUpdate, ClientboundSetCenterChunk, ClientboundSynchronizePlayerPosition};
 use meloncraft_packets::ServerboundAcknowledgeFinishConfiguration;
 use meloncraft_player::GameProfile;
-use meloncraft_protocol_types::{AddPlayerAction, ClientPlayerAction, PrefixedArray};
+use meloncraft_player::client_action::{AddPlayerAction, ClientPlayerAction};
+use meloncraft_protocol_types::PrefixedArray;
 use meloncraft_world::messages::ChunkRequest;
 
 pub struct MeloncraftInitPlayPlugin;
