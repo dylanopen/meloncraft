@@ -7,10 +7,8 @@ use bevy::math::{DVec3, IVec2};
 use meloncraft_client::connection::ClientConnection;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_core::Identifier;
-use meloncraft_packets::{ClientboundGameEvent, ClientboundPlayLogin, ClientboundPlayerInfoUpdate, ClientboundSetCenterChunk, ClientboundSynchronizePlayerPosition};
+use meloncraft_packets::{ClientboundGameEvent, ClientboundPlayLogin, ClientboundSetCenterChunk, ClientboundSynchronizePlayerPosition};
 use meloncraft_packets::ServerboundAcknowledgeFinishConfiguration;
-use meloncraft_player::GameProfile;
-use meloncraft_player::client_action::{AddPlayerAction, ClientPlayerAction};
 use meloncraft_protocol_types::PrefixedArray;
 use meloncraft_world::messages::ChunkRequest;
 
@@ -85,27 +83,9 @@ fn sync_position(
 
 fn game_event_player_info_update(
     mut login_play_pr: MessageReader<ClientboundPlayLogin>,
-    mut player_info_update_pw: MessageWriter<ClientboundPlayerInfoUpdate>,
     mut game_event_pw: MessageWriter<ClientboundGameEvent>,
-    client_profile_q: Query<&GameProfile>
 ) {
     for login_packet in login_play_pr.read() {
-        let profile = client_profile_q.get(login_packet.client).unwrap();
-        player_info_update_pw.write(ClientboundPlayerInfoUpdate {
-            client: login_packet.client,
-            action_mask: 0x01,
-            players: vec![
-                (
-                    profile.uuid.clone(),
-                    vec![
-                        ClientPlayerAction::AddPlayer(AddPlayerAction {
-                            name: profile.username.clone(),
-                            game_profile_properties: vec![],
-                        }),
-                    ],
-                ),
-            ],
-        });
         game_event_pw.write(ClientboundGameEvent {
             client: login_packet.client,
             event: meloncraft_protocol_types::GameEventType::WaitForChunks,

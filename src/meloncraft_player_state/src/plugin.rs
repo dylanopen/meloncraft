@@ -17,6 +17,7 @@ impl Plugin for MeloncraftPlayerStatePlugin {
 
         app.add_systems(Update, (
             client_action::send_client_player_action,
+            client_action::send_add_player,
         ));
     }
 }
