@@ -1,11 +1,11 @@
 #[macro_export]
 macro_rules! log {
     ($level:expr, $($arg:tt)+) => {
-        $crate::log::Log {
+        $crate::buffer::LOG_BUFFER.lock().unwrap().push($crate::log::Log {
             level: $level,
             source: format!("{}:{}", file!(), line!()),
             message: format!($($arg)+),
-        }
+        });
     };
 }
 
