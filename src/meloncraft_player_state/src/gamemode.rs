@@ -1,18 +1,32 @@
 //! Systems for managing a player's [`GameMode`].
 
 use bevy::ecs::entity::Entity;
-use bevy::ecs::query::Added;
+use bevy::ecs::message::MessageWriter;
+use bevy::ecs::query::{Added, Changed};
 use bevy::ecs::system::{Commands, Query};
 use meloncraft_core::GameMode;
 use meloncraft_player::PlayerMarker;
+use meloncraft_player::client_action::{ClientPlayerAction, UpdateClientPlayerAction};
 
-/// Inserts a [`GameMode`] component with the default value of `Survival` for each player that has
+/// Inserts a [`GameMode`] component with the default value of `Creative` for each player that has
 /// just loaded in.
 pub fn insert_gamemode(
     mut commands: Commands,
     added_player_q: Query<Entity, Added<PlayerMarker>>,
 ) {
     for added_player in added_player_q {
-        commands.get_entity(added_player).unwrap().insert(GameMode::Survival);
+        commands.get_entity(added_player).unwrap().insert(GameMode::Creative);
+    }
+}
+
+pub fn send_gamemode_info_update(
+    added_gamemode_q: Query<(Entity, &GameMode), Changed<GameMode>>,
+    mut update_client_player_action_mw: MessageWriter<UpdateClientPlayerAction>,
+) {
+    for (entity, added_gamemode) in added_gamemode_q {
+        update_client_player_action_mw.write(UpdateClientPlayerAction {
+            player: entity,
+            action: ClientPlayerAction::UpdateGameMode(u8::from(*added_gamemode).into()),
+        });
     }
 }
