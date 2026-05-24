@@ -1,6 +1,6 @@
-use std::sync::{LazyLock, Mutex};
+use std::sync::Mutex;
 
 use crate::log::Log;
 
-pub static LOG_BUFFER: LazyLock<Mutex<Vec<Log>>> = LazyLock::new(|| return Mutex::new(Vec::new()));
+pub static LOG_BUFFER: Mutex<Vec<Log>> = Mutex::new(Vec::new());
 
