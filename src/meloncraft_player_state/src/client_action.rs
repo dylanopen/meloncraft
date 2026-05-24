@@ -3,7 +3,7 @@ use bevy::ecs::message::{MessageReader, MessageWriter};
 use bevy::ecs::query::Added;
 use bevy::ecs::system::Query;
 use meloncraft_packets::ClientboundPlayerInfoUpdate;
-use meloncraft_player::GameProfile;
+use meloncraft_player::{GameProfile, PlayerMarker};
 use meloncraft_player::client_action::{AddPlayerAction, ClientPlayerAction, UpdateClientPlayerAction};
 
 pub fn send_client_player_action(
@@ -24,7 +24,7 @@ pub fn send_client_player_action(
 }
 
 pub fn send_add_player(
-    added_player_q: Query<(Entity, &GameProfile), Added<GameProfile>>,
+    added_player_q: Query<(Entity, &GameProfile), Added<PlayerMarker>>,
     mut update_client_player_action_mw: MessageWriter<UpdateClientPlayerAction>,
 ) {
     for added_player in added_player_q {
