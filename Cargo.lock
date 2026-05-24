@@ -848,6 +848,7 @@ dependencies = [
 name = "meloncraft_core"
 version = "0.1.0"
 dependencies = [
+ "bevy",
  "meloncraft_text",
 ]
 
@@ -992,6 +993,7 @@ name = "meloncraft_player_state"
 version = "0.1.0"
 dependencies = [
  "bevy",
+ "meloncraft_core",
  "meloncraft_entity",
  "meloncraft_packets",
  "meloncraft_player",

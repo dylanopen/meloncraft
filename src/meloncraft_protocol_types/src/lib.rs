@@ -49,5 +49,4 @@ pub use protocol_type::ProtocolType;
 pub use ubyte::UByte;
 pub use varint::VarInt;
 pub use location::NetworkLocation;
-pub use game_event::GameEventType;
 

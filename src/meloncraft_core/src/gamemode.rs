@@ -1,5 +1,7 @@
 //! Module for enum [`GameMode`].
 
+use bevy::ecs::component::Component;
+
 /// The game mode of a player.
 /// This determines how the player interacts with the world, entities, etc.
 /// See <https://minecraft.wiki/w/Game_mode> for more information.
@@ -10,7 +12,7 @@
 /// - Some packets, such as the `ClientboundGameEvent` packet, represent it as an `f32`.
 /// - `From` is implemented bidirectionally for both `u8` and `f32`.
 /// - See the individual variants to find the number associated with each game mode.
-#[derive(Debug, Clone, Copy)]
+#[derive(Component, Debug, Clone, Copy)]
 pub enum GameMode {
 
     /// Represents the `Survival` game mode for a player.
