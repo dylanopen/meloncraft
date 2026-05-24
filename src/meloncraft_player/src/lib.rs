@@ -29,6 +29,7 @@ mod username;
 mod uuid;
 mod view_distance;
 mod action_status;
+mod marker;
 
 pub mod client_action;
 
@@ -47,3 +48,4 @@ pub use username::Username;
 pub use uuid::Uuid;
 pub use view_distance::ClientViewDistance;
 pub use action_status::PlayerActionStatus;
+pub use marker::PlayerMarker;
