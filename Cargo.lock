@@ -984,6 +984,7 @@ name = "meloncraft_player"
 version = "0.1.0"
 dependencies = [
  "bevy",
+ "meloncraft_nbt",
 ]
 
 [[package]]

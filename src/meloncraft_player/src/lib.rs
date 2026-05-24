@@ -15,6 +15,7 @@
 //! logic, etc. are fine but only if they operate on the datatype itself, and not on any external
 //! state or external mutable parameters).
 
+mod plugin;
 mod allow_player_listings;
 mod chat_colors;
 mod chat_mode;
@@ -27,8 +28,12 @@ mod text_filtering;
 mod username;
 mod uuid;
 mod view_distance;
-pub mod action_status;
+mod action_status;
+mod marker;
 
+pub mod client_action;
+
+pub use plugin::MeloncraftPlayerPlugin;
 pub use allow_player_listings::AllowPlayerListings;
 pub use chat_colors::ChatColors;
 pub use chat_mode::ChatMode;
@@ -42,3 +47,5 @@ pub use text_filtering::EnableTextFiltering;
 pub use username::Username;
 pub use uuid::Uuid;
 pub use view_distance::ClientViewDistance;
+pub use action_status::PlayerActionStatus;
+pub use marker::PlayerMarker;

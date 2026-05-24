@@ -43,7 +43,9 @@ pub struct Log {
     /// You can use the macros in [`crate::macros`] to write log messages more easily, which will allow you to use
     /// format strings and arguments, like this:
     /// ```rust
-    /// info!("Player {} has joined the game", player_name);
+    /// use meloncraft_logger::{infolog, level::LogLevel};
+    /// let player_name = "Meloncrafter";
+    /// infolog!("Player {} has joined the game", player_name);
     /// ```
     pub message: String,
 }

@@ -2,6 +2,7 @@
 
 use bevy::app::{App, Plugin, Update};
 use crate::movement;
+use crate::client_action;
 
 pub struct MeloncraftPlayerStatePlugin;
 
@@ -13,5 +14,10 @@ impl Plugin for MeloncraftPlayerStatePlugin {
     fn build(&self, app: &mut App) {
         app.add_systems(Update, movement::fwd_player_moved);
         app.add_systems(Update, movement::fwd_player_teleport);
+
+        app.add_systems(Update, (
+            client_action::send_client_player_action,
+            client_action::send_add_player,
+        ));
     }
 }

@@ -1,7 +1,7 @@
 use bevy::prelude::{MessageReader, MessageWriter};
 use meloncraft_block::broken::{BlockBroken, PlayerBrokeBlock};
 use meloncraft_packets::ServerboundPlayerAction;
-use meloncraft_player::action_status::PlayerActionStatus;
+use meloncraft_player::PlayerActionStatus;
 
 pub fn fwd_block_broken(
     mut player_action_pr: MessageReader<ServerboundPlayerAction>,
