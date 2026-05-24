@@ -24,7 +24,7 @@ pub struct Log {
     ///
     /// ## Using macros
     /// The level is determined by the macro used to write the log message, so you can just use,
-    /// say, debug! or error! to create a log message with the Debug or Error `LogLevel`.
+    /// say, debuglog! or errorlog! to create a log message with the Debug or Error `LogLevel`.
     pub level: LogLevel,
 
     /// The source of the log message, which is usually the file and line number where the log message was written.
