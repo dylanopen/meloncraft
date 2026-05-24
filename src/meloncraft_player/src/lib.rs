@@ -27,7 +27,7 @@ mod text_filtering;
 mod username;
 mod uuid;
 mod view_distance;
-pub mod action_status;
+mod action_status;
 
 pub use allow_player_listings::AllowPlayerListings;
 pub use chat_colors::ChatColors;
@@ -42,3 +42,4 @@ pub use text_filtering::EnableTextFiltering;
 pub use username::Username;
 pub use uuid::Uuid;
 pub use view_distance::ClientViewDistance;
+pub use action_status::PlayerActionStatus;
