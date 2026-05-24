@@ -5,6 +5,8 @@ use bevy::ecs::message::MessageWriter;
 use bevy::ecs::query::{Added, Changed};
 use bevy::ecs::system::{Commands, Query};
 use meloncraft_core::GameMode;
+use meloncraft_core::game_event::GameEventType;
+use meloncraft_packets::ClientboundGameEvent;
 use meloncraft_player::PlayerMarker;
 use meloncraft_player::client_action::{ClientPlayerAction, UpdateClientPlayerAction};
 
@@ -20,13 +22,26 @@ pub fn insert_gamemode(
 }
 
 pub fn send_gamemode_info_update(
-    added_gamemode_q: Query<(Entity, &GameMode), Changed<GameMode>>,
+    changed_gamemode_q: Query<(Entity, &GameMode), Changed<GameMode>>,
     mut update_client_player_action_mw: MessageWriter<UpdateClientPlayerAction>,
 ) {
-    for (entity, added_gamemode) in added_gamemode_q {
+    for (entity, gamemode) in changed_gamemode_q {
         update_client_player_action_mw.write(UpdateClientPlayerAction {
             player: entity,
-            action: ClientPlayerAction::UpdateGameMode(u8::from(*added_gamemode).into()),
+            action: ClientPlayerAction::UpdateGameMode(u8::from(*gamemode).into()),
         });
     }
 }
+
+pub fn send_gamemode_game_event(
+    changed_gamemode_q: Query<(Entity, &GameMode), Changed<GameMode>>,
+    mut game_event_pw: MessageWriter<ClientboundGameEvent>,
+) {
+    for (entity, gamemode) in changed_gamemode_q {
+        game_event_pw.write(ClientboundGameEvent {
+            client: entity,
+            event: GameEventType::ChangeGameMode(*gamemode),
+        });
+    }
+}
+

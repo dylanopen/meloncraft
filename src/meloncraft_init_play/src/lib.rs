@@ -7,6 +7,7 @@ use bevy::math::{DVec3, IVec2};
 use meloncraft_client::connection::ClientConnection;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_core::Identifier;
+use meloncraft_core::game_event::GameEventType;
 use meloncraft_packets::{ClientboundGameEvent, ClientboundPlayLogin, ClientboundSetCenterChunk, ClientboundSynchronizePlayerPosition};
 use meloncraft_packets::ServerboundAcknowledgeFinishConfiguration;
 use meloncraft_player::PlayerMarker;
@@ -99,7 +100,7 @@ fn game_event_player_info_update(
     for login_packet in login_play_pr.read() {
         game_event_pw.write(ClientboundGameEvent {
             client: login_packet.client,
-            event: meloncraft_protocol_types::GameEventType::WaitForChunks,
+            event: GameEventType::WaitForChunks,
         });
     }
 }

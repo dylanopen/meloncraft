@@ -1,30 +1,7 @@
-use meloncraft_core::{DemoEventType, GameMode, WeatherIntensity};
+use meloncraft_core::game_event::{GameEventType, ShouldShowCredits, ShouldShowRespawnScreen};
+use meloncraft_core::WeatherIntensity;
 
 use crate::ProtocolType;
-
-#[derive(Debug, Clone)]
-pub enum GameEventType {
-    NoRespawnBlockAvailable,
-    BeginRaining,
-    EndRaining,
-    ChangeGameMode(GameMode),
-    WinGame(ShouldShowCredits),
-    DemoEvent(DemoEventType),
-    ArrowHitPlayer,
-    RainLevelChange(WeatherIntensity),
-    ThunderLevelChange(WeatherIntensity),
-    PufferfishSting,
-    ElderGuardianAppearance,
-    EnableRespawnScreen(ShouldShowRespawnScreen),
-    LimitedCrafting(bool),
-    WaitForChunks,
-}
-
-#[derive(Debug, Clone)]
-pub struct ShouldShowCredits(pub bool);
-
-#[derive(Debug, Clone)]
-pub struct ShouldShowRespawnScreen(pub bool);
 
 impl ProtocolType for GameEventType {
     fn net_serialize(&self) -> Vec<u8> {
