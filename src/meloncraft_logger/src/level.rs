@@ -13,6 +13,7 @@ pub enum LogLevel {
     Chat,
     Warn,
     Error,
+    Fatal,
 }
 
 impl LogLevel {
@@ -21,15 +22,36 @@ impl LogLevel {
     /// For example, `LogLevel::Info.as_str()` will return `"INFO"`.
     #[must_use]
     pub const fn as_str(&self) -> &'static str {
-        match self {
-            LogLevel::Trace => return "TRACE",
-            LogLevel::Debug => return "DEBUG",
-            LogLevel::Info => return "INFO",
-            LogLevel::Command => return "COMMAND",
-            LogLevel::Chat => return "CHAT",
-            LogLevel::Warn => return "WARN",
-            LogLevel::Error => return "ERROR",
-        }
+        return match self {
+            LogLevel::Trace => "TRACE",
+            LogLevel::Debug => "DEBUG",
+            LogLevel::Info => "INFO",
+            LogLevel::Command => "COMMAND",
+            LogLevel::Chat => "CHAT",
+            LogLevel::Warn => "WARN",
+            LogLevel::Error => "ERROR",
+            LogLevel::Fatal => "FATAL",
+        };
+    }
+
+    /// Returns the ANSI color code prefix for the log level, which can be used to color the log
+    /// message when writing it to the console.
+    /// For example, `LogLevel::Error.color_code()` will return `"\x1b[31m"`, which is the color
+    /// code for red.
+    #[must_use]
+    pub const fn color_code(&self) -> &'static str {
+        return match self {
+            // TODO: base color code on terminal background color, e.g. use bright colors for
+            // dark backgrounds and dark colors for light backgrounds
+            LogLevel::Trace => "\x1b[36m", // bright black
+            LogLevel::Debug => "\x1b[32m", // bright cyan
+            LogLevel::Info => "\x1b[94m", // bright
+            LogLevel::Command => "\x1b[95m", // bright magenta
+            LogLevel::Chat => "\x1b[97m", // magenta
+            LogLevel::Warn => "\x1b[93m", // yellow
+            LogLevel::Error => "\x1b[91;1m", // bright red and bold
+            LogLevel::Fatal => "\x1b[31;1;5m", // red, bold and blinking
+        };
     }
 }
 
@@ -53,6 +75,7 @@ mod tests {
         assert_eq!(LogLevel::Chat.as_str(), "CHAT");
         assert_eq!(LogLevel::Warn.as_str(), "WARN");
         assert_eq!(LogLevel::Error.as_str(), "ERROR");
+        assert_eq!(LogLevel::Fatal.as_str(), "FATAL");
     }
 
     #[test]
@@ -64,6 +87,7 @@ mod tests {
         assert_eq!(LogLevel::Chat.to_string(), "CHAT");
         assert_eq!(LogLevel::Warn.to_string(), "WARN");
         assert_eq!(LogLevel::Error.to_string(), "ERROR");
+        assert_eq!(LogLevel::Fatal.to_string(), "FATAL");
     }
 }
 
