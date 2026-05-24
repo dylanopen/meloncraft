@@ -21,6 +21,9 @@ pub fn insert_gamemode(
     }
 }
 
+/// Sends an `UpdateClientPlayerAction` packet to all players on the server, whenever a player's
+/// gamemode changes, to indicate they should update the gamemode of that player in their
+/// client-side state.
 pub fn send_gamemode_info_update(
     changed_gamemode_q: Query<(Entity, &GameMode), Changed<GameMode>>,
     mut update_client_player_action_mw: MessageWriter<UpdateClientPlayerAction>,
@@ -33,6 +36,8 @@ pub fn send_gamemode_info_update(
     }
 }
 
+/// Sends a game event *only to the player(s) who changed gamemodes*, to indicate they should switch
+/// to the new gamemode component.
 pub fn send_gamemode_game_event(
     changed_gamemode_q: Query<(Entity, &GameMode), Changed<GameMode>>,
     mut game_event_pw: MessageWriter<ClientboundGameEvent>,
