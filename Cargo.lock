@@ -790,6 +790,7 @@ dependencies = [
  "meloncraft_handshaking",
  "meloncraft_init_play",
  "meloncraft_join",
+ "meloncraft_logger",
  "meloncraft_login",
  "meloncraft_nbt",
  "meloncraft_network",
@@ -909,6 +910,13 @@ dependencies = [
  "meloncraft_login",
  "meloncraft_packets",
  "meloncraft_world_manager",
+]
+
+[[package]]
+name = "meloncraft_logger"
+version = "0.1.0"
+dependencies = [
+ "bevy",
 ]
 
 [[package]]

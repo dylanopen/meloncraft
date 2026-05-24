@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["src/meloncraft_network", "src/meloncraft_packets", "src/meloncraft_protocol_types", "src/meloncraft_client", "src/meloncraft_handshaking", "src/meloncraft_server_list", "src/meloncraft_player", "src/meloncraft_nbt", "src/meloncraft_login", "src/meloncraft_registry", "src/meloncraft_core", "src/meloncraft_text", "src/meloncraft_chunk", "tools/block_state_generator", "src/meloncraft_join", "src/meloncraft_world", "src/meloncraft_world_manager", "src/meloncraft_entity", "src/meloncraft_player_state", "src/meloncraft_block", "src/meloncraft_packet_forwarding", "src/meloncraft_server_info", "src/meloncraft_block_breaking", "src/meloncraft_entity_state", "src/meloncraft_command", "src/meloncraft_default_commands"]
+members = ["src/meloncraft_network", "src/meloncraft_packets", "src/meloncraft_protocol_types", "src/meloncraft_client", "src/meloncraft_handshaking", "src/meloncraft_server_list", "src/meloncraft_player", "src/meloncraft_nbt", "src/meloncraft_login", "src/meloncraft_registry", "src/meloncraft_core", "src/meloncraft_text", "src/meloncraft_chunk", "tools/block_state_generator", "src/meloncraft_join", "src/meloncraft_world", "src/meloncraft_world_manager", "src/meloncraft_entity", "src/meloncraft_player_state", "src/meloncraft_block", "src/meloncraft_packet_forwarding", "src/meloncraft_server_info", "src/meloncraft_block_breaking", "src/meloncraft_entity_state", "src/meloncraft_command", "src/meloncraft_default_commands", "src/meloncraft_logger"]
 exclude = [
     "examples",
     "src/meloncraft_blockstate_registry"
@@ -49,6 +49,7 @@ meloncraft_packet_forwarding = { path = "src/meloncraft_packet_forwarding" }
 meloncraft_server_info = { path = "src/meloncraft_server_info" }
 meloncraft_command = { path = "src/meloncraft_command" }
 meloncraft_default_commands = { path = "src/meloncraft_default_commands" }
+meloncraft_logger = { path = "src/meloncraft_logger" }
 
 lazy_static = "1.5.0"
 
@@ -82,6 +83,7 @@ meloncraft_packet_forwarding = { workspace = true }
 meloncraft_server_info = { workspace = true }
 meloncraft_command = { workspace = true }
 meloncraft_default_commands = { workspace = true }
+meloncraft_logger = { workspace = true }
 
 
 [workspace.lints.rust]
