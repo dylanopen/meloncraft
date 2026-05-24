@@ -2,13 +2,14 @@ use bevy::app::{App, Plugin, Update};
 use bevy::ecs::entity::Entity;
 use bevy::ecs::message::{MessageReader, MessageWriter};
 use bevy::ecs::schedule::IntoScheduleConfigs as _;
-use bevy::ecs::system::Query;
+use bevy::ecs::system::{Commands, Query};
 use bevy::math::{DVec3, IVec2};
 use meloncraft_client::connection::ClientConnection;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_core::Identifier;
 use meloncraft_packets::{ClientboundGameEvent, ClientboundPlayLogin, ClientboundSetCenterChunk, ClientboundSynchronizePlayerPosition};
 use meloncraft_packets::ServerboundAcknowledgeFinishConfiguration;
+use meloncraft_player::PlayerMarker;
 use meloncraft_protocol_types::PrefixedArray;
 use meloncraft_world::messages::ChunkRequest;
 
@@ -18,6 +19,7 @@ impl Plugin for MeloncraftInitPlayPlugin {
     fn build(&self, app: &mut App) {
         app.add_systems(Update, (
             send_chunks,
+            add_player_marker,
             game_event_player_info_update,
             sync_position, // reverse order so that the login packet is sent before the position sync
             play_login,    // otherwise bevy might read the messages the wrong way, so send position then login
@@ -78,6 +80,15 @@ fn sync_position(
             pitch: 0.0,
             teleport_id: 0,
         });
+    }
+}
+
+fn add_player_marker(
+    mut commands: Commands,
+    mut login_play_pr: MessageReader<ClientboundPlayLogin>,
+) {
+    for login_packet in login_play_pr.read() {
+        commands.get_entity(login_packet.client).unwrap().insert(PlayerMarker);
     }
 }
 
