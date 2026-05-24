@@ -1,6 +1,27 @@
+use bevy::ecs::entity::Entity;
+use bevy::ecs::message::Message;
 use meloncraft_nbt::NbtTag;
 
 use crate::GameProfileProperties;
+
+/// Message to indicate that a player's state has changed and should be updated, by a
+/// `ClientboundPlayerInfoUpdate` packet being sent to *all* clients.
+#[derive(Debug, Clone, Message)]
+pub struct UpdateClientPlayerAction {
+
+    /// The player whose state has changed and should be updated.
+    /// For example, if a player has just joined the game, this would be the Entity representing
+    /// that player.
+    /// It should be broadcast to *all clients*.
+    pub player: Entity,
+
+    /// The [`ClientPlayerAction`] that should be performed on the player, indicating what state has
+    /// changed.
+    /// For example, if a player has just joined the game, this would be
+    /// `ClientPlayerAction::AddPlayer`, and the `AddPlayerAction` would include the player's
+    /// username and game profile properties.
+    pub action: ClientPlayerAction,
+}
 
 #[derive(Debug, Clone)]
 pub enum ClientPlayerAction {
