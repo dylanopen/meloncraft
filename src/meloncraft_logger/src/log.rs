@@ -15,7 +15,7 @@ use crate::level::LogLevel;
 /// You can write a log message like any other Bevy message, using a `MessageWriter<Log>` in a
 /// system.
 /// You can also use the macros in [`crate::macros`] to write log messages more easily.
-#[derive(Message)]
+#[derive(Debug, Clone, PartialEq, Eq, Message)]
 pub struct Log {
 
     /// The level of the log message.

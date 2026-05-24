@@ -4,6 +4,7 @@ use core::fmt;
 ///
 /// They can be used to format logs or filter log messages to only show certain types of messages in
 /// the handler systems.
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub enum LogLevel {
     Trace,
     Debug,
