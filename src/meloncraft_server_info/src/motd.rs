@@ -12,7 +12,7 @@ use core::ops::{Deref, DerefMut};
 /// This is a global resource; you can add it with Bevy to change the MOTD.
 /// You should insert this resource to define the MOTD of your server, and you can change it at
 /// runtime to change the MOTD of your server on the fly.
-#[derive(Resource)]
+#[derive(Resource, Debug, Clone)]
 pub struct Motd(
 
     /// The string representing the value of the server's MOTD.
@@ -20,6 +20,8 @@ pub struct Motd(
     /// [`Motd`] for more info.
     pub String,
 );
+
+// TODO: make `Motd` hold an `NbtText` component, not a raw, unformatted string.
 
 impl Deref for Motd {
     type Target = String;

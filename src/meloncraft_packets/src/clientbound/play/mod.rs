@@ -45,6 +45,9 @@ pub use set_border_warning_delay::ClientboundSetBorderWarningDelay;
 mod set_border_warning_distance;
 pub use set_border_warning_distance::ClientboundSetBorderWarningDistance;
 
+mod server_data;
+pub use server_data::ClientboundServerData;
+
 pub fn register_clientbound_play_packets(app: &mut App) {
     use crate::clientbound_messenger::fwd;
     use bevy::app::PostUpdate;
@@ -93,4 +96,7 @@ pub fn register_clientbound_play_packets(app: &mut App) {
 
     app.add_message::<ClientboundSetBorderWarningDistance>();
     app.add_systems(PostUpdate, fwd::<ClientboundSetBorderWarningDistance>);
+
+    app.add_message::<ClientboundServerData>();
+    app.add_systems(PostUpdate, fwd::<ClientboundServerData>);
 }
