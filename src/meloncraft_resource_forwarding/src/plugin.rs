@@ -17,6 +17,7 @@ impl Plugin for MeloncraftResourceForwardingPlugin {
         app.add_systems(Update, difficulty::send_difficulty_on_change);
 
         app.add_systems(Update, default_spawn::send_world_spawn_on_join);
+        app.add_systems(Update, default_spawn::send_world_spawn_on_change);
     }
 }
 
