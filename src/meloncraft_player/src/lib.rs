@@ -30,6 +30,7 @@ mod uuid;
 mod view_distance;
 mod action_status;
 mod marker;
+mod difficulty;
 
 pub mod client_action;
 
@@ -49,3 +50,4 @@ pub use uuid::Uuid;
 pub use view_distance::ClientViewDistance;
 pub use action_status::PlayerActionStatus;
 pub use marker::PlayerMarker;
+pub use difficulty::Difficulty;

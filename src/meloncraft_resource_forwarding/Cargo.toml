@@ -1,0 +1,13 @@
+[package]
+name = "meloncraft_resource_forwarding"
+version = "0.1.0"
+edition = "2024"
+license.workspace = true
+
+[dependencies]
+bevy.workspace = true
+meloncraft_player.workspace = true
+meloncraft_packets.workspace = true
+
+[lints]
+workspace = true

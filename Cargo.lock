@@ -800,6 +800,7 @@ dependencies = [
  "meloncraft_player_state",
  "meloncraft_protocol_types",
  "meloncraft_registry",
+ "meloncraft_resource_forwarding",
  "meloncraft_server_info",
  "meloncraft_server_list",
  "meloncraft_text",
@@ -1018,6 +1019,15 @@ version = "0.1.0"
 dependencies = [
  "meloncraft_core",
  "meloncraft_nbt",
+]
+
+[[package]]
+name = "meloncraft_resource_forwarding"
+version = "0.1.0"
+dependencies = [
+ "bevy",
+ "meloncraft_packets",
+ "meloncraft_player",
 ]
 
 [[package]]
