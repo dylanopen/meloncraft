@@ -20,3 +20,4 @@ pub mod max_players;
 pub mod motd;
 pub mod online_players;
 pub mod difficulty;
+pub mod worldspawn;
