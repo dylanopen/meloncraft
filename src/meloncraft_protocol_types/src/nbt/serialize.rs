@@ -1,11 +1,17 @@
 use crate::ProtocolType as _;
+use meloncraft_logger::debuglog;
 use meloncraft_nbt::NbtValue;
 use meloncraft_nbt::{NbtCompound, NbtTag};
 
 pub fn tag(tag: NbtTag) -> Vec<u8> {
     let mut output = Vec::new();
     output.push(tag.value.to_id());
-    output.extend(string(tag.key)); // Empty name for root
+
+    if tag.key.is_empty() {
+        debuglog!("Serialized a tag with an empty string as the key! This seems to have a weird format and I've added a hack to get it working. Expect bugs if you serialize this data.");
+    } else {
+        output.extend(string(tag.key)); // Empty name for root
+    }
     output.extend(value(tag.value));
     return output;
 }
