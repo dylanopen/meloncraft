@@ -30,6 +30,9 @@ pub use change_difficulty::ClientboundChangeDifficulty;
 mod set_default_spawn_position;
 pub use set_default_spawn_position::ClientboundSetDefaultSpawnPosition;
 
+mod set_ticking_state;
+pub use set_ticking_state::ClientboundSetTickingState;
+
 pub fn register_clientbound_play_packets(app: &mut App) {
     use crate::clientbound_messenger::fwd;
     use bevy::app::PostUpdate;
@@ -63,4 +66,7 @@ pub fn register_clientbound_play_packets(app: &mut App) {
 
     app.add_message::<ClientboundSetDefaultSpawnPosition>();
     app.add_systems(PostUpdate, fwd::<ClientboundSetDefaultSpawnPosition>);
+
+    app.add_message::<ClientboundSetTickingState>();
+    app.add_systems(PostUpdate, fwd::<ClientboundSetTickingState>);
 }
