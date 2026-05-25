@@ -2,7 +2,7 @@
 
 use bevy::app::{App, Plugin, Update};
 
-use crate::{difficulty, ticking, world_spawn};
+use crate::{difficulty, ticking, world_border, world_spawn};
 
 /// Registers systems to send resources to clients in packets, when the resources change or players
 /// join.
@@ -21,6 +21,9 @@ impl Plugin for MeloncraftResourceForwardingPlugin {
 
         app.add_systems(Update, ticking::send_ticking_state_on_join);
         app.add_systems(Update, ticking::send_ticking_state_on_change);
+
+        app.add_systems(Update, world_border::send_world_border_center_on_join);
+        app.add_systems(Update, world_border::send_world_border_center_on_change);
     }
 }
 
