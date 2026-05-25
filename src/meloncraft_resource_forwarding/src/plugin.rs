@@ -14,6 +14,7 @@ pub struct MeloncraftResourceForwardingPlugin;
 impl Plugin for MeloncraftResourceForwardingPlugin {
     fn build(&self, app: &mut App) {
         app.add_systems(Update, difficulty::send_difficulty_on_join);
+        app.add_systems(Update, difficulty::send_difficulty_on_change);
     }
 }
 
