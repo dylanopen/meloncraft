@@ -3,7 +3,7 @@ use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_server_info::world_border::WorldBorderWarningDistance;
 use crate::network_messages::ClientboundNetworkPacket;
-use meloncraft_protocol_types::ProtocolType as _;
+use meloncraft_protocol_types::{ProtocolType as _, VarInt};
 use crate::clientbound_packet::ClientboundPacket;
 
 /// Set the minimum distance a player needs to be to the world border, until the red outline on
@@ -31,7 +31,7 @@ impl ClientboundPacket for ClientboundSetBorderWarningDistance {
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let mut data = Vec::new();
 
-        data.extend(self.warning_distance.0.net_serialize());
+        data.extend(VarInt(self.warning_distance.0).net_serialize());
 
         return Some(ClientboundNetworkPacket {
             client: self.client,

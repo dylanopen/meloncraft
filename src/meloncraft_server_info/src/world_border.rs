@@ -12,7 +12,7 @@ pub struct WorldBorderCenter(pub DVec2);
 /// A diameter of 100.0, if [`WorldBorderCenter`] is `0,0`, would stretch from `-50` to `+50` in
 /// each direction.
 #[derive(Resource, Debug, Clone)]
-pub struct WorldBorderDiameter(pub f32);
+pub struct WorldBorderDiameter(pub f64);
 
 /// The delay, in seconds, before a player is warned about the world border.
 /// This is the time before the red effect shows for the client.
