@@ -1,4 +1,4 @@
-//! Module for resource struct [`CurrentHealth`].
+//! Module for component struct [`CurrentHealth`].
 
 use bevy::ecs::component::Component;
 
