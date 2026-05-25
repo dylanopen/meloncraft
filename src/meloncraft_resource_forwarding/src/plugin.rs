@@ -1,6 +1,8 @@
 //! Module for [`MeloncraftResourceForwardingPlugin`].
 
-use bevy::app::{App, Plugin};
+use bevy::app::{App, Plugin, Update};
+
+use crate::difficulty;
 
 /// Registers systems to send resources to clients in packets, when the resources change or players
 /// join.
@@ -11,7 +13,7 @@ pub struct MeloncraftResourceForwardingPlugin;
 
 impl Plugin for MeloncraftResourceForwardingPlugin {
     fn build(&self, app: &mut App) {
-        
+        app.add_systems(Update, difficulty::send_difficulty_on_join);
     }
 }
 
