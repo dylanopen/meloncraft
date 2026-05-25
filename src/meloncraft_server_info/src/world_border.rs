@@ -13,3 +13,9 @@ pub struct WorldBorderCenter(pub DVec2);
 /// each direction.
 #[derive(Resource, Debug, Clone)]
 pub struct WorldBorderDiameter(pub f32);
+
+/// The delay, in seconds, before a player is warned about the world border.
+/// This is the time before the red effect shows for the client.
+#[derive(Resource, Debug, Clone)]
+pub struct WorldBorderWarningDelay(pub i32);
+
