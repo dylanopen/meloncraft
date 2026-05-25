@@ -22,3 +22,4 @@ pub mod online_players;
 pub mod difficulty;
 pub mod world_spawn;
 pub mod tick;
+pub mod world_border;
