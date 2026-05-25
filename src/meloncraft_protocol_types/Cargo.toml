@@ -11,6 +11,7 @@ meloncraft_nbt = { workspace = true }
 meloncraft_registry = { workspace = true }
 meloncraft_text = { workspace = true }
 meloncraft_chunk = { workspace = true }
+meloncraft_logger = { workspace = true }
 bevy = { workspace = true }
 
 [lints]

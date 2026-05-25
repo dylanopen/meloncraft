@@ -19,49 +19,49 @@ macro_rules! tracelog {
 #[macro_export]
 macro_rules! debuglog {
     ($($arg:tt)+) => {
-        $crate::log!(LogLevel::Debug, $($arg)+);
+        $crate::log!($crate::level::LogLevel::Debug, $($arg)+);
     };
 }
 
 #[macro_export]
 macro_rules! commandlog {
     ($($arg:tt)+) => {
-        $crate::log!(LogLevel::Command, $($arg)+);
+        $crate::log!($crate::level::LogLevel::Command, $($arg)+);
     };
 }
 
 #[macro_export]
 macro_rules! chatlog {
     ($($arg:tt)+) => {
-        $crate::log!(LogLevel::Chat, $($arg)+);
+        $crate::log!($crate::level::LogLevel::Chat, $($arg)+);
     };
 }
 
 #[macro_export]
 macro_rules! infolog {
     ($($arg:tt)+) => {
-        $crate::log!(LogLevel::Info, $($arg)+);
+        $crate::log!($crate::level::LogLevel::Info, $($arg)+);
     };
 }
 
 #[macro_export]
 macro_rules! warnlog {
     ($($arg:tt)+) => {
-        $crate::log!(LogLevel::Warn, $($arg)+);
+        $crate::log!($crate::level::LogLevel::Warn, $($arg)+);
     };
 }
 
 #[macro_export]
 macro_rules! errorlog {
     ($($arg:tt)+) => {
-        $crate::log!(LogLevel::Error, $($arg)+);
+        $crate::log!($crate::level::LogLevel::Error, $($arg)+);
     };
 }
 
 #[macro_export]
 macro_rules! fatallog {
     ($($arg:tt)+) => {
-        $crate::log!(LogLevel::Fatal, $($arg)+);
+        $crate::log!($crate::level::LogLevel::Fatal, $($arg)+);
     };
 }
 

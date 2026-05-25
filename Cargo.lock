@@ -1008,6 +1008,7 @@ dependencies = [
  "bevy",
  "meloncraft_chunk",
  "meloncraft_core",
+ "meloncraft_logger",
  "meloncraft_nbt",
  "meloncraft_player",
  "meloncraft_registry",

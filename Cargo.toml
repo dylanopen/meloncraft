@@ -116,7 +116,7 @@ redundant_feature_names = "forbid"
 wildcard_dependencies = "forbid"
 
 # Complexity lints:
-bind_instead_of_map = "forbid"
+bind_instead_of_map = "deny"
 bool_comparison = "forbid"
 borrow_deref_ref = "forbid"
 borrowed_box = "forbid"
