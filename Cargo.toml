@@ -7,12 +7,13 @@ exclude = [
 ]
 
 [workspace.package]
-
+license = "MIT"
 
 [package]
 name = "meloncraft"
 version = "0.1.0"
 edition = "2024"
+license = "MIT"
 
 [workspace.dependencies.bevy]
 version = "0.17.3"
