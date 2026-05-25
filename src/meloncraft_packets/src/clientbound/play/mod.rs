@@ -27,6 +27,9 @@ pub use block_update::ClientboundBlockUpdate;
 mod change_difficulty;
 pub use change_difficulty::ClientboundChangeDifficulty;
 
+mod set_default_spawn_position;
+pub use set_default_spawn_position::ClientboundSetDefaultSpawnPosition;
+
 pub fn register_clientbound_play_packets(app: &mut App) {
     use crate::clientbound_messenger::fwd;
     use bevy::app::PostUpdate;
@@ -57,4 +60,7 @@ pub fn register_clientbound_play_packets(app: &mut App) {
 
     app.add_message::<ClientboundChangeDifficulty>();
     app.add_systems(PostUpdate, fwd::<ClientboundChangeDifficulty>);
+
+    app.add_message::<ClientboundSetDefaultSpawnPosition>();
+    app.add_systems(PostUpdate, fwd::<ClientboundSetDefaultSpawnPosition>);
 }

@@ -6,7 +6,8 @@ use bevy::ecs::message::MessageWriter;
 use bevy::ecs::query::{Added, With};
 use bevy::ecs::system::{Query, Res};
 use meloncraft_packets::ClientboundChangeDifficulty;
-use meloncraft_player::{Difficulty, PlayerMarker};
+use meloncraft_player::PlayerMarker;
+use meloncraft_server_info::difficulty::Difficulty;
 
 pub fn send_difficulty_on_join(
     new_player_q: Query<Entity, Added<PlayerMarker>>,
