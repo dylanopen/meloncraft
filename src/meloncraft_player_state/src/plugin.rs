@@ -1,6 +1,7 @@
 //! Module for [`MeloncraftPlayerStatePlugin`].
 
 use bevy::app::{App, Plugin, Update};
+use crate::health;
 use crate::movement;
 use crate::client_action;
 use crate::gamemode;
@@ -25,6 +26,10 @@ impl Plugin for MeloncraftPlayerStatePlugin {
                 gamemode::insert_gamemode,
                 gamemode::send_gamemode_info_update,
                 gamemode::send_gamemode_game_event,
+        ));
+
+        app.add_systems(Update, (
+                health::insert_health,
         ));
     }
 }

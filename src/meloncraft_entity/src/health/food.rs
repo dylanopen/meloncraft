@@ -17,4 +17,4 @@ pub struct FoodHealth(pub i32);
 ///
 /// <https://minecraft.wiki/w/Java_Edition_protocol/Packets#Set_Health>.
 #[derive(Component, Debug, Clone, Copy)]
-pub struct FoodSaturation(pub i32);
+pub struct FoodSaturation(pub f32);
