@@ -31,4 +31,3 @@ pub use resource_pack_load_result::ResourcePackLoadResult;
 pub use gamemode::GameMode;
 pub use demo_event::DemoEventType;
 pub use weather_intensity::WeatherIntensity;
-pub use difficulty::Difficulty;

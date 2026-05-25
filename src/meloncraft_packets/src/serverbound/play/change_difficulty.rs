@@ -1,7 +1,7 @@
 use crate::ServerboundPacket;
 use bevy::prelude::{Entity, Message};
 use meloncraft_client::connection_state::ConnectionState;
-use meloncraft_core::Difficulty;
+use meloncraft_player::Difficulty;
 use crate::network_messages::ServerboundNetworkPacket;
 use meloncraft_protocol_types::ProtocolType as _;
 
