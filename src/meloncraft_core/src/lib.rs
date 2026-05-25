@@ -23,7 +23,6 @@ pub mod resource_pack_load_result;
 pub mod gamemode;
 pub mod demo_event;
 pub mod weather_intensity;
-pub mod difficulty;
 pub mod game_event;
 
 pub use disconnect_report::DisconnectReport;
