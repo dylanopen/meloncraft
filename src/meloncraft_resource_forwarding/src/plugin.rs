@@ -2,7 +2,7 @@
 
 use bevy::app::{App, Plugin, Update};
 
-use crate::difficulty;
+use crate::{default_spawn, difficulty};
 
 /// Registers systems to send resources to clients in packets, when the resources change or players
 /// join.
@@ -15,6 +15,8 @@ impl Plugin for MeloncraftResourceForwardingPlugin {
     fn build(&self, app: &mut App) {
         app.add_systems(Update, difficulty::send_difficulty_on_join);
         app.add_systems(Update, difficulty::send_difficulty_on_change);
+
+        app.add_systems(Update, default_spawn::send_world_spawn_on_join);
     }
 }
 
