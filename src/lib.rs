@@ -26,3 +26,4 @@ pub use meloncraft_command as command;
 pub use meloncraft_default_commands as default_commands;
 pub use meloncraft_logger as logger;
 pub use meloncraft_resource_forwarding as resource_forwarding;
+pub use meloncraft_component_forwarding as component_forwarding;
