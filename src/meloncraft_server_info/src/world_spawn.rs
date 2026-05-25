@@ -11,3 +11,14 @@ pub struct WorldSpawn {
     /// The entity location of the world spawn.
     pub location: DVec3,
 }
+
+impl WorldSpawn {
+    /// Create a new instance of [`WorldSpawn`] with the given `location`.
+    #[must_use]
+    pub const fn new(location: DVec3) -> WorldSpawn{
+        return WorldSpawn {
+            location,
+        };
+    }
+}
+

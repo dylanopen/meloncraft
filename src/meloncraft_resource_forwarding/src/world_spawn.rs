@@ -7,7 +7,7 @@ use bevy::ecs::query::{Added, With};
 use bevy::ecs::system::{Query, Res};
 use meloncraft_packets::ClientboundSetDefaultSpawnPosition;
 use meloncraft_player::PlayerMarker;
-use meloncraft_server_info::worldspawn::WorldSpawn;
+use meloncraft_server_info::world_spawn::WorldSpawn;
 
 pub fn send_world_spawn_on_join(
     new_player_q: Query<Entity, Added<PlayerMarker>>,
