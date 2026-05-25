@@ -5,19 +5,19 @@ use bevy::ecs::entity::Entity;
 use bevy::ecs::message::MessageWriter;
 use bevy::ecs::query::{Added, With};
 use bevy::ecs::system::{Query, Res};
-use meloncraft_packets::{ClientboundSetBorderCenter, ClientboundSetBorderSize};
+use meloncraft_packets::{ClientboundSetBorderCenter, ClientboundSetBorderSize, ClientboundSetBorderWarningDelay};
 use meloncraft_player::PlayerMarker;
-use meloncraft_server_info::world_border::{WorldBorderCenter, WorldBorderDiameter};
+use meloncraft_server_info::world_border::{WorldBorderCenter, WorldBorderDiameter, WorldBorderWarningDelay};
 
 pub fn send_world_border_center_on_join(
     new_player_q: Query<Entity, Added<PlayerMarker>>,
-    world_spawn: Res<WorldBorderCenter>,
+    world_border_center: Res<WorldBorderCenter>,
     mut set_border_center_pw: MessageWriter<ClientboundSetBorderCenter>,
 ) {
     for client in new_player_q {
         set_border_center_pw.write(ClientboundSetBorderCenter {
             client,
-            center: world_spawn.clone(),
+            center: world_border_center.clone(),
         });
     }
 }
@@ -39,13 +39,13 @@ pub fn send_world_border_center_on_change(
 
 pub fn send_world_border_diameter_on_join(
     new_player_q: Query<Entity, Added<PlayerMarker>>,
-    world_spawn: Res<WorldBorderDiameter>,
+    world_border_diameter: Res<WorldBorderDiameter>,
     mut set_border_size_pw: MessageWriter<ClientboundSetBorderSize>,
 ) {
     for client in new_player_q {
         set_border_size_pw.write(ClientboundSetBorderSize {
             client,
-            diameter: world_spawn.clone(),
+            diameter: world_border_diameter.clone(),
         });
     }
 }
@@ -60,6 +60,34 @@ pub fn send_world_border_diameter_on_change(
         set_border_size_pw.write(ClientboundSetBorderSize {
             client,
             diameter: world_border_diameter.clone(),
+        });
+    }
+}
+
+
+pub fn send_world_border_warning_delay_on_join(
+    new_player_q: Query<Entity, Added<PlayerMarker>>,
+    world_border_warning_delay: Res<WorldBorderWarningDelay>,
+    mut set_border_warning_delay_pw: MessageWriter<ClientboundSetBorderWarningDelay>,
+) {
+    for client in new_player_q {
+        set_border_warning_delay_pw.write(ClientboundSetBorderWarningDelay {
+            client,
+            warning_delay: world_border_warning_delay.clone(),
+        });
+    }
+}
+
+pub fn send_world_border_warning_delay_on_change(
+    player_q: Query<Entity, With<PlayerMarker>>,
+    world_border_warning_delay: Res<WorldBorderWarningDelay>,
+    mut set_border_warning_delay_pw: MessageWriter<ClientboundSetBorderWarningDelay>,
+) {
+    if !world_border_warning_delay.is_changed() { return; }
+    for client in player_q {
+        set_border_warning_delay_pw.write(ClientboundSetBorderWarningDelay {
+            client,
+            warning_delay: world_border_warning_delay.clone(),
         });
     }
 }
