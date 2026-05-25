@@ -2,6 +2,7 @@
 name = "meloncraft_nbt"
 version = "0.1.0"
 edition = "2024"
+license.workspace = true
 
 [dependencies]
 serde_json = "0.9.10"
