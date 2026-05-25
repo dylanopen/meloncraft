@@ -27,7 +27,7 @@ pub fn send_server_data_on_join(
             icon: icon.clone(),
         });
     }
-    // Why is the double clone needed?! :(
+    // Why is the double icon clone needed?! :(
 }
 
 pub fn send_server_data_on_change_motd(
@@ -36,7 +36,10 @@ pub fn send_server_data_on_change_motd(
     icon: Option<Res<ServerIcon>>,
     mut server_data_pw: MessageWriter<ClientboundServerData>,
 ) {
-    if !motd.is_changed() { return; }
+    if !motd.is_changed() {
+        let Some(icon) = &icon else { return };
+        if icon.is_changed() { return; }
+    }
     #[expect(clippy::bind_instead_of_map, reason = "clippy suggestion does does not dereference, it seems.")]
     let icon = icon.and_then(|icon| return Some(icon.clone()));
     for client in player_q {
@@ -46,6 +49,6 @@ pub fn send_server_data_on_change_motd(
             icon: icon.clone(),
         });
     }
-    // Why is the double clone needed?! :(
+    // Why is the double icon clone needed?! :(
 }
 
