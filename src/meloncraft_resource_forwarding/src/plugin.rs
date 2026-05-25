@@ -24,6 +24,8 @@ impl Plugin for MeloncraftResourceForwardingPlugin {
 
         app.add_systems(Update, world_border::send_world_border_center_on_join);
         app.add_systems(Update, world_border::send_world_border_center_on_change);
+        app.add_systems(Update, world_border::send_world_border_diameter_on_join);
+        app.add_systems(Update, world_border::send_world_border_diameter_on_change);
     }
 }
 
