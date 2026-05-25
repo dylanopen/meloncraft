@@ -1,9 +1,9 @@
 use bevy::ecs::message::Message;
-use bevy::math::DVec3 ;
+use bevy::math::IVec3;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
 use crate::network_messages::ClientboundNetworkPacket;
-use meloncraft_protocol_types::ProtocolType as _;
+use meloncraft_protocol_types::{NetworkLocation, ProtocolType as _};
 use crate::clientbound_packet::ClientboundPacket;
 
 /// Sent by the server after login to specify the coordinates of the spawn point (the point at
@@ -19,8 +19,9 @@ pub struct ClientboundSetDefaultSpawnPosition {
     /// Name of spawn dimension, e.g. `minecraft:overworld`.
     pub dimension: String,
 
-    /// The coordinates of the spawn position, as a [`DVec3`] (3 doubles).
-    pub location: DVec3,
+    /// The coordinates of the spawn position, as an [`IVec3`] (3 ints).
+    /// When serializing, this is converted into a [`NetworkLocation`].
+    pub location: IVec3,
 
     pub yaw: f32,
     pub pitch: f32,
@@ -39,7 +40,7 @@ impl ClientboundPacket for ClientboundSetDefaultSpawnPosition {
         let mut data = Vec::new();
 
         data.extend(self.dimension.net_serialize());
-        data.extend(self.location.net_serialize());
+        data.extend(NetworkLocation(self.location).net_serialize());
         data.extend(self.yaw.net_serialize());
         data.extend(self.pitch.net_serialize());
 
