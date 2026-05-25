@@ -1,9 +1,10 @@
 use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
+use meloncraft_nbt::{NbtString, NbtTag, NbtValue};
 use meloncraft_server_info::motd::Motd;
 use crate::network_messages::ClientboundNetworkPacket;
-use meloncraft_protocol_types::ProtocolType as _;
+use meloncraft_protocol_types::{PrefixedArray, ProtocolType as _};
 use crate::clientbound_packet::ClientboundPacket;
 
 /// Send an MOTD and server icon to the client, but during the `play` connection state.
@@ -30,8 +31,8 @@ impl ClientboundPacket for ClientboundServerData {
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let mut data = Vec::new();
 
-        data.extend(self.motd.0.net_serialize());
-        data.extend(self.icon.clone());
+        data.extend(NbtTag::new(String::new(), NbtValue::String(NbtString(self.motd.0.clone()))).net_serialize());
+        data.extend(PrefixedArray(self.icon.clone()).net_serialize());
 
         return Some(ClientboundNetworkPacket {
             client: self.client,
