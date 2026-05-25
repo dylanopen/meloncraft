@@ -8,3 +8,8 @@ use bevy::math::DVec2;
 #[derive(Resource, Debug, Clone)]
 pub struct WorldBorderCenter(pub DVec2);
 
+/// The size of the world border, as a **diameter**.
+/// A diameter of 100.0, if [`WorldBorderCenter`] is `0,0`, would stretch from `-50` to `+50` in
+/// each direction.
+#[derive(Resource, Debug, Clone)]
+pub struct WorldBorderDiameter(pub f32);
