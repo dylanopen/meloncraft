@@ -33,6 +33,9 @@ pub use set_default_spawn_position::ClientboundSetDefaultSpawnPosition;
 mod set_ticking_state;
 pub use set_ticking_state::ClientboundSetTickingState;
 
+mod set_border_center;
+pub use set_border_center::ClientboundSetBorderCenter;
+
 pub fn register_clientbound_play_packets(app: &mut App) {
     use crate::clientbound_messenger::fwd;
     use bevy::app::PostUpdate;
@@ -69,4 +72,7 @@ pub fn register_clientbound_play_packets(app: &mut App) {
 
     app.add_message::<ClientboundSetTickingState>();
     app.add_systems(PostUpdate, fwd::<ClientboundSetTickingState>);
+
+    app.add_message::<ClientboundSetBorderCenter>();
+    app.add_systems(PostUpdate, fwd::<ClientboundSetBorderCenter>);
 }
