@@ -19,3 +19,8 @@ pub struct WorldBorderDiameter(pub f32);
 #[derive(Resource, Debug, Clone)]
 pub struct WorldBorderWarningDelay(pub i32);
 
+/// The distance, in blocks, away from a world border before a player is warned about it.
+/// This is the number of blocks before the red effect shows for the client.
+#[derive(Resource, Debug, Clone)]
+pub struct WorldBorderWarningDistance(pub i32);
+
