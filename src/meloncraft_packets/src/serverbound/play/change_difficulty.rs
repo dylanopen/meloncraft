@@ -19,7 +19,7 @@ impl ServerboundPacket for ServerboundChangeDifficulty {
         return ConnectionState::Play
     }
     fn deserialize(packet: ServerboundNetworkPacket) -> Option<Self> {
-        let mut packet = packet.clone();
+        let mut packet = packet;
         let client = packet.client;
 
         let new_difficulty = u8::net_deserialize(&mut packet.data).ok()?.try_into().ok()?;

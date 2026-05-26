@@ -19,7 +19,7 @@ impl ServerboundPacket for ServerboundChangeGamemode {
         return ConnectionState::Play
     }
     fn deserialize(packet: ServerboundNetworkPacket) -> Option<Self> {
-        let mut packet = packet.clone();
+        let mut packet = packet;
         let client = packet.client;
 
         let new_gamemode = u8::net_deserialize(&mut packet.data).ok()?.try_into().ok()?;

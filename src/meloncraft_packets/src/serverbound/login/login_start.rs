@@ -22,7 +22,7 @@ impl ServerboundPacket for ServerboundLoginStart {
     }
 
     fn deserialize(packet: ServerboundNetworkPacket) -> Option<Self> {
-        let mut incoming = packet.clone();
+        let mut incoming = packet;
         let client = incoming.client;
         let name = String::net_deserialize(&mut incoming.data).unwrap();
         let uuid = Uuid::net_deserialize(&mut incoming.data).unwrap();

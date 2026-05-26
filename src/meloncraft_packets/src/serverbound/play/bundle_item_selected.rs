@@ -19,7 +19,7 @@ impl ServerboundPacket for ServerboundBundleItemSelected {
         return ConnectionState::Play
     }
     fn deserialize(packet: ServerboundNetworkPacket) -> Option<Self> {
-        let mut packet = packet.clone();
+        let mut packet = packet;
         let client = packet.client;
 
         let inventory_slot = VarInt::net_deserialize(&mut packet.data).unwrap().0;

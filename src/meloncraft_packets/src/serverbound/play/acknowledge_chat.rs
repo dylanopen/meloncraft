@@ -17,7 +17,7 @@ impl ServerboundPacket for ServerboundAcknowledgeChat {
     fn state() -> ConnectionState {
         return ConnectionState::Play
     }
-    fn deserialize(packet: ServerboundNetworkPacket) -> Option<Self> {
+    fn deserialize(mut packet: ServerboundNetworkPacket) -> Option<Self> {
         let client = packet.client;
 
         let message_count = VarInt::net_deserialize(&mut packet.data).ok()?.0;

@@ -24,7 +24,7 @@ impl ServerboundPacket for ServerboundIntention {
         return ConnectionState::Handshaking
     }
     fn deserialize(packet: ServerboundNetworkPacket) -> Option<Self> {
-        let mut incoming = packet.clone();
+        let mut incoming = packet;
         let protocol_version = VarInt::net_deserialize(&mut incoming.data).unwrap().0;
         let server_address = String::net_deserialize(&mut incoming.data).unwrap();
         let server_port = u16::net_deserialize(&mut incoming.data).unwrap();

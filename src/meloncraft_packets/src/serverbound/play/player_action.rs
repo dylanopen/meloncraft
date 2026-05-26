@@ -23,7 +23,7 @@ impl ServerboundPacket for ServerboundPlayerAction {
         return ConnectionState::Play
     }
     fn deserialize(packet: ServerboundNetworkPacket) -> Option<Self> {
-        let mut packet = packet.clone();
+        let mut packet = packet;
         let client = packet.client;
 
         let status = VarInt::net_deserialize(&mut packet.data).ok()?.0.try_into().unwrap();

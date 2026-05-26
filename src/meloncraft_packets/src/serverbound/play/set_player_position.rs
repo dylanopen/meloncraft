@@ -19,7 +19,7 @@ impl ServerboundPacket for ServerboundSetPlayerPosition {
         return ConnectionState::Play
     }
     fn deserialize(packet: ServerboundNetworkPacket) -> Option<Self> {
-        let mut packet = packet.clone();
+        let mut packet = packet;
         let client = packet.client;
 
         let location = packet.data.net_deserialize().ok()?;
