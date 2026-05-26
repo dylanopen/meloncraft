@@ -1,9 +1,7 @@
 use crate::BlockState;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub struct SoulSoil {
-}
-
+pub struct SoulSoil {}
 
 impl BlockState for SoulSoil {
     fn to_id(&self) -> i32 {
@@ -13,10 +11,8 @@ impl BlockState for SoulSoil {
 
     fn from_id(state_id: i32) -> Option<Self> {
         if state_id == 6798 {
-            return Some(SoulSoil {
-            });
+            return Some(SoulSoil {});
         }
         return None;
     }
 }
-

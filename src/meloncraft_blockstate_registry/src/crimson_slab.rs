@@ -6,7 +6,6 @@ pub struct CrimsonSlab {
     pub r#type: Type,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Type {
     Top,
@@ -16,12 +15,24 @@ pub enum Type {
 
 impl BlockState for CrimsonSlab {
     fn to_id(&self) -> i32 {
-        if self.r#type == Type::Bottom && self.r#waterlogged == false { return 20835; }
-        if self.r#waterlogged == true && self.r#type == Type::Top { return 20832; }
-        if self.r#type == Type::Top && self.r#waterlogged == false { return 20833; }
-        if self.r#waterlogged == true && self.r#type == Type::Bottom { return 20834; }
-        if self.r#type == Type::Double && self.r#waterlogged == true { return 20836; }
-        if self.r#type == Type::Double && self.r#waterlogged == false { return 20837; }
+        if self.r#type == Type::Bottom && self.r#waterlogged == false {
+            return 20835;
+        }
+        if self.r#waterlogged == true && self.r#type == Type::Top {
+            return 20832;
+        }
+        if self.r#type == Type::Top && self.r#waterlogged == false {
+            return 20833;
+        }
+        if self.r#waterlogged == true && self.r#type == Type::Bottom {
+            return 20834;
+        }
+        if self.r#type == Type::Double && self.r#waterlogged == true {
+            return 20836;
+        }
+        if self.r#type == Type::Double && self.r#waterlogged == false {
+            return 20837;
+        }
         panic!("Invalid block state")
     }
 
@@ -65,4 +76,3 @@ impl BlockState for CrimsonSlab {
         return None;
     }
 }
-

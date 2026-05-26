@@ -6,7 +6,6 @@ pub struct Barrel {
     pub r#facing: Facing,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -19,18 +18,42 @@ pub enum Facing {
 
 impl BlockState for Barrel {
     fn to_id(&self) -> i32 {
-        if self.r#open == false && self.r#facing == Facing::West { return 20547; }
-        if self.r#facing == Facing::Down && self.r#open == true { return 20550; }
-        if self.r#open == false && self.r#facing == Facing::South { return 20545; }
-        if self.r#open == true && self.r#facing == Facing::South { return 20544; }
-        if self.r#open == false && self.r#facing == Facing::East { return 20543; }
-        if self.r#facing == Facing::Up && self.r#open == false { return 20549; }
-        if self.r#facing == Facing::North && self.r#open == false { return 20541; }
-        if self.r#open == true && self.r#facing == Facing::East { return 20542; }
-        if self.r#facing == Facing::Down && self.r#open == false { return 20551; }
-        if self.r#facing == Facing::North && self.r#open == true { return 20540; }
-        if self.r#facing == Facing::West && self.r#open == true { return 20546; }
-        if self.r#facing == Facing::Up && self.r#open == true { return 20548; }
+        if self.r#open == false && self.r#facing == Facing::West {
+            return 20547;
+        }
+        if self.r#facing == Facing::Down && self.r#open == true {
+            return 20550;
+        }
+        if self.r#open == false && self.r#facing == Facing::South {
+            return 20545;
+        }
+        if self.r#open == true && self.r#facing == Facing::South {
+            return 20544;
+        }
+        if self.r#open == false && self.r#facing == Facing::East {
+            return 20543;
+        }
+        if self.r#facing == Facing::Up && self.r#open == false {
+            return 20549;
+        }
+        if self.r#facing == Facing::North && self.r#open == false {
+            return 20541;
+        }
+        if self.r#open == true && self.r#facing == Facing::East {
+            return 20542;
+        }
+        if self.r#facing == Facing::Down && self.r#open == false {
+            return 20551;
+        }
+        if self.r#facing == Facing::North && self.r#open == true {
+            return 20540;
+        }
+        if self.r#facing == Facing::West && self.r#open == true {
+            return 20546;
+        }
+        if self.r#facing == Facing::Up && self.r#open == true {
+            return 20548;
+        }
         panic!("Invalid block state")
     }
 
@@ -110,4 +133,3 @@ impl BlockState for Barrel {
         return None;
     }
 }
-

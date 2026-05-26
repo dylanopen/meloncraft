@@ -1,9 +1,7 @@
 use crate::BlockState;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub struct ShortDryGrass {
-}
-
+pub struct ShortDryGrass {}
 
 impl BlockState for ShortDryGrass {
     fn to_id(&self) -> i32 {
@@ -13,10 +11,8 @@ impl BlockState for ShortDryGrass {
 
     fn from_id(state_id: i32) -> Option<Self> {
         if state_id == 2052 {
-            return Some(ShortDryGrass {
-            });
+            return Some(ShortDryGrass {});
         }
         return None;
     }
 }
-

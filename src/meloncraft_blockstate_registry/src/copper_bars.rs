@@ -9,41 +9,264 @@ pub struct CopperBars {
     pub west: bool,
 }
 
-
 impl BlockState for CopperBars {
     fn to_id(&self) -> i32 {
-        if self.r#east == true && self.r#north == false && self.r#waterlogged == true && self.r#west == true && self.r#south == false { return 7801; }
-        if self.r#south == false && self.r#east == false && self.r#north == true && self.r#waterlogged == true && self.r#west == true { return 7809; }
-        if self.r#west == true && self.r#north == true && self.r#waterlogged == false && self.r#east == true && self.r#south == false { return 7795; }
-        if self.r#west == false && self.r#waterlogged == true && self.r#south == true && self.r#east == false && self.r#north == true { return 7806; }
-        if self.r#east == false && self.r#waterlogged == false && self.r#west == true && self.r#north == true && self.r#south == false { return 7811; }
-        if self.r#east == true && self.r#north == false && self.r#waterlogged == false && self.r#west == false && self.r#south == true { return 7800; }
-        if self.r#north == true && self.r#south == false && self.r#waterlogged == false && self.r#east == false && self.r#west == false { return 7812; }
-        if self.r#west == true && self.r#south == true && self.r#east == false && self.r#waterlogged == true && self.r#north == false { return 7813; }
-        if self.r#north == false && self.r#south == true && self.r#west == false && self.r#east == false && self.r#waterlogged == true { return 7814; }
-        if self.r#south == true && self.r#waterlogged == false && self.r#north == false && self.r#east == true && self.r#west == true { return 7799; }
-        if self.r#east == true && self.r#south == false && self.r#north == true && self.r#waterlogged == true && self.r#west == true { return 7793; }
-        if self.r#south == true && self.r#waterlogged == false && self.r#east == true && self.r#north == true && self.r#west == true { return 7791; }
-        if self.r#north == true && self.r#waterlogged == true && self.r#west == false && self.r#south == true && self.r#east == true { return 7790; }
-        if self.r#north == true && self.r#waterlogged == true && self.r#south == true && self.r#east == false && self.r#west == true { return 7805; }
-        if self.r#west == true && self.r#north == true && self.r#east == false && self.r#south == true && self.r#waterlogged == false { return 7807; }
-        if self.r#north == true && self.r#east == false && self.r#waterlogged == true && self.r#west == false && self.r#south == false { return 7810; }
-        if self.r#north == false && self.r#waterlogged == false && self.r#south == false && self.r#east == true && self.r#west == true { return 7803; }
-        if self.r#south == true && self.r#north == true && self.r#waterlogged == false && self.r#east == false && self.r#west == false { return 7808; }
-        if self.r#east == false && self.r#waterlogged == false && self.r#west == true && self.r#south == true && self.r#north == false { return 7815; }
-        if self.r#south == false && self.r#waterlogged == false && self.r#east == true && self.r#west == false && self.r#north == false { return 7804; }
-        if self.r#west == false && self.r#waterlogged == false && self.r#south == true && self.r#east == true && self.r#north == true { return 7792; }
-        if self.r#north == true && self.r#waterlogged == true && self.r#west == false && self.r#east == true && self.r#south == false { return 7794; }
-        if self.r#east == true && self.r#south == false && self.r#west == false && self.r#waterlogged == false && self.r#north == true { return 7796; }
-        if self.r#waterlogged == false && self.r#north == false && self.r#west == false && self.r#east == false && self.r#south == true { return 7816; }
-        if self.r#south == false && self.r#east == false && self.r#waterlogged == false && self.r#west == false && self.r#north == false { return 7820; }
-        if self.r#south == true && self.r#east == true && self.r#north == true && self.r#waterlogged == true && self.r#west == true { return 7789; }
-        if self.r#north == false && self.r#south == false && self.r#west == true && self.r#east == false && self.r#waterlogged == true { return 7817; }
-        if self.r#east == true && self.r#waterlogged == true && self.r#south == true && self.r#west == true && self.r#north == false { return 7797; }
-        if self.r#east == false && self.r#waterlogged == true && self.r#west == false && self.r#north == false && self.r#south == false { return 7818; }
-        if self.r#north == false && self.r#waterlogged == true && self.r#east == true && self.r#south == true && self.r#west == false { return 7798; }
-        if self.r#north == false && self.r#east == true && self.r#waterlogged == true && self.r#west == false && self.r#south == false { return 7802; }
-        if self.r#waterlogged == false && self.r#north == false && self.r#west == true && self.r#east == false && self.r#south == false { return 7819; }
+        if self.r#east == true
+            && self.r#north == false
+            && self.r#waterlogged == true
+            && self.r#west == true
+            && self.r#south == false
+        {
+            return 7801;
+        }
+        if self.r#south == false
+            && self.r#east == false
+            && self.r#north == true
+            && self.r#waterlogged == true
+            && self.r#west == true
+        {
+            return 7809;
+        }
+        if self.r#west == true
+            && self.r#north == true
+            && self.r#waterlogged == false
+            && self.r#east == true
+            && self.r#south == false
+        {
+            return 7795;
+        }
+        if self.r#west == false
+            && self.r#waterlogged == true
+            && self.r#south == true
+            && self.r#east == false
+            && self.r#north == true
+        {
+            return 7806;
+        }
+        if self.r#east == false
+            && self.r#waterlogged == false
+            && self.r#west == true
+            && self.r#north == true
+            && self.r#south == false
+        {
+            return 7811;
+        }
+        if self.r#east == true
+            && self.r#north == false
+            && self.r#waterlogged == false
+            && self.r#west == false
+            && self.r#south == true
+        {
+            return 7800;
+        }
+        if self.r#north == true
+            && self.r#south == false
+            && self.r#waterlogged == false
+            && self.r#east == false
+            && self.r#west == false
+        {
+            return 7812;
+        }
+        if self.r#west == true
+            && self.r#south == true
+            && self.r#east == false
+            && self.r#waterlogged == true
+            && self.r#north == false
+        {
+            return 7813;
+        }
+        if self.r#north == false
+            && self.r#south == true
+            && self.r#west == false
+            && self.r#east == false
+            && self.r#waterlogged == true
+        {
+            return 7814;
+        }
+        if self.r#south == true
+            && self.r#waterlogged == false
+            && self.r#north == false
+            && self.r#east == true
+            && self.r#west == true
+        {
+            return 7799;
+        }
+        if self.r#east == true
+            && self.r#south == false
+            && self.r#north == true
+            && self.r#waterlogged == true
+            && self.r#west == true
+        {
+            return 7793;
+        }
+        if self.r#south == true
+            && self.r#waterlogged == false
+            && self.r#east == true
+            && self.r#north == true
+            && self.r#west == true
+        {
+            return 7791;
+        }
+        if self.r#north == true
+            && self.r#waterlogged == true
+            && self.r#west == false
+            && self.r#south == true
+            && self.r#east == true
+        {
+            return 7790;
+        }
+        if self.r#north == true
+            && self.r#waterlogged == true
+            && self.r#south == true
+            && self.r#east == false
+            && self.r#west == true
+        {
+            return 7805;
+        }
+        if self.r#west == true
+            && self.r#north == true
+            && self.r#east == false
+            && self.r#south == true
+            && self.r#waterlogged == false
+        {
+            return 7807;
+        }
+        if self.r#north == true
+            && self.r#east == false
+            && self.r#waterlogged == true
+            && self.r#west == false
+            && self.r#south == false
+        {
+            return 7810;
+        }
+        if self.r#north == false
+            && self.r#waterlogged == false
+            && self.r#south == false
+            && self.r#east == true
+            && self.r#west == true
+        {
+            return 7803;
+        }
+        if self.r#south == true
+            && self.r#north == true
+            && self.r#waterlogged == false
+            && self.r#east == false
+            && self.r#west == false
+        {
+            return 7808;
+        }
+        if self.r#east == false
+            && self.r#waterlogged == false
+            && self.r#west == true
+            && self.r#south == true
+            && self.r#north == false
+        {
+            return 7815;
+        }
+        if self.r#south == false
+            && self.r#waterlogged == false
+            && self.r#east == true
+            && self.r#west == false
+            && self.r#north == false
+        {
+            return 7804;
+        }
+        if self.r#west == false
+            && self.r#waterlogged == false
+            && self.r#south == true
+            && self.r#east == true
+            && self.r#north == true
+        {
+            return 7792;
+        }
+        if self.r#north == true
+            && self.r#waterlogged == true
+            && self.r#west == false
+            && self.r#east == true
+            && self.r#south == false
+        {
+            return 7794;
+        }
+        if self.r#east == true
+            && self.r#south == false
+            && self.r#west == false
+            && self.r#waterlogged == false
+            && self.r#north == true
+        {
+            return 7796;
+        }
+        if self.r#waterlogged == false
+            && self.r#north == false
+            && self.r#west == false
+            && self.r#east == false
+            && self.r#south == true
+        {
+            return 7816;
+        }
+        if self.r#south == false
+            && self.r#east == false
+            && self.r#waterlogged == false
+            && self.r#west == false
+            && self.r#north == false
+        {
+            return 7820;
+        }
+        if self.r#south == true
+            && self.r#east == true
+            && self.r#north == true
+            && self.r#waterlogged == true
+            && self.r#west == true
+        {
+            return 7789;
+        }
+        if self.r#north == false
+            && self.r#south == false
+            && self.r#west == true
+            && self.r#east == false
+            && self.r#waterlogged == true
+        {
+            return 7817;
+        }
+        if self.r#east == true
+            && self.r#waterlogged == true
+            && self.r#south == true
+            && self.r#west == true
+            && self.r#north == false
+        {
+            return 7797;
+        }
+        if self.r#east == false
+            && self.r#waterlogged == true
+            && self.r#west == false
+            && self.r#north == false
+            && self.r#south == false
+        {
+            return 7818;
+        }
+        if self.r#north == false
+            && self.r#waterlogged == true
+            && self.r#east == true
+            && self.r#south == true
+            && self.r#west == false
+        {
+            return 7798;
+        }
+        if self.r#north == false
+            && self.r#east == true
+            && self.r#waterlogged == true
+            && self.r#west == false
+            && self.r#south == false
+        {
+            return 7802;
+        }
+        if self.r#waterlogged == false
+            && self.r#north == false
+            && self.r#west == true
+            && self.r#east == false
+            && self.r#south == false
+        {
+            return 7819;
+        }
         panic!("Invalid block state")
     }
 
@@ -339,4 +562,3 @@ impl BlockState for CopperBars {
         return None;
     }
 }
-

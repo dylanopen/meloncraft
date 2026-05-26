@@ -6,7 +6,6 @@ pub struct RedstoneWallTorch {
     pub lit: bool,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -17,14 +16,30 @@ pub enum Facing {
 
 impl BlockState for RedstoneWallTorch {
     fn to_id(&self) -> i32 {
-        if self.r#lit == false && self.r#facing == Facing::North { return 6687; }
-        if self.r#facing == Facing::East && self.r#lit == true { return 6692; }
-        if self.r#facing == Facing::South && self.r#lit == false { return 6689; }
-        if self.r#facing == Facing::South && self.r#lit == true { return 6688; }
-        if self.r#lit == true && self.r#facing == Facing::North { return 6686; }
-        if self.r#facing == Facing::West && self.r#lit == true { return 6690; }
-        if self.r#facing == Facing::West && self.r#lit == false { return 6691; }
-        if self.r#lit == false && self.r#facing == Facing::East { return 6693; }
+        if self.r#lit == false && self.r#facing == Facing::North {
+            return 6687;
+        }
+        if self.r#facing == Facing::East && self.r#lit == true {
+            return 6692;
+        }
+        if self.r#facing == Facing::South && self.r#lit == false {
+            return 6689;
+        }
+        if self.r#facing == Facing::South && self.r#lit == true {
+            return 6688;
+        }
+        if self.r#lit == true && self.r#facing == Facing::North {
+            return 6686;
+        }
+        if self.r#facing == Facing::West && self.r#lit == true {
+            return 6690;
+        }
+        if self.r#facing == Facing::West && self.r#lit == false {
+            return 6691;
+        }
+        if self.r#lit == false && self.r#facing == Facing::East {
+            return 6693;
+        }
         panic!("Invalid block state")
     }
 
@@ -80,4 +95,3 @@ impl BlockState for RedstoneWallTorch {
         return None;
     }
 }
-

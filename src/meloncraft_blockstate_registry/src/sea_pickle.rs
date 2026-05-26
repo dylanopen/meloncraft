@@ -6,17 +6,32 @@ pub struct SeaPickle {
     pub waterlogged: bool,
 }
 
-
 impl BlockState for SeaPickle {
     fn to_id(&self) -> i32 {
-        if self.r#waterlogged == false && self.r#pickles == 2 { return 15068; }
-        if self.r#pickles == 3 && self.r#waterlogged == false { return 15070; }
-        if self.r#waterlogged == true && self.r#pickles == 2 { return 15067; }
-        if self.r#waterlogged == true && self.r#pickles == 1 { return 15065; }
-        if self.r#pickles == 4 && self.r#waterlogged == false { return 15072; }
-        if self.r#pickles == 4 && self.r#waterlogged == true { return 15071; }
-        if self.r#waterlogged == true && self.r#pickles == 3 { return 15069; }
-        if self.r#waterlogged == false && self.r#pickles == 1 { return 15066; }
+        if self.r#waterlogged == false && self.r#pickles == 2 {
+            return 15068;
+        }
+        if self.r#pickles == 3 && self.r#waterlogged == false {
+            return 15070;
+        }
+        if self.r#waterlogged == true && self.r#pickles == 2 {
+            return 15067;
+        }
+        if self.r#waterlogged == true && self.r#pickles == 1 {
+            return 15065;
+        }
+        if self.r#pickles == 4 && self.r#waterlogged == false {
+            return 15072;
+        }
+        if self.r#pickles == 4 && self.r#waterlogged == true {
+            return 15071;
+        }
+        if self.r#waterlogged == true && self.r#pickles == 3 {
+            return 15069;
+        }
+        if self.r#waterlogged == false && self.r#pickles == 1 {
+            return 15066;
+        }
         panic!("Invalid block state")
     }
 
@@ -72,4 +87,3 @@ impl BlockState for SeaPickle {
         return None;
     }
 }
-

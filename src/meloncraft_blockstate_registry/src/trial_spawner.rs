@@ -6,7 +6,6 @@ pub struct TrialSpawner {
     pub ominous: bool,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum TrialSpawnerState {
     Inactive,
@@ -19,18 +18,53 @@ pub enum TrialSpawnerState {
 
 impl BlockState for TrialSpawner {
     fn to_id(&self) -> i32 {
-        if self.r#ominous == false && self.r#trial_spawner_state == TrialSpawnerState::EjectingReward { return 29465; }
-        if self.r#ominous == false && self.r#trial_spawner_state == TrialSpawnerState::Inactive { return 29461; }
-        if self.r#trial_spawner_state == TrialSpawnerState::WaitingForPlayers && self.r#ominous == true { return 29456; }
-        if self.r#ominous == true && self.r#trial_spawner_state == TrialSpawnerState::EjectingReward { return 29459; }
-        if self.r#trial_spawner_state == TrialSpawnerState::Cooldown && self.r#ominous == true { return 29460; }
-        if self.r#trial_spawner_state == TrialSpawnerState::WaitingForRewardEjection && self.r#ominous == false { return 29464; }
-        if self.r#ominous == true && self.r#trial_spawner_state == TrialSpawnerState::WaitingForRewardEjection { return 29458; }
-        if self.r#ominous == true && self.r#trial_spawner_state == TrialSpawnerState::Active { return 29457; }
-        if self.r#ominous == false && self.r#trial_spawner_state == TrialSpawnerState::WaitingForPlayers { return 29462; }
-        if self.r#trial_spawner_state == TrialSpawnerState::Inactive && self.r#ominous == true { return 29455; }
-        if self.r#ominous == false && self.r#trial_spawner_state == TrialSpawnerState::Cooldown { return 29466; }
-        if self.r#ominous == false && self.r#trial_spawner_state == TrialSpawnerState::Active { return 29463; }
+        if self.r#ominous == false
+            && self.r#trial_spawner_state == TrialSpawnerState::EjectingReward
+        {
+            return 29465;
+        }
+        if self.r#ominous == false && self.r#trial_spawner_state == TrialSpawnerState::Inactive {
+            return 29461;
+        }
+        if self.r#trial_spawner_state == TrialSpawnerState::WaitingForPlayers
+            && self.r#ominous == true
+        {
+            return 29456;
+        }
+        if self.r#ominous == true && self.r#trial_spawner_state == TrialSpawnerState::EjectingReward
+        {
+            return 29459;
+        }
+        if self.r#trial_spawner_state == TrialSpawnerState::Cooldown && self.r#ominous == true {
+            return 29460;
+        }
+        if self.r#trial_spawner_state == TrialSpawnerState::WaitingForRewardEjection
+            && self.r#ominous == false
+        {
+            return 29464;
+        }
+        if self.r#ominous == true
+            && self.r#trial_spawner_state == TrialSpawnerState::WaitingForRewardEjection
+        {
+            return 29458;
+        }
+        if self.r#ominous == true && self.r#trial_spawner_state == TrialSpawnerState::Active {
+            return 29457;
+        }
+        if self.r#ominous == false
+            && self.r#trial_spawner_state == TrialSpawnerState::WaitingForPlayers
+        {
+            return 29462;
+        }
+        if self.r#trial_spawner_state == TrialSpawnerState::Inactive && self.r#ominous == true {
+            return 29455;
+        }
+        if self.r#ominous == false && self.r#trial_spawner_state == TrialSpawnerState::Cooldown {
+            return 29466;
+        }
+        if self.r#ominous == false && self.r#trial_spawner_state == TrialSpawnerState::Active {
+            return 29463;
+        }
         panic!("Invalid block state")
     }
 
@@ -110,4 +144,3 @@ impl BlockState for TrialSpawner {
         return None;
     }
 }
-

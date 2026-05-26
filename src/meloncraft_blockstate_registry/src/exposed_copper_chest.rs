@@ -7,7 +7,6 @@ pub struct ExposedCopperChest {
     pub r#type: Type,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -25,30 +24,134 @@ pub enum Type {
 
 impl BlockState for ExposedCopperChest {
     fn to_id(&self) -> i32 {
-        if self.r#waterlogged == false && self.r#facing == Facing::South && self.r#type == Type::Single { return 26924; }
-        if self.r#facing == Facing::West && self.r#type == Type::Right && self.r#waterlogged == false { return 26934; }
-        if self.r#type == Type::Single && self.r#facing == Facing::West && self.r#waterlogged == true { return 26929; }
-        if self.r#type == Type::Left && self.r#waterlogged == true && self.r#facing == Facing::East { return 26937; }
-        if self.r#facing == Facing::East && self.r#waterlogged == false && self.r#type == Type::Right { return 26940; }
-        if self.r#waterlogged == true && self.r#type == Type::Right && self.r#facing == Facing::North { return 26921; }
-        if self.r#type == Type::Right && self.r#facing == Facing::South && self.r#waterlogged == false { return 26928; }
-        if self.r#facing == Facing::North && self.r#type == Type::Left && self.r#waterlogged == true { return 26919; }
-        if self.r#type == Type::Right && self.r#waterlogged == true && self.r#facing == Facing::South { return 26927; }
-        if self.r#facing == Facing::West && self.r#waterlogged == false && self.r#type == Type::Single { return 26930; }
-        if self.r#facing == Facing::North && self.r#type == Type::Single && self.r#waterlogged == true { return 26917; }
-        if self.r#waterlogged == false && self.r#type == Type::Left && self.r#facing == Facing::South { return 26926; }
-        if self.r#waterlogged == true && self.r#facing == Facing::West && self.r#type == Type::Right { return 26933; }
-        if self.r#type == Type::Left && self.r#facing == Facing::North && self.r#waterlogged == false { return 26920; }
-        if self.r#waterlogged == false && self.r#type == Type::Single && self.r#facing == Facing::North { return 26918; }
-        if self.r#waterlogged == false && self.r#type == Type::Left && self.r#facing == Facing::East { return 26938; }
-        if self.r#waterlogged == false && self.r#type == Type::Left && self.r#facing == Facing::West { return 26932; }
-        if self.r#waterlogged == false && self.r#type == Type::Right && self.r#facing == Facing::North { return 26922; }
-        if self.r#type == Type::Left && self.r#waterlogged == true && self.r#facing == Facing::West { return 26931; }
-        if self.r#type == Type::Left && self.r#facing == Facing::South && self.r#waterlogged == true { return 26925; }
-        if self.r#facing == Facing::South && self.r#waterlogged == true && self.r#type == Type::Single { return 26923; }
-        if self.r#type == Type::Single && self.r#waterlogged == true && self.r#facing == Facing::East { return 26935; }
-        if self.r#facing == Facing::East && self.r#type == Type::Single && self.r#waterlogged == false { return 26936; }
-        if self.r#facing == Facing::East && self.r#type == Type::Right && self.r#waterlogged == true { return 26939; }
+        if self.r#waterlogged == false
+            && self.r#facing == Facing::South
+            && self.r#type == Type::Single
+        {
+            return 26924;
+        }
+        if self.r#facing == Facing::West
+            && self.r#type == Type::Right
+            && self.r#waterlogged == false
+        {
+            return 26934;
+        }
+        if self.r#type == Type::Single
+            && self.r#facing == Facing::West
+            && self.r#waterlogged == true
+        {
+            return 26929;
+        }
+        if self.r#type == Type::Left && self.r#waterlogged == true && self.r#facing == Facing::East
+        {
+            return 26937;
+        }
+        if self.r#facing == Facing::East
+            && self.r#waterlogged == false
+            && self.r#type == Type::Right
+        {
+            return 26940;
+        }
+        if self.r#waterlogged == true
+            && self.r#type == Type::Right
+            && self.r#facing == Facing::North
+        {
+            return 26921;
+        }
+        if self.r#type == Type::Right
+            && self.r#facing == Facing::South
+            && self.r#waterlogged == false
+        {
+            return 26928;
+        }
+        if self.r#facing == Facing::North && self.r#type == Type::Left && self.r#waterlogged == true
+        {
+            return 26919;
+        }
+        if self.r#type == Type::Right
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::South
+        {
+            return 26927;
+        }
+        if self.r#facing == Facing::West
+            && self.r#waterlogged == false
+            && self.r#type == Type::Single
+        {
+            return 26930;
+        }
+        if self.r#facing == Facing::North
+            && self.r#type == Type::Single
+            && self.r#waterlogged == true
+        {
+            return 26917;
+        }
+        if self.r#waterlogged == false
+            && self.r#type == Type::Left
+            && self.r#facing == Facing::South
+        {
+            return 26926;
+        }
+        if self.r#waterlogged == true && self.r#facing == Facing::West && self.r#type == Type::Right
+        {
+            return 26933;
+        }
+        if self.r#type == Type::Left
+            && self.r#facing == Facing::North
+            && self.r#waterlogged == false
+        {
+            return 26920;
+        }
+        if self.r#waterlogged == false
+            && self.r#type == Type::Single
+            && self.r#facing == Facing::North
+        {
+            return 26918;
+        }
+        if self.r#waterlogged == false && self.r#type == Type::Left && self.r#facing == Facing::East
+        {
+            return 26938;
+        }
+        if self.r#waterlogged == false && self.r#type == Type::Left && self.r#facing == Facing::West
+        {
+            return 26932;
+        }
+        if self.r#waterlogged == false
+            && self.r#type == Type::Right
+            && self.r#facing == Facing::North
+        {
+            return 26922;
+        }
+        if self.r#type == Type::Left && self.r#waterlogged == true && self.r#facing == Facing::West
+        {
+            return 26931;
+        }
+        if self.r#type == Type::Left && self.r#facing == Facing::South && self.r#waterlogged == true
+        {
+            return 26925;
+        }
+        if self.r#facing == Facing::South
+            && self.r#waterlogged == true
+            && self.r#type == Type::Single
+        {
+            return 26923;
+        }
+        if self.r#type == Type::Single
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::East
+        {
+            return 26935;
+        }
+        if self.r#facing == Facing::East
+            && self.r#type == Type::Single
+            && self.r#waterlogged == false
+        {
+            return 26936;
+        }
+        if self.r#facing == Facing::East && self.r#type == Type::Right && self.r#waterlogged == true
+        {
+            return 26939;
+        }
         panic!("Invalid block state")
     }
 
@@ -224,4 +327,3 @@ impl BlockState for ExposedCopperChest {
         return None;
     }
 }
-

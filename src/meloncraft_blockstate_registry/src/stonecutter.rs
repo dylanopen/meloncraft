@@ -5,7 +5,6 @@ pub struct Stonecutter {
     pub r#facing: Facing,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -16,10 +15,18 @@ pub enum Facing {
 
 impl BlockState for Stonecutter {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::South { return 20600; }
-        if self.r#facing == Facing::North { return 20599; }
-        if self.r#facing == Facing::West { return 20601; }
-        if self.r#facing == Facing::East { return 20602; }
+        if self.r#facing == Facing::South {
+            return 20600;
+        }
+        if self.r#facing == Facing::North {
+            return 20599;
+        }
+        if self.r#facing == Facing::West {
+            return 20601;
+        }
+        if self.r#facing == Facing::East {
+            return 20602;
+        }
         panic!("Invalid block state")
     }
 
@@ -47,4 +54,3 @@ impl BlockState for Stonecutter {
         return None;
     }
 }
-

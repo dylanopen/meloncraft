@@ -6,41 +6,104 @@ pub struct MangroveSign {
     pub waterlogged: bool,
 }
 
-
 impl BlockState for MangroveSign {
     fn to_id(&self) -> i32 {
-        if self.r#waterlogged == false && self.r#rotation == 1 { return 5393; }
-        if self.r#waterlogged == true && self.r#rotation == 11 { return 5412; }
-        if self.r#waterlogged == true && self.r#rotation == 5 { return 5400; }
-        if self.r#waterlogged == false && self.r#rotation == 7 { return 5405; }
-        if self.r#waterlogged == true && self.r#rotation == 14 { return 5418; }
-        if self.r#rotation == 6 && self.r#waterlogged == false { return 5403; }
-        if self.r#rotation == 9 && self.r#waterlogged == false { return 5409; }
-        if self.r#rotation == 15 && self.r#waterlogged == true { return 5420; }
-        if self.r#waterlogged == true && self.r#rotation == 2 { return 5394; }
-        if self.r#rotation == 0 && self.r#waterlogged == true { return 5390; }
-        if self.r#rotation == 13 && self.r#waterlogged == true { return 5416; }
-        if self.r#waterlogged == true && self.r#rotation == 3 { return 5396; }
-        if self.r#rotation == 13 && self.r#waterlogged == false { return 5417; }
-        if self.r#waterlogged == false && self.r#rotation == 3 { return 5397; }
-        if self.r#rotation == 15 && self.r#waterlogged == false { return 5421; }
-        if self.r#waterlogged == true && self.r#rotation == 7 { return 5404; }
-        if self.r#rotation == 8 && self.r#waterlogged == false { return 5407; }
-        if self.r#rotation == 14 && self.r#waterlogged == false { return 5419; }
-        if self.r#waterlogged == false && self.r#rotation == 0 { return 5391; }
-        if self.r#rotation == 10 && self.r#waterlogged == false { return 5411; }
-        if self.r#rotation == 9 && self.r#waterlogged == true { return 5408; }
-        if self.r#rotation == 8 && self.r#waterlogged == true { return 5406; }
-        if self.r#waterlogged == false && self.r#rotation == 11 { return 5413; }
-        if self.r#rotation == 6 && self.r#waterlogged == true { return 5402; }
-        if self.r#rotation == 12 && self.r#waterlogged == true { return 5414; }
-        if self.r#waterlogged == false && self.r#rotation == 4 { return 5399; }
-        if self.r#rotation == 12 && self.r#waterlogged == false { return 5415; }
-        if self.r#rotation == 1 && self.r#waterlogged == true { return 5392; }
-        if self.r#waterlogged == true && self.r#rotation == 4 { return 5398; }
-        if self.r#rotation == 10 && self.r#waterlogged == true { return 5410; }
-        if self.r#rotation == 5 && self.r#waterlogged == false { return 5401; }
-        if self.r#rotation == 2 && self.r#waterlogged == false { return 5395; }
+        if self.r#waterlogged == false && self.r#rotation == 1 {
+            return 5393;
+        }
+        if self.r#waterlogged == true && self.r#rotation == 11 {
+            return 5412;
+        }
+        if self.r#waterlogged == true && self.r#rotation == 5 {
+            return 5400;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 7 {
+            return 5405;
+        }
+        if self.r#waterlogged == true && self.r#rotation == 14 {
+            return 5418;
+        }
+        if self.r#rotation == 6 && self.r#waterlogged == false {
+            return 5403;
+        }
+        if self.r#rotation == 9 && self.r#waterlogged == false {
+            return 5409;
+        }
+        if self.r#rotation == 15 && self.r#waterlogged == true {
+            return 5420;
+        }
+        if self.r#waterlogged == true && self.r#rotation == 2 {
+            return 5394;
+        }
+        if self.r#rotation == 0 && self.r#waterlogged == true {
+            return 5390;
+        }
+        if self.r#rotation == 13 && self.r#waterlogged == true {
+            return 5416;
+        }
+        if self.r#waterlogged == true && self.r#rotation == 3 {
+            return 5396;
+        }
+        if self.r#rotation == 13 && self.r#waterlogged == false {
+            return 5417;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 3 {
+            return 5397;
+        }
+        if self.r#rotation == 15 && self.r#waterlogged == false {
+            return 5421;
+        }
+        if self.r#waterlogged == true && self.r#rotation == 7 {
+            return 5404;
+        }
+        if self.r#rotation == 8 && self.r#waterlogged == false {
+            return 5407;
+        }
+        if self.r#rotation == 14 && self.r#waterlogged == false {
+            return 5419;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 0 {
+            return 5391;
+        }
+        if self.r#rotation == 10 && self.r#waterlogged == false {
+            return 5411;
+        }
+        if self.r#rotation == 9 && self.r#waterlogged == true {
+            return 5408;
+        }
+        if self.r#rotation == 8 && self.r#waterlogged == true {
+            return 5406;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 11 {
+            return 5413;
+        }
+        if self.r#rotation == 6 && self.r#waterlogged == true {
+            return 5402;
+        }
+        if self.r#rotation == 12 && self.r#waterlogged == true {
+            return 5414;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 4 {
+            return 5399;
+        }
+        if self.r#rotation == 12 && self.r#waterlogged == false {
+            return 5415;
+        }
+        if self.r#rotation == 1 && self.r#waterlogged == true {
+            return 5392;
+        }
+        if self.r#waterlogged == true && self.r#rotation == 4 {
+            return 5398;
+        }
+        if self.r#rotation == 10 && self.r#waterlogged == true {
+            return 5410;
+        }
+        if self.r#rotation == 5 && self.r#waterlogged == false {
+            return 5401;
+        }
+        if self.r#rotation == 2 && self.r#waterlogged == false {
+            return 5395;
+        }
         panic!("Invalid block state")
     }
 
@@ -240,4 +303,3 @@ impl BlockState for MangroveSign {
         return None;
     }
 }
-

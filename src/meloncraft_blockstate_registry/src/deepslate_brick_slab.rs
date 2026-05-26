@@ -6,7 +6,6 @@ pub struct DeepslateBrickSlab {
     pub r#type: Type,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Type {
     Top,
@@ -16,12 +15,24 @@ pub enum Type {
 
 impl BlockState for DeepslateBrickSlab {
     fn to_id(&self) -> i32 {
-        if self.r#type == Type::Double && self.r#waterlogged == false { return 29043; }
-        if self.r#waterlogged == false && self.r#type == Type::Bottom { return 29041; }
-        if self.r#type == Type::Top && self.r#waterlogged == true { return 29038; }
-        if self.r#type == Type::Bottom && self.r#waterlogged == true { return 29040; }
-        if self.r#type == Type::Top && self.r#waterlogged == false { return 29039; }
-        if self.r#type == Type::Double && self.r#waterlogged == true { return 29042; }
+        if self.r#type == Type::Double && self.r#waterlogged == false {
+            return 29043;
+        }
+        if self.r#waterlogged == false && self.r#type == Type::Bottom {
+            return 29041;
+        }
+        if self.r#type == Type::Top && self.r#waterlogged == true {
+            return 29038;
+        }
+        if self.r#type == Type::Bottom && self.r#waterlogged == true {
+            return 29040;
+        }
+        if self.r#type == Type::Top && self.r#waterlogged == false {
+            return 29039;
+        }
+        if self.r#type == Type::Double && self.r#waterlogged == true {
+            return 29042;
+        }
         panic!("Invalid block state")
     }
 
@@ -65,4 +76,3 @@ impl BlockState for DeepslateBrickSlab {
         return None;
     }
 }
-

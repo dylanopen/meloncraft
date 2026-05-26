@@ -6,41 +6,104 @@ pub struct SpruceSign {
     pub rotation: i32,
 }
 
-
 impl BlockState for SpruceSign {
     fn to_id(&self) -> i32 {
-        if self.r#waterlogged == false && self.r#rotation == 15 { return 5197; }
-        if self.r#rotation == 7 && self.r#waterlogged == true { return 5180; }
-        if self.r#waterlogged == true && self.r#rotation == 4 { return 5174; }
-        if self.r#rotation == 4 && self.r#waterlogged == false { return 5175; }
-        if self.r#rotation == 10 && self.r#waterlogged == false { return 5187; }
-        if self.r#waterlogged == true && self.r#rotation == 9 { return 5184; }
-        if self.r#waterlogged == false && self.r#rotation == 14 { return 5195; }
-        if self.r#rotation == 10 && self.r#waterlogged == true { return 5186; }
-        if self.r#rotation == 0 && self.r#waterlogged == true { return 5166; }
-        if self.r#rotation == 1 && self.r#waterlogged == false { return 5169; }
-        if self.r#rotation == 11 && self.r#waterlogged == true { return 5188; }
-        if self.r#waterlogged == true && self.r#rotation == 2 { return 5170; }
-        if self.r#rotation == 5 && self.r#waterlogged == true { return 5176; }
-        if self.r#waterlogged == false && self.r#rotation == 5 { return 5177; }
-        if self.r#waterlogged == false && self.r#rotation == 8 { return 5183; }
-        if self.r#rotation == 1 && self.r#waterlogged == true { return 5168; }
-        if self.r#rotation == 13 && self.r#waterlogged == false { return 5193; }
-        if self.r#waterlogged == true && self.r#rotation == 12 { return 5190; }
-        if self.r#waterlogged == false && self.r#rotation == 12 { return 5191; }
-        if self.r#waterlogged == false && self.r#rotation == 11 { return 5189; }
-        if self.r#rotation == 13 && self.r#waterlogged == true { return 5192; }
-        if self.r#rotation == 14 && self.r#waterlogged == true { return 5194; }
-        if self.r#rotation == 15 && self.r#waterlogged == true { return 5196; }
-        if self.r#waterlogged == false && self.r#rotation == 0 { return 5167; }
-        if self.r#rotation == 3 && self.r#waterlogged == false { return 5173; }
-        if self.r#rotation == 6 && self.r#waterlogged == true { return 5178; }
-        if self.r#waterlogged == true && self.r#rotation == 8 { return 5182; }
-        if self.r#rotation == 6 && self.r#waterlogged == false { return 5179; }
-        if self.r#waterlogged == true && self.r#rotation == 3 { return 5172; }
-        if self.r#rotation == 2 && self.r#waterlogged == false { return 5171; }
-        if self.r#rotation == 7 && self.r#waterlogged == false { return 5181; }
-        if self.r#rotation == 9 && self.r#waterlogged == false { return 5185; }
+        if self.r#waterlogged == false && self.r#rotation == 15 {
+            return 5197;
+        }
+        if self.r#rotation == 7 && self.r#waterlogged == true {
+            return 5180;
+        }
+        if self.r#waterlogged == true && self.r#rotation == 4 {
+            return 5174;
+        }
+        if self.r#rotation == 4 && self.r#waterlogged == false {
+            return 5175;
+        }
+        if self.r#rotation == 10 && self.r#waterlogged == false {
+            return 5187;
+        }
+        if self.r#waterlogged == true && self.r#rotation == 9 {
+            return 5184;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 14 {
+            return 5195;
+        }
+        if self.r#rotation == 10 && self.r#waterlogged == true {
+            return 5186;
+        }
+        if self.r#rotation == 0 && self.r#waterlogged == true {
+            return 5166;
+        }
+        if self.r#rotation == 1 && self.r#waterlogged == false {
+            return 5169;
+        }
+        if self.r#rotation == 11 && self.r#waterlogged == true {
+            return 5188;
+        }
+        if self.r#waterlogged == true && self.r#rotation == 2 {
+            return 5170;
+        }
+        if self.r#rotation == 5 && self.r#waterlogged == true {
+            return 5176;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 5 {
+            return 5177;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 8 {
+            return 5183;
+        }
+        if self.r#rotation == 1 && self.r#waterlogged == true {
+            return 5168;
+        }
+        if self.r#rotation == 13 && self.r#waterlogged == false {
+            return 5193;
+        }
+        if self.r#waterlogged == true && self.r#rotation == 12 {
+            return 5190;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 12 {
+            return 5191;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 11 {
+            return 5189;
+        }
+        if self.r#rotation == 13 && self.r#waterlogged == true {
+            return 5192;
+        }
+        if self.r#rotation == 14 && self.r#waterlogged == true {
+            return 5194;
+        }
+        if self.r#rotation == 15 && self.r#waterlogged == true {
+            return 5196;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 0 {
+            return 5167;
+        }
+        if self.r#rotation == 3 && self.r#waterlogged == false {
+            return 5173;
+        }
+        if self.r#rotation == 6 && self.r#waterlogged == true {
+            return 5178;
+        }
+        if self.r#waterlogged == true && self.r#rotation == 8 {
+            return 5182;
+        }
+        if self.r#rotation == 6 && self.r#waterlogged == false {
+            return 5179;
+        }
+        if self.r#waterlogged == true && self.r#rotation == 3 {
+            return 5172;
+        }
+        if self.r#rotation == 2 && self.r#waterlogged == false {
+            return 5171;
+        }
+        if self.r#rotation == 7 && self.r#waterlogged == false {
+            return 5181;
+        }
+        if self.r#rotation == 9 && self.r#waterlogged == false {
+            return 5185;
+        }
         panic!("Invalid block state")
     }
 
@@ -240,4 +303,3 @@ impl BlockState for SpruceSign {
         return None;
     }
 }
-

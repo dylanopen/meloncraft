@@ -5,7 +5,6 @@ pub struct Jigsaw {
     pub r#orientation: Orientation,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Orientation {
     DownEast,
@@ -24,18 +23,42 @@ pub enum Orientation {
 
 impl BlockState for Jigsaw {
     fn to_id(&self) -> i32 {
-        if self.r#orientation == Orientation::UpSouth { return 21530; }
-        if self.r#orientation == Orientation::DownSouth { return 21526; }
-        if self.r#orientation == Orientation::UpEast { return 21528; }
-        if self.r#orientation == Orientation::SouthUp { return 21535; }
-        if self.r#orientation == Orientation::DownNorth { return 21525; }
-        if self.r#orientation == Orientation::WestUp { return 21532; }
-        if self.r#orientation == Orientation::NorthUp { return 21534; }
-        if self.r#orientation == Orientation::DownEast { return 21524; }
-        if self.r#orientation == Orientation::DownWest { return 21527; }
-        if self.r#orientation == Orientation::EastUp { return 21533; }
-        if self.r#orientation == Orientation::UpNorth { return 21529; }
-        if self.r#orientation == Orientation::UpWest { return 21531; }
+        if self.r#orientation == Orientation::UpSouth {
+            return 21530;
+        }
+        if self.r#orientation == Orientation::DownSouth {
+            return 21526;
+        }
+        if self.r#orientation == Orientation::UpEast {
+            return 21528;
+        }
+        if self.r#orientation == Orientation::SouthUp {
+            return 21535;
+        }
+        if self.r#orientation == Orientation::DownNorth {
+            return 21525;
+        }
+        if self.r#orientation == Orientation::WestUp {
+            return 21532;
+        }
+        if self.r#orientation == Orientation::NorthUp {
+            return 21534;
+        }
+        if self.r#orientation == Orientation::DownEast {
+            return 21524;
+        }
+        if self.r#orientation == Orientation::DownWest {
+            return 21527;
+        }
+        if self.r#orientation == Orientation::EastUp {
+            return 21533;
+        }
+        if self.r#orientation == Orientation::UpNorth {
+            return 21529;
+        }
+        if self.r#orientation == Orientation::UpWest {
+            return 21531;
+        }
         panic!("Invalid block state")
     }
 
@@ -103,4 +126,3 @@ impl BlockState for Jigsaw {
         return None;
     }
 }
-

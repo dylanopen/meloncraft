@@ -6,7 +6,6 @@ pub struct BrainCoralWallFan {
     pub waterlogged: bool,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -17,14 +16,30 @@ pub enum Facing {
 
 impl BlockState for BrainCoralWallFan {
     fn to_id(&self) -> i32 {
-        if self.r#waterlogged == false && self.r#facing == Facing::North { return 15034; }
-        if self.r#waterlogged == true && self.r#facing == Facing::North { return 15033; }
-        if self.r#facing == Facing::East && self.r#waterlogged == true { return 15039; }
-        if self.r#facing == Facing::East && self.r#waterlogged == false { return 15040; }
-        if self.r#waterlogged == true && self.r#facing == Facing::South { return 15035; }
-        if self.r#facing == Facing::West && self.r#waterlogged == true { return 15037; }
-        if self.r#facing == Facing::West && self.r#waterlogged == false { return 15038; }
-        if self.r#waterlogged == false && self.r#facing == Facing::South { return 15036; }
+        if self.r#waterlogged == false && self.r#facing == Facing::North {
+            return 15034;
+        }
+        if self.r#waterlogged == true && self.r#facing == Facing::North {
+            return 15033;
+        }
+        if self.r#facing == Facing::East && self.r#waterlogged == true {
+            return 15039;
+        }
+        if self.r#facing == Facing::East && self.r#waterlogged == false {
+            return 15040;
+        }
+        if self.r#waterlogged == true && self.r#facing == Facing::South {
+            return 15035;
+        }
+        if self.r#facing == Facing::West && self.r#waterlogged == true {
+            return 15037;
+        }
+        if self.r#facing == Facing::West && self.r#waterlogged == false {
+            return 15038;
+        }
+        if self.r#waterlogged == false && self.r#facing == Facing::South {
+            return 15036;
+        }
         panic!("Invalid block state")
     }
 
@@ -80,4 +95,3 @@ impl BlockState for BrainCoralWallFan {
         return None;
     }
 }
-

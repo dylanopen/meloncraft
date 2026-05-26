@@ -5,7 +5,6 @@ pub struct MagentaWallBanner {
     pub r#facing: Facing,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -16,10 +15,18 @@ pub enum Facing {
 
 impl BlockState for MagentaWallBanner {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::North { return 12989; }
-        if self.r#facing == Facing::East { return 12992; }
-        if self.r#facing == Facing::West { return 12991; }
-        if self.r#facing == Facing::South { return 12990; }
+        if self.r#facing == Facing::North {
+            return 12989;
+        }
+        if self.r#facing == Facing::East {
+            return 12992;
+        }
+        if self.r#facing == Facing::West {
+            return 12991;
+        }
+        if self.r#facing == Facing::South {
+            return 12990;
+        }
         panic!("Invalid block state")
     }
 
@@ -47,4 +54,3 @@ impl BlockState for MagentaWallBanner {
         return None;
     }
 }
-

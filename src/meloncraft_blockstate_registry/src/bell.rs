@@ -7,7 +7,6 @@ pub struct Bell {
     pub r#attachment: Attachment,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -26,38 +25,198 @@ pub enum Attachment {
 
 impl BlockState for Bell {
     fn to_id(&self) -> i32 {
-        if self.r#powered == false && self.r#attachment == Attachment::Ceiling && self.r#facing == Facing::East { return 20618; }
-        if self.r#attachment == Attachment::Floor && self.r#powered == false && self.r#facing == Facing::East { return 20610; }
-        if self.r#attachment == Attachment::Ceiling && self.r#facing == Facing::North && self.r#powered == true { return 20611; }
-        if self.r#powered == false && self.r#attachment == Attachment::Floor && self.r#facing == Facing::West { return 20608; }
-        if self.r#attachment == Attachment::SingleWall && self.r#facing == Facing::East && self.r#powered == true { return 20625; }
-        if self.r#attachment == Attachment::Ceiling && self.r#powered == true && self.r#facing == Facing::West { return 20615; }
-        if self.r#attachment == Attachment::SingleWall && self.r#facing == Facing::North && self.r#powered == true { return 20619; }
-        if self.r#facing == Facing::East && self.r#attachment == Attachment::Ceiling && self.r#powered == true { return 20617; }
-        if self.r#facing == Facing::West && self.r#powered == true && self.r#attachment == Attachment::Floor { return 20607; }
-        if self.r#attachment == Attachment::Floor && self.r#facing == Facing::North && self.r#powered == false { return 20604; }
-        if self.r#facing == Facing::East && self.r#attachment == Attachment::SingleWall && self.r#powered == false { return 20626; }
-        if self.r#facing == Facing::North && self.r#attachment == Attachment::DoubleWall && self.r#powered == true { return 20627; }
-        if self.r#attachment == Attachment::Ceiling && self.r#powered == true && self.r#facing == Facing::South { return 20613; }
-        if self.r#facing == Facing::North && self.r#powered == false && self.r#attachment == Attachment::Ceiling { return 20612; }
-        if self.r#attachment == Attachment::DoubleWall && self.r#facing == Facing::West && self.r#powered == false { return 20632; }
-        if self.r#attachment == Attachment::Ceiling && self.r#powered == false && self.r#facing == Facing::South { return 20614; }
-        if self.r#facing == Facing::South && self.r#powered == false && self.r#attachment == Attachment::SingleWall { return 20622; }
-        if self.r#facing == Facing::North && self.r#attachment == Attachment::DoubleWall && self.r#powered == false { return 20628; }
-        if self.r#powered == true && self.r#facing == Facing::South && self.r#attachment == Attachment::DoubleWall { return 20629; }
-        if self.r#attachment == Attachment::Floor && self.r#powered == true && self.r#facing == Facing::North { return 20603; }
-        if self.r#attachment == Attachment::Floor && self.r#facing == Facing::South && self.r#powered == true { return 20605; }
-        if self.r#attachment == Attachment::SingleWall && self.r#facing == Facing::West && self.r#powered == true { return 20623; }
-        if self.r#attachment == Attachment::DoubleWall && self.r#facing == Facing::West && self.r#powered == true { return 20631; }
-        if self.r#facing == Facing::East && self.r#powered == true && self.r#attachment == Attachment::DoubleWall { return 20633; }
-        if self.r#attachment == Attachment::DoubleWall && self.r#facing == Facing::East && self.r#powered == false { return 20634; }
-        if self.r#powered == true && self.r#attachment == Attachment::Floor && self.r#facing == Facing::East { return 20609; }
-        if self.r#attachment == Attachment::DoubleWall && self.r#facing == Facing::South && self.r#powered == false { return 20630; }
-        if self.r#attachment == Attachment::SingleWall && self.r#facing == Facing::West && self.r#powered == false { return 20624; }
-        if self.r#powered == false && self.r#attachment == Attachment::SingleWall && self.r#facing == Facing::North { return 20620; }
-        if self.r#attachment == Attachment::Floor && self.r#powered == false && self.r#facing == Facing::South { return 20606; }
-        if self.r#attachment == Attachment::Ceiling && self.r#facing == Facing::West && self.r#powered == false { return 20616; }
-        if self.r#facing == Facing::South && self.r#attachment == Attachment::SingleWall && self.r#powered == true { return 20621; }
+        if self.r#powered == false
+            && self.r#attachment == Attachment::Ceiling
+            && self.r#facing == Facing::East
+        {
+            return 20618;
+        }
+        if self.r#attachment == Attachment::Floor
+            && self.r#powered == false
+            && self.r#facing == Facing::East
+        {
+            return 20610;
+        }
+        if self.r#attachment == Attachment::Ceiling
+            && self.r#facing == Facing::North
+            && self.r#powered == true
+        {
+            return 20611;
+        }
+        if self.r#powered == false
+            && self.r#attachment == Attachment::Floor
+            && self.r#facing == Facing::West
+        {
+            return 20608;
+        }
+        if self.r#attachment == Attachment::SingleWall
+            && self.r#facing == Facing::East
+            && self.r#powered == true
+        {
+            return 20625;
+        }
+        if self.r#attachment == Attachment::Ceiling
+            && self.r#powered == true
+            && self.r#facing == Facing::West
+        {
+            return 20615;
+        }
+        if self.r#attachment == Attachment::SingleWall
+            && self.r#facing == Facing::North
+            && self.r#powered == true
+        {
+            return 20619;
+        }
+        if self.r#facing == Facing::East
+            && self.r#attachment == Attachment::Ceiling
+            && self.r#powered == true
+        {
+            return 20617;
+        }
+        if self.r#facing == Facing::West
+            && self.r#powered == true
+            && self.r#attachment == Attachment::Floor
+        {
+            return 20607;
+        }
+        if self.r#attachment == Attachment::Floor
+            && self.r#facing == Facing::North
+            && self.r#powered == false
+        {
+            return 20604;
+        }
+        if self.r#facing == Facing::East
+            && self.r#attachment == Attachment::SingleWall
+            && self.r#powered == false
+        {
+            return 20626;
+        }
+        if self.r#facing == Facing::North
+            && self.r#attachment == Attachment::DoubleWall
+            && self.r#powered == true
+        {
+            return 20627;
+        }
+        if self.r#attachment == Attachment::Ceiling
+            && self.r#powered == true
+            && self.r#facing == Facing::South
+        {
+            return 20613;
+        }
+        if self.r#facing == Facing::North
+            && self.r#powered == false
+            && self.r#attachment == Attachment::Ceiling
+        {
+            return 20612;
+        }
+        if self.r#attachment == Attachment::DoubleWall
+            && self.r#facing == Facing::West
+            && self.r#powered == false
+        {
+            return 20632;
+        }
+        if self.r#attachment == Attachment::Ceiling
+            && self.r#powered == false
+            && self.r#facing == Facing::South
+        {
+            return 20614;
+        }
+        if self.r#facing == Facing::South
+            && self.r#powered == false
+            && self.r#attachment == Attachment::SingleWall
+        {
+            return 20622;
+        }
+        if self.r#facing == Facing::North
+            && self.r#attachment == Attachment::DoubleWall
+            && self.r#powered == false
+        {
+            return 20628;
+        }
+        if self.r#powered == true
+            && self.r#facing == Facing::South
+            && self.r#attachment == Attachment::DoubleWall
+        {
+            return 20629;
+        }
+        if self.r#attachment == Attachment::Floor
+            && self.r#powered == true
+            && self.r#facing == Facing::North
+        {
+            return 20603;
+        }
+        if self.r#attachment == Attachment::Floor
+            && self.r#facing == Facing::South
+            && self.r#powered == true
+        {
+            return 20605;
+        }
+        if self.r#attachment == Attachment::SingleWall
+            && self.r#facing == Facing::West
+            && self.r#powered == true
+        {
+            return 20623;
+        }
+        if self.r#attachment == Attachment::DoubleWall
+            && self.r#facing == Facing::West
+            && self.r#powered == true
+        {
+            return 20631;
+        }
+        if self.r#facing == Facing::East
+            && self.r#powered == true
+            && self.r#attachment == Attachment::DoubleWall
+        {
+            return 20633;
+        }
+        if self.r#attachment == Attachment::DoubleWall
+            && self.r#facing == Facing::East
+            && self.r#powered == false
+        {
+            return 20634;
+        }
+        if self.r#powered == true
+            && self.r#attachment == Attachment::Floor
+            && self.r#facing == Facing::East
+        {
+            return 20609;
+        }
+        if self.r#attachment == Attachment::DoubleWall
+            && self.r#facing == Facing::South
+            && self.r#powered == false
+        {
+            return 20630;
+        }
+        if self.r#attachment == Attachment::SingleWall
+            && self.r#facing == Facing::West
+            && self.r#powered == false
+        {
+            return 20624;
+        }
+        if self.r#powered == false
+            && self.r#attachment == Attachment::SingleWall
+            && self.r#facing == Facing::North
+        {
+            return 20620;
+        }
+        if self.r#attachment == Attachment::Floor
+            && self.r#powered == false
+            && self.r#facing == Facing::South
+        {
+            return 20606;
+        }
+        if self.r#attachment == Attachment::Ceiling
+            && self.r#facing == Facing::West
+            && self.r#powered == false
+        {
+            return 20616;
+        }
+        if self.r#facing == Facing::South
+            && self.r#attachment == Attachment::SingleWall
+            && self.r#powered == true
+        {
+            return 20621;
+        }
         panic!("Invalid block state")
     }
 
@@ -289,4 +448,3 @@ impl BlockState for Bell {
         return None;
     }
 }
-

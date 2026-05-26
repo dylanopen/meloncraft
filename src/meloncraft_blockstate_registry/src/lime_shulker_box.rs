@@ -5,7 +5,6 @@ pub struct LimeShulkerBox {
     pub r#facing: Facing,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -18,12 +17,24 @@ pub enum Facing {
 
 impl BlockState for LimeShulkerBox {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::North { return 14698; }
-        if self.r#facing == Facing::East { return 14699; }
-        if self.r#facing == Facing::Up { return 14702; }
-        if self.r#facing == Facing::West { return 14701; }
-        if self.r#facing == Facing::South { return 14700; }
-        if self.r#facing == Facing::Down { return 14703; }
+        if self.r#facing == Facing::North {
+            return 14698;
+        }
+        if self.r#facing == Facing::East {
+            return 14699;
+        }
+        if self.r#facing == Facing::Up {
+            return 14702;
+        }
+        if self.r#facing == Facing::West {
+            return 14701;
+        }
+        if self.r#facing == Facing::South {
+            return 14700;
+        }
+        if self.r#facing == Facing::Down {
+            return 14703;
+        }
         panic!("Invalid block state")
     }
 
@@ -61,4 +72,3 @@ impl BlockState for LimeShulkerBox {
         return None;
     }
 }
-

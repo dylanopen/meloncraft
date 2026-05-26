@@ -6,7 +6,6 @@ pub struct Smoker {
     pub lit: bool,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -17,14 +16,30 @@ pub enum Facing {
 
 impl BlockState for Smoker {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::North && self.r#lit == true { return 20552; }
-        if self.r#lit == false && self.r#facing == Facing::South { return 20555; }
-        if self.r#facing == Facing::West && self.r#lit == true { return 20556; }
-        if self.r#facing == Facing::West && self.r#lit == false { return 20557; }
-        if self.r#facing == Facing::East && self.r#lit == false { return 20559; }
-        if self.r#lit == true && self.r#facing == Facing::South { return 20554; }
-        if self.r#facing == Facing::East && self.r#lit == true { return 20558; }
-        if self.r#lit == false && self.r#facing == Facing::North { return 20553; }
+        if self.r#facing == Facing::North && self.r#lit == true {
+            return 20552;
+        }
+        if self.r#lit == false && self.r#facing == Facing::South {
+            return 20555;
+        }
+        if self.r#facing == Facing::West && self.r#lit == true {
+            return 20556;
+        }
+        if self.r#facing == Facing::West && self.r#lit == false {
+            return 20557;
+        }
+        if self.r#facing == Facing::East && self.r#lit == false {
+            return 20559;
+        }
+        if self.r#lit == true && self.r#facing == Facing::South {
+            return 20554;
+        }
+        if self.r#facing == Facing::East && self.r#lit == true {
+            return 20558;
+        }
+        if self.r#lit == false && self.r#facing == Facing::North {
+            return 20553;
+        }
         panic!("Invalid block state")
     }
 
@@ -80,4 +95,3 @@ impl BlockState for Smoker {
         return None;
     }
 }
-

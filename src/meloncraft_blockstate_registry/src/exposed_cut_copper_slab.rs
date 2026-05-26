@@ -6,7 +6,6 @@ pub struct ExposedCutCopperSlab {
     pub r#type: Type,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Type {
     Top,
@@ -16,12 +15,24 @@ pub enum Type {
 
 impl BlockState for ExposedCutCopperSlab {
     fn to_id(&self) -> i32 {
-        if self.r#type == Type::Double && self.r#waterlogged == false { return 25462; }
-        if self.r#type == Type::Bottom && self.r#waterlogged == false { return 25460; }
-        if self.r#waterlogged == false && self.r#type == Type::Top { return 25458; }
-        if self.r#waterlogged == true && self.r#type == Type::Top { return 25457; }
-        if self.r#type == Type::Bottom && self.r#waterlogged == true { return 25459; }
-        if self.r#type == Type::Double && self.r#waterlogged == true { return 25461; }
+        if self.r#type == Type::Double && self.r#waterlogged == false {
+            return 25462;
+        }
+        if self.r#type == Type::Bottom && self.r#waterlogged == false {
+            return 25460;
+        }
+        if self.r#waterlogged == false && self.r#type == Type::Top {
+            return 25458;
+        }
+        if self.r#waterlogged == true && self.r#type == Type::Top {
+            return 25457;
+        }
+        if self.r#type == Type::Bottom && self.r#waterlogged == true {
+            return 25459;
+        }
+        if self.r#type == Type::Double && self.r#waterlogged == true {
+            return 25461;
+        }
         panic!("Invalid block state")
     }
 
@@ -65,4 +76,3 @@ impl BlockState for ExposedCutCopperSlab {
         return None;
     }
 }
-

@@ -6,7 +6,6 @@ pub struct Wildflowers {
     pub r#facing: Facing,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -17,22 +16,54 @@ pub enum Facing {
 
 impl BlockState for Wildflowers {
     fn to_id(&self) -> i32 {
-        if self.r#flower_amount == 1 && self.r#facing == Facing::South { return 27632; }
-        if self.r#facing == Facing::South && self.r#flower_amount == 2 { return 27633; }
-        if self.r#facing == Facing::West && self.r#flower_amount == 3 { return 27638; }
-        if self.r#facing == Facing::North && self.r#flower_amount == 4 { return 27631; }
-        if self.r#flower_amount == 2 && self.r#facing == Facing::East { return 27641; }
-        if self.r#flower_amount == 3 && self.r#facing == Facing::East { return 27642; }
-        if self.r#flower_amount == 2 && self.r#facing == Facing::West { return 27637; }
-        if self.r#flower_amount == 1 && self.r#facing == Facing::West { return 27636; }
-        if self.r#facing == Facing::North && self.r#flower_amount == 3 { return 27630; }
-        if self.r#facing == Facing::South && self.r#flower_amount == 3 { return 27634; }
-        if self.r#facing == Facing::South && self.r#flower_amount == 4 { return 27635; }
-        if self.r#flower_amount == 1 && self.r#facing == Facing::East { return 27640; }
-        if self.r#flower_amount == 1 && self.r#facing == Facing::North { return 27628; }
-        if self.r#facing == Facing::West && self.r#flower_amount == 4 { return 27639; }
-        if self.r#facing == Facing::North && self.r#flower_amount == 2 { return 27629; }
-        if self.r#flower_amount == 4 && self.r#facing == Facing::East { return 27643; }
+        if self.r#flower_amount == 1 && self.r#facing == Facing::South {
+            return 27632;
+        }
+        if self.r#facing == Facing::South && self.r#flower_amount == 2 {
+            return 27633;
+        }
+        if self.r#facing == Facing::West && self.r#flower_amount == 3 {
+            return 27638;
+        }
+        if self.r#facing == Facing::North && self.r#flower_amount == 4 {
+            return 27631;
+        }
+        if self.r#flower_amount == 2 && self.r#facing == Facing::East {
+            return 27641;
+        }
+        if self.r#flower_amount == 3 && self.r#facing == Facing::East {
+            return 27642;
+        }
+        if self.r#flower_amount == 2 && self.r#facing == Facing::West {
+            return 27637;
+        }
+        if self.r#flower_amount == 1 && self.r#facing == Facing::West {
+            return 27636;
+        }
+        if self.r#facing == Facing::North && self.r#flower_amount == 3 {
+            return 27630;
+        }
+        if self.r#facing == Facing::South && self.r#flower_amount == 3 {
+            return 27634;
+        }
+        if self.r#facing == Facing::South && self.r#flower_amount == 4 {
+            return 27635;
+        }
+        if self.r#flower_amount == 1 && self.r#facing == Facing::East {
+            return 27640;
+        }
+        if self.r#flower_amount == 1 && self.r#facing == Facing::North {
+            return 27628;
+        }
+        if self.r#facing == Facing::West && self.r#flower_amount == 4 {
+            return 27639;
+        }
+        if self.r#facing == Facing::North && self.r#flower_amount == 2 {
+            return 27629;
+        }
+        if self.r#flower_amount == 4 && self.r#facing == Facing::East {
+            return 27643;
+        }
         panic!("Invalid block state")
     }
 
@@ -136,4 +167,3 @@ impl BlockState for Wildflowers {
         return None;
     }
 }
-

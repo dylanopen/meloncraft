@@ -6,7 +6,6 @@ pub struct ChainCommandBlock {
     pub r#facing: Facing,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -19,18 +18,42 @@ pub enum Facing {
 
 impl BlockState for ChainCommandBlock {
     fn to_id(&self) -> i32 {
-        if self.r#conditional == true && self.r#facing == Facing::Down { return 14632; }
-        if self.r#conditional == true && self.r#facing == Facing::Up { return 14631; }
-        if self.r#conditional == false && self.r#facing == Facing::East { return 14634; }
-        if self.r#facing == Facing::West && self.r#conditional == true { return 14630; }
-        if self.r#conditional == false && self.r#facing == Facing::South { return 14635; }
-        if self.r#conditional == false && self.r#facing == Facing::West { return 14636; }
-        if self.r#facing == Facing::South && self.r#conditional == true { return 14629; }
-        if self.r#facing == Facing::Up && self.r#conditional == false { return 14637; }
-        if self.r#facing == Facing::North && self.r#conditional == false { return 14633; }
-        if self.r#conditional == false && self.r#facing == Facing::Down { return 14638; }
-        if self.r#conditional == true && self.r#facing == Facing::East { return 14628; }
-        if self.r#facing == Facing::North && self.r#conditional == true { return 14627; }
+        if self.r#conditional == true && self.r#facing == Facing::Down {
+            return 14632;
+        }
+        if self.r#conditional == true && self.r#facing == Facing::Up {
+            return 14631;
+        }
+        if self.r#conditional == false && self.r#facing == Facing::East {
+            return 14634;
+        }
+        if self.r#facing == Facing::West && self.r#conditional == true {
+            return 14630;
+        }
+        if self.r#conditional == false && self.r#facing == Facing::South {
+            return 14635;
+        }
+        if self.r#conditional == false && self.r#facing == Facing::West {
+            return 14636;
+        }
+        if self.r#facing == Facing::South && self.r#conditional == true {
+            return 14629;
+        }
+        if self.r#facing == Facing::Up && self.r#conditional == false {
+            return 14637;
+        }
+        if self.r#facing == Facing::North && self.r#conditional == false {
+            return 14633;
+        }
+        if self.r#conditional == false && self.r#facing == Facing::Down {
+            return 14638;
+        }
+        if self.r#conditional == true && self.r#facing == Facing::East {
+            return 14628;
+        }
+        if self.r#facing == Facing::North && self.r#conditional == true {
+            return 14627;
+        }
         panic!("Invalid block state")
     }
 
@@ -110,4 +133,3 @@ impl BlockState for ChainCommandBlock {
         return None;
     }
 }
-

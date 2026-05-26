@@ -6,7 +6,6 @@ pub struct Piston {
     pub r#facing: Facing,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -19,18 +18,42 @@ pub enum Facing {
 
 impl BlockState for Piston {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::West && self.r#extended == true { return 2060; }
-        if self.r#facing == Facing::Up && self.r#extended == false { return 2067; }
-        if self.r#facing == Facing::Up && self.r#extended == true { return 2061; }
-        if self.r#extended == false && self.r#facing == Facing::North { return 2063; }
-        if self.r#extended == false && self.r#facing == Facing::South { return 2065; }
-        if self.r#extended == false && self.r#facing == Facing::West { return 2066; }
-        if self.r#facing == Facing::East && self.r#extended == false { return 2064; }
-        if self.r#facing == Facing::East && self.r#extended == true { return 2058; }
-        if self.r#extended == true && self.r#facing == Facing::South { return 2059; }
-        if self.r#extended == true && self.r#facing == Facing::North { return 2057; }
-        if self.r#extended == true && self.r#facing == Facing::Down { return 2062; }
-        if self.r#extended == false && self.r#facing == Facing::Down { return 2068; }
+        if self.r#facing == Facing::West && self.r#extended == true {
+            return 2060;
+        }
+        if self.r#facing == Facing::Up && self.r#extended == false {
+            return 2067;
+        }
+        if self.r#facing == Facing::Up && self.r#extended == true {
+            return 2061;
+        }
+        if self.r#extended == false && self.r#facing == Facing::North {
+            return 2063;
+        }
+        if self.r#extended == false && self.r#facing == Facing::South {
+            return 2065;
+        }
+        if self.r#extended == false && self.r#facing == Facing::West {
+            return 2066;
+        }
+        if self.r#facing == Facing::East && self.r#extended == false {
+            return 2064;
+        }
+        if self.r#facing == Facing::East && self.r#extended == true {
+            return 2058;
+        }
+        if self.r#extended == true && self.r#facing == Facing::South {
+            return 2059;
+        }
+        if self.r#extended == true && self.r#facing == Facing::North {
+            return 2057;
+        }
+        if self.r#extended == true && self.r#facing == Facing::Down {
+            return 2062;
+        }
+        if self.r#extended == false && self.r#facing == Facing::Down {
+            return 2068;
+        }
         panic!("Invalid block state")
     }
 
@@ -110,4 +133,3 @@ impl BlockState for Piston {
         return None;
     }
 }
-

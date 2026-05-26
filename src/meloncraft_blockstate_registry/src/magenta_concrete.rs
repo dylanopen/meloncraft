@@ -1,9 +1,7 @@
 use crate::BlockState;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub struct MagentaConcrete {
-}
-
+pub struct MagentaConcrete {}
 
 impl BlockState for MagentaConcrete {
     fn to_id(&self) -> i32 {
@@ -13,10 +11,8 @@ impl BlockState for MagentaConcrete {
 
     fn from_id(state_id: i32) -> Option<Self> {
         if state_id == 14830 {
-            return Some(MagentaConcrete {
-            });
+            return Some(MagentaConcrete {});
         }
         return None;
     }
 }
-

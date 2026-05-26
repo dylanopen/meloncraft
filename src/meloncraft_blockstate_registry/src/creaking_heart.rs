@@ -7,7 +7,6 @@ pub struct CreakingHeart {
     pub r#creaking_heart_state: CreakingHeartState,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Axis {
     X,
@@ -24,24 +23,114 @@ pub enum CreakingHeartState {
 
 impl BlockState for CreakingHeart {
     fn to_id(&self) -> i32 {
-        if self.r#creaking_heart_state == CreakingHeartState::Awake && self.r#axis == Axis::X && self.r#natural == true { return 3692; }
-        if self.r#axis == Axis::Y && self.r#natural == true && self.r#creaking_heart_state == CreakingHeartState::Awake { return 3698; }
-        if self.r#creaking_heart_state == CreakingHeartState::Awake && self.r#axis == Axis::Z && self.r#natural == false { return 3705; }
-        if self.r#natural == false && self.r#creaking_heart_state == CreakingHeartState::Awake && self.r#axis == Axis::X { return 3693; }
-        if self.r#natural == true && self.r#axis == Axis::X && self.r#creaking_heart_state == CreakingHeartState::Uprooted { return 3688; }
-        if self.r#axis == Axis::Y && self.r#creaking_heart_state == CreakingHeartState::Dormant && self.r#natural == true { return 3696; }
-        if self.r#natural == true && self.r#axis == Axis::Z && self.r#creaking_heart_state == CreakingHeartState::Uprooted { return 3700; }
-        if self.r#axis == Axis::Y && self.r#creaking_heart_state == CreakingHeartState::Uprooted && self.r#natural == true { return 3694; }
-        if self.r#axis == Axis::X && self.r#natural == false && self.r#creaking_heart_state == CreakingHeartState::Dormant { return 3691; }
-        if self.r#natural == false && self.r#axis == Axis::Y && self.r#creaking_heart_state == CreakingHeartState::Uprooted { return 3695; }
-        if self.r#natural == false && self.r#creaking_heart_state == CreakingHeartState::Dormant && self.r#axis == Axis::Y { return 3697; }
-        if self.r#creaking_heart_state == CreakingHeartState::Dormant && self.r#axis == Axis::Z && self.r#natural == true { return 3702; }
-        if self.r#natural == false && self.r#creaking_heart_state == CreakingHeartState::Uprooted && self.r#axis == Axis::Z { return 3701; }
-        if self.r#axis == Axis::Z && self.r#creaking_heart_state == CreakingHeartState::Dormant && self.r#natural == false { return 3703; }
-        if self.r#creaking_heart_state == CreakingHeartState::Uprooted && self.r#natural == false && self.r#axis == Axis::X { return 3689; }
-        if self.r#axis == Axis::X && self.r#creaking_heart_state == CreakingHeartState::Dormant && self.r#natural == true { return 3690; }
-        if self.r#natural == false && self.r#axis == Axis::Y && self.r#creaking_heart_state == CreakingHeartState::Awake { return 3699; }
-        if self.r#axis == Axis::Z && self.r#creaking_heart_state == CreakingHeartState::Awake && self.r#natural == true { return 3704; }
+        if self.r#creaking_heart_state == CreakingHeartState::Awake
+            && self.r#axis == Axis::X
+            && self.r#natural == true
+        {
+            return 3692;
+        }
+        if self.r#axis == Axis::Y
+            && self.r#natural == true
+            && self.r#creaking_heart_state == CreakingHeartState::Awake
+        {
+            return 3698;
+        }
+        if self.r#creaking_heart_state == CreakingHeartState::Awake
+            && self.r#axis == Axis::Z
+            && self.r#natural == false
+        {
+            return 3705;
+        }
+        if self.r#natural == false
+            && self.r#creaking_heart_state == CreakingHeartState::Awake
+            && self.r#axis == Axis::X
+        {
+            return 3693;
+        }
+        if self.r#natural == true
+            && self.r#axis == Axis::X
+            && self.r#creaking_heart_state == CreakingHeartState::Uprooted
+        {
+            return 3688;
+        }
+        if self.r#axis == Axis::Y
+            && self.r#creaking_heart_state == CreakingHeartState::Dormant
+            && self.r#natural == true
+        {
+            return 3696;
+        }
+        if self.r#natural == true
+            && self.r#axis == Axis::Z
+            && self.r#creaking_heart_state == CreakingHeartState::Uprooted
+        {
+            return 3700;
+        }
+        if self.r#axis == Axis::Y
+            && self.r#creaking_heart_state == CreakingHeartState::Uprooted
+            && self.r#natural == true
+        {
+            return 3694;
+        }
+        if self.r#axis == Axis::X
+            && self.r#natural == false
+            && self.r#creaking_heart_state == CreakingHeartState::Dormant
+        {
+            return 3691;
+        }
+        if self.r#natural == false
+            && self.r#axis == Axis::Y
+            && self.r#creaking_heart_state == CreakingHeartState::Uprooted
+        {
+            return 3695;
+        }
+        if self.r#natural == false
+            && self.r#creaking_heart_state == CreakingHeartState::Dormant
+            && self.r#axis == Axis::Y
+        {
+            return 3697;
+        }
+        if self.r#creaking_heart_state == CreakingHeartState::Dormant
+            && self.r#axis == Axis::Z
+            && self.r#natural == true
+        {
+            return 3702;
+        }
+        if self.r#natural == false
+            && self.r#creaking_heart_state == CreakingHeartState::Uprooted
+            && self.r#axis == Axis::Z
+        {
+            return 3701;
+        }
+        if self.r#axis == Axis::Z
+            && self.r#creaking_heart_state == CreakingHeartState::Dormant
+            && self.r#natural == false
+        {
+            return 3703;
+        }
+        if self.r#creaking_heart_state == CreakingHeartState::Uprooted
+            && self.r#natural == false
+            && self.r#axis == Axis::X
+        {
+            return 3689;
+        }
+        if self.r#axis == Axis::X
+            && self.r#creaking_heart_state == CreakingHeartState::Dormant
+            && self.r#natural == true
+        {
+            return 3690;
+        }
+        if self.r#natural == false
+            && self.r#axis == Axis::Y
+            && self.r#creaking_heart_state == CreakingHeartState::Awake
+        {
+            return 3699;
+        }
+        if self.r#axis == Axis::Z
+            && self.r#creaking_heart_state == CreakingHeartState::Awake
+            && self.r#natural == true
+        {
+            return 3704;
+        }
         panic!("Invalid block state")
     }
 
@@ -175,4 +264,3 @@ impl BlockState for CreakingHeart {
         return None;
     }
 }
-

@@ -7,7 +7,6 @@ pub struct TripwireHook {
     pub attached: bool,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -18,22 +17,54 @@ pub enum Facing {
 
 impl BlockState for TripwireHook {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::East && self.r#powered == true && self.r#attached == true { return 9388; }
-        if self.r#powered == true && self.r#facing == Facing::South && self.r#attached == true { return 9384; }
-        if self.r#powered == false && self.r#attached == false && self.r#facing == Facing::East { return 9397; }
-        if self.r#facing == Facing::East && self.r#powered == false && self.r#attached == true { return 9389; }
-        if self.r#attached == true && self.r#powered == true && self.r#facing == Facing::North { return 9382; }
-        if self.r#attached == false && self.r#facing == Facing::North && self.r#powered == true { return 9390; }
-        if self.r#attached == true && self.r#powered == true && self.r#facing == Facing::West { return 9386; }
-        if self.r#attached == false && self.r#powered == false && self.r#facing == Facing::North { return 9391; }
-        if self.r#powered == true && self.r#facing == Facing::West && self.r#attached == false { return 9394; }
-        if self.r#attached == false && self.r#powered == false && self.r#facing == Facing::South { return 9393; }
-        if self.r#attached == false && self.r#powered == false && self.r#facing == Facing::West { return 9395; }
-        if self.r#facing == Facing::South && self.r#attached == true && self.r#powered == false { return 9385; }
-        if self.r#attached == false && self.r#facing == Facing::East && self.r#powered == true { return 9396; }
-        if self.r#attached == true && self.r#facing == Facing::North && self.r#powered == false { return 9383; }
-        if self.r#attached == true && self.r#facing == Facing::West && self.r#powered == false { return 9387; }
-        if self.r#powered == true && self.r#facing == Facing::South && self.r#attached == false { return 9392; }
+        if self.r#facing == Facing::East && self.r#powered == true && self.r#attached == true {
+            return 9388;
+        }
+        if self.r#powered == true && self.r#facing == Facing::South && self.r#attached == true {
+            return 9384;
+        }
+        if self.r#powered == false && self.r#attached == false && self.r#facing == Facing::East {
+            return 9397;
+        }
+        if self.r#facing == Facing::East && self.r#powered == false && self.r#attached == true {
+            return 9389;
+        }
+        if self.r#attached == true && self.r#powered == true && self.r#facing == Facing::North {
+            return 9382;
+        }
+        if self.r#attached == false && self.r#facing == Facing::North && self.r#powered == true {
+            return 9390;
+        }
+        if self.r#attached == true && self.r#powered == true && self.r#facing == Facing::West {
+            return 9386;
+        }
+        if self.r#attached == false && self.r#powered == false && self.r#facing == Facing::North {
+            return 9391;
+        }
+        if self.r#powered == true && self.r#facing == Facing::West && self.r#attached == false {
+            return 9394;
+        }
+        if self.r#attached == false && self.r#powered == false && self.r#facing == Facing::South {
+            return 9393;
+        }
+        if self.r#attached == false && self.r#powered == false && self.r#facing == Facing::West {
+            return 9395;
+        }
+        if self.r#facing == Facing::South && self.r#attached == true && self.r#powered == false {
+            return 9385;
+        }
+        if self.r#attached == false && self.r#facing == Facing::East && self.r#powered == true {
+            return 9396;
+        }
+        if self.r#attached == true && self.r#facing == Facing::North && self.r#powered == false {
+            return 9383;
+        }
+        if self.r#attached == true && self.r#facing == Facing::West && self.r#powered == false {
+            return 9387;
+        }
+        if self.r#powered == true && self.r#facing == Facing::South && self.r#attached == false {
+            return 9392;
+        }
         panic!("Invalid block state")
     }
 
@@ -153,4 +184,3 @@ impl BlockState for TripwireHook {
         return None;
     }
 }
-

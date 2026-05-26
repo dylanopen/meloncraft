@@ -6,7 +6,6 @@ pub struct PolishedTuffSlab {
     pub waterlogged: bool,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Type {
     Top,
@@ -16,12 +15,24 @@ pub enum Type {
 
 impl BlockState for PolishedTuffSlab {
     fn to_id(&self) -> i32 {
-        if self.r#type == Type::Bottom && self.r#waterlogged == false { return 23665; }
-        if self.r#type == Type::Double && self.r#waterlogged == true { return 23666; }
-        if self.r#waterlogged == true && self.r#type == Type::Top { return 23662; }
-        if self.r#waterlogged == true && self.r#type == Type::Bottom { return 23664; }
-        if self.r#waterlogged == false && self.r#type == Type::Top { return 23663; }
-        if self.r#type == Type::Double && self.r#waterlogged == false { return 23667; }
+        if self.r#type == Type::Bottom && self.r#waterlogged == false {
+            return 23665;
+        }
+        if self.r#type == Type::Double && self.r#waterlogged == true {
+            return 23666;
+        }
+        if self.r#waterlogged == true && self.r#type == Type::Top {
+            return 23662;
+        }
+        if self.r#waterlogged == true && self.r#type == Type::Bottom {
+            return 23664;
+        }
+        if self.r#waterlogged == false && self.r#type == Type::Top {
+            return 23663;
+        }
+        if self.r#type == Type::Double && self.r#waterlogged == false {
+            return 23667;
+        }
         panic!("Invalid block state")
     }
 
@@ -65,4 +76,3 @@ impl BlockState for PolishedTuffSlab {
         return None;
     }
 }
-

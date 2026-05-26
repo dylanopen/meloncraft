@@ -6,7 +6,6 @@ pub struct WarpedSlab {
     pub r#type: Type,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Type {
     Top,
@@ -16,12 +15,24 @@ pub enum Type {
 
 impl BlockState for WarpedSlab {
     fn to_id(&self) -> i32 {
-        if self.r#waterlogged == false && self.r#type == Type::Double { return 20843; }
-        if self.r#type == Type::Top && self.r#waterlogged == false { return 20839; }
-        if self.r#waterlogged == true && self.r#type == Type::Bottom { return 20840; }
-        if self.r#waterlogged == false && self.r#type == Type::Bottom { return 20841; }
-        if self.r#waterlogged == true && self.r#type == Type::Double { return 20842; }
-        if self.r#type == Type::Top && self.r#waterlogged == true { return 20838; }
+        if self.r#waterlogged == false && self.r#type == Type::Double {
+            return 20843;
+        }
+        if self.r#type == Type::Top && self.r#waterlogged == false {
+            return 20839;
+        }
+        if self.r#waterlogged == true && self.r#type == Type::Bottom {
+            return 20840;
+        }
+        if self.r#waterlogged == false && self.r#type == Type::Bottom {
+            return 20841;
+        }
+        if self.r#waterlogged == true && self.r#type == Type::Double {
+            return 20842;
+        }
+        if self.r#type == Type::Top && self.r#waterlogged == true {
+            return 20838;
+        }
         panic!("Invalid block state")
     }
 
@@ -65,4 +76,3 @@ impl BlockState for WarpedSlab {
         return None;
     }
 }
-

@@ -7,7 +7,6 @@ pub struct SmallDripleaf {
     pub r#facing: Facing,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Half {
     Upper,
@@ -24,22 +23,94 @@ pub enum Facing {
 
 impl BlockState for SmallDripleaf {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::West && self.r#half == Half::Upper && self.r#waterlogged == false { return 27710; }
-        if self.r#half == Half::Lower && self.r#waterlogged == false && self.r#facing == Facing::North { return 27704; }
-        if self.r#facing == Facing::West && self.r#waterlogged == true && self.r#half == Half::Lower { return 27711; }
-        if self.r#facing == Facing::East && self.r#half == Half::Upper && self.r#waterlogged == true { return 27713; }
-        if self.r#facing == Facing::East && self.r#half == Half::Lower && self.r#waterlogged == false { return 27716; }
-        if self.r#half == Half::Upper && self.r#facing == Facing::East && self.r#waterlogged == false { return 27714; }
-        if self.r#waterlogged == false && self.r#facing == Facing::South && self.r#half == Half::Lower { return 27708; }
-        if self.r#half == Half::Lower && self.r#waterlogged == false && self.r#facing == Facing::West { return 27712; }
-        if self.r#facing == Facing::South && self.r#half == Half::Upper && self.r#waterlogged == true { return 27705; }
-        if self.r#waterlogged == true && self.r#half == Half::Lower && self.r#facing == Facing::North { return 27703; }
-        if self.r#facing == Facing::West && self.r#half == Half::Upper && self.r#waterlogged == true { return 27709; }
-        if self.r#waterlogged == false && self.r#facing == Facing::South && self.r#half == Half::Upper { return 27706; }
-        if self.r#half == Half::Upper && self.r#waterlogged == true && self.r#facing == Facing::North { return 27701; }
-        if self.r#facing == Facing::South && self.r#half == Half::Lower && self.r#waterlogged == true { return 27707; }
-        if self.r#half == Half::Upper && self.r#facing == Facing::North && self.r#waterlogged == false { return 27702; }
-        if self.r#waterlogged == true && self.r#facing == Facing::East && self.r#half == Half::Lower { return 27715; }
+        if self.r#facing == Facing::West
+            && self.r#half == Half::Upper
+            && self.r#waterlogged == false
+        {
+            return 27710;
+        }
+        if self.r#half == Half::Lower
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::North
+        {
+            return 27704;
+        }
+        if self.r#facing == Facing::West && self.r#waterlogged == true && self.r#half == Half::Lower
+        {
+            return 27711;
+        }
+        if self.r#facing == Facing::East && self.r#half == Half::Upper && self.r#waterlogged == true
+        {
+            return 27713;
+        }
+        if self.r#facing == Facing::East
+            && self.r#half == Half::Lower
+            && self.r#waterlogged == false
+        {
+            return 27716;
+        }
+        if self.r#half == Half::Upper
+            && self.r#facing == Facing::East
+            && self.r#waterlogged == false
+        {
+            return 27714;
+        }
+        if self.r#waterlogged == false
+            && self.r#facing == Facing::South
+            && self.r#half == Half::Lower
+        {
+            return 27708;
+        }
+        if self.r#half == Half::Lower
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::West
+        {
+            return 27712;
+        }
+        if self.r#facing == Facing::South
+            && self.r#half == Half::Upper
+            && self.r#waterlogged == true
+        {
+            return 27705;
+        }
+        if self.r#waterlogged == true
+            && self.r#half == Half::Lower
+            && self.r#facing == Facing::North
+        {
+            return 27703;
+        }
+        if self.r#facing == Facing::West && self.r#half == Half::Upper && self.r#waterlogged == true
+        {
+            return 27709;
+        }
+        if self.r#waterlogged == false
+            && self.r#facing == Facing::South
+            && self.r#half == Half::Upper
+        {
+            return 27706;
+        }
+        if self.r#half == Half::Upper
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::North
+        {
+            return 27701;
+        }
+        if self.r#facing == Facing::South
+            && self.r#half == Half::Lower
+            && self.r#waterlogged == true
+        {
+            return 27707;
+        }
+        if self.r#half == Half::Upper
+            && self.r#facing == Facing::North
+            && self.r#waterlogged == false
+        {
+            return 27702;
+        }
+        if self.r#waterlogged == true && self.r#facing == Facing::East && self.r#half == Half::Lower
+        {
+            return 27715;
+        }
         panic!("Invalid block state")
     }
 
@@ -159,4 +230,3 @@ impl BlockState for SmallDripleaf {
         return None;
     }
 }
-

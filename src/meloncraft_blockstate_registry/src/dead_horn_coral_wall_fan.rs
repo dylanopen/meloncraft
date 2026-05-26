@@ -6,7 +6,6 @@ pub struct DeadHornCoralWallFan {
     pub r#facing: Facing,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -17,14 +16,30 @@ pub enum Facing {
 
 impl BlockState for DeadHornCoralWallFan {
     fn to_id(&self) -> i32 {
-        if self.r#waterlogged == false && self.r#facing == Facing::South { return 15020; }
-        if self.r#facing == Facing::North && self.r#waterlogged == false { return 15018; }
-        if self.r#waterlogged == true && self.r#facing == Facing::East { return 15023; }
-        if self.r#facing == Facing::West && self.r#waterlogged == false { return 15022; }
-        if self.r#waterlogged == true && self.r#facing == Facing::West { return 15021; }
-        if self.r#waterlogged == true && self.r#facing == Facing::South { return 15019; }
-        if self.r#facing == Facing::North && self.r#waterlogged == true { return 15017; }
-        if self.r#waterlogged == false && self.r#facing == Facing::East { return 15024; }
+        if self.r#waterlogged == false && self.r#facing == Facing::South {
+            return 15020;
+        }
+        if self.r#facing == Facing::North && self.r#waterlogged == false {
+            return 15018;
+        }
+        if self.r#waterlogged == true && self.r#facing == Facing::East {
+            return 15023;
+        }
+        if self.r#facing == Facing::West && self.r#waterlogged == false {
+            return 15022;
+        }
+        if self.r#waterlogged == true && self.r#facing == Facing::West {
+            return 15021;
+        }
+        if self.r#waterlogged == true && self.r#facing == Facing::South {
+            return 15019;
+        }
+        if self.r#facing == Facing::North && self.r#waterlogged == true {
+            return 15017;
+        }
+        if self.r#waterlogged == false && self.r#facing == Facing::East {
+            return 15024;
+        }
         panic!("Invalid block state")
     }
 
@@ -80,4 +95,3 @@ impl BlockState for DeadHornCoralWallFan {
         return None;
     }
 }
-

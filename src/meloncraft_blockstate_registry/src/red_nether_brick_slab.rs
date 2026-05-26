@@ -6,7 +6,6 @@ pub struct RedNetherBrickSlab {
     pub waterlogged: bool,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Type {
     Top,
@@ -16,12 +15,24 @@ pub enum Type {
 
 impl BlockState for RedNetherBrickSlab {
     fn to_id(&self) -> i32 {
-        if self.r#waterlogged == false && self.r#type == Type::Bottom { return 16277; }
-        if self.r#waterlogged == false && self.r#type == Type::Top { return 16275; }
-        if self.r#waterlogged == false && self.r#type == Type::Double { return 16279; }
-        if self.r#waterlogged == true && self.r#type == Type::Top { return 16274; }
-        if self.r#waterlogged == true && self.r#type == Type::Bottom { return 16276; }
-        if self.r#waterlogged == true && self.r#type == Type::Double { return 16278; }
+        if self.r#waterlogged == false && self.r#type == Type::Bottom {
+            return 16277;
+        }
+        if self.r#waterlogged == false && self.r#type == Type::Top {
+            return 16275;
+        }
+        if self.r#waterlogged == false && self.r#type == Type::Double {
+            return 16279;
+        }
+        if self.r#waterlogged == true && self.r#type == Type::Top {
+            return 16274;
+        }
+        if self.r#waterlogged == true && self.r#type == Type::Bottom {
+            return 16276;
+        }
+        if self.r#waterlogged == true && self.r#type == Type::Double {
+            return 16278;
+        }
         panic!("Invalid block state")
     }
 
@@ -65,4 +76,3 @@ impl BlockState for RedNetherBrickSlab {
         return None;
     }
 }
-

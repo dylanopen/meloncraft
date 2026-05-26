@@ -6,41 +6,104 @@ pub struct WitherSkeletonSkull {
     pub rotation: i32,
 }
 
-
 impl BlockState for WitherSkeletonSkull {
     fn to_id(&self) -> i32 {
-        if self.r#rotation == 8 && self.r#powered == true { return 10761; }
-        if self.r#powered == false && self.r#rotation == 1 { return 10770; }
-        if self.r#powered == false && self.r#rotation == 2 { return 10771; }
-        if self.r#powered == true && self.r#rotation == 1 { return 10754; }
-        if self.r#rotation == 0 && self.r#powered == false { return 10769; }
-        if self.r#powered == false && self.r#rotation == 3 { return 10772; }
-        if self.r#rotation == 10 && self.r#powered == false { return 10779; }
-        if self.r#rotation == 15 && self.r#powered == false { return 10784; }
-        if self.r#powered == true && self.r#rotation == 6 { return 10759; }
-        if self.r#rotation == 2 && self.r#powered == true { return 10755; }
-        if self.r#powered == false && self.r#rotation == 8 { return 10777; }
-        if self.r#powered == false && self.r#rotation == 13 { return 10782; }
-        if self.r#rotation == 14 && self.r#powered == false { return 10783; }
-        if self.r#rotation == 7 && self.r#powered == true { return 10760; }
-        if self.r#rotation == 11 && self.r#powered == true { return 10764; }
-        if self.r#rotation == 4 && self.r#powered == false { return 10773; }
-        if self.r#powered == true && self.r#rotation == 4 { return 10757; }
-        if self.r#powered == false && self.r#rotation == 9 { return 10778; }
-        if self.r#powered == true && self.r#rotation == 3 { return 10756; }
-        if self.r#powered == true && self.r#rotation == 15 { return 10768; }
-        if self.r#rotation == 5 && self.r#powered == true { return 10758; }
-        if self.r#powered == true && self.r#rotation == 13 { return 10766; }
-        if self.r#powered == true && self.r#rotation == 14 { return 10767; }
-        if self.r#rotation == 9 && self.r#powered == true { return 10762; }
-        if self.r#rotation == 6 && self.r#powered == false { return 10775; }
-        if self.r#rotation == 10 && self.r#powered == true { return 10763; }
-        if self.r#rotation == 7 && self.r#powered == false { return 10776; }
-        if self.r#rotation == 5 && self.r#powered == false { return 10774; }
-        if self.r#rotation == 11 && self.r#powered == false { return 10780; }
-        if self.r#powered == true && self.r#rotation == 12 { return 10765; }
-        if self.r#powered == true && self.r#rotation == 0 { return 10753; }
-        if self.r#rotation == 12 && self.r#powered == false { return 10781; }
+        if self.r#rotation == 8 && self.r#powered == true {
+            return 10761;
+        }
+        if self.r#powered == false && self.r#rotation == 1 {
+            return 10770;
+        }
+        if self.r#powered == false && self.r#rotation == 2 {
+            return 10771;
+        }
+        if self.r#powered == true && self.r#rotation == 1 {
+            return 10754;
+        }
+        if self.r#rotation == 0 && self.r#powered == false {
+            return 10769;
+        }
+        if self.r#powered == false && self.r#rotation == 3 {
+            return 10772;
+        }
+        if self.r#rotation == 10 && self.r#powered == false {
+            return 10779;
+        }
+        if self.r#rotation == 15 && self.r#powered == false {
+            return 10784;
+        }
+        if self.r#powered == true && self.r#rotation == 6 {
+            return 10759;
+        }
+        if self.r#rotation == 2 && self.r#powered == true {
+            return 10755;
+        }
+        if self.r#powered == false && self.r#rotation == 8 {
+            return 10777;
+        }
+        if self.r#powered == false && self.r#rotation == 13 {
+            return 10782;
+        }
+        if self.r#rotation == 14 && self.r#powered == false {
+            return 10783;
+        }
+        if self.r#rotation == 7 && self.r#powered == true {
+            return 10760;
+        }
+        if self.r#rotation == 11 && self.r#powered == true {
+            return 10764;
+        }
+        if self.r#rotation == 4 && self.r#powered == false {
+            return 10773;
+        }
+        if self.r#powered == true && self.r#rotation == 4 {
+            return 10757;
+        }
+        if self.r#powered == false && self.r#rotation == 9 {
+            return 10778;
+        }
+        if self.r#powered == true && self.r#rotation == 3 {
+            return 10756;
+        }
+        if self.r#powered == true && self.r#rotation == 15 {
+            return 10768;
+        }
+        if self.r#rotation == 5 && self.r#powered == true {
+            return 10758;
+        }
+        if self.r#powered == true && self.r#rotation == 13 {
+            return 10766;
+        }
+        if self.r#powered == true && self.r#rotation == 14 {
+            return 10767;
+        }
+        if self.r#rotation == 9 && self.r#powered == true {
+            return 10762;
+        }
+        if self.r#rotation == 6 && self.r#powered == false {
+            return 10775;
+        }
+        if self.r#rotation == 10 && self.r#powered == true {
+            return 10763;
+        }
+        if self.r#rotation == 7 && self.r#powered == false {
+            return 10776;
+        }
+        if self.r#rotation == 5 && self.r#powered == false {
+            return 10774;
+        }
+        if self.r#rotation == 11 && self.r#powered == false {
+            return 10780;
+        }
+        if self.r#powered == true && self.r#rotation == 12 {
+            return 10765;
+        }
+        if self.r#powered == true && self.r#rotation == 0 {
+            return 10753;
+        }
+        if self.r#rotation == 12 && self.r#powered == false {
+            return 10781;
+        }
         panic!("Invalid block state")
     }
 
@@ -240,4 +303,3 @@ impl BlockState for WitherSkeletonSkull {
         return None;
     }
 }
-

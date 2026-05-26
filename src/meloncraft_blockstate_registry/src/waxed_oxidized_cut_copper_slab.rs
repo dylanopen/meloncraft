@@ -6,7 +6,6 @@ pub struct WaxedOxidizedCutCopperSlab {
     pub r#type: Type,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Type {
     Top,
@@ -16,12 +15,24 @@ pub enum Type {
 
 impl BlockState for WaxedOxidizedCutCopperSlab {
     fn to_id(&self) -> i32 {
-        if self.r#type == Type::Double && self.r#waterlogged == true { return 25801; }
-        if self.r#type == Type::Bottom && self.r#waterlogged == true { return 25799; }
-        if self.r#type == Type::Double && self.r#waterlogged == false { return 25802; }
-        if self.r#type == Type::Top && self.r#waterlogged == false { return 25798; }
-        if self.r#waterlogged == true && self.r#type == Type::Top { return 25797; }
-        if self.r#type == Type::Bottom && self.r#waterlogged == false { return 25800; }
+        if self.r#type == Type::Double && self.r#waterlogged == true {
+            return 25801;
+        }
+        if self.r#type == Type::Bottom && self.r#waterlogged == true {
+            return 25799;
+        }
+        if self.r#type == Type::Double && self.r#waterlogged == false {
+            return 25802;
+        }
+        if self.r#type == Type::Top && self.r#waterlogged == false {
+            return 25798;
+        }
+        if self.r#waterlogged == true && self.r#type == Type::Top {
+            return 25797;
+        }
+        if self.r#type == Type::Bottom && self.r#waterlogged == false {
+            return 25800;
+        }
         panic!("Invalid block state")
     }
 
@@ -65,4 +76,3 @@ impl BlockState for WaxedOxidizedCutCopperSlab {
         return None;
     }
 }
-

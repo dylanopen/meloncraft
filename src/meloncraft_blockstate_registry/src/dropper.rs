@@ -6,7 +6,6 @@ pub struct Dropper {
     pub r#facing: Facing,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -19,18 +18,42 @@ pub enum Facing {
 
 impl BlockState for Dropper {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::Up && self.r#triggered == false { return 11239; }
-        if self.r#facing == Facing::Down && self.r#triggered == true { return 11240; }
-        if self.r#facing == Facing::Down && self.r#triggered == false { return 11241; }
-        if self.r#facing == Facing::South && self.r#triggered == true { return 11234; }
-        if self.r#facing == Facing::West && self.r#triggered == true { return 11236; }
-        if self.r#triggered == false && self.r#facing == Facing::North { return 11231; }
-        if self.r#facing == Facing::South && self.r#triggered == false { return 11235; }
-        if self.r#facing == Facing::East && self.r#triggered == true { return 11232; }
-        if self.r#facing == Facing::East && self.r#triggered == false { return 11233; }
-        if self.r#facing == Facing::West && self.r#triggered == false { return 11237; }
-        if self.r#facing == Facing::Up && self.r#triggered == true { return 11238; }
-        if self.r#facing == Facing::North && self.r#triggered == true { return 11230; }
+        if self.r#facing == Facing::Up && self.r#triggered == false {
+            return 11239;
+        }
+        if self.r#facing == Facing::Down && self.r#triggered == true {
+            return 11240;
+        }
+        if self.r#facing == Facing::Down && self.r#triggered == false {
+            return 11241;
+        }
+        if self.r#facing == Facing::South && self.r#triggered == true {
+            return 11234;
+        }
+        if self.r#facing == Facing::West && self.r#triggered == true {
+            return 11236;
+        }
+        if self.r#triggered == false && self.r#facing == Facing::North {
+            return 11231;
+        }
+        if self.r#facing == Facing::South && self.r#triggered == false {
+            return 11235;
+        }
+        if self.r#facing == Facing::East && self.r#triggered == true {
+            return 11232;
+        }
+        if self.r#facing == Facing::East && self.r#triggered == false {
+            return 11233;
+        }
+        if self.r#facing == Facing::West && self.r#triggered == false {
+            return 11237;
+        }
+        if self.r#facing == Facing::Up && self.r#triggered == true {
+            return 11238;
+        }
+        if self.r#facing == Facing::North && self.r#triggered == true {
+            return 11230;
+        }
         panic!("Invalid block state")
     }
 
@@ -110,4 +133,3 @@ impl BlockState for Dropper {
         return None;
     }
 }
-

@@ -6,7 +6,6 @@ pub struct PinkPetals {
     pub flower_amount: i32,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -17,22 +16,54 @@ pub enum Facing {
 
 impl BlockState for PinkPetals {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::North && self.r#flower_amount == 2 { return 27613; }
-        if self.r#facing == Facing::East && self.r#flower_amount == 2 { return 27625; }
-        if self.r#facing == Facing::East && self.r#flower_amount == 4 { return 27627; }
-        if self.r#flower_amount == 1 && self.r#facing == Facing::West { return 27620; }
-        if self.r#flower_amount == 3 && self.r#facing == Facing::South { return 27618; }
-        if self.r#facing == Facing::West && self.r#flower_amount == 3 { return 27622; }
-        if self.r#facing == Facing::East && self.r#flower_amount == 1 { return 27624; }
-        if self.r#flower_amount == 3 && self.r#facing == Facing::East { return 27626; }
-        if self.r#facing == Facing::North && self.r#flower_amount == 1 { return 27612; }
-        if self.r#facing == Facing::West && self.r#flower_amount == 4 { return 27623; }
-        if self.r#facing == Facing::South && self.r#flower_amount == 4 { return 27619; }
-        if self.r#facing == Facing::South && self.r#flower_amount == 1 { return 27616; }
-        if self.r#facing == Facing::North && self.r#flower_amount == 3 { return 27614; }
-        if self.r#facing == Facing::South && self.r#flower_amount == 2 { return 27617; }
-        if self.r#facing == Facing::West && self.r#flower_amount == 2 { return 27621; }
-        if self.r#flower_amount == 4 && self.r#facing == Facing::North { return 27615; }
+        if self.r#facing == Facing::North && self.r#flower_amount == 2 {
+            return 27613;
+        }
+        if self.r#facing == Facing::East && self.r#flower_amount == 2 {
+            return 27625;
+        }
+        if self.r#facing == Facing::East && self.r#flower_amount == 4 {
+            return 27627;
+        }
+        if self.r#flower_amount == 1 && self.r#facing == Facing::West {
+            return 27620;
+        }
+        if self.r#flower_amount == 3 && self.r#facing == Facing::South {
+            return 27618;
+        }
+        if self.r#facing == Facing::West && self.r#flower_amount == 3 {
+            return 27622;
+        }
+        if self.r#facing == Facing::East && self.r#flower_amount == 1 {
+            return 27624;
+        }
+        if self.r#flower_amount == 3 && self.r#facing == Facing::East {
+            return 27626;
+        }
+        if self.r#facing == Facing::North && self.r#flower_amount == 1 {
+            return 27612;
+        }
+        if self.r#facing == Facing::West && self.r#flower_amount == 4 {
+            return 27623;
+        }
+        if self.r#facing == Facing::South && self.r#flower_amount == 4 {
+            return 27619;
+        }
+        if self.r#facing == Facing::South && self.r#flower_amount == 1 {
+            return 27616;
+        }
+        if self.r#facing == Facing::North && self.r#flower_amount == 3 {
+            return 27614;
+        }
+        if self.r#facing == Facing::South && self.r#flower_amount == 2 {
+            return 27617;
+        }
+        if self.r#facing == Facing::West && self.r#flower_amount == 2 {
+            return 27621;
+        }
+        if self.r#flower_amount == 4 && self.r#facing == Facing::North {
+            return 27615;
+        }
         panic!("Invalid block state")
     }
 
@@ -136,4 +167,3 @@ impl BlockState for PinkPetals {
         return None;
     }
 }
-

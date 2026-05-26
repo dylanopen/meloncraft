@@ -7,17 +7,32 @@ pub struct SculkShrieker {
     pub waterlogged: bool,
 }
 
-
 impl BlockState for SculkShrieker {
     fn to_id(&self) -> i32 {
-        if self.r#shrieking == true && self.r#waterlogged == true && self.r#can_summon == true { return 25099; }
-        if self.r#can_summon == false && self.r#shrieking == true && self.r#waterlogged == true { return 25103; }
-        if self.r#shrieking == false && self.r#waterlogged == false && self.r#can_summon == true { return 25102; }
-        if self.r#waterlogged == false && self.r#can_summon == true && self.r#shrieking == true { return 25100; }
-        if self.r#shrieking == false && self.r#can_summon == false && self.r#waterlogged == true { return 25105; }
-        if self.r#shrieking == false && self.r#can_summon == true && self.r#waterlogged == true { return 25101; }
-        if self.r#shrieking == false && self.r#waterlogged == false && self.r#can_summon == false { return 25106; }
-        if self.r#can_summon == false && self.r#shrieking == true && self.r#waterlogged == false { return 25104; }
+        if self.r#shrieking == true && self.r#waterlogged == true && self.r#can_summon == true {
+            return 25099;
+        }
+        if self.r#can_summon == false && self.r#shrieking == true && self.r#waterlogged == true {
+            return 25103;
+        }
+        if self.r#shrieking == false && self.r#waterlogged == false && self.r#can_summon == true {
+            return 25102;
+        }
+        if self.r#waterlogged == false && self.r#can_summon == true && self.r#shrieking == true {
+            return 25100;
+        }
+        if self.r#shrieking == false && self.r#can_summon == false && self.r#waterlogged == true {
+            return 25105;
+        }
+        if self.r#shrieking == false && self.r#can_summon == true && self.r#waterlogged == true {
+            return 25101;
+        }
+        if self.r#shrieking == false && self.r#waterlogged == false && self.r#can_summon == false {
+            return 25106;
+        }
+        if self.r#can_summon == false && self.r#shrieking == true && self.r#waterlogged == false {
+            return 25104;
+        }
         panic!("Invalid block state")
     }
 
@@ -81,4 +96,3 @@ impl BlockState for SculkShrieker {
         return None;
     }
 }
-

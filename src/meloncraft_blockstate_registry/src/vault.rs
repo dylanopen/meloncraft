@@ -7,7 +7,6 @@ pub struct Vault {
     pub r#vault_state: VaultState,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -26,38 +25,198 @@ pub enum VaultState {
 
 impl BlockState for Vault {
     fn to_id(&self) -> i32 {
-        if self.r#vault_state == VaultState::Unlocking && self.r#ominous == true && self.r#facing == Facing::South { return 29477; }
-        if self.r#facing == Facing::West && self.r#ominous == true && self.r#vault_state == VaultState::Unlocking { return 29485; }
-        if self.r#ominous == false && self.r#vault_state == VaultState::Inactive && self.r#facing == Facing::West { return 29487; }
-        if self.r#ominous == false && self.r#vault_state == VaultState::Inactive && self.r#facing == Facing::North { return 29471; }
-        if self.r#vault_state == VaultState::Active && self.r#facing == Facing::West && self.r#ominous == false { return 29488; }
-        if self.r#facing == Facing::East && self.r#ominous == false && self.r#vault_state == VaultState::Inactive { return 29495; }
-        if self.r#ominous == true && self.r#facing == Facing::South && self.r#vault_state == VaultState::Inactive { return 29475; }
-        if self.r#vault_state == VaultState::Ejecting && self.r#facing == Facing::South && self.r#ominous == true { return 29478; }
-        if self.r#facing == Facing::West && self.r#vault_state == VaultState::Unlocking && self.r#ominous == false { return 29489; }
-        if self.r#vault_state == VaultState::Unlocking && self.r#ominous == false && self.r#facing == Facing::South { return 29481; }
-        if self.r#vault_state == VaultState::Ejecting && self.r#ominous == true && self.r#facing == Facing::East { return 29494; }
-        if self.r#ominous == false && self.r#facing == Facing::East && self.r#vault_state == VaultState::Ejecting { return 29498; }
-        if self.r#facing == Facing::South && self.r#ominous == false && self.r#vault_state == VaultState::Inactive { return 29479; }
-        if self.r#ominous == false && self.r#facing == Facing::South && self.r#vault_state == VaultState::Ejecting { return 29482; }
-        if self.r#facing == Facing::West && self.r#ominous == true && self.r#vault_state == VaultState::Inactive { return 29483; }
-        if self.r#ominous == true && self.r#vault_state == VaultState::Unlocking && self.r#facing == Facing::East { return 29493; }
-        if self.r#ominous == false && self.r#vault_state == VaultState::Unlocking && self.r#facing == Facing::East { return 29497; }
-        if self.r#ominous == true && self.r#vault_state == VaultState::Active && self.r#facing == Facing::East { return 29492; }
-        if self.r#vault_state == VaultState::Active && self.r#ominous == true && self.r#facing == Facing::West { return 29484; }
-        if self.r#vault_state == VaultState::Active && self.r#facing == Facing::South && self.r#ominous == false { return 29480; }
-        if self.r#ominous == false && self.r#vault_state == VaultState::Active && self.r#facing == Facing::North { return 29472; }
-        if self.r#facing == Facing::West && self.r#vault_state == VaultState::Ejecting && self.r#ominous == true { return 29486; }
-        if self.r#facing == Facing::East && self.r#ominous == true && self.r#vault_state == VaultState::Inactive { return 29491; }
-        if self.r#ominous == true && self.r#facing == Facing::South && self.r#vault_state == VaultState::Active { return 29476; }
-        if self.r#ominous == false && self.r#facing == Facing::West && self.r#vault_state == VaultState::Ejecting { return 29490; }
-        if self.r#ominous == false && self.r#facing == Facing::North && self.r#vault_state == VaultState::Unlocking { return 29473; }
-        if self.r#ominous == true && self.r#vault_state == VaultState::Unlocking && self.r#facing == Facing::North { return 29469; }
-        if self.r#vault_state == VaultState::Ejecting && self.r#facing == Facing::North && self.r#ominous == false { return 29474; }
-        if self.r#ominous == true && self.r#vault_state == VaultState::Ejecting && self.r#facing == Facing::North { return 29470; }
-        if self.r#ominous == true && self.r#facing == Facing::North && self.r#vault_state == VaultState::Inactive { return 29467; }
-        if self.r#ominous == true && self.r#vault_state == VaultState::Active && self.r#facing == Facing::North { return 29468; }
-        if self.r#ominous == false && self.r#vault_state == VaultState::Active && self.r#facing == Facing::East { return 29496; }
+        if self.r#vault_state == VaultState::Unlocking
+            && self.r#ominous == true
+            && self.r#facing == Facing::South
+        {
+            return 29477;
+        }
+        if self.r#facing == Facing::West
+            && self.r#ominous == true
+            && self.r#vault_state == VaultState::Unlocking
+        {
+            return 29485;
+        }
+        if self.r#ominous == false
+            && self.r#vault_state == VaultState::Inactive
+            && self.r#facing == Facing::West
+        {
+            return 29487;
+        }
+        if self.r#ominous == false
+            && self.r#vault_state == VaultState::Inactive
+            && self.r#facing == Facing::North
+        {
+            return 29471;
+        }
+        if self.r#vault_state == VaultState::Active
+            && self.r#facing == Facing::West
+            && self.r#ominous == false
+        {
+            return 29488;
+        }
+        if self.r#facing == Facing::East
+            && self.r#ominous == false
+            && self.r#vault_state == VaultState::Inactive
+        {
+            return 29495;
+        }
+        if self.r#ominous == true
+            && self.r#facing == Facing::South
+            && self.r#vault_state == VaultState::Inactive
+        {
+            return 29475;
+        }
+        if self.r#vault_state == VaultState::Ejecting
+            && self.r#facing == Facing::South
+            && self.r#ominous == true
+        {
+            return 29478;
+        }
+        if self.r#facing == Facing::West
+            && self.r#vault_state == VaultState::Unlocking
+            && self.r#ominous == false
+        {
+            return 29489;
+        }
+        if self.r#vault_state == VaultState::Unlocking
+            && self.r#ominous == false
+            && self.r#facing == Facing::South
+        {
+            return 29481;
+        }
+        if self.r#vault_state == VaultState::Ejecting
+            && self.r#ominous == true
+            && self.r#facing == Facing::East
+        {
+            return 29494;
+        }
+        if self.r#ominous == false
+            && self.r#facing == Facing::East
+            && self.r#vault_state == VaultState::Ejecting
+        {
+            return 29498;
+        }
+        if self.r#facing == Facing::South
+            && self.r#ominous == false
+            && self.r#vault_state == VaultState::Inactive
+        {
+            return 29479;
+        }
+        if self.r#ominous == false
+            && self.r#facing == Facing::South
+            && self.r#vault_state == VaultState::Ejecting
+        {
+            return 29482;
+        }
+        if self.r#facing == Facing::West
+            && self.r#ominous == true
+            && self.r#vault_state == VaultState::Inactive
+        {
+            return 29483;
+        }
+        if self.r#ominous == true
+            && self.r#vault_state == VaultState::Unlocking
+            && self.r#facing == Facing::East
+        {
+            return 29493;
+        }
+        if self.r#ominous == false
+            && self.r#vault_state == VaultState::Unlocking
+            && self.r#facing == Facing::East
+        {
+            return 29497;
+        }
+        if self.r#ominous == true
+            && self.r#vault_state == VaultState::Active
+            && self.r#facing == Facing::East
+        {
+            return 29492;
+        }
+        if self.r#vault_state == VaultState::Active
+            && self.r#ominous == true
+            && self.r#facing == Facing::West
+        {
+            return 29484;
+        }
+        if self.r#vault_state == VaultState::Active
+            && self.r#facing == Facing::South
+            && self.r#ominous == false
+        {
+            return 29480;
+        }
+        if self.r#ominous == false
+            && self.r#vault_state == VaultState::Active
+            && self.r#facing == Facing::North
+        {
+            return 29472;
+        }
+        if self.r#facing == Facing::West
+            && self.r#vault_state == VaultState::Ejecting
+            && self.r#ominous == true
+        {
+            return 29486;
+        }
+        if self.r#facing == Facing::East
+            && self.r#ominous == true
+            && self.r#vault_state == VaultState::Inactive
+        {
+            return 29491;
+        }
+        if self.r#ominous == true
+            && self.r#facing == Facing::South
+            && self.r#vault_state == VaultState::Active
+        {
+            return 29476;
+        }
+        if self.r#ominous == false
+            && self.r#facing == Facing::West
+            && self.r#vault_state == VaultState::Ejecting
+        {
+            return 29490;
+        }
+        if self.r#ominous == false
+            && self.r#facing == Facing::North
+            && self.r#vault_state == VaultState::Unlocking
+        {
+            return 29473;
+        }
+        if self.r#ominous == true
+            && self.r#vault_state == VaultState::Unlocking
+            && self.r#facing == Facing::North
+        {
+            return 29469;
+        }
+        if self.r#vault_state == VaultState::Ejecting
+            && self.r#facing == Facing::North
+            && self.r#ominous == false
+        {
+            return 29474;
+        }
+        if self.r#ominous == true
+            && self.r#vault_state == VaultState::Ejecting
+            && self.r#facing == Facing::North
+        {
+            return 29470;
+        }
+        if self.r#ominous == true
+            && self.r#facing == Facing::North
+            && self.r#vault_state == VaultState::Inactive
+        {
+            return 29467;
+        }
+        if self.r#ominous == true
+            && self.r#vault_state == VaultState::Active
+            && self.r#facing == Facing::North
+        {
+            return 29468;
+        }
+        if self.r#ominous == false
+            && self.r#vault_state == VaultState::Active
+            && self.r#facing == Facing::East
+        {
+            return 29496;
+        }
         panic!("Invalid block state")
     }
 
@@ -289,4 +448,3 @@ impl BlockState for Vault {
         return None;
     }
 }
-

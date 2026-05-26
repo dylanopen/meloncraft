@@ -5,7 +5,6 @@ pub struct LightGrayWallBanner {
     pub r#facing: Facing,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -16,10 +15,18 @@ pub enum Facing {
 
 impl BlockState for LightGrayWallBanner {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::West { return 13015; }
-        if self.r#facing == Facing::North { return 13013; }
-        if self.r#facing == Facing::South { return 13014; }
-        if self.r#facing == Facing::East { return 13016; }
+        if self.r#facing == Facing::West {
+            return 13015;
+        }
+        if self.r#facing == Facing::North {
+            return 13013;
+        }
+        if self.r#facing == Facing::South {
+            return 13014;
+        }
+        if self.r#facing == Facing::East {
+            return 13016;
+        }
         panic!("Invalid block state")
     }
 
@@ -47,4 +54,3 @@ impl BlockState for LightGrayWallBanner {
         return None;
     }
 }
-

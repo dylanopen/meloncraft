@@ -6,41 +6,104 @@ pub struct CreeperHead {
     pub powered: bool,
 }
 
-
 impl BlockState for CreeperHead {
     fn to_id(&self) -> i32 {
-        if self.r#powered == false && self.r#rotation == 14 { return 10903; }
-        if self.r#powered == true && self.r#rotation == 3 { return 10876; }
-        if self.r#powered == true && self.r#rotation == 5 { return 10878; }
-        if self.r#powered == true && self.r#rotation == 11 { return 10884; }
-        if self.r#rotation == 11 && self.r#powered == false { return 10900; }
-        if self.r#powered == false && self.r#rotation == 10 { return 10899; }
-        if self.r#powered == true && self.r#rotation == 4 { return 10877; }
-        if self.r#rotation == 8 && self.r#powered == true { return 10881; }
-        if self.r#rotation == 15 && self.r#powered == false { return 10904; }
-        if self.r#powered == false && self.r#rotation == 12 { return 10901; }
-        if self.r#powered == true && self.r#rotation == 0 { return 10873; }
-        if self.r#rotation == 13 && self.r#powered == true { return 10886; }
-        if self.r#powered == true && self.r#rotation == 15 { return 10888; }
-        if self.r#rotation == 0 && self.r#powered == false { return 10889; }
-        if self.r#powered == true && self.r#rotation == 7 { return 10880; }
-        if self.r#powered == true && self.r#rotation == 9 { return 10882; }
-        if self.r#powered == true && self.r#rotation == 14 { return 10887; }
-        if self.r#powered == false && self.r#rotation == 6 { return 10895; }
-        if self.r#powered == false && self.r#rotation == 7 { return 10896; }
-        if self.r#rotation == 2 && self.r#powered == false { return 10891; }
-        if self.r#rotation == 2 && self.r#powered == true { return 10875; }
-        if self.r#powered == true && self.r#rotation == 10 { return 10883; }
-        if self.r#powered == true && self.r#rotation == 12 { return 10885; }
-        if self.r#rotation == 5 && self.r#powered == false { return 10894; }
-        if self.r#rotation == 1 && self.r#powered == false { return 10890; }
-        if self.r#rotation == 9 && self.r#powered == false { return 10898; }
-        if self.r#powered == true && self.r#rotation == 1 { return 10874; }
-        if self.r#powered == false && self.r#rotation == 3 { return 10892; }
-        if self.r#rotation == 6 && self.r#powered == true { return 10879; }
-        if self.r#rotation == 13 && self.r#powered == false { return 10902; }
-        if self.r#rotation == 4 && self.r#powered == false { return 10893; }
-        if self.r#powered == false && self.r#rotation == 8 { return 10897; }
+        if self.r#powered == false && self.r#rotation == 14 {
+            return 10903;
+        }
+        if self.r#powered == true && self.r#rotation == 3 {
+            return 10876;
+        }
+        if self.r#powered == true && self.r#rotation == 5 {
+            return 10878;
+        }
+        if self.r#powered == true && self.r#rotation == 11 {
+            return 10884;
+        }
+        if self.r#rotation == 11 && self.r#powered == false {
+            return 10900;
+        }
+        if self.r#powered == false && self.r#rotation == 10 {
+            return 10899;
+        }
+        if self.r#powered == true && self.r#rotation == 4 {
+            return 10877;
+        }
+        if self.r#rotation == 8 && self.r#powered == true {
+            return 10881;
+        }
+        if self.r#rotation == 15 && self.r#powered == false {
+            return 10904;
+        }
+        if self.r#powered == false && self.r#rotation == 12 {
+            return 10901;
+        }
+        if self.r#powered == true && self.r#rotation == 0 {
+            return 10873;
+        }
+        if self.r#rotation == 13 && self.r#powered == true {
+            return 10886;
+        }
+        if self.r#powered == true && self.r#rotation == 15 {
+            return 10888;
+        }
+        if self.r#rotation == 0 && self.r#powered == false {
+            return 10889;
+        }
+        if self.r#powered == true && self.r#rotation == 7 {
+            return 10880;
+        }
+        if self.r#powered == true && self.r#rotation == 9 {
+            return 10882;
+        }
+        if self.r#powered == true && self.r#rotation == 14 {
+            return 10887;
+        }
+        if self.r#powered == false && self.r#rotation == 6 {
+            return 10895;
+        }
+        if self.r#powered == false && self.r#rotation == 7 {
+            return 10896;
+        }
+        if self.r#rotation == 2 && self.r#powered == false {
+            return 10891;
+        }
+        if self.r#rotation == 2 && self.r#powered == true {
+            return 10875;
+        }
+        if self.r#powered == true && self.r#rotation == 10 {
+            return 10883;
+        }
+        if self.r#powered == true && self.r#rotation == 12 {
+            return 10885;
+        }
+        if self.r#rotation == 5 && self.r#powered == false {
+            return 10894;
+        }
+        if self.r#rotation == 1 && self.r#powered == false {
+            return 10890;
+        }
+        if self.r#rotation == 9 && self.r#powered == false {
+            return 10898;
+        }
+        if self.r#powered == true && self.r#rotation == 1 {
+            return 10874;
+        }
+        if self.r#powered == false && self.r#rotation == 3 {
+            return 10892;
+        }
+        if self.r#rotation == 6 && self.r#powered == true {
+            return 10879;
+        }
+        if self.r#rotation == 13 && self.r#powered == false {
+            return 10902;
+        }
+        if self.r#rotation == 4 && self.r#powered == false {
+            return 10893;
+        }
+        if self.r#powered == false && self.r#rotation == 8 {
+            return 10897;
+        }
         panic!("Invalid block state")
     }
 
@@ -240,4 +303,3 @@ impl BlockState for CreeperHead {
         return None;
     }
 }
-

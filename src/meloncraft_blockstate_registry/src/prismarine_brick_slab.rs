@@ -6,7 +6,6 @@ pub struct PrismarineBrickSlab {
     pub waterlogged: bool,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Type {
     Top,
@@ -16,12 +15,24 @@ pub enum Type {
 
 impl BlockState for PrismarineBrickSlab {
     fn to_id(&self) -> i32 {
-        if self.r#type == Type::Top && self.r#waterlogged == true { return 12678; }
-        if self.r#type == Type::Bottom && self.r#waterlogged == false { return 12681; }
-        if self.r#waterlogged == true && self.r#type == Type::Double { return 12682; }
-        if self.r#waterlogged == false && self.r#type == Type::Double { return 12683; }
-        if self.r#waterlogged == false && self.r#type == Type::Top { return 12679; }
-        if self.r#type == Type::Bottom && self.r#waterlogged == true { return 12680; }
+        if self.r#type == Type::Top && self.r#waterlogged == true {
+            return 12678;
+        }
+        if self.r#type == Type::Bottom && self.r#waterlogged == false {
+            return 12681;
+        }
+        if self.r#waterlogged == true && self.r#type == Type::Double {
+            return 12682;
+        }
+        if self.r#waterlogged == false && self.r#type == Type::Double {
+            return 12683;
+        }
+        if self.r#waterlogged == false && self.r#type == Type::Top {
+            return 12679;
+        }
+        if self.r#type == Type::Bottom && self.r#waterlogged == true {
+            return 12680;
+        }
         panic!("Invalid block state")
     }
 
@@ -65,4 +76,3 @@ impl BlockState for PrismarineBrickSlab {
         return None;
     }
 }
-

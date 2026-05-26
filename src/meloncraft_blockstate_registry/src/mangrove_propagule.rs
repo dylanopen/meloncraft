@@ -8,49 +8,288 @@ pub struct MangrovePropagule {
     pub waterlogged: bool,
 }
 
-
 impl BlockState for MangrovePropagule {
     fn to_id(&self) -> i32 {
-        if self.r#age == 0 && self.r#waterlogged == true && self.r#stage == 1 && self.r#hanging == false { return 51; }
-        if self.r#age == 3 && self.r#stage == 0 && self.r#waterlogged == true && self.r#hanging == true { return 69; }
-        if self.r#age == 0 && self.r#stage == 0 && self.r#hanging == false && self.r#waterlogged == true { return 49; }
-        if self.r#age == 4 && self.r#stage == 1 && self.r#hanging == true && self.r#waterlogged == false { return 80; }
-        if self.r#waterlogged == true && self.r#hanging == false && self.r#age == 4 && self.r#stage == 0 { return 81; }
-        if self.r#hanging == false && self.r#age == 4 && self.r#stage == 0 && self.r#waterlogged == false { return 82; }
-        if self.r#hanging == true && self.r#waterlogged == false && self.r#age == 2 && self.r#stage == 0 { return 62; }
-        if self.r#stage == 0 && self.r#age == 3 && self.r#hanging == true && self.r#waterlogged == false { return 70; }
-        if self.r#stage == 1 && self.r#waterlogged == false && self.r#age == 2 && self.r#hanging == true { return 64; }
-        if self.r#hanging == false && self.r#age == 3 && self.r#stage == 1 && self.r#waterlogged == true { return 75; }
-        if self.r#age == 1 && self.r#stage == 1 && self.r#waterlogged == true && self.r#hanging == false { return 59; }
-        if self.r#stage == 1 && self.r#waterlogged == false && self.r#hanging == false && self.r#age == 3 { return 76; }
-        if self.r#hanging == true && self.r#stage == 0 && self.r#age == 4 && self.r#waterlogged == false { return 78; }
-        if self.r#age == 3 && self.r#waterlogged == false && self.r#hanging == true && self.r#stage == 1 { return 72; }
-        if self.r#waterlogged == false && self.r#age == 0 && self.r#hanging == false && self.r#stage == 0 { return 50; }
-        if self.r#waterlogged == true && self.r#hanging == false && self.r#stage == 1 && self.r#age == 2 { return 67; }
-        if self.r#waterlogged == false && self.r#stage == 1 && self.r#age == 2 && self.r#hanging == false { return 68; }
-        if self.r#hanging == false && self.r#age == 3 && self.r#waterlogged == false && self.r#stage == 0 { return 74; }
-        if self.r#age == 4 && self.r#hanging == false && self.r#stage == 1 && self.r#waterlogged == true { return 83; }
-        if self.r#waterlogged == false && self.r#stage == 0 && self.r#hanging == true && self.r#age == 0 { return 46; }
-        if self.r#waterlogged == true && self.r#age == 4 && self.r#hanging == true && self.r#stage == 1 { return 79; }
-        if self.r#waterlogged == true && self.r#stage == 1 && self.r#age == 1 && self.r#hanging == true { return 55; }
-        if self.r#waterlogged == true && self.r#hanging == true && self.r#age == 1 && self.r#stage == 0 { return 53; }
-        if self.r#hanging == true && self.r#waterlogged == true && self.r#stage == 1 && self.r#age == 3 { return 71; }
-        if self.r#age == 2 && self.r#waterlogged == true && self.r#stage == 1 && self.r#hanging == true { return 63; }
-        if self.r#age == 1 && self.r#stage == 1 && self.r#hanging == false && self.r#waterlogged == false { return 60; }
-        if self.r#waterlogged == true && self.r#stage == 0 && self.r#age == 0 && self.r#hanging == true { return 45; }
-        if self.r#stage == 0 && self.r#waterlogged == true && self.r#age == 3 && self.r#hanging == false { return 73; }
-        if self.r#stage == 1 && self.r#age == 4 && self.r#waterlogged == false && self.r#hanging == false { return 84; }
-        if self.r#age == 2 && self.r#hanging == false && self.r#waterlogged == false && self.r#stage == 0 { return 66; }
-        if self.r#age == 0 && self.r#hanging == true && self.r#stage == 1 && self.r#waterlogged == false { return 48; }
-        if self.r#hanging == false && self.r#waterlogged == false && self.r#age == 1 && self.r#stage == 0 { return 58; }
-        if self.r#hanging == true && self.r#age == 2 && self.r#stage == 0 && self.r#waterlogged == true { return 61; }
-        if self.r#age == 4 && self.r#waterlogged == true && self.r#stage == 0 && self.r#hanging == true { return 77; }
-        if self.r#age == 0 && self.r#waterlogged == false && self.r#hanging == false && self.r#stage == 1 { return 52; }
-        if self.r#hanging == false && self.r#age == 2 && self.r#stage == 0 && self.r#waterlogged == true { return 65; }
-        if self.r#hanging == false && self.r#age == 1 && self.r#waterlogged == true && self.r#stage == 0 { return 57; }
-        if self.r#hanging == true && self.r#stage == 1 && self.r#waterlogged == true && self.r#age == 0 { return 47; }
-        if self.r#stage == 0 && self.r#waterlogged == false && self.r#age == 1 && self.r#hanging == true { return 54; }
-        if self.r#age == 1 && self.r#hanging == true && self.r#stage == 1 && self.r#waterlogged == false { return 56; }
+        if self.r#age == 0
+            && self.r#waterlogged == true
+            && self.r#stage == 1
+            && self.r#hanging == false
+        {
+            return 51;
+        }
+        if self.r#age == 3
+            && self.r#stage == 0
+            && self.r#waterlogged == true
+            && self.r#hanging == true
+        {
+            return 69;
+        }
+        if self.r#age == 0
+            && self.r#stage == 0
+            && self.r#hanging == false
+            && self.r#waterlogged == true
+        {
+            return 49;
+        }
+        if self.r#age == 4
+            && self.r#stage == 1
+            && self.r#hanging == true
+            && self.r#waterlogged == false
+        {
+            return 80;
+        }
+        if self.r#waterlogged == true
+            && self.r#hanging == false
+            && self.r#age == 4
+            && self.r#stage == 0
+        {
+            return 81;
+        }
+        if self.r#hanging == false
+            && self.r#age == 4
+            && self.r#stage == 0
+            && self.r#waterlogged == false
+        {
+            return 82;
+        }
+        if self.r#hanging == true
+            && self.r#waterlogged == false
+            && self.r#age == 2
+            && self.r#stage == 0
+        {
+            return 62;
+        }
+        if self.r#stage == 0
+            && self.r#age == 3
+            && self.r#hanging == true
+            && self.r#waterlogged == false
+        {
+            return 70;
+        }
+        if self.r#stage == 1
+            && self.r#waterlogged == false
+            && self.r#age == 2
+            && self.r#hanging == true
+        {
+            return 64;
+        }
+        if self.r#hanging == false
+            && self.r#age == 3
+            && self.r#stage == 1
+            && self.r#waterlogged == true
+        {
+            return 75;
+        }
+        if self.r#age == 1
+            && self.r#stage == 1
+            && self.r#waterlogged == true
+            && self.r#hanging == false
+        {
+            return 59;
+        }
+        if self.r#stage == 1
+            && self.r#waterlogged == false
+            && self.r#hanging == false
+            && self.r#age == 3
+        {
+            return 76;
+        }
+        if self.r#hanging == true
+            && self.r#stage == 0
+            && self.r#age == 4
+            && self.r#waterlogged == false
+        {
+            return 78;
+        }
+        if self.r#age == 3
+            && self.r#waterlogged == false
+            && self.r#hanging == true
+            && self.r#stage == 1
+        {
+            return 72;
+        }
+        if self.r#waterlogged == false
+            && self.r#age == 0
+            && self.r#hanging == false
+            && self.r#stage == 0
+        {
+            return 50;
+        }
+        if self.r#waterlogged == true
+            && self.r#hanging == false
+            && self.r#stage == 1
+            && self.r#age == 2
+        {
+            return 67;
+        }
+        if self.r#waterlogged == false
+            && self.r#stage == 1
+            && self.r#age == 2
+            && self.r#hanging == false
+        {
+            return 68;
+        }
+        if self.r#hanging == false
+            && self.r#age == 3
+            && self.r#waterlogged == false
+            && self.r#stage == 0
+        {
+            return 74;
+        }
+        if self.r#age == 4
+            && self.r#hanging == false
+            && self.r#stage == 1
+            && self.r#waterlogged == true
+        {
+            return 83;
+        }
+        if self.r#waterlogged == false
+            && self.r#stage == 0
+            && self.r#hanging == true
+            && self.r#age == 0
+        {
+            return 46;
+        }
+        if self.r#waterlogged == true
+            && self.r#age == 4
+            && self.r#hanging == true
+            && self.r#stage == 1
+        {
+            return 79;
+        }
+        if self.r#waterlogged == true
+            && self.r#stage == 1
+            && self.r#age == 1
+            && self.r#hanging == true
+        {
+            return 55;
+        }
+        if self.r#waterlogged == true
+            && self.r#hanging == true
+            && self.r#age == 1
+            && self.r#stage == 0
+        {
+            return 53;
+        }
+        if self.r#hanging == true
+            && self.r#waterlogged == true
+            && self.r#stage == 1
+            && self.r#age == 3
+        {
+            return 71;
+        }
+        if self.r#age == 2
+            && self.r#waterlogged == true
+            && self.r#stage == 1
+            && self.r#hanging == true
+        {
+            return 63;
+        }
+        if self.r#age == 1
+            && self.r#stage == 1
+            && self.r#hanging == false
+            && self.r#waterlogged == false
+        {
+            return 60;
+        }
+        if self.r#waterlogged == true
+            && self.r#stage == 0
+            && self.r#age == 0
+            && self.r#hanging == true
+        {
+            return 45;
+        }
+        if self.r#stage == 0
+            && self.r#waterlogged == true
+            && self.r#age == 3
+            && self.r#hanging == false
+        {
+            return 73;
+        }
+        if self.r#stage == 1
+            && self.r#age == 4
+            && self.r#waterlogged == false
+            && self.r#hanging == false
+        {
+            return 84;
+        }
+        if self.r#age == 2
+            && self.r#hanging == false
+            && self.r#waterlogged == false
+            && self.r#stage == 0
+        {
+            return 66;
+        }
+        if self.r#age == 0
+            && self.r#hanging == true
+            && self.r#stage == 1
+            && self.r#waterlogged == false
+        {
+            return 48;
+        }
+        if self.r#hanging == false
+            && self.r#waterlogged == false
+            && self.r#age == 1
+            && self.r#stage == 0
+        {
+            return 58;
+        }
+        if self.r#hanging == true
+            && self.r#age == 2
+            && self.r#stage == 0
+            && self.r#waterlogged == true
+        {
+            return 61;
+        }
+        if self.r#age == 4
+            && self.r#waterlogged == true
+            && self.r#stage == 0
+            && self.r#hanging == true
+        {
+            return 77;
+        }
+        if self.r#age == 0
+            && self.r#waterlogged == false
+            && self.r#hanging == false
+            && self.r#stage == 1
+        {
+            return 52;
+        }
+        if self.r#hanging == false
+            && self.r#age == 2
+            && self.r#stage == 0
+            && self.r#waterlogged == true
+        {
+            return 65;
+        }
+        if self.r#hanging == false
+            && self.r#age == 1
+            && self.r#waterlogged == true
+            && self.r#stage == 0
+        {
+            return 57;
+        }
+        if self.r#hanging == true
+            && self.r#stage == 1
+            && self.r#waterlogged == true
+            && self.r#age == 0
+        {
+            return 47;
+        }
+        if self.r#stage == 0
+            && self.r#waterlogged == false
+            && self.r#age == 1
+            && self.r#hanging == true
+        {
+            return 54;
+        }
+        if self.r#age == 1
+            && self.r#hanging == true
+            && self.r#stage == 1
+            && self.r#waterlogged == false
+        {
+            return 56;
+        }
         panic!("Invalid block state")
     }
 
@@ -378,4 +617,3 @@ impl BlockState for MangrovePropagule {
         return None;
     }
 }
-

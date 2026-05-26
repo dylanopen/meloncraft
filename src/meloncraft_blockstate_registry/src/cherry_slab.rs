@@ -6,7 +6,6 @@ pub struct CherrySlab {
     pub r#type: Type,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Type {
     Top,
@@ -16,12 +15,24 @@ pub enum Type {
 
 impl BlockState for CherrySlab {
     fn to_id(&self) -> i32 {
-        if self.r#type == Type::Top && self.r#waterlogged == true { return 13158; }
-        if self.r#type == Type::Bottom && self.r#waterlogged == true { return 13160; }
-        if self.r#type == Type::Bottom && self.r#waterlogged == false { return 13161; }
-        if self.r#waterlogged == true && self.r#type == Type::Double { return 13162; }
-        if self.r#waterlogged == false && self.r#type == Type::Double { return 13163; }
-        if self.r#type == Type::Top && self.r#waterlogged == false { return 13159; }
+        if self.r#type == Type::Top && self.r#waterlogged == true {
+            return 13158;
+        }
+        if self.r#type == Type::Bottom && self.r#waterlogged == true {
+            return 13160;
+        }
+        if self.r#type == Type::Bottom && self.r#waterlogged == false {
+            return 13161;
+        }
+        if self.r#waterlogged == true && self.r#type == Type::Double {
+            return 13162;
+        }
+        if self.r#waterlogged == false && self.r#type == Type::Double {
+            return 13163;
+        }
+        if self.r#type == Type::Top && self.r#waterlogged == false {
+            return 13159;
+        }
         panic!("Invalid block state")
     }
 
@@ -65,4 +76,3 @@ impl BlockState for CherrySlab {
         return None;
     }
 }
-

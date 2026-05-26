@@ -6,41 +6,104 @@ pub struct PiglinHead {
     pub powered: bool,
 }
 
-
 impl BlockState for PiglinHead {
     fn to_id(&self) -> i32 {
-        if self.r#powered == false && self.r#rotation == 2 { return 10971; }
-        if self.r#powered == true && self.r#rotation == 3 { return 10956; }
-        if self.r#powered == true && self.r#rotation == 13 { return 10966; }
-        if self.r#powered == true && self.r#rotation == 9 { return 10962; }
-        if self.r#powered == true && self.r#rotation == 11 { return 10964; }
-        if self.r#rotation == 2 && self.r#powered == true { return 10955; }
-        if self.r#powered == true && self.r#rotation == 12 { return 10965; }
-        if self.r#powered == true && self.r#rotation == 14 { return 10967; }
-        if self.r#rotation == 9 && self.r#powered == false { return 10978; }
-        if self.r#powered == false && self.r#rotation == 11 { return 10980; }
-        if self.r#powered == false && self.r#rotation == 14 { return 10983; }
-        if self.r#rotation == 6 && self.r#powered == false { return 10975; }
-        if self.r#powered == false && self.r#rotation == 1 { return 10970; }
-        if self.r#powered == false && self.r#rotation == 4 { return 10973; }
-        if self.r#powered == false && self.r#rotation == 5 { return 10974; }
-        if self.r#rotation == 8 && self.r#powered == false { return 10977; }
-        if self.r#powered == false && self.r#rotation == 10 { return 10979; }
-        if self.r#rotation == 10 && self.r#powered == true { return 10963; }
-        if self.r#rotation == 12 && self.r#powered == false { return 10981; }
-        if self.r#powered == false && self.r#rotation == 13 { return 10982; }
-        if self.r#powered == true && self.r#rotation == 4 { return 10957; }
-        if self.r#powered == true && self.r#rotation == 0 { return 10953; }
-        if self.r#rotation == 7 && self.r#powered == true { return 10960; }
-        if self.r#powered == true && self.r#rotation == 5 { return 10958; }
-        if self.r#rotation == 15 && self.r#powered == true { return 10968; }
-        if self.r#powered == false && self.r#rotation == 15 { return 10984; }
-        if self.r#rotation == 8 && self.r#powered == true { return 10961; }
-        if self.r#rotation == 0 && self.r#powered == false { return 10969; }
-        if self.r#rotation == 7 && self.r#powered == false { return 10976; }
-        if self.r#powered == true && self.r#rotation == 6 { return 10959; }
-        if self.r#powered == true && self.r#rotation == 1 { return 10954; }
-        if self.r#powered == false && self.r#rotation == 3 { return 10972; }
+        if self.r#powered == false && self.r#rotation == 2 {
+            return 10971;
+        }
+        if self.r#powered == true && self.r#rotation == 3 {
+            return 10956;
+        }
+        if self.r#powered == true && self.r#rotation == 13 {
+            return 10966;
+        }
+        if self.r#powered == true && self.r#rotation == 9 {
+            return 10962;
+        }
+        if self.r#powered == true && self.r#rotation == 11 {
+            return 10964;
+        }
+        if self.r#rotation == 2 && self.r#powered == true {
+            return 10955;
+        }
+        if self.r#powered == true && self.r#rotation == 12 {
+            return 10965;
+        }
+        if self.r#powered == true && self.r#rotation == 14 {
+            return 10967;
+        }
+        if self.r#rotation == 9 && self.r#powered == false {
+            return 10978;
+        }
+        if self.r#powered == false && self.r#rotation == 11 {
+            return 10980;
+        }
+        if self.r#powered == false && self.r#rotation == 14 {
+            return 10983;
+        }
+        if self.r#rotation == 6 && self.r#powered == false {
+            return 10975;
+        }
+        if self.r#powered == false && self.r#rotation == 1 {
+            return 10970;
+        }
+        if self.r#powered == false && self.r#rotation == 4 {
+            return 10973;
+        }
+        if self.r#powered == false && self.r#rotation == 5 {
+            return 10974;
+        }
+        if self.r#rotation == 8 && self.r#powered == false {
+            return 10977;
+        }
+        if self.r#powered == false && self.r#rotation == 10 {
+            return 10979;
+        }
+        if self.r#rotation == 10 && self.r#powered == true {
+            return 10963;
+        }
+        if self.r#rotation == 12 && self.r#powered == false {
+            return 10981;
+        }
+        if self.r#powered == false && self.r#rotation == 13 {
+            return 10982;
+        }
+        if self.r#powered == true && self.r#rotation == 4 {
+            return 10957;
+        }
+        if self.r#powered == true && self.r#rotation == 0 {
+            return 10953;
+        }
+        if self.r#rotation == 7 && self.r#powered == true {
+            return 10960;
+        }
+        if self.r#powered == true && self.r#rotation == 5 {
+            return 10958;
+        }
+        if self.r#rotation == 15 && self.r#powered == true {
+            return 10968;
+        }
+        if self.r#powered == false && self.r#rotation == 15 {
+            return 10984;
+        }
+        if self.r#rotation == 8 && self.r#powered == true {
+            return 10961;
+        }
+        if self.r#rotation == 0 && self.r#powered == false {
+            return 10969;
+        }
+        if self.r#rotation == 7 && self.r#powered == false {
+            return 10976;
+        }
+        if self.r#powered == true && self.r#rotation == 6 {
+            return 10959;
+        }
+        if self.r#powered == true && self.r#rotation == 1 {
+            return 10954;
+        }
+        if self.r#powered == false && self.r#rotation == 3 {
+            return 10972;
+        }
         panic!("Invalid block state")
     }
 
@@ -240,4 +303,3 @@ impl BlockState for PiglinHead {
         return None;
     }
 }
-

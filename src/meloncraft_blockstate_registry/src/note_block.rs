@@ -7,7 +7,6 @@ pub struct NoteBlock {
     pub powered: bool,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Instrument {
     Harp,
@@ -37,1156 +36,4206 @@ pub enum Instrument {
 
 impl BlockState for NoteBlock {
     fn to_id(&self) -> i32 {
-        if self.r#instrument == Instrument::Dragon && self.r#powered == true && self.r#note == 14 { return 1559; }
-        if self.r#instrument == Instrument::Guitar && self.r#powered == false && self.r#note == 17 { return 966; }
-        if self.r#instrument == Instrument::Zombie && self.r#note == 17 && self.r#powered == false { return 1416; }
-        if self.r#instrument == Instrument::Chime && self.r#powered == true && self.r#note == 4 { return 989; }
-        if self.r#powered == true && self.r#instrument == Instrument::Chime && self.r#note == 9 { return 999; }
-        if self.r#powered == true && self.r#note == 24 && self.r#instrument == Instrument::Zombie { return 1429; }
-        if self.r#instrument == Instrument::CustomHead && self.r#note == 9 && self.r#powered == true { return 1699; }
-        if self.r#instrument == Instrument::Harp && self.r#note == 16 && self.r#powered == true { return 613; }
-        if self.r#powered == true && self.r#note == 24 && self.r#instrument == Instrument::WitherSkeleton { return 1629; }
-        if self.r#instrument == Instrument::CustomHead && self.r#note == 1 && self.r#powered == true { return 1683; }
-        if self.r#powered == true && self.r#instrument == Instrument::Snare && self.r#note == 13 { return 707; }
-        if self.r#powered == true && self.r#instrument == Instrument::Didgeridoo && self.r#note == 22 { return 1225; }
-        if self.r#note == 11 && self.r#instrument == Instrument::Creeper && self.r#powered == true { return 1503; }
-        if self.r#instrument == Instrument::Guitar && self.r#note == 13 && self.r#powered == true { return 957; }
-        if self.r#instrument == Instrument::Chime && self.r#note == 22 && self.r#powered == false { return 1026; }
-        if self.r#powered == true && self.r#note == 22 && self.r#instrument == Instrument::Pling { return 1375; }
-        if self.r#note == 0 && self.r#powered == true && self.r#instrument == Instrument::Banjo { return 1281; }
-        if self.r#instrument == Instrument::Creeper && self.r#powered == true && self.r#note == 14 { return 1509; }
-        if self.r#note == 17 && self.r#powered == true && self.r#instrument == Instrument::Dragon { return 1565; }
-        if self.r#note == 4 && self.r#powered == true && self.r#instrument == Instrument::WitherSkeleton { return 1589; }
-        if self.r#instrument == Instrument::Bass && self.r#note == 12 && self.r#powered == true { return 805; }
-        if self.r#instrument == Instrument::Xylophone && self.r#note == 15 && self.r#powered == true { return 1061; }
-        if self.r#powered == false && self.r#instrument == Instrument::Bit && self.r#note == 18 { return 1268; }
-        if self.r#powered == true && self.r#instrument == Instrument::WitherSkeleton && self.r#note == 17 { return 1615; }
-        if self.r#instrument == Instrument::Guitar && self.r#powered == true && self.r#note == 19 { return 969; }
-        if self.r#instrument == Instrument::Skeleton && self.r#note == 17 && self.r#powered == true { return 1465; }
-        if self.r#powered == false && self.r#note == 21 && self.r#instrument == Instrument::WitherSkeleton { return 1624; }
-        if self.r#powered == false && self.r#instrument == Instrument::Snare && self.r#note == 18 { return 718; }
-        if self.r#instrument == Instrument::Xylophone && self.r#note == 11 && self.r#powered == true { return 1053; }
-        if self.r#instrument == Instrument::WitherSkeleton && self.r#note == 18 && self.r#powered == true { return 1617; }
-        if self.r#note == 12 && self.r#powered == true && self.r#instrument == Instrument::CustomHead { return 1705; }
-        if self.r#note == 21 && self.r#powered == false && self.r#instrument == Instrument::Harp { return 624; }
-        if self.r#instrument == Instrument::Bit && self.r#note == 3 && self.r#powered == true { return 1237; }
-        if self.r#instrument == Instrument::CustomHead && self.r#note == 21 && self.r#powered == true { return 1723; }
-        if self.r#powered == false && self.r#note == 15 && self.r#instrument == Instrument::Piglin { return 1662; }
-        if self.r#instrument == Instrument::Zombie && self.r#note == 7 && self.r#powered == false { return 1396; }
-        if self.r#instrument == Instrument::Creeper && self.r#note == 5 && self.r#powered == false { return 1492; }
-        if self.r#note == 23 && self.r#powered == true && self.r#instrument == Instrument::Dragon { return 1577; }
-        if self.r#instrument == Instrument::IronXylophone && self.r#note == 23 && self.r#powered == false { return 1128; }
-        if self.r#powered == true && self.r#note == 21 && self.r#instrument == Instrument::Bass { return 823; }
-        if self.r#instrument == Instrument::Skeleton && self.r#powered == true && self.r#note == 10 { return 1451; }
-        if self.r#note == 0 && self.r#powered == true && self.r#instrument == Instrument::Chime { return 981; }
-        if self.r#note == 24 && self.r#powered == true && self.r#instrument == Instrument::Skeleton { return 1479; }
-        if self.r#instrument == Instrument::Basedrum && self.r#note == 9 && self.r#powered == true { return 649; }
-        if self.r#note == 9 && self.r#instrument == Instrument::Zombie && self.r#powered == false { return 1400; }
-        if self.r#instrument == Instrument::IronXylophone && self.r#powered == false && self.r#note == 21 { return 1124; }
-        if self.r#powered == true && self.r#note == 8 && self.r#instrument == Instrument::Piglin { return 1647; }
-        if self.r#instrument == Instrument::Piglin && self.r#note == 23 && self.r#powered == false { return 1678; }
-        if self.r#instrument == Instrument::CustomHead && self.r#powered == false && self.r#note == 0 { return 1682; }
-        if self.r#note == 2 && self.r#powered == false && self.r#instrument == Instrument::Pling { return 1336; }
-        if self.r#powered == true && self.r#instrument == Instrument::Bass && self.r#note == 8 { return 797; }
-        if self.r#powered == true && self.r#instrument == Instrument::Chime && self.r#note == 19 { return 1019; }
-        if self.r#powered == true && self.r#instrument == Instrument::Chime && self.r#note == 18 { return 1017; }
-        if self.r#instrument == Instrument::Guitar && self.r#powered == false && self.r#note == 23 { return 978; }
-        if self.r#powered == true && self.r#note == 16 && self.r#instrument == Instrument::Banjo { return 1313; }
-        if self.r#instrument == Instrument::Xylophone && self.r#note == 17 && self.r#powered == false { return 1066; }
-        if self.r#powered == false && self.r#instrument == Instrument::Bass && self.r#note == 17 { return 816; }
-        if self.r#powered == true && self.r#instrument == Instrument::Basedrum && self.r#note == 6 { return 643; }
-        if self.r#instrument == Instrument::Bit && self.r#note == 17 && self.r#powered == true { return 1265; }
-        if self.r#instrument == Instrument::Zombie && self.r#powered == true && self.r#note == 19 { return 1419; }
-        if self.r#powered == true && self.r#instrument == Instrument::Bass && self.r#note == 9 { return 799; }
-        if self.r#instrument == Instrument::Bass && self.r#note == 10 && self.r#powered == false { return 802; }
-        if self.r#instrument == Instrument::Bit && self.r#powered == true && self.r#note == 9 { return 1249; }
-        if self.r#note == 5 && self.r#instrument == Instrument::IronXylophone && self.r#powered == false { return 1092; }
-        if self.r#instrument == Instrument::CustomHead && self.r#powered == false && self.r#note == 9 { return 1700; }
-        if self.r#instrument == Instrument::Banjo && self.r#powered == false && self.r#note == 3 { return 1288; }
-        if self.r#instrument == Instrument::Harp && self.r#powered == false && self.r#note == 7 { return 596; }
-        if self.r#powered == true && self.r#instrument == Instrument::Xylophone && self.r#note == 7 { return 1045; }
-        if self.r#note == 1 && self.r#powered == false && self.r#instrument == Instrument::Guitar { return 934; }
-        if self.r#powered == false && self.r#note == 21 && self.r#instrument == Instrument::Zombie { return 1424; }
-        if self.r#note == 13 && self.r#powered == true && self.r#instrument == Instrument::Pling { return 1357; }
-        if self.r#note == 0 && self.r#instrument == Instrument::Creeper && self.r#powered == false { return 1482; }
-        if self.r#powered == true && self.r#note == 24 && self.r#instrument == Instrument::Hat { return 779; }
-        if self.r#instrument == Instrument::Hat && self.r#powered == true && self.r#note == 20 { return 771; }
-        if self.r#instrument == Instrument::Skeleton && self.r#note == 8 && self.r#powered == false { return 1448; }
-        if self.r#powered == true && self.r#instrument == Instrument::Guitar && self.r#note == 3 { return 937; }
-        if self.r#note == 24 && self.r#powered == true && self.r#instrument == Instrument::Xylophone { return 1079; }
-        if self.r#instrument == Instrument::Didgeridoo && self.r#powered == true && self.r#note == 5 { return 1191; }
-        if self.r#instrument == Instrument::Pling && self.r#note == 17 && self.r#powered == true { return 1365; }
-        if self.r#note == 20 && self.r#powered == false && self.r#instrument == Instrument::Zombie { return 1422; }
-        if self.r#note == 21 && self.r#instrument == Instrument::Pling && self.r#powered == false { return 1374; }
-        if self.r#note == 11 && self.r#powered == true && self.r#instrument == Instrument::Basedrum { return 653; }
-        if self.r#note == 12 && self.r#powered == true && self.r#instrument == Instrument::Dragon { return 1555; }
-        if self.r#note == 0 && self.r#powered == false && self.r#instrument == Instrument::Snare { return 682; }
-        if self.r#note == 15 && self.r#powered == false && self.r#instrument == Instrument::Flute { return 862; }
-        if self.r#note == 4 && self.r#instrument == Instrument::Creeper && self.r#powered == false { return 1490; }
-        if self.r#powered == true && self.r#instrument == Instrument::Dragon && self.r#note == 0 { return 1531; }
-        if self.r#note == 19 && self.r#powered == true && self.r#instrument == Instrument::Flute { return 869; }
-        if self.r#instrument == Instrument::Didgeridoo && self.r#powered == false && self.r#note == 2 { return 1186; }
-        if self.r#instrument == Instrument::Banjo && self.r#note == 14 && self.r#powered == false { return 1310; }
-        if self.r#instrument == Instrument::CowBell && self.r#powered == false && self.r#note == 14 { return 1160; }
-        if self.r#note == 16 && self.r#powered == true && self.r#instrument == Instrument::Guitar { return 963; }
-        if self.r#instrument == Instrument::Bit && self.r#powered == true && self.r#note == 4 { return 1239; }
-        if self.r#instrument == Instrument::Piglin && self.r#note == 13 && self.r#powered == false { return 1658; }
-        if self.r#note == 6 && self.r#instrument == Instrument::CustomHead && self.r#powered == true { return 1693; }
-        if self.r#instrument == Instrument::Hat && self.r#note == 19 && self.r#powered == true { return 769; }
-        if self.r#note == 9 && self.r#powered == false && self.r#instrument == Instrument::Bass { return 800; }
-        if self.r#powered == true && self.r#instrument == Instrument::Basedrum && self.r#note == 15 { return 661; }
-        if self.r#powered == true && self.r#note == 1 && self.r#instrument == Instrument::Bell { return 883; }
-        if self.r#powered == false && self.r#instrument == Instrument::Creeper && self.r#note == 12 { return 1506; }
-        if self.r#instrument == Instrument::Harp && self.r#note == 12 && self.r#powered == true { return 605; }
-        if self.r#instrument == Instrument::Dragon && self.r#note == 13 && self.r#powered == true { return 1557; }
-        if self.r#note == 19 && self.r#instrument == Instrument::Bit && self.r#powered == false { return 1270; }
-        if self.r#instrument == Instrument::Harp && self.r#powered == false && self.r#note == 9 { return 600; }
-        if self.r#instrument == Instrument::Basedrum && self.r#powered == false && self.r#note == 11 { return 654; }
-        if self.r#instrument == Instrument::Bell && self.r#note == 19 && self.r#powered == true { return 919; }
-        if self.r#instrument == Instrument::Chime && self.r#powered == true && self.r#note == 17 { return 1015; }
-        if self.r#instrument == Instrument::Didgeridoo && self.r#note == 24 && self.r#powered == true { return 1229; }
-        if self.r#note == 11 && self.r#instrument == Instrument::Zombie && self.r#powered == true { return 1403; }
-        if self.r#powered == true && self.r#note == 17 && self.r#instrument == Instrument::Hat { return 765; }
-        if self.r#instrument == Instrument::Harp && self.r#note == 12 && self.r#powered == false { return 606; }
-        if self.r#note == 24 && self.r#instrument == Instrument::Guitar && self.r#powered == false { return 980; }
-        if self.r#note == 6 && self.r#powered == false && self.r#instrument == Instrument::CowBell { return 1144; }
-        if self.r#note == 12 && self.r#powered == true && self.r#instrument == Instrument::Guitar { return 955; }
-        if self.r#instrument == Instrument::Didgeridoo && self.r#note == 1 && self.r#powered == false { return 1184; }
-        if self.r#note == 4 && self.r#instrument == Instrument::Banjo && self.r#powered == false { return 1290; }
-        if self.r#instrument == Instrument::Banjo && self.r#note == 18 && self.r#powered == true { return 1317; }
-        if self.r#powered == true && self.r#instrument == Instrument::Pling && self.r#note == 9 { return 1349; }
-        if self.r#powered == false && self.r#instrument == Instrument::Xylophone && self.r#note == 13 { return 1058; }
-        if self.r#powered == false && self.r#instrument == Instrument::Bell && self.r#note == 4 { return 890; }
-        if self.r#powered == true && self.r#note == 22 && self.r#instrument == Instrument::Xylophone { return 1075; }
-        if self.r#powered == false && self.r#note == 2 && self.r#instrument == Instrument::Banjo { return 1286; }
-        if self.r#note == 12 && self.r#instrument == Instrument::Zombie && self.r#powered == false { return 1406; }
-        if self.r#instrument == Instrument::Hat && self.r#powered == true && self.r#note == 6 { return 743; }
-        if self.r#powered == true && self.r#note == 2 && self.r#instrument == Instrument::Piglin { return 1635; }
-        if self.r#powered == true && self.r#note == 21 && self.r#instrument == Instrument::Flute { return 873; }
-        if self.r#powered == true && self.r#instrument == Instrument::Xylophone && self.r#note == 18 { return 1067; }
-        if self.r#instrument == Instrument::Flute && self.r#note == 18 && self.r#powered == false { return 868; }
-        if self.r#instrument == Instrument::Snare && self.r#note == 3 && self.r#powered == false { return 688; }
-        if self.r#instrument == Instrument::Chime && self.r#powered == true && self.r#note == 23 { return 1027; }
-        if self.r#instrument == Instrument::Xylophone && self.r#powered == false && self.r#note == 4 { return 1040; }
-        if self.r#powered == false && self.r#instrument == Instrument::Zombie && self.r#note == 0 { return 1382; }
-        if self.r#powered == true && self.r#instrument == Instrument::Chime && self.r#note == 8 { return 997; }
-        if self.r#powered == false && self.r#instrument == Instrument::CustomHead && self.r#note == 16 { return 1714; }
-        if self.r#instrument == Instrument::IronXylophone && self.r#powered == false && self.r#note == 20 { return 1122; }
-        if self.r#powered == false && self.r#note == 10 && self.r#instrument == Instrument::Basedrum { return 652; }
-        if self.r#instrument == Instrument::Flute && self.r#note == 6 && self.r#powered == true { return 843; }
-        if self.r#note == 20 && self.r#powered == true && self.r#instrument == Instrument::Bell { return 921; }
-        if self.r#instrument == Instrument::Bass && self.r#note == 5 && self.r#powered == false { return 792; }
-        if self.r#instrument == Instrument::WitherSkeleton && self.r#note == 0 && self.r#powered == true { return 1581; }
-        if self.r#powered == true && self.r#instrument == Instrument::Guitar && self.r#note == 6 { return 943; }
-        if self.r#note == 14 && self.r#instrument == Instrument::Bell && self.r#powered == true { return 909; }
-        if self.r#instrument == Instrument::IronXylophone && self.r#note == 9 && self.r#powered == false { return 1100; }
-        if self.r#note == 18 && self.r#instrument == Instrument::Xylophone && self.r#powered == false { return 1068; }
-        if self.r#note == 9 && self.r#instrument == Instrument::WitherSkeleton && self.r#powered == true { return 1599; }
-        if self.r#powered == false && self.r#note == 14 && self.r#instrument == Instrument::Xylophone { return 1060; }
-        if self.r#note == 14 && self.r#instrument == Instrument::Bell && self.r#powered == false { return 910; }
-        if self.r#instrument == Instrument::Guitar && self.r#note == 0 && self.r#powered == true { return 931; }
-        if self.r#note == 6 && self.r#instrument == Instrument::CowBell && self.r#powered == true { return 1143; }
-        if self.r#powered == true && self.r#instrument == Instrument::IronXylophone && self.r#note == 24 { return 1129; }
-        if self.r#instrument == Instrument::Pling && self.r#note == 12 && self.r#powered == true { return 1355; }
-        if self.r#powered == false && self.r#instrument == Instrument::Harp && self.r#note == 17 { return 616; }
-        if self.r#note == 5 && self.r#powered == false && self.r#instrument == Instrument::Bell { return 892; }
-        if self.r#instrument == Instrument::Didgeridoo && self.r#powered == true && self.r#note == 3 { return 1187; }
-        if self.r#powered == false && self.r#instrument == Instrument::CustomHead && self.r#note == 12 { return 1706; }
-        if self.r#powered == false && self.r#note == 6 && self.r#instrument == Instrument::Piglin { return 1644; }
-        if self.r#note == 12 && self.r#powered == true && self.r#instrument == Instrument::Snare { return 705; }
-        if self.r#powered == true && self.r#note == 19 && self.r#instrument == Instrument::Banjo { return 1319; }
-        if self.r#powered == true && self.r#instrument == Instrument::Banjo && self.r#note == 11 { return 1303; }
-        if self.r#note == 15 && self.r#instrument == Instrument::Dragon && self.r#powered == true { return 1561; }
-        if self.r#note == 8 && self.r#instrument == Instrument::Piglin && self.r#powered == false { return 1648; }
-        if self.r#powered == false && self.r#note == 7 && self.r#instrument == Instrument::Creeper { return 1496; }
-        if self.r#note == 8 && self.r#powered == true && self.r#instrument == Instrument::Didgeridoo { return 1197; }
-        if self.r#instrument == Instrument::Hat && self.r#note == 10 && self.r#powered == true { return 751; }
-        if self.r#powered == false && self.r#instrument == Instrument::Skeleton && self.r#note == 0 { return 1432; }
-        if self.r#note == 23 && self.r#instrument == Instrument::Skeleton && self.r#powered == true { return 1477; }
-        if self.r#note == 13 && self.r#instrument == Instrument::IronXylophone && self.r#powered == false { return 1108; }
-        if self.r#instrument == Instrument::Xylophone && self.r#note == 0 && self.r#powered == true { return 1031; }
-        if self.r#powered == true && self.r#instrument == Instrument::Didgeridoo && self.r#note == 10 { return 1201; }
-        if self.r#powered == false && self.r#instrument == Instrument::Piglin && self.r#note == 19 { return 1670; }
-        if self.r#instrument == Instrument::WitherSkeleton && self.r#note == 12 && self.r#powered == false { return 1606; }
-        if self.r#powered == true && self.r#instrument == Instrument::Snare && self.r#note == 8 { return 697; }
-        if self.r#powered == true && self.r#note == 3 && self.r#instrument == Instrument::WitherSkeleton { return 1587; }
-        if self.r#note == 2 && self.r#powered == false && self.r#instrument == Instrument::Piglin { return 1636; }
-        if self.r#powered == true && self.r#note == 15 && self.r#instrument == Instrument::IronXylophone { return 1111; }
-        if self.r#powered == false && self.r#instrument == Instrument::Didgeridoo && self.r#note == 22 { return 1226; }
-        if self.r#note == 14 && self.r#powered == true && self.r#instrument == Instrument::Guitar { return 959; }
-        if self.r#note == 23 && self.r#powered == false && self.r#instrument == Instrument::Basedrum { return 678; }
-        if self.r#powered == true && self.r#note == 2 && self.r#instrument == Instrument::Hat { return 735; }
-        if self.r#note == 11 && self.r#instrument == Instrument::Hat && self.r#powered == false { return 754; }
-        if self.r#note == 23 && self.r#powered == false && self.r#instrument == Instrument::CowBell { return 1178; }
-        if self.r#instrument == Instrument::Bass && self.r#powered == true && self.r#note == 17 { return 815; }
-        if self.r#instrument == Instrument::Pling && self.r#note == 5 && self.r#powered == true { return 1341; }
-        if self.r#note == 2 && self.r#instrument == Instrument::Bass && self.r#powered == true { return 785; }
-        if self.r#powered == true && self.r#note == 1 && self.r#instrument == Instrument::Flute { return 833; }
-        if self.r#note == 1 && self.r#instrument == Instrument::Zombie && self.r#powered == false { return 1384; }
-        if self.r#powered == true && self.r#note == 2 && self.r#instrument == Instrument::Bell { return 885; }
-        if self.r#note == 18 && self.r#powered == true && self.r#instrument == Instrument::Flute { return 867; }
-        if self.r#note == 11 && self.r#powered == false && self.r#instrument == Instrument::Guitar { return 954; }
-        if self.r#instrument == Instrument::Chime && self.r#note == 13 && self.r#powered == false { return 1008; }
-        if self.r#instrument == Instrument::IronXylophone && self.r#note == 2 && self.r#powered == false { return 1086; }
-        if self.r#note == 8 && self.r#powered == false && self.r#instrument == Instrument::Harp { return 598; }
-        if self.r#note == 14 && self.r#instrument == Instrument::IronXylophone && self.r#powered == true { return 1109; }
-        if self.r#instrument == Instrument::Banjo && self.r#note == 22 && self.r#powered == false { return 1326; }
-        if self.r#instrument == Instrument::Creeper && self.r#note == 24 && self.r#powered == false { return 1530; }
-        if self.r#powered == true && self.r#instrument == Instrument::Pling && self.r#note == 18 { return 1367; }
-        if self.r#note == 19 && self.r#powered == false && self.r#instrument == Instrument::WitherSkeleton { return 1620; }
-        if self.r#instrument == Instrument::Basedrum && self.r#note == 10 && self.r#powered == true { return 651; }
-        if self.r#instrument == Instrument::IronXylophone && self.r#note == 19 && self.r#powered == true { return 1119; }
-        if self.r#instrument == Instrument::Banjo && self.r#note == 20 && self.r#powered == false { return 1322; }
-        if self.r#powered == true && self.r#note == 17 && self.r#instrument == Instrument::Flute { return 865; }
-        if self.r#powered == false && self.r#instrument == Instrument::Flute && self.r#note == 0 { return 832; }
-        if self.r#note == 7 && self.r#powered == false && self.r#instrument == Instrument::Bell { return 896; }
-        if self.r#note == 15 && self.r#powered == true && self.r#instrument == Instrument::CowBell { return 1161; }
-        if self.r#powered == true && self.r#note == 23 && self.r#instrument == Instrument::Pling { return 1377; }
-        if self.r#note == 8 && self.r#instrument == Instrument::IronXylophone && self.r#powered == false { return 1098; }
-        if self.r#instrument == Instrument::Pling && self.r#powered == true && self.r#note == 21 { return 1373; }
-        if self.r#note == 5 && self.r#powered == false && self.r#instrument == Instrument::CustomHead { return 1692; }
-        if self.r#instrument == Instrument::Dragon && self.r#note == 20 && self.r#powered == true { return 1571; }
-        if self.r#powered == false && self.r#instrument == Instrument::Basedrum && self.r#note == 1 { return 634; }
-        if self.r#instrument == Instrument::CowBell && self.r#powered == false && self.r#note == 2 { return 1136; }
-        if self.r#note == 5 && self.r#instrument == Instrument::Skeleton && self.r#powered == false { return 1442; }
-        if self.r#instrument == Instrument::Creeper && self.r#note == 1 && self.r#powered == true { return 1483; }
-        if self.r#note == 4 && self.r#powered == true && self.r#instrument == Instrument::CustomHead { return 1689; }
-        if self.r#note == 22 && self.r#instrument == Instrument::Snare && self.r#powered == true { return 725; }
-        if self.r#powered == false && self.r#instrument == Instrument::Hat && self.r#note == 22 { return 776; }
-        if self.r#powered == false && self.r#instrument == Instrument::Creeper && self.r#note == 10 { return 1502; }
-        if self.r#powered == false && self.r#note == 22 && self.r#instrument == Instrument::Bit { return 1276; }
-        if self.r#instrument == Instrument::Xylophone && self.r#note == 20 && self.r#powered == true { return 1071; }
-        if self.r#powered == false && self.r#instrument == Instrument::Xylophone && self.r#note == 3 { return 1038; }
-        if self.r#instrument == Instrument::Zombie && self.r#note == 15 && self.r#powered == true { return 1411; }
-        if self.r#powered == true && self.r#instrument == Instrument::Xylophone && self.r#note == 21 { return 1073; }
-        if self.r#note == 1 && self.r#powered == true && self.r#instrument == Instrument::Harp { return 583; }
-        if self.r#instrument == Instrument::Dragon && self.r#note == 21 && self.r#powered == false { return 1574; }
-        if self.r#powered == true && self.r#instrument == Instrument::IronXylophone && self.r#note == 17 { return 1115; }
-        if self.r#note == 7 && self.r#powered == false && self.r#instrument == Instrument::WitherSkeleton { return 1596; }
-        if self.r#powered == false && self.r#note == 22 && self.r#instrument == Instrument::IronXylophone { return 1126; }
-        if self.r#note == 9 && self.r#instrument == Instrument::Skeleton && self.r#powered == false { return 1450; }
-        if self.r#instrument == Instrument::Hat && self.r#note == 20 && self.r#powered == false { return 772; }
-        if self.r#instrument == Instrument::IronXylophone && self.r#note == 10 && self.r#powered == true { return 1101; }
-        if self.r#instrument == Instrument::Bell && self.r#powered == true && self.r#note == 10 { return 901; }
-        if self.r#note == 1 && self.r#powered == true && self.r#instrument == Instrument::Hat { return 733; }
-        if self.r#instrument == Instrument::Pling && self.r#note == 16 && self.r#powered == true { return 1363; }
-        if self.r#note == 1 && self.r#powered == false && self.r#instrument == Instrument::Bass { return 784; }
-        if self.r#note == 20 && self.r#powered == true && self.r#instrument == Instrument::Bit { return 1271; }
-        if self.r#note == 21 && self.r#powered == true && self.r#instrument == Instrument::Chime { return 1023; }
-        if self.r#note == 2 && self.r#powered == true && self.r#instrument == Instrument::Xylophone { return 1035; }
-        if self.r#instrument == Instrument::Xylophone && self.r#powered == true && self.r#note == 9 { return 1049; }
-        if self.r#note == 15 && self.r#instrument == Instrument::Pling && self.r#powered == false { return 1362; }
-        if self.r#note == 9 && self.r#powered == false && self.r#instrument == Instrument::Basedrum { return 650; }
-        if self.r#note == 23 && self.r#powered == true && self.r#instrument == Instrument::Basedrum { return 677; }
-        if self.r#powered == false && self.r#instrument == Instrument::Pling && self.r#note == 17 { return 1366; }
-        if self.r#note == 7 && self.r#instrument == Instrument::Snare && self.r#powered == false { return 696; }
-        if self.r#powered == true && self.r#instrument == Instrument::Banjo && self.r#note == 15 { return 1311; }
-        if self.r#powered == true && self.r#instrument == Instrument::Skeleton && self.r#note == 16 { return 1463; }
-        if self.r#instrument == Instrument::Basedrum && self.r#powered == true && self.r#note == 0 { return 631; }
-        if self.r#instrument == Instrument::CustomHead && self.r#note == 20 && self.r#powered == false { return 1722; }
-        if self.r#note == 19 && self.r#powered == false && self.r#instrument == Instrument::Creeper { return 1520; }
-        if self.r#powered == true && self.r#instrument == Instrument::Bass && self.r#note == 23 { return 827; }
-        if self.r#powered == false && self.r#instrument == Instrument::Banjo && self.r#note == 10 { return 1302; }
-        if self.r#powered == true && self.r#instrument == Instrument::Hat && self.r#note == 9 { return 749; }
-        if self.r#note == 17 && self.r#instrument == Instrument::Xylophone && self.r#powered == true { return 1065; }
-        if self.r#powered == true && self.r#instrument == Instrument::Chime && self.r#note == 20 { return 1021; }
-        if self.r#powered == false && self.r#instrument == Instrument::Banjo && self.r#note == 17 { return 1316; }
-        if self.r#note == 8 && self.r#powered == false && self.r#instrument == Instrument::CowBell { return 1148; }
-        if self.r#powered == true && self.r#instrument == Instrument::Dragon && self.r#note == 24 { return 1579; }
-        if self.r#note == 23 && self.r#powered == true && self.r#instrument == Instrument::Bell { return 927; }
-        if self.r#powered == false && self.r#instrument == Instrument::Snare && self.r#note == 14 { return 710; }
-        if self.r#note == 13 && self.r#instrument == Instrument::Pling && self.r#powered == false { return 1358; }
-        if self.r#note == 3 && self.r#instrument == Instrument::CowBell && self.r#powered == false { return 1138; }
-        if self.r#instrument == Instrument::CustomHead && self.r#note == 21 && self.r#powered == false { return 1724; }
-        if self.r#note == 18 && self.r#instrument == Instrument::Bit && self.r#powered == true { return 1267; }
-        if self.r#instrument == Instrument::Piglin && self.r#note == 15 && self.r#powered == true { return 1661; }
-        if self.r#powered == false && self.r#note == 1 && self.r#instrument == Instrument::Snare { return 684; }
-        if self.r#powered == false && self.r#instrument == Instrument::CowBell && self.r#note == 13 { return 1158; }
-        if self.r#note == 20 && self.r#instrument == Instrument::Creeper && self.r#powered == false { return 1522; }
-        if self.r#note == 21 && self.r#powered == true && self.r#instrument == Instrument::Hat { return 773; }
-        if self.r#powered == false && self.r#instrument == Instrument::Bass && self.r#note == 14 { return 810; }
-        if self.r#note == 0 && self.r#powered == false && self.r#instrument == Instrument::CowBell { return 1132; }
-        if self.r#note == 16 && self.r#instrument == Instrument::Creeper && self.r#powered == false { return 1514; }
-        if self.r#note == 9 && self.r#instrument == Instrument::Harp && self.r#powered == true { return 599; }
-        if self.r#instrument == Instrument::Bass && self.r#note == 18 && self.r#powered == false { return 818; }
-        if self.r#note == 7 && self.r#powered == false && self.r#instrument == Instrument::Pling { return 1346; }
-        if self.r#powered == true && self.r#note == 16 && self.r#instrument == Instrument::Bell { return 913; }
-        if self.r#note == 16 && self.r#powered == false && self.r#instrument == Instrument::Zombie { return 1414; }
-        if self.r#instrument == Instrument::Dragon && self.r#note == 5 && self.r#powered == true { return 1541; }
-        if self.r#powered == true && self.r#instrument == Instrument::Basedrum && self.r#note == 8 { return 647; }
-        if self.r#note == 10 && self.r#powered == false && self.r#instrument == Instrument::Flute { return 852; }
-        if self.r#instrument == Instrument::Guitar && self.r#note == 15 && self.r#powered == true { return 961; }
-        if self.r#note == 7 && self.r#powered == true && self.r#instrument == Instrument::WitherSkeleton { return 1595; }
-        if self.r#powered == false && self.r#instrument == Instrument::Bell && self.r#note == 23 { return 928; }
-        if self.r#note == 3 && self.r#instrument == Instrument::CustomHead && self.r#powered == true { return 1687; }
-        if self.r#instrument == Instrument::Bass && self.r#note == 10 && self.r#powered == true { return 801; }
-        if self.r#instrument == Instrument::IronXylophone && self.r#note == 4 && self.r#powered == true { return 1089; }
-        if self.r#note == 15 && self.r#powered == false && self.r#instrument == Instrument::Snare { return 712; }
-        if self.r#powered == false && self.r#note == 6 && self.r#instrument == Instrument::Xylophone { return 1044; }
-        if self.r#instrument == Instrument::Bass && self.r#note == 20 && self.r#powered == false { return 822; }
-        if self.r#instrument == Instrument::Pling && self.r#powered == false && self.r#note == 3 { return 1338; }
-        if self.r#note == 19 && self.r#powered == true && self.r#instrument == Instrument::WitherSkeleton { return 1619; }
-        if self.r#powered == false && self.r#instrument == Instrument::Zombie && self.r#note == 19 { return 1420; }
-        if self.r#powered == true && self.r#instrument == Instrument::Hat && self.r#note == 4 { return 739; }
-        if self.r#powered == true && self.r#note == 6 && self.r#instrument == Instrument::Didgeridoo { return 1193; }
-        if self.r#note == 9 && self.r#powered == false && self.r#instrument == Instrument::Didgeridoo { return 1200; }
-        if self.r#powered == false && self.r#instrument == Instrument::Harp && self.r#note == 1 { return 584; }
-        if self.r#powered == false && self.r#instrument == Instrument::Dragon && self.r#note == 13 { return 1558; }
-        if self.r#instrument == Instrument::Flute && self.r#note == 6 && self.r#powered == false { return 844; }
-        if self.r#powered == true && self.r#instrument == Instrument::Piglin && self.r#note == 6 { return 1643; }
-        if self.r#powered == true && self.r#note == 20 && self.r#instrument == Instrument::WitherSkeleton { return 1621; }
-        if self.r#instrument == Instrument::WitherSkeleton && self.r#powered == true && self.r#note == 1 { return 1583; }
-        if self.r#instrument == Instrument::Basedrum && self.r#powered == false && self.r#note == 3 { return 638; }
-        if self.r#powered == false && self.r#instrument == Instrument::Flute && self.r#note == 20 { return 872; }
-        if self.r#powered == false && self.r#instrument == Instrument::Bass && self.r#note == 11 { return 804; }
-        if self.r#instrument == Instrument::Zombie && self.r#note == 2 && self.r#powered == false { return 1386; }
-        if self.r#powered == false && self.r#instrument == Instrument::WitherSkeleton && self.r#note == 23 { return 1628; }
-        if self.r#note == 2 && self.r#instrument == Instrument::Chime && self.r#powered == false { return 986; }
-        if self.r#powered == false && self.r#note == 24 && self.r#instrument == Instrument::Pling { return 1380; }
-        if self.r#powered == true && self.r#instrument == Instrument::Didgeridoo && self.r#note == 0 { return 1181; }
-        if self.r#instrument == Instrument::Didgeridoo && self.r#powered == false && self.r#note == 15 { return 1212; }
-        if self.r#note == 18 && self.r#powered == true && self.r#instrument == Instrument::Zombie { return 1417; }
-        if self.r#powered == false && self.r#note == 20 && self.r#instrument == Instrument::Xylophone { return 1072; }
-        if self.r#note == 22 && self.r#instrument == Instrument::Piglin && self.r#powered == true { return 1675; }
-        if self.r#instrument == Instrument::Bass && self.r#note == 12 && self.r#powered == false { return 806; }
-        if self.r#instrument == Instrument::Pling && self.r#powered == false && self.r#note == 6 { return 1344; }
-        if self.r#note == 11 && self.r#instrument == Instrument::WitherSkeleton && self.r#powered == false { return 1604; }
-        if self.r#powered == true && self.r#instrument == Instrument::Bell && self.r#note == 3 { return 887; }
-        if self.r#instrument == Instrument::CowBell && self.r#note == 14 && self.r#powered == true { return 1159; }
-        if self.r#note == 11 && self.r#powered == false && self.r#instrument == Instrument::IronXylophone { return 1104; }
-        if self.r#powered == false && self.r#instrument == Instrument::Piglin && self.r#note == 22 { return 1676; }
-        if self.r#note == 11 && self.r#powered == false && self.r#instrument == Instrument::Xylophone { return 1054; }
-        if self.r#note == 12 && self.r#instrument == Instrument::Xylophone && self.r#powered == true { return 1055; }
-        if self.r#instrument == Instrument::IronXylophone && self.r#note == 13 && self.r#powered == true { return 1107; }
-        if self.r#powered == true && self.r#instrument == Instrument::Didgeridoo && self.r#note == 1 { return 1183; }
-        if self.r#instrument == Instrument::Didgeridoo && self.r#note == 12 && self.r#powered == true { return 1205; }
-        if self.r#instrument == Instrument::Creeper && self.r#note == 11 && self.r#powered == false { return 1504; }
-        if self.r#powered == true && self.r#note == 0 && self.r#instrument == Instrument::Pling { return 1331; }
-        if self.r#powered == true && self.r#instrument == Instrument::CowBell && self.r#note == 23 { return 1177; }
-        if self.r#powered == true && self.r#instrument == Instrument::Banjo && self.r#note == 14 { return 1309; }
-        if self.r#note == 4 && self.r#instrument == Instrument::Zombie && self.r#powered == true { return 1389; }
-        if self.r#note == 13 && self.r#powered == true && self.r#instrument == Instrument::Chime { return 1007; }
-        if self.r#powered == true && self.r#instrument == Instrument::WitherSkeleton && self.r#note == 5 { return 1591; }
-        if self.r#instrument == Instrument::Bass && self.r#note == 16 && self.r#powered == true { return 813; }
-        if self.r#note == 0 && self.r#powered == false && self.r#instrument == Instrument::WitherSkeleton { return 1582; }
-        if self.r#note == 0 && self.r#instrument == Instrument::Harp && self.r#powered == false { return 582; }
-        if self.r#instrument == Instrument::Snare && self.r#note == 22 && self.r#powered == false { return 726; }
-        if self.r#powered == false && self.r#instrument == Instrument::Banjo && self.r#note == 15 { return 1312; }
-        if self.r#instrument == Instrument::Bell && self.r#note == 11 && self.r#powered == false { return 904; }
-        if self.r#instrument == Instrument::Harp && self.r#note == 10 && self.r#powered == false { return 602; }
-        if self.r#instrument == Instrument::IronXylophone && self.r#note == 3 && self.r#powered == false { return 1088; }
-        if self.r#instrument == Instrument::Skeleton && self.r#note == 11 && self.r#powered == false { return 1454; }
-        if self.r#instrument == Instrument::Creeper && self.r#powered == true && self.r#note == 0 { return 1481; }
-        if self.r#powered == false && self.r#instrument == Instrument::Bell && self.r#note == 18 { return 918; }
-        if self.r#instrument == Instrument::CustomHead && self.r#note == 23 && self.r#powered == false { return 1728; }
-        if self.r#instrument == Instrument::CowBell && self.r#note == 17 && self.r#powered == true { return 1165; }
-        if self.r#note == 4 && self.r#instrument == Instrument::WitherSkeleton && self.r#powered == false { return 1590; }
-        if self.r#powered == true && self.r#instrument == Instrument::Pling && self.r#note == 8 { return 1347; }
-        if self.r#note == 18 && self.r#instrument == Instrument::CustomHead && self.r#powered == false { return 1718; }
-        if self.r#instrument == Instrument::Dragon && self.r#note == 16 && self.r#powered == true { return 1563; }
-        if self.r#note == 9 && self.r#powered == false && self.r#instrument == Instrument::Guitar { return 950; }
-        if self.r#powered == true && self.r#instrument == Instrument::Zombie && self.r#note == 0 { return 1381; }
-        if self.r#instrument == Instrument::Piglin && self.r#powered == true && self.r#note == 7 { return 1645; }
-        if self.r#instrument == Instrument::Pling && self.r#note == 10 && self.r#powered == false { return 1352; }
-        if self.r#instrument == Instrument::Hat && self.r#powered == false && self.r#note == 15 { return 762; }
-        if self.r#note == 6 && self.r#powered == true && self.r#instrument == Instrument::Creeper { return 1493; }
-        if self.r#powered == false && self.r#note == 5 && self.r#instrument == Instrument::Banjo { return 1292; }
-        if self.r#powered == false && self.r#instrument == Instrument::Bell && self.r#note == 1 { return 884; }
-        if self.r#powered == false && self.r#instrument == Instrument::Flute && self.r#note == 2 { return 836; }
-        if self.r#instrument == Instrument::Guitar && self.r#note == 10 && self.r#powered == true { return 951; }
-        if self.r#note == 16 && self.r#instrument == Instrument::Banjo && self.r#powered == false { return 1314; }
-        if self.r#powered == false && self.r#instrument == Instrument::Zombie && self.r#note == 22 { return 1426; }
-        if self.r#powered == false && self.r#instrument == Instrument::Banjo && self.r#note == 24 { return 1330; }
-        if self.r#instrument == Instrument::CustomHead && self.r#note == 17 && self.r#powered == true { return 1715; }
-        if self.r#instrument == Instrument::Zombie && self.r#powered == false && self.r#note == 24 { return 1430; }
-        if self.r#note == 13 && self.r#powered == true && self.r#instrument == Instrument::Bass { return 807; }
-        if self.r#powered == false && self.r#instrument == Instrument::Bell && self.r#note == 9 { return 900; }
-        if self.r#powered == true && self.r#note == 24 && self.r#instrument == Instrument::Bit { return 1279; }
-        if self.r#instrument == Instrument::IronXylophone && self.r#note == 16 && self.r#powered == true { return 1113; }
-        if self.r#instrument == Instrument::Basedrum && self.r#note == 19 && self.r#powered == true { return 669; }
-        if self.r#note == 23 && self.r#instrument == Instrument::Didgeridoo && self.r#powered == false { return 1228; }
-        if self.r#instrument == Instrument::Snare && self.r#note == 19 && self.r#powered == false { return 720; }
-        if self.r#note == 14 && self.r#instrument == Instrument::Zombie && self.r#powered == false { return 1410; }
-        if self.r#note == 12 && self.r#powered == true && self.r#instrument == Instrument::Skeleton { return 1455; }
-        if self.r#note == 18 && self.r#powered == true && self.r#instrument == Instrument::Dragon { return 1567; }
-        if self.r#note == 0 && self.r#instrument == Instrument::Snare && self.r#powered == true { return 681; }
-        if self.r#powered == false && self.r#instrument == Instrument::Guitar && self.r#note == 5 { return 942; }
-        if self.r#powered == false && self.r#instrument == Instrument::Banjo && self.r#note == 0 { return 1282; }
-        if self.r#instrument == Instrument::Zombie && self.r#powered == false && self.r#note == 3 { return 1388; }
-        if self.r#instrument == Instrument::Bell && self.r#powered == true && self.r#note == 22 { return 925; }
-        if self.r#powered == false && self.r#instrument == Instrument::Hat && self.r#note == 12 { return 756; }
-        if self.r#instrument == Instrument::Basedrum && self.r#note == 12 && self.r#powered == false { return 656; }
-        if self.r#instrument == Instrument::WitherSkeleton && self.r#note == 18 && self.r#powered == false { return 1618; }
-        if self.r#powered == true && self.r#note == 3 && self.r#instrument == Instrument::Harp { return 587; }
-        if self.r#instrument == Instrument::Hat && self.r#note == 21 && self.r#powered == false { return 774; }
-        if self.r#instrument == Instrument::Zombie && self.r#note == 13 && self.r#powered == false { return 1408; }
-        if self.r#instrument == Instrument::Basedrum && self.r#note == 21 && self.r#powered == false { return 674; }
-        if self.r#instrument == Instrument::Guitar && self.r#powered == true && self.r#note == 9 { return 949; }
-        if self.r#powered == true && self.r#instrument == Instrument::Basedrum && self.r#note == 16 { return 663; }
-        if self.r#instrument == Instrument::Bell && self.r#powered == true && self.r#note == 7 { return 895; }
-        if self.r#powered == false && self.r#instrument == Instrument::Chime && self.r#note == 8 { return 998; }
-        if self.r#powered == true && self.r#note == 13 && self.r#instrument == Instrument::Flute { return 857; }
-        if self.r#instrument == Instrument::CustomHead && self.r#note == 18 && self.r#powered == true { return 1717; }
-        if self.r#note == 6 && self.r#powered == false && self.r#instrument == Instrument::Dragon { return 1544; }
-        if self.r#note == 10 && self.r#powered == false && self.r#instrument == Instrument::Dragon { return 1552; }
-        if self.r#instrument == Instrument::Basedrum && self.r#note == 24 && self.r#powered == true { return 679; }
-        if self.r#instrument == Instrument::CustomHead && self.r#powered == false && self.r#note == 7 { return 1696; }
-        if self.r#note == 20 && self.r#instrument == Instrument::CowBell && self.r#powered == false { return 1172; }
-        if self.r#instrument == Instrument::Piglin && self.r#note == 18 && self.r#powered == false { return 1668; }
-        if self.r#note == 16 && self.r#instrument == Instrument::Harp && self.r#powered == false { return 614; }
-        if self.r#note == 10 && self.r#instrument == Instrument::Flute && self.r#powered == true { return 851; }
-        if self.r#instrument == Instrument::Skeleton && self.r#note == 21 && self.r#powered == false { return 1474; }
-        if self.r#powered == true && self.r#instrument == Instrument::Bass && self.r#note == 14 { return 809; }
-        if self.r#note == 21 && self.r#powered == false && self.r#instrument == Instrument::Creeper { return 1524; }
-        if self.r#powered == false && self.r#instrument == Instrument::Bell && self.r#note == 15 { return 912; }
-        if self.r#instrument == Instrument::IronXylophone && self.r#note == 18 && self.r#powered == false { return 1118; }
-        if self.r#instrument == Instrument::Bell && self.r#note == 3 && self.r#powered == false { return 888; }
-        if self.r#note == 1 && self.r#powered == true && self.r#instrument == Instrument::Guitar { return 933; }
-        if self.r#instrument == Instrument::Banjo && self.r#note == 17 && self.r#powered == true { return 1315; }
-        if self.r#note == 15 && self.r#instrument == Instrument::Flute && self.r#powered == true { return 861; }
-        if self.r#note == 18 && self.r#powered == true && self.r#instrument == Instrument::Bass { return 817; }
-        if self.r#powered == true && self.r#instrument == Instrument::WitherSkeleton && self.r#note == 16 { return 1613; }
-        if self.r#powered == false && self.r#instrument == Instrument::Creeper && self.r#note == 8 { return 1498; }
-        if self.r#instrument == Instrument::Skeleton && self.r#powered == false && self.r#note == 13 { return 1458; }
-        if self.r#note == 20 && self.r#powered == true && self.r#instrument == Instrument::Flute { return 871; }
-        if self.r#instrument == Instrument::Didgeridoo && self.r#note == 16 && self.r#powered == false { return 1214; }
-        if self.r#note == 14 && self.r#instrument == Instrument::Snare && self.r#powered == true { return 709; }
-        if self.r#instrument == Instrument::Hat && self.r#note == 18 && self.r#powered == false { return 768; }
-        if self.r#instrument == Instrument::CowBell && self.r#powered == false && self.r#note == 1 { return 1134; }
-        if self.r#note == 11 && self.r#powered == false && self.r#instrument == Instrument::Didgeridoo { return 1204; }
-        if self.r#powered == false && self.r#instrument == Instrument::Bit && self.r#note == 21 { return 1274; }
-        if self.r#powered == true && self.r#note == 13 && self.r#instrument == Instrument::Didgeridoo { return 1207; }
-        if self.r#powered == true && self.r#instrument == Instrument::Snare && self.r#note == 20 { return 721; }
-        if self.r#instrument == Instrument::CowBell && self.r#note == 16 && self.r#powered == true { return 1163; }
-        if self.r#note == 12 && self.r#instrument == Instrument::Didgeridoo && self.r#powered == false { return 1206; }
-        if self.r#powered == true && self.r#instrument == Instrument::Pling && self.r#note == 7 { return 1345; }
-        if self.r#instrument == Instrument::Chime && self.r#note == 6 && self.r#powered == true { return 993; }
-        if self.r#powered == true && self.r#instrument == Instrument::Skeleton && self.r#note == 8 { return 1447; }
-        if self.r#note == 11 && self.r#instrument == Instrument::Harp && self.r#powered == true { return 603; }
-        if self.r#note == 20 && self.r#instrument == Instrument::Basedrum && self.r#powered == false { return 672; }
-        if self.r#powered == false && self.r#instrument == Instrument::CowBell && self.r#note == 7 { return 1146; }
-        if self.r#note == 1 && self.r#powered == false && self.r#instrument == Instrument::IronXylophone { return 1084; }
-        if self.r#instrument == Instrument::Zombie && self.r#note == 1 && self.r#powered == true { return 1383; }
-        if self.r#note == 1 && self.r#instrument == Instrument::Flute && self.r#powered == false { return 834; }
-        if self.r#powered == false && self.r#instrument == Instrument::Bell && self.r#note == 24 { return 930; }
-        if self.r#powered == false && self.r#instrument == Instrument::Xylophone && self.r#note == 24 { return 1080; }
-        if self.r#note == 21 && self.r#instrument == Instrument::Zombie && self.r#powered == true { return 1423; }
-        if self.r#instrument == Instrument::Skeleton && self.r#powered == false && self.r#note == 24 { return 1480; }
-        if self.r#powered == false && self.r#instrument == Instrument::Xylophone && self.r#note == 7 { return 1046; }
-        if self.r#powered == false && self.r#instrument == Instrument::Bass && self.r#note == 7 { return 796; }
-        if self.r#instrument == Instrument::Zombie && self.r#note == 10 && self.r#powered == true { return 1401; }
-        if self.r#instrument == Instrument::Chime && self.r#powered == true && self.r#note == 24 { return 1029; }
-        if self.r#powered == false && self.r#note == 19 && self.r#instrument == Instrument::Harp { return 620; }
-        if self.r#note == 9 && self.r#instrument == Instrument::Pling && self.r#powered == false { return 1350; }
-        if self.r#instrument == Instrument::Hat && self.r#powered == true && self.r#note == 5 { return 741; }
-        if self.r#note == 23 && self.r#instrument == Instrument::Xylophone && self.r#powered == false { return 1078; }
-        if self.r#powered == true && self.r#instrument == Instrument::Pling && self.r#note == 3 { return 1337; }
-        if self.r#powered == false && self.r#instrument == Instrument::Flute && self.r#note == 21 { return 874; }
-        if self.r#instrument == Instrument::IronXylophone && self.r#powered == true && self.r#note == 21 { return 1123; }
-        if self.r#instrument == Instrument::Snare && self.r#note == 13 && self.r#powered == false { return 708; }
-        if self.r#note == 1 && self.r#instrument == Instrument::Dragon && self.r#powered == true { return 1533; }
-        if self.r#instrument == Instrument::Flute && self.r#note == 22 && self.r#powered == true { return 875; }
-        if self.r#powered == false && self.r#note == 22 && self.r#instrument == Instrument::Flute { return 876; }
-        if self.r#instrument == Instrument::Chime && self.r#powered == true && self.r#note == 7 { return 995; }
-        if self.r#powered == false && self.r#instrument == Instrument::Skeleton && self.r#note == 17 { return 1466; }
-        if self.r#instrument == Instrument::Xylophone && self.r#note == 21 && self.r#powered == false { return 1074; }
-        if self.r#note == 5 && self.r#powered == true && self.r#instrument == Instrument::Guitar { return 941; }
-        if self.r#note == 19 && self.r#powered == false && self.r#instrument == Instrument::Guitar { return 970; }
-        if self.r#instrument == Instrument::Skeleton && self.r#powered == false && self.r#note == 14 { return 1460; }
-        if self.r#powered == true && self.r#instrument == Instrument::Creeper && self.r#note == 5 { return 1491; }
-        if self.r#powered == true && self.r#note == 23 && self.r#instrument == Instrument::Banjo { return 1327; }
-        if self.r#powered == false && self.r#note == 14 && self.r#instrument == Instrument::CustomHead { return 1710; }
-        if self.r#note == 24 && self.r#powered == false && self.r#instrument == Instrument::Harp { return 630; }
-        if self.r#note == 17 && self.r#powered == false && self.r#instrument == Instrument::IronXylophone { return 1116; }
-        if self.r#powered == true && self.r#instrument == Instrument::Hat && self.r#note == 8 { return 747; }
-        if self.r#note == 22 && self.r#instrument == Instrument::Chime && self.r#powered == true { return 1025; }
-        if self.r#powered == false && self.r#note == 1 && self.r#instrument == Instrument::Chime { return 984; }
-        if self.r#note == 24 && self.r#powered == false && self.r#instrument == Instrument::IronXylophone { return 1130; }
-        if self.r#note == 18 && self.r#powered == false && self.r#instrument == Instrument::Zombie { return 1418; }
-        if self.r#powered == true && self.r#instrument == Instrument::Zombie && self.r#note == 6 { return 1393; }
-        if self.r#note == 9 && self.r#powered == true && self.r#instrument == Instrument::Piglin { return 1649; }
-        if self.r#instrument == Instrument::Banjo && self.r#note == 1 && self.r#powered == true { return 1283; }
-        if self.r#note == 18 && self.r#instrument == Instrument::Guitar && self.r#powered == true { return 967; }
-        if self.r#instrument == Instrument::Pling && self.r#powered == true && self.r#note == 10 { return 1351; }
-        if self.r#note == 8 && self.r#instrument == Instrument::Dragon && self.r#powered == false { return 1548; }
-        if self.r#instrument == Instrument::Zombie && self.r#note == 10 && self.r#powered == false { return 1402; }
-        if self.r#powered == false && self.r#instrument == Instrument::Zombie && self.r#note == 4 { return 1390; }
-        if self.r#instrument == Instrument::CowBell && self.r#note == 10 && self.r#powered == false { return 1152; }
-        if self.r#powered == false && self.r#instrument == Instrument::Xylophone && self.r#note == 10 { return 1052; }
-        if self.r#powered == true && self.r#instrument == Instrument::Pling && self.r#note == 6 { return 1343; }
-        if self.r#powered == false && self.r#instrument == Instrument::Pling && self.r#note == 23 { return 1378; }
-        if self.r#instrument == Instrument::Harp && self.r#note == 13 && self.r#powered == false { return 608; }
-        if self.r#instrument == Instrument::Hat && self.r#powered == false && self.r#note == 0 { return 732; }
-        if self.r#note == 12 && self.r#powered == false && self.r#instrument == Instrument::Bell { return 906; }
-        if self.r#note == 13 && self.r#instrument == Instrument::Bit && self.r#powered == true { return 1257; }
-        if self.r#instrument == Instrument::CowBell && self.r#note == 11 && self.r#powered == false { return 1154; }
-        if self.r#note == 16 && self.r#instrument == Instrument::Pling && self.r#powered == false { return 1364; }
-        if self.r#instrument == Instrument::Hat && self.r#powered == false && self.r#note == 16 { return 764; }
-        if self.r#instrument == Instrument::Flute && self.r#note == 9 && self.r#powered == true { return 849; }
-        if self.r#note == 12 && self.r#instrument == Instrument::Chime && self.r#powered == false { return 1006; }
-        if self.r#instrument == Instrument::Pling && self.r#note == 19 && self.r#powered == false { return 1370; }
-        if self.r#instrument == Instrument::Creeper && self.r#powered == true && self.r#note == 13 { return 1507; }
-        if self.r#powered == false && self.r#instrument == Instrument::CowBell && self.r#note == 5 { return 1142; }
-        if self.r#instrument == Instrument::CustomHead && self.r#powered == true && self.r#note == 0 { return 1681; }
-        if self.r#instrument == Instrument::Skeleton && self.r#note == 13 && self.r#powered == true { return 1457; }
-        if self.r#instrument == Instrument::Bit && self.r#note == 14 && self.r#powered == false { return 1260; }
-        if self.r#instrument == Instrument::Dragon && self.r#powered == false && self.r#note == 11 { return 1554; }
-        if self.r#note == 10 && self.r#instrument == Instrument::IronXylophone && self.r#powered == false { return 1102; }
-        if self.r#instrument == Instrument::WitherSkeleton && self.r#powered == true && self.r#note == 15 { return 1611; }
-        if self.r#instrument == Instrument::Skeleton && self.r#note == 3 && self.r#powered == true { return 1437; }
-        if self.r#instrument == Instrument::Snare && self.r#note == 15 && self.r#powered == true { return 711; }
-        if self.r#note == 16 && self.r#instrument == Instrument::Flute && self.r#powered == false { return 864; }
-        if self.r#instrument == Instrument::Bit && self.r#powered == true && self.r#note == 15 { return 1261; }
-        if self.r#powered == false && self.r#note == 15 && self.r#instrument == Instrument::Skeleton { return 1462; }
-        if self.r#instrument == Instrument::Bit && self.r#note == 23 && self.r#powered == true { return 1277; }
-        if self.r#note == 13 && self.r#powered == false && self.r#instrument == Instrument::Creeper { return 1508; }
-        if self.r#instrument == Instrument::Piglin && self.r#powered == true && self.r#note == 10 { return 1651; }
-        if self.r#powered == true && self.r#instrument == Instrument::Chime && self.r#note == 16 { return 1013; }
-        if self.r#note == 17 && self.r#instrument == Instrument::Flute && self.r#powered == false { return 866; }
-        if self.r#instrument == Instrument::WitherSkeleton && self.r#powered == true && self.r#note == 6 { return 1593; }
-        if self.r#instrument == Instrument::Snare && self.r#powered == true && self.r#note == 10 { return 701; }
-        if self.r#instrument == Instrument::Creeper && self.r#note == 15 && self.r#powered == false { return 1512; }
-        if self.r#instrument == Instrument::Piglin && self.r#note == 17 && self.r#powered == false { return 1666; }
-        if self.r#powered == false && self.r#instrument == Instrument::WitherSkeleton && self.r#note == 15 { return 1612; }
-        if self.r#instrument == Instrument::CustomHead && self.r#note == 20 && self.r#powered == true { return 1721; }
-        if self.r#instrument == Instrument::Hat && self.r#note == 13 && self.r#powered == false { return 758; }
-        if self.r#note == 9 && self.r#instrument == Instrument::Dragon && self.r#powered == false { return 1550; }
-        if self.r#note == 24 && self.r#instrument == Instrument::Flute && self.r#powered == false { return 880; }
-        if self.r#instrument == Instrument::Harp && self.r#note == 24 && self.r#powered == true { return 629; }
-        if self.r#powered == false && self.r#instrument == Instrument::Snare && self.r#note == 16 { return 714; }
-        if self.r#note == 4 && self.r#instrument == Instrument::Basedrum && self.r#powered == true { return 639; }
-        if self.r#instrument == Instrument::Chime && self.r#note == 15 && self.r#powered == false { return 1012; }
-        if self.r#instrument == Instrument::Piglin && self.r#note == 1 && self.r#powered == true { return 1633; }
-        if self.r#powered == true && self.r#note == 7 && self.r#instrument == Instrument::CustomHead { return 1695; }
-        if self.r#powered == false && self.r#instrument == Instrument::Hat && self.r#note == 7 { return 746; }
-        if self.r#instrument == Instrument::Snare && self.r#note == 24 && self.r#powered == false { return 730; }
-        if self.r#note == 11 && self.r#powered == false && self.r#instrument == Instrument::Piglin { return 1654; }
-        if self.r#note == 14 && self.r#powered == false && self.r#instrument == Instrument::Piglin { return 1660; }
-        if self.r#instrument == Instrument::Zombie && self.r#note == 5 && self.r#powered == false { return 1392; }
-        if self.r#note == 19 && self.r#powered == false && self.r#instrument == Instrument::Chime { return 1020; }
-        if self.r#instrument == Instrument::Bass && self.r#note == 19 && self.r#powered == true { return 819; }
-        if self.r#powered == true && self.r#instrument == Instrument::Zombie && self.r#note == 3 { return 1387; }
-        if self.r#note == 11 && self.r#powered == true && self.r#instrument == Instrument::Didgeridoo { return 1203; }
-        if self.r#note == 3 && self.r#instrument == Instrument::Flute && self.r#powered == true { return 837; }
-        if self.r#instrument == Instrument::Creeper && self.r#note == 23 && self.r#powered == true { return 1527; }
-        if self.r#powered == false && self.r#note == 12 && self.r#instrument == Instrument::Snare { return 706; }
-        if self.r#instrument == Instrument::Harp && self.r#note == 18 && self.r#powered == true { return 617; }
-        if self.r#note == 17 && self.r#powered == false && self.r#instrument == Instrument::Didgeridoo { return 1216; }
-        if self.r#note == 21 && self.r#powered == true && self.r#instrument == Instrument::Didgeridoo { return 1223; }
-        if self.r#instrument == Instrument::Banjo && self.r#note == 5 && self.r#powered == true { return 1291; }
-        if self.r#instrument == Instrument::Hat && self.r#note == 19 && self.r#powered == false { return 770; }
-        if self.r#instrument == Instrument::IronXylophone && self.r#note == 11 && self.r#powered == true { return 1103; }
-        if self.r#powered == true && self.r#instrument == Instrument::Didgeridoo && self.r#note == 7 { return 1195; }
-        if self.r#powered == true && self.r#instrument == Instrument::Banjo && self.r#note == 13 { return 1307; }
-        if self.r#instrument == Instrument::Creeper && self.r#powered == true && self.r#note == 18 { return 1517; }
-        if self.r#note == 9 && self.r#instrument == Instrument::Dragon && self.r#powered == true { return 1549; }
-        if self.r#powered == true && self.r#note == 21 && self.r#instrument == Instrument::Guitar { return 973; }
-        if self.r#note == 23 && self.r#instrument == Instrument::WitherSkeleton && self.r#powered == true { return 1627; }
-        if self.r#powered == true && self.r#instrument == Instrument::CowBell && self.r#note == 2 { return 1135; }
-        if self.r#instrument == Instrument::Piglin && self.r#powered == true && self.r#note == 17 { return 1665; }
-        if self.r#instrument == Instrument::Xylophone && self.r#note == 8 && self.r#powered == false { return 1048; }
-        if self.r#instrument == Instrument::IronXylophone && self.r#powered == false && self.r#note == 7 { return 1096; }
-        if self.r#instrument == Instrument::IronXylophone && self.r#powered == true && self.r#note == 23 { return 1127; }
-        if self.r#powered == true && self.r#instrument == Instrument::Xylophone && self.r#note == 1 { return 1033; }
-        if self.r#note == 14 && self.r#powered == true && self.r#instrument == Instrument::Zombie { return 1409; }
-        if self.r#powered == true && self.r#instrument == Instrument::Basedrum && self.r#note == 5 { return 641; }
-        if self.r#powered == false && self.r#instrument == Instrument::Didgeridoo && self.r#note == 7 { return 1196; }
-        if self.r#note == 23 && self.r#instrument == Instrument::Bit && self.r#powered == false { return 1278; }
-        if self.r#instrument == Instrument::Creeper && self.r#note == 1 && self.r#powered == false { return 1484; }
-        if self.r#powered == true && self.r#instrument == Instrument::WitherSkeleton && self.r#note == 8 { return 1597; }
-        if self.r#instrument == Instrument::Banjo && self.r#note == 12 && self.r#powered == false { return 1306; }
-        if self.r#instrument == Instrument::Dragon && self.r#note == 4 && self.r#powered == true { return 1539; }
-        if self.r#powered == true && self.r#instrument == Instrument::Guitar && self.r#note == 20 { return 971; }
-        if self.r#powered == false && self.r#note == 24 && self.r#instrument == Instrument::Bit { return 1280; }
-        if self.r#note == 11 && self.r#instrument == Instrument::Dragon && self.r#powered == true { return 1553; }
-        if self.r#powered == false && self.r#note == 15 && self.r#instrument == Instrument::Dragon { return 1562; }
-        if self.r#powered == false && self.r#instrument == Instrument::Bell && self.r#note == 13 { return 908; }
-        if self.r#note == 6 && self.r#powered == true && self.r#instrument == Instrument::Bass { return 793; }
-        if self.r#instrument == Instrument::CowBell && self.r#note == 7 && self.r#powered == true { return 1145; }
-        if self.r#note == 19 && self.r#instrument == Instrument::Harp && self.r#powered == true { return 619; }
-        if self.r#note == 21 && self.r#instrument == Instrument::CowBell && self.r#powered == true { return 1173; }
-        if self.r#powered == false && self.r#instrument == Instrument::Didgeridoo && self.r#note == 10 { return 1202; }
-        if self.r#powered == true && self.r#note == 12 && self.r#instrument == Instrument::Banjo { return 1305; }
-        if self.r#instrument == Instrument::Snare && self.r#note == 24 && self.r#powered == true { return 729; }
-        if self.r#powered == false && self.r#instrument == Instrument::Flute && self.r#note == 12 { return 856; }
-        if self.r#instrument == Instrument::Flute && self.r#note == 16 && self.r#powered == true { return 863; }
-        if self.r#powered == false && self.r#instrument == Instrument::IronXylophone && self.r#note == 15 { return 1112; }
-        if self.r#powered == false && self.r#instrument == Instrument::Flute && self.r#note == 4 { return 840; }
-        if self.r#note == 8 && self.r#powered == true && self.r#instrument == Instrument::Creeper { return 1497; }
-        if self.r#instrument == Instrument::CowBell && self.r#powered == true && self.r#note == 13 { return 1157; }
-        if self.r#note == 2 && self.r#powered == true && self.r#instrument == Instrument::Banjo { return 1285; }
-        if self.r#instrument == Instrument::Skeleton && self.r#powered == true && self.r#note == 6 { return 1443; }
-        if self.r#instrument == Instrument::Basedrum && self.r#note == 5 && self.r#powered == false { return 642; }
-        if self.r#instrument == Instrument::Pling && self.r#powered == true && self.r#note == 20 { return 1371; }
-        if self.r#powered == false && self.r#note == 3 && self.r#instrument == Instrument::Skeleton { return 1438; }
-        if self.r#powered == true && self.r#instrument == Instrument::Skeleton && self.r#note == 15 { return 1461; }
-        if self.r#instrument == Instrument::Didgeridoo && self.r#note == 8 && self.r#powered == false { return 1198; }
-        if self.r#instrument == Instrument::Chime && self.r#note == 11 && self.r#powered == false { return 1004; }
-        if self.r#instrument == Instrument::Chime && self.r#powered == false && self.r#note == 4 { return 990; }
-        if self.r#note == 23 && self.r#instrument == Instrument::Bass && self.r#powered == false { return 828; }
-        if self.r#instrument == Instrument::Bit && self.r#powered == false && self.r#note == 6 { return 1244; }
-        if self.r#instrument == Instrument::Harp && self.r#note == 6 && self.r#powered == false { return 594; }
-        if self.r#instrument == Instrument::Basedrum && self.r#note == 17 && self.r#powered == true { return 665; }
-        if self.r#instrument == Instrument::IronXylophone && self.r#note == 6 && self.r#powered == true { return 1093; }
-        if self.r#powered == false && self.r#note == 6 && self.r#instrument == Instrument::WitherSkeleton { return 1594; }
-        if self.r#instrument == Instrument::CustomHead && self.r#note == 23 && self.r#powered == true { return 1727; }
-        if self.r#instrument == Instrument::Zombie && self.r#note == 15 && self.r#powered == false { return 1412; }
-        if self.r#note == 4 && self.r#powered == true && self.r#instrument == Instrument::Flute { return 839; }
-        if self.r#note == 5 && self.r#powered == true && self.r#instrument == Instrument::Bass { return 791; }
-        if self.r#instrument == Instrument::Chime && self.r#powered == false && self.r#note == 18 { return 1018; }
-        if self.r#instrument == Instrument::Hat && self.r#note == 11 && self.r#powered == true { return 753; }
-        if self.r#note == 23 && self.r#instrument == Instrument::Flute && self.r#powered == true { return 877; }
-        if self.r#instrument == Instrument::Skeleton && self.r#powered == true && self.r#note == 19 { return 1469; }
-        if self.r#instrument == Instrument::Creeper && self.r#note == 21 && self.r#powered == true { return 1523; }
-        if self.r#instrument == Instrument::Piglin && self.r#note == 4 && self.r#powered == true { return 1639; }
-        if self.r#powered == false && self.r#instrument == Instrument::Bass && self.r#note == 6 { return 794; }
-        if self.r#note == 17 && self.r#powered == true && self.r#instrument == Instrument::Didgeridoo { return 1215; }
-        if self.r#powered == true && self.r#instrument == Instrument::Dragon && self.r#note == 10 { return 1551; }
-        if self.r#note == 10 && self.r#powered == true && self.r#instrument == Instrument::CustomHead { return 1701; }
-        if self.r#instrument == Instrument::IronXylophone && self.r#note == 7 && self.r#powered == true { return 1095; }
-        if self.r#instrument == Instrument::Bit && self.r#note == 0 && self.r#powered == false { return 1232; }
-        if self.r#note == 11 && self.r#powered == false && self.r#instrument == Instrument::Bit { return 1254; }
-        if self.r#powered == true && self.r#instrument == Instrument::WitherSkeleton && self.r#note == 22 { return 1625; }
-        if self.r#powered == false && self.r#note == 1 && self.r#instrument == Instrument::Bit { return 1234; }
-        if self.r#powered == false && self.r#instrument == Instrument::WitherSkeleton && self.r#note == 22 { return 1626; }
-        if self.r#note == 5 && self.r#powered == true && self.r#instrument == Instrument::Bit { return 1241; }
-        if self.r#instrument == Instrument::Flute && self.r#note == 8 && self.r#powered == true { return 847; }
-        if self.r#powered == false && self.r#note == 21 && self.r#instrument == Instrument::CowBell { return 1174; }
-        if self.r#powered == true && self.r#instrument == Instrument::Xylophone && self.r#note == 4 { return 1039; }
-        if self.r#powered == false && self.r#instrument == Instrument::Bit && self.r#note == 9 { return 1250; }
-        if self.r#note == 4 && self.r#instrument == Instrument::Dragon && self.r#powered == false { return 1540; }
-        if self.r#instrument == Instrument::Flute && self.r#note == 19 && self.r#powered == false { return 870; }
-        if self.r#instrument == Instrument::Xylophone && self.r#note == 5 && self.r#powered == false { return 1042; }
-        if self.r#note == 11 && self.r#powered == true && self.r#instrument == Instrument::Bell { return 903; }
-        if self.r#note == 15 && self.r#powered == true && self.r#instrument == Instrument::Didgeridoo { return 1211; }
-        if self.r#instrument == Instrument::Bell && self.r#powered == false && self.r#note == 22 { return 926; }
-        if self.r#instrument == Instrument::Bell && self.r#note == 15 && self.r#powered == true { return 911; }
-        if self.r#powered == false && self.r#instrument == Instrument::Pling && self.r#note == 5 { return 1342; }
-        if self.r#instrument == Instrument::CustomHead && self.r#note == 22 && self.r#powered == false { return 1726; }
-        if self.r#instrument == Instrument::Snare && self.r#note == 6 && self.r#powered == false { return 694; }
-        if self.r#note == 2 && self.r#instrument == Instrument::WitherSkeleton && self.r#powered == false { return 1586; }
-        if self.r#note == 9 && self.r#powered == false && self.r#instrument == Instrument::WitherSkeleton { return 1600; }
-        if self.r#note == 23 && self.r#instrument == Instrument::Dragon && self.r#powered == false { return 1578; }
-        if self.r#instrument == Instrument::Basedrum && self.r#note == 22 && self.r#powered == false { return 676; }
-        if self.r#note == 10 && self.r#instrument == Instrument::CowBell && self.r#powered == true { return 1151; }
-        if self.r#instrument == Instrument::Harp && self.r#powered == true && self.r#note == 14 { return 609; }
-        if self.r#note == 7 && self.r#instrument == Instrument::Chime && self.r#powered == false { return 996; }
-        if self.r#instrument == Instrument::Flute && self.r#note == 14 && self.r#powered == false { return 860; }
-        if self.r#note == 16 && self.r#powered == false && self.r#instrument == Instrument::Bell { return 914; }
-        if self.r#note == 18 && self.r#powered == false && self.r#instrument == Instrument::Harp { return 618; }
-        if self.r#instrument == Instrument::Banjo && self.r#note == 21 && self.r#powered == true { return 1323; }
-        if self.r#instrument == Instrument::Pling && self.r#powered == false && self.r#note == 4 { return 1340; }
-        if self.r#note == 7 && self.r#powered == false && self.r#instrument == Instrument::Flute { return 846; }
-        if self.r#powered == false && self.r#instrument == Instrument::Pling && self.r#note == 22 { return 1376; }
-        if self.r#powered == false && self.r#instrument == Instrument::Dragon && self.r#note == 1 { return 1534; }
-        if self.r#powered == false && self.r#instrument == Instrument::Pling && self.r#note == 20 { return 1372; }
-        if self.r#instrument == Instrument::Harp && self.r#note == 20 && self.r#powered == false { return 622; }
-        if self.r#instrument == Instrument::Xylophone && self.r#note == 16 && self.r#powered == true { return 1063; }
-        if self.r#instrument == Instrument::Pling && self.r#powered == true && self.r#note == 14 { return 1359; }
-        if self.r#powered == true && self.r#note == 1 && self.r#instrument == Instrument::Chime { return 983; }
-        if self.r#powered == false && self.r#note == 10 && self.r#instrument == Instrument::Snare { return 702; }
-        if self.r#note == 5 && self.r#powered == false && self.r#instrument == Instrument::Dragon { return 1542; }
-        if self.r#note == 15 && self.r#powered == true && self.r#instrument == Instrument::Bass { return 811; }
-        if self.r#note == 17 && self.r#powered == false && self.r#instrument == Instrument::Bell { return 916; }
-        if self.r#instrument == Instrument::CowBell && self.r#powered == false && self.r#note == 16 { return 1164; }
-        if self.r#note == 0 && self.r#powered == true && self.r#instrument == Instrument::IronXylophone { return 1081; }
-        if self.r#instrument == Instrument::IronXylophone && self.r#note == 16 && self.r#powered == false { return 1114; }
-        if self.r#note == 24 && self.r#powered == true && self.r#instrument == Instrument::Banjo { return 1329; }
-        if self.r#note == 3 && self.r#instrument == Instrument::Chime && self.r#powered == false { return 988; }
-        if self.r#instrument == Instrument::Zombie && self.r#note == 17 && self.r#powered == true { return 1415; }
-        if self.r#powered == true && self.r#instrument == Instrument::IronXylophone && self.r#note == 1 { return 1083; }
-        if self.r#powered == false && self.r#instrument == Instrument::Bass && self.r#note == 2 { return 786; }
-        if self.r#note == 4 && self.r#powered == true && self.r#instrument == Instrument::Pling { return 1339; }
-        if self.r#instrument == Instrument::Xylophone && self.r#note == 19 && self.r#powered == false { return 1070; }
-        if self.r#powered == false && self.r#instrument == Instrument::Snare && self.r#note == 20 { return 722; }
-        if self.r#note == 5 && self.r#instrument == Instrument::Skeleton && self.r#powered == true { return 1441; }
-        if self.r#powered == true && self.r#instrument == Instrument::Creeper && self.r#note == 24 { return 1529; }
-        if self.r#powered == false && self.r#instrument == Instrument::Piglin && self.r#note == 9 { return 1650; }
-        if self.r#powered == true && self.r#instrument == Instrument::Snare && self.r#note == 19 { return 719; }
-        if self.r#powered == false && self.r#note == 1 && self.r#instrument == Instrument::Pling { return 1334; }
-        if self.r#powered == true && self.r#note == 2 && self.r#instrument == Instrument::Zombie { return 1385; }
-        if self.r#powered == false && self.r#note == 12 && self.r#instrument == Instrument::Skeleton { return 1456; }
-        if self.r#note == 2 && self.r#powered == true && self.r#instrument == Instrument::Creeper { return 1485; }
-        if self.r#instrument == Instrument::Piglin && self.r#note == 18 && self.r#powered == true { return 1667; }
-        if self.r#instrument == Instrument::Bit && self.r#powered == true && self.r#note == 8 { return 1247; }
-        if self.r#instrument == Instrument::Bell && self.r#note == 5 && self.r#powered == true { return 891; }
-        if self.r#note == 19 && self.r#powered == false && self.r#instrument == Instrument::Skeleton { return 1470; }
-        if self.r#powered == true && self.r#instrument == Instrument::Bell && self.r#note == 6 { return 893; }
-        if self.r#powered == true && self.r#instrument == Instrument::Bell && self.r#note == 12 { return 905; }
-        if self.r#note == 22 && self.r#powered == true && self.r#instrument == Instrument::Skeleton { return 1475; }
-        if self.r#powered == false && self.r#note == 2 && self.r#instrument == Instrument::Basedrum { return 636; }
-        if self.r#note == 6 && self.r#instrument == Instrument::Snare && self.r#powered == true { return 693; }
-        if self.r#powered == false && self.r#instrument == Instrument::Zombie && self.r#note == 23 { return 1428; }
-        if self.r#instrument == Instrument::Creeper && self.r#note == 16 && self.r#powered == true { return 1513; }
-        if self.r#note == 2 && self.r#powered == true && self.r#instrument == Instrument::Chime { return 985; }
-        if self.r#instrument == Instrument::Bass && self.r#powered == false && self.r#note == 13 { return 808; }
-        if self.r#note == 8 && self.r#instrument == Instrument::CustomHead && self.r#powered == false { return 1698; }
-        if self.r#note == 24 && self.r#instrument == Instrument::Hat && self.r#powered == false { return 780; }
-        if self.r#note == 15 && self.r#powered == false && self.r#instrument == Instrument::CowBell { return 1162; }
-        if self.r#instrument == Instrument::Hat && self.r#note == 14 && self.r#powered == true { return 759; }
-        if self.r#note == 4 && self.r#instrument == Instrument::Bass && self.r#powered == true { return 789; }
-        if self.r#note == 22 && self.r#instrument == Instrument::Bass && self.r#powered == false { return 826; }
-        if self.r#powered == false && self.r#note == 18 && self.r#instrument == Instrument::Didgeridoo { return 1218; }
-        if self.r#powered == false && self.r#note == 0 && self.r#instrument == Instrument::Piglin { return 1632; }
-        if self.r#powered == false && self.r#instrument == Instrument::Guitar && self.r#note == 7 { return 946; }
-        if self.r#powered == false && self.r#note == 8 && self.r#instrument == Instrument::Pling { return 1348; }
-        if self.r#powered == false && self.r#instrument == Instrument::Snare && self.r#note == 23 { return 728; }
-        if self.r#instrument == Instrument::Basedrum && self.r#powered == false && self.r#note == 24 { return 680; }
-        if self.r#powered == false && self.r#instrument == Instrument::Harp && self.r#note == 4 { return 590; }
-        if self.r#instrument == Instrument::Skeleton && self.r#note == 22 && self.r#powered == false { return 1476; }
-        if self.r#powered == false && self.r#note == 6 && self.r#instrument == Instrument::Guitar { return 944; }
-        if self.r#powered == false && self.r#note == 6 && self.r#instrument == Instrument::Hat { return 744; }
-        if self.r#instrument == Instrument::Bell && self.r#powered == false && self.r#note == 10 { return 902; }
-        if self.r#instrument == Instrument::CowBell && self.r#note == 19 && self.r#powered == false { return 1170; }
-        if self.r#instrument == Instrument::Piglin && self.r#note == 12 && self.r#powered == true { return 1655; }
-        if self.r#powered == true && self.r#instrument == Instrument::Snare && self.r#note == 11 { return 703; }
-        if self.r#powered == false && self.r#instrument == Instrument::Guitar && self.r#note == 4 { return 940; }
-        if self.r#powered == true && self.r#note == 19 && self.r#instrument == Instrument::Dragon { return 1569; }
-        if self.r#powered == true && self.r#note == 13 && self.r#instrument == Instrument::Harp { return 607; }
-        if self.r#powered == false && self.r#instrument == Instrument::Piglin && self.r#note == 24 { return 1680; }
-        if self.r#instrument == Instrument::CustomHead && self.r#note == 1 && self.r#powered == false { return 1684; }
-        if self.r#instrument == Instrument::Pling && self.r#note == 14 && self.r#powered == false { return 1360; }
-        if self.r#instrument == Instrument::Zombie && self.r#note == 16 && self.r#powered == true { return 1413; }
-        if self.r#note == 19 && self.r#instrument == Instrument::Basedrum && self.r#powered == false { return 670; }
-        if self.r#note == 5 && self.r#powered == true && self.r#instrument == Instrument::Flute { return 841; }
-        if self.r#powered == true && self.r#instrument == Instrument::Chime && self.r#note == 11 { return 1003; }
-        if self.r#powered == true && self.r#instrument == Instrument::CustomHead && self.r#note == 11 { return 1703; }
-        if self.r#instrument == Instrument::Creeper && self.r#note == 19 && self.r#powered == true { return 1519; }
-        if self.r#instrument == Instrument::Chime && self.r#note == 20 && self.r#powered == false { return 1022; }
-        if self.r#instrument == Instrument::Hat && self.r#powered == false && self.r#note == 5 { return 742; }
-        if self.r#instrument == Instrument::Banjo && self.r#note == 11 && self.r#powered == false { return 1304; }
-        if self.r#powered == true && self.r#instrument == Instrument::Snare && self.r#note == 16 { return 713; }
-        if self.r#note == 9 && self.r#powered == false && self.r#instrument == Instrument::Snare { return 700; }
-        if self.r#instrument == Instrument::Harp && self.r#powered == true && self.r#note == 0 { return 581; }
-        if self.r#instrument == Instrument::WitherSkeleton && self.r#powered == false && self.r#note == 3 { return 1588; }
-        if self.r#note == 14 && self.r#powered == true && self.r#instrument == Instrument::Xylophone { return 1059; }
-        if self.r#note == 18 && self.r#instrument == Instrument::IronXylophone && self.r#powered == true { return 1117; }
-        if self.r#note == 3 && self.r#instrument == Instrument::Banjo && self.r#powered == true { return 1287; }
-        if self.r#instrument == Instrument::Banjo && self.r#note == 6 && self.r#powered == false { return 1294; }
-        if self.r#powered == true && self.r#instrument == Instrument::Skeleton && self.r#note == 4 { return 1439; }
-        if self.r#instrument == Instrument::Hat && self.r#note == 23 && self.r#powered == false { return 778; }
-        if self.r#powered == true && self.r#note == 14 && self.r#instrument == Instrument::Didgeridoo { return 1209; }
-        if self.r#note == 5 && self.r#powered == true && self.r#instrument == Instrument::Snare { return 691; }
-        if self.r#instrument == Instrument::Bit && self.r#powered == true && self.r#note == 22 { return 1275; }
-        if self.r#note == 14 && self.r#instrument == Instrument::WitherSkeleton && self.r#powered == false { return 1610; }
-        if self.r#note == 4 && self.r#powered == false && self.r#instrument == Instrument::CustomHead { return 1690; }
-        if self.r#instrument == Instrument::Skeleton && self.r#note == 0 && self.r#powered == true { return 1431; }
-        if self.r#powered == false && self.r#note == 24 && self.r#instrument == Instrument::Dragon { return 1580; }
-        if self.r#note == 22 && self.r#instrument == Instrument::Xylophone && self.r#powered == false { return 1076; }
-        if self.r#note == 6 && self.r#powered == false && self.r#instrument == Instrument::Basedrum { return 644; }
-        if self.r#instrument == Instrument::Hat && self.r#note == 18 && self.r#powered == true { return 767; }
-        if self.r#instrument == Instrument::Harp && self.r#powered == true && self.r#note == 23 { return 627; }
-        if self.r#powered == true && self.r#instrument == Instrument::Bass && self.r#note == 1 { return 783; }
-        if self.r#instrument == Instrument::Creeper && self.r#note == 22 && self.r#powered == true { return 1525; }
-        if self.r#note == 8 && self.r#powered == false && self.r#instrument == Instrument::Hat { return 748; }
-        if self.r#instrument == Instrument::Bass && self.r#powered == false && self.r#note == 0 { return 782; }
-        if self.r#powered == false && self.r#instrument == Instrument::Skeleton && self.r#note == 6 { return 1444; }
-        if self.r#powered == false && self.r#instrument == Instrument::CustomHead && self.r#note == 11 { return 1704; }
-        if self.r#instrument == Instrument::Harp && self.r#note == 5 && self.r#powered == true { return 591; }
-        if self.r#instrument == Instrument::CustomHead && self.r#powered == false && self.r#note == 15 { return 1712; }
-        if self.r#powered == false && self.r#instrument == Instrument::Dragon && self.r#note == 2 { return 1536; }
-        if self.r#powered == false && self.r#instrument == Instrument::Didgeridoo && self.r#note == 0 { return 1182; }
-        if self.r#powered == false && self.r#note == 18 && self.r#instrument == Instrument::Skeleton { return 1468; }
-        if self.r#powered == true && self.r#instrument == Instrument::Bass && self.r#note == 7 { return 795; }
-        if self.r#note == 8 && self.r#instrument == Instrument::Harp && self.r#powered == true { return 597; }
-        if self.r#powered == false && self.r#note == 4 && self.r#instrument == Instrument::Snare { return 690; }
-        if self.r#instrument == Instrument::WitherSkeleton && self.r#powered == false && self.r#note == 24 { return 1630; }
-        if self.r#powered == false && self.r#note == 2 && self.r#instrument == Instrument::Creeper { return 1486; }
-        if self.r#note == 12 && self.r#instrument == Instrument::CowBell && self.r#powered == false { return 1156; }
-        if self.r#note == 9 && self.r#powered == true && self.r#instrument == Instrument::Snare { return 699; }
-        if self.r#powered == true && self.r#instrument == Instrument::Bass && self.r#note == 0 { return 781; }
-        if self.r#note == 12 && self.r#powered == true && self.r#instrument == Instrument::Bit { return 1255; }
-        if self.r#note == 20 && self.r#powered == false && self.r#instrument == Instrument::Guitar { return 972; }
-        if self.r#note == 14 && self.r#instrument == Instrument::Basedrum && self.r#powered == true { return 659; }
-        if self.r#note == 16 && self.r#instrument == Instrument::Hat && self.r#powered == true { return 763; }
-        if self.r#instrument == Instrument::Dragon && self.r#note == 6 && self.r#powered == true { return 1543; }
-        if self.r#powered == true && self.r#instrument == Instrument::Harp && self.r#note == 20 { return 621; }
-        if self.r#instrument == Instrument::CustomHead && self.r#note == 24 && self.r#powered == false { return 1730; }
-        if self.r#note == 9 && self.r#instrument == Instrument::Chime && self.r#powered == false { return 1000; }
-        if self.r#note == 3 && self.r#powered == false && self.r#instrument == Instrument::Creeper { return 1488; }
-        if self.r#powered == true && self.r#note == 21 && self.r#instrument == Instrument::Basedrum { return 673; }
-        if self.r#instrument == Instrument::Xylophone && self.r#note == 13 && self.r#powered == true { return 1057; }
-        if self.r#instrument == Instrument::Pling && self.r#note == 18 && self.r#powered == false { return 1368; }
-        if self.r#powered == true && self.r#instrument == Instrument::Bass && self.r#note == 22 { return 825; }
-        if self.r#powered == true && self.r#instrument == Instrument::Zombie && self.r#note == 13 { return 1407; }
-        if self.r#note == 1 && self.r#instrument == Instrument::Xylophone && self.r#powered == false { return 1034; }
-        if self.r#note == 0 && self.r#powered == true && self.r#instrument == Instrument::Piglin { return 1631; }
-        if self.r#powered == false && self.r#note == 21 && self.r#instrument == Instrument::Didgeridoo { return 1224; }
-        if self.r#powered == false && self.r#instrument == Instrument::Piglin && self.r#note == 12 { return 1656; }
-        if self.r#instrument == Instrument::Snare && self.r#note == 2 && self.r#powered == true { return 685; }
-        if self.r#note == 17 && self.r#instrument == Instrument::Guitar && self.r#powered == true { return 965; }
-        if self.r#powered == false && self.r#instrument == Instrument::Didgeridoo && self.r#note == 20 { return 1222; }
-        if self.r#instrument == Instrument::Dragon && self.r#powered == false && self.r#note == 14 { return 1560; }
-        if self.r#instrument == Instrument::WitherSkeleton && self.r#note == 10 && self.r#powered == false { return 1602; }
-        if self.r#powered == true && self.r#instrument == Instrument::Dragon && self.r#note == 21 { return 1573; }
-        if self.r#powered == true && self.r#instrument == Instrument::Flute && self.r#note == 12 { return 855; }
-        if self.r#instrument == Instrument::CowBell && self.r#note == 24 && self.r#powered == true { return 1179; }
-        if self.r#powered == false && self.r#instrument == Instrument::Chime && self.r#note == 17 { return 1016; }
-        if self.r#note == 15 && self.r#powered == true && self.r#instrument == Instrument::Pling { return 1361; }
-        if self.r#instrument == Instrument::Dragon && self.r#note == 7 && self.r#powered == true { return 1545; }
-        if self.r#note == 4 && self.r#instrument == Instrument::Hat && self.r#powered == false { return 740; }
-        if self.r#note == 7 && self.r#instrument == Instrument::Basedrum && self.r#powered == true { return 645; }
-        if self.r#note == 18 && self.r#powered == true && self.r#instrument == Instrument::Bell { return 917; }
-        if self.r#instrument == Instrument::Bit && self.r#powered == true && self.r#note == 6 { return 1243; }
-        if self.r#note == 10 && self.r#instrument == Instrument::Xylophone && self.r#powered == true { return 1051; }
-        if self.r#powered == true && self.r#instrument == Instrument::Harp && self.r#note == 2 { return 585; }
-        if self.r#powered == false && self.r#instrument == Instrument::Bit && self.r#note == 8 { return 1248; }
-        if self.r#instrument == Instrument::Skeleton && self.r#note == 9 && self.r#powered == true { return 1449; }
-        if self.r#instrument == Instrument::Zombie && self.r#note == 22 && self.r#powered == true { return 1425; }
-        if self.r#note == 23 && self.r#instrument == Instrument::Skeleton && self.r#powered == false { return 1478; }
-        if self.r#instrument == Instrument::Dragon && self.r#note == 12 && self.r#powered == false { return 1556; }
-        if self.r#powered == false && self.r#instrument == Instrument::Dragon && self.r#note == 16 { return 1564; }
-        if self.r#note == 7 && self.r#powered == true && self.r#instrument == Instrument::Hat { return 745; }
-        if self.r#powered == false && self.r#instrument == Instrument::Bell && self.r#note == 20 { return 922; }
-        if self.r#instrument == Instrument::Zombie && self.r#powered == true && self.r#note == 12 { return 1405; }
-        if self.r#powered == false && self.r#instrument == Instrument::Skeleton && self.r#note == 7 { return 1446; }
-        if self.r#instrument == Instrument::WitherSkeleton && self.r#note == 14 && self.r#powered == true { return 1609; }
-        if self.r#instrument == Instrument::CowBell && self.r#note == 17 && self.r#powered == false { return 1166; }
-        if self.r#powered == false && self.r#instrument == Instrument::Bit && self.r#note == 20 { return 1272; }
-        if self.r#instrument == Instrument::Harp && self.r#note == 7 && self.r#powered == true { return 595; }
-        if self.r#instrument == Instrument::Harp && self.r#note == 22 && self.r#powered == true { return 625; }
-        if self.r#powered == false && self.r#instrument == Instrument::Chime && self.r#note == 0 { return 982; }
-        if self.r#instrument == Instrument::Snare && self.r#note == 3 && self.r#powered == true { return 687; }
-        if self.r#powered == true && self.r#instrument == Instrument::Xylophone && self.r#note == 6 { return 1043; }
-        if self.r#powered == true && self.r#note == 10 && self.r#instrument == Instrument::Bit { return 1251; }
-        if self.r#instrument == Instrument::Basedrum && self.r#note == 3 && self.r#powered == true { return 637; }
-        if self.r#instrument == Instrument::WitherSkeleton && self.r#note == 12 && self.r#powered == true { return 1605; }
-        if self.r#note == 15 && self.r#powered == true && self.r#instrument == Instrument::Chime { return 1011; }
-        if self.r#note == 1 && self.r#instrument == Instrument::WitherSkeleton && self.r#powered == false { return 1584; }
-        if self.r#powered == false && self.r#instrument == Instrument::Basedrum && self.r#note == 13 { return 658; }
-        if self.r#instrument == Instrument::Flute && self.r#note == 24 && self.r#powered == true { return 879; }
-        if self.r#powered == true && self.r#instrument == Instrument::IronXylophone && self.r#note == 20 { return 1121; }
-        if self.r#note == 5 && self.r#powered == false && self.r#instrument == Instrument::Bit { return 1242; }
-        if self.r#powered == false && self.r#note == 17 && self.r#instrument == Instrument::Creeper { return 1516; }
-        if self.r#powered == true && self.r#note == 16 && self.r#instrument == Instrument::Piglin { return 1663; }
-        if self.r#powered == true && self.r#instrument == Instrument::Banjo && self.r#note == 10 { return 1301; }
-        if self.r#note == 2 && self.r#instrument == Instrument::Bit && self.r#powered == true { return 1235; }
-        if self.r#instrument == Instrument::Guitar && self.r#note == 22 && self.r#powered == false { return 976; }
-        if self.r#powered == false && self.r#note == 11 && self.r#instrument == Instrument::Zombie { return 1404; }
-        if self.r#instrument == Instrument::Flute && self.r#note == 23 && self.r#powered == false { return 878; }
-        if self.r#powered == true && self.r#note == 10 && self.r#instrument == Instrument::Creeper { return 1501; }
-        if self.r#instrument == Instrument::Dragon && self.r#powered == true && self.r#note == 22 { return 1575; }
-        if self.r#note == 3 && self.r#powered == false && self.r#instrument == Instrument::Piglin { return 1638; }
-        if self.r#note == 0 && self.r#instrument == Instrument::Xylophone && self.r#powered == false { return 1032; }
-        if self.r#powered == false && self.r#note == 3 && self.r#instrument == Instrument::Harp { return 588; }
-        if self.r#instrument == Instrument::Skeleton && self.r#powered == false && self.r#note == 2 { return 1436; }
-        if self.r#powered == false && self.r#note == 17 && self.r#instrument == Instrument::Snare { return 716; }
-        if self.r#note == 21 && self.r#powered == false && self.r#instrument == Instrument::Bell { return 924; }
-        if self.r#note == 12 && self.r#instrument == Instrument::IronXylophone && self.r#powered == false { return 1106; }
-        if self.r#note == 8 && self.r#powered == false && self.r#instrument == Instrument::Zombie { return 1398; }
-        if self.r#instrument == Instrument::CustomHead && self.r#powered == false && self.r#note == 3 { return 1688; }
-        if self.r#powered == false && self.r#note == 14 && self.r#instrument == Instrument::Harp { return 610; }
-        if self.r#note == 5 && self.r#instrument == Instrument::Piglin && self.r#powered == false { return 1642; }
-        if self.r#note == 16 && self.r#instrument == Instrument::WitherSkeleton && self.r#powered == false { return 1614; }
-        if self.r#powered == true && self.r#note == 8 && self.r#instrument == Instrument::Guitar { return 947; }
-        if self.r#powered == true && self.r#instrument == Instrument::Skeleton && self.r#note == 21 { return 1473; }
-        if self.r#powered == false && self.r#note == 1 && self.r#instrument == Instrument::Banjo { return 1284; }
-        if self.r#powered == false && self.r#instrument == Instrument::Skeleton && self.r#note == 4 { return 1440; }
-        if self.r#instrument == Instrument::Basedrum && self.r#note == 14 && self.r#powered == false { return 660; }
-        if self.r#note == 9 && self.r#powered == true && self.r#instrument == Instrument::Didgeridoo { return 1199; }
-        if self.r#instrument == Instrument::Flute && self.r#note == 2 && self.r#powered == true { return 835; }
-        if self.r#note == 4 && self.r#powered == false && self.r#instrument == Instrument::Basedrum { return 640; }
-        if self.r#powered == false && self.r#instrument == Instrument::Harp && self.r#note == 5 { return 592; }
-        if self.r#note == 0 && self.r#powered == false && self.r#instrument == Instrument::Dragon { return 1532; }
-        if self.r#powered == true && self.r#instrument == Instrument::IronXylophone && self.r#note == 3 { return 1087; }
-        if self.r#note == 20 && self.r#powered == false && self.r#instrument == Instrument::WitherSkeleton { return 1622; }
-        if self.r#note == 5 && self.r#powered == true && self.r#instrument == Instrument::Piglin { return 1641; }
-        if self.r#note == 23 && self.r#powered == true && self.r#instrument == Instrument::Xylophone { return 1077; }
-        if self.r#note == 4 && self.r#powered == true && self.r#instrument == Instrument::Harp { return 589; }
-        if self.r#powered == false && self.r#instrument == Instrument::WitherSkeleton && self.r#note == 8 { return 1598; }
-        if self.r#instrument == Instrument::IronXylophone && self.r#note == 22 && self.r#powered == true { return 1125; }
-        if self.r#instrument == Instrument::Bell && self.r#note == 6 && self.r#powered == false { return 894; }
-        if self.r#powered == true && self.r#instrument == Instrument::Bell && self.r#note == 0 { return 881; }
-        if self.r#powered == true && self.r#instrument == Instrument::Snare && self.r#note == 18 { return 717; }
-        if self.r#instrument == Instrument::Pling && self.r#powered == true && self.r#note == 11 { return 1353; }
-        if self.r#instrument == Instrument::CustomHead && self.r#powered == true && self.r#note == 22 { return 1725; }
-        if self.r#powered == false && self.r#instrument == Instrument::IronXylophone && self.r#note == 0 { return 1082; }
-        if self.r#note == 11 && self.r#powered == false && self.r#instrument == Instrument::Harp { return 604; }
-        if self.r#powered == false && self.r#note == 24 && self.r#instrument == Instrument::Chime { return 1030; }
-        if self.r#instrument == Instrument::Skeleton && self.r#note == 1 && self.r#powered == false { return 1434; }
-        if self.r#instrument == Instrument::Hat && self.r#note == 23 && self.r#powered == true { return 777; }
-        if self.r#note == 24 && self.r#instrument == Instrument::Bell && self.r#powered == true { return 929; }
-        if self.r#powered == false && self.r#note == 19 && self.r#instrument == Instrument::Banjo { return 1320; }
-        if self.r#note == 0 && self.r#instrument == Instrument::Hat && self.r#powered == true { return 731; }
-        if self.r#powered == true && self.r#instrument == Instrument::Zombie && self.r#note == 8 { return 1397; }
-        if self.r#instrument == Instrument::Creeper && self.r#note == 23 && self.r#powered == false { return 1528; }
-        if self.r#note == 17 && self.r#instrument == Instrument::CustomHead && self.r#powered == false { return 1716; }
-        if self.r#powered == false && self.r#note == 0 && self.r#instrument == Instrument::Guitar { return 932; }
-        if self.r#instrument == Instrument::Bell && self.r#powered == true && self.r#note == 13 { return 907; }
-        if self.r#powered == false && self.r#instrument == Instrument::Guitar && self.r#note == 16 { return 964; }
-        if self.r#note == 13 && self.r#powered == false && self.r#instrument == Instrument::CustomHead { return 1708; }
-        if self.r#instrument == Instrument::Flute && self.r#note == 9 && self.r#powered == false { return 850; }
-        if self.r#powered == true && self.r#note == 11 && self.r#instrument == Instrument::Bit { return 1253; }
-        if self.r#instrument == Instrument::Hat && self.r#powered == false && self.r#note == 17 { return 766; }
-        if self.r#note == 2 && self.r#instrument == Instrument::Didgeridoo && self.r#powered == true { return 1185; }
-        if self.r#instrument == Instrument::Banjo && self.r#powered == false && self.r#note == 8 { return 1298; }
-        if self.r#note == 12 && self.r#powered == true && self.r#instrument == Instrument::IronXylophone { return 1105; }
-        if self.r#powered == false && self.r#note == 3 && self.r#instrument == Instrument::Hat { return 738; }
-        if self.r#powered == true && self.r#instrument == Instrument::Banjo && self.r#note == 7 { return 1295; }
-        if self.r#powered == true && self.r#note == 20 && self.r#instrument == Instrument::Banjo { return 1321; }
-        if self.r#note == 17 && self.r#instrument == Instrument::Harp && self.r#powered == true { return 615; }
-        if self.r#instrument == Instrument::WitherSkeleton && self.r#note == 10 && self.r#powered == true { return 1601; }
-        if self.r#instrument == Instrument::Pling && self.r#note == 2 && self.r#powered == true { return 1335; }
-        if self.r#instrument == Instrument::Skeleton && self.r#note == 2 && self.r#powered == true { return 1435; }
-        if self.r#note == 1 && self.r#instrument == Instrument::Pling && self.r#powered == true { return 1333; }
-        if self.r#note == 24 && self.r#powered == false && self.r#instrument == Instrument::Bass { return 830; }
-        if self.r#powered == false && self.r#instrument == Instrument::Chime && self.r#note == 10 { return 1002; }
-        if self.r#instrument == Instrument::CowBell && self.r#powered == true && self.r#note == 8 { return 1147; }
-        if self.r#note == 22 && self.r#instrument == Instrument::Guitar && self.r#powered == true { return 975; }
-        if self.r#powered == false && self.r#note == 1 && self.r#instrument == Instrument::Hat { return 734; }
-        if self.r#powered == false && self.r#instrument == Instrument::Bass && self.r#note == 15 { return 812; }
-        if self.r#note == 4 && self.r#instrument == Instrument::Bell && self.r#powered == true { return 889; }
-        if self.r#instrument == Instrument::Hat && self.r#note == 12 && self.r#powered == true { return 755; }
-        if self.r#powered == true && self.r#instrument == Instrument::Bell && self.r#note == 9 { return 899; }
-        if self.r#note == 1 && self.r#powered == true && self.r#instrument == Instrument::Snare { return 683; }
-        if self.r#note == 18 && self.r#powered == false && self.r#instrument == Instrument::Banjo { return 1318; }
-        if self.r#powered == true && self.r#instrument == Instrument::Skeleton && self.r#note == 14 { return 1459; }
-        if self.r#note == 14 && self.r#instrument == Instrument::Didgeridoo && self.r#powered == false { return 1210; }
-        if self.r#powered == true && self.r#instrument == Instrument::Pling && self.r#note == 19 { return 1369; }
-        if self.r#powered == true && self.r#instrument == Instrument::Harp && self.r#note == 21 { return 623; }
-        if self.r#instrument == Instrument::Bass && self.r#powered == false && self.r#note == 21 { return 824; }
-        if self.r#instrument == Instrument::Bell && self.r#note == 19 && self.r#powered == false { return 920; }
-        if self.r#note == 7 && self.r#instrument == Instrument::Bit && self.r#powered == true { return 1245; }
-        if self.r#powered == false && self.r#note == 15 && self.r#instrument == Instrument::Harp { return 612; }
-        if self.r#instrument == Instrument::Snare && self.r#powered == true && self.r#note == 17 { return 715; }
-        if self.r#instrument == Instrument::Flute && self.r#note == 11 && self.r#powered == true { return 853; }
-        if self.r#powered == false && self.r#instrument == Instrument::Guitar && self.r#note == 3 { return 938; }
-        if self.r#instrument == Instrument::Basedrum && self.r#note == 18 && self.r#powered == true { return 667; }
-        if self.r#powered == true && self.r#note == 3 && self.r#instrument == Instrument::Dragon { return 1537; }
-        if self.r#powered == true && self.r#note == 21 && self.r#instrument == Instrument::Snare { return 723; }
-        if self.r#instrument == Instrument::Bell && self.r#powered == false && self.r#note == 8 { return 898; }
-        if self.r#note == 19 && self.r#instrument == Instrument::Xylophone && self.r#powered == true { return 1069; }
-        if self.r#powered == true && self.r#instrument == Instrument::CowBell && self.r#note == 11 { return 1153; }
-        if self.r#powered == true && self.r#note == 3 && self.r#instrument == Instrument::Xylophone { return 1037; }
-        if self.r#instrument == Instrument::CowBell && self.r#powered == true && self.r#note == 18 { return 1167; }
-        if self.r#instrument == Instrument::Bass && self.r#powered == false && self.r#note == 4 { return 790; }
-        if self.r#instrument == Instrument::Didgeridoo && self.r#note == 6 && self.r#powered == false { return 1194; }
-        if self.r#note == 20 && self.r#instrument == Instrument::Piglin && self.r#powered == false { return 1672; }
-        if self.r#instrument == Instrument::Flute && self.r#note == 5 && self.r#powered == false { return 842; }
-        if self.r#note == 3 && self.r#instrument == Instrument::CowBell && self.r#powered == true { return 1137; }
-        if self.r#powered == true && self.r#note == 2 && self.r#instrument == Instrument::CustomHead { return 1685; }
-        if self.r#instrument == Instrument::Banjo && self.r#powered == false && self.r#note == 7 { return 1296; }
-        if self.r#instrument == Instrument::CustomHead && self.r#powered == true && self.r#note == 15 { return 1711; }
-        if self.r#instrument == Instrument::Banjo && self.r#note == 9 && self.r#powered == false { return 1300; }
-        if self.r#note == 5 && self.r#instrument == Instrument::CowBell && self.r#powered == true { return 1141; }
-        if self.r#instrument == Instrument::Skeleton && self.r#powered == false && self.r#note == 20 { return 1472; }
-        if self.r#instrument == Instrument::Guitar && self.r#note == 7 && self.r#powered == true { return 945; }
-        if self.r#instrument == Instrument::WitherSkeleton && self.r#powered == false && self.r#note == 5 { return 1592; }
-        if self.r#instrument == Instrument::Piglin && self.r#note == 19 && self.r#powered == true { return 1669; }
-        if self.r#powered == true && self.r#note == 2 && self.r#instrument == Instrument::Guitar { return 935; }
-        if self.r#note == 2 && self.r#instrument == Instrument::Bit && self.r#powered == false { return 1236; }
-        if self.r#note == 11 && self.r#powered == true && self.r#instrument == Instrument::Skeleton { return 1453; }
-        if self.r#instrument == Instrument::CustomHead && self.r#note == 5 && self.r#powered == true { return 1691; }
-        if self.r#instrument == Instrument::Hat && self.r#note == 14 && self.r#powered == false { return 760; }
-        if self.r#instrument == Instrument::Creeper && self.r#note == 14 && self.r#powered == false { return 1510; }
-        if self.r#instrument == Instrument::Skeleton && self.r#note == 20 && self.r#powered == true { return 1471; }
-        if self.r#instrument == Instrument::Creeper && self.r#powered == true && self.r#note == 7 { return 1495; }
-        if self.r#powered == false && self.r#instrument == Instrument::Piglin && self.r#note == 1 { return 1634; }
-        if self.r#instrument == Instrument::Hat && self.r#powered == false && self.r#note == 10 { return 752; }
-        if self.r#note == 9 && self.r#instrument == Instrument::Creeper && self.r#powered == false { return 1500; }
-        if self.r#note == 11 && self.r#instrument == Instrument::Snare && self.r#powered == false { return 704; }
-        if self.r#instrument == Instrument::Piglin && self.r#powered == true && self.r#note == 21 { return 1673; }
-        if self.r#note == 19 && self.r#instrument == Instrument::Bass && self.r#powered == false { return 820; }
-        if self.r#powered == false && self.r#instrument == Instrument::Basedrum && self.r#note == 0 { return 632; }
-        if self.r#note == 9 && self.r#instrument == Instrument::CowBell && self.r#powered == false { return 1150; }
-        if self.r#instrument == Instrument::Guitar && self.r#note == 13 && self.r#powered == false { return 958; }
-        if self.r#powered == true && self.r#note == 22 && self.r#instrument == Instrument::Basedrum { return 675; }
-        if self.r#instrument == Instrument::Basedrum && self.r#note == 13 && self.r#powered == true { return 657; }
-        if self.r#note == 8 && self.r#powered == false && self.r#instrument == Instrument::Flute { return 848; }
-        if self.r#powered == false && self.r#instrument == Instrument::Chime && self.r#note == 5 { return 992; }
-        if self.r#note == 11 && self.r#powered == true && self.r#instrument == Instrument::WitherSkeleton { return 1603; }
-        if self.r#powered == false && self.r#instrument == Instrument::Zombie && self.r#note == 6 { return 1394; }
-        if self.r#instrument == Instrument::CustomHead && self.r#note == 6 && self.r#powered == false { return 1694; }
-        if self.r#instrument == Instrument::Bit && self.r#note == 17 && self.r#powered == false { return 1266; }
-        if self.r#note == 17 && self.r#powered == false && self.r#instrument == Instrument::Basedrum { return 666; }
-        if self.r#instrument == Instrument::Basedrum && self.r#note == 16 && self.r#powered == false { return 664; }
-        if self.r#instrument == Instrument::Bit && self.r#note == 16 && self.r#powered == true { return 1263; }
-        if self.r#powered == false && self.r#instrument == Instrument::Piglin && self.r#note == 4 { return 1640; }
-        if self.r#powered == false && self.r#note == 8 && self.r#instrument == Instrument::Bass { return 798; }
-        if self.r#powered == true && self.r#instrument == Instrument::CustomHead && self.r#note == 14 { return 1709; }
-        if self.r#powered == true && self.r#instrument == Instrument::Zombie && self.r#note == 23 { return 1427; }
-        if self.r#instrument == Instrument::CowBell && self.r#powered == false && self.r#note == 24 { return 1180; }
-        if self.r#powered == false && self.r#note == 22 && self.r#instrument == Instrument::Dragon { return 1576; }
-        if self.r#note == 11 && self.r#instrument == Instrument::Bass && self.r#powered == true { return 803; }
-        if self.r#powered == false && self.r#instrument == Instrument::Bit && self.r#note == 7 { return 1246; }
-        if self.r#powered == false && self.r#note == 15 && self.r#instrument == Instrument::Guitar { return 962; }
-        if self.r#instrument == Instrument::CustomHead && self.r#note == 13 && self.r#powered == true { return 1707; }
-        if self.r#instrument == Instrument::Bell && self.r#note == 8 && self.r#powered == true { return 897; }
-        if self.r#note == 9 && self.r#instrument == Instrument::Xylophone && self.r#powered == false { return 1050; }
-        if self.r#instrument == Instrument::Bit && self.r#note == 15 && self.r#powered == false { return 1262; }
-        if self.r#note == 18 && self.r#powered == false && self.r#instrument == Instrument::Basedrum { return 668; }
-        if self.r#powered == false && self.r#note == 9 && self.r#instrument == Instrument::Hat { return 750; }
-        if self.r#note == 7 && self.r#instrument == Instrument::Basedrum && self.r#powered == false { return 646; }
-        if self.r#powered == false && self.r#note == 23 && self.r#instrument == Instrument::Chime { return 1028; }
-        if self.r#note == 18 && self.r#powered == true && self.r#instrument == Instrument::Didgeridoo { return 1217; }
-        if self.r#note == 13 && self.r#powered == true && self.r#instrument == Instrument::Piglin { return 1657; }
-        if self.r#note == 19 && self.r#powered == false && self.r#instrument == Instrument::CustomHead { return 1720; }
-        if self.r#instrument == Instrument::Flute && self.r#note == 7 && self.r#powered == true { return 845; }
-        if self.r#powered == true && self.r#note == 7 && self.r#instrument == Instrument::Snare { return 695; }
-        if self.r#instrument == Instrument::Hat && self.r#powered == true && self.r#note == 22 { return 775; }
-        if self.r#note == 12 && self.r#instrument == Instrument::Xylophone && self.r#powered == false { return 1056; }
-        if self.r#powered == true && self.r#instrument == Instrument::WitherSkeleton && self.r#note == 2 { return 1585; }
-        if self.r#powered == false && self.r#instrument == Instrument::Harp && self.r#note == 2 { return 586; }
-        if self.r#instrument == Instrument::Bass && self.r#note == 3 && self.r#powered == true { return 787; }
-        if self.r#instrument == Instrument::Bass && self.r#note == 3 && self.r#powered == false { return 788; }
-        if self.r#powered == true && self.r#instrument == Instrument::Chime && self.r#note == 12 { return 1005; }
-        if self.r#instrument == Instrument::Piglin && self.r#note == 23 && self.r#powered == true { return 1677; }
-        if self.r#instrument == Instrument::Piglin && self.r#note == 20 && self.r#powered == true { return 1671; }
-        if self.r#powered == true && self.r#instrument == Instrument::Guitar && self.r#note == 24 { return 979; }
-        if self.r#powered == false && self.r#instrument == Instrument::Bit && self.r#note == 13 { return 1258; }
-        if self.r#instrument == Instrument::Hat && self.r#powered == true && self.r#note == 3 { return 737; }
-        if self.r#powered == false && self.r#instrument == Instrument::Didgeridoo && self.r#note == 19 { return 1220; }
-        if self.r#note == 19 && self.r#powered == false && self.r#instrument == Instrument::IronXylophone { return 1120; }
-        if self.r#note == 18 && self.r#instrument == Instrument::Skeleton && self.r#powered == true { return 1467; }
-        if self.r#powered == false && self.r#instrument == Instrument::Dragon && self.r#note == 20 { return 1572; }
-        if self.r#powered == true && self.r#note == 22 && self.r#instrument == Instrument::CowBell { return 1175; }
-        if self.r#instrument == Instrument::Banjo && self.r#note == 6 && self.r#powered == true { return 1293; }
-        if self.r#note == 19 && self.r#powered == true && self.r#instrument == Instrument::CustomHead { return 1719; }
-        if self.r#instrument == Instrument::Guitar && self.r#note == 10 && self.r#powered == false { return 952; }
-        if self.r#instrument == Instrument::Bell && self.r#note == 2 && self.r#powered == false { return 886; }
-        if self.r#instrument == Instrument::Banjo && self.r#note == 22 && self.r#powered == true { return 1325; }
-        if self.r#powered == false && self.r#instrument == Instrument::Piglin && self.r#note == 10 { return 1652; }
-        if self.r#instrument == Instrument::Guitar && self.r#note == 8 && self.r#powered == false { return 948; }
-        if self.r#powered == true && self.r#instrument == Instrument::CowBell && self.r#note == 12 { return 1155; }
-        if self.r#instrument == Instrument::Xylophone && self.r#note == 16 && self.r#powered == false { return 1064; }
-        if self.r#note == 3 && self.r#powered == false && self.r#instrument == Instrument::Didgeridoo { return 1188; }
-        if self.r#instrument == Instrument::Pling && self.r#note == 11 && self.r#powered == false { return 1354; }
-        if self.r#note == 17 && self.r#instrument == Instrument::Creeper && self.r#powered == true { return 1515; }
-        if self.r#instrument == Instrument::IronXylophone && self.r#note == 8 && self.r#powered == true { return 1097; }
-        if self.r#instrument == Instrument::Piglin && self.r#note == 24 && self.r#powered == true { return 1679; }
-        if self.r#powered == false && self.r#note == 3 && self.r#instrument == Instrument::Dragon { return 1538; }
-        if self.r#powered == true && self.r#instrument == Instrument::Basedrum && self.r#note == 20 { return 671; }
-        if self.r#note == 21 && self.r#powered == false && self.r#instrument == Instrument::Chime { return 1024; }
-        if self.r#instrument == Instrument::Harp && self.r#note == 23 && self.r#powered == false { return 628; }
-        if self.r#instrument == Instrument::Harp && self.r#note == 6 && self.r#powered == true { return 593; }
-        if self.r#note == 3 && self.r#powered == true && self.r#instrument == Instrument::Chime { return 987; }
-        if self.r#powered == true && self.r#instrument == Instrument::Chime && self.r#note == 5 { return 991; }
-        if self.r#note == 12 && self.r#instrument == Instrument::Basedrum && self.r#powered == true { return 655; }
-        if self.r#instrument == Instrument::Snare && self.r#note == 23 && self.r#powered == true { return 727; }
-        if self.r#note == 13 && self.r#instrument == Instrument::Flute && self.r#powered == false { return 858; }
-        if self.r#powered == true && self.r#instrument == Instrument::Flute && self.r#note == 14 { return 859; }
-        if self.r#instrument == Instrument::Didgeridoo && self.r#powered == true && self.r#note == 16 { return 1213; }
-        if self.r#powered == false && self.r#instrument == Instrument::Flute && self.r#note == 11 { return 854; }
-        if self.r#powered == false && self.r#note == 3 && self.r#instrument == Instrument::Bit { return 1238; }
-        if self.r#note == 24 && self.r#powered == false && self.r#instrument == Instrument::Didgeridoo { return 1230; }
-        if self.r#note == 24 && self.r#powered == true && self.r#instrument == Instrument::Pling { return 1379; }
-        if self.r#note == 4 && self.r#powered == true && self.r#instrument == Instrument::Banjo { return 1289; }
-        if self.r#powered == true && self.r#note == 19 && self.r#instrument == Instrument::Didgeridoo { return 1219; }
-        if self.r#note == 8 && self.r#instrument == Instrument::Basedrum && self.r#powered == false { return 648; }
-        if self.r#note == 4 && self.r#powered == true && self.r#instrument == Instrument::Guitar { return 939; }
-        if self.r#instrument == Instrument::Guitar && self.r#powered == false && self.r#note == 18 { return 968; }
-        if self.r#instrument == Instrument::Guitar && self.r#powered == false && self.r#note == 2 { return 936; }
-        if self.r#note == 13 && self.r#powered == true && self.r#instrument == Instrument::WitherSkeleton { return 1607; }
-        if self.r#instrument == Instrument::Bell && self.r#powered == true && self.r#note == 21 { return 923; }
-        if self.r#instrument == Instrument::Chime && self.r#note == 16 && self.r#powered == false { return 1014; }
-        if self.r#instrument == Instrument::Pling && self.r#powered == false && self.r#note == 12 { return 1356; }
-        if self.r#note == 19 && self.r#instrument == Instrument::CowBell && self.r#powered == true { return 1169; }
-        if self.r#note == 8 && self.r#powered == true && self.r#instrument == Instrument::Dragon { return 1547; }
-        if self.r#powered == false && self.r#instrument == Instrument::CustomHead && self.r#note == 2 { return 1686; }
-        if self.r#powered == true && self.r#instrument == Instrument::Harp && self.r#note == 10 { return 601; }
-        if self.r#powered == false && self.r#instrument == Instrument::Piglin && self.r#note == 21 { return 1674; }
-        if self.r#instrument == Instrument::Creeper && self.r#powered == false && self.r#note == 22 { return 1526; }
-        if self.r#instrument == Instrument::Creeper && self.r#note == 3 && self.r#powered == true { return 1487; }
-        if self.r#powered == true && self.r#instrument == Instrument::Bit && self.r#note == 21 { return 1273; }
-        if self.r#instrument == Instrument::Xylophone && self.r#powered == true && self.r#note == 8 { return 1047; }
-        if self.r#powered == true && self.r#instrument == Instrument::Zombie && self.r#note == 20 { return 1421; }
-        if self.r#instrument == Instrument::Piglin && self.r#note == 16 && self.r#powered == false { return 1664; }
-        if self.r#powered == true && self.r#note == 16 && self.r#instrument == Instrument::CustomHead { return 1713; }
-        if self.r#note == 9 && self.r#powered == true && self.r#instrument == Instrument::IronXylophone { return 1099; }
-        if self.r#powered == true && self.r#note == 2 && self.r#instrument == Instrument::Basedrum { return 635; }
-        if self.r#instrument == Instrument::Guitar && self.r#powered == true && self.r#note == 23 { return 977; }
-        if self.r#powered == false && self.r#instrument == Instrument::WitherSkeleton && self.r#note == 13 { return 1608; }
-        if self.r#powered == true && self.r#instrument == Instrument::Bit && self.r#note == 14 { return 1259; }
-        if self.r#note == 1 && self.r#powered == true && self.r#instrument == Instrument::Bit { return 1233; }
-        if self.r#note == 23 && self.r#powered == false && self.r#instrument == Instrument::Banjo { return 1328; }
-        if self.r#instrument == Instrument::Piglin && self.r#powered == false && self.r#note == 7 { return 1646; }
-        if self.r#powered == true && self.r#note == 5 && self.r#instrument == Instrument::Zombie { return 1391; }
-        if self.r#note == 12 && self.r#instrument == Instrument::Guitar && self.r#powered == false { return 956; }
-        if self.r#note == 2 && self.r#powered == false && self.r#instrument == Instrument::Snare { return 686; }
-        if self.r#powered == false && self.r#instrument == Instrument::Chime && self.r#note == 6 { return 994; }
-        if self.r#note == 4 && self.r#powered == false && self.r#instrument == Instrument::Bit { return 1240; }
-        if self.r#instrument == Instrument::CowBell && self.r#note == 4 && self.r#powered == false { return 1140; }
-        if self.r#instrument == Instrument::Hat && self.r#powered == false && self.r#note == 2 { return 736; }
-        if self.r#instrument == Instrument::IronXylophone && self.r#note == 4 && self.r#powered == false { return 1090; }
-        if self.r#instrument == Instrument::Piglin && self.r#note == 3 && self.r#powered == true { return 1637; }
-        if self.r#instrument == Instrument::Pling && self.r#note == 0 && self.r#powered == false { return 1332; }
-        if self.r#powered == false && self.r#note == 18 && self.r#instrument == Instrument::Creeper { return 1518; }
-        if self.r#instrument == Instrument::Hat && self.r#powered == true && self.r#note == 15 { return 761; }
-        if self.r#instrument == Instrument::Didgeridoo && self.r#note == 23 && self.r#powered == true { return 1227; }
-        if self.r#instrument == Instrument::Bit && self.r#note == 0 && self.r#powered == true { return 1231; }
-        if self.r#note == 9 && self.r#powered == true && self.r#instrument == Instrument::Zombie { return 1399; }
-        if self.r#instrument == Instrument::CustomHead && self.r#powered == false && self.r#note == 10 { return 1702; }
-        if self.r#powered == false && self.r#instrument == Instrument::IronXylophone && self.r#note == 6 { return 1094; }
-        if self.r#instrument == Instrument::Banjo && self.r#note == 21 && self.r#powered == false { return 1324; }
-        if self.r#note == 4 && self.r#powered == true && self.r#instrument == Instrument::CowBell { return 1139; }
-        if self.r#note == 19 && self.r#powered == true && self.r#instrument == Instrument::Bit { return 1269; }
-        if self.r#instrument == Instrument::Basedrum && self.r#powered == false && self.r#note == 15 { return 662; }
-        if self.r#note == 21 && self.r#powered == false && self.r#instrument == Instrument::Guitar { return 974; }
-        if self.r#note == 1 && self.r#powered == true && self.r#instrument == Instrument::CowBell { return 1133; }
-        if self.r#instrument == Instrument::Creeper && self.r#powered == true && self.r#note == 4 { return 1489; }
-        if self.r#note == 0 && self.r#powered == false && self.r#instrument == Instrument::Bell { return 882; }
-        if self.r#instrument == Instrument::Banjo && self.r#note == 13 && self.r#powered == false { return 1308; }
-        if self.r#note == 18 && self.r#powered == false && self.r#instrument == Instrument::Dragon { return 1568; }
-        if self.r#powered == false && self.r#instrument == Instrument::Skeleton && self.r#note == 16 { return 1464; }
-        if self.r#instrument == Instrument::Creeper && self.r#note == 20 && self.r#powered == true { return 1521; }
-        if self.r#note == 20 && self.r#instrument == Instrument::Didgeridoo && self.r#powered == true { return 1221; }
-        if self.r#note == 8 && self.r#instrument == Instrument::Banjo && self.r#powered == true { return 1297; }
-        if self.r#note == 1 && self.r#instrument == Instrument::Basedrum && self.r#powered == true { return 633; }
-        if self.r#powered == true && self.r#note == 13 && self.r#instrument == Instrument::Hat { return 757; }
-        if self.r#instrument == Instrument::IronXylophone && self.r#note == 5 && self.r#powered == true { return 1091; }
-        if self.r#powered == false && self.r#instrument == Instrument::Skeleton && self.r#note == 10 { return 1452; }
-        if self.r#note == 18 && self.r#powered == false && self.r#instrument == Instrument::CowBell { return 1168; }
-        if self.r#instrument == Instrument::Snare && self.r#note == 21 && self.r#powered == false { return 724; }
-        if self.r#powered == false && self.r#instrument == Instrument::Chime && self.r#note == 14 { return 1010; }
-        if self.r#note == 4 && self.r#instrument == Instrument::Snare && self.r#powered == true { return 689; }
-        if self.r#powered == true && self.r#instrument == Instrument::Creeper && self.r#note == 15 { return 1511; }
-        if self.r#instrument == Instrument::Bass && self.r#note == 24 && self.r#powered == true { return 829; }
-        if self.r#instrument == Instrument::CowBell && self.r#note == 22 && self.r#powered == false { return 1176; }
-        if self.r#powered == true && self.r#note == 1 && self.r#instrument == Instrument::Skeleton { return 1433; }
-        if self.r#instrument == Instrument::IronXylophone && self.r#note == 14 && self.r#powered == false { return 1110; }
-        if self.r#note == 12 && self.r#powered == true && self.r#instrument == Instrument::Creeper { return 1505; }
-        if self.r#powered == true && self.r#note == 20 && self.r#instrument == Instrument::CowBell { return 1171; }
-        if self.r#instrument == Instrument::Harp && self.r#note == 15 && self.r#powered == true { return 611; }
-        if self.r#instrument == Instrument::Flute && self.r#powered == false && self.r#note == 3 { return 838; }
-        if self.r#instrument == Instrument::Guitar && self.r#note == 14 && self.r#powered == false { return 960; }
-        if self.r#instrument == Instrument::Didgeridoo && self.r#powered == false && self.r#note == 4 { return 1190; }
-        if self.r#instrument == Instrument::Bass && self.r#note == 16 && self.r#powered == false { return 814; }
-        if self.r#instrument == Instrument::Didgeridoo && self.r#powered == false && self.r#note == 13 { return 1208; }
-        if self.r#instrument == Instrument::Bit && self.r#powered == false && self.r#note == 12 { return 1256; }
-        if self.r#note == 7 && self.r#powered == true && self.r#instrument == Instrument::Skeleton { return 1445; }
-        if self.r#note == 2 && self.r#powered == true && self.r#instrument == Instrument::IronXylophone { return 1085; }
-        if self.r#instrument == Instrument::Bass && self.r#note == 20 && self.r#powered == true { return 821; }
-        if self.r#instrument == Instrument::Creeper && self.r#note == 6 && self.r#powered == false { return 1494; }
-        if self.r#note == 2 && self.r#powered == true && self.r#instrument == Instrument::Dragon { return 1535; }
-        if self.r#instrument == Instrument::Snare && self.r#note == 5 && self.r#powered == false { return 692; }
-        if self.r#instrument == Instrument::Banjo && self.r#note == 9 && self.r#powered == true { return 1299; }
-        if self.r#note == 11 && self.r#powered == true && self.r#instrument == Instrument::Piglin { return 1653; }
-        if self.r#powered == true && self.r#instrument == Instrument::CustomHead && self.r#note == 8 { return 1697; }
-        if self.r#note == 10 && self.r#instrument == Instrument::Bit && self.r#powered == false { return 1252; }
-        if self.r#powered == true && self.r#instrument == Instrument::Zombie && self.r#note == 7 { return 1395; }
-        if self.r#instrument == Instrument::Chime && self.r#note == 14 && self.r#powered == true { return 1009; }
-        if self.r#powered == true && self.r#note == 9 && self.r#instrument == Instrument::CowBell { return 1149; }
-        if self.r#instrument == Instrument::Dragon && self.r#note == 7 && self.r#powered == false { return 1546; }
-        if self.r#instrument == Instrument::Guitar && self.r#note == 11 && self.r#powered == true { return 953; }
-        if self.r#instrument == Instrument::Harp && self.r#powered == false && self.r#note == 22 { return 626; }
-        if self.r#instrument == Instrument::Dragon && self.r#powered == false && self.r#note == 17 { return 1566; }
-        if self.r#instrument == Instrument::Creeper && self.r#note == 9 && self.r#powered == true { return 1499; }
-        if self.r#powered == true && self.r#instrument == Instrument::Flute && self.r#note == 0 { return 831; }
-        if self.r#note == 15 && self.r#powered == false && self.r#instrument == Instrument::Xylophone { return 1062; }
-        if self.r#note == 0 && self.r#powered == true && self.r#instrument == Instrument::CowBell { return 1131; }
-        if self.r#powered == false && self.r#instrument == Instrument::Didgeridoo && self.r#note == 5 { return 1192; }
-        if self.r#instrument == Instrument::Dragon && self.r#note == 19 && self.r#powered == false { return 1570; }
-        if self.r#instrument == Instrument::Chime && self.r#note == 10 && self.r#powered == true { return 1001; }
-        if self.r#instrument == Instrument::WitherSkeleton && self.r#note == 17 && self.r#powered == false { return 1616; }
-        if self.r#powered == true && self.r#note == 14 && self.r#instrument == Instrument::Piglin { return 1659; }
-        if self.r#note == 16 && self.r#powered == false && self.r#instrument == Instrument::Bit { return 1264; }
-        if self.r#powered == true && self.r#instrument == Instrument::WitherSkeleton && self.r#note == 21 { return 1623; }
-        if self.r#instrument == Instrument::Xylophone && self.r#powered == false && self.r#note == 2 { return 1036; }
-        if self.r#note == 24 && self.r#instrument == Instrument::CustomHead && self.r#powered == true { return 1729; }
-        if self.r#powered == true && self.r#instrument == Instrument::Didgeridoo && self.r#note == 4 { return 1189; }
-        if self.r#instrument == Instrument::Snare && self.r#note == 8 && self.r#powered == false { return 698; }
-        if self.r#instrument == Instrument::Xylophone && self.r#powered == true && self.r#note == 5 { return 1041; }
-        if self.r#note == 17 && self.r#instrument == Instrument::Bell && self.r#powered == true { return 915; }
+        if self.r#instrument == Instrument::Dragon && self.r#powered == true && self.r#note == 14 {
+            return 1559;
+        }
+        if self.r#instrument == Instrument::Guitar && self.r#powered == false && self.r#note == 17 {
+            return 966;
+        }
+        if self.r#instrument == Instrument::Zombie && self.r#note == 17 && self.r#powered == false {
+            return 1416;
+        }
+        if self.r#instrument == Instrument::Chime && self.r#powered == true && self.r#note == 4 {
+            return 989;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Chime && self.r#note == 9 {
+            return 999;
+        }
+        if self.r#powered == true && self.r#note == 24 && self.r#instrument == Instrument::Zombie {
+            return 1429;
+        }
+        if self.r#instrument == Instrument::CustomHead && self.r#note == 9 && self.r#powered == true
+        {
+            return 1699;
+        }
+        if self.r#instrument == Instrument::Harp && self.r#note == 16 && self.r#powered == true {
+            return 613;
+        }
+        if self.r#powered == true
+            && self.r#note == 24
+            && self.r#instrument == Instrument::WitherSkeleton
+        {
+            return 1629;
+        }
+        if self.r#instrument == Instrument::CustomHead && self.r#note == 1 && self.r#powered == true
+        {
+            return 1683;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Snare && self.r#note == 13 {
+            return 707;
+        }
+        if self.r#powered == true
+            && self.r#instrument == Instrument::Didgeridoo
+            && self.r#note == 22
+        {
+            return 1225;
+        }
+        if self.r#note == 11 && self.r#instrument == Instrument::Creeper && self.r#powered == true {
+            return 1503;
+        }
+        if self.r#instrument == Instrument::Guitar && self.r#note == 13 && self.r#powered == true {
+            return 957;
+        }
+        if self.r#instrument == Instrument::Chime && self.r#note == 22 && self.r#powered == false {
+            return 1026;
+        }
+        if self.r#powered == true && self.r#note == 22 && self.r#instrument == Instrument::Pling {
+            return 1375;
+        }
+        if self.r#note == 0 && self.r#powered == true && self.r#instrument == Instrument::Banjo {
+            return 1281;
+        }
+        if self.r#instrument == Instrument::Creeper && self.r#powered == true && self.r#note == 14 {
+            return 1509;
+        }
+        if self.r#note == 17 && self.r#powered == true && self.r#instrument == Instrument::Dragon {
+            return 1565;
+        }
+        if self.r#note == 4
+            && self.r#powered == true
+            && self.r#instrument == Instrument::WitherSkeleton
+        {
+            return 1589;
+        }
+        if self.r#instrument == Instrument::Bass && self.r#note == 12 && self.r#powered == true {
+            return 805;
+        }
+        if self.r#instrument == Instrument::Xylophone && self.r#note == 15 && self.r#powered == true
+        {
+            return 1061;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Bit && self.r#note == 18 {
+            return 1268;
+        }
+        if self.r#powered == true
+            && self.r#instrument == Instrument::WitherSkeleton
+            && self.r#note == 17
+        {
+            return 1615;
+        }
+        if self.r#instrument == Instrument::Guitar && self.r#powered == true && self.r#note == 19 {
+            return 969;
+        }
+        if self.r#instrument == Instrument::Skeleton && self.r#note == 17 && self.r#powered == true
+        {
+            return 1465;
+        }
+        if self.r#powered == false
+            && self.r#note == 21
+            && self.r#instrument == Instrument::WitherSkeleton
+        {
+            return 1624;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Snare && self.r#note == 18 {
+            return 718;
+        }
+        if self.r#instrument == Instrument::Xylophone && self.r#note == 11 && self.r#powered == true
+        {
+            return 1053;
+        }
+        if self.r#instrument == Instrument::WitherSkeleton
+            && self.r#note == 18
+            && self.r#powered == true
+        {
+            return 1617;
+        }
+        if self.r#note == 12
+            && self.r#powered == true
+            && self.r#instrument == Instrument::CustomHead
+        {
+            return 1705;
+        }
+        if self.r#note == 21 && self.r#powered == false && self.r#instrument == Instrument::Harp {
+            return 624;
+        }
+        if self.r#instrument == Instrument::Bit && self.r#note == 3 && self.r#powered == true {
+            return 1237;
+        }
+        if self.r#instrument == Instrument::CustomHead
+            && self.r#note == 21
+            && self.r#powered == true
+        {
+            return 1723;
+        }
+        if self.r#powered == false && self.r#note == 15 && self.r#instrument == Instrument::Piglin {
+            return 1662;
+        }
+        if self.r#instrument == Instrument::Zombie && self.r#note == 7 && self.r#powered == false {
+            return 1396;
+        }
+        if self.r#instrument == Instrument::Creeper && self.r#note == 5 && self.r#powered == false {
+            return 1492;
+        }
+        if self.r#note == 23 && self.r#powered == true && self.r#instrument == Instrument::Dragon {
+            return 1577;
+        }
+        if self.r#instrument == Instrument::IronXylophone
+            && self.r#note == 23
+            && self.r#powered == false
+        {
+            return 1128;
+        }
+        if self.r#powered == true && self.r#note == 21 && self.r#instrument == Instrument::Bass {
+            return 823;
+        }
+        if self.r#instrument == Instrument::Skeleton && self.r#powered == true && self.r#note == 10
+        {
+            return 1451;
+        }
+        if self.r#note == 0 && self.r#powered == true && self.r#instrument == Instrument::Chime {
+            return 981;
+        }
+        if self.r#note == 24 && self.r#powered == true && self.r#instrument == Instrument::Skeleton
+        {
+            return 1479;
+        }
+        if self.r#instrument == Instrument::Basedrum && self.r#note == 9 && self.r#powered == true {
+            return 649;
+        }
+        if self.r#note == 9 && self.r#instrument == Instrument::Zombie && self.r#powered == false {
+            return 1400;
+        }
+        if self.r#instrument == Instrument::IronXylophone
+            && self.r#powered == false
+            && self.r#note == 21
+        {
+            return 1124;
+        }
+        if self.r#powered == true && self.r#note == 8 && self.r#instrument == Instrument::Piglin {
+            return 1647;
+        }
+        if self.r#instrument == Instrument::Piglin && self.r#note == 23 && self.r#powered == false {
+            return 1678;
+        }
+        if self.r#instrument == Instrument::CustomHead
+            && self.r#powered == false
+            && self.r#note == 0
+        {
+            return 1682;
+        }
+        if self.r#note == 2 && self.r#powered == false && self.r#instrument == Instrument::Pling {
+            return 1336;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Bass && self.r#note == 8 {
+            return 797;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Chime && self.r#note == 19 {
+            return 1019;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Chime && self.r#note == 18 {
+            return 1017;
+        }
+        if self.r#instrument == Instrument::Guitar && self.r#powered == false && self.r#note == 23 {
+            return 978;
+        }
+        if self.r#powered == true && self.r#note == 16 && self.r#instrument == Instrument::Banjo {
+            return 1313;
+        }
+        if self.r#instrument == Instrument::Xylophone
+            && self.r#note == 17
+            && self.r#powered == false
+        {
+            return 1066;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Bass && self.r#note == 17 {
+            return 816;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Basedrum && self.r#note == 6 {
+            return 643;
+        }
+        if self.r#instrument == Instrument::Bit && self.r#note == 17 && self.r#powered == true {
+            return 1265;
+        }
+        if self.r#instrument == Instrument::Zombie && self.r#powered == true && self.r#note == 19 {
+            return 1419;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Bass && self.r#note == 9 {
+            return 799;
+        }
+        if self.r#instrument == Instrument::Bass && self.r#note == 10 && self.r#powered == false {
+            return 802;
+        }
+        if self.r#instrument == Instrument::Bit && self.r#powered == true && self.r#note == 9 {
+            return 1249;
+        }
+        if self.r#note == 5
+            && self.r#instrument == Instrument::IronXylophone
+            && self.r#powered == false
+        {
+            return 1092;
+        }
+        if self.r#instrument == Instrument::CustomHead
+            && self.r#powered == false
+            && self.r#note == 9
+        {
+            return 1700;
+        }
+        if self.r#instrument == Instrument::Banjo && self.r#powered == false && self.r#note == 3 {
+            return 1288;
+        }
+        if self.r#instrument == Instrument::Harp && self.r#powered == false && self.r#note == 7 {
+            return 596;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Xylophone && self.r#note == 7
+        {
+            return 1045;
+        }
+        if self.r#note == 1 && self.r#powered == false && self.r#instrument == Instrument::Guitar {
+            return 934;
+        }
+        if self.r#powered == false && self.r#note == 21 && self.r#instrument == Instrument::Zombie {
+            return 1424;
+        }
+        if self.r#note == 13 && self.r#powered == true && self.r#instrument == Instrument::Pling {
+            return 1357;
+        }
+        if self.r#note == 0 && self.r#instrument == Instrument::Creeper && self.r#powered == false {
+            return 1482;
+        }
+        if self.r#powered == true && self.r#note == 24 && self.r#instrument == Instrument::Hat {
+            return 779;
+        }
+        if self.r#instrument == Instrument::Hat && self.r#powered == true && self.r#note == 20 {
+            return 771;
+        }
+        if self.r#instrument == Instrument::Skeleton && self.r#note == 8 && self.r#powered == false
+        {
+            return 1448;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Guitar && self.r#note == 3 {
+            return 937;
+        }
+        if self.r#note == 24 && self.r#powered == true && self.r#instrument == Instrument::Xylophone
+        {
+            return 1079;
+        }
+        if self.r#instrument == Instrument::Didgeridoo && self.r#powered == true && self.r#note == 5
+        {
+            return 1191;
+        }
+        if self.r#instrument == Instrument::Pling && self.r#note == 17 && self.r#powered == true {
+            return 1365;
+        }
+        if self.r#note == 20 && self.r#powered == false && self.r#instrument == Instrument::Zombie {
+            return 1422;
+        }
+        if self.r#note == 21 && self.r#instrument == Instrument::Pling && self.r#powered == false {
+            return 1374;
+        }
+        if self.r#note == 11 && self.r#powered == true && self.r#instrument == Instrument::Basedrum
+        {
+            return 653;
+        }
+        if self.r#note == 12 && self.r#powered == true && self.r#instrument == Instrument::Dragon {
+            return 1555;
+        }
+        if self.r#note == 0 && self.r#powered == false && self.r#instrument == Instrument::Snare {
+            return 682;
+        }
+        if self.r#note == 15 && self.r#powered == false && self.r#instrument == Instrument::Flute {
+            return 862;
+        }
+        if self.r#note == 4 && self.r#instrument == Instrument::Creeper && self.r#powered == false {
+            return 1490;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Dragon && self.r#note == 0 {
+            return 1531;
+        }
+        if self.r#note == 19 && self.r#powered == true && self.r#instrument == Instrument::Flute {
+            return 869;
+        }
+        if self.r#instrument == Instrument::Didgeridoo
+            && self.r#powered == false
+            && self.r#note == 2
+        {
+            return 1186;
+        }
+        if self.r#instrument == Instrument::Banjo && self.r#note == 14 && self.r#powered == false {
+            return 1310;
+        }
+        if self.r#instrument == Instrument::CowBell && self.r#powered == false && self.r#note == 14
+        {
+            return 1160;
+        }
+        if self.r#note == 16 && self.r#powered == true && self.r#instrument == Instrument::Guitar {
+            return 963;
+        }
+        if self.r#instrument == Instrument::Bit && self.r#powered == true && self.r#note == 4 {
+            return 1239;
+        }
+        if self.r#instrument == Instrument::Piglin && self.r#note == 13 && self.r#powered == false {
+            return 1658;
+        }
+        if self.r#note == 6 && self.r#instrument == Instrument::CustomHead && self.r#powered == true
+        {
+            return 1693;
+        }
+        if self.r#instrument == Instrument::Hat && self.r#note == 19 && self.r#powered == true {
+            return 769;
+        }
+        if self.r#note == 9 && self.r#powered == false && self.r#instrument == Instrument::Bass {
+            return 800;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Basedrum && self.r#note == 15
+        {
+            return 661;
+        }
+        if self.r#powered == true && self.r#note == 1 && self.r#instrument == Instrument::Bell {
+            return 883;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Creeper && self.r#note == 12
+        {
+            return 1506;
+        }
+        if self.r#instrument == Instrument::Harp && self.r#note == 12 && self.r#powered == true {
+            return 605;
+        }
+        if self.r#instrument == Instrument::Dragon && self.r#note == 13 && self.r#powered == true {
+            return 1557;
+        }
+        if self.r#note == 19 && self.r#instrument == Instrument::Bit && self.r#powered == false {
+            return 1270;
+        }
+        if self.r#instrument == Instrument::Harp && self.r#powered == false && self.r#note == 9 {
+            return 600;
+        }
+        if self.r#instrument == Instrument::Basedrum && self.r#powered == false && self.r#note == 11
+        {
+            return 654;
+        }
+        if self.r#instrument == Instrument::Bell && self.r#note == 19 && self.r#powered == true {
+            return 919;
+        }
+        if self.r#instrument == Instrument::Chime && self.r#powered == true && self.r#note == 17 {
+            return 1015;
+        }
+        if self.r#instrument == Instrument::Didgeridoo
+            && self.r#note == 24
+            && self.r#powered == true
+        {
+            return 1229;
+        }
+        if self.r#note == 11 && self.r#instrument == Instrument::Zombie && self.r#powered == true {
+            return 1403;
+        }
+        if self.r#powered == true && self.r#note == 17 && self.r#instrument == Instrument::Hat {
+            return 765;
+        }
+        if self.r#instrument == Instrument::Harp && self.r#note == 12 && self.r#powered == false {
+            return 606;
+        }
+        if self.r#note == 24 && self.r#instrument == Instrument::Guitar && self.r#powered == false {
+            return 980;
+        }
+        if self.r#note == 6 && self.r#powered == false && self.r#instrument == Instrument::CowBell {
+            return 1144;
+        }
+        if self.r#note == 12 && self.r#powered == true && self.r#instrument == Instrument::Guitar {
+            return 955;
+        }
+        if self.r#instrument == Instrument::Didgeridoo
+            && self.r#note == 1
+            && self.r#powered == false
+        {
+            return 1184;
+        }
+        if self.r#note == 4 && self.r#instrument == Instrument::Banjo && self.r#powered == false {
+            return 1290;
+        }
+        if self.r#instrument == Instrument::Banjo && self.r#note == 18 && self.r#powered == true {
+            return 1317;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Pling && self.r#note == 9 {
+            return 1349;
+        }
+        if self.r#powered == false
+            && self.r#instrument == Instrument::Xylophone
+            && self.r#note == 13
+        {
+            return 1058;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Bell && self.r#note == 4 {
+            return 890;
+        }
+        if self.r#powered == true && self.r#note == 22 && self.r#instrument == Instrument::Xylophone
+        {
+            return 1075;
+        }
+        if self.r#powered == false && self.r#note == 2 && self.r#instrument == Instrument::Banjo {
+            return 1286;
+        }
+        if self.r#note == 12 && self.r#instrument == Instrument::Zombie && self.r#powered == false {
+            return 1406;
+        }
+        if self.r#instrument == Instrument::Hat && self.r#powered == true && self.r#note == 6 {
+            return 743;
+        }
+        if self.r#powered == true && self.r#note == 2 && self.r#instrument == Instrument::Piglin {
+            return 1635;
+        }
+        if self.r#powered == true && self.r#note == 21 && self.r#instrument == Instrument::Flute {
+            return 873;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Xylophone && self.r#note == 18
+        {
+            return 1067;
+        }
+        if self.r#instrument == Instrument::Flute && self.r#note == 18 && self.r#powered == false {
+            return 868;
+        }
+        if self.r#instrument == Instrument::Snare && self.r#note == 3 && self.r#powered == false {
+            return 688;
+        }
+        if self.r#instrument == Instrument::Chime && self.r#powered == true && self.r#note == 23 {
+            return 1027;
+        }
+        if self.r#instrument == Instrument::Xylophone && self.r#powered == false && self.r#note == 4
+        {
+            return 1040;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Zombie && self.r#note == 0 {
+            return 1382;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Chime && self.r#note == 8 {
+            return 997;
+        }
+        if self.r#powered == false
+            && self.r#instrument == Instrument::CustomHead
+            && self.r#note == 16
+        {
+            return 1714;
+        }
+        if self.r#instrument == Instrument::IronXylophone
+            && self.r#powered == false
+            && self.r#note == 20
+        {
+            return 1122;
+        }
+        if self.r#powered == false && self.r#note == 10 && self.r#instrument == Instrument::Basedrum
+        {
+            return 652;
+        }
+        if self.r#instrument == Instrument::Flute && self.r#note == 6 && self.r#powered == true {
+            return 843;
+        }
+        if self.r#note == 20 && self.r#powered == true && self.r#instrument == Instrument::Bell {
+            return 921;
+        }
+        if self.r#instrument == Instrument::Bass && self.r#note == 5 && self.r#powered == false {
+            return 792;
+        }
+        if self.r#instrument == Instrument::WitherSkeleton
+            && self.r#note == 0
+            && self.r#powered == true
+        {
+            return 1581;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Guitar && self.r#note == 6 {
+            return 943;
+        }
+        if self.r#note == 14 && self.r#instrument == Instrument::Bell && self.r#powered == true {
+            return 909;
+        }
+        if self.r#instrument == Instrument::IronXylophone
+            && self.r#note == 9
+            && self.r#powered == false
+        {
+            return 1100;
+        }
+        if self.r#note == 18
+            && self.r#instrument == Instrument::Xylophone
+            && self.r#powered == false
+        {
+            return 1068;
+        }
+        if self.r#note == 9
+            && self.r#instrument == Instrument::WitherSkeleton
+            && self.r#powered == true
+        {
+            return 1599;
+        }
+        if self.r#powered == false
+            && self.r#note == 14
+            && self.r#instrument == Instrument::Xylophone
+        {
+            return 1060;
+        }
+        if self.r#note == 14 && self.r#instrument == Instrument::Bell && self.r#powered == false {
+            return 910;
+        }
+        if self.r#instrument == Instrument::Guitar && self.r#note == 0 && self.r#powered == true {
+            return 931;
+        }
+        if self.r#note == 6 && self.r#instrument == Instrument::CowBell && self.r#powered == true {
+            return 1143;
+        }
+        if self.r#powered == true
+            && self.r#instrument == Instrument::IronXylophone
+            && self.r#note == 24
+        {
+            return 1129;
+        }
+        if self.r#instrument == Instrument::Pling && self.r#note == 12 && self.r#powered == true {
+            return 1355;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Harp && self.r#note == 17 {
+            return 616;
+        }
+        if self.r#note == 5 && self.r#powered == false && self.r#instrument == Instrument::Bell {
+            return 892;
+        }
+        if self.r#instrument == Instrument::Didgeridoo && self.r#powered == true && self.r#note == 3
+        {
+            return 1187;
+        }
+        if self.r#powered == false
+            && self.r#instrument == Instrument::CustomHead
+            && self.r#note == 12
+        {
+            return 1706;
+        }
+        if self.r#powered == false && self.r#note == 6 && self.r#instrument == Instrument::Piglin {
+            return 1644;
+        }
+        if self.r#note == 12 && self.r#powered == true && self.r#instrument == Instrument::Snare {
+            return 705;
+        }
+        if self.r#powered == true && self.r#note == 19 && self.r#instrument == Instrument::Banjo {
+            return 1319;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Banjo && self.r#note == 11 {
+            return 1303;
+        }
+        if self.r#note == 15 && self.r#instrument == Instrument::Dragon && self.r#powered == true {
+            return 1561;
+        }
+        if self.r#note == 8 && self.r#instrument == Instrument::Piglin && self.r#powered == false {
+            return 1648;
+        }
+        if self.r#powered == false && self.r#note == 7 && self.r#instrument == Instrument::Creeper {
+            return 1496;
+        }
+        if self.r#note == 8 && self.r#powered == true && self.r#instrument == Instrument::Didgeridoo
+        {
+            return 1197;
+        }
+        if self.r#instrument == Instrument::Hat && self.r#note == 10 && self.r#powered == true {
+            return 751;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Skeleton && self.r#note == 0
+        {
+            return 1432;
+        }
+        if self.r#note == 23 && self.r#instrument == Instrument::Skeleton && self.r#powered == true
+        {
+            return 1477;
+        }
+        if self.r#note == 13
+            && self.r#instrument == Instrument::IronXylophone
+            && self.r#powered == false
+        {
+            return 1108;
+        }
+        if self.r#instrument == Instrument::Xylophone && self.r#note == 0 && self.r#powered == true
+        {
+            return 1031;
+        }
+        if self.r#powered == true
+            && self.r#instrument == Instrument::Didgeridoo
+            && self.r#note == 10
+        {
+            return 1201;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Piglin && self.r#note == 19 {
+            return 1670;
+        }
+        if self.r#instrument == Instrument::WitherSkeleton
+            && self.r#note == 12
+            && self.r#powered == false
+        {
+            return 1606;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Snare && self.r#note == 8 {
+            return 697;
+        }
+        if self.r#powered == true
+            && self.r#note == 3
+            && self.r#instrument == Instrument::WitherSkeleton
+        {
+            return 1587;
+        }
+        if self.r#note == 2 && self.r#powered == false && self.r#instrument == Instrument::Piglin {
+            return 1636;
+        }
+        if self.r#powered == true
+            && self.r#note == 15
+            && self.r#instrument == Instrument::IronXylophone
+        {
+            return 1111;
+        }
+        if self.r#powered == false
+            && self.r#instrument == Instrument::Didgeridoo
+            && self.r#note == 22
+        {
+            return 1226;
+        }
+        if self.r#note == 14 && self.r#powered == true && self.r#instrument == Instrument::Guitar {
+            return 959;
+        }
+        if self.r#note == 23 && self.r#powered == false && self.r#instrument == Instrument::Basedrum
+        {
+            return 678;
+        }
+        if self.r#powered == true && self.r#note == 2 && self.r#instrument == Instrument::Hat {
+            return 735;
+        }
+        if self.r#note == 11 && self.r#instrument == Instrument::Hat && self.r#powered == false {
+            return 754;
+        }
+        if self.r#note == 23 && self.r#powered == false && self.r#instrument == Instrument::CowBell
+        {
+            return 1178;
+        }
+        if self.r#instrument == Instrument::Bass && self.r#powered == true && self.r#note == 17 {
+            return 815;
+        }
+        if self.r#instrument == Instrument::Pling && self.r#note == 5 && self.r#powered == true {
+            return 1341;
+        }
+        if self.r#note == 2 && self.r#instrument == Instrument::Bass && self.r#powered == true {
+            return 785;
+        }
+        if self.r#powered == true && self.r#note == 1 && self.r#instrument == Instrument::Flute {
+            return 833;
+        }
+        if self.r#note == 1 && self.r#instrument == Instrument::Zombie && self.r#powered == false {
+            return 1384;
+        }
+        if self.r#powered == true && self.r#note == 2 && self.r#instrument == Instrument::Bell {
+            return 885;
+        }
+        if self.r#note == 18 && self.r#powered == true && self.r#instrument == Instrument::Flute {
+            return 867;
+        }
+        if self.r#note == 11 && self.r#powered == false && self.r#instrument == Instrument::Guitar {
+            return 954;
+        }
+        if self.r#instrument == Instrument::Chime && self.r#note == 13 && self.r#powered == false {
+            return 1008;
+        }
+        if self.r#instrument == Instrument::IronXylophone
+            && self.r#note == 2
+            && self.r#powered == false
+        {
+            return 1086;
+        }
+        if self.r#note == 8 && self.r#powered == false && self.r#instrument == Instrument::Harp {
+            return 598;
+        }
+        if self.r#note == 14
+            && self.r#instrument == Instrument::IronXylophone
+            && self.r#powered == true
+        {
+            return 1109;
+        }
+        if self.r#instrument == Instrument::Banjo && self.r#note == 22 && self.r#powered == false {
+            return 1326;
+        }
+        if self.r#instrument == Instrument::Creeper && self.r#note == 24 && self.r#powered == false
+        {
+            return 1530;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Pling && self.r#note == 18 {
+            return 1367;
+        }
+        if self.r#note == 19
+            && self.r#powered == false
+            && self.r#instrument == Instrument::WitherSkeleton
+        {
+            return 1620;
+        }
+        if self.r#instrument == Instrument::Basedrum && self.r#note == 10 && self.r#powered == true
+        {
+            return 651;
+        }
+        if self.r#instrument == Instrument::IronXylophone
+            && self.r#note == 19
+            && self.r#powered == true
+        {
+            return 1119;
+        }
+        if self.r#instrument == Instrument::Banjo && self.r#note == 20 && self.r#powered == false {
+            return 1322;
+        }
+        if self.r#powered == true && self.r#note == 17 && self.r#instrument == Instrument::Flute {
+            return 865;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Flute && self.r#note == 0 {
+            return 832;
+        }
+        if self.r#note == 7 && self.r#powered == false && self.r#instrument == Instrument::Bell {
+            return 896;
+        }
+        if self.r#note == 15 && self.r#powered == true && self.r#instrument == Instrument::CowBell {
+            return 1161;
+        }
+        if self.r#powered == true && self.r#note == 23 && self.r#instrument == Instrument::Pling {
+            return 1377;
+        }
+        if self.r#note == 8
+            && self.r#instrument == Instrument::IronXylophone
+            && self.r#powered == false
+        {
+            return 1098;
+        }
+        if self.r#instrument == Instrument::Pling && self.r#powered == true && self.r#note == 21 {
+            return 1373;
+        }
+        if self.r#note == 5
+            && self.r#powered == false
+            && self.r#instrument == Instrument::CustomHead
+        {
+            return 1692;
+        }
+        if self.r#instrument == Instrument::Dragon && self.r#note == 20 && self.r#powered == true {
+            return 1571;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Basedrum && self.r#note == 1
+        {
+            return 634;
+        }
+        if self.r#instrument == Instrument::CowBell && self.r#powered == false && self.r#note == 2 {
+            return 1136;
+        }
+        if self.r#note == 5 && self.r#instrument == Instrument::Skeleton && self.r#powered == false
+        {
+            return 1442;
+        }
+        if self.r#instrument == Instrument::Creeper && self.r#note == 1 && self.r#powered == true {
+            return 1483;
+        }
+        if self.r#note == 4 && self.r#powered == true && self.r#instrument == Instrument::CustomHead
+        {
+            return 1689;
+        }
+        if self.r#note == 22 && self.r#instrument == Instrument::Snare && self.r#powered == true {
+            return 725;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Hat && self.r#note == 22 {
+            return 776;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Creeper && self.r#note == 10
+        {
+            return 1502;
+        }
+        if self.r#powered == false && self.r#note == 22 && self.r#instrument == Instrument::Bit {
+            return 1276;
+        }
+        if self.r#instrument == Instrument::Xylophone && self.r#note == 20 && self.r#powered == true
+        {
+            return 1071;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Xylophone && self.r#note == 3
+        {
+            return 1038;
+        }
+        if self.r#instrument == Instrument::Zombie && self.r#note == 15 && self.r#powered == true {
+            return 1411;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Xylophone && self.r#note == 21
+        {
+            return 1073;
+        }
+        if self.r#note == 1 && self.r#powered == true && self.r#instrument == Instrument::Harp {
+            return 583;
+        }
+        if self.r#instrument == Instrument::Dragon && self.r#note == 21 && self.r#powered == false {
+            return 1574;
+        }
+        if self.r#powered == true
+            && self.r#instrument == Instrument::IronXylophone
+            && self.r#note == 17
+        {
+            return 1115;
+        }
+        if self.r#note == 7
+            && self.r#powered == false
+            && self.r#instrument == Instrument::WitherSkeleton
+        {
+            return 1596;
+        }
+        if self.r#powered == false
+            && self.r#note == 22
+            && self.r#instrument == Instrument::IronXylophone
+        {
+            return 1126;
+        }
+        if self.r#note == 9 && self.r#instrument == Instrument::Skeleton && self.r#powered == false
+        {
+            return 1450;
+        }
+        if self.r#instrument == Instrument::Hat && self.r#note == 20 && self.r#powered == false {
+            return 772;
+        }
+        if self.r#instrument == Instrument::IronXylophone
+            && self.r#note == 10
+            && self.r#powered == true
+        {
+            return 1101;
+        }
+        if self.r#instrument == Instrument::Bell && self.r#powered == true && self.r#note == 10 {
+            return 901;
+        }
+        if self.r#note == 1 && self.r#powered == true && self.r#instrument == Instrument::Hat {
+            return 733;
+        }
+        if self.r#instrument == Instrument::Pling && self.r#note == 16 && self.r#powered == true {
+            return 1363;
+        }
+        if self.r#note == 1 && self.r#powered == false && self.r#instrument == Instrument::Bass {
+            return 784;
+        }
+        if self.r#note == 20 && self.r#powered == true && self.r#instrument == Instrument::Bit {
+            return 1271;
+        }
+        if self.r#note == 21 && self.r#powered == true && self.r#instrument == Instrument::Chime {
+            return 1023;
+        }
+        if self.r#note == 2 && self.r#powered == true && self.r#instrument == Instrument::Xylophone
+        {
+            return 1035;
+        }
+        if self.r#instrument == Instrument::Xylophone && self.r#powered == true && self.r#note == 9
+        {
+            return 1049;
+        }
+        if self.r#note == 15 && self.r#instrument == Instrument::Pling && self.r#powered == false {
+            return 1362;
+        }
+        if self.r#note == 9 && self.r#powered == false && self.r#instrument == Instrument::Basedrum
+        {
+            return 650;
+        }
+        if self.r#note == 23 && self.r#powered == true && self.r#instrument == Instrument::Basedrum
+        {
+            return 677;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Pling && self.r#note == 17 {
+            return 1366;
+        }
+        if self.r#note == 7 && self.r#instrument == Instrument::Snare && self.r#powered == false {
+            return 696;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Banjo && self.r#note == 15 {
+            return 1311;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Skeleton && self.r#note == 16
+        {
+            return 1463;
+        }
+        if self.r#instrument == Instrument::Basedrum && self.r#powered == true && self.r#note == 0 {
+            return 631;
+        }
+        if self.r#instrument == Instrument::CustomHead
+            && self.r#note == 20
+            && self.r#powered == false
+        {
+            return 1722;
+        }
+        if self.r#note == 19 && self.r#powered == false && self.r#instrument == Instrument::Creeper
+        {
+            return 1520;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Bass && self.r#note == 23 {
+            return 827;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Banjo && self.r#note == 10 {
+            return 1302;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Hat && self.r#note == 9 {
+            return 749;
+        }
+        if self.r#note == 17 && self.r#instrument == Instrument::Xylophone && self.r#powered == true
+        {
+            return 1065;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Chime && self.r#note == 20 {
+            return 1021;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Banjo && self.r#note == 17 {
+            return 1316;
+        }
+        if self.r#note == 8 && self.r#powered == false && self.r#instrument == Instrument::CowBell {
+            return 1148;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Dragon && self.r#note == 24 {
+            return 1579;
+        }
+        if self.r#note == 23 && self.r#powered == true && self.r#instrument == Instrument::Bell {
+            return 927;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Snare && self.r#note == 14 {
+            return 710;
+        }
+        if self.r#note == 13 && self.r#instrument == Instrument::Pling && self.r#powered == false {
+            return 1358;
+        }
+        if self.r#note == 3 && self.r#instrument == Instrument::CowBell && self.r#powered == false {
+            return 1138;
+        }
+        if self.r#instrument == Instrument::CustomHead
+            && self.r#note == 21
+            && self.r#powered == false
+        {
+            return 1724;
+        }
+        if self.r#note == 18 && self.r#instrument == Instrument::Bit && self.r#powered == true {
+            return 1267;
+        }
+        if self.r#instrument == Instrument::Piglin && self.r#note == 15 && self.r#powered == true {
+            return 1661;
+        }
+        if self.r#powered == false && self.r#note == 1 && self.r#instrument == Instrument::Snare {
+            return 684;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::CowBell && self.r#note == 13
+        {
+            return 1158;
+        }
+        if self.r#note == 20 && self.r#instrument == Instrument::Creeper && self.r#powered == false
+        {
+            return 1522;
+        }
+        if self.r#note == 21 && self.r#powered == true && self.r#instrument == Instrument::Hat {
+            return 773;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Bass && self.r#note == 14 {
+            return 810;
+        }
+        if self.r#note == 0 && self.r#powered == false && self.r#instrument == Instrument::CowBell {
+            return 1132;
+        }
+        if self.r#note == 16 && self.r#instrument == Instrument::Creeper && self.r#powered == false
+        {
+            return 1514;
+        }
+        if self.r#note == 9 && self.r#instrument == Instrument::Harp && self.r#powered == true {
+            return 599;
+        }
+        if self.r#instrument == Instrument::Bass && self.r#note == 18 && self.r#powered == false {
+            return 818;
+        }
+        if self.r#note == 7 && self.r#powered == false && self.r#instrument == Instrument::Pling {
+            return 1346;
+        }
+        if self.r#powered == true && self.r#note == 16 && self.r#instrument == Instrument::Bell {
+            return 913;
+        }
+        if self.r#note == 16 && self.r#powered == false && self.r#instrument == Instrument::Zombie {
+            return 1414;
+        }
+        if self.r#instrument == Instrument::Dragon && self.r#note == 5 && self.r#powered == true {
+            return 1541;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Basedrum && self.r#note == 8 {
+            return 647;
+        }
+        if self.r#note == 10 && self.r#powered == false && self.r#instrument == Instrument::Flute {
+            return 852;
+        }
+        if self.r#instrument == Instrument::Guitar && self.r#note == 15 && self.r#powered == true {
+            return 961;
+        }
+        if self.r#note == 7
+            && self.r#powered == true
+            && self.r#instrument == Instrument::WitherSkeleton
+        {
+            return 1595;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Bell && self.r#note == 23 {
+            return 928;
+        }
+        if self.r#note == 3 && self.r#instrument == Instrument::CustomHead && self.r#powered == true
+        {
+            return 1687;
+        }
+        if self.r#instrument == Instrument::Bass && self.r#note == 10 && self.r#powered == true {
+            return 801;
+        }
+        if self.r#instrument == Instrument::IronXylophone
+            && self.r#note == 4
+            && self.r#powered == true
+        {
+            return 1089;
+        }
+        if self.r#note == 15 && self.r#powered == false && self.r#instrument == Instrument::Snare {
+            return 712;
+        }
+        if self.r#powered == false && self.r#note == 6 && self.r#instrument == Instrument::Xylophone
+        {
+            return 1044;
+        }
+        if self.r#instrument == Instrument::Bass && self.r#note == 20 && self.r#powered == false {
+            return 822;
+        }
+        if self.r#instrument == Instrument::Pling && self.r#powered == false && self.r#note == 3 {
+            return 1338;
+        }
+        if self.r#note == 19
+            && self.r#powered == true
+            && self.r#instrument == Instrument::WitherSkeleton
+        {
+            return 1619;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Zombie && self.r#note == 19 {
+            return 1420;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Hat && self.r#note == 4 {
+            return 739;
+        }
+        if self.r#powered == true && self.r#note == 6 && self.r#instrument == Instrument::Didgeridoo
+        {
+            return 1193;
+        }
+        if self.r#note == 9
+            && self.r#powered == false
+            && self.r#instrument == Instrument::Didgeridoo
+        {
+            return 1200;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Harp && self.r#note == 1 {
+            return 584;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Dragon && self.r#note == 13 {
+            return 1558;
+        }
+        if self.r#instrument == Instrument::Flute && self.r#note == 6 && self.r#powered == false {
+            return 844;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Piglin && self.r#note == 6 {
+            return 1643;
+        }
+        if self.r#powered == true
+            && self.r#note == 20
+            && self.r#instrument == Instrument::WitherSkeleton
+        {
+            return 1621;
+        }
+        if self.r#instrument == Instrument::WitherSkeleton
+            && self.r#powered == true
+            && self.r#note == 1
+        {
+            return 1583;
+        }
+        if self.r#instrument == Instrument::Basedrum && self.r#powered == false && self.r#note == 3
+        {
+            return 638;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Flute && self.r#note == 20 {
+            return 872;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Bass && self.r#note == 11 {
+            return 804;
+        }
+        if self.r#instrument == Instrument::Zombie && self.r#note == 2 && self.r#powered == false {
+            return 1386;
+        }
+        if self.r#powered == false
+            && self.r#instrument == Instrument::WitherSkeleton
+            && self.r#note == 23
+        {
+            return 1628;
+        }
+        if self.r#note == 2 && self.r#instrument == Instrument::Chime && self.r#powered == false {
+            return 986;
+        }
+        if self.r#powered == false && self.r#note == 24 && self.r#instrument == Instrument::Pling {
+            return 1380;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Didgeridoo && self.r#note == 0
+        {
+            return 1181;
+        }
+        if self.r#instrument == Instrument::Didgeridoo
+            && self.r#powered == false
+            && self.r#note == 15
+        {
+            return 1212;
+        }
+        if self.r#note == 18 && self.r#powered == true && self.r#instrument == Instrument::Zombie {
+            return 1417;
+        }
+        if self.r#powered == false
+            && self.r#note == 20
+            && self.r#instrument == Instrument::Xylophone
+        {
+            return 1072;
+        }
+        if self.r#note == 22 && self.r#instrument == Instrument::Piglin && self.r#powered == true {
+            return 1675;
+        }
+        if self.r#instrument == Instrument::Bass && self.r#note == 12 && self.r#powered == false {
+            return 806;
+        }
+        if self.r#instrument == Instrument::Pling && self.r#powered == false && self.r#note == 6 {
+            return 1344;
+        }
+        if self.r#note == 11
+            && self.r#instrument == Instrument::WitherSkeleton
+            && self.r#powered == false
+        {
+            return 1604;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Bell && self.r#note == 3 {
+            return 887;
+        }
+        if self.r#instrument == Instrument::CowBell && self.r#note == 14 && self.r#powered == true {
+            return 1159;
+        }
+        if self.r#note == 11
+            && self.r#powered == false
+            && self.r#instrument == Instrument::IronXylophone
+        {
+            return 1104;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Piglin && self.r#note == 22 {
+            return 1676;
+        }
+        if self.r#note == 11
+            && self.r#powered == false
+            && self.r#instrument == Instrument::Xylophone
+        {
+            return 1054;
+        }
+        if self.r#note == 12 && self.r#instrument == Instrument::Xylophone && self.r#powered == true
+        {
+            return 1055;
+        }
+        if self.r#instrument == Instrument::IronXylophone
+            && self.r#note == 13
+            && self.r#powered == true
+        {
+            return 1107;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Didgeridoo && self.r#note == 1
+        {
+            return 1183;
+        }
+        if self.r#instrument == Instrument::Didgeridoo
+            && self.r#note == 12
+            && self.r#powered == true
+        {
+            return 1205;
+        }
+        if self.r#instrument == Instrument::Creeper && self.r#note == 11 && self.r#powered == false
+        {
+            return 1504;
+        }
+        if self.r#powered == true && self.r#note == 0 && self.r#instrument == Instrument::Pling {
+            return 1331;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::CowBell && self.r#note == 23 {
+            return 1177;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Banjo && self.r#note == 14 {
+            return 1309;
+        }
+        if self.r#note == 4 && self.r#instrument == Instrument::Zombie && self.r#powered == true {
+            return 1389;
+        }
+        if self.r#note == 13 && self.r#powered == true && self.r#instrument == Instrument::Chime {
+            return 1007;
+        }
+        if self.r#powered == true
+            && self.r#instrument == Instrument::WitherSkeleton
+            && self.r#note == 5
+        {
+            return 1591;
+        }
+        if self.r#instrument == Instrument::Bass && self.r#note == 16 && self.r#powered == true {
+            return 813;
+        }
+        if self.r#note == 0
+            && self.r#powered == false
+            && self.r#instrument == Instrument::WitherSkeleton
+        {
+            return 1582;
+        }
+        if self.r#note == 0 && self.r#instrument == Instrument::Harp && self.r#powered == false {
+            return 582;
+        }
+        if self.r#instrument == Instrument::Snare && self.r#note == 22 && self.r#powered == false {
+            return 726;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Banjo && self.r#note == 15 {
+            return 1312;
+        }
+        if self.r#instrument == Instrument::Bell && self.r#note == 11 && self.r#powered == false {
+            return 904;
+        }
+        if self.r#instrument == Instrument::Harp && self.r#note == 10 && self.r#powered == false {
+            return 602;
+        }
+        if self.r#instrument == Instrument::IronXylophone
+            && self.r#note == 3
+            && self.r#powered == false
+        {
+            return 1088;
+        }
+        if self.r#instrument == Instrument::Skeleton && self.r#note == 11 && self.r#powered == false
+        {
+            return 1454;
+        }
+        if self.r#instrument == Instrument::Creeper && self.r#powered == true && self.r#note == 0 {
+            return 1481;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Bell && self.r#note == 18 {
+            return 918;
+        }
+        if self.r#instrument == Instrument::CustomHead
+            && self.r#note == 23
+            && self.r#powered == false
+        {
+            return 1728;
+        }
+        if self.r#instrument == Instrument::CowBell && self.r#note == 17 && self.r#powered == true {
+            return 1165;
+        }
+        if self.r#note == 4
+            && self.r#instrument == Instrument::WitherSkeleton
+            && self.r#powered == false
+        {
+            return 1590;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Pling && self.r#note == 8 {
+            return 1347;
+        }
+        if self.r#note == 18
+            && self.r#instrument == Instrument::CustomHead
+            && self.r#powered == false
+        {
+            return 1718;
+        }
+        if self.r#instrument == Instrument::Dragon && self.r#note == 16 && self.r#powered == true {
+            return 1563;
+        }
+        if self.r#note == 9 && self.r#powered == false && self.r#instrument == Instrument::Guitar {
+            return 950;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Zombie && self.r#note == 0 {
+            return 1381;
+        }
+        if self.r#instrument == Instrument::Piglin && self.r#powered == true && self.r#note == 7 {
+            return 1645;
+        }
+        if self.r#instrument == Instrument::Pling && self.r#note == 10 && self.r#powered == false {
+            return 1352;
+        }
+        if self.r#instrument == Instrument::Hat && self.r#powered == false && self.r#note == 15 {
+            return 762;
+        }
+        if self.r#note == 6 && self.r#powered == true && self.r#instrument == Instrument::Creeper {
+            return 1493;
+        }
+        if self.r#powered == false && self.r#note == 5 && self.r#instrument == Instrument::Banjo {
+            return 1292;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Bell && self.r#note == 1 {
+            return 884;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Flute && self.r#note == 2 {
+            return 836;
+        }
+        if self.r#instrument == Instrument::Guitar && self.r#note == 10 && self.r#powered == true {
+            return 951;
+        }
+        if self.r#note == 16 && self.r#instrument == Instrument::Banjo && self.r#powered == false {
+            return 1314;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Zombie && self.r#note == 22 {
+            return 1426;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Banjo && self.r#note == 24 {
+            return 1330;
+        }
+        if self.r#instrument == Instrument::CustomHead
+            && self.r#note == 17
+            && self.r#powered == true
+        {
+            return 1715;
+        }
+        if self.r#instrument == Instrument::Zombie && self.r#powered == false && self.r#note == 24 {
+            return 1430;
+        }
+        if self.r#note == 13 && self.r#powered == true && self.r#instrument == Instrument::Bass {
+            return 807;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Bell && self.r#note == 9 {
+            return 900;
+        }
+        if self.r#powered == true && self.r#note == 24 && self.r#instrument == Instrument::Bit {
+            return 1279;
+        }
+        if self.r#instrument == Instrument::IronXylophone
+            && self.r#note == 16
+            && self.r#powered == true
+        {
+            return 1113;
+        }
+        if self.r#instrument == Instrument::Basedrum && self.r#note == 19 && self.r#powered == true
+        {
+            return 669;
+        }
+        if self.r#note == 23
+            && self.r#instrument == Instrument::Didgeridoo
+            && self.r#powered == false
+        {
+            return 1228;
+        }
+        if self.r#instrument == Instrument::Snare && self.r#note == 19 && self.r#powered == false {
+            return 720;
+        }
+        if self.r#note == 14 && self.r#instrument == Instrument::Zombie && self.r#powered == false {
+            return 1410;
+        }
+        if self.r#note == 12 && self.r#powered == true && self.r#instrument == Instrument::Skeleton
+        {
+            return 1455;
+        }
+        if self.r#note == 18 && self.r#powered == true && self.r#instrument == Instrument::Dragon {
+            return 1567;
+        }
+        if self.r#note == 0 && self.r#instrument == Instrument::Snare && self.r#powered == true {
+            return 681;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Guitar && self.r#note == 5 {
+            return 942;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Banjo && self.r#note == 0 {
+            return 1282;
+        }
+        if self.r#instrument == Instrument::Zombie && self.r#powered == false && self.r#note == 3 {
+            return 1388;
+        }
+        if self.r#instrument == Instrument::Bell && self.r#powered == true && self.r#note == 22 {
+            return 925;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Hat && self.r#note == 12 {
+            return 756;
+        }
+        if self.r#instrument == Instrument::Basedrum && self.r#note == 12 && self.r#powered == false
+        {
+            return 656;
+        }
+        if self.r#instrument == Instrument::WitherSkeleton
+            && self.r#note == 18
+            && self.r#powered == false
+        {
+            return 1618;
+        }
+        if self.r#powered == true && self.r#note == 3 && self.r#instrument == Instrument::Harp {
+            return 587;
+        }
+        if self.r#instrument == Instrument::Hat && self.r#note == 21 && self.r#powered == false {
+            return 774;
+        }
+        if self.r#instrument == Instrument::Zombie && self.r#note == 13 && self.r#powered == false {
+            return 1408;
+        }
+        if self.r#instrument == Instrument::Basedrum && self.r#note == 21 && self.r#powered == false
+        {
+            return 674;
+        }
+        if self.r#instrument == Instrument::Guitar && self.r#powered == true && self.r#note == 9 {
+            return 949;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Basedrum && self.r#note == 16
+        {
+            return 663;
+        }
+        if self.r#instrument == Instrument::Bell && self.r#powered == true && self.r#note == 7 {
+            return 895;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Chime && self.r#note == 8 {
+            return 998;
+        }
+        if self.r#powered == true && self.r#note == 13 && self.r#instrument == Instrument::Flute {
+            return 857;
+        }
+        if self.r#instrument == Instrument::CustomHead
+            && self.r#note == 18
+            && self.r#powered == true
+        {
+            return 1717;
+        }
+        if self.r#note == 6 && self.r#powered == false && self.r#instrument == Instrument::Dragon {
+            return 1544;
+        }
+        if self.r#note == 10 && self.r#powered == false && self.r#instrument == Instrument::Dragon {
+            return 1552;
+        }
+        if self.r#instrument == Instrument::Basedrum && self.r#note == 24 && self.r#powered == true
+        {
+            return 679;
+        }
+        if self.r#instrument == Instrument::CustomHead
+            && self.r#powered == false
+            && self.r#note == 7
+        {
+            return 1696;
+        }
+        if self.r#note == 20 && self.r#instrument == Instrument::CowBell && self.r#powered == false
+        {
+            return 1172;
+        }
+        if self.r#instrument == Instrument::Piglin && self.r#note == 18 && self.r#powered == false {
+            return 1668;
+        }
+        if self.r#note == 16 && self.r#instrument == Instrument::Harp && self.r#powered == false {
+            return 614;
+        }
+        if self.r#note == 10 && self.r#instrument == Instrument::Flute && self.r#powered == true {
+            return 851;
+        }
+        if self.r#instrument == Instrument::Skeleton && self.r#note == 21 && self.r#powered == false
+        {
+            return 1474;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Bass && self.r#note == 14 {
+            return 809;
+        }
+        if self.r#note == 21 && self.r#powered == false && self.r#instrument == Instrument::Creeper
+        {
+            return 1524;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Bell && self.r#note == 15 {
+            return 912;
+        }
+        if self.r#instrument == Instrument::IronXylophone
+            && self.r#note == 18
+            && self.r#powered == false
+        {
+            return 1118;
+        }
+        if self.r#instrument == Instrument::Bell && self.r#note == 3 && self.r#powered == false {
+            return 888;
+        }
+        if self.r#note == 1 && self.r#powered == true && self.r#instrument == Instrument::Guitar {
+            return 933;
+        }
+        if self.r#instrument == Instrument::Banjo && self.r#note == 17 && self.r#powered == true {
+            return 1315;
+        }
+        if self.r#note == 15 && self.r#instrument == Instrument::Flute && self.r#powered == true {
+            return 861;
+        }
+        if self.r#note == 18 && self.r#powered == true && self.r#instrument == Instrument::Bass {
+            return 817;
+        }
+        if self.r#powered == true
+            && self.r#instrument == Instrument::WitherSkeleton
+            && self.r#note == 16
+        {
+            return 1613;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Creeper && self.r#note == 8 {
+            return 1498;
+        }
+        if self.r#instrument == Instrument::Skeleton && self.r#powered == false && self.r#note == 13
+        {
+            return 1458;
+        }
+        if self.r#note == 20 && self.r#powered == true && self.r#instrument == Instrument::Flute {
+            return 871;
+        }
+        if self.r#instrument == Instrument::Didgeridoo
+            && self.r#note == 16
+            && self.r#powered == false
+        {
+            return 1214;
+        }
+        if self.r#note == 14 && self.r#instrument == Instrument::Snare && self.r#powered == true {
+            return 709;
+        }
+        if self.r#instrument == Instrument::Hat && self.r#note == 18 && self.r#powered == false {
+            return 768;
+        }
+        if self.r#instrument == Instrument::CowBell && self.r#powered == false && self.r#note == 1 {
+            return 1134;
+        }
+        if self.r#note == 11
+            && self.r#powered == false
+            && self.r#instrument == Instrument::Didgeridoo
+        {
+            return 1204;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Bit && self.r#note == 21 {
+            return 1274;
+        }
+        if self.r#powered == true
+            && self.r#note == 13
+            && self.r#instrument == Instrument::Didgeridoo
+        {
+            return 1207;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Snare && self.r#note == 20 {
+            return 721;
+        }
+        if self.r#instrument == Instrument::CowBell && self.r#note == 16 && self.r#powered == true {
+            return 1163;
+        }
+        if self.r#note == 12
+            && self.r#instrument == Instrument::Didgeridoo
+            && self.r#powered == false
+        {
+            return 1206;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Pling && self.r#note == 7 {
+            return 1345;
+        }
+        if self.r#instrument == Instrument::Chime && self.r#note == 6 && self.r#powered == true {
+            return 993;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Skeleton && self.r#note == 8 {
+            return 1447;
+        }
+        if self.r#note == 11 && self.r#instrument == Instrument::Harp && self.r#powered == true {
+            return 603;
+        }
+        if self.r#note == 20 && self.r#instrument == Instrument::Basedrum && self.r#powered == false
+        {
+            return 672;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::CowBell && self.r#note == 7 {
+            return 1146;
+        }
+        if self.r#note == 1
+            && self.r#powered == false
+            && self.r#instrument == Instrument::IronXylophone
+        {
+            return 1084;
+        }
+        if self.r#instrument == Instrument::Zombie && self.r#note == 1 && self.r#powered == true {
+            return 1383;
+        }
+        if self.r#note == 1 && self.r#instrument == Instrument::Flute && self.r#powered == false {
+            return 834;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Bell && self.r#note == 24 {
+            return 930;
+        }
+        if self.r#powered == false
+            && self.r#instrument == Instrument::Xylophone
+            && self.r#note == 24
+        {
+            return 1080;
+        }
+        if self.r#note == 21 && self.r#instrument == Instrument::Zombie && self.r#powered == true {
+            return 1423;
+        }
+        if self.r#instrument == Instrument::Skeleton && self.r#powered == false && self.r#note == 24
+        {
+            return 1480;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Xylophone && self.r#note == 7
+        {
+            return 1046;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Bass && self.r#note == 7 {
+            return 796;
+        }
+        if self.r#instrument == Instrument::Zombie && self.r#note == 10 && self.r#powered == true {
+            return 1401;
+        }
+        if self.r#instrument == Instrument::Chime && self.r#powered == true && self.r#note == 24 {
+            return 1029;
+        }
+        if self.r#powered == false && self.r#note == 19 && self.r#instrument == Instrument::Harp {
+            return 620;
+        }
+        if self.r#note == 9 && self.r#instrument == Instrument::Pling && self.r#powered == false {
+            return 1350;
+        }
+        if self.r#instrument == Instrument::Hat && self.r#powered == true && self.r#note == 5 {
+            return 741;
+        }
+        if self.r#note == 23
+            && self.r#instrument == Instrument::Xylophone
+            && self.r#powered == false
+        {
+            return 1078;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Pling && self.r#note == 3 {
+            return 1337;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Flute && self.r#note == 21 {
+            return 874;
+        }
+        if self.r#instrument == Instrument::IronXylophone
+            && self.r#powered == true
+            && self.r#note == 21
+        {
+            return 1123;
+        }
+        if self.r#instrument == Instrument::Snare && self.r#note == 13 && self.r#powered == false {
+            return 708;
+        }
+        if self.r#note == 1 && self.r#instrument == Instrument::Dragon && self.r#powered == true {
+            return 1533;
+        }
+        if self.r#instrument == Instrument::Flute && self.r#note == 22 && self.r#powered == true {
+            return 875;
+        }
+        if self.r#powered == false && self.r#note == 22 && self.r#instrument == Instrument::Flute {
+            return 876;
+        }
+        if self.r#instrument == Instrument::Chime && self.r#powered == true && self.r#note == 7 {
+            return 995;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Skeleton && self.r#note == 17
+        {
+            return 1466;
+        }
+        if self.r#instrument == Instrument::Xylophone
+            && self.r#note == 21
+            && self.r#powered == false
+        {
+            return 1074;
+        }
+        if self.r#note == 5 && self.r#powered == true && self.r#instrument == Instrument::Guitar {
+            return 941;
+        }
+        if self.r#note == 19 && self.r#powered == false && self.r#instrument == Instrument::Guitar {
+            return 970;
+        }
+        if self.r#instrument == Instrument::Skeleton && self.r#powered == false && self.r#note == 14
+        {
+            return 1460;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Creeper && self.r#note == 5 {
+            return 1491;
+        }
+        if self.r#powered == true && self.r#note == 23 && self.r#instrument == Instrument::Banjo {
+            return 1327;
+        }
+        if self.r#powered == false
+            && self.r#note == 14
+            && self.r#instrument == Instrument::CustomHead
+        {
+            return 1710;
+        }
+        if self.r#note == 24 && self.r#powered == false && self.r#instrument == Instrument::Harp {
+            return 630;
+        }
+        if self.r#note == 17
+            && self.r#powered == false
+            && self.r#instrument == Instrument::IronXylophone
+        {
+            return 1116;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Hat && self.r#note == 8 {
+            return 747;
+        }
+        if self.r#note == 22 && self.r#instrument == Instrument::Chime && self.r#powered == true {
+            return 1025;
+        }
+        if self.r#powered == false && self.r#note == 1 && self.r#instrument == Instrument::Chime {
+            return 984;
+        }
+        if self.r#note == 24
+            && self.r#powered == false
+            && self.r#instrument == Instrument::IronXylophone
+        {
+            return 1130;
+        }
+        if self.r#note == 18 && self.r#powered == false && self.r#instrument == Instrument::Zombie {
+            return 1418;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Zombie && self.r#note == 6 {
+            return 1393;
+        }
+        if self.r#note == 9 && self.r#powered == true && self.r#instrument == Instrument::Piglin {
+            return 1649;
+        }
+        if self.r#instrument == Instrument::Banjo && self.r#note == 1 && self.r#powered == true {
+            return 1283;
+        }
+        if self.r#note == 18 && self.r#instrument == Instrument::Guitar && self.r#powered == true {
+            return 967;
+        }
+        if self.r#instrument == Instrument::Pling && self.r#powered == true && self.r#note == 10 {
+            return 1351;
+        }
+        if self.r#note == 8 && self.r#instrument == Instrument::Dragon && self.r#powered == false {
+            return 1548;
+        }
+        if self.r#instrument == Instrument::Zombie && self.r#note == 10 && self.r#powered == false {
+            return 1402;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Zombie && self.r#note == 4 {
+            return 1390;
+        }
+        if self.r#instrument == Instrument::CowBell && self.r#note == 10 && self.r#powered == false
+        {
+            return 1152;
+        }
+        if self.r#powered == false
+            && self.r#instrument == Instrument::Xylophone
+            && self.r#note == 10
+        {
+            return 1052;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Pling && self.r#note == 6 {
+            return 1343;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Pling && self.r#note == 23 {
+            return 1378;
+        }
+        if self.r#instrument == Instrument::Harp && self.r#note == 13 && self.r#powered == false {
+            return 608;
+        }
+        if self.r#instrument == Instrument::Hat && self.r#powered == false && self.r#note == 0 {
+            return 732;
+        }
+        if self.r#note == 12 && self.r#powered == false && self.r#instrument == Instrument::Bell {
+            return 906;
+        }
+        if self.r#note == 13 && self.r#instrument == Instrument::Bit && self.r#powered == true {
+            return 1257;
+        }
+        if self.r#instrument == Instrument::CowBell && self.r#note == 11 && self.r#powered == false
+        {
+            return 1154;
+        }
+        if self.r#note == 16 && self.r#instrument == Instrument::Pling && self.r#powered == false {
+            return 1364;
+        }
+        if self.r#instrument == Instrument::Hat && self.r#powered == false && self.r#note == 16 {
+            return 764;
+        }
+        if self.r#instrument == Instrument::Flute && self.r#note == 9 && self.r#powered == true {
+            return 849;
+        }
+        if self.r#note == 12 && self.r#instrument == Instrument::Chime && self.r#powered == false {
+            return 1006;
+        }
+        if self.r#instrument == Instrument::Pling && self.r#note == 19 && self.r#powered == false {
+            return 1370;
+        }
+        if self.r#instrument == Instrument::Creeper && self.r#powered == true && self.r#note == 13 {
+            return 1507;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::CowBell && self.r#note == 5 {
+            return 1142;
+        }
+        if self.r#instrument == Instrument::CustomHead && self.r#powered == true && self.r#note == 0
+        {
+            return 1681;
+        }
+        if self.r#instrument == Instrument::Skeleton && self.r#note == 13 && self.r#powered == true
+        {
+            return 1457;
+        }
+        if self.r#instrument == Instrument::Bit && self.r#note == 14 && self.r#powered == false {
+            return 1260;
+        }
+        if self.r#instrument == Instrument::Dragon && self.r#powered == false && self.r#note == 11 {
+            return 1554;
+        }
+        if self.r#note == 10
+            && self.r#instrument == Instrument::IronXylophone
+            && self.r#powered == false
+        {
+            return 1102;
+        }
+        if self.r#instrument == Instrument::WitherSkeleton
+            && self.r#powered == true
+            && self.r#note == 15
+        {
+            return 1611;
+        }
+        if self.r#instrument == Instrument::Skeleton && self.r#note == 3 && self.r#powered == true {
+            return 1437;
+        }
+        if self.r#instrument == Instrument::Snare && self.r#note == 15 && self.r#powered == true {
+            return 711;
+        }
+        if self.r#note == 16 && self.r#instrument == Instrument::Flute && self.r#powered == false {
+            return 864;
+        }
+        if self.r#instrument == Instrument::Bit && self.r#powered == true && self.r#note == 15 {
+            return 1261;
+        }
+        if self.r#powered == false && self.r#note == 15 && self.r#instrument == Instrument::Skeleton
+        {
+            return 1462;
+        }
+        if self.r#instrument == Instrument::Bit && self.r#note == 23 && self.r#powered == true {
+            return 1277;
+        }
+        if self.r#note == 13 && self.r#powered == false && self.r#instrument == Instrument::Creeper
+        {
+            return 1508;
+        }
+        if self.r#instrument == Instrument::Piglin && self.r#powered == true && self.r#note == 10 {
+            return 1651;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Chime && self.r#note == 16 {
+            return 1013;
+        }
+        if self.r#note == 17 && self.r#instrument == Instrument::Flute && self.r#powered == false {
+            return 866;
+        }
+        if self.r#instrument == Instrument::WitherSkeleton
+            && self.r#powered == true
+            && self.r#note == 6
+        {
+            return 1593;
+        }
+        if self.r#instrument == Instrument::Snare && self.r#powered == true && self.r#note == 10 {
+            return 701;
+        }
+        if self.r#instrument == Instrument::Creeper && self.r#note == 15 && self.r#powered == false
+        {
+            return 1512;
+        }
+        if self.r#instrument == Instrument::Piglin && self.r#note == 17 && self.r#powered == false {
+            return 1666;
+        }
+        if self.r#powered == false
+            && self.r#instrument == Instrument::WitherSkeleton
+            && self.r#note == 15
+        {
+            return 1612;
+        }
+        if self.r#instrument == Instrument::CustomHead
+            && self.r#note == 20
+            && self.r#powered == true
+        {
+            return 1721;
+        }
+        if self.r#instrument == Instrument::Hat && self.r#note == 13 && self.r#powered == false {
+            return 758;
+        }
+        if self.r#note == 9 && self.r#instrument == Instrument::Dragon && self.r#powered == false {
+            return 1550;
+        }
+        if self.r#note == 24 && self.r#instrument == Instrument::Flute && self.r#powered == false {
+            return 880;
+        }
+        if self.r#instrument == Instrument::Harp && self.r#note == 24 && self.r#powered == true {
+            return 629;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Snare && self.r#note == 16 {
+            return 714;
+        }
+        if self.r#note == 4 && self.r#instrument == Instrument::Basedrum && self.r#powered == true {
+            return 639;
+        }
+        if self.r#instrument == Instrument::Chime && self.r#note == 15 && self.r#powered == false {
+            return 1012;
+        }
+        if self.r#instrument == Instrument::Piglin && self.r#note == 1 && self.r#powered == true {
+            return 1633;
+        }
+        if self.r#powered == true && self.r#note == 7 && self.r#instrument == Instrument::CustomHead
+        {
+            return 1695;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Hat && self.r#note == 7 {
+            return 746;
+        }
+        if self.r#instrument == Instrument::Snare && self.r#note == 24 && self.r#powered == false {
+            return 730;
+        }
+        if self.r#note == 11 && self.r#powered == false && self.r#instrument == Instrument::Piglin {
+            return 1654;
+        }
+        if self.r#note == 14 && self.r#powered == false && self.r#instrument == Instrument::Piglin {
+            return 1660;
+        }
+        if self.r#instrument == Instrument::Zombie && self.r#note == 5 && self.r#powered == false {
+            return 1392;
+        }
+        if self.r#note == 19 && self.r#powered == false && self.r#instrument == Instrument::Chime {
+            return 1020;
+        }
+        if self.r#instrument == Instrument::Bass && self.r#note == 19 && self.r#powered == true {
+            return 819;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Zombie && self.r#note == 3 {
+            return 1387;
+        }
+        if self.r#note == 11
+            && self.r#powered == true
+            && self.r#instrument == Instrument::Didgeridoo
+        {
+            return 1203;
+        }
+        if self.r#note == 3 && self.r#instrument == Instrument::Flute && self.r#powered == true {
+            return 837;
+        }
+        if self.r#instrument == Instrument::Creeper && self.r#note == 23 && self.r#powered == true {
+            return 1527;
+        }
+        if self.r#powered == false && self.r#note == 12 && self.r#instrument == Instrument::Snare {
+            return 706;
+        }
+        if self.r#instrument == Instrument::Harp && self.r#note == 18 && self.r#powered == true {
+            return 617;
+        }
+        if self.r#note == 17
+            && self.r#powered == false
+            && self.r#instrument == Instrument::Didgeridoo
+        {
+            return 1216;
+        }
+        if self.r#note == 21
+            && self.r#powered == true
+            && self.r#instrument == Instrument::Didgeridoo
+        {
+            return 1223;
+        }
+        if self.r#instrument == Instrument::Banjo && self.r#note == 5 && self.r#powered == true {
+            return 1291;
+        }
+        if self.r#instrument == Instrument::Hat && self.r#note == 19 && self.r#powered == false {
+            return 770;
+        }
+        if self.r#instrument == Instrument::IronXylophone
+            && self.r#note == 11
+            && self.r#powered == true
+        {
+            return 1103;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Didgeridoo && self.r#note == 7
+        {
+            return 1195;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Banjo && self.r#note == 13 {
+            return 1307;
+        }
+        if self.r#instrument == Instrument::Creeper && self.r#powered == true && self.r#note == 18 {
+            return 1517;
+        }
+        if self.r#note == 9 && self.r#instrument == Instrument::Dragon && self.r#powered == true {
+            return 1549;
+        }
+        if self.r#powered == true && self.r#note == 21 && self.r#instrument == Instrument::Guitar {
+            return 973;
+        }
+        if self.r#note == 23
+            && self.r#instrument == Instrument::WitherSkeleton
+            && self.r#powered == true
+        {
+            return 1627;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::CowBell && self.r#note == 2 {
+            return 1135;
+        }
+        if self.r#instrument == Instrument::Piglin && self.r#powered == true && self.r#note == 17 {
+            return 1665;
+        }
+        if self.r#instrument == Instrument::Xylophone && self.r#note == 8 && self.r#powered == false
+        {
+            return 1048;
+        }
+        if self.r#instrument == Instrument::IronXylophone
+            && self.r#powered == false
+            && self.r#note == 7
+        {
+            return 1096;
+        }
+        if self.r#instrument == Instrument::IronXylophone
+            && self.r#powered == true
+            && self.r#note == 23
+        {
+            return 1127;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Xylophone && self.r#note == 1
+        {
+            return 1033;
+        }
+        if self.r#note == 14 && self.r#powered == true && self.r#instrument == Instrument::Zombie {
+            return 1409;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Basedrum && self.r#note == 5 {
+            return 641;
+        }
+        if self.r#powered == false
+            && self.r#instrument == Instrument::Didgeridoo
+            && self.r#note == 7
+        {
+            return 1196;
+        }
+        if self.r#note == 23 && self.r#instrument == Instrument::Bit && self.r#powered == false {
+            return 1278;
+        }
+        if self.r#instrument == Instrument::Creeper && self.r#note == 1 && self.r#powered == false {
+            return 1484;
+        }
+        if self.r#powered == true
+            && self.r#instrument == Instrument::WitherSkeleton
+            && self.r#note == 8
+        {
+            return 1597;
+        }
+        if self.r#instrument == Instrument::Banjo && self.r#note == 12 && self.r#powered == false {
+            return 1306;
+        }
+        if self.r#instrument == Instrument::Dragon && self.r#note == 4 && self.r#powered == true {
+            return 1539;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Guitar && self.r#note == 20 {
+            return 971;
+        }
+        if self.r#powered == false && self.r#note == 24 && self.r#instrument == Instrument::Bit {
+            return 1280;
+        }
+        if self.r#note == 11 && self.r#instrument == Instrument::Dragon && self.r#powered == true {
+            return 1553;
+        }
+        if self.r#powered == false && self.r#note == 15 && self.r#instrument == Instrument::Dragon {
+            return 1562;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Bell && self.r#note == 13 {
+            return 908;
+        }
+        if self.r#note == 6 && self.r#powered == true && self.r#instrument == Instrument::Bass {
+            return 793;
+        }
+        if self.r#instrument == Instrument::CowBell && self.r#note == 7 && self.r#powered == true {
+            return 1145;
+        }
+        if self.r#note == 19 && self.r#instrument == Instrument::Harp && self.r#powered == true {
+            return 619;
+        }
+        if self.r#note == 21 && self.r#instrument == Instrument::CowBell && self.r#powered == true {
+            return 1173;
+        }
+        if self.r#powered == false
+            && self.r#instrument == Instrument::Didgeridoo
+            && self.r#note == 10
+        {
+            return 1202;
+        }
+        if self.r#powered == true && self.r#note == 12 && self.r#instrument == Instrument::Banjo {
+            return 1305;
+        }
+        if self.r#instrument == Instrument::Snare && self.r#note == 24 && self.r#powered == true {
+            return 729;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Flute && self.r#note == 12 {
+            return 856;
+        }
+        if self.r#instrument == Instrument::Flute && self.r#note == 16 && self.r#powered == true {
+            return 863;
+        }
+        if self.r#powered == false
+            && self.r#instrument == Instrument::IronXylophone
+            && self.r#note == 15
+        {
+            return 1112;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Flute && self.r#note == 4 {
+            return 840;
+        }
+        if self.r#note == 8 && self.r#powered == true && self.r#instrument == Instrument::Creeper {
+            return 1497;
+        }
+        if self.r#instrument == Instrument::CowBell && self.r#powered == true && self.r#note == 13 {
+            return 1157;
+        }
+        if self.r#note == 2 && self.r#powered == true && self.r#instrument == Instrument::Banjo {
+            return 1285;
+        }
+        if self.r#instrument == Instrument::Skeleton && self.r#powered == true && self.r#note == 6 {
+            return 1443;
+        }
+        if self.r#instrument == Instrument::Basedrum && self.r#note == 5 && self.r#powered == false
+        {
+            return 642;
+        }
+        if self.r#instrument == Instrument::Pling && self.r#powered == true && self.r#note == 20 {
+            return 1371;
+        }
+        if self.r#powered == false && self.r#note == 3 && self.r#instrument == Instrument::Skeleton
+        {
+            return 1438;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Skeleton && self.r#note == 15
+        {
+            return 1461;
+        }
+        if self.r#instrument == Instrument::Didgeridoo
+            && self.r#note == 8
+            && self.r#powered == false
+        {
+            return 1198;
+        }
+        if self.r#instrument == Instrument::Chime && self.r#note == 11 && self.r#powered == false {
+            return 1004;
+        }
+        if self.r#instrument == Instrument::Chime && self.r#powered == false && self.r#note == 4 {
+            return 990;
+        }
+        if self.r#note == 23 && self.r#instrument == Instrument::Bass && self.r#powered == false {
+            return 828;
+        }
+        if self.r#instrument == Instrument::Bit && self.r#powered == false && self.r#note == 6 {
+            return 1244;
+        }
+        if self.r#instrument == Instrument::Harp && self.r#note == 6 && self.r#powered == false {
+            return 594;
+        }
+        if self.r#instrument == Instrument::Basedrum && self.r#note == 17 && self.r#powered == true
+        {
+            return 665;
+        }
+        if self.r#instrument == Instrument::IronXylophone
+            && self.r#note == 6
+            && self.r#powered == true
+        {
+            return 1093;
+        }
+        if self.r#powered == false
+            && self.r#note == 6
+            && self.r#instrument == Instrument::WitherSkeleton
+        {
+            return 1594;
+        }
+        if self.r#instrument == Instrument::CustomHead
+            && self.r#note == 23
+            && self.r#powered == true
+        {
+            return 1727;
+        }
+        if self.r#instrument == Instrument::Zombie && self.r#note == 15 && self.r#powered == false {
+            return 1412;
+        }
+        if self.r#note == 4 && self.r#powered == true && self.r#instrument == Instrument::Flute {
+            return 839;
+        }
+        if self.r#note == 5 && self.r#powered == true && self.r#instrument == Instrument::Bass {
+            return 791;
+        }
+        if self.r#instrument == Instrument::Chime && self.r#powered == false && self.r#note == 18 {
+            return 1018;
+        }
+        if self.r#instrument == Instrument::Hat && self.r#note == 11 && self.r#powered == true {
+            return 753;
+        }
+        if self.r#note == 23 && self.r#instrument == Instrument::Flute && self.r#powered == true {
+            return 877;
+        }
+        if self.r#instrument == Instrument::Skeleton && self.r#powered == true && self.r#note == 19
+        {
+            return 1469;
+        }
+        if self.r#instrument == Instrument::Creeper && self.r#note == 21 && self.r#powered == true {
+            return 1523;
+        }
+        if self.r#instrument == Instrument::Piglin && self.r#note == 4 && self.r#powered == true {
+            return 1639;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Bass && self.r#note == 6 {
+            return 794;
+        }
+        if self.r#note == 17
+            && self.r#powered == true
+            && self.r#instrument == Instrument::Didgeridoo
+        {
+            return 1215;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Dragon && self.r#note == 10 {
+            return 1551;
+        }
+        if self.r#note == 10
+            && self.r#powered == true
+            && self.r#instrument == Instrument::CustomHead
+        {
+            return 1701;
+        }
+        if self.r#instrument == Instrument::IronXylophone
+            && self.r#note == 7
+            && self.r#powered == true
+        {
+            return 1095;
+        }
+        if self.r#instrument == Instrument::Bit && self.r#note == 0 && self.r#powered == false {
+            return 1232;
+        }
+        if self.r#note == 11 && self.r#powered == false && self.r#instrument == Instrument::Bit {
+            return 1254;
+        }
+        if self.r#powered == true
+            && self.r#instrument == Instrument::WitherSkeleton
+            && self.r#note == 22
+        {
+            return 1625;
+        }
+        if self.r#powered == false && self.r#note == 1 && self.r#instrument == Instrument::Bit {
+            return 1234;
+        }
+        if self.r#powered == false
+            && self.r#instrument == Instrument::WitherSkeleton
+            && self.r#note == 22
+        {
+            return 1626;
+        }
+        if self.r#note == 5 && self.r#powered == true && self.r#instrument == Instrument::Bit {
+            return 1241;
+        }
+        if self.r#instrument == Instrument::Flute && self.r#note == 8 && self.r#powered == true {
+            return 847;
+        }
+        if self.r#powered == false && self.r#note == 21 && self.r#instrument == Instrument::CowBell
+        {
+            return 1174;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Xylophone && self.r#note == 4
+        {
+            return 1039;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Bit && self.r#note == 9 {
+            return 1250;
+        }
+        if self.r#note == 4 && self.r#instrument == Instrument::Dragon && self.r#powered == false {
+            return 1540;
+        }
+        if self.r#instrument == Instrument::Flute && self.r#note == 19 && self.r#powered == false {
+            return 870;
+        }
+        if self.r#instrument == Instrument::Xylophone && self.r#note == 5 && self.r#powered == false
+        {
+            return 1042;
+        }
+        if self.r#note == 11 && self.r#powered == true && self.r#instrument == Instrument::Bell {
+            return 903;
+        }
+        if self.r#note == 15
+            && self.r#powered == true
+            && self.r#instrument == Instrument::Didgeridoo
+        {
+            return 1211;
+        }
+        if self.r#instrument == Instrument::Bell && self.r#powered == false && self.r#note == 22 {
+            return 926;
+        }
+        if self.r#instrument == Instrument::Bell && self.r#note == 15 && self.r#powered == true {
+            return 911;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Pling && self.r#note == 5 {
+            return 1342;
+        }
+        if self.r#instrument == Instrument::CustomHead
+            && self.r#note == 22
+            && self.r#powered == false
+        {
+            return 1726;
+        }
+        if self.r#instrument == Instrument::Snare && self.r#note == 6 && self.r#powered == false {
+            return 694;
+        }
+        if self.r#note == 2
+            && self.r#instrument == Instrument::WitherSkeleton
+            && self.r#powered == false
+        {
+            return 1586;
+        }
+        if self.r#note == 9
+            && self.r#powered == false
+            && self.r#instrument == Instrument::WitherSkeleton
+        {
+            return 1600;
+        }
+        if self.r#note == 23 && self.r#instrument == Instrument::Dragon && self.r#powered == false {
+            return 1578;
+        }
+        if self.r#instrument == Instrument::Basedrum && self.r#note == 22 && self.r#powered == false
+        {
+            return 676;
+        }
+        if self.r#note == 10 && self.r#instrument == Instrument::CowBell && self.r#powered == true {
+            return 1151;
+        }
+        if self.r#instrument == Instrument::Harp && self.r#powered == true && self.r#note == 14 {
+            return 609;
+        }
+        if self.r#note == 7 && self.r#instrument == Instrument::Chime && self.r#powered == false {
+            return 996;
+        }
+        if self.r#instrument == Instrument::Flute && self.r#note == 14 && self.r#powered == false {
+            return 860;
+        }
+        if self.r#note == 16 && self.r#powered == false && self.r#instrument == Instrument::Bell {
+            return 914;
+        }
+        if self.r#note == 18 && self.r#powered == false && self.r#instrument == Instrument::Harp {
+            return 618;
+        }
+        if self.r#instrument == Instrument::Banjo && self.r#note == 21 && self.r#powered == true {
+            return 1323;
+        }
+        if self.r#instrument == Instrument::Pling && self.r#powered == false && self.r#note == 4 {
+            return 1340;
+        }
+        if self.r#note == 7 && self.r#powered == false && self.r#instrument == Instrument::Flute {
+            return 846;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Pling && self.r#note == 22 {
+            return 1376;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Dragon && self.r#note == 1 {
+            return 1534;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Pling && self.r#note == 20 {
+            return 1372;
+        }
+        if self.r#instrument == Instrument::Harp && self.r#note == 20 && self.r#powered == false {
+            return 622;
+        }
+        if self.r#instrument == Instrument::Xylophone && self.r#note == 16 && self.r#powered == true
+        {
+            return 1063;
+        }
+        if self.r#instrument == Instrument::Pling && self.r#powered == true && self.r#note == 14 {
+            return 1359;
+        }
+        if self.r#powered == true && self.r#note == 1 && self.r#instrument == Instrument::Chime {
+            return 983;
+        }
+        if self.r#powered == false && self.r#note == 10 && self.r#instrument == Instrument::Snare {
+            return 702;
+        }
+        if self.r#note == 5 && self.r#powered == false && self.r#instrument == Instrument::Dragon {
+            return 1542;
+        }
+        if self.r#note == 15 && self.r#powered == true && self.r#instrument == Instrument::Bass {
+            return 811;
+        }
+        if self.r#note == 17 && self.r#powered == false && self.r#instrument == Instrument::Bell {
+            return 916;
+        }
+        if self.r#instrument == Instrument::CowBell && self.r#powered == false && self.r#note == 16
+        {
+            return 1164;
+        }
+        if self.r#note == 0
+            && self.r#powered == true
+            && self.r#instrument == Instrument::IronXylophone
+        {
+            return 1081;
+        }
+        if self.r#instrument == Instrument::IronXylophone
+            && self.r#note == 16
+            && self.r#powered == false
+        {
+            return 1114;
+        }
+        if self.r#note == 24 && self.r#powered == true && self.r#instrument == Instrument::Banjo {
+            return 1329;
+        }
+        if self.r#note == 3 && self.r#instrument == Instrument::Chime && self.r#powered == false {
+            return 988;
+        }
+        if self.r#instrument == Instrument::Zombie && self.r#note == 17 && self.r#powered == true {
+            return 1415;
+        }
+        if self.r#powered == true
+            && self.r#instrument == Instrument::IronXylophone
+            && self.r#note == 1
+        {
+            return 1083;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Bass && self.r#note == 2 {
+            return 786;
+        }
+        if self.r#note == 4 && self.r#powered == true && self.r#instrument == Instrument::Pling {
+            return 1339;
+        }
+        if self.r#instrument == Instrument::Xylophone
+            && self.r#note == 19
+            && self.r#powered == false
+        {
+            return 1070;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Snare && self.r#note == 20 {
+            return 722;
+        }
+        if self.r#note == 5 && self.r#instrument == Instrument::Skeleton && self.r#powered == true {
+            return 1441;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Creeper && self.r#note == 24 {
+            return 1529;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Piglin && self.r#note == 9 {
+            return 1650;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Snare && self.r#note == 19 {
+            return 719;
+        }
+        if self.r#powered == false && self.r#note == 1 && self.r#instrument == Instrument::Pling {
+            return 1334;
+        }
+        if self.r#powered == true && self.r#note == 2 && self.r#instrument == Instrument::Zombie {
+            return 1385;
+        }
+        if self.r#powered == false && self.r#note == 12 && self.r#instrument == Instrument::Skeleton
+        {
+            return 1456;
+        }
+        if self.r#note == 2 && self.r#powered == true && self.r#instrument == Instrument::Creeper {
+            return 1485;
+        }
+        if self.r#instrument == Instrument::Piglin && self.r#note == 18 && self.r#powered == true {
+            return 1667;
+        }
+        if self.r#instrument == Instrument::Bit && self.r#powered == true && self.r#note == 8 {
+            return 1247;
+        }
+        if self.r#instrument == Instrument::Bell && self.r#note == 5 && self.r#powered == true {
+            return 891;
+        }
+        if self.r#note == 19 && self.r#powered == false && self.r#instrument == Instrument::Skeleton
+        {
+            return 1470;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Bell && self.r#note == 6 {
+            return 893;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Bell && self.r#note == 12 {
+            return 905;
+        }
+        if self.r#note == 22 && self.r#powered == true && self.r#instrument == Instrument::Skeleton
+        {
+            return 1475;
+        }
+        if self.r#powered == false && self.r#note == 2 && self.r#instrument == Instrument::Basedrum
+        {
+            return 636;
+        }
+        if self.r#note == 6 && self.r#instrument == Instrument::Snare && self.r#powered == true {
+            return 693;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Zombie && self.r#note == 23 {
+            return 1428;
+        }
+        if self.r#instrument == Instrument::Creeper && self.r#note == 16 && self.r#powered == true {
+            return 1513;
+        }
+        if self.r#note == 2 && self.r#powered == true && self.r#instrument == Instrument::Chime {
+            return 985;
+        }
+        if self.r#instrument == Instrument::Bass && self.r#powered == false && self.r#note == 13 {
+            return 808;
+        }
+        if self.r#note == 8
+            && self.r#instrument == Instrument::CustomHead
+            && self.r#powered == false
+        {
+            return 1698;
+        }
+        if self.r#note == 24 && self.r#instrument == Instrument::Hat && self.r#powered == false {
+            return 780;
+        }
+        if self.r#note == 15 && self.r#powered == false && self.r#instrument == Instrument::CowBell
+        {
+            return 1162;
+        }
+        if self.r#instrument == Instrument::Hat && self.r#note == 14 && self.r#powered == true {
+            return 759;
+        }
+        if self.r#note == 4 && self.r#instrument == Instrument::Bass && self.r#powered == true {
+            return 789;
+        }
+        if self.r#note == 22 && self.r#instrument == Instrument::Bass && self.r#powered == false {
+            return 826;
+        }
+        if self.r#powered == false
+            && self.r#note == 18
+            && self.r#instrument == Instrument::Didgeridoo
+        {
+            return 1218;
+        }
+        if self.r#powered == false && self.r#note == 0 && self.r#instrument == Instrument::Piglin {
+            return 1632;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Guitar && self.r#note == 7 {
+            return 946;
+        }
+        if self.r#powered == false && self.r#note == 8 && self.r#instrument == Instrument::Pling {
+            return 1348;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Snare && self.r#note == 23 {
+            return 728;
+        }
+        if self.r#instrument == Instrument::Basedrum && self.r#powered == false && self.r#note == 24
+        {
+            return 680;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Harp && self.r#note == 4 {
+            return 590;
+        }
+        if self.r#instrument == Instrument::Skeleton && self.r#note == 22 && self.r#powered == false
+        {
+            return 1476;
+        }
+        if self.r#powered == false && self.r#note == 6 && self.r#instrument == Instrument::Guitar {
+            return 944;
+        }
+        if self.r#powered == false && self.r#note == 6 && self.r#instrument == Instrument::Hat {
+            return 744;
+        }
+        if self.r#instrument == Instrument::Bell && self.r#powered == false && self.r#note == 10 {
+            return 902;
+        }
+        if self.r#instrument == Instrument::CowBell && self.r#note == 19 && self.r#powered == false
+        {
+            return 1170;
+        }
+        if self.r#instrument == Instrument::Piglin && self.r#note == 12 && self.r#powered == true {
+            return 1655;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Snare && self.r#note == 11 {
+            return 703;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Guitar && self.r#note == 4 {
+            return 940;
+        }
+        if self.r#powered == true && self.r#note == 19 && self.r#instrument == Instrument::Dragon {
+            return 1569;
+        }
+        if self.r#powered == true && self.r#note == 13 && self.r#instrument == Instrument::Harp {
+            return 607;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Piglin && self.r#note == 24 {
+            return 1680;
+        }
+        if self.r#instrument == Instrument::CustomHead
+            && self.r#note == 1
+            && self.r#powered == false
+        {
+            return 1684;
+        }
+        if self.r#instrument == Instrument::Pling && self.r#note == 14 && self.r#powered == false {
+            return 1360;
+        }
+        if self.r#instrument == Instrument::Zombie && self.r#note == 16 && self.r#powered == true {
+            return 1413;
+        }
+        if self.r#note == 19 && self.r#instrument == Instrument::Basedrum && self.r#powered == false
+        {
+            return 670;
+        }
+        if self.r#note == 5 && self.r#powered == true && self.r#instrument == Instrument::Flute {
+            return 841;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Chime && self.r#note == 11 {
+            return 1003;
+        }
+        if self.r#powered == true
+            && self.r#instrument == Instrument::CustomHead
+            && self.r#note == 11
+        {
+            return 1703;
+        }
+        if self.r#instrument == Instrument::Creeper && self.r#note == 19 && self.r#powered == true {
+            return 1519;
+        }
+        if self.r#instrument == Instrument::Chime && self.r#note == 20 && self.r#powered == false {
+            return 1022;
+        }
+        if self.r#instrument == Instrument::Hat && self.r#powered == false && self.r#note == 5 {
+            return 742;
+        }
+        if self.r#instrument == Instrument::Banjo && self.r#note == 11 && self.r#powered == false {
+            return 1304;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Snare && self.r#note == 16 {
+            return 713;
+        }
+        if self.r#note == 9 && self.r#powered == false && self.r#instrument == Instrument::Snare {
+            return 700;
+        }
+        if self.r#instrument == Instrument::Harp && self.r#powered == true && self.r#note == 0 {
+            return 581;
+        }
+        if self.r#instrument == Instrument::WitherSkeleton
+            && self.r#powered == false
+            && self.r#note == 3
+        {
+            return 1588;
+        }
+        if self.r#note == 14 && self.r#powered == true && self.r#instrument == Instrument::Xylophone
+        {
+            return 1059;
+        }
+        if self.r#note == 18
+            && self.r#instrument == Instrument::IronXylophone
+            && self.r#powered == true
+        {
+            return 1117;
+        }
+        if self.r#note == 3 && self.r#instrument == Instrument::Banjo && self.r#powered == true {
+            return 1287;
+        }
+        if self.r#instrument == Instrument::Banjo && self.r#note == 6 && self.r#powered == false {
+            return 1294;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Skeleton && self.r#note == 4 {
+            return 1439;
+        }
+        if self.r#instrument == Instrument::Hat && self.r#note == 23 && self.r#powered == false {
+            return 778;
+        }
+        if self.r#powered == true
+            && self.r#note == 14
+            && self.r#instrument == Instrument::Didgeridoo
+        {
+            return 1209;
+        }
+        if self.r#note == 5 && self.r#powered == true && self.r#instrument == Instrument::Snare {
+            return 691;
+        }
+        if self.r#instrument == Instrument::Bit && self.r#powered == true && self.r#note == 22 {
+            return 1275;
+        }
+        if self.r#note == 14
+            && self.r#instrument == Instrument::WitherSkeleton
+            && self.r#powered == false
+        {
+            return 1610;
+        }
+        if self.r#note == 4
+            && self.r#powered == false
+            && self.r#instrument == Instrument::CustomHead
+        {
+            return 1690;
+        }
+        if self.r#instrument == Instrument::Skeleton && self.r#note == 0 && self.r#powered == true {
+            return 1431;
+        }
+        if self.r#powered == false && self.r#note == 24 && self.r#instrument == Instrument::Dragon {
+            return 1580;
+        }
+        if self.r#note == 22
+            && self.r#instrument == Instrument::Xylophone
+            && self.r#powered == false
+        {
+            return 1076;
+        }
+        if self.r#note == 6 && self.r#powered == false && self.r#instrument == Instrument::Basedrum
+        {
+            return 644;
+        }
+        if self.r#instrument == Instrument::Hat && self.r#note == 18 && self.r#powered == true {
+            return 767;
+        }
+        if self.r#instrument == Instrument::Harp && self.r#powered == true && self.r#note == 23 {
+            return 627;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Bass && self.r#note == 1 {
+            return 783;
+        }
+        if self.r#instrument == Instrument::Creeper && self.r#note == 22 && self.r#powered == true {
+            return 1525;
+        }
+        if self.r#note == 8 && self.r#powered == false && self.r#instrument == Instrument::Hat {
+            return 748;
+        }
+        if self.r#instrument == Instrument::Bass && self.r#powered == false && self.r#note == 0 {
+            return 782;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Skeleton && self.r#note == 6
+        {
+            return 1444;
+        }
+        if self.r#powered == false
+            && self.r#instrument == Instrument::CustomHead
+            && self.r#note == 11
+        {
+            return 1704;
+        }
+        if self.r#instrument == Instrument::Harp && self.r#note == 5 && self.r#powered == true {
+            return 591;
+        }
+        if self.r#instrument == Instrument::CustomHead
+            && self.r#powered == false
+            && self.r#note == 15
+        {
+            return 1712;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Dragon && self.r#note == 2 {
+            return 1536;
+        }
+        if self.r#powered == false
+            && self.r#instrument == Instrument::Didgeridoo
+            && self.r#note == 0
+        {
+            return 1182;
+        }
+        if self.r#powered == false && self.r#note == 18 && self.r#instrument == Instrument::Skeleton
+        {
+            return 1468;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Bass && self.r#note == 7 {
+            return 795;
+        }
+        if self.r#note == 8 && self.r#instrument == Instrument::Harp && self.r#powered == true {
+            return 597;
+        }
+        if self.r#powered == false && self.r#note == 4 && self.r#instrument == Instrument::Snare {
+            return 690;
+        }
+        if self.r#instrument == Instrument::WitherSkeleton
+            && self.r#powered == false
+            && self.r#note == 24
+        {
+            return 1630;
+        }
+        if self.r#powered == false && self.r#note == 2 && self.r#instrument == Instrument::Creeper {
+            return 1486;
+        }
+        if self.r#note == 12 && self.r#instrument == Instrument::CowBell && self.r#powered == false
+        {
+            return 1156;
+        }
+        if self.r#note == 9 && self.r#powered == true && self.r#instrument == Instrument::Snare {
+            return 699;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Bass && self.r#note == 0 {
+            return 781;
+        }
+        if self.r#note == 12 && self.r#powered == true && self.r#instrument == Instrument::Bit {
+            return 1255;
+        }
+        if self.r#note == 20 && self.r#powered == false && self.r#instrument == Instrument::Guitar {
+            return 972;
+        }
+        if self.r#note == 14 && self.r#instrument == Instrument::Basedrum && self.r#powered == true
+        {
+            return 659;
+        }
+        if self.r#note == 16 && self.r#instrument == Instrument::Hat && self.r#powered == true {
+            return 763;
+        }
+        if self.r#instrument == Instrument::Dragon && self.r#note == 6 && self.r#powered == true {
+            return 1543;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Harp && self.r#note == 20 {
+            return 621;
+        }
+        if self.r#instrument == Instrument::CustomHead
+            && self.r#note == 24
+            && self.r#powered == false
+        {
+            return 1730;
+        }
+        if self.r#note == 9 && self.r#instrument == Instrument::Chime && self.r#powered == false {
+            return 1000;
+        }
+        if self.r#note == 3 && self.r#powered == false && self.r#instrument == Instrument::Creeper {
+            return 1488;
+        }
+        if self.r#powered == true && self.r#note == 21 && self.r#instrument == Instrument::Basedrum
+        {
+            return 673;
+        }
+        if self.r#instrument == Instrument::Xylophone && self.r#note == 13 && self.r#powered == true
+        {
+            return 1057;
+        }
+        if self.r#instrument == Instrument::Pling && self.r#note == 18 && self.r#powered == false {
+            return 1368;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Bass && self.r#note == 22 {
+            return 825;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Zombie && self.r#note == 13 {
+            return 1407;
+        }
+        if self.r#note == 1 && self.r#instrument == Instrument::Xylophone && self.r#powered == false
+        {
+            return 1034;
+        }
+        if self.r#note == 0 && self.r#powered == true && self.r#instrument == Instrument::Piglin {
+            return 1631;
+        }
+        if self.r#powered == false
+            && self.r#note == 21
+            && self.r#instrument == Instrument::Didgeridoo
+        {
+            return 1224;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Piglin && self.r#note == 12 {
+            return 1656;
+        }
+        if self.r#instrument == Instrument::Snare && self.r#note == 2 && self.r#powered == true {
+            return 685;
+        }
+        if self.r#note == 17 && self.r#instrument == Instrument::Guitar && self.r#powered == true {
+            return 965;
+        }
+        if self.r#powered == false
+            && self.r#instrument == Instrument::Didgeridoo
+            && self.r#note == 20
+        {
+            return 1222;
+        }
+        if self.r#instrument == Instrument::Dragon && self.r#powered == false && self.r#note == 14 {
+            return 1560;
+        }
+        if self.r#instrument == Instrument::WitherSkeleton
+            && self.r#note == 10
+            && self.r#powered == false
+        {
+            return 1602;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Dragon && self.r#note == 21 {
+            return 1573;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Flute && self.r#note == 12 {
+            return 855;
+        }
+        if self.r#instrument == Instrument::CowBell && self.r#note == 24 && self.r#powered == true {
+            return 1179;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Chime && self.r#note == 17 {
+            return 1016;
+        }
+        if self.r#note == 15 && self.r#powered == true && self.r#instrument == Instrument::Pling {
+            return 1361;
+        }
+        if self.r#instrument == Instrument::Dragon && self.r#note == 7 && self.r#powered == true {
+            return 1545;
+        }
+        if self.r#note == 4 && self.r#instrument == Instrument::Hat && self.r#powered == false {
+            return 740;
+        }
+        if self.r#note == 7 && self.r#instrument == Instrument::Basedrum && self.r#powered == true {
+            return 645;
+        }
+        if self.r#note == 18 && self.r#powered == true && self.r#instrument == Instrument::Bell {
+            return 917;
+        }
+        if self.r#instrument == Instrument::Bit && self.r#powered == true && self.r#note == 6 {
+            return 1243;
+        }
+        if self.r#note == 10 && self.r#instrument == Instrument::Xylophone && self.r#powered == true
+        {
+            return 1051;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Harp && self.r#note == 2 {
+            return 585;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Bit && self.r#note == 8 {
+            return 1248;
+        }
+        if self.r#instrument == Instrument::Skeleton && self.r#note == 9 && self.r#powered == true {
+            return 1449;
+        }
+        if self.r#instrument == Instrument::Zombie && self.r#note == 22 && self.r#powered == true {
+            return 1425;
+        }
+        if self.r#note == 23 && self.r#instrument == Instrument::Skeleton && self.r#powered == false
+        {
+            return 1478;
+        }
+        if self.r#instrument == Instrument::Dragon && self.r#note == 12 && self.r#powered == false {
+            return 1556;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Dragon && self.r#note == 16 {
+            return 1564;
+        }
+        if self.r#note == 7 && self.r#powered == true && self.r#instrument == Instrument::Hat {
+            return 745;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Bell && self.r#note == 20 {
+            return 922;
+        }
+        if self.r#instrument == Instrument::Zombie && self.r#powered == true && self.r#note == 12 {
+            return 1405;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Skeleton && self.r#note == 7
+        {
+            return 1446;
+        }
+        if self.r#instrument == Instrument::WitherSkeleton
+            && self.r#note == 14
+            && self.r#powered == true
+        {
+            return 1609;
+        }
+        if self.r#instrument == Instrument::CowBell && self.r#note == 17 && self.r#powered == false
+        {
+            return 1166;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Bit && self.r#note == 20 {
+            return 1272;
+        }
+        if self.r#instrument == Instrument::Harp && self.r#note == 7 && self.r#powered == true {
+            return 595;
+        }
+        if self.r#instrument == Instrument::Harp && self.r#note == 22 && self.r#powered == true {
+            return 625;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Chime && self.r#note == 0 {
+            return 982;
+        }
+        if self.r#instrument == Instrument::Snare && self.r#note == 3 && self.r#powered == true {
+            return 687;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Xylophone && self.r#note == 6
+        {
+            return 1043;
+        }
+        if self.r#powered == true && self.r#note == 10 && self.r#instrument == Instrument::Bit {
+            return 1251;
+        }
+        if self.r#instrument == Instrument::Basedrum && self.r#note == 3 && self.r#powered == true {
+            return 637;
+        }
+        if self.r#instrument == Instrument::WitherSkeleton
+            && self.r#note == 12
+            && self.r#powered == true
+        {
+            return 1605;
+        }
+        if self.r#note == 15 && self.r#powered == true && self.r#instrument == Instrument::Chime {
+            return 1011;
+        }
+        if self.r#note == 1
+            && self.r#instrument == Instrument::WitherSkeleton
+            && self.r#powered == false
+        {
+            return 1584;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Basedrum && self.r#note == 13
+        {
+            return 658;
+        }
+        if self.r#instrument == Instrument::Flute && self.r#note == 24 && self.r#powered == true {
+            return 879;
+        }
+        if self.r#powered == true
+            && self.r#instrument == Instrument::IronXylophone
+            && self.r#note == 20
+        {
+            return 1121;
+        }
+        if self.r#note == 5 && self.r#powered == false && self.r#instrument == Instrument::Bit {
+            return 1242;
+        }
+        if self.r#powered == false && self.r#note == 17 && self.r#instrument == Instrument::Creeper
+        {
+            return 1516;
+        }
+        if self.r#powered == true && self.r#note == 16 && self.r#instrument == Instrument::Piglin {
+            return 1663;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Banjo && self.r#note == 10 {
+            return 1301;
+        }
+        if self.r#note == 2 && self.r#instrument == Instrument::Bit && self.r#powered == true {
+            return 1235;
+        }
+        if self.r#instrument == Instrument::Guitar && self.r#note == 22 && self.r#powered == false {
+            return 976;
+        }
+        if self.r#powered == false && self.r#note == 11 && self.r#instrument == Instrument::Zombie {
+            return 1404;
+        }
+        if self.r#instrument == Instrument::Flute && self.r#note == 23 && self.r#powered == false {
+            return 878;
+        }
+        if self.r#powered == true && self.r#note == 10 && self.r#instrument == Instrument::Creeper {
+            return 1501;
+        }
+        if self.r#instrument == Instrument::Dragon && self.r#powered == true && self.r#note == 22 {
+            return 1575;
+        }
+        if self.r#note == 3 && self.r#powered == false && self.r#instrument == Instrument::Piglin {
+            return 1638;
+        }
+        if self.r#note == 0 && self.r#instrument == Instrument::Xylophone && self.r#powered == false
+        {
+            return 1032;
+        }
+        if self.r#powered == false && self.r#note == 3 && self.r#instrument == Instrument::Harp {
+            return 588;
+        }
+        if self.r#instrument == Instrument::Skeleton && self.r#powered == false && self.r#note == 2
+        {
+            return 1436;
+        }
+        if self.r#powered == false && self.r#note == 17 && self.r#instrument == Instrument::Snare {
+            return 716;
+        }
+        if self.r#note == 21 && self.r#powered == false && self.r#instrument == Instrument::Bell {
+            return 924;
+        }
+        if self.r#note == 12
+            && self.r#instrument == Instrument::IronXylophone
+            && self.r#powered == false
+        {
+            return 1106;
+        }
+        if self.r#note == 8 && self.r#powered == false && self.r#instrument == Instrument::Zombie {
+            return 1398;
+        }
+        if self.r#instrument == Instrument::CustomHead
+            && self.r#powered == false
+            && self.r#note == 3
+        {
+            return 1688;
+        }
+        if self.r#powered == false && self.r#note == 14 && self.r#instrument == Instrument::Harp {
+            return 610;
+        }
+        if self.r#note == 5 && self.r#instrument == Instrument::Piglin && self.r#powered == false {
+            return 1642;
+        }
+        if self.r#note == 16
+            && self.r#instrument == Instrument::WitherSkeleton
+            && self.r#powered == false
+        {
+            return 1614;
+        }
+        if self.r#powered == true && self.r#note == 8 && self.r#instrument == Instrument::Guitar {
+            return 947;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Skeleton && self.r#note == 21
+        {
+            return 1473;
+        }
+        if self.r#powered == false && self.r#note == 1 && self.r#instrument == Instrument::Banjo {
+            return 1284;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Skeleton && self.r#note == 4
+        {
+            return 1440;
+        }
+        if self.r#instrument == Instrument::Basedrum && self.r#note == 14 && self.r#powered == false
+        {
+            return 660;
+        }
+        if self.r#note == 9 && self.r#powered == true && self.r#instrument == Instrument::Didgeridoo
+        {
+            return 1199;
+        }
+        if self.r#instrument == Instrument::Flute && self.r#note == 2 && self.r#powered == true {
+            return 835;
+        }
+        if self.r#note == 4 && self.r#powered == false && self.r#instrument == Instrument::Basedrum
+        {
+            return 640;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Harp && self.r#note == 5 {
+            return 592;
+        }
+        if self.r#note == 0 && self.r#powered == false && self.r#instrument == Instrument::Dragon {
+            return 1532;
+        }
+        if self.r#powered == true
+            && self.r#instrument == Instrument::IronXylophone
+            && self.r#note == 3
+        {
+            return 1087;
+        }
+        if self.r#note == 20
+            && self.r#powered == false
+            && self.r#instrument == Instrument::WitherSkeleton
+        {
+            return 1622;
+        }
+        if self.r#note == 5 && self.r#powered == true && self.r#instrument == Instrument::Piglin {
+            return 1641;
+        }
+        if self.r#note == 23 && self.r#powered == true && self.r#instrument == Instrument::Xylophone
+        {
+            return 1077;
+        }
+        if self.r#note == 4 && self.r#powered == true && self.r#instrument == Instrument::Harp {
+            return 589;
+        }
+        if self.r#powered == false
+            && self.r#instrument == Instrument::WitherSkeleton
+            && self.r#note == 8
+        {
+            return 1598;
+        }
+        if self.r#instrument == Instrument::IronXylophone
+            && self.r#note == 22
+            && self.r#powered == true
+        {
+            return 1125;
+        }
+        if self.r#instrument == Instrument::Bell && self.r#note == 6 && self.r#powered == false {
+            return 894;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Bell && self.r#note == 0 {
+            return 881;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Snare && self.r#note == 18 {
+            return 717;
+        }
+        if self.r#instrument == Instrument::Pling && self.r#powered == true && self.r#note == 11 {
+            return 1353;
+        }
+        if self.r#instrument == Instrument::CustomHead
+            && self.r#powered == true
+            && self.r#note == 22
+        {
+            return 1725;
+        }
+        if self.r#powered == false
+            && self.r#instrument == Instrument::IronXylophone
+            && self.r#note == 0
+        {
+            return 1082;
+        }
+        if self.r#note == 11 && self.r#powered == false && self.r#instrument == Instrument::Harp {
+            return 604;
+        }
+        if self.r#powered == false && self.r#note == 24 && self.r#instrument == Instrument::Chime {
+            return 1030;
+        }
+        if self.r#instrument == Instrument::Skeleton && self.r#note == 1 && self.r#powered == false
+        {
+            return 1434;
+        }
+        if self.r#instrument == Instrument::Hat && self.r#note == 23 && self.r#powered == true {
+            return 777;
+        }
+        if self.r#note == 24 && self.r#instrument == Instrument::Bell && self.r#powered == true {
+            return 929;
+        }
+        if self.r#powered == false && self.r#note == 19 && self.r#instrument == Instrument::Banjo {
+            return 1320;
+        }
+        if self.r#note == 0 && self.r#instrument == Instrument::Hat && self.r#powered == true {
+            return 731;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Zombie && self.r#note == 8 {
+            return 1397;
+        }
+        if self.r#instrument == Instrument::Creeper && self.r#note == 23 && self.r#powered == false
+        {
+            return 1528;
+        }
+        if self.r#note == 17
+            && self.r#instrument == Instrument::CustomHead
+            && self.r#powered == false
+        {
+            return 1716;
+        }
+        if self.r#powered == false && self.r#note == 0 && self.r#instrument == Instrument::Guitar {
+            return 932;
+        }
+        if self.r#instrument == Instrument::Bell && self.r#powered == true && self.r#note == 13 {
+            return 907;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Guitar && self.r#note == 16 {
+            return 964;
+        }
+        if self.r#note == 13
+            && self.r#powered == false
+            && self.r#instrument == Instrument::CustomHead
+        {
+            return 1708;
+        }
+        if self.r#instrument == Instrument::Flute && self.r#note == 9 && self.r#powered == false {
+            return 850;
+        }
+        if self.r#powered == true && self.r#note == 11 && self.r#instrument == Instrument::Bit {
+            return 1253;
+        }
+        if self.r#instrument == Instrument::Hat && self.r#powered == false && self.r#note == 17 {
+            return 766;
+        }
+        if self.r#note == 2 && self.r#instrument == Instrument::Didgeridoo && self.r#powered == true
+        {
+            return 1185;
+        }
+        if self.r#instrument == Instrument::Banjo && self.r#powered == false && self.r#note == 8 {
+            return 1298;
+        }
+        if self.r#note == 12
+            && self.r#powered == true
+            && self.r#instrument == Instrument::IronXylophone
+        {
+            return 1105;
+        }
+        if self.r#powered == false && self.r#note == 3 && self.r#instrument == Instrument::Hat {
+            return 738;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Banjo && self.r#note == 7 {
+            return 1295;
+        }
+        if self.r#powered == true && self.r#note == 20 && self.r#instrument == Instrument::Banjo {
+            return 1321;
+        }
+        if self.r#note == 17 && self.r#instrument == Instrument::Harp && self.r#powered == true {
+            return 615;
+        }
+        if self.r#instrument == Instrument::WitherSkeleton
+            && self.r#note == 10
+            && self.r#powered == true
+        {
+            return 1601;
+        }
+        if self.r#instrument == Instrument::Pling && self.r#note == 2 && self.r#powered == true {
+            return 1335;
+        }
+        if self.r#instrument == Instrument::Skeleton && self.r#note == 2 && self.r#powered == true {
+            return 1435;
+        }
+        if self.r#note == 1 && self.r#instrument == Instrument::Pling && self.r#powered == true {
+            return 1333;
+        }
+        if self.r#note == 24 && self.r#powered == false && self.r#instrument == Instrument::Bass {
+            return 830;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Chime && self.r#note == 10 {
+            return 1002;
+        }
+        if self.r#instrument == Instrument::CowBell && self.r#powered == true && self.r#note == 8 {
+            return 1147;
+        }
+        if self.r#note == 22 && self.r#instrument == Instrument::Guitar && self.r#powered == true {
+            return 975;
+        }
+        if self.r#powered == false && self.r#note == 1 && self.r#instrument == Instrument::Hat {
+            return 734;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Bass && self.r#note == 15 {
+            return 812;
+        }
+        if self.r#note == 4 && self.r#instrument == Instrument::Bell && self.r#powered == true {
+            return 889;
+        }
+        if self.r#instrument == Instrument::Hat && self.r#note == 12 && self.r#powered == true {
+            return 755;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Bell && self.r#note == 9 {
+            return 899;
+        }
+        if self.r#note == 1 && self.r#powered == true && self.r#instrument == Instrument::Snare {
+            return 683;
+        }
+        if self.r#note == 18 && self.r#powered == false && self.r#instrument == Instrument::Banjo {
+            return 1318;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Skeleton && self.r#note == 14
+        {
+            return 1459;
+        }
+        if self.r#note == 14
+            && self.r#instrument == Instrument::Didgeridoo
+            && self.r#powered == false
+        {
+            return 1210;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Pling && self.r#note == 19 {
+            return 1369;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Harp && self.r#note == 21 {
+            return 623;
+        }
+        if self.r#instrument == Instrument::Bass && self.r#powered == false && self.r#note == 21 {
+            return 824;
+        }
+        if self.r#instrument == Instrument::Bell && self.r#note == 19 && self.r#powered == false {
+            return 920;
+        }
+        if self.r#note == 7 && self.r#instrument == Instrument::Bit && self.r#powered == true {
+            return 1245;
+        }
+        if self.r#powered == false && self.r#note == 15 && self.r#instrument == Instrument::Harp {
+            return 612;
+        }
+        if self.r#instrument == Instrument::Snare && self.r#powered == true && self.r#note == 17 {
+            return 715;
+        }
+        if self.r#instrument == Instrument::Flute && self.r#note == 11 && self.r#powered == true {
+            return 853;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Guitar && self.r#note == 3 {
+            return 938;
+        }
+        if self.r#instrument == Instrument::Basedrum && self.r#note == 18 && self.r#powered == true
+        {
+            return 667;
+        }
+        if self.r#powered == true && self.r#note == 3 && self.r#instrument == Instrument::Dragon {
+            return 1537;
+        }
+        if self.r#powered == true && self.r#note == 21 && self.r#instrument == Instrument::Snare {
+            return 723;
+        }
+        if self.r#instrument == Instrument::Bell && self.r#powered == false && self.r#note == 8 {
+            return 898;
+        }
+        if self.r#note == 19 && self.r#instrument == Instrument::Xylophone && self.r#powered == true
+        {
+            return 1069;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::CowBell && self.r#note == 11 {
+            return 1153;
+        }
+        if self.r#powered == true && self.r#note == 3 && self.r#instrument == Instrument::Xylophone
+        {
+            return 1037;
+        }
+        if self.r#instrument == Instrument::CowBell && self.r#powered == true && self.r#note == 18 {
+            return 1167;
+        }
+        if self.r#instrument == Instrument::Bass && self.r#powered == false && self.r#note == 4 {
+            return 790;
+        }
+        if self.r#instrument == Instrument::Didgeridoo
+            && self.r#note == 6
+            && self.r#powered == false
+        {
+            return 1194;
+        }
+        if self.r#note == 20 && self.r#instrument == Instrument::Piglin && self.r#powered == false {
+            return 1672;
+        }
+        if self.r#instrument == Instrument::Flute && self.r#note == 5 && self.r#powered == false {
+            return 842;
+        }
+        if self.r#note == 3 && self.r#instrument == Instrument::CowBell && self.r#powered == true {
+            return 1137;
+        }
+        if self.r#powered == true && self.r#note == 2 && self.r#instrument == Instrument::CustomHead
+        {
+            return 1685;
+        }
+        if self.r#instrument == Instrument::Banjo && self.r#powered == false && self.r#note == 7 {
+            return 1296;
+        }
+        if self.r#instrument == Instrument::CustomHead
+            && self.r#powered == true
+            && self.r#note == 15
+        {
+            return 1711;
+        }
+        if self.r#instrument == Instrument::Banjo && self.r#note == 9 && self.r#powered == false {
+            return 1300;
+        }
+        if self.r#note == 5 && self.r#instrument == Instrument::CowBell && self.r#powered == true {
+            return 1141;
+        }
+        if self.r#instrument == Instrument::Skeleton && self.r#powered == false && self.r#note == 20
+        {
+            return 1472;
+        }
+        if self.r#instrument == Instrument::Guitar && self.r#note == 7 && self.r#powered == true {
+            return 945;
+        }
+        if self.r#instrument == Instrument::WitherSkeleton
+            && self.r#powered == false
+            && self.r#note == 5
+        {
+            return 1592;
+        }
+        if self.r#instrument == Instrument::Piglin && self.r#note == 19 && self.r#powered == true {
+            return 1669;
+        }
+        if self.r#powered == true && self.r#note == 2 && self.r#instrument == Instrument::Guitar {
+            return 935;
+        }
+        if self.r#note == 2 && self.r#instrument == Instrument::Bit && self.r#powered == false {
+            return 1236;
+        }
+        if self.r#note == 11 && self.r#powered == true && self.r#instrument == Instrument::Skeleton
+        {
+            return 1453;
+        }
+        if self.r#instrument == Instrument::CustomHead && self.r#note == 5 && self.r#powered == true
+        {
+            return 1691;
+        }
+        if self.r#instrument == Instrument::Hat && self.r#note == 14 && self.r#powered == false {
+            return 760;
+        }
+        if self.r#instrument == Instrument::Creeper && self.r#note == 14 && self.r#powered == false
+        {
+            return 1510;
+        }
+        if self.r#instrument == Instrument::Skeleton && self.r#note == 20 && self.r#powered == true
+        {
+            return 1471;
+        }
+        if self.r#instrument == Instrument::Creeper && self.r#powered == true && self.r#note == 7 {
+            return 1495;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Piglin && self.r#note == 1 {
+            return 1634;
+        }
+        if self.r#instrument == Instrument::Hat && self.r#powered == false && self.r#note == 10 {
+            return 752;
+        }
+        if self.r#note == 9 && self.r#instrument == Instrument::Creeper && self.r#powered == false {
+            return 1500;
+        }
+        if self.r#note == 11 && self.r#instrument == Instrument::Snare && self.r#powered == false {
+            return 704;
+        }
+        if self.r#instrument == Instrument::Piglin && self.r#powered == true && self.r#note == 21 {
+            return 1673;
+        }
+        if self.r#note == 19 && self.r#instrument == Instrument::Bass && self.r#powered == false {
+            return 820;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Basedrum && self.r#note == 0
+        {
+            return 632;
+        }
+        if self.r#note == 9 && self.r#instrument == Instrument::CowBell && self.r#powered == false {
+            return 1150;
+        }
+        if self.r#instrument == Instrument::Guitar && self.r#note == 13 && self.r#powered == false {
+            return 958;
+        }
+        if self.r#powered == true && self.r#note == 22 && self.r#instrument == Instrument::Basedrum
+        {
+            return 675;
+        }
+        if self.r#instrument == Instrument::Basedrum && self.r#note == 13 && self.r#powered == true
+        {
+            return 657;
+        }
+        if self.r#note == 8 && self.r#powered == false && self.r#instrument == Instrument::Flute {
+            return 848;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Chime && self.r#note == 5 {
+            return 992;
+        }
+        if self.r#note == 11
+            && self.r#powered == true
+            && self.r#instrument == Instrument::WitherSkeleton
+        {
+            return 1603;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Zombie && self.r#note == 6 {
+            return 1394;
+        }
+        if self.r#instrument == Instrument::CustomHead
+            && self.r#note == 6
+            && self.r#powered == false
+        {
+            return 1694;
+        }
+        if self.r#instrument == Instrument::Bit && self.r#note == 17 && self.r#powered == false {
+            return 1266;
+        }
+        if self.r#note == 17 && self.r#powered == false && self.r#instrument == Instrument::Basedrum
+        {
+            return 666;
+        }
+        if self.r#instrument == Instrument::Basedrum && self.r#note == 16 && self.r#powered == false
+        {
+            return 664;
+        }
+        if self.r#instrument == Instrument::Bit && self.r#note == 16 && self.r#powered == true {
+            return 1263;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Piglin && self.r#note == 4 {
+            return 1640;
+        }
+        if self.r#powered == false && self.r#note == 8 && self.r#instrument == Instrument::Bass {
+            return 798;
+        }
+        if self.r#powered == true
+            && self.r#instrument == Instrument::CustomHead
+            && self.r#note == 14
+        {
+            return 1709;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Zombie && self.r#note == 23 {
+            return 1427;
+        }
+        if self.r#instrument == Instrument::CowBell && self.r#powered == false && self.r#note == 24
+        {
+            return 1180;
+        }
+        if self.r#powered == false && self.r#note == 22 && self.r#instrument == Instrument::Dragon {
+            return 1576;
+        }
+        if self.r#note == 11 && self.r#instrument == Instrument::Bass && self.r#powered == true {
+            return 803;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Bit && self.r#note == 7 {
+            return 1246;
+        }
+        if self.r#powered == false && self.r#note == 15 && self.r#instrument == Instrument::Guitar {
+            return 962;
+        }
+        if self.r#instrument == Instrument::CustomHead
+            && self.r#note == 13
+            && self.r#powered == true
+        {
+            return 1707;
+        }
+        if self.r#instrument == Instrument::Bell && self.r#note == 8 && self.r#powered == true {
+            return 897;
+        }
+        if self.r#note == 9 && self.r#instrument == Instrument::Xylophone && self.r#powered == false
+        {
+            return 1050;
+        }
+        if self.r#instrument == Instrument::Bit && self.r#note == 15 && self.r#powered == false {
+            return 1262;
+        }
+        if self.r#note == 18 && self.r#powered == false && self.r#instrument == Instrument::Basedrum
+        {
+            return 668;
+        }
+        if self.r#powered == false && self.r#note == 9 && self.r#instrument == Instrument::Hat {
+            return 750;
+        }
+        if self.r#note == 7 && self.r#instrument == Instrument::Basedrum && self.r#powered == false
+        {
+            return 646;
+        }
+        if self.r#powered == false && self.r#note == 23 && self.r#instrument == Instrument::Chime {
+            return 1028;
+        }
+        if self.r#note == 18
+            && self.r#powered == true
+            && self.r#instrument == Instrument::Didgeridoo
+        {
+            return 1217;
+        }
+        if self.r#note == 13 && self.r#powered == true && self.r#instrument == Instrument::Piglin {
+            return 1657;
+        }
+        if self.r#note == 19
+            && self.r#powered == false
+            && self.r#instrument == Instrument::CustomHead
+        {
+            return 1720;
+        }
+        if self.r#instrument == Instrument::Flute && self.r#note == 7 && self.r#powered == true {
+            return 845;
+        }
+        if self.r#powered == true && self.r#note == 7 && self.r#instrument == Instrument::Snare {
+            return 695;
+        }
+        if self.r#instrument == Instrument::Hat && self.r#powered == true && self.r#note == 22 {
+            return 775;
+        }
+        if self.r#note == 12
+            && self.r#instrument == Instrument::Xylophone
+            && self.r#powered == false
+        {
+            return 1056;
+        }
+        if self.r#powered == true
+            && self.r#instrument == Instrument::WitherSkeleton
+            && self.r#note == 2
+        {
+            return 1585;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Harp && self.r#note == 2 {
+            return 586;
+        }
+        if self.r#instrument == Instrument::Bass && self.r#note == 3 && self.r#powered == true {
+            return 787;
+        }
+        if self.r#instrument == Instrument::Bass && self.r#note == 3 && self.r#powered == false {
+            return 788;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Chime && self.r#note == 12 {
+            return 1005;
+        }
+        if self.r#instrument == Instrument::Piglin && self.r#note == 23 && self.r#powered == true {
+            return 1677;
+        }
+        if self.r#instrument == Instrument::Piglin && self.r#note == 20 && self.r#powered == true {
+            return 1671;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Guitar && self.r#note == 24 {
+            return 979;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Bit && self.r#note == 13 {
+            return 1258;
+        }
+        if self.r#instrument == Instrument::Hat && self.r#powered == true && self.r#note == 3 {
+            return 737;
+        }
+        if self.r#powered == false
+            && self.r#instrument == Instrument::Didgeridoo
+            && self.r#note == 19
+        {
+            return 1220;
+        }
+        if self.r#note == 19
+            && self.r#powered == false
+            && self.r#instrument == Instrument::IronXylophone
+        {
+            return 1120;
+        }
+        if self.r#note == 18 && self.r#instrument == Instrument::Skeleton && self.r#powered == true
+        {
+            return 1467;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Dragon && self.r#note == 20 {
+            return 1572;
+        }
+        if self.r#powered == true && self.r#note == 22 && self.r#instrument == Instrument::CowBell {
+            return 1175;
+        }
+        if self.r#instrument == Instrument::Banjo && self.r#note == 6 && self.r#powered == true {
+            return 1293;
+        }
+        if self.r#note == 19
+            && self.r#powered == true
+            && self.r#instrument == Instrument::CustomHead
+        {
+            return 1719;
+        }
+        if self.r#instrument == Instrument::Guitar && self.r#note == 10 && self.r#powered == false {
+            return 952;
+        }
+        if self.r#instrument == Instrument::Bell && self.r#note == 2 && self.r#powered == false {
+            return 886;
+        }
+        if self.r#instrument == Instrument::Banjo && self.r#note == 22 && self.r#powered == true {
+            return 1325;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Piglin && self.r#note == 10 {
+            return 1652;
+        }
+        if self.r#instrument == Instrument::Guitar && self.r#note == 8 && self.r#powered == false {
+            return 948;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::CowBell && self.r#note == 12 {
+            return 1155;
+        }
+        if self.r#instrument == Instrument::Xylophone
+            && self.r#note == 16
+            && self.r#powered == false
+        {
+            return 1064;
+        }
+        if self.r#note == 3
+            && self.r#powered == false
+            && self.r#instrument == Instrument::Didgeridoo
+        {
+            return 1188;
+        }
+        if self.r#instrument == Instrument::Pling && self.r#note == 11 && self.r#powered == false {
+            return 1354;
+        }
+        if self.r#note == 17 && self.r#instrument == Instrument::Creeper && self.r#powered == true {
+            return 1515;
+        }
+        if self.r#instrument == Instrument::IronXylophone
+            && self.r#note == 8
+            && self.r#powered == true
+        {
+            return 1097;
+        }
+        if self.r#instrument == Instrument::Piglin && self.r#note == 24 && self.r#powered == true {
+            return 1679;
+        }
+        if self.r#powered == false && self.r#note == 3 && self.r#instrument == Instrument::Dragon {
+            return 1538;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Basedrum && self.r#note == 20
+        {
+            return 671;
+        }
+        if self.r#note == 21 && self.r#powered == false && self.r#instrument == Instrument::Chime {
+            return 1024;
+        }
+        if self.r#instrument == Instrument::Harp && self.r#note == 23 && self.r#powered == false {
+            return 628;
+        }
+        if self.r#instrument == Instrument::Harp && self.r#note == 6 && self.r#powered == true {
+            return 593;
+        }
+        if self.r#note == 3 && self.r#powered == true && self.r#instrument == Instrument::Chime {
+            return 987;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Chime && self.r#note == 5 {
+            return 991;
+        }
+        if self.r#note == 12 && self.r#instrument == Instrument::Basedrum && self.r#powered == true
+        {
+            return 655;
+        }
+        if self.r#instrument == Instrument::Snare && self.r#note == 23 && self.r#powered == true {
+            return 727;
+        }
+        if self.r#note == 13 && self.r#instrument == Instrument::Flute && self.r#powered == false {
+            return 858;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Flute && self.r#note == 14 {
+            return 859;
+        }
+        if self.r#instrument == Instrument::Didgeridoo
+            && self.r#powered == true
+            && self.r#note == 16
+        {
+            return 1213;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Flute && self.r#note == 11 {
+            return 854;
+        }
+        if self.r#powered == false && self.r#note == 3 && self.r#instrument == Instrument::Bit {
+            return 1238;
+        }
+        if self.r#note == 24
+            && self.r#powered == false
+            && self.r#instrument == Instrument::Didgeridoo
+        {
+            return 1230;
+        }
+        if self.r#note == 24 && self.r#powered == true && self.r#instrument == Instrument::Pling {
+            return 1379;
+        }
+        if self.r#note == 4 && self.r#powered == true && self.r#instrument == Instrument::Banjo {
+            return 1289;
+        }
+        if self.r#powered == true
+            && self.r#note == 19
+            && self.r#instrument == Instrument::Didgeridoo
+        {
+            return 1219;
+        }
+        if self.r#note == 8 && self.r#instrument == Instrument::Basedrum && self.r#powered == false
+        {
+            return 648;
+        }
+        if self.r#note == 4 && self.r#powered == true && self.r#instrument == Instrument::Guitar {
+            return 939;
+        }
+        if self.r#instrument == Instrument::Guitar && self.r#powered == false && self.r#note == 18 {
+            return 968;
+        }
+        if self.r#instrument == Instrument::Guitar && self.r#powered == false && self.r#note == 2 {
+            return 936;
+        }
+        if self.r#note == 13
+            && self.r#powered == true
+            && self.r#instrument == Instrument::WitherSkeleton
+        {
+            return 1607;
+        }
+        if self.r#instrument == Instrument::Bell && self.r#powered == true && self.r#note == 21 {
+            return 923;
+        }
+        if self.r#instrument == Instrument::Chime && self.r#note == 16 && self.r#powered == false {
+            return 1014;
+        }
+        if self.r#instrument == Instrument::Pling && self.r#powered == false && self.r#note == 12 {
+            return 1356;
+        }
+        if self.r#note == 19 && self.r#instrument == Instrument::CowBell && self.r#powered == true {
+            return 1169;
+        }
+        if self.r#note == 8 && self.r#powered == true && self.r#instrument == Instrument::Dragon {
+            return 1547;
+        }
+        if self.r#powered == false
+            && self.r#instrument == Instrument::CustomHead
+            && self.r#note == 2
+        {
+            return 1686;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Harp && self.r#note == 10 {
+            return 601;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Piglin && self.r#note == 21 {
+            return 1674;
+        }
+        if self.r#instrument == Instrument::Creeper && self.r#powered == false && self.r#note == 22
+        {
+            return 1526;
+        }
+        if self.r#instrument == Instrument::Creeper && self.r#note == 3 && self.r#powered == true {
+            return 1487;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Bit && self.r#note == 21 {
+            return 1273;
+        }
+        if self.r#instrument == Instrument::Xylophone && self.r#powered == true && self.r#note == 8
+        {
+            return 1047;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Zombie && self.r#note == 20 {
+            return 1421;
+        }
+        if self.r#instrument == Instrument::Piglin && self.r#note == 16 && self.r#powered == false {
+            return 1664;
+        }
+        if self.r#powered == true
+            && self.r#note == 16
+            && self.r#instrument == Instrument::CustomHead
+        {
+            return 1713;
+        }
+        if self.r#note == 9
+            && self.r#powered == true
+            && self.r#instrument == Instrument::IronXylophone
+        {
+            return 1099;
+        }
+        if self.r#powered == true && self.r#note == 2 && self.r#instrument == Instrument::Basedrum {
+            return 635;
+        }
+        if self.r#instrument == Instrument::Guitar && self.r#powered == true && self.r#note == 23 {
+            return 977;
+        }
+        if self.r#powered == false
+            && self.r#instrument == Instrument::WitherSkeleton
+            && self.r#note == 13
+        {
+            return 1608;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Bit && self.r#note == 14 {
+            return 1259;
+        }
+        if self.r#note == 1 && self.r#powered == true && self.r#instrument == Instrument::Bit {
+            return 1233;
+        }
+        if self.r#note == 23 && self.r#powered == false && self.r#instrument == Instrument::Banjo {
+            return 1328;
+        }
+        if self.r#instrument == Instrument::Piglin && self.r#powered == false && self.r#note == 7 {
+            return 1646;
+        }
+        if self.r#powered == true && self.r#note == 5 && self.r#instrument == Instrument::Zombie {
+            return 1391;
+        }
+        if self.r#note == 12 && self.r#instrument == Instrument::Guitar && self.r#powered == false {
+            return 956;
+        }
+        if self.r#note == 2 && self.r#powered == false && self.r#instrument == Instrument::Snare {
+            return 686;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Chime && self.r#note == 6 {
+            return 994;
+        }
+        if self.r#note == 4 && self.r#powered == false && self.r#instrument == Instrument::Bit {
+            return 1240;
+        }
+        if self.r#instrument == Instrument::CowBell && self.r#note == 4 && self.r#powered == false {
+            return 1140;
+        }
+        if self.r#instrument == Instrument::Hat && self.r#powered == false && self.r#note == 2 {
+            return 736;
+        }
+        if self.r#instrument == Instrument::IronXylophone
+            && self.r#note == 4
+            && self.r#powered == false
+        {
+            return 1090;
+        }
+        if self.r#instrument == Instrument::Piglin && self.r#note == 3 && self.r#powered == true {
+            return 1637;
+        }
+        if self.r#instrument == Instrument::Pling && self.r#note == 0 && self.r#powered == false {
+            return 1332;
+        }
+        if self.r#powered == false && self.r#note == 18 && self.r#instrument == Instrument::Creeper
+        {
+            return 1518;
+        }
+        if self.r#instrument == Instrument::Hat && self.r#powered == true && self.r#note == 15 {
+            return 761;
+        }
+        if self.r#instrument == Instrument::Didgeridoo
+            && self.r#note == 23
+            && self.r#powered == true
+        {
+            return 1227;
+        }
+        if self.r#instrument == Instrument::Bit && self.r#note == 0 && self.r#powered == true {
+            return 1231;
+        }
+        if self.r#note == 9 && self.r#powered == true && self.r#instrument == Instrument::Zombie {
+            return 1399;
+        }
+        if self.r#instrument == Instrument::CustomHead
+            && self.r#powered == false
+            && self.r#note == 10
+        {
+            return 1702;
+        }
+        if self.r#powered == false
+            && self.r#instrument == Instrument::IronXylophone
+            && self.r#note == 6
+        {
+            return 1094;
+        }
+        if self.r#instrument == Instrument::Banjo && self.r#note == 21 && self.r#powered == false {
+            return 1324;
+        }
+        if self.r#note == 4 && self.r#powered == true && self.r#instrument == Instrument::CowBell {
+            return 1139;
+        }
+        if self.r#note == 19 && self.r#powered == true && self.r#instrument == Instrument::Bit {
+            return 1269;
+        }
+        if self.r#instrument == Instrument::Basedrum && self.r#powered == false && self.r#note == 15
+        {
+            return 662;
+        }
+        if self.r#note == 21 && self.r#powered == false && self.r#instrument == Instrument::Guitar {
+            return 974;
+        }
+        if self.r#note == 1 && self.r#powered == true && self.r#instrument == Instrument::CowBell {
+            return 1133;
+        }
+        if self.r#instrument == Instrument::Creeper && self.r#powered == true && self.r#note == 4 {
+            return 1489;
+        }
+        if self.r#note == 0 && self.r#powered == false && self.r#instrument == Instrument::Bell {
+            return 882;
+        }
+        if self.r#instrument == Instrument::Banjo && self.r#note == 13 && self.r#powered == false {
+            return 1308;
+        }
+        if self.r#note == 18 && self.r#powered == false && self.r#instrument == Instrument::Dragon {
+            return 1568;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Skeleton && self.r#note == 16
+        {
+            return 1464;
+        }
+        if self.r#instrument == Instrument::Creeper && self.r#note == 20 && self.r#powered == true {
+            return 1521;
+        }
+        if self.r#note == 20
+            && self.r#instrument == Instrument::Didgeridoo
+            && self.r#powered == true
+        {
+            return 1221;
+        }
+        if self.r#note == 8 && self.r#instrument == Instrument::Banjo && self.r#powered == true {
+            return 1297;
+        }
+        if self.r#note == 1 && self.r#instrument == Instrument::Basedrum && self.r#powered == true {
+            return 633;
+        }
+        if self.r#powered == true && self.r#note == 13 && self.r#instrument == Instrument::Hat {
+            return 757;
+        }
+        if self.r#instrument == Instrument::IronXylophone
+            && self.r#note == 5
+            && self.r#powered == true
+        {
+            return 1091;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Skeleton && self.r#note == 10
+        {
+            return 1452;
+        }
+        if self.r#note == 18 && self.r#powered == false && self.r#instrument == Instrument::CowBell
+        {
+            return 1168;
+        }
+        if self.r#instrument == Instrument::Snare && self.r#note == 21 && self.r#powered == false {
+            return 724;
+        }
+        if self.r#powered == false && self.r#instrument == Instrument::Chime && self.r#note == 14 {
+            return 1010;
+        }
+        if self.r#note == 4 && self.r#instrument == Instrument::Snare && self.r#powered == true {
+            return 689;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Creeper && self.r#note == 15 {
+            return 1511;
+        }
+        if self.r#instrument == Instrument::Bass && self.r#note == 24 && self.r#powered == true {
+            return 829;
+        }
+        if self.r#instrument == Instrument::CowBell && self.r#note == 22 && self.r#powered == false
+        {
+            return 1176;
+        }
+        if self.r#powered == true && self.r#note == 1 && self.r#instrument == Instrument::Skeleton {
+            return 1433;
+        }
+        if self.r#instrument == Instrument::IronXylophone
+            && self.r#note == 14
+            && self.r#powered == false
+        {
+            return 1110;
+        }
+        if self.r#note == 12 && self.r#powered == true && self.r#instrument == Instrument::Creeper {
+            return 1505;
+        }
+        if self.r#powered == true && self.r#note == 20 && self.r#instrument == Instrument::CowBell {
+            return 1171;
+        }
+        if self.r#instrument == Instrument::Harp && self.r#note == 15 && self.r#powered == true {
+            return 611;
+        }
+        if self.r#instrument == Instrument::Flute && self.r#powered == false && self.r#note == 3 {
+            return 838;
+        }
+        if self.r#instrument == Instrument::Guitar && self.r#note == 14 && self.r#powered == false {
+            return 960;
+        }
+        if self.r#instrument == Instrument::Didgeridoo
+            && self.r#powered == false
+            && self.r#note == 4
+        {
+            return 1190;
+        }
+        if self.r#instrument == Instrument::Bass && self.r#note == 16 && self.r#powered == false {
+            return 814;
+        }
+        if self.r#instrument == Instrument::Didgeridoo
+            && self.r#powered == false
+            && self.r#note == 13
+        {
+            return 1208;
+        }
+        if self.r#instrument == Instrument::Bit && self.r#powered == false && self.r#note == 12 {
+            return 1256;
+        }
+        if self.r#note == 7 && self.r#powered == true && self.r#instrument == Instrument::Skeleton {
+            return 1445;
+        }
+        if self.r#note == 2
+            && self.r#powered == true
+            && self.r#instrument == Instrument::IronXylophone
+        {
+            return 1085;
+        }
+        if self.r#instrument == Instrument::Bass && self.r#note == 20 && self.r#powered == true {
+            return 821;
+        }
+        if self.r#instrument == Instrument::Creeper && self.r#note == 6 && self.r#powered == false {
+            return 1494;
+        }
+        if self.r#note == 2 && self.r#powered == true && self.r#instrument == Instrument::Dragon {
+            return 1535;
+        }
+        if self.r#instrument == Instrument::Snare && self.r#note == 5 && self.r#powered == false {
+            return 692;
+        }
+        if self.r#instrument == Instrument::Banjo && self.r#note == 9 && self.r#powered == true {
+            return 1299;
+        }
+        if self.r#note == 11 && self.r#powered == true && self.r#instrument == Instrument::Piglin {
+            return 1653;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::CustomHead && self.r#note == 8
+        {
+            return 1697;
+        }
+        if self.r#note == 10 && self.r#instrument == Instrument::Bit && self.r#powered == false {
+            return 1252;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Zombie && self.r#note == 7 {
+            return 1395;
+        }
+        if self.r#instrument == Instrument::Chime && self.r#note == 14 && self.r#powered == true {
+            return 1009;
+        }
+        if self.r#powered == true && self.r#note == 9 && self.r#instrument == Instrument::CowBell {
+            return 1149;
+        }
+        if self.r#instrument == Instrument::Dragon && self.r#note == 7 && self.r#powered == false {
+            return 1546;
+        }
+        if self.r#instrument == Instrument::Guitar && self.r#note == 11 && self.r#powered == true {
+            return 953;
+        }
+        if self.r#instrument == Instrument::Harp && self.r#powered == false && self.r#note == 22 {
+            return 626;
+        }
+        if self.r#instrument == Instrument::Dragon && self.r#powered == false && self.r#note == 17 {
+            return 1566;
+        }
+        if self.r#instrument == Instrument::Creeper && self.r#note == 9 && self.r#powered == true {
+            return 1499;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Flute && self.r#note == 0 {
+            return 831;
+        }
+        if self.r#note == 15
+            && self.r#powered == false
+            && self.r#instrument == Instrument::Xylophone
+        {
+            return 1062;
+        }
+        if self.r#note == 0 && self.r#powered == true && self.r#instrument == Instrument::CowBell {
+            return 1131;
+        }
+        if self.r#powered == false
+            && self.r#instrument == Instrument::Didgeridoo
+            && self.r#note == 5
+        {
+            return 1192;
+        }
+        if self.r#instrument == Instrument::Dragon && self.r#note == 19 && self.r#powered == false {
+            return 1570;
+        }
+        if self.r#instrument == Instrument::Chime && self.r#note == 10 && self.r#powered == true {
+            return 1001;
+        }
+        if self.r#instrument == Instrument::WitherSkeleton
+            && self.r#note == 17
+            && self.r#powered == false
+        {
+            return 1616;
+        }
+        if self.r#powered == true && self.r#note == 14 && self.r#instrument == Instrument::Piglin {
+            return 1659;
+        }
+        if self.r#note == 16 && self.r#powered == false && self.r#instrument == Instrument::Bit {
+            return 1264;
+        }
+        if self.r#powered == true
+            && self.r#instrument == Instrument::WitherSkeleton
+            && self.r#note == 21
+        {
+            return 1623;
+        }
+        if self.r#instrument == Instrument::Xylophone && self.r#powered == false && self.r#note == 2
+        {
+            return 1036;
+        }
+        if self.r#note == 24
+            && self.r#instrument == Instrument::CustomHead
+            && self.r#powered == true
+        {
+            return 1729;
+        }
+        if self.r#powered == true && self.r#instrument == Instrument::Didgeridoo && self.r#note == 4
+        {
+            return 1189;
+        }
+        if self.r#instrument == Instrument::Snare && self.r#note == 8 && self.r#powered == false {
+            return 698;
+        }
+        if self.r#instrument == Instrument::Xylophone && self.r#powered == true && self.r#note == 5
+        {
+            return 1041;
+        }
+        if self.r#note == 17 && self.r#instrument == Instrument::Bell && self.r#powered == true {
+            return 915;
+        }
         panic!("Invalid block state")
     }
 
@@ -9244,4 +12293,3 @@ impl BlockState for NoteBlock {
         return None;
     }
 }
-

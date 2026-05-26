@@ -6,7 +6,6 @@ pub struct Ladder {
     pub r#facing: Facing,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -17,14 +16,30 @@ pub enum Facing {
 
 impl BlockState for Ladder {
     fn to_id(&self) -> i32 {
-        if self.r#waterlogged == true && self.r#facing == Facing::East { return 5524; }
-        if self.r#waterlogged == true && self.r#facing == Facing::West { return 5522; }
-        if self.r#facing == Facing::South && self.r#waterlogged == false { return 5521; }
-        if self.r#waterlogged == false && self.r#facing == Facing::North { return 5519; }
-        if self.r#waterlogged == true && self.r#facing == Facing::South { return 5520; }
-        if self.r#facing == Facing::North && self.r#waterlogged == true { return 5518; }
-        if self.r#waterlogged == false && self.r#facing == Facing::East { return 5525; }
-        if self.r#facing == Facing::West && self.r#waterlogged == false { return 5523; }
+        if self.r#waterlogged == true && self.r#facing == Facing::East {
+            return 5524;
+        }
+        if self.r#waterlogged == true && self.r#facing == Facing::West {
+            return 5522;
+        }
+        if self.r#facing == Facing::South && self.r#waterlogged == false {
+            return 5521;
+        }
+        if self.r#waterlogged == false && self.r#facing == Facing::North {
+            return 5519;
+        }
+        if self.r#waterlogged == true && self.r#facing == Facing::South {
+            return 5520;
+        }
+        if self.r#facing == Facing::North && self.r#waterlogged == true {
+            return 5518;
+        }
+        if self.r#waterlogged == false && self.r#facing == Facing::East {
+            return 5525;
+        }
+        if self.r#facing == Facing::West && self.r#waterlogged == false {
+            return 5523;
+        }
         panic!("Invalid block state")
     }
 
@@ -80,4 +95,3 @@ impl BlockState for Ladder {
         return None;
     }
 }
-

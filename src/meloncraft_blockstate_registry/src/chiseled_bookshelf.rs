@@ -11,7 +11,6 @@ pub struct ChiseledBookshelf {
     pub slot_1_occupied: bool,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -22,262 +21,2566 @@ pub enum Facing {
 
 impl BlockState for ChiseledBookshelf {
     fn to_id(&self) -> i32 {
-        if self.r#slot_5_occupied == true && self.r#slot_1_occupied == true && self.r#facing == Facing::North && self.r#slot_3_occupied == true && self.r#slot_4_occupied == true && self.r#slot_0_occupied == false && self.r#slot_2_occupied == false { return 2183; }
-        if self.r#slot_4_occupied == true && self.r#slot_1_occupied == false && self.r#facing == Facing::West && self.r#slot_3_occupied == false && self.r#slot_5_occupied == true && self.r#slot_2_occupied == false && self.r#slot_0_occupied == false { return 2331; }
-        if self.r#slot_2_occupied == false && self.r#slot_3_occupied == true && self.r#slot_1_occupied == false && self.r#slot_4_occupied == false && self.r#slot_5_occupied == false && self.r#slot_0_occupied == true && self.r#facing == Facing::West { return 2298; }
-        if self.r#slot_1_occupied == true && self.r#slot_3_occupied == false && self.r#facing == Facing::South && self.r#slot_2_occupied == false && self.r#slot_4_occupied == false && self.r#slot_5_occupied == true && self.r#slot_0_occupied == false { return 2253; }
-        if self.r#slot_4_occupied == false && self.r#slot_1_occupied == true && self.r#slot_3_occupied == true && self.r#slot_5_occupied == true && self.r#facing == Facing::West && self.r#slot_0_occupied == true && self.r#slot_2_occupied == false { return 2281; }
-        if self.r#slot_4_occupied == true && self.r#slot_0_occupied == false && self.r#slot_2_occupied == true && self.r#slot_3_occupied == true && self.r#facing == Facing::East && self.r#slot_5_occupied == false && self.r#slot_1_occupied == true { return 2368; }
-        if self.r#slot_4_occupied == true && self.r#slot_0_occupied == true && self.r#facing == Facing::West && self.r#slot_3_occupied == false && self.r#slot_5_occupied == true && self.r#slot_1_occupied == false && self.r#slot_2_occupied == false { return 2299; }
-        if self.r#facing == Facing::West && self.r#slot_2_occupied == false && self.r#slot_3_occupied == false && self.r#slot_4_occupied == false && self.r#slot_0_occupied == false && self.r#slot_1_occupied == false && self.r#slot_5_occupied == false { return 2334; }
-        if self.r#slot_3_occupied == false && self.r#slot_5_occupied == true && self.r#slot_4_occupied == false && self.r#slot_0_occupied == true && self.r#facing == Facing::West && self.r#slot_2_occupied == false && self.r#slot_1_occupied == false { return 2301; }
-        if self.r#slot_0_occupied == true && self.r#facing == Facing::South && self.r#slot_2_occupied == true && self.r#slot_3_occupied == true && self.r#slot_4_occupied == true && self.r#slot_5_occupied == false && self.r#slot_1_occupied == true { return 2208; }
-        if self.r#slot_1_occupied == true && self.r#slot_3_occupied == false && self.r#slot_4_occupied == true && self.r#slot_2_occupied == true && self.r#slot_5_occupied == true && self.r#facing == Facing::South && self.r#slot_0_occupied == false { return 2243; }
-        if self.r#slot_4_occupied == false && self.r#facing == Facing::North && self.r#slot_0_occupied == true && self.r#slot_5_occupied == true && self.r#slot_1_occupied == false && self.r#slot_3_occupied == true && self.r#slot_2_occupied == true { return 2161; }
-        if self.r#slot_0_occupied == false && self.r#slot_3_occupied == true && self.r#facing == Facing::South && self.r#slot_4_occupied == false && self.r#slot_2_occupied == true && self.r#slot_5_occupied == true && self.r#slot_1_occupied == true { return 2241; }
-        if self.r#facing == Facing::South && self.r#slot_2_occupied == false && self.r#slot_4_occupied == true && self.r#slot_5_occupied == true && self.r#slot_3_occupied == false && self.r#slot_0_occupied == false && self.r#slot_1_occupied == true { return 2251; }
-        if self.r#slot_1_occupied == false && self.r#slot_4_occupied == true && self.r#slot_5_occupied == true && self.r#slot_3_occupied == false && self.r#facing == Facing::East && self.r#slot_0_occupied == false && self.r#slot_2_occupied == true { return 2387; }
-        if self.r#slot_1_occupied == false && self.r#slot_2_occupied == true && self.r#slot_3_occupied == false && self.r#slot_4_occupied == true && self.r#facing == Facing::South && self.r#slot_5_occupied == true && self.r#slot_0_occupied == false { return 2259; }
-        if self.r#slot_5_occupied == false && self.r#facing == Facing::North && self.r#slot_2_occupied == true && self.r#slot_3_occupied == true && self.r#slot_4_occupied == true && self.r#slot_1_occupied == false && self.r#slot_0_occupied == false { return 2192; }
-        if self.r#facing == Facing::South && self.r#slot_1_occupied == true && self.r#slot_3_occupied == false && self.r#slot_0_occupied == false && self.r#slot_2_occupied == false && self.r#slot_4_occupied == true && self.r#slot_5_occupied == false { return 2252; }
-        if self.r#slot_5_occupied == false && self.r#facing == Facing::West && self.r#slot_2_occupied == true && self.r#slot_3_occupied == false && self.r#slot_0_occupied == true && self.r#slot_1_occupied == true && self.r#slot_4_occupied == false { return 2278; }
-        if self.r#slot_4_occupied == true && self.r#slot_0_occupied == false && self.r#slot_5_occupied == true && self.r#slot_3_occupied == true && self.r#slot_2_occupied == true && self.r#slot_1_occupied == true && self.r#facing == Facing::West { return 2303; }
-        if self.r#slot_4_occupied == false && self.r#slot_5_occupied == false && self.r#slot_0_occupied == true && self.r#slot_1_occupied == true && self.r#slot_2_occupied == true && self.r#slot_3_occupied == true && self.r#facing == Facing::West { return 2274; }
-        if self.r#facing == Facing::West && self.r#slot_2_occupied == false && self.r#slot_0_occupied == true && self.r#slot_5_occupied == false && self.r#slot_3_occupied == true && self.r#slot_4_occupied == false && self.r#slot_1_occupied == true { return 2282; }
-        if self.r#slot_3_occupied == false && self.r#slot_2_occupied == true && self.r#slot_0_occupied == true && self.r#slot_1_occupied == true && self.r#slot_4_occupied == false && self.r#slot_5_occupied == false && self.r#facing == Facing::North { return 2150; }
-        if self.r#slot_5_occupied == true && self.r#slot_0_occupied == true && self.r#facing == Facing::West && self.r#slot_2_occupied == false && self.r#slot_4_occupied == true && self.r#slot_1_occupied == true && self.r#slot_3_occupied == false { return 2283; }
-        if self.r#facing == Facing::North && self.r#slot_4_occupied == true && self.r#slot_3_occupied == false && self.r#slot_0_occupied == false && self.r#slot_1_occupied == false && self.r#slot_2_occupied == true && self.r#slot_5_occupied == false { return 2196; }
-        if self.r#facing == Facing::West && self.r#slot_0_occupied == false && self.r#slot_3_occupied == true && self.r#slot_4_occupied == false && self.r#slot_2_occupied == false && self.r#slot_5_occupied == false && self.r#slot_1_occupied == true { return 2314; }
-        if self.r#slot_1_occupied == true && self.r#facing == Facing::West && self.r#slot_4_occupied == true && self.r#slot_5_occupied == true && self.r#slot_2_occupied == false && self.r#slot_3_occupied == false && self.r#slot_0_occupied == false { return 2315; }
-        if self.r#slot_4_occupied == false && self.r#facing == Facing::West && self.r#slot_0_occupied == false && self.r#slot_2_occupied == true && self.r#slot_5_occupied == true && self.r#slot_1_occupied == false && self.r#slot_3_occupied == true { return 2321; }
-        if self.r#slot_2_occupied == false && self.r#slot_5_occupied == true && self.r#slot_0_occupied == false && self.r#facing == Facing::West && self.r#slot_1_occupied == false && self.r#slot_4_occupied == false && self.r#slot_3_occupied == true { return 2329; }
-        if self.r#facing == Facing::East && self.r#slot_0_occupied == false && self.r#slot_3_occupied == true && self.r#slot_1_occupied == false && self.r#slot_2_occupied == false && self.r#slot_4_occupied == false && self.r#slot_5_occupied == true { return 2393; }
-        if self.r#slot_4_occupied == false && self.r#slot_3_occupied == false && self.r#slot_5_occupied == false && self.r#facing == Facing::West && self.r#slot_2_occupied == false && self.r#slot_0_occupied == true && self.r#slot_1_occupied == false { return 2302; }
-        if self.r#slot_5_occupied == true && self.r#slot_1_occupied == true && self.r#slot_2_occupied == true && self.r#facing == Facing::East && self.r#slot_3_occupied == true && self.r#slot_0_occupied == true && self.r#slot_4_occupied == true { return 2335; }
-        if self.r#slot_3_occupied == false && self.r#slot_4_occupied == true && self.r#slot_5_occupied == false && self.r#slot_0_occupied == false && self.r#slot_1_occupied == false && self.r#slot_2_occupied == true && self.r#facing == Facing::West { return 2324; }
-        if self.r#slot_1_occupied == false && self.r#slot_0_occupied == false && self.r#slot_3_occupied == true && self.r#slot_5_occupied == true && self.r#slot_2_occupied == false && self.r#slot_4_occupied == true && self.r#facing == Facing::East { return 2391; }
-        if self.r#slot_5_occupied == true && self.r#facing == Facing::North && self.r#slot_3_occupied == true && self.r#slot_0_occupied == true && self.r#slot_1_occupied == true && self.r#slot_2_occupied == false && self.r#slot_4_occupied == false { return 2153; }
-        if self.r#slot_2_occupied == true && self.r#slot_4_occupied == true && self.r#slot_1_occupied == false && self.r#slot_5_occupied == true && self.r#facing == Facing::North && self.r#slot_0_occupied == false && self.r#slot_3_occupied == false { return 2195; }
-        if self.r#slot_5_occupied == true && self.r#facing == Facing::East && self.r#slot_2_occupied == true && self.r#slot_1_occupied == false && self.r#slot_0_occupied == true && self.r#slot_4_occupied == false && self.r#slot_3_occupied == true { return 2353; }
-        if self.r#slot_3_occupied == true && self.r#slot_4_occupied == true && self.r#slot_2_occupied == false && self.r#slot_5_occupied == false && self.r#slot_1_occupied == false && self.r#facing == Facing::East && self.r#slot_0_occupied == false { return 2392; }
-        if self.r#slot_3_occupied == true && self.r#slot_0_occupied == false && self.r#slot_4_occupied == false && self.r#facing == Facing::West && self.r#slot_1_occupied == true && self.r#slot_2_occupied == true && self.r#slot_5_occupied == false { return 2306; }
-        if self.r#slot_3_occupied == true && self.r#slot_4_occupied == true && self.r#facing == Facing::North && self.r#slot_5_occupied == true && self.r#slot_1_occupied == false && self.r#slot_0_occupied == false && self.r#slot_2_occupied == true { return 2191; }
-        if self.r#slot_0_occupied == true && self.r#slot_1_occupied == true && self.r#slot_4_occupied == false && self.r#slot_5_occupied == true && self.r#facing == Facing::North && self.r#slot_3_occupied == true && self.r#slot_2_occupied == true { return 2145; }
-        if self.r#facing == Facing::South && self.r#slot_2_occupied == false && self.r#slot_1_occupied == false && self.r#slot_0_occupied == true && self.r#slot_3_occupied == true && self.r#slot_4_occupied == true && self.r#slot_5_occupied == true { return 2231; }
-        if self.r#facing == Facing::North && self.r#slot_5_occupied == false && self.r#slot_0_occupied == false && self.r#slot_3_occupied == true && self.r#slot_4_occupied == false && self.r#slot_1_occupied == true && self.r#slot_2_occupied == true { return 2178; }
-        if self.r#facing == Facing::East && self.r#slot_5_occupied == false && self.r#slot_0_occupied == true && self.r#slot_1_occupied == true && self.r#slot_2_occupied == false && self.r#slot_3_occupied == false && self.r#slot_4_occupied == true { return 2348; }
-        if self.r#slot_5_occupied == true && self.r#slot_4_occupied == false && self.r#slot_1_occupied == false && self.r#facing == Facing::North && self.r#slot_2_occupied == false && self.r#slot_3_occupied == false && self.r#slot_0_occupied == true { return 2173; }
-        if self.r#slot_3_occupied == true && self.r#slot_1_occupied == true && self.r#slot_2_occupied == true && self.r#slot_0_occupied == true && self.r#slot_4_occupied == true && self.r#slot_5_occupied == true && self.r#facing == Facing::South { return 2207; }
-        if self.r#slot_5_occupied == true && self.r#slot_4_occupied == false && self.r#slot_2_occupied == false && self.r#slot_1_occupied == false && self.r#slot_0_occupied == false && self.r#facing == Facing::South && self.r#slot_3_occupied == false { return 2269; }
-        if self.r#slot_4_occupied == true && self.r#slot_5_occupied == false && self.r#facing == Facing::West && self.r#slot_1_occupied == true && self.r#slot_3_occupied == true && self.r#slot_2_occupied == false && self.r#slot_0_occupied == false { return 2312; }
-        if self.r#slot_4_occupied == true && self.r#slot_0_occupied == true && self.r#slot_1_occupied == true && self.r#facing == Facing::North && self.r#slot_2_occupied == true && self.r#slot_3_occupied == false && self.r#slot_5_occupied == false { return 2148; }
-        if self.r#slot_3_occupied == false && self.r#slot_5_occupied == true && self.r#facing == Facing::North && self.r#slot_0_occupied == true && self.r#slot_1_occupied == true && self.r#slot_2_occupied == true && self.r#slot_4_occupied == false { return 2149; }
-        if self.r#slot_4_occupied == false && self.r#slot_5_occupied == true && self.r#slot_2_occupied == true && self.r#slot_0_occupied == true && self.r#facing == Facing::South && self.r#slot_3_occupied == false && self.r#slot_1_occupied == true { return 2213; }
-        if self.r#slot_3_occupied == false && self.r#slot_2_occupied == true && self.r#slot_0_occupied == true && self.r#slot_1_occupied == false && self.r#slot_4_occupied == false && self.r#facing == Facing::East && self.r#slot_5_occupied == false { return 2358; }
-        if self.r#slot_1_occupied == true && self.r#slot_2_occupied == false && self.r#slot_3_occupied == false && self.r#slot_4_occupied == false && self.r#facing == Facing::East && self.r#slot_5_occupied == false && self.r#slot_0_occupied == false { return 2382; }
-        if self.r#slot_0_occupied == false && self.r#slot_2_occupied == false && self.r#slot_5_occupied == true && self.r#facing == Facing::East && self.r#slot_1_occupied == false && self.r#slot_3_occupied == false && self.r#slot_4_occupied == false { return 2397; }
-        if self.r#facing == Facing::South && self.r#slot_2_occupied == true && self.r#slot_3_occupied == false && self.r#slot_4_occupied == true && self.r#slot_1_occupied == false && self.r#slot_5_occupied == false && self.r#slot_0_occupied == true { return 2228; }
-        if self.r#slot_5_occupied == true && self.r#slot_4_occupied == false && self.r#slot_0_occupied == true && self.r#slot_3_occupied == true && self.r#slot_2_occupied == true && self.r#facing == Facing::West && self.r#slot_1_occupied == false { return 2289; }
-        if self.r#slot_5_occupied == false && self.r#slot_1_occupied == false && self.r#slot_0_occupied == false && self.r#facing == Facing::East && self.r#slot_3_occupied == false && self.r#slot_2_occupied == false && self.r#slot_4_occupied == false { return 2398; }
-        if self.r#slot_3_occupied == false && self.r#slot_4_occupied == true && self.r#facing == Facing::South && self.r#slot_2_occupied == false && self.r#slot_5_occupied == false && self.r#slot_1_occupied == false && self.r#slot_0_occupied == true { return 2236; }
-        if self.r#slot_1_occupied == false && self.r#facing == Facing::East && self.r#slot_2_occupied == false && self.r#slot_3_occupied == false && self.r#slot_0_occupied == false && self.r#slot_4_occupied == true && self.r#slot_5_occupied == false { return 2396; }
-        if self.r#facing == Facing::South && self.r#slot_2_occupied == true && self.r#slot_3_occupied == true && self.r#slot_1_occupied == false && self.r#slot_0_occupied == false && self.r#slot_4_occupied == true && self.r#slot_5_occupied == false { return 2256; }
-        if self.r#slot_3_occupied == true && self.r#slot_1_occupied == true && self.r#slot_0_occupied == true && self.r#facing == Facing::South && self.r#slot_4_occupied == true && self.r#slot_2_occupied == false && self.r#slot_5_occupied == false { return 2216; }
-        if self.r#slot_1_occupied == true && self.r#facing == Facing::East && self.r#slot_3_occupied == false && self.r#slot_0_occupied == true && self.r#slot_2_occupied == true && self.r#slot_4_occupied == false && self.r#slot_5_occupied == true { return 2341; }
-        if self.r#slot_4_occupied == true && self.r#facing == Facing::North && self.r#slot_2_occupied == true && self.r#slot_5_occupied == false && self.r#slot_0_occupied == true && self.r#slot_3_occupied == false && self.r#slot_1_occupied == false { return 2164; }
-        if self.r#slot_5_occupied == true && self.r#slot_3_occupied == true && self.r#slot_1_occupied == false && self.r#slot_2_occupied == true && self.r#facing == Facing::East && self.r#slot_0_occupied == false && self.r#slot_4_occupied == false { return 2385; }
-        if self.r#slot_5_occupied == true && self.r#facing == Facing::South && self.r#slot_3_occupied == true && self.r#slot_4_occupied == false && self.r#slot_0_occupied == false && self.r#slot_2_occupied == true && self.r#slot_1_occupied == false { return 2257; }
-        if self.r#slot_0_occupied == true && self.r#slot_5_occupied == true && self.r#facing == Facing::North && self.r#slot_2_occupied == false && self.r#slot_4_occupied == false && self.r#slot_3_occupied == true && self.r#slot_1_occupied == false { return 2169; }
-        if self.r#slot_4_occupied == true && self.r#slot_5_occupied == false && self.r#slot_3_occupied == false && self.r#slot_1_occupied == true && self.r#facing == Facing::South && self.r#slot_0_occupied == true && self.r#slot_2_occupied == true { return 2212; }
-        if self.r#facing == Facing::North && self.r#slot_4_occupied == true && self.r#slot_2_occupied == true && self.r#slot_3_occupied == false && self.r#slot_5_occupied == true && self.r#slot_0_occupied == true && self.r#slot_1_occupied == true { return 2147; }
-        if self.r#slot_0_occupied == true && self.r#slot_2_occupied == true && self.r#slot_4_occupied == false && self.r#slot_5_occupied == true && self.r#slot_3_occupied == true && self.r#facing == Facing::West && self.r#slot_1_occupied == true { return 2273; }
-        if self.r#slot_4_occupied == false && self.r#facing == Facing::West && self.r#slot_1_occupied == false && self.r#slot_2_occupied == true && self.r#slot_3_occupied == false && self.r#slot_0_occupied == true && self.r#slot_5_occupied == true { return 2293; }
-        if self.r#slot_1_occupied == false && self.r#slot_3_occupied == false && self.r#facing == Facing::East && self.r#slot_4_occupied == false && self.r#slot_0_occupied == true && self.r#slot_5_occupied == false && self.r#slot_2_occupied == false { return 2366; }
-        if self.r#slot_0_occupied == true && self.r#slot_1_occupied == false && self.r#slot_4_occupied == false && self.r#facing == Facing::East && self.r#slot_2_occupied == true && self.r#slot_3_occupied == false && self.r#slot_5_occupied == true { return 2357; }
-        if self.r#slot_3_occupied == false && self.r#facing == Facing::East && self.r#slot_1_occupied == true && self.r#slot_2_occupied == true && self.r#slot_4_occupied == false && self.r#slot_0_occupied == false && self.r#slot_5_occupied == false { return 2374; }
-        if self.r#slot_0_occupied == true && self.r#slot_1_occupied == false && self.r#slot_4_occupied == true && self.r#slot_5_occupied == true && self.r#slot_3_occupied == true && self.r#facing == Facing::West && self.r#slot_2_occupied == false { return 2295; }
-        if self.r#facing == Facing::South && self.r#slot_2_occupied == false && self.r#slot_3_occupied == true && self.r#slot_1_occupied == true && self.r#slot_4_occupied == true && self.r#slot_5_occupied == true && self.r#slot_0_occupied == true { return 2215; }
-        if self.r#slot_2_occupied == true && self.r#slot_1_occupied == true && self.r#slot_3_occupied == true && self.r#slot_4_occupied == true && self.r#slot_5_occupied == true && self.r#facing == Facing::East && self.r#slot_0_occupied == false { return 2367; }
-        if self.r#slot_4_occupied == true && self.r#slot_1_occupied == false && self.r#slot_5_occupied == true && self.r#slot_2_occupied == false && self.r#slot_0_occupied == true && self.r#facing == Facing::East && self.r#slot_3_occupied == true { return 2359; }
-        if self.r#slot_4_occupied == false && self.r#facing == Facing::North && self.r#slot_3_occupied == true && self.r#slot_0_occupied == true && self.r#slot_1_occupied == true && self.r#slot_2_occupied == true && self.r#slot_5_occupied == false { return 2146; }
-        if self.r#slot_0_occupied == true && self.r#slot_2_occupied == false && self.r#slot_3_occupied == true && self.r#slot_4_occupied == true && self.r#facing == Facing::West && self.r#slot_5_occupied == false && self.r#slot_1_occupied == false { return 2296; }
-        if self.r#slot_5_occupied == false && self.r#facing == Facing::West && self.r#slot_3_occupied == false && self.r#slot_4_occupied == false && self.r#slot_0_occupied == false && self.r#slot_1_occupied == false && self.r#slot_2_occupied == true { return 2326; }
-        if self.r#facing == Facing::North && self.r#slot_3_occupied == true && self.r#slot_4_occupied == true && self.r#slot_1_occupied == true && self.r#slot_5_occupied == false && self.r#slot_0_occupied == true && self.r#slot_2_occupied == true { return 2144; }
-        if self.r#facing == Facing::West && self.r#slot_0_occupied == true && self.r#slot_1_occupied == true && self.r#slot_2_occupied == true && self.r#slot_3_occupied == true && self.r#slot_4_occupied == true && self.r#slot_5_occupied == true { return 2271; }
-        if self.r#slot_5_occupied == false && self.r#slot_1_occupied == true && self.r#facing == Facing::West && self.r#slot_3_occupied == false && self.r#slot_2_occupied == true && self.r#slot_4_occupied == true && self.r#slot_0_occupied == true { return 2276; }
-        if self.r#slot_2_occupied == false && self.r#slot_3_occupied == false && self.r#facing == Facing::North && self.r#slot_1_occupied == false && self.r#slot_5_occupied == true && self.r#slot_0_occupied == false && self.r#slot_4_occupied == false { return 2205; }
-        if self.r#slot_2_occupied == false && self.r#slot_4_occupied == false && self.r#slot_3_occupied == true && self.r#slot_5_occupied == false && self.r#facing == Facing::South && self.r#slot_0_occupied == true && self.r#slot_1_occupied == true { return 2218; }
-        if self.r#slot_4_occupied == true && self.r#slot_5_occupied == false && self.r#facing == Facing::West && self.r#slot_1_occupied == false && self.r#slot_2_occupied == false && self.r#slot_3_occupied == false && self.r#slot_0_occupied == true { return 2300; }
-        if self.r#slot_2_occupied == true && self.r#slot_3_occupied == true && self.r#slot_0_occupied == true && self.r#slot_4_occupied == false && self.r#facing == Facing::East && self.r#slot_5_occupied == false && self.r#slot_1_occupied == false { return 2354; }
-        if self.r#facing == Facing::South && self.r#slot_5_occupied == false && self.r#slot_4_occupied == true && self.r#slot_1_occupied == true && self.r#slot_2_occupied == true && self.r#slot_3_occupied == false && self.r#slot_0_occupied == false { return 2244; }
-        if self.r#slot_2_occupied == false && self.r#slot_0_occupied == false && self.r#slot_3_occupied == false && self.r#slot_4_occupied == true && self.r#facing == Facing::East && self.r#slot_1_occupied == true && self.r#slot_5_occupied == false { return 2380; }
-        if self.r#slot_1_occupied == true && self.r#slot_4_occupied == true && self.r#slot_2_occupied == false && self.r#slot_5_occupied == false && self.r#slot_3_occupied == false && self.r#facing == Facing::North && self.r#slot_0_occupied == true { return 2156; }
-        if self.r#slot_0_occupied == true && self.r#slot_4_occupied == false && self.r#slot_5_occupied == false && self.r#slot_2_occupied == false && self.r#slot_3_occupied == false && self.r#slot_1_occupied == true && self.r#facing == Facing::South { return 2222; }
-        if self.r#slot_3_occupied == true && self.r#slot_5_occupied == false && self.r#slot_1_occupied == true && self.r#facing == Facing::South && self.r#slot_2_occupied == true && self.r#slot_4_occupied == true && self.r#slot_0_occupied == false { return 2240; }
-        if self.r#slot_3_occupied == false && self.r#slot_4_occupied == true && self.r#slot_5_occupied == true && self.r#slot_0_occupied == true && self.r#slot_2_occupied == true && self.r#slot_1_occupied == true && self.r#facing == Facing::East { return 2339; }
-        if self.r#slot_2_occupied == true && self.r#slot_3_occupied == true && self.r#slot_5_occupied == false && self.r#slot_4_occupied == true && self.r#facing == Facing::East && self.r#slot_0_occupied == false && self.r#slot_1_occupied == false { return 2384; }
-        if self.r#slot_5_occupied == false && self.r#slot_1_occupied == false && self.r#slot_2_occupied == true && self.r#slot_4_occupied == false && self.r#slot_3_occupied == false && self.r#facing == Facing::West && self.r#slot_0_occupied == true { return 2294; }
-        if self.r#slot_1_occupied == false && self.r#facing == Facing::West && self.r#slot_0_occupied == true && self.r#slot_2_occupied == true && self.r#slot_3_occupied == true && self.r#slot_4_occupied == true && self.r#slot_5_occupied == false { return 2288; }
-        if self.r#slot_1_occupied == false && self.r#slot_0_occupied == true && self.r#slot_4_occupied == true && self.r#slot_5_occupied == true && self.r#facing == Facing::South && self.r#slot_2_occupied == true && self.r#slot_3_occupied == true { return 2223; }
-        if self.r#slot_0_occupied == true && self.r#slot_1_occupied == false && self.r#facing == Facing::East && self.r#slot_4_occupied == true && self.r#slot_2_occupied == true && self.r#slot_3_occupied == true && self.r#slot_5_occupied == true { return 2351; }
-        if self.r#slot_1_occupied == true && self.r#slot_2_occupied == false && self.r#slot_4_occupied == true && self.r#slot_5_occupied == false && self.r#slot_0_occupied == true && self.r#slot_3_occupied == false && self.r#facing == Facing::West { return 2284; }
-        if self.r#slot_4_occupied == true && self.r#facing == Facing::South && self.r#slot_0_occupied == true && self.r#slot_3_occupied == true && self.r#slot_5_occupied == false && self.r#slot_1_occupied == false && self.r#slot_2_occupied == false { return 2232; }
-        if self.r#slot_2_occupied == false && self.r#slot_5_occupied == true && self.r#slot_3_occupied == false && self.r#facing == Facing::West && self.r#slot_0_occupied == true && self.r#slot_1_occupied == true && self.r#slot_4_occupied == false { return 2285; }
-        if self.r#slot_2_occupied == true && self.r#slot_4_occupied == true && self.r#slot_5_occupied == true && self.r#slot_1_occupied == false && self.r#slot_3_occupied == true && self.r#facing == Facing::West && self.r#slot_0_occupied == false { return 2319; }
-        if self.r#slot_5_occupied == false && self.r#slot_2_occupied == true && self.r#slot_0_occupied == false && self.r#facing == Facing::South && self.r#slot_4_occupied == false && self.r#slot_3_occupied == true && self.r#slot_1_occupied == false { return 2258; }
-        if self.r#slot_1_occupied == true && self.r#slot_3_occupied == true && self.r#slot_0_occupied == true && self.r#facing == Facing::East && self.r#slot_2_occupied == true && self.r#slot_4_occupied == true && self.r#slot_5_occupied == false { return 2336; }
-        if self.r#slot_0_occupied == true && self.r#slot_4_occupied == false && self.r#slot_5_occupied == false && self.r#slot_1_occupied == false && self.r#slot_3_occupied == true && self.r#facing == Facing::North && self.r#slot_2_occupied == false { return 2170; }
-        if self.r#slot_5_occupied == true && self.r#slot_3_occupied == false && self.r#facing == Facing::South && self.r#slot_0_occupied == false && self.r#slot_2_occupied == true && self.r#slot_4_occupied == false && self.r#slot_1_occupied == false { return 2261; }
-        if self.r#slot_3_occupied == true && self.r#slot_4_occupied == false && self.r#slot_5_occupied == true && self.r#facing == Facing::South && self.r#slot_0_occupied == false && self.r#slot_2_occupied == false && self.r#slot_1_occupied == true { return 2249; }
-        if self.r#slot_5_occupied == false && self.r#slot_2_occupied == false && self.r#slot_3_occupied == true && self.r#slot_1_occupied == true && self.r#facing == Facing::East && self.r#slot_0_occupied == false && self.r#slot_4_occupied == true { return 2376; }
-        if self.r#slot_5_occupied == true && self.r#slot_1_occupied == true && self.r#slot_3_occupied == true && self.r#facing == Facing::South && self.r#slot_2_occupied == false && self.r#slot_0_occupied == true && self.r#slot_4_occupied == false { return 2217; }
-        if self.r#slot_4_occupied == true && self.r#slot_1_occupied == false && self.r#slot_3_occupied == true && self.r#slot_5_occupied == true && self.r#slot_0_occupied == true && self.r#facing == Facing::North && self.r#slot_2_occupied == true { return 2159; }
-        if self.r#slot_4_occupied == true && self.r#slot_5_occupied == false && self.r#slot_2_occupied == false && self.r#slot_3_occupied == true && self.r#slot_0_occupied == false && self.r#facing == Facing::North && self.r#slot_1_occupied == true { return 2184; }
-        if self.r#slot_1_occupied == true && self.r#slot_2_occupied == true && self.r#slot_0_occupied == true && self.r#facing == Facing::South && self.r#slot_3_occupied == true && self.r#slot_5_occupied == true && self.r#slot_4_occupied == false { return 2209; }
-        if self.r#facing == Facing::North && self.r#slot_3_occupied == true && self.r#slot_5_occupied == true && self.r#slot_0_occupied == true && self.r#slot_4_occupied == true && self.r#slot_1_occupied == true && self.r#slot_2_occupied == false { return 2151; }
-        if self.r#slot_0_occupied == false && self.r#slot_2_occupied == false && self.r#slot_3_occupied == true && self.r#slot_4_occupied == true && self.r#slot_5_occupied == true && self.r#facing == Facing::South && self.r#slot_1_occupied == true { return 2247; }
-        if self.r#slot_4_occupied == false && self.r#slot_0_occupied == false && self.r#facing == Facing::South && self.r#slot_1_occupied == false && self.r#slot_2_occupied == true && self.r#slot_3_occupied == false && self.r#slot_5_occupied == false { return 2262; }
-        if self.r#facing == Facing::East && self.r#slot_0_occupied == false && self.r#slot_1_occupied == true && self.r#slot_4_occupied == true && self.r#slot_5_occupied == false && self.r#slot_2_occupied == true && self.r#slot_3_occupied == false { return 2372; }
-        if self.r#facing == Facing::East && self.r#slot_3_occupied == true && self.r#slot_1_occupied == false && self.r#slot_0_occupied == false && self.r#slot_2_occupied == true && self.r#slot_4_occupied == false && self.r#slot_5_occupied == false { return 2386; }
-        if self.r#slot_2_occupied == true && self.r#slot_4_occupied == false && self.r#slot_5_occupied == false && self.r#slot_0_occupied == false && self.r#slot_1_occupied == false && self.r#facing == Facing::East && self.r#slot_3_occupied == false { return 2390; }
-        if self.r#slot_4_occupied == true && self.r#slot_5_occupied == false && self.r#slot_3_occupied == true && self.r#slot_2_occupied == false && self.r#slot_1_occupied == false && self.r#slot_0_occupied == false && self.r#facing == Facing::West { return 2328; }
-        if self.r#slot_1_occupied == true && self.r#facing == Facing::West && self.r#slot_0_occupied == true && self.r#slot_3_occupied == true && self.r#slot_4_occupied == true && self.r#slot_5_occupied == false && self.r#slot_2_occupied == true { return 2272; }
-        if self.r#slot_3_occupied == true && self.r#slot_2_occupied == false && self.r#slot_0_occupied == true && self.r#slot_1_occupied == true && self.r#facing == Facing::East && self.r#slot_4_occupied == false && self.r#slot_5_occupied == true { return 2345; }
-        if self.r#slot_5_occupied == true && self.r#slot_0_occupied == true && self.r#facing == Facing::West && self.r#slot_2_occupied == false && self.r#slot_1_occupied == false && self.r#slot_4_occupied == false && self.r#slot_3_occupied == true { return 2297; }
-        if self.r#slot_5_occupied == false && self.r#slot_1_occupied == false && self.r#slot_2_occupied == true && self.r#slot_4_occupied == true && self.r#facing == Facing::North && self.r#slot_0_occupied == true && self.r#slot_3_occupied == true { return 2160; }
-        if self.r#slot_0_occupied == true && self.r#slot_2_occupied == false && self.r#slot_1_occupied == false && self.r#slot_3_occupied == false && self.r#facing == Facing::North && self.r#slot_4_occupied == true && self.r#slot_5_occupied == false { return 2172; }
-        if self.r#slot_3_occupied == true && self.r#slot_0_occupied == true && self.r#slot_5_occupied == true && self.r#slot_2_occupied == false && self.r#facing == Facing::East && self.r#slot_4_occupied == false && self.r#slot_1_occupied == false { return 2361; }
-        if self.r#slot_0_occupied == false && self.r#slot_1_occupied == true && self.r#slot_4_occupied == false && self.r#slot_5_occupied == true && self.r#facing == Facing::East && self.r#slot_3_occupied == true && self.r#slot_2_occupied == true { return 2369; }
-        if self.r#facing == Facing::North && self.r#slot_0_occupied == false && self.r#slot_4_occupied == true && self.r#slot_2_occupied == true && self.r#slot_5_occupied == false && self.r#slot_1_occupied == true && self.r#slot_3_occupied == false { return 2180; }
-        if self.r#facing == Facing::North && self.r#slot_1_occupied == true && self.r#slot_0_occupied == false && self.r#slot_3_occupied == false && self.r#slot_4_occupied == false && self.r#slot_5_occupied == false && self.r#slot_2_occupied == true { return 2182; }
-        if self.r#slot_3_occupied == true && self.r#slot_4_occupied == true && self.r#slot_1_occupied == false && self.r#slot_5_occupied == true && self.r#slot_2_occupied == false && self.r#facing == Facing::South && self.r#slot_0_occupied == false { return 2263; }
-        if self.r#facing == Facing::West && self.r#slot_2_occupied == true && self.r#slot_3_occupied == false && self.r#slot_5_occupied == true && self.r#slot_4_occupied == true && self.r#slot_0_occupied == true && self.r#slot_1_occupied == true { return 2275; }
-        if self.r#facing == Facing::West && self.r#slot_2_occupied == true && self.r#slot_1_occupied == true && self.r#slot_4_occupied == true && self.r#slot_3_occupied == false && self.r#slot_5_occupied == false && self.r#slot_0_occupied == false { return 2308; }
-        if self.r#facing == Facing::East && self.r#slot_4_occupied == true && self.r#slot_3_occupied == true && self.r#slot_1_occupied == false && self.r#slot_0_occupied == false && self.r#slot_5_occupied == true && self.r#slot_2_occupied == true { return 2383; }
-        if self.r#slot_1_occupied == false && self.r#slot_0_occupied == true && self.r#facing == Facing::East && self.r#slot_2_occupied == false && self.r#slot_3_occupied == true && self.r#slot_4_occupied == true && self.r#slot_5_occupied == false { return 2360; }
-        if self.r#slot_5_occupied == true && self.r#slot_4_occupied == false && self.r#slot_3_occupied == false && self.r#facing == Facing::South && self.r#slot_0_occupied == true && self.r#slot_1_occupied == true && self.r#slot_2_occupied == false { return 2221; }
-        if self.r#slot_0_occupied == false && self.r#facing == Facing::West && self.r#slot_3_occupied == false && self.r#slot_4_occupied == true && self.r#slot_5_occupied == false && self.r#slot_2_occupied == false && self.r#slot_1_occupied == true { return 2316; }
-        if self.r#slot_2_occupied == true && self.r#slot_5_occupied == true && self.r#slot_1_occupied == false && self.r#slot_3_occupied == true && self.r#slot_4_occupied == true && self.r#facing == Facing::West && self.r#slot_0_occupied == true { return 2287; }
-        if self.r#slot_5_occupied == false && self.r#slot_2_occupied == false && self.r#slot_3_occupied == false && self.r#slot_0_occupied == false && self.r#facing == Facing::West && self.r#slot_1_occupied == true && self.r#slot_4_occupied == false { return 2318; }
-        if self.r#slot_4_occupied == false && self.r#slot_0_occupied == false && self.r#slot_5_occupied == false && self.r#facing == Facing::South && self.r#slot_1_occupied == true && self.r#slot_2_occupied == true && self.r#slot_3_occupied == false { return 2246; }
-        if self.r#slot_4_occupied == false && self.r#slot_0_occupied == true && self.r#slot_2_occupied == false && self.r#slot_1_occupied == true && self.r#slot_3_occupied == false && self.r#slot_5_occupied == false && self.r#facing == Facing::East { return 2350; }
-        if self.r#slot_3_occupied == true && self.r#slot_5_occupied == true && self.r#slot_0_occupied == false && self.r#slot_4_occupied == false && self.r#facing == Facing::North && self.r#slot_1_occupied == false && self.r#slot_2_occupied == true { return 2193; }
-        if self.r#slot_3_occupied == false && self.r#slot_4_occupied == true && self.r#slot_5_occupied == true && self.r#slot_1_occupied == true && self.r#facing == Facing::East && self.r#slot_0_occupied == true && self.r#slot_2_occupied == false { return 2347; }
-        if self.r#slot_0_occupied == false && self.r#slot_5_occupied == true && self.r#slot_4_occupied == false && self.r#slot_2_occupied == true && self.r#facing == Facing::South && self.r#slot_1_occupied == true && self.r#slot_3_occupied == false { return 2245; }
-        if self.r#slot_0_occupied == true && self.r#slot_1_occupied == false && self.r#slot_4_occupied == false && self.r#slot_3_occupied == true && self.r#slot_5_occupied == false && self.r#facing == Facing::North && self.r#slot_2_occupied == true { return 2162; }
-        if self.r#slot_5_occupied == true && self.r#slot_0_occupied == true && self.r#facing == Facing::West && self.r#slot_4_occupied == true && self.r#slot_3_occupied == true && self.r#slot_2_occupied == false && self.r#slot_1_occupied == true { return 2279; }
-        if self.r#slot_2_occupied == true && self.r#slot_1_occupied == false && self.r#facing == Facing::West && self.r#slot_0_occupied == true && self.r#slot_3_occupied == false && self.r#slot_5_occupied == true && self.r#slot_4_occupied == true { return 2291; }
-        if self.r#facing == Facing::North && self.r#slot_3_occupied == false && self.r#slot_4_occupied == false && self.r#slot_5_occupied == false && self.r#slot_0_occupied == true && self.r#slot_2_occupied == true && self.r#slot_1_occupied == false { return 2166; }
-        if self.r#slot_0_occupied == false && self.r#slot_1_occupied == false && self.r#facing == Facing::South && self.r#slot_3_occupied == false && self.r#slot_2_occupied == false && self.r#slot_4_occupied == true && self.r#slot_5_occupied == true { return 2267; }
-        if self.r#slot_5_occupied == false && self.r#slot_4_occupied == false && self.r#facing == Facing::West && self.r#slot_1_occupied == false && self.r#slot_0_occupied == false && self.r#slot_2_occupied == false && self.r#slot_3_occupied == true { return 2330; }
-        if self.r#slot_1_occupied == true && self.r#slot_0_occupied == false && self.r#slot_5_occupied == false && self.r#slot_3_occupied == true && self.r#facing == Facing::South && self.r#slot_2_occupied == false && self.r#slot_4_occupied == true { return 2248; }
-        if self.r#slot_3_occupied == true && self.r#slot_0_occupied == false && self.r#slot_4_occupied == false && self.r#slot_5_occupied == true && self.r#facing == Facing::West && self.r#slot_2_occupied == true && self.r#slot_1_occupied == true { return 2305; }
-        if self.r#slot_5_occupied == true && self.r#slot_2_occupied == true && self.r#slot_0_occupied == false && self.r#slot_1_occupied == true && self.r#slot_3_occupied == true && self.r#facing == Facing::North && self.r#slot_4_occupied == true { return 2175; }
-        if self.r#slot_5_occupied == true && self.r#slot_0_occupied == false && self.r#facing == Facing::South && self.r#slot_4_occupied == true && self.r#slot_1_occupied == false && self.r#slot_2_occupied == true && self.r#slot_3_occupied == true { return 2255; }
-        if self.r#slot_1_occupied == true && self.r#facing == Facing::North && self.r#slot_3_occupied == false && self.r#slot_4_occupied == false && self.r#slot_5_occupied == true && self.r#slot_0_occupied == false && self.r#slot_2_occupied == true { return 2181; }
-        if self.r#slot_3_occupied == false && self.r#slot_4_occupied == false && self.r#facing == Facing::North && self.r#slot_0_occupied == true && self.r#slot_5_occupied == false && self.r#slot_1_occupied == false && self.r#slot_2_occupied == false { return 2174; }
-        if self.r#slot_2_occupied == true && self.r#slot_3_occupied == false && self.r#facing == Facing::East && self.r#slot_4_occupied == false && self.r#slot_5_occupied == true && self.r#slot_1_occupied == false && self.r#slot_0_occupied == false { return 2389; }
-        if self.r#slot_5_occupied == false && self.r#slot_3_occupied == true && self.r#slot_1_occupied == false && self.r#slot_0_occupied == false && self.r#facing == Facing::East && self.r#slot_4_occupied == false && self.r#slot_2_occupied == false { return 2394; }
-        if self.r#slot_2_occupied == true && self.r#facing == Facing::East && self.r#slot_4_occupied == true && self.r#slot_5_occupied == false && self.r#slot_0_occupied == true && self.r#slot_1_occupied == false && self.r#slot_3_occupied == false { return 2356; }
-        if self.r#slot_2_occupied == true && self.r#slot_0_occupied == true && self.r#slot_3_occupied == false && self.r#slot_5_occupied == false && self.r#facing == Facing::South && self.r#slot_4_occupied == false && self.r#slot_1_occupied == false { return 2230; }
-        if self.r#slot_5_occupied == false && self.r#slot_1_occupied == true && self.r#slot_0_occupied == false && self.r#slot_2_occupied == true && self.r#slot_4_occupied == false && self.r#facing == Facing::West && self.r#slot_3_occupied == false { return 2310; }
-        if self.r#slot_2_occupied == true && self.r#slot_5_occupied == false && self.r#slot_4_occupied == false && self.r#facing == Facing::North && self.r#slot_0_occupied == false && self.r#slot_1_occupied == false && self.r#slot_3_occupied == false { return 2198; }
-        if self.r#slot_1_occupied == true && self.r#facing == Facing::South && self.r#slot_2_occupied == true && self.r#slot_3_occupied == true && self.r#slot_4_occupied == false && self.r#slot_0_occupied == true && self.r#slot_5_occupied == false { return 2210; }
-        if self.r#slot_1_occupied == false && self.r#slot_2_occupied == false && self.r#slot_4_occupied == false && self.r#slot_0_occupied == false && self.r#slot_3_occupied == true && self.r#slot_5_occupied == true && self.r#facing == Facing::North { return 2201; }
-        if self.r#facing == Facing::North && self.r#slot_1_occupied == false && self.r#slot_2_occupied == true && self.r#slot_4_occupied == false && self.r#slot_5_occupied == false && self.r#slot_3_occupied == true && self.r#slot_0_occupied == false { return 2194; }
-        if self.r#slot_5_occupied == false && self.r#facing == Facing::South && self.r#slot_1_occupied == false && self.r#slot_0_occupied == false && self.r#slot_2_occupied == false && self.r#slot_3_occupied == false && self.r#slot_4_occupied == true { return 2268; }
-        if self.r#facing == Facing::East && self.r#slot_4_occupied == false && self.r#slot_1_occupied == true && self.r#slot_2_occupied == false && self.r#slot_3_occupied == false && self.r#slot_5_occupied == true && self.r#slot_0_occupied == false { return 2381; }
-        if self.r#slot_2_occupied == false && self.r#slot_0_occupied == true && self.r#slot_3_occupied == true && self.r#slot_4_occupied == true && self.r#facing == Facing::North && self.r#slot_5_occupied == true && self.r#slot_1_occupied == false { return 2167; }
-        if self.r#slot_1_occupied == true && self.r#facing == Facing::North && self.r#slot_2_occupied == false && self.r#slot_3_occupied == false && self.r#slot_0_occupied == true && self.r#slot_4_occupied == false && self.r#slot_5_occupied == false { return 2158; }
-        if self.r#slot_3_occupied == false && self.r#slot_2_occupied == false && self.r#facing == Facing::North && self.r#slot_1_occupied == true && self.r#slot_4_occupied == false && self.r#slot_0_occupied == true && self.r#slot_5_occupied == true { return 2157; }
-        if self.r#slot_3_occupied == false && self.r#slot_0_occupied == true && self.r#facing == Facing::North && self.r#slot_1_occupied == true && self.r#slot_4_occupied == true && self.r#slot_5_occupied == true && self.r#slot_2_occupied == false { return 2155; }
-        if self.r#facing == Facing::North && self.r#slot_1_occupied == false && self.r#slot_5_occupied == false && self.r#slot_0_occupied == false && self.r#slot_4_occupied == true && self.r#slot_2_occupied == false && self.r#slot_3_occupied == true { return 2200; }
-        if self.r#slot_5_occupied == true && self.r#slot_4_occupied == false && self.r#facing == Facing::West && self.r#slot_2_occupied == false && self.r#slot_1_occupied == true && self.r#slot_0_occupied == false && self.r#slot_3_occupied == false { return 2317; }
-        if self.r#slot_3_occupied == true && self.r#slot_1_occupied == false && self.r#slot_4_occupied == true && self.r#slot_5_occupied == true && self.r#slot_2_occupied == false && self.r#facing == Facing::West && self.r#slot_0_occupied == false { return 2327; }
-        if self.r#slot_4_occupied == true && self.r#slot_2_occupied == false && self.r#slot_5_occupied == true && self.r#slot_3_occupied == false && self.r#slot_1_occupied == false && self.r#facing == Facing::East && self.r#slot_0_occupied == true { return 2363; }
-        if self.r#slot_3_occupied == true && self.r#slot_2_occupied == true && self.r#slot_1_occupied == true && self.r#slot_4_occupied == false && self.r#slot_5_occupied == true && self.r#facing == Facing::North && self.r#slot_0_occupied == false { return 2177; }
-        if self.r#slot_4_occupied == false && self.r#slot_5_occupied == true && self.r#slot_1_occupied == false && self.r#facing == Facing::North && self.r#slot_0_occupied == false && self.r#slot_2_occupied == true && self.r#slot_3_occupied == false { return 2197; }
-        if self.r#slot_4_occupied == true && self.r#slot_3_occupied == false && self.r#slot_0_occupied == true && self.r#slot_2_occupied == true && self.r#facing == Facing::South && self.r#slot_1_occupied == true && self.r#slot_5_occupied == true { return 2211; }
-        if self.r#slot_5_occupied == false && self.r#slot_1_occupied == true && self.r#slot_0_occupied == true && self.r#slot_2_occupied == false && self.r#facing == Facing::North && self.r#slot_3_occupied == true && self.r#slot_4_occupied == false { return 2154; }
-        if self.r#slot_2_occupied == false && self.r#slot_3_occupied == true && self.r#slot_1_occupied == true && self.r#slot_0_occupied == false && self.r#slot_4_occupied == true && self.r#slot_5_occupied == true && self.r#facing == Facing::West { return 2311; }
-        if self.r#slot_4_occupied == false && self.r#slot_3_occupied == false && self.r#slot_5_occupied == false && self.r#slot_0_occupied == true && self.r#slot_1_occupied == true && self.r#facing == Facing::South && self.r#slot_2_occupied == true { return 2214; }
-        if self.r#slot_2_occupied == false && self.r#slot_0_occupied == false && self.r#slot_3_occupied == true && self.r#slot_4_occupied == false && self.r#slot_5_occupied == true && self.r#facing == Facing::North && self.r#slot_1_occupied == true { return 2185; }
-        if self.r#slot_0_occupied == true && self.r#slot_3_occupied == false && self.r#slot_4_occupied == false && self.r#slot_5_occupied == false && self.r#slot_2_occupied == false && self.r#facing == Facing::West && self.r#slot_1_occupied == true { return 2286; }
-        if self.r#slot_0_occupied == true && self.r#slot_3_occupied == false && self.r#slot_4_occupied == false && self.r#slot_2_occupied == true && self.r#slot_1_occupied == true && self.r#facing == Facing::West && self.r#slot_5_occupied == true { return 2277; }
-        if self.r#facing == Facing::West && self.r#slot_5_occupied == true && self.r#slot_4_occupied == false && self.r#slot_0_occupied == false && self.r#slot_1_occupied == true && self.r#slot_2_occupied == false && self.r#slot_3_occupied == true { return 2313; }
-        if self.r#facing == Facing::East && self.r#slot_4_occupied == false && self.r#slot_3_occupied == true && self.r#slot_1_occupied == true && self.r#slot_2_occupied == true && self.r#slot_5_occupied == true && self.r#slot_0_occupied == true { return 2337; }
-        if self.r#slot_5_occupied == true && self.r#slot_3_occupied == false && self.r#slot_4_occupied == false && self.r#slot_0_occupied == false && self.r#slot_1_occupied == true && self.r#facing == Facing::North && self.r#slot_2_occupied == false { return 2189; }
-        if self.r#facing == Facing::North && self.r#slot_2_occupied == false && self.r#slot_4_occupied == true && self.r#slot_5_occupied == false && self.r#slot_3_occupied == false && self.r#slot_0_occupied == false && self.r#slot_1_occupied == false { return 2204; }
-        if self.r#slot_4_occupied == false && self.r#slot_0_occupied == true && self.r#slot_1_occupied == false && self.r#slot_3_occupied == true && self.r#slot_5_occupied == true && self.r#slot_2_occupied == true && self.r#facing == Facing::South { return 2225; }
-        if self.r#slot_5_occupied == false && self.r#slot_0_occupied == false && self.r#slot_2_occupied == true && self.r#facing == Facing::South && self.r#slot_1_occupied == false && self.r#slot_3_occupied == false && self.r#slot_4_occupied == true { return 2260; }
-        if self.r#slot_4_occupied == false && self.r#slot_0_occupied == true && self.r#slot_3_occupied == true && self.r#facing == Facing::East && self.r#slot_2_occupied == true && self.r#slot_5_occupied == false && self.r#slot_1_occupied == true { return 2338; }
-        if self.r#slot_4_occupied == true && self.r#slot_5_occupied == false && self.r#slot_0_occupied == true && self.r#slot_2_occupied == false && self.r#slot_1_occupied == true && self.r#slot_3_occupied == false && self.r#facing == Facing::South { return 2220; }
-        if self.r#slot_2_occupied == false && self.r#facing == Facing::South && self.r#slot_4_occupied == true && self.r#slot_5_occupied == true && self.r#slot_0_occupied == true && self.r#slot_1_occupied == true && self.r#slot_3_occupied == false { return 2219; }
-        if self.r#facing == Facing::East && self.r#slot_0_occupied == false && self.r#slot_1_occupied == false && self.r#slot_2_occupied == false && self.r#slot_3_occupied == false && self.r#slot_4_occupied == true && self.r#slot_5_occupied == true { return 2395; }
-        if self.r#slot_0_occupied == false && self.r#slot_1_occupied == true && self.r#slot_2_occupied == false && self.r#slot_3_occupied == false && self.r#slot_4_occupied == false && self.r#facing == Facing::North && self.r#slot_5_occupied == false { return 2190; }
-        if self.r#slot_3_occupied == false && self.r#slot_4_occupied == true && self.r#slot_5_occupied == true && self.r#slot_0_occupied == false && self.r#slot_1_occupied == true && self.r#facing == Facing::North && self.r#slot_2_occupied == true { return 2179; }
-        if self.r#slot_5_occupied == true && self.r#slot_3_occupied == true && self.r#slot_1_occupied == false && self.r#facing == Facing::South && self.r#slot_0_occupied == true && self.r#slot_2_occupied == false && self.r#slot_4_occupied == false { return 2233; }
-        if self.r#slot_0_occupied == true && self.r#slot_1_occupied == false && self.r#slot_2_occupied == true && self.r#slot_3_occupied == true && self.r#slot_4_occupied == false && self.r#facing == Facing::South && self.r#slot_5_occupied == false { return 2226; }
-        if self.r#slot_0_occupied == false && self.r#slot_2_occupied == false && self.r#slot_3_occupied == true && self.r#slot_5_occupied == true && self.r#facing == Facing::East && self.r#slot_4_occupied == true && self.r#slot_1_occupied == true { return 2375; }
-        if self.r#slot_4_occupied == true && self.r#slot_5_occupied == true && self.r#slot_3_occupied == false && self.r#slot_1_occupied == false && self.r#facing == Facing::North && self.r#slot_0_occupied == true && self.r#slot_2_occupied == true { return 2163; }
-        if self.r#slot_2_occupied == false && self.r#slot_0_occupied == false && self.r#slot_3_occupied == true && self.r#slot_1_occupied == false && self.r#facing == Facing::South && self.r#slot_5_occupied == true && self.r#slot_4_occupied == false { return 2265; }
-        if self.r#slot_0_occupied == false && self.r#slot_2_occupied == false && self.r#slot_4_occupied == true && self.r#slot_5_occupied == true && self.r#slot_3_occupied == false && self.r#facing == Facing::North && self.r#slot_1_occupied == true { return 2187; }
-        if self.r#slot_1_occupied == false && self.r#slot_2_occupied == false && self.r#slot_3_occupied == false && self.r#facing == Facing::North && self.r#slot_0_occupied == false && self.r#slot_4_occupied == false && self.r#slot_5_occupied == false { return 2206; }
-        if self.r#facing == Facing::South && self.r#slot_0_occupied == true && self.r#slot_2_occupied == false && self.r#slot_3_occupied == false && self.r#slot_1_occupied == false && self.r#slot_4_occupied == false && self.r#slot_5_occupied == false { return 2238; }
-        if self.r#slot_5_occupied == false && self.r#slot_0_occupied == false && self.r#slot_2_occupied == false && self.r#slot_1_occupied == false && self.r#facing == Facing::South && self.r#slot_3_occupied == true && self.r#slot_4_occupied == false { return 2266; }
-        if self.r#slot_2_occupied == false && self.r#slot_4_occupied == true && self.r#slot_5_occupied == false && self.r#slot_3_occupied == true && self.r#facing == Facing::West && self.r#slot_0_occupied == true && self.r#slot_1_occupied == true { return 2280; }
-        if self.r#slot_5_occupied == false && self.r#slot_2_occupied == false && self.r#slot_0_occupied == true && self.r#slot_1_occupied == true && self.r#facing == Facing::East && self.r#slot_4_occupied == false && self.r#slot_3_occupied == true { return 2346; }
-        if self.r#facing == Facing::South && self.r#slot_2_occupied == false && self.r#slot_4_occupied == false && self.r#slot_5_occupied == true && self.r#slot_1_occupied == false && self.r#slot_0_occupied == true && self.r#slot_3_occupied == false { return 2237; }
-        if self.r#slot_0_occupied == false && self.r#slot_1_occupied == true && self.r#facing == Facing::East && self.r#slot_3_occupied == false && self.r#slot_2_occupied == false && self.r#slot_4_occupied == true && self.r#slot_5_occupied == true { return 2379; }
-        if self.r#facing == Facing::East && self.r#slot_1_occupied == false && self.r#slot_2_occupied == false && self.r#slot_3_occupied == true && self.r#slot_4_occupied == false && self.r#slot_0_occupied == true && self.r#slot_5_occupied == false { return 2362; }
-        if self.r#slot_2_occupied == false && self.r#slot_3_occupied == false && self.r#slot_4_occupied == false && self.r#facing == Facing::South && self.r#slot_5_occupied == false && self.r#slot_0_occupied == false && self.r#slot_1_occupied == false { return 2270; }
-        if self.r#slot_4_occupied == false && self.r#facing == Facing::North && self.r#slot_2_occupied == false && self.r#slot_3_occupied == true && self.r#slot_0_occupied == false && self.r#slot_1_occupied == true && self.r#slot_5_occupied == false { return 2186; }
-        if self.r#facing == Facing::North && self.r#slot_0_occupied == true && self.r#slot_2_occupied == false && self.r#slot_3_occupied == true && self.r#slot_4_occupied == true && self.r#slot_1_occupied == true && self.r#slot_5_occupied == false { return 2152; }
-        if self.r#slot_1_occupied == false && self.r#slot_4_occupied == false && self.r#facing == Facing::West && self.r#slot_5_occupied == false && self.r#slot_2_occupied == true && self.r#slot_3_occupied == true && self.r#slot_0_occupied == false { return 2322; }
-        if self.r#facing == Facing::South && self.r#slot_0_occupied == true && self.r#slot_1_occupied == false && self.r#slot_4_occupied == false && self.r#slot_5_occupied == false && self.r#slot_3_occupied == true && self.r#slot_2_occupied == false { return 2234; }
-        if self.r#facing == Facing::South && self.r#slot_4_occupied == true && self.r#slot_5_occupied == false && self.r#slot_0_occupied == false && self.r#slot_3_occupied == true && self.r#slot_2_occupied == false && self.r#slot_1_occupied == false { return 2264; }
-        if self.r#slot_0_occupied == true && self.r#slot_4_occupied == true && self.r#slot_5_occupied == false && self.r#slot_1_occupied == false && self.r#facing == Facing::East && self.r#slot_2_occupied == true && self.r#slot_3_occupied == true { return 2352; }
-        if self.r#slot_0_occupied == false && self.r#slot_1_occupied == false && self.r#slot_2_occupied == false && self.r#slot_3_occupied == false && self.r#slot_4_occupied == true && self.r#facing == Facing::North && self.r#slot_5_occupied == true { return 2203; }
-        if self.r#slot_1_occupied == false && self.r#slot_2_occupied == false && self.r#slot_5_occupied == false && self.r#facing == Facing::North && self.r#slot_3_occupied == true && self.r#slot_4_occupied == true && self.r#slot_0_occupied == true { return 2168; }
-        if self.r#slot_5_occupied == false && self.r#slot_2_occupied == false && self.r#slot_1_occupied == true && self.r#slot_3_occupied == true && self.r#slot_0_occupied == false && self.r#facing == Facing::South && self.r#slot_4_occupied == false { return 2250; }
-        if self.r#facing == Facing::West && self.r#slot_0_occupied == false && self.r#slot_1_occupied == true && self.r#slot_3_occupied == true && self.r#slot_4_occupied == true && self.r#slot_2_occupied == true && self.r#slot_5_occupied == false { return 2304; }
-        if self.r#slot_4_occupied == true && self.r#slot_3_occupied == false && self.r#slot_5_occupied == false && self.r#facing == Facing::East && self.r#slot_2_occupied == false && self.r#slot_0_occupied == true && self.r#slot_1_occupied == false { return 2364; }
-        if self.r#slot_0_occupied == true && self.r#slot_1_occupied == false && self.r#facing == Facing::East && self.r#slot_2_occupied == true && self.r#slot_3_occupied == false && self.r#slot_4_occupied == true && self.r#slot_5_occupied == true { return 2355; }
-        if self.r#slot_0_occupied == false && self.r#slot_1_occupied == false && self.r#slot_3_occupied == true && self.r#slot_4_occupied == true && self.r#slot_5_occupied == true && self.r#slot_2_occupied == false && self.r#facing == Facing::North { return 2199; }
-        if self.r#slot_1_occupied == false && self.r#slot_2_occupied == true && self.r#slot_4_occupied == false && self.r#facing == Facing::West && self.r#slot_0_occupied == false && self.r#slot_3_occupied == false && self.r#slot_5_occupied == true { return 2325; }
-        if self.r#slot_4_occupied == true && self.r#slot_3_occupied == true && self.r#slot_2_occupied == true && self.r#slot_1_occupied == true && self.r#slot_0_occupied == false && self.r#facing == Facing::North && self.r#slot_5_occupied == false { return 2176; }
-        if self.r#slot_5_occupied == false && self.r#slot_2_occupied == true && self.r#slot_0_occupied == false && self.r#facing == Facing::West && self.r#slot_3_occupied == true && self.r#slot_4_occupied == true && self.r#slot_1_occupied == false { return 2320; }
-        if self.r#slot_3_occupied == false && self.r#slot_2_occupied == false && self.r#slot_5_occupied == true && self.r#slot_0_occupied == true && self.r#slot_1_occupied == false && self.r#facing == Facing::North && self.r#slot_4_occupied == true { return 2171; }
-        if self.r#facing == Facing::East && self.r#slot_0_occupied == false && self.r#slot_1_occupied == true && self.r#slot_3_occupied == false && self.r#slot_5_occupied == true && self.r#slot_2_occupied == true && self.r#slot_4_occupied == true { return 2371; }
-        if self.r#slot_2_occupied == true && self.r#slot_3_occupied == true && self.r#slot_1_occupied == false && self.r#slot_4_occupied == true && self.r#slot_5_occupied == false && self.r#slot_0_occupied == true && self.r#facing == Facing::South { return 2224; }
-        if self.r#slot_2_occupied == false && self.r#facing == Facing::West && self.r#slot_0_occupied == false && self.r#slot_1_occupied == false && self.r#slot_4_occupied == false && self.r#slot_5_occupied == true && self.r#slot_3_occupied == false { return 2333; }
-        if self.r#slot_4_occupied == true && self.r#slot_5_occupied == true && self.r#facing == Facing::West && self.r#slot_2_occupied == true && self.r#slot_1_occupied == false && self.r#slot_0_occupied == false && self.r#slot_3_occupied == false { return 2323; }
-        if self.r#slot_3_occupied == true && self.r#slot_4_occupied == false && self.r#facing == Facing::South && self.r#slot_5_occupied == false && self.r#slot_1_occupied == true && self.r#slot_2_occupied == true && self.r#slot_0_occupied == false { return 2242; }
-        if self.r#slot_3_occupied == false && self.r#slot_5_occupied == true && self.r#slot_1_occupied == false && self.r#slot_2_occupied == true && self.r#slot_4_occupied == true && self.r#facing == Facing::South && self.r#slot_0_occupied == true { return 2227; }
-        if self.r#slot_2_occupied == true && self.r#slot_3_occupied == true && self.r#slot_4_occupied == true && self.r#slot_5_occupied == true && self.r#slot_1_occupied == true && self.r#slot_0_occupied == true && self.r#facing == Facing::North { return 2143; }
-        if self.r#slot_5_occupied == true && self.r#slot_4_occupied == false && self.r#slot_0_occupied == false && self.r#slot_2_occupied == true && self.r#slot_3_occupied == false && self.r#slot_1_occupied == true && self.r#facing == Facing::East { return 2373; }
-        if self.r#slot_4_occupied == false && self.r#facing == Facing::North && self.r#slot_1_occupied == false && self.r#slot_5_occupied == true && self.r#slot_2_occupied == true && self.r#slot_0_occupied == true && self.r#slot_3_occupied == false { return 2165; }
-        if self.r#slot_1_occupied == false && self.r#slot_2_occupied == false && self.r#slot_3_occupied == true && self.r#facing == Facing::North && self.r#slot_0_occupied == false && self.r#slot_4_occupied == false && self.r#slot_5_occupied == false { return 2202; }
-        if self.r#slot_5_occupied == true && self.r#facing == Facing::East && self.r#slot_1_occupied == false && self.r#slot_0_occupied == true && self.r#slot_2_occupied == false && self.r#slot_3_occupied == false && self.r#slot_4_occupied == false { return 2365; }
-        if self.r#slot_4_occupied == false && self.r#slot_1_occupied == true && self.r#slot_5_occupied == true && self.r#slot_0_occupied == false && self.r#slot_2_occupied == false && self.r#slot_3_occupied == true && self.r#facing == Facing::East { return 2377; }
-        if self.r#facing == Facing::East && self.r#slot_4_occupied == true && self.r#slot_0_occupied == false && self.r#slot_5_occupied == false && self.r#slot_3_occupied == false && self.r#slot_1_occupied == false && self.r#slot_2_occupied == true { return 2388; }
-        if self.r#slot_2_occupied == false && self.r#facing == Facing::East && self.r#slot_3_occupied == true && self.r#slot_4_occupied == true && self.r#slot_5_occupied == true && self.r#slot_1_occupied == true && self.r#slot_0_occupied == true { return 2343; }
-        if self.r#slot_5_occupied == false && self.r#slot_2_occupied == true && self.r#slot_1_occupied == true && self.r#facing == Facing::East && self.r#slot_0_occupied == false && self.r#slot_3_occupied == true && self.r#slot_4_occupied == false { return 2370; }
-        if self.r#facing == Facing::South && self.r#slot_2_occupied == false && self.r#slot_3_occupied == false && self.r#slot_4_occupied == false && self.r#slot_0_occupied == false && self.r#slot_1_occupied == true && self.r#slot_5_occupied == false { return 2254; }
-        if self.r#slot_4_occupied == true && self.r#slot_0_occupied == true && self.r#slot_3_occupied == false && self.r#slot_5_occupied == true && self.r#slot_2_occupied == false && self.r#slot_1_occupied == false && self.r#facing == Facing::South { return 2235; }
-        if self.r#slot_2_occupied == true && self.r#slot_3_occupied == false && self.r#slot_5_occupied == true && self.r#facing == Facing::West && self.r#slot_1_occupied == true && self.r#slot_4_occupied == false && self.r#slot_0_occupied == false { return 2309; }
-        if self.r#facing == Facing::East && self.r#slot_0_occupied == true && self.r#slot_2_occupied == false && self.r#slot_3_occupied == false && self.r#slot_1_occupied == true && self.r#slot_4_occupied == false && self.r#slot_5_occupied == true { return 2349; }
-        if self.r#facing == Facing::West && self.r#slot_1_occupied == false && self.r#slot_0_occupied == false && self.r#slot_3_occupied == false && self.r#slot_4_occupied == true && self.r#slot_5_occupied == false && self.r#slot_2_occupied == false { return 2332; }
-        if self.r#slot_3_occupied == false && self.r#slot_4_occupied == true && self.r#slot_0_occupied == false && self.r#slot_5_occupied == false && self.r#facing == Facing::North && self.r#slot_2_occupied == false && self.r#slot_1_occupied == true { return 2188; }
-        if self.r#slot_5_occupied == false && self.r#slot_3_occupied == false && self.r#slot_1_occupied == true && self.r#slot_2_occupied == true && self.r#facing == Facing::East && self.r#slot_0_occupied == true && self.r#slot_4_occupied == false { return 2342; }
-        if self.r#slot_0_occupied == true && self.r#slot_4_occupied == true && self.r#slot_5_occupied == false && self.r#slot_2_occupied == true && self.r#slot_3_occupied == false && self.r#facing == Facing::West && self.r#slot_1_occupied == false { return 2292; }
-        if self.r#slot_3_occupied == false && self.r#slot_5_occupied == true && self.r#slot_1_occupied == false && self.r#slot_0_occupied == true && self.r#facing == Facing::South && self.r#slot_4_occupied == false && self.r#slot_2_occupied == true { return 2229; }
-        if self.r#facing == Facing::West && self.r#slot_2_occupied == true && self.r#slot_3_occupied == true && self.r#slot_1_occupied == false && self.r#slot_0_occupied == true && self.r#slot_4_occupied == false && self.r#slot_5_occupied == false { return 2290; }
-        if self.r#slot_5_occupied == false && self.r#facing == Facing::East && self.r#slot_0_occupied == true && self.r#slot_1_occupied == true && self.r#slot_2_occupied == false && self.r#slot_3_occupied == true && self.r#slot_4_occupied == true { return 2344; }
-        if self.r#slot_0_occupied == false && self.r#facing == Facing::West && self.r#slot_4_occupied == true && self.r#slot_3_occupied == false && self.r#slot_1_occupied == true && self.r#slot_2_occupied == true && self.r#slot_5_occupied == true { return 2307; }
-        if self.r#slot_1_occupied == true && self.r#facing == Facing::South && self.r#slot_0_occupied == false && self.r#slot_3_occupied == true && self.r#slot_5_occupied == true && self.r#slot_2_occupied == true && self.r#slot_4_occupied == true { return 2239; }
-        if self.r#slot_4_occupied == false && self.r#facing == Facing::East && self.r#slot_2_occupied == false && self.r#slot_5_occupied == false && self.r#slot_3_occupied == true && self.r#slot_0_occupied == false && self.r#slot_1_occupied == true { return 2378; }
-        if self.r#slot_3_occupied == false && self.r#slot_0_occupied == true && self.r#slot_5_occupied == false && self.r#slot_1_occupied == true && self.r#slot_4_occupied == true && self.r#facing == Facing::East && self.r#slot_2_occupied == true { return 2340; }
+        if self.r#slot_5_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#facing == Facing::North
+            && self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_0_occupied == false
+            && self.r#slot_2_occupied == false
+        {
+            return 2183;
+        }
+        if self.r#slot_4_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#facing == Facing::West
+            && self.r#slot_3_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#slot_0_occupied == false
+        {
+            return 2331;
+        }
+        if self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#slot_5_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#facing == Facing::West
+        {
+            return 2298;
+        }
+        if self.r#slot_1_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#facing == Facing::South
+            && self.r#slot_2_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#slot_0_occupied == false
+        {
+            return 2253;
+        }
+        if self.r#slot_4_occupied == false
+            && self.r#slot_1_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#facing == Facing::West
+            && self.r#slot_0_occupied == true
+            && self.r#slot_2_occupied == false
+        {
+            return 2281;
+        }
+        if self.r#slot_4_occupied == true
+            && self.r#slot_0_occupied == false
+            && self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#facing == Facing::East
+            && self.r#slot_5_occupied == false
+            && self.r#slot_1_occupied == true
+        {
+            return 2368;
+        }
+        if self.r#slot_4_occupied == true
+            && self.r#slot_0_occupied == true
+            && self.r#facing == Facing::West
+            && self.r#slot_3_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_2_occupied == false
+        {
+            return 2299;
+        }
+        if self.r#facing == Facing::West
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#slot_1_occupied == false
+            && self.r#slot_5_occupied == false
+        {
+            return 2334;
+        }
+        if self.r#slot_3_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#facing == Facing::West
+            && self.r#slot_2_occupied == false
+            && self.r#slot_1_occupied == false
+        {
+            return 2301;
+        }
+        if self.r#slot_0_occupied == true
+            && self.r#facing == Facing::South
+            && self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == false
+            && self.r#slot_1_occupied == true
+        {
+            return 2208;
+        }
+        if self.r#slot_1_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#facing == Facing::South
+            && self.r#slot_0_occupied == false
+        {
+            return 2243;
+        }
+        if self.r#slot_4_occupied == false
+            && self.r#facing == Facing::North
+            && self.r#slot_0_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_2_occupied == true
+        {
+            return 2161;
+        }
+        if self.r#slot_0_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#facing == Facing::South
+            && self.r#slot_4_occupied == false
+            && self.r#slot_2_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#slot_1_occupied == true
+        {
+            return 2241;
+        }
+        if self.r#facing == Facing::South
+            && self.r#slot_2_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#slot_1_occupied == true
+        {
+            return 2251;
+        }
+        if self.r#slot_1_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#facing == Facing::East
+            && self.r#slot_0_occupied == false
+            && self.r#slot_2_occupied == true
+        {
+            return 2387;
+        }
+        if self.r#slot_1_occupied == false
+            && self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#facing == Facing::South
+            && self.r#slot_5_occupied == true
+            && self.r#slot_0_occupied == false
+        {
+            return 2259;
+        }
+        if self.r#slot_5_occupied == false
+            && self.r#facing == Facing::North
+            && self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_0_occupied == false
+        {
+            return 2192;
+        }
+        if self.r#facing == Facing::South
+            && self.r#slot_1_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#slot_2_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == false
+        {
+            return 2252;
+        }
+        if self.r#slot_5_occupied == false
+            && self.r#facing == Facing::West
+            && self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#slot_4_occupied == false
+        {
+            return 2278;
+        }
+        if self.r#slot_4_occupied == true
+            && self.r#slot_0_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#facing == Facing::West
+        {
+            return 2303;
+        }
+        if self.r#slot_4_occupied == false
+            && self.r#slot_5_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#facing == Facing::West
+        {
+            return 2274;
+        }
+        if self.r#facing == Facing::West
+            && self.r#slot_2_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_5_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_1_occupied == true
+        {
+            return 2282;
+        }
+        if self.r#slot_3_occupied == false
+            && self.r#slot_2_occupied == true
+            && self.r#slot_0_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_5_occupied == false
+            && self.r#facing == Facing::North
+        {
+            return 2150;
+        }
+        if self.r#slot_5_occupied == true
+            && self.r#slot_0_occupied == true
+            && self.r#facing == Facing::West
+            && self.r#slot_2_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#slot_3_occupied == false
+        {
+            return 2283;
+        }
+        if self.r#facing == Facing::North
+            && self.r#slot_4_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#slot_1_occupied == false
+            && self.r#slot_2_occupied == true
+            && self.r#slot_5_occupied == false
+        {
+            return 2196;
+        }
+        if self.r#facing == Facing::West
+            && self.r#slot_0_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_2_occupied == false
+            && self.r#slot_5_occupied == false
+            && self.r#slot_1_occupied == true
+        {
+            return 2314;
+        }
+        if self.r#slot_1_occupied == true
+            && self.r#facing == Facing::West
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#slot_0_occupied == false
+        {
+            return 2315;
+        }
+        if self.r#slot_4_occupied == false
+            && self.r#facing == Facing::West
+            && self.r#slot_0_occupied == false
+            && self.r#slot_2_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_3_occupied == true
+        {
+            return 2321;
+        }
+        if self.r#slot_2_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#slot_0_occupied == false
+            && self.r#facing == Facing::West
+            && self.r#slot_1_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#slot_3_occupied == true
+        {
+            return 2329;
+        }
+        if self.r#facing == Facing::East
+            && self.r#slot_0_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_2_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#slot_5_occupied == true
+        {
+            return 2393;
+        }
+        if self.r#slot_4_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#slot_5_occupied == false
+            && self.r#facing == Facing::West
+            && self.r#slot_2_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_1_occupied == false
+        {
+            return 2302;
+        }
+        if self.r#slot_5_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#facing == Facing::East
+            && self.r#slot_3_occupied == true
+            && self.r#slot_0_occupied == true
+            && self.r#slot_4_occupied == true
+        {
+            return 2335;
+        }
+        if self.r#slot_3_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#slot_1_occupied == false
+            && self.r#slot_2_occupied == true
+            && self.r#facing == Facing::West
+        {
+            return 2324;
+        }
+        if self.r#slot_1_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#facing == Facing::East
+        {
+            return 2391;
+        }
+        if self.r#slot_5_occupied == true
+            && self.r#facing == Facing::North
+            && self.r#slot_3_occupied == true
+            && self.r#slot_0_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#slot_4_occupied == false
+        {
+            return 2153;
+        }
+        if self.r#slot_2_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#facing == Facing::North
+            && self.r#slot_0_occupied == false
+            && self.r#slot_3_occupied == false
+        {
+            return 2195;
+        }
+        if self.r#slot_5_occupied == true
+            && self.r#facing == Facing::East
+            && self.r#slot_2_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_3_occupied == true
+        {
+            return 2353;
+        }
+        if self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#slot_5_occupied == false
+            && self.r#slot_1_occupied == false
+            && self.r#facing == Facing::East
+            && self.r#slot_0_occupied == false
+        {
+            return 2392;
+        }
+        if self.r#slot_3_occupied == true
+            && self.r#slot_0_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#facing == Facing::West
+            && self.r#slot_1_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#slot_5_occupied == false
+        {
+            return 2306;
+        }
+        if self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#facing == Facing::North
+            && self.r#slot_5_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#slot_2_occupied == true
+        {
+            return 2191;
+        }
+        if self.r#slot_0_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#facing == Facing::North
+            && self.r#slot_3_occupied == true
+            && self.r#slot_2_occupied == true
+        {
+            return 2145;
+        }
+        if self.r#facing == Facing::South
+            && self.r#slot_2_occupied == false
+            && self.r#slot_1_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == true
+        {
+            return 2231;
+        }
+        if self.r#facing == Facing::North
+            && self.r#slot_5_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_1_occupied == true
+            && self.r#slot_2_occupied == true
+        {
+            return 2178;
+        }
+        if self.r#facing == Facing::East
+            && self.r#slot_5_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#slot_4_occupied == true
+        {
+            return 2348;
+        }
+        if self.r#slot_5_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_1_occupied == false
+            && self.r#facing == Facing::North
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#slot_0_occupied == true
+        {
+            return 2173;
+        }
+        if self.r#slot_3_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#slot_0_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#facing == Facing::South
+        {
+            return 2207;
+        }
+        if self.r#slot_5_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_2_occupied == false
+            && self.r#slot_1_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#facing == Facing::South
+            && self.r#slot_3_occupied == false
+        {
+            return 2269;
+        }
+        if self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == false
+            && self.r#facing == Facing::West
+            && self.r#slot_1_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#slot_0_occupied == false
+        {
+            return 2312;
+        }
+        if self.r#slot_4_occupied == true
+            && self.r#slot_0_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#facing == Facing::North
+            && self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#slot_5_occupied == false
+        {
+            return 2148;
+        }
+        if self.r#slot_3_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#facing == Facing::North
+            && self.r#slot_0_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#slot_4_occupied == false
+        {
+            return 2149;
+        }
+        if self.r#slot_4_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#slot_0_occupied == true
+            && self.r#facing == Facing::South
+            && self.r#slot_3_occupied == false
+            && self.r#slot_1_occupied == true
+        {
+            return 2213;
+        }
+        if self.r#slot_3_occupied == false
+            && self.r#slot_2_occupied == true
+            && self.r#slot_0_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#facing == Facing::East
+            && self.r#slot_5_occupied == false
+        {
+            return 2358;
+        }
+        if self.r#slot_1_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#facing == Facing::East
+            && self.r#slot_5_occupied == false
+            && self.r#slot_0_occupied == false
+        {
+            return 2382;
+        }
+        if self.r#slot_0_occupied == false
+            && self.r#slot_2_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#facing == Facing::East
+            && self.r#slot_1_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#slot_4_occupied == false
+        {
+            return 2397;
+        }
+        if self.r#facing == Facing::South
+            && self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_5_occupied == false
+            && self.r#slot_0_occupied == true
+        {
+            return 2228;
+        }
+        if self.r#slot_5_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#facing == Facing::West
+            && self.r#slot_1_occupied == false
+        {
+            return 2289;
+        }
+        if self.r#slot_5_occupied == false
+            && self.r#slot_1_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#facing == Facing::East
+            && self.r#slot_3_occupied == false
+            && self.r#slot_2_occupied == false
+            && self.r#slot_4_occupied == false
+        {
+            return 2398;
+        }
+        if self.r#slot_3_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#facing == Facing::South
+            && self.r#slot_2_occupied == false
+            && self.r#slot_5_occupied == false
+            && self.r#slot_1_occupied == false
+            && self.r#slot_0_occupied == true
+        {
+            return 2236;
+        }
+        if self.r#slot_1_occupied == false
+            && self.r#facing == Facing::East
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == false
+        {
+            return 2396;
+        }
+        if self.r#facing == Facing::South
+            && self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == false
+        {
+            return 2256;
+        }
+        if self.r#slot_3_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#slot_0_occupied == true
+            && self.r#facing == Facing::South
+            && self.r#slot_4_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#slot_5_occupied == false
+        {
+            return 2216;
+        }
+        if self.r#slot_1_occupied == true
+            && self.r#facing == Facing::East
+            && self.r#slot_3_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_5_occupied == true
+        {
+            return 2341;
+        }
+        if self.r#slot_4_occupied == true
+            && self.r#facing == Facing::North
+            && self.r#slot_2_occupied == true
+            && self.r#slot_5_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#slot_1_occupied == false
+        {
+            return 2164;
+        }
+        if self.r#slot_5_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_2_occupied == true
+            && self.r#facing == Facing::East
+            && self.r#slot_0_occupied == false
+            && self.r#slot_4_occupied == false
+        {
+            return 2385;
+        }
+        if self.r#slot_5_occupied == true
+            && self.r#facing == Facing::South
+            && self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#slot_2_occupied == true
+            && self.r#slot_1_occupied == false
+        {
+            return 2257;
+        }
+        if self.r#slot_0_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#facing == Facing::North
+            && self.r#slot_2_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_1_occupied == false
+        {
+            return 2169;
+        }
+        if self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#slot_1_occupied == true
+            && self.r#facing == Facing::South
+            && self.r#slot_0_occupied == true
+            && self.r#slot_2_occupied == true
+        {
+            return 2212;
+        }
+        if self.r#facing == Facing::North
+            && self.r#slot_4_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#slot_0_occupied == true
+            && self.r#slot_1_occupied == true
+        {
+            return 2147;
+        }
+        if self.r#slot_0_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#facing == Facing::West
+            && self.r#slot_1_occupied == true
+        {
+            return 2273;
+        }
+        if self.r#slot_4_occupied == false
+            && self.r#facing == Facing::West
+            && self.r#slot_1_occupied == false
+            && self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_5_occupied == true
+        {
+            return 2293;
+        }
+        if self.r#slot_1_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#facing == Facing::East
+            && self.r#slot_4_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_5_occupied == false
+            && self.r#slot_2_occupied == false
+        {
+            return 2366;
+        }
+        if self.r#slot_0_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#facing == Facing::East
+            && self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#slot_5_occupied == true
+        {
+            return 2357;
+        }
+        if self.r#slot_3_occupied == false
+            && self.r#facing == Facing::East
+            && self.r#slot_1_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#slot_5_occupied == false
+        {
+            return 2374;
+        }
+        if self.r#slot_0_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#facing == Facing::West
+            && self.r#slot_2_occupied == false
+        {
+            return 2295;
+        }
+        if self.r#facing == Facing::South
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#slot_0_occupied == true
+        {
+            return 2215;
+        }
+        if self.r#slot_2_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#facing == Facing::East
+            && self.r#slot_0_occupied == false
+        {
+            return 2367;
+        }
+        if self.r#slot_4_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#facing == Facing::East
+            && self.r#slot_3_occupied == true
+        {
+            return 2359;
+        }
+        if self.r#slot_4_occupied == false
+            && self.r#facing == Facing::North
+            && self.r#slot_3_occupied == true
+            && self.r#slot_0_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#slot_5_occupied == false
+        {
+            return 2146;
+        }
+        if self.r#slot_0_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#facing == Facing::West
+            && self.r#slot_5_occupied == false
+            && self.r#slot_1_occupied == false
+        {
+            return 2296;
+        }
+        if self.r#slot_5_occupied == false
+            && self.r#facing == Facing::West
+            && self.r#slot_3_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#slot_1_occupied == false
+            && self.r#slot_2_occupied == true
+        {
+            return 2326;
+        }
+        if self.r#facing == Facing::North
+            && self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#slot_5_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_2_occupied == true
+        {
+            return 2144;
+        }
+        if self.r#facing == Facing::West
+            && self.r#slot_0_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == true
+        {
+            return 2271;
+        }
+        if self.r#slot_5_occupied == false
+            && self.r#slot_1_occupied == true
+            && self.r#facing == Facing::West
+            && self.r#slot_3_occupied == false
+            && self.r#slot_2_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_0_occupied == true
+        {
+            return 2276;
+        }
+        if self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#facing == Facing::North
+            && self.r#slot_1_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#slot_0_occupied == false
+            && self.r#slot_4_occupied == false
+        {
+            return 2205;
+        }
+        if self.r#slot_2_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_5_occupied == false
+            && self.r#facing == Facing::South
+            && self.r#slot_0_occupied == true
+            && self.r#slot_1_occupied == true
+        {
+            return 2218;
+        }
+        if self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == false
+            && self.r#facing == Facing::West
+            && self.r#slot_1_occupied == false
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#slot_0_occupied == true
+        {
+            return 2300;
+        }
+        if self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#slot_0_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#facing == Facing::East
+            && self.r#slot_5_occupied == false
+            && self.r#slot_1_occupied == false
+        {
+            return 2354;
+        }
+        if self.r#facing == Facing::South
+            && self.r#slot_5_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#slot_0_occupied == false
+        {
+            return 2244;
+        }
+        if self.r#slot_2_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#facing == Facing::East
+            && self.r#slot_1_occupied == true
+            && self.r#slot_5_occupied == false
+        {
+            return 2380;
+        }
+        if self.r#slot_1_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#slot_5_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#facing == Facing::North
+            && self.r#slot_0_occupied == true
+        {
+            return 2156;
+        }
+        if self.r#slot_0_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_5_occupied == false
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#slot_1_occupied == true
+            && self.r#facing == Facing::South
+        {
+            return 2222;
+        }
+        if self.r#slot_3_occupied == true
+            && self.r#slot_5_occupied == false
+            && self.r#slot_1_occupied == true
+            && self.r#facing == Facing::South
+            && self.r#slot_2_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_0_occupied == false
+        {
+            return 2240;
+        }
+        if self.r#slot_3_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#slot_0_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#facing == Facing::East
+        {
+            return 2339;
+        }
+        if self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#slot_5_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#facing == Facing::East
+            && self.r#slot_0_occupied == false
+            && self.r#slot_1_occupied == false
+        {
+            return 2384;
+        }
+        if self.r#slot_5_occupied == false
+            && self.r#slot_1_occupied == false
+            && self.r#slot_2_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#facing == Facing::West
+            && self.r#slot_0_occupied == true
+        {
+            return 2294;
+        }
+        if self.r#slot_1_occupied == false
+            && self.r#facing == Facing::West
+            && self.r#slot_0_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == false
+        {
+            return 2288;
+        }
+        if self.r#slot_1_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#facing == Facing::South
+            && self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == true
+        {
+            return 2223;
+        }
+        if self.r#slot_0_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#facing == Facing::East
+            && self.r#slot_4_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#slot_5_occupied == true
+        {
+            return 2351;
+        }
+        if self.r#slot_1_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#facing == Facing::West
+        {
+            return 2284;
+        }
+        if self.r#slot_4_occupied == true
+            && self.r#facing == Facing::South
+            && self.r#slot_0_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#slot_5_occupied == false
+            && self.r#slot_1_occupied == false
+            && self.r#slot_2_occupied == false
+        {
+            return 2232;
+        }
+        if self.r#slot_2_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#facing == Facing::West
+            && self.r#slot_0_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#slot_4_occupied == false
+        {
+            return 2285;
+        }
+        if self.r#slot_2_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#facing == Facing::West
+            && self.r#slot_0_occupied == false
+        {
+            return 2319;
+        }
+        if self.r#slot_5_occupied == false
+            && self.r#slot_2_occupied == true
+            && self.r#slot_0_occupied == false
+            && self.r#facing == Facing::South
+            && self.r#slot_4_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_1_occupied == false
+        {
+            return 2258;
+        }
+        if self.r#slot_1_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#slot_0_occupied == true
+            && self.r#facing == Facing::East
+            && self.r#slot_2_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == false
+        {
+            return 2336;
+        }
+        if self.r#slot_0_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_5_occupied == false
+            && self.r#slot_1_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#facing == Facing::North
+            && self.r#slot_2_occupied == false
+        {
+            return 2170;
+        }
+        if self.r#slot_5_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#facing == Facing::South
+            && self.r#slot_0_occupied == false
+            && self.r#slot_2_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_1_occupied == false
+        {
+            return 2261;
+        }
+        if self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#facing == Facing::South
+            && self.r#slot_0_occupied == false
+            && self.r#slot_2_occupied == false
+            && self.r#slot_1_occupied == true
+        {
+            return 2249;
+        }
+        if self.r#slot_5_occupied == false
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#facing == Facing::East
+            && self.r#slot_0_occupied == false
+            && self.r#slot_4_occupied == true
+        {
+            return 2376;
+        }
+        if self.r#slot_5_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#facing == Facing::South
+            && self.r#slot_2_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_4_occupied == false
+        {
+            return 2217;
+        }
+        if self.r#slot_4_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#slot_0_occupied == true
+            && self.r#facing == Facing::North
+            && self.r#slot_2_occupied == true
+        {
+            return 2159;
+        }
+        if self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == false
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_0_occupied == false
+            && self.r#facing == Facing::North
+            && self.r#slot_1_occupied == true
+        {
+            return 2184;
+        }
+        if self.r#slot_1_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#slot_0_occupied == true
+            && self.r#facing == Facing::South
+            && self.r#slot_3_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#slot_4_occupied == false
+        {
+            return 2209;
+        }
+        if self.r#facing == Facing::North
+            && self.r#slot_3_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#slot_0_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#slot_2_occupied == false
+        {
+            return 2151;
+        }
+        if self.r#slot_0_occupied == false
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#facing == Facing::South
+            && self.r#slot_1_occupied == true
+        {
+            return 2247;
+        }
+        if self.r#slot_4_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#facing == Facing::South
+            && self.r#slot_1_occupied == false
+            && self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#slot_5_occupied == false
+        {
+            return 2262;
+        }
+        if self.r#facing == Facing::East
+            && self.r#slot_0_occupied == false
+            && self.r#slot_1_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == false
+            && self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == false
+        {
+            return 2372;
+        }
+        if self.r#facing == Facing::East
+            && self.r#slot_3_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#slot_2_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_5_occupied == false
+        {
+            return 2386;
+        }
+        if self.r#slot_2_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_5_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#slot_1_occupied == false
+            && self.r#facing == Facing::East
+            && self.r#slot_3_occupied == false
+        {
+            return 2390;
+        }
+        if self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#slot_1_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#facing == Facing::West
+        {
+            return 2328;
+        }
+        if self.r#slot_1_occupied == true
+            && self.r#facing == Facing::West
+            && self.r#slot_0_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == false
+            && self.r#slot_2_occupied == true
+        {
+            return 2272;
+        }
+        if self.r#slot_3_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#facing == Facing::East
+            && self.r#slot_4_occupied == false
+            && self.r#slot_5_occupied == true
+        {
+            return 2345;
+        }
+        if self.r#slot_5_occupied == true
+            && self.r#slot_0_occupied == true
+            && self.r#facing == Facing::West
+            && self.r#slot_2_occupied == false
+            && self.r#slot_1_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#slot_3_occupied == true
+        {
+            return 2297;
+        }
+        if self.r#slot_5_occupied == false
+            && self.r#slot_1_occupied == false
+            && self.r#slot_2_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#facing == Facing::North
+            && self.r#slot_0_occupied == true
+            && self.r#slot_3_occupied == true
+        {
+            return 2160;
+        }
+        if self.r#slot_0_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#slot_1_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#facing == Facing::North
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == false
+        {
+            return 2172;
+        }
+        if self.r#slot_3_occupied == true
+            && self.r#slot_0_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#facing == Facing::East
+            && self.r#slot_4_occupied == false
+            && self.r#slot_1_occupied == false
+        {
+            return 2361;
+        }
+        if self.r#slot_0_occupied == false
+            && self.r#slot_1_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#facing == Facing::East
+            && self.r#slot_3_occupied == true
+            && self.r#slot_2_occupied == true
+        {
+            return 2369;
+        }
+        if self.r#facing == Facing::North
+            && self.r#slot_0_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#slot_5_occupied == false
+            && self.r#slot_1_occupied == true
+            && self.r#slot_3_occupied == false
+        {
+            return 2180;
+        }
+        if self.r#facing == Facing::North
+            && self.r#slot_1_occupied == true
+            && self.r#slot_0_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#slot_5_occupied == false
+            && self.r#slot_2_occupied == true
+        {
+            return 2182;
+        }
+        if self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#facing == Facing::South
+            && self.r#slot_0_occupied == false
+        {
+            return 2263;
+        }
+        if self.r#facing == Facing::West
+            && self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_0_occupied == true
+            && self.r#slot_1_occupied == true
+        {
+            return 2275;
+        }
+        if self.r#facing == Facing::West
+            && self.r#slot_2_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#slot_5_occupied == false
+            && self.r#slot_0_occupied == false
+        {
+            return 2308;
+        }
+        if self.r#facing == Facing::East
+            && self.r#slot_4_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#slot_2_occupied == true
+        {
+            return 2383;
+        }
+        if self.r#slot_1_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#facing == Facing::East
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == false
+        {
+            return 2360;
+        }
+        if self.r#slot_5_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#facing == Facing::South
+            && self.r#slot_0_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#slot_2_occupied == false
+        {
+            return 2221;
+        }
+        if self.r#slot_0_occupied == false
+            && self.r#facing == Facing::West
+            && self.r#slot_3_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == false
+            && self.r#slot_2_occupied == false
+            && self.r#slot_1_occupied == true
+        {
+            return 2316;
+        }
+        if self.r#slot_2_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#facing == Facing::West
+            && self.r#slot_0_occupied == true
+        {
+            return 2287;
+        }
+        if self.r#slot_5_occupied == false
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#facing == Facing::West
+            && self.r#slot_1_occupied == true
+            && self.r#slot_4_occupied == false
+        {
+            return 2318;
+        }
+        if self.r#slot_4_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#slot_5_occupied == false
+            && self.r#facing == Facing::South
+            && self.r#slot_1_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == false
+        {
+            return 2246;
+        }
+        if self.r#slot_4_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#slot_1_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#slot_5_occupied == false
+            && self.r#facing == Facing::East
+        {
+            return 2350;
+        }
+        if self.r#slot_3_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#slot_0_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#facing == Facing::North
+            && self.r#slot_1_occupied == false
+            && self.r#slot_2_occupied == true
+        {
+            return 2193;
+        }
+        if self.r#slot_3_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#facing == Facing::East
+            && self.r#slot_0_occupied == true
+            && self.r#slot_2_occupied == false
+        {
+            return 2347;
+        }
+        if self.r#slot_0_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_2_occupied == true
+            && self.r#facing == Facing::South
+            && self.r#slot_1_occupied == true
+            && self.r#slot_3_occupied == false
+        {
+            return 2245;
+        }
+        if self.r#slot_0_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_5_occupied == false
+            && self.r#facing == Facing::North
+            && self.r#slot_2_occupied == true
+        {
+            return 2162;
+        }
+        if self.r#slot_5_occupied == true
+            && self.r#slot_0_occupied == true
+            && self.r#facing == Facing::West
+            && self.r#slot_4_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#slot_1_occupied == true
+        {
+            return 2279;
+        }
+        if self.r#slot_2_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#facing == Facing::West
+            && self.r#slot_0_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#slot_4_occupied == true
+        {
+            return 2291;
+        }
+        if self.r#facing == Facing::North
+            && self.r#slot_3_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#slot_5_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#slot_1_occupied == false
+        {
+            return 2166;
+        }
+        if self.r#slot_0_occupied == false
+            && self.r#slot_1_occupied == false
+            && self.r#facing == Facing::South
+            && self.r#slot_3_occupied == false
+            && self.r#slot_2_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == true
+        {
+            return 2267;
+        }
+        if self.r#slot_5_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#facing == Facing::West
+            && self.r#slot_1_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == true
+        {
+            return 2330;
+        }
+        if self.r#slot_1_occupied == true
+            && self.r#slot_0_occupied == false
+            && self.r#slot_5_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#facing == Facing::South
+            && self.r#slot_2_occupied == false
+            && self.r#slot_4_occupied == true
+        {
+            return 2248;
+        }
+        if self.r#slot_3_occupied == true
+            && self.r#slot_0_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#facing == Facing::West
+            && self.r#slot_2_occupied == true
+            && self.r#slot_1_occupied == true
+        {
+            return 2305;
+        }
+        if self.r#slot_5_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#slot_0_occupied == false
+            && self.r#slot_1_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#facing == Facing::North
+            && self.r#slot_4_occupied == true
+        {
+            return 2175;
+        }
+        if self.r#slot_5_occupied == true
+            && self.r#slot_0_occupied == false
+            && self.r#facing == Facing::South
+            && self.r#slot_4_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == true
+        {
+            return 2255;
+        }
+        if self.r#slot_1_occupied == true
+            && self.r#facing == Facing::North
+            && self.r#slot_3_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#slot_0_occupied == false
+            && self.r#slot_2_occupied == true
+        {
+            return 2181;
+        }
+        if self.r#slot_3_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#facing == Facing::North
+            && self.r#slot_0_occupied == true
+            && self.r#slot_5_occupied == false
+            && self.r#slot_1_occupied == false
+            && self.r#slot_2_occupied == false
+        {
+            return 2174;
+        }
+        if self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#facing == Facing::East
+            && self.r#slot_4_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_0_occupied == false
+        {
+            return 2389;
+        }
+        if self.r#slot_5_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#facing == Facing::East
+            && self.r#slot_4_occupied == false
+            && self.r#slot_2_occupied == false
+        {
+            return 2394;
+        }
+        if self.r#slot_2_occupied == true
+            && self.r#facing == Facing::East
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_3_occupied == false
+        {
+            return 2356;
+        }
+        if self.r#slot_2_occupied == true
+            && self.r#slot_0_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#slot_5_occupied == false
+            && self.r#facing == Facing::South
+            && self.r#slot_4_occupied == false
+            && self.r#slot_1_occupied == false
+        {
+            return 2230;
+        }
+        if self.r#slot_5_occupied == false
+            && self.r#slot_1_occupied == true
+            && self.r#slot_0_occupied == false
+            && self.r#slot_2_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#facing == Facing::West
+            && self.r#slot_3_occupied == false
+        {
+            return 2310;
+        }
+        if self.r#slot_2_occupied == true
+            && self.r#slot_5_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#facing == Facing::North
+            && self.r#slot_0_occupied == false
+            && self.r#slot_1_occupied == false
+            && self.r#slot_3_occupied == false
+        {
+            return 2198;
+        }
+        if self.r#slot_1_occupied == true
+            && self.r#facing == Facing::South
+            && self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_5_occupied == false
+        {
+            return 2210;
+        }
+        if self.r#slot_1_occupied == false
+            && self.r#slot_2_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#facing == Facing::North
+        {
+            return 2201;
+        }
+        if self.r#facing == Facing::North
+            && self.r#slot_1_occupied == false
+            && self.r#slot_2_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_5_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_0_occupied == false
+        {
+            return 2194;
+        }
+        if self.r#slot_5_occupied == false
+            && self.r#facing == Facing::South
+            && self.r#slot_1_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#slot_4_occupied == true
+        {
+            return 2268;
+        }
+        if self.r#facing == Facing::East
+            && self.r#slot_4_occupied == false
+            && self.r#slot_1_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#slot_0_occupied == false
+        {
+            return 2381;
+        }
+        if self.r#slot_2_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#facing == Facing::North
+            && self.r#slot_5_occupied == true
+            && self.r#slot_1_occupied == false
+        {
+            return 2167;
+        }
+        if self.r#slot_1_occupied == true
+            && self.r#facing == Facing::North
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_5_occupied == false
+        {
+            return 2158;
+        }
+        if self.r#slot_3_occupied == false
+            && self.r#slot_2_occupied == false
+            && self.r#facing == Facing::North
+            && self.r#slot_1_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_5_occupied == true
+        {
+            return 2157;
+        }
+        if self.r#slot_3_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#facing == Facing::North
+            && self.r#slot_1_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#slot_2_occupied == false
+        {
+            return 2155;
+        }
+        if self.r#facing == Facing::North
+            && self.r#slot_1_occupied == false
+            && self.r#slot_5_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == true
+        {
+            return 2200;
+        }
+        if self.r#slot_5_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#facing == Facing::West
+            && self.r#slot_2_occupied == false
+            && self.r#slot_1_occupied == true
+            && self.r#slot_0_occupied == false
+            && self.r#slot_3_occupied == false
+        {
+            return 2317;
+        }
+        if self.r#slot_3_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#facing == Facing::West
+            && self.r#slot_0_occupied == false
+        {
+            return 2327;
+        }
+        if self.r#slot_4_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#slot_1_occupied == false
+            && self.r#facing == Facing::East
+            && self.r#slot_0_occupied == true
+        {
+            return 2363;
+        }
+        if self.r#slot_3_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#facing == Facing::North
+            && self.r#slot_0_occupied == false
+        {
+            return 2177;
+        }
+        if self.r#slot_4_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#facing == Facing::North
+            && self.r#slot_0_occupied == false
+            && self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == false
+        {
+            return 2197;
+        }
+        if self.r#slot_4_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#facing == Facing::South
+            && self.r#slot_1_occupied == true
+            && self.r#slot_5_occupied == true
+        {
+            return 2211;
+        }
+        if self.r#slot_5_occupied == false
+            && self.r#slot_1_occupied == true
+            && self.r#slot_0_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#facing == Facing::North
+            && self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == false
+        {
+            return 2154;
+        }
+        if self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#slot_0_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#facing == Facing::West
+        {
+            return 2311;
+        }
+        if self.r#slot_4_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#slot_5_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#facing == Facing::South
+            && self.r#slot_2_occupied == true
+        {
+            return 2214;
+        }
+        if self.r#slot_2_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#facing == Facing::North
+            && self.r#slot_1_occupied == true
+        {
+            return 2185;
+        }
+        if self.r#slot_0_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#slot_5_occupied == false
+            && self.r#slot_2_occupied == false
+            && self.r#facing == Facing::West
+            && self.r#slot_1_occupied == true
+        {
+            return 2286;
+        }
+        if self.r#slot_0_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#slot_2_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#facing == Facing::West
+            && self.r#slot_5_occupied == true
+        {
+            return 2277;
+        }
+        if self.r#facing == Facing::West
+            && self.r#slot_5_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#slot_1_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == true
+        {
+            return 2313;
+        }
+        if self.r#facing == Facing::East
+            && self.r#slot_4_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#slot_0_occupied == true
+        {
+            return 2337;
+        }
+        if self.r#slot_5_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#slot_1_occupied == true
+            && self.r#facing == Facing::North
+            && self.r#slot_2_occupied == false
+        {
+            return 2189;
+        }
+        if self.r#facing == Facing::North
+            && self.r#slot_2_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#slot_1_occupied == false
+        {
+            return 2204;
+        }
+        if self.r#slot_4_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#facing == Facing::South
+        {
+            return 2225;
+        }
+        if self.r#slot_5_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#slot_2_occupied == true
+            && self.r#facing == Facing::South
+            && self.r#slot_1_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#slot_4_occupied == true
+        {
+            return 2260;
+        }
+        if self.r#slot_4_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#facing == Facing::East
+            && self.r#slot_2_occupied == true
+            && self.r#slot_5_occupied == false
+            && self.r#slot_1_occupied == true
+        {
+            return 2338;
+        }
+        if self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#slot_1_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#facing == Facing::South
+        {
+            return 2220;
+        }
+        if self.r#slot_2_occupied == false
+            && self.r#facing == Facing::South
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#slot_0_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#slot_3_occupied == false
+        {
+            return 2219;
+        }
+        if self.r#facing == Facing::East
+            && self.r#slot_0_occupied == false
+            && self.r#slot_1_occupied == false
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == true
+        {
+            return 2395;
+        }
+        if self.r#slot_0_occupied == false
+            && self.r#slot_1_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#facing == Facing::North
+            && self.r#slot_5_occupied == false
+        {
+            return 2190;
+        }
+        if self.r#slot_3_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#slot_0_occupied == false
+            && self.r#slot_1_occupied == true
+            && self.r#facing == Facing::North
+            && self.r#slot_2_occupied == true
+        {
+            return 2179;
+        }
+        if self.r#slot_5_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#facing == Facing::South
+            && self.r#slot_0_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#slot_4_occupied == false
+        {
+            return 2233;
+        }
+        if self.r#slot_0_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#facing == Facing::South
+            && self.r#slot_5_occupied == false
+        {
+            return 2226;
+        }
+        if self.r#slot_0_occupied == false
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#facing == Facing::East
+            && self.r#slot_4_occupied == true
+            && self.r#slot_1_occupied == true
+        {
+            return 2375;
+        }
+        if self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#slot_1_occupied == false
+            && self.r#facing == Facing::North
+            && self.r#slot_0_occupied == true
+            && self.r#slot_2_occupied == true
+        {
+            return 2163;
+        }
+        if self.r#slot_2_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#facing == Facing::South
+            && self.r#slot_5_occupied == true
+            && self.r#slot_4_occupied == false
+        {
+            return 2265;
+        }
+        if self.r#slot_0_occupied == false
+            && self.r#slot_2_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#facing == Facing::North
+            && self.r#slot_1_occupied == true
+        {
+            return 2187;
+        }
+        if self.r#slot_1_occupied == false
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#facing == Facing::North
+            && self.r#slot_0_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#slot_5_occupied == false
+        {
+            return 2206;
+        }
+        if self.r#facing == Facing::South
+            && self.r#slot_0_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#slot_1_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#slot_5_occupied == false
+        {
+            return 2238;
+        }
+        if self.r#slot_5_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#slot_2_occupied == false
+            && self.r#slot_1_occupied == false
+            && self.r#facing == Facing::South
+            && self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == false
+        {
+            return 2266;
+        }
+        if self.r#slot_2_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#facing == Facing::West
+            && self.r#slot_0_occupied == true
+            && self.r#slot_1_occupied == true
+        {
+            return 2280;
+        }
+        if self.r#slot_5_occupied == false
+            && self.r#slot_2_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#facing == Facing::East
+            && self.r#slot_4_occupied == false
+            && self.r#slot_3_occupied == true
+        {
+            return 2346;
+        }
+        if self.r#facing == Facing::South
+            && self.r#slot_2_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_3_occupied == false
+        {
+            return 2237;
+        }
+        if self.r#slot_0_occupied == false
+            && self.r#slot_1_occupied == true
+            && self.r#facing == Facing::East
+            && self.r#slot_3_occupied == false
+            && self.r#slot_2_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == true
+        {
+            return 2379;
+        }
+        if self.r#facing == Facing::East
+            && self.r#slot_1_occupied == false
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_5_occupied == false
+        {
+            return 2362;
+        }
+        if self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#facing == Facing::South
+            && self.r#slot_5_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#slot_1_occupied == false
+        {
+            return 2270;
+        }
+        if self.r#slot_4_occupied == false
+            && self.r#facing == Facing::North
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_0_occupied == false
+            && self.r#slot_1_occupied == true
+            && self.r#slot_5_occupied == false
+        {
+            return 2186;
+        }
+        if self.r#facing == Facing::North
+            && self.r#slot_0_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#slot_5_occupied == false
+        {
+            return 2152;
+        }
+        if self.r#slot_1_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#facing == Facing::West
+            && self.r#slot_5_occupied == false
+            && self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#slot_0_occupied == false
+        {
+            return 2322;
+        }
+        if self.r#facing == Facing::South
+            && self.r#slot_0_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#slot_5_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_2_occupied == false
+        {
+            return 2234;
+        }
+        if self.r#facing == Facing::South
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#slot_1_occupied == false
+        {
+            return 2264;
+        }
+        if self.r#slot_0_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == false
+            && self.r#slot_1_occupied == false
+            && self.r#facing == Facing::East
+            && self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == true
+        {
+            return 2352;
+        }
+        if self.r#slot_0_occupied == false
+            && self.r#slot_1_occupied == false
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#facing == Facing::North
+            && self.r#slot_5_occupied == true
+        {
+            return 2203;
+        }
+        if self.r#slot_1_occupied == false
+            && self.r#slot_2_occupied == false
+            && self.r#slot_5_occupied == false
+            && self.r#facing == Facing::North
+            && self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_0_occupied == true
+        {
+            return 2168;
+        }
+        if self.r#slot_5_occupied == false
+            && self.r#slot_2_occupied == false
+            && self.r#slot_1_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#slot_0_occupied == false
+            && self.r#facing == Facing::South
+            && self.r#slot_4_occupied == false
+        {
+            return 2250;
+        }
+        if self.r#facing == Facing::West
+            && self.r#slot_0_occupied == false
+            && self.r#slot_1_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#slot_5_occupied == false
+        {
+            return 2304;
+        }
+        if self.r#slot_4_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#slot_5_occupied == false
+            && self.r#facing == Facing::East
+            && self.r#slot_2_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_1_occupied == false
+        {
+            return 2364;
+        }
+        if self.r#slot_0_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#facing == Facing::East
+            && self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == true
+        {
+            return 2355;
+        }
+        if self.r#slot_0_occupied == false
+            && self.r#slot_1_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#facing == Facing::North
+        {
+            return 2199;
+        }
+        if self.r#slot_1_occupied == false
+            && self.r#slot_2_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#facing == Facing::West
+            && self.r#slot_0_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#slot_5_occupied == true
+        {
+            return 2325;
+        }
+        if self.r#slot_4_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#slot_0_occupied == false
+            && self.r#facing == Facing::North
+            && self.r#slot_5_occupied == false
+        {
+            return 2176;
+        }
+        if self.r#slot_5_occupied == false
+            && self.r#slot_2_occupied == true
+            && self.r#slot_0_occupied == false
+            && self.r#facing == Facing::West
+            && self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_1_occupied == false
+        {
+            return 2320;
+        }
+        if self.r#slot_3_occupied == false
+            && self.r#slot_2_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#slot_0_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#facing == Facing::North
+            && self.r#slot_4_occupied == true
+        {
+            return 2171;
+        }
+        if self.r#facing == Facing::East
+            && self.r#slot_0_occupied == false
+            && self.r#slot_1_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#slot_4_occupied == true
+        {
+            return 2371;
+        }
+        if self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#facing == Facing::South
+        {
+            return 2224;
+        }
+        if self.r#slot_2_occupied == false
+            && self.r#facing == Facing::West
+            && self.r#slot_0_occupied == false
+            && self.r#slot_1_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#slot_3_occupied == false
+        {
+            return 2333;
+        }
+        if self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#facing == Facing::West
+            && self.r#slot_2_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#slot_3_occupied == false
+        {
+            return 2323;
+        }
+        if self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#facing == Facing::South
+            && self.r#slot_5_occupied == false
+            && self.r#slot_1_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#slot_0_occupied == false
+        {
+            return 2242;
+        }
+        if self.r#slot_3_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_2_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#facing == Facing::South
+            && self.r#slot_0_occupied == true
+        {
+            return 2227;
+        }
+        if self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#slot_0_occupied == true
+            && self.r#facing == Facing::North
+        {
+            return 2143;
+        }
+        if self.r#slot_5_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#slot_1_occupied == true
+            && self.r#facing == Facing::East
+        {
+            return 2373;
+        }
+        if self.r#slot_4_occupied == false
+            && self.r#facing == Facing::North
+            && self.r#slot_1_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#slot_0_occupied == true
+            && self.r#slot_3_occupied == false
+        {
+            return 2165;
+        }
+        if self.r#slot_1_occupied == false
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#facing == Facing::North
+            && self.r#slot_0_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#slot_5_occupied == false
+        {
+            return 2202;
+        }
+        if self.r#slot_5_occupied == true
+            && self.r#facing == Facing::East
+            && self.r#slot_1_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#slot_4_occupied == false
+        {
+            return 2365;
+        }
+        if self.r#slot_4_occupied == false
+            && self.r#slot_1_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#slot_0_occupied == false
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#facing == Facing::East
+        {
+            return 2377;
+        }
+        if self.r#facing == Facing::East
+            && self.r#slot_4_occupied == true
+            && self.r#slot_0_occupied == false
+            && self.r#slot_5_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#slot_1_occupied == false
+            && self.r#slot_2_occupied == true
+        {
+            return 2388;
+        }
+        if self.r#slot_2_occupied == false
+            && self.r#facing == Facing::East
+            && self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#slot_0_occupied == true
+        {
+            return 2343;
+        }
+        if self.r#slot_5_occupied == false
+            && self.r#slot_2_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#facing == Facing::East
+            && self.r#slot_0_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == false
+        {
+            return 2370;
+        }
+        if self.r#facing == Facing::South
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#slot_4_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#slot_1_occupied == true
+            && self.r#slot_5_occupied == false
+        {
+            return 2254;
+        }
+        if self.r#slot_4_occupied == true
+            && self.r#slot_0_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#slot_1_occupied == false
+            && self.r#facing == Facing::South
+        {
+            return 2235;
+        }
+        if self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#facing == Facing::West
+            && self.r#slot_1_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_0_occupied == false
+        {
+            return 2309;
+        }
+        if self.r#facing == Facing::East
+            && self.r#slot_0_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#slot_1_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_5_occupied == true
+        {
+            return 2349;
+        }
+        if self.r#facing == Facing::West
+            && self.r#slot_1_occupied == false
+            && self.r#slot_0_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == false
+            && self.r#slot_2_occupied == false
+        {
+            return 2332;
+        }
+        if self.r#slot_3_occupied == false
+            && self.r#slot_4_occupied == true
+            && self.r#slot_0_occupied == false
+            && self.r#slot_5_occupied == false
+            && self.r#facing == Facing::North
+            && self.r#slot_2_occupied == false
+            && self.r#slot_1_occupied == true
+        {
+            return 2188;
+        }
+        if self.r#slot_5_occupied == false
+            && self.r#slot_3_occupied == false
+            && self.r#slot_1_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#facing == Facing::East
+            && self.r#slot_0_occupied == true
+            && self.r#slot_4_occupied == false
+        {
+            return 2342;
+        }
+        if self.r#slot_0_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#slot_5_occupied == false
+            && self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#facing == Facing::West
+            && self.r#slot_1_occupied == false
+        {
+            return 2292;
+        }
+        if self.r#slot_3_occupied == false
+            && self.r#slot_5_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#facing == Facing::South
+            && self.r#slot_4_occupied == false
+            && self.r#slot_2_occupied == true
+        {
+            return 2229;
+        }
+        if self.r#facing == Facing::West
+            && self.r#slot_2_occupied == true
+            && self.r#slot_3_occupied == true
+            && self.r#slot_1_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_4_occupied == false
+            && self.r#slot_5_occupied == false
+        {
+            return 2290;
+        }
+        if self.r#slot_5_occupied == false
+            && self.r#facing == Facing::East
+            && self.r#slot_0_occupied == true
+            && self.r#slot_1_occupied == true
+            && self.r#slot_2_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_4_occupied == true
+        {
+            return 2344;
+        }
+        if self.r#slot_0_occupied == false
+            && self.r#facing == Facing::West
+            && self.r#slot_4_occupied == true
+            && self.r#slot_3_occupied == false
+            && self.r#slot_1_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#slot_5_occupied == true
+        {
+            return 2307;
+        }
+        if self.r#slot_1_occupied == true
+            && self.r#facing == Facing::South
+            && self.r#slot_0_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_5_occupied == true
+            && self.r#slot_2_occupied == true
+            && self.r#slot_4_occupied == true
+        {
+            return 2239;
+        }
+        if self.r#slot_4_occupied == false
+            && self.r#facing == Facing::East
+            && self.r#slot_2_occupied == false
+            && self.r#slot_5_occupied == false
+            && self.r#slot_3_occupied == true
+            && self.r#slot_0_occupied == false
+            && self.r#slot_1_occupied == true
+        {
+            return 2378;
+        }
+        if self.r#slot_3_occupied == false
+            && self.r#slot_0_occupied == true
+            && self.r#slot_5_occupied == false
+            && self.r#slot_1_occupied == true
+            && self.r#slot_4_occupied == true
+            && self.r#facing == Facing::East
+            && self.r#slot_2_occupied == true
+        {
+            return 2340;
+        }
         panic!("Invalid block state")
     }
 
@@ -3101,4 +5404,3 @@ impl BlockState for ChiseledBookshelf {
         return None;
     }
 }
-

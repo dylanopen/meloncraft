@@ -6,13 +6,20 @@ pub struct Lantern {
     pub waterlogged: bool,
 }
 
-
 impl BlockState for Lantern {
     fn to_id(&self) -> i32 {
-        if self.r#hanging == false && self.r#waterlogged == false { return 20638; }
-        if self.r#hanging == true && self.r#waterlogged == false { return 20636; }
-        if self.r#waterlogged == true && self.r#hanging == false { return 20637; }
-        if self.r#waterlogged == true && self.r#hanging == true { return 20635; }
+        if self.r#hanging == false && self.r#waterlogged == false {
+            return 20638;
+        }
+        if self.r#hanging == true && self.r#waterlogged == false {
+            return 20636;
+        }
+        if self.r#waterlogged == true && self.r#hanging == false {
+            return 20637;
+        }
+        if self.r#waterlogged == true && self.r#hanging == true {
+            return 20635;
+        }
         panic!("Invalid block state")
     }
 
@@ -44,4 +51,3 @@ impl BlockState for Lantern {
         return None;
     }
 }
-

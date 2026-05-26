@@ -7,7 +7,6 @@ pub struct PistonHead {
     pub short: bool,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Type {
     Normal,
@@ -26,30 +25,78 @@ pub enum Facing {
 
 impl BlockState for PistonHead {
     fn to_id(&self) -> i32 {
-        if self.r#short == false && self.r#type == Type::Normal && self.r#facing == Facing::Down { return 2091; }
-        if self.r#short == true && self.r#type == Type::Sticky && self.r#facing == Facing::Down { return 2090; }
-        if self.r#type == Type::Sticky && self.r#short == false && self.r#facing == Facing::East { return 2076; }
-        if self.r#type == Type::Sticky && self.r#facing == Facing::West && self.r#short == true { return 2082; }
-        if self.r#facing == Facing::West && self.r#type == Type::Sticky && self.r#short == false { return 2084; }
-        if self.r#type == Type::Normal && self.r#facing == Facing::Up && self.r#short == true { return 2085; }
-        if self.r#short == false && self.r#type == Type::Sticky && self.r#facing == Facing::Up { return 2088; }
-        if self.r#facing == Facing::North && self.r#type == Type::Sticky && self.r#short == false { return 2072; }
-        if self.r#facing == Facing::South && self.r#short == true && self.r#type == Type::Normal { return 2077; }
-        if self.r#facing == Facing::South && self.r#type == Type::Normal && self.r#short == false { return 2079; }
-        if self.r#facing == Facing::Up && self.r#short == false && self.r#type == Type::Normal { return 2087; }
-        if self.r#short == true && self.r#type == Type::Sticky && self.r#facing == Facing::Up { return 2086; }
-        if self.r#type == Type::Normal && self.r#facing == Facing::North && self.r#short == false { return 2071; }
-        if self.r#short == false && self.r#facing == Facing::East && self.r#type == Type::Normal { return 2075; }
-        if self.r#facing == Facing::North && self.r#short == true && self.r#type == Type::Sticky { return 2070; }
-        if self.r#short == true && self.r#facing == Facing::West && self.r#type == Type::Normal { return 2081; }
-        if self.r#short == true && self.r#type == Type::Normal && self.r#facing == Facing::Down { return 2089; }
-        if self.r#facing == Facing::East && self.r#short == true && self.r#type == Type::Normal { return 2073; }
-        if self.r#type == Type::Sticky && self.r#facing == Facing::Down && self.r#short == false { return 2092; }
-        if self.r#facing == Facing::North && self.r#type == Type::Normal && self.r#short == true { return 2069; }
-        if self.r#short == false && self.r#type == Type::Sticky && self.r#facing == Facing::South { return 2080; }
-        if self.r#facing == Facing::East && self.r#type == Type::Sticky && self.r#short == true { return 2074; }
-        if self.r#type == Type::Normal && self.r#facing == Facing::West && self.r#short == false { return 2083; }
-        if self.r#type == Type::Sticky && self.r#short == true && self.r#facing == Facing::South { return 2078; }
+        if self.r#short == false && self.r#type == Type::Normal && self.r#facing == Facing::Down {
+            return 2091;
+        }
+        if self.r#short == true && self.r#type == Type::Sticky && self.r#facing == Facing::Down {
+            return 2090;
+        }
+        if self.r#type == Type::Sticky && self.r#short == false && self.r#facing == Facing::East {
+            return 2076;
+        }
+        if self.r#type == Type::Sticky && self.r#facing == Facing::West && self.r#short == true {
+            return 2082;
+        }
+        if self.r#facing == Facing::West && self.r#type == Type::Sticky && self.r#short == false {
+            return 2084;
+        }
+        if self.r#type == Type::Normal && self.r#facing == Facing::Up && self.r#short == true {
+            return 2085;
+        }
+        if self.r#short == false && self.r#type == Type::Sticky && self.r#facing == Facing::Up {
+            return 2088;
+        }
+        if self.r#facing == Facing::North && self.r#type == Type::Sticky && self.r#short == false {
+            return 2072;
+        }
+        if self.r#facing == Facing::South && self.r#short == true && self.r#type == Type::Normal {
+            return 2077;
+        }
+        if self.r#facing == Facing::South && self.r#type == Type::Normal && self.r#short == false {
+            return 2079;
+        }
+        if self.r#facing == Facing::Up && self.r#short == false && self.r#type == Type::Normal {
+            return 2087;
+        }
+        if self.r#short == true && self.r#type == Type::Sticky && self.r#facing == Facing::Up {
+            return 2086;
+        }
+        if self.r#type == Type::Normal && self.r#facing == Facing::North && self.r#short == false {
+            return 2071;
+        }
+        if self.r#short == false && self.r#facing == Facing::East && self.r#type == Type::Normal {
+            return 2075;
+        }
+        if self.r#facing == Facing::North && self.r#short == true && self.r#type == Type::Sticky {
+            return 2070;
+        }
+        if self.r#short == true && self.r#facing == Facing::West && self.r#type == Type::Normal {
+            return 2081;
+        }
+        if self.r#short == true && self.r#type == Type::Normal && self.r#facing == Facing::Down {
+            return 2089;
+        }
+        if self.r#facing == Facing::East && self.r#short == true && self.r#type == Type::Normal {
+            return 2073;
+        }
+        if self.r#type == Type::Sticky && self.r#facing == Facing::Down && self.r#short == false {
+            return 2092;
+        }
+        if self.r#facing == Facing::North && self.r#type == Type::Normal && self.r#short == true {
+            return 2069;
+        }
+        if self.r#short == false && self.r#type == Type::Sticky && self.r#facing == Facing::South {
+            return 2080;
+        }
+        if self.r#facing == Facing::East && self.r#type == Type::Sticky && self.r#short == true {
+            return 2074;
+        }
+        if self.r#type == Type::Normal && self.r#facing == Facing::West && self.r#short == false {
+            return 2083;
+        }
+        if self.r#type == Type::Sticky && self.r#short == true && self.r#facing == Facing::South {
+            return 2078;
+        }
         panic!("Invalid block state")
     }
 
@@ -225,4 +272,3 @@ impl BlockState for PistonHead {
         return None;
     }
 }
-

@@ -6,7 +6,6 @@ pub struct EnderChest {
     pub waterlogged: bool,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -17,14 +16,30 @@ pub enum Facing {
 
 impl BlockState for EnderChest {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::South && self.r#waterlogged == true { return 9376; }
-        if self.r#facing == Facing::West && self.r#waterlogged == true { return 9378; }
-        if self.r#facing == Facing::North && self.r#waterlogged == true { return 9374; }
-        if self.r#facing == Facing::East && self.r#waterlogged == false { return 9381; }
-        if self.r#facing == Facing::East && self.r#waterlogged == true { return 9380; }
-        if self.r#waterlogged == false && self.r#facing == Facing::South { return 9377; }
-        if self.r#waterlogged == false && self.r#facing == Facing::West { return 9379; }
-        if self.r#waterlogged == false && self.r#facing == Facing::North { return 9375; }
+        if self.r#facing == Facing::South && self.r#waterlogged == true {
+            return 9376;
+        }
+        if self.r#facing == Facing::West && self.r#waterlogged == true {
+            return 9378;
+        }
+        if self.r#facing == Facing::North && self.r#waterlogged == true {
+            return 9374;
+        }
+        if self.r#facing == Facing::East && self.r#waterlogged == false {
+            return 9381;
+        }
+        if self.r#facing == Facing::East && self.r#waterlogged == true {
+            return 9380;
+        }
+        if self.r#waterlogged == false && self.r#facing == Facing::South {
+            return 9377;
+        }
+        if self.r#waterlogged == false && self.r#facing == Facing::West {
+            return 9379;
+        }
+        if self.r#waterlogged == false && self.r#facing == Facing::North {
+            return 9375;
+        }
         panic!("Invalid block state")
     }
 
@@ -80,4 +95,3 @@ impl BlockState for EnderChest {
         return None;
     }
 }
-

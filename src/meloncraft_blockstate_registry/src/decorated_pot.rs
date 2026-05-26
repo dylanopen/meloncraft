@@ -7,7 +7,6 @@ pub struct DecoratedPot {
     pub r#facing: Facing,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -18,22 +17,56 @@ pub enum Facing {
 
 impl BlockState for DecoratedPot {
     fn to_id(&self) -> i32 {
-        if self.r#waterlogged == false && self.r#facing == Facing::East && self.r#cracked == true { return 29398; }
-        if self.r#cracked == true && self.r#facing == Facing::South && self.r#waterlogged == false { return 29394; }
-        if self.r#facing == Facing::West && self.r#cracked == true && self.r#waterlogged == false { return 29396; }
-        if self.r#cracked == false && self.r#facing == Facing::West && self.r#waterlogged == false { return 29404; }
-        if self.r#cracked == false && self.r#waterlogged == false && self.r#facing == Facing::East { return 29406; }
-        if self.r#facing == Facing::South && self.r#waterlogged == true && self.r#cracked == true { return 29393; }
-        if self.r#cracked == false && self.r#waterlogged == true && self.r#facing == Facing::North { return 29399; }
-        if self.r#facing == Facing::West && self.r#cracked == false && self.r#waterlogged == true { return 29403; }
-        if self.r#facing == Facing::South && self.r#waterlogged == true && self.r#cracked == false { return 29401; }
-        if self.r#cracked == true && self.r#facing == Facing::North && self.r#waterlogged == false { return 29392; }
-        if self.r#waterlogged == true && self.r#cracked == true && self.r#facing == Facing::North { return 29391; }
-        if self.r#facing == Facing::West && self.r#cracked == true && self.r#waterlogged == true { return 29395; }
-        if self.r#waterlogged == false && self.r#cracked == false && self.r#facing == Facing::North { return 29400; }
-        if self.r#cracked == false && self.r#waterlogged == true && self.r#facing == Facing::East { return 29405; }
-        if self.r#waterlogged == false && self.r#cracked == false && self.r#facing == Facing::South { return 29402; }
-        if self.r#facing == Facing::East && self.r#waterlogged == true && self.r#cracked == true { return 29397; }
+        if self.r#waterlogged == false && self.r#facing == Facing::East && self.r#cracked == true {
+            return 29398;
+        }
+        if self.r#cracked == true && self.r#facing == Facing::South && self.r#waterlogged == false {
+            return 29394;
+        }
+        if self.r#facing == Facing::West && self.r#cracked == true && self.r#waterlogged == false {
+            return 29396;
+        }
+        if self.r#cracked == false && self.r#facing == Facing::West && self.r#waterlogged == false {
+            return 29404;
+        }
+        if self.r#cracked == false && self.r#waterlogged == false && self.r#facing == Facing::East {
+            return 29406;
+        }
+        if self.r#facing == Facing::South && self.r#waterlogged == true && self.r#cracked == true {
+            return 29393;
+        }
+        if self.r#cracked == false && self.r#waterlogged == true && self.r#facing == Facing::North {
+            return 29399;
+        }
+        if self.r#facing == Facing::West && self.r#cracked == false && self.r#waterlogged == true {
+            return 29403;
+        }
+        if self.r#facing == Facing::South && self.r#waterlogged == true && self.r#cracked == false {
+            return 29401;
+        }
+        if self.r#cracked == true && self.r#facing == Facing::North && self.r#waterlogged == false {
+            return 29392;
+        }
+        if self.r#waterlogged == true && self.r#cracked == true && self.r#facing == Facing::North {
+            return 29391;
+        }
+        if self.r#facing == Facing::West && self.r#cracked == true && self.r#waterlogged == true {
+            return 29395;
+        }
+        if self.r#waterlogged == false && self.r#cracked == false && self.r#facing == Facing::North
+        {
+            return 29400;
+        }
+        if self.r#cracked == false && self.r#waterlogged == true && self.r#facing == Facing::East {
+            return 29405;
+        }
+        if self.r#waterlogged == false && self.r#cracked == false && self.r#facing == Facing::South
+        {
+            return 29402;
+        }
+        if self.r#facing == Facing::East && self.r#waterlogged == true && self.r#cracked == true {
+            return 29397;
+        }
         panic!("Invalid block state")
     }
 
@@ -153,4 +186,3 @@ impl BlockState for DecoratedPot {
         return None;
     }
 }
-

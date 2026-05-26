@@ -7,7 +7,6 @@ pub struct WaxedCopperGolemStatue {
     pub r#facing: Facing,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum CopperGolemPose {
     Standing,
@@ -26,38 +25,198 @@ pub enum Facing {
 
 impl BlockState for WaxedCopperGolemStatue {
     fn to_id(&self) -> i32 {
-        if self.r#waterlogged == true && self.r#facing == Facing::South && self.r#copper_golem_pose == CopperGolemPose::Standing { return 27215; }
-        if self.r#facing == Facing::East && self.r#copper_golem_pose == CopperGolemPose::Sitting && self.r#waterlogged == true { return 27227; }
-        if self.r#facing == Facing::West && self.r#waterlogged == false && self.r#copper_golem_pose == CopperGolemPose::Sitting { return 27226; }
-        if self.r#copper_golem_pose == CopperGolemPose::Sitting && self.r#facing == Facing::East && self.r#waterlogged == false { return 27228; }
-        if self.r#facing == Facing::East && self.r#waterlogged == false && self.r#copper_golem_pose == CopperGolemPose::Running { return 27236; }
-        if self.r#waterlogged == false && self.r#copper_golem_pose == CopperGolemPose::Standing && self.r#facing == Facing::West { return 27218; }
-        if self.r#facing == Facing::North && self.r#waterlogged == true && self.r#copper_golem_pose == CopperGolemPose::Sitting { return 27221; }
-        if self.r#copper_golem_pose == CopperGolemPose::Standing && self.r#facing == Facing::East && self.r#waterlogged == true { return 27219; }
-        if self.r#waterlogged == true && self.r#copper_golem_pose == CopperGolemPose::Sitting && self.r#facing == Facing::West { return 27225; }
-        if self.r#waterlogged == false && self.r#facing == Facing::North && self.r#copper_golem_pose == CopperGolemPose::Running { return 27230; }
-        if self.r#waterlogged == true && self.r#copper_golem_pose == CopperGolemPose::Running && self.r#facing == Facing::East { return 27235; }
-        if self.r#copper_golem_pose == CopperGolemPose::Sitting && self.r#waterlogged == false && self.r#facing == Facing::South { return 27224; }
-        if self.r#facing == Facing::North && self.r#waterlogged == false && self.r#copper_golem_pose == CopperGolemPose::Sitting { return 27222; }
-        if self.r#copper_golem_pose == CopperGolemPose::Star && self.r#waterlogged == true && self.r#facing == Facing::North { return 27237; }
-        if self.r#facing == Facing::South && self.r#copper_golem_pose == CopperGolemPose::Star && self.r#waterlogged == false { return 27240; }
-        if self.r#facing == Facing::West && self.r#waterlogged == false && self.r#copper_golem_pose == CopperGolemPose::Running { return 27234; }
-        if self.r#copper_golem_pose == CopperGolemPose::Star && self.r#facing == Facing::North && self.r#waterlogged == false { return 27238; }
-        if self.r#facing == Facing::West && self.r#waterlogged == true && self.r#copper_golem_pose == CopperGolemPose::Star { return 27241; }
-        if self.r#facing == Facing::West && self.r#waterlogged == false && self.r#copper_golem_pose == CopperGolemPose::Star { return 27242; }
-        if self.r#waterlogged == false && self.r#copper_golem_pose == CopperGolemPose::Running && self.r#facing == Facing::South { return 27232; }
-        if self.r#facing == Facing::East && self.r#copper_golem_pose == CopperGolemPose::Star && self.r#waterlogged == true { return 27243; }
-        if self.r#facing == Facing::North && self.r#waterlogged == true && self.r#copper_golem_pose == CopperGolemPose::Running { return 27229; }
-        if self.r#facing == Facing::South && self.r#waterlogged == true && self.r#copper_golem_pose == CopperGolemPose::Star { return 27239; }
-        if self.r#facing == Facing::North && self.r#waterlogged == false && self.r#copper_golem_pose == CopperGolemPose::Standing { return 27214; }
-        if self.r#facing == Facing::South && self.r#waterlogged == true && self.r#copper_golem_pose == CopperGolemPose::Sitting { return 27223; }
-        if self.r#waterlogged == false && self.r#copper_golem_pose == CopperGolemPose::Standing && self.r#facing == Facing::South { return 27216; }
-        if self.r#facing == Facing::West && self.r#waterlogged == true && self.r#copper_golem_pose == CopperGolemPose::Standing { return 27217; }
-        if self.r#copper_golem_pose == CopperGolemPose::Running && self.r#waterlogged == true && self.r#facing == Facing::South { return 27231; }
-        if self.r#copper_golem_pose == CopperGolemPose::Running && self.r#waterlogged == true && self.r#facing == Facing::West { return 27233; }
-        if self.r#facing == Facing::North && self.r#copper_golem_pose == CopperGolemPose::Standing && self.r#waterlogged == true { return 27213; }
-        if self.r#waterlogged == false && self.r#copper_golem_pose == CopperGolemPose::Standing && self.r#facing == Facing::East { return 27220; }
-        if self.r#waterlogged == false && self.r#copper_golem_pose == CopperGolemPose::Star && self.r#facing == Facing::East { return 27244; }
+        if self.r#waterlogged == true
+            && self.r#facing == Facing::South
+            && self.r#copper_golem_pose == CopperGolemPose::Standing
+        {
+            return 27215;
+        }
+        if self.r#facing == Facing::East
+            && self.r#copper_golem_pose == CopperGolemPose::Sitting
+            && self.r#waterlogged == true
+        {
+            return 27227;
+        }
+        if self.r#facing == Facing::West
+            && self.r#waterlogged == false
+            && self.r#copper_golem_pose == CopperGolemPose::Sitting
+        {
+            return 27226;
+        }
+        if self.r#copper_golem_pose == CopperGolemPose::Sitting
+            && self.r#facing == Facing::East
+            && self.r#waterlogged == false
+        {
+            return 27228;
+        }
+        if self.r#facing == Facing::East
+            && self.r#waterlogged == false
+            && self.r#copper_golem_pose == CopperGolemPose::Running
+        {
+            return 27236;
+        }
+        if self.r#waterlogged == false
+            && self.r#copper_golem_pose == CopperGolemPose::Standing
+            && self.r#facing == Facing::West
+        {
+            return 27218;
+        }
+        if self.r#facing == Facing::North
+            && self.r#waterlogged == true
+            && self.r#copper_golem_pose == CopperGolemPose::Sitting
+        {
+            return 27221;
+        }
+        if self.r#copper_golem_pose == CopperGolemPose::Standing
+            && self.r#facing == Facing::East
+            && self.r#waterlogged == true
+        {
+            return 27219;
+        }
+        if self.r#waterlogged == true
+            && self.r#copper_golem_pose == CopperGolemPose::Sitting
+            && self.r#facing == Facing::West
+        {
+            return 27225;
+        }
+        if self.r#waterlogged == false
+            && self.r#facing == Facing::North
+            && self.r#copper_golem_pose == CopperGolemPose::Running
+        {
+            return 27230;
+        }
+        if self.r#waterlogged == true
+            && self.r#copper_golem_pose == CopperGolemPose::Running
+            && self.r#facing == Facing::East
+        {
+            return 27235;
+        }
+        if self.r#copper_golem_pose == CopperGolemPose::Sitting
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::South
+        {
+            return 27224;
+        }
+        if self.r#facing == Facing::North
+            && self.r#waterlogged == false
+            && self.r#copper_golem_pose == CopperGolemPose::Sitting
+        {
+            return 27222;
+        }
+        if self.r#copper_golem_pose == CopperGolemPose::Star
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::North
+        {
+            return 27237;
+        }
+        if self.r#facing == Facing::South
+            && self.r#copper_golem_pose == CopperGolemPose::Star
+            && self.r#waterlogged == false
+        {
+            return 27240;
+        }
+        if self.r#facing == Facing::West
+            && self.r#waterlogged == false
+            && self.r#copper_golem_pose == CopperGolemPose::Running
+        {
+            return 27234;
+        }
+        if self.r#copper_golem_pose == CopperGolemPose::Star
+            && self.r#facing == Facing::North
+            && self.r#waterlogged == false
+        {
+            return 27238;
+        }
+        if self.r#facing == Facing::West
+            && self.r#waterlogged == true
+            && self.r#copper_golem_pose == CopperGolemPose::Star
+        {
+            return 27241;
+        }
+        if self.r#facing == Facing::West
+            && self.r#waterlogged == false
+            && self.r#copper_golem_pose == CopperGolemPose::Star
+        {
+            return 27242;
+        }
+        if self.r#waterlogged == false
+            && self.r#copper_golem_pose == CopperGolemPose::Running
+            && self.r#facing == Facing::South
+        {
+            return 27232;
+        }
+        if self.r#facing == Facing::East
+            && self.r#copper_golem_pose == CopperGolemPose::Star
+            && self.r#waterlogged == true
+        {
+            return 27243;
+        }
+        if self.r#facing == Facing::North
+            && self.r#waterlogged == true
+            && self.r#copper_golem_pose == CopperGolemPose::Running
+        {
+            return 27229;
+        }
+        if self.r#facing == Facing::South
+            && self.r#waterlogged == true
+            && self.r#copper_golem_pose == CopperGolemPose::Star
+        {
+            return 27239;
+        }
+        if self.r#facing == Facing::North
+            && self.r#waterlogged == false
+            && self.r#copper_golem_pose == CopperGolemPose::Standing
+        {
+            return 27214;
+        }
+        if self.r#facing == Facing::South
+            && self.r#waterlogged == true
+            && self.r#copper_golem_pose == CopperGolemPose::Sitting
+        {
+            return 27223;
+        }
+        if self.r#waterlogged == false
+            && self.r#copper_golem_pose == CopperGolemPose::Standing
+            && self.r#facing == Facing::South
+        {
+            return 27216;
+        }
+        if self.r#facing == Facing::West
+            && self.r#waterlogged == true
+            && self.r#copper_golem_pose == CopperGolemPose::Standing
+        {
+            return 27217;
+        }
+        if self.r#copper_golem_pose == CopperGolemPose::Running
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::South
+        {
+            return 27231;
+        }
+        if self.r#copper_golem_pose == CopperGolemPose::Running
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::West
+        {
+            return 27233;
+        }
+        if self.r#facing == Facing::North
+            && self.r#copper_golem_pose == CopperGolemPose::Standing
+            && self.r#waterlogged == true
+        {
+            return 27213;
+        }
+        if self.r#waterlogged == false
+            && self.r#copper_golem_pose == CopperGolemPose::Standing
+            && self.r#facing == Facing::East
+        {
+            return 27220;
+        }
+        if self.r#waterlogged == false
+            && self.r#copper_golem_pose == CopperGolemPose::Star
+            && self.r#facing == Facing::East
+        {
+            return 27244;
+        }
         panic!("Invalid block state")
     }
 
@@ -289,4 +448,3 @@ impl BlockState for WaxedCopperGolemStatue {
         return None;
     }
 }
-

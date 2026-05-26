@@ -5,7 +5,6 @@ pub struct PurpleShulkerBox {
     pub r#facing: Facing,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -18,12 +17,24 @@ pub enum Facing {
 
 impl BlockState for PurpleShulkerBox {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::West { return 14731; }
-        if self.r#facing == Facing::North { return 14728; }
-        if self.r#facing == Facing::Up { return 14732; }
-        if self.r#facing == Facing::East { return 14729; }
-        if self.r#facing == Facing::South { return 14730; }
-        if self.r#facing == Facing::Down { return 14733; }
+        if self.r#facing == Facing::West {
+            return 14731;
+        }
+        if self.r#facing == Facing::North {
+            return 14728;
+        }
+        if self.r#facing == Facing::Up {
+            return 14732;
+        }
+        if self.r#facing == Facing::East {
+            return 14729;
+        }
+        if self.r#facing == Facing::South {
+            return 14730;
+        }
+        if self.r#facing == Facing::Down {
+            return 14733;
+        }
         panic!("Invalid block state")
     }
 
@@ -61,4 +72,3 @@ impl BlockState for PurpleShulkerBox {
         return None;
     }
 }
-

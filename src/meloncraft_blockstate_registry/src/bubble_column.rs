@@ -5,26 +5,24 @@ pub struct BubbleColumn {
     pub drag: bool,
 }
 
-
 impl BlockState for BubbleColumn {
     fn to_id(&self) -> i32 {
-        if self.r#drag == true { return 15092; }
-        if self.r#drag == false { return 15093; }
+        if self.r#drag == true {
+            return 15092;
+        }
+        if self.r#drag == false {
+            return 15093;
+        }
         panic!("Invalid block state")
     }
 
     fn from_id(state_id: i32) -> Option<Self> {
         if state_id == 15092 {
-            return Some(BubbleColumn {
-                r#drag: true,
-            });
+            return Some(BubbleColumn { r#drag: true });
         }
         if state_id == 15093 {
-            return Some(BubbleColumn {
-                r#drag: false,
-            });
+            return Some(BubbleColumn { r#drag: false });
         }
         return None;
     }
 }
-

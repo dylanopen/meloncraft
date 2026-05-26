@@ -8,7 +8,6 @@ pub struct CalibratedSculkSensor {
     pub r#sculk_sensor_phase: SculkSensorPhase,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -26,390 +25,2694 @@ pub enum SculkSensorPhase {
 
 impl BlockState for CalibratedSculkSensor {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::North && self.r#power == 2 && self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown { return 24601; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == false && self.r#facing == Facing::South && self.r#power == 12 { return 24755; }
-        if self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#facing == Facing::North && self.r#power == 0 { return 24587; }
-        if self.r#facing == Facing::West && self.r#power == 9 && self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24831; }
-        if self.r#facing == Facing::East && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == false && self.r#power == 1 { return 24883; }
-        if self.r#waterlogged == false && self.r#power == 7 && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#facing == Facing::North { return 24629; }
-        if self.r#power == 6 && self.r#waterlogged == false && self.r#facing == Facing::West && self.r#sculk_sensor_phase == SculkSensorPhase::Active { return 24815; }
-        if self.r#facing == Facing::West && self.r#power == 10 && self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24836; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 13 && self.r#waterlogged == true && self.r#facing == Facing::South { return 24762; }
-        if self.r#facing == Facing::East && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 6 && self.r#waterlogged == true { return 24912; }
-        if self.r#facing == Facing::South && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#power == 8 && self.r#waterlogged == true { return 24728; }
-        if self.r#power == 0 && self.r#facing == Facing::West && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == false { return 24781; }
-        if self.r#facing == Facing::North && self.r#waterlogged == true && self.r#power == 7 && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown { return 24630; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 6 && self.r#waterlogged == true && self.r#facing == Facing::West { return 24816; }
-        if self.r#power == 4 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == false && self.r#facing == Facing::South { return 24705; }
-        if self.r#facing == Facing::South && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == true && self.r#power == 1 { return 24688; }
-        if self.r#power == 12 && self.r#waterlogged == true && self.r#facing == Facing::South && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24752; }
-        if self.r#waterlogged == false && self.r#power == 7 && self.r#facing == Facing::South && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown { return 24727; }
-        if self.r#power == 12 && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#facing == Facing::South && self.r#waterlogged == false { return 24757; }
-        if self.r#power == 0 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#facing == Facing::East && self.r#waterlogged == false { return 24873; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#facing == Facing::East && self.r#waterlogged == true && self.r#power == 9 { return 24930; }
-        if self.r#facing == Facing::West && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 4 && self.r#waterlogged == true { return 24804; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == true && self.r#power == 13 && self.r#facing == Facing::North { return 24664; }
-        if self.r#facing == Facing::East && self.r#power == 10 && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == true { return 24934; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == true && self.r#power == 0 && self.r#facing == Facing::South { return 24680; }
-        if self.r#facing == Facing::South && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == true && self.r#power == 11 { return 24750; }
-        if self.r#facing == Facing::South && self.r#power == 15 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == false { return 24771; }
-        if self.r#power == 11 && self.r#facing == Facing::South && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == true { return 24748; }
-        if self.r#power == 11 && self.r#waterlogged == true && self.r#facing == Facing::West && self.r#sculk_sensor_phase == SculkSensorPhase::Active { return 24844; }
-        if self.r#waterlogged == true && self.r#facing == Facing::North && self.r#power == 11 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24650; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#facing == Facing::South && self.r#power == 9 && self.r#waterlogged == false { return 24739; }
-        if self.r#facing == Facing::North && self.r#power == 4 && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == false { return 24611; }
-        if self.r#waterlogged == true && self.r#power == 15 && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#facing == Facing::North { return 24676; }
-        if self.r#power == 10 && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#facing == Facing::South && self.r#waterlogged == false { return 24743; }
-        if self.r#power == 11 && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == true && self.r#facing == Facing::North { return 24654; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == true && self.r#facing == Facing::North && self.r#power == 2 { return 24600; }
-        if self.r#facing == Facing::South && self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#power == 15 { return 24770; }
-        if self.r#facing == Facing::North && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == false && self.r#power == 8 { return 24635; }
-        if self.r#facing == Facing::South && self.r#power == 5 && self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24710; }
-        if self.r#facing == Facing::West && self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#power == 0 { return 24777; }
-        if self.r#power == 13 && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == true && self.r#facing == Facing::South { return 24760; }
-        if self.r#waterlogged == false && self.r#facing == Facing::West && self.r#power == 12 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24849; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#power == 0 && self.r#facing == Facing::East && self.r#waterlogged == true { return 24874; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#facing == Facing::East && self.r#waterlogged == true && self.r#power == 3 { return 24890; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == false && self.r#facing == Facing::East && self.r#power == 7 { return 24915; }
-        if self.r#facing == Facing::East && self.r#power == 7 && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == true { return 24918; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#power == 14 && self.r#facing == Facing::North && self.r#waterlogged == false { return 24671; }
-        if self.r#waterlogged == false && self.r#power == 3 && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#facing == Facing::North { return 24605; }
-        if self.r#power == 6 && self.r#facing == Facing::North && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == true { return 24624; }
-        if self.r#facing == Facing::West && self.r#power == 7 && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == false { return 24821; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#power == 13 && self.r#waterlogged == false && self.r#facing == Facing::West { return 24855; }
-        if self.r#power == 0 && self.r#facing == Facing::West && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == false { return 24779; }
-        if self.r#waterlogged == true && self.r#facing == Facing::East && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 12 { return 24948; }
-        if self.r#facing == Facing::South && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 11 && self.r#waterlogged == false { return 24751; }
-        if self.r#waterlogged == true && self.r#facing == Facing::West && self.r#power == 2 && self.r#sculk_sensor_phase == SculkSensorPhase::Active { return 24790; }
-        if self.r#facing == Facing::East && self.r#power == 14 && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == false { return 24959; }
-        if self.r#power == 15 && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == false && self.r#facing == Facing::East { return 24965; }
-        if self.r#power == 10 && self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#facing == Facing::South { return 24745; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#facing == Facing::West && self.r#power == 4 && self.r#waterlogged == true { return 24800; }
-        if self.r#power == 8 && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == true && self.r#facing == Facing::North { return 24634; }
-        if self.r#facing == Facing::North && self.r#power == 2 && self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Active { return 24598; }
-        if self.r#power == 3 && self.r#facing == Facing::East && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == false { return 24891; }
-        if self.r#facing == Facing::North && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == true && self.r#power == 15 { return 24678; }
-        if self.r#waterlogged == true && self.r#facing == Facing::South && self.r#power == 10 && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown { return 24744; }
-        if self.r#power == 0 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == true && self.r#facing == Facing::East { return 24872; }
-        if self.r#facing == Facing::North && self.r#power == 1 && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == true { return 24594; }
-        if self.r#waterlogged == false && self.r#power == 11 && self.r#facing == Facing::North && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24651; }
-        if self.r#power == 14 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == true && self.r#facing == Facing::South { return 24764; }
-        if self.r#waterlogged == false && self.r#facing == Facing::North && self.r#power == 8 && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown { return 24637; }
-        if self.r#power == 7 && self.r#facing == Facing::North && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == true { return 24628; }
-        if self.r#facing == Facing::South && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#power == 2 && self.r#waterlogged == false { return 24695; }
-        if self.r#facing == Facing::South && self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#power == 3 { return 24700; }
-        if self.r#power == 5 && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#facing == Facing::South && self.r#waterlogged == true { return 24714; }
-        if self.r#facing == Facing::South && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == false && self.r#power == 11 { return 24749; }
-        if self.r#facing == Facing::South && self.r#power == 2 && self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown { return 24697; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#facing == Facing::North && self.r#power == 4 && self.r#waterlogged == false { return 24613; }
-        if self.r#power == 2 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#facing == Facing::East && self.r#waterlogged == true { return 24884; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#facing == Facing::North && self.r#power == 8 && self.r#waterlogged == true { return 24632; }
-        if self.r#facing == Facing::West && self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 14 { return 24865; }
-        if self.r#facing == Facing::North && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == true && self.r#power == 5 { return 24616; }
-        if self.r#facing == Facing::East && self.r#waterlogged == true && self.r#power == 13 && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown { return 24954; }
-        if self.r#power == 2 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == false && self.r#facing == Facing::East { return 24885; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#facing == Facing::South && self.r#power == 7 && self.r#waterlogged == true { return 24724; }
-        if self.r#waterlogged == false && self.r#facing == Facing::North && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#power == 15 { return 24675; }
-        if self.r#power == 4 && self.r#facing == Facing::South && self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24704; }
-        if self.r#waterlogged == false && self.r#facing == Facing::East && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 3 { return 24895; }
-        if self.r#waterlogged == true && self.r#power == 10 && self.r#facing == Facing::East && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24932; }
-        if self.r#facing == Facing::South && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == false && self.r#power == 0 { return 24683; }
-        if self.r#power == 3 && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == true && self.r#facing == Facing::West { return 24798; }
-        if self.r#facing == Facing::West && self.r#power == 5 && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == true { return 24808; }
-        if self.r#waterlogged == false && self.r#facing == Facing::North && self.r#power == 10 && self.r#sculk_sensor_phase == SculkSensorPhase::Active { return 24647; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == false && self.r#facing == Facing::South && self.r#power == 14 { return 24767; }
-        if self.r#power == 13 && self.r#waterlogged == false && self.r#facing == Facing::West && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown { return 24859; }
-        if self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#power == 9 && self.r#facing == Facing::East { return 24928; }
-        if self.r#power == 14 && self.r#facing == Facing::East && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == true { return 24958; }
-        if self.r#facing == Facing::North && self.r#power == 14 && self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Active { return 24670; }
-        if self.r#power == 15 && self.r#waterlogged == false && self.r#facing == Facing::North && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown { return 24679; }
-        if self.r#waterlogged == false && self.r#power == 13 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#facing == Facing::North { return 24663; }
-        if self.r#power == 7 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == true && self.r#facing == Facing::South { return 24722; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#facing == Facing::North && self.r#waterlogged == true && self.r#power == 11 { return 24652; }
-        if self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#facing == Facing::West && self.r#power == 5 { return 24806; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == true && self.r#power == 14 && self.r#facing == Facing::West { return 24860; }
-        if self.r#power == 1 && self.r#facing == Facing::East && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == true { return 24880; }
-        if self.r#facing == Facing::East && self.r#power == 12 && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == false { return 24947; }
-        if self.r#facing == Facing::North && self.r#waterlogged == true && self.r#power == 13 && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown { return 24666; }
-        if self.r#waterlogged == true && self.r#power == 10 && self.r#facing == Facing::South && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24740; }
-        if self.r#waterlogged == false && self.r#facing == Facing::East && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 0 { return 24877; }
-        if self.r#power == 12 && self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#facing == Facing::West { return 24852; }
-        if self.r#facing == Facing::West && self.r#power == 14 && self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Active { return 24862; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#facing == Facing::West && self.r#waterlogged == false && self.r#power == 11 { return 24847; }
-        if self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#power == 1 && self.r#facing == Facing::North { return 24593; }
-        if self.r#waterlogged == false && self.r#facing == Facing::North && self.r#power == 0 && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown { return 24589; }
-        if self.r#power == 7 && self.r#facing == Facing::North && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == false { return 24631; }
-        if self.r#power == 6 && self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#facing == Facing::North { return 24622; }
-        if self.r#facing == Facing::West && self.r#waterlogged == true && self.r#power == 11 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24842; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == false && self.r#facing == Facing::North && self.r#power == 13 { return 24665; }
-        if self.r#waterlogged == true && self.r#power == 15 && self.r#facing == Facing::West && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24866; }
-        if self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#power == 10 && self.r#facing == Facing::East { return 24935; }
-        if self.r#facing == Facing::West && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == false && self.r#power == 4 { return 24805; }
-        if self.r#power == 15 && self.r#facing == Facing::North && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == false { return 24677; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#facing == Facing::West && self.r#power == 1 && self.r#waterlogged == true { return 24784; }
-        if self.r#waterlogged == false && self.r#power == 5 && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#facing == Facing::East { return 24905; }
-        if self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#facing == Facing::South && self.r#power == 13 { return 24763; }
-        if self.r#waterlogged == true && self.r#power == 1 && self.r#facing == Facing::South && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24686; }
-        if self.r#power == 3 && self.r#facing == Facing::West && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == false { return 24799; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == false && self.r#facing == Facing::North && self.r#power == 2 { return 24599; }
-        if self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#power == 10 && self.r#facing == Facing::North { return 24646; }
-        if self.r#facing == Facing::East && self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#power == 12 { return 24946; }
-        if self.r#power == 12 && self.r#facing == Facing::North && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == false { return 24661; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#power == 0 && self.r#waterlogged == false && self.r#facing == Facing::South { return 24681; }
-        if self.r#power == 3 && self.r#facing == Facing::North && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == false { return 24607; }
-        if self.r#waterlogged == false && self.r#power == 6 && self.r#facing == Facing::East && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown { return 24913; }
-        if self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 10 && self.r#facing == Facing::East { return 24937; }
-        if self.r#facing == Facing::North && self.r#waterlogged == true && self.r#power == 0 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24584; }
-        if self.r#facing == Facing::East && self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 15 { return 24967; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#facing == Facing::South && self.r#waterlogged == false && self.r#power == 12 { return 24753; }
-        if self.r#facing == Facing::East && self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#power == 6 { return 24909; }
-        if self.r#facing == Facing::West && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#power == 6 && self.r#waterlogged == false { return 24813; }
-        if self.r#power == 3 && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == true && self.r#facing == Facing::East { return 24894; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == false && self.r#power == 15 && self.r#facing == Facing::East { return 24963; }
-        if self.r#power == 5 && self.r#facing == Facing::North && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == true { return 24614; }
-        if self.r#power == 0 && self.r#waterlogged == false && self.r#facing == Facing::North && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24585; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 4 && self.r#facing == Facing::North && self.r#waterlogged == true { return 24612; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#power == 13 && self.r#waterlogged == true && self.r#facing == Facing::South { return 24758; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#power == 8 && self.r#waterlogged == true && self.r#facing == Facing::West { return 24824; }
-        if self.r#power == 1 && self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#facing == Facing::South { return 24687; }
-        if self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#facing == Facing::South && self.r#power == 0 { return 24685; }
-        if self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#facing == Facing::South && self.r#power == 3 { return 24703; }
-        if self.r#power == 3 && self.r#facing == Facing::North && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == true { return 24604; }
-        if self.r#facing == Facing::South && self.r#power == 8 && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == true { return 24732; }
-        if self.r#waterlogged == true && self.r#facing == Facing::South && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#power == 12 { return 24754; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#power == 9 && self.r#waterlogged == false && self.r#facing == Facing::West { return 24833; }
-        if self.r#power == 3 && self.r#facing == Facing::North && self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown { return 24606; }
-        if self.r#power == 10 && self.r#facing == Facing::North && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == false { return 24645; }
-        if self.r#facing == Facing::South && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == true && self.r#power == 12 { return 24756; }
-        if self.r#power == 14 && self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#facing == Facing::South { return 24769; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#facing == Facing::West && self.r#waterlogged == false && self.r#power == 15 { return 24867; }
-        if self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#facing == Facing::South && self.r#power == 4 { return 24708; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 2 && self.r#facing == Facing::East && self.r#waterlogged == true { return 24888; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 7 && self.r#facing == Facing::East && self.r#waterlogged == false { return 24919; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#power == 9 && self.r#facing == Facing::South && self.r#waterlogged == true { return 24734; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 7 && self.r#waterlogged == true && self.r#facing == Facing::West { return 24822; }
-        if self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#power == 11 && self.r#facing == Facing::West { return 24843; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == true && self.r#facing == Facing::East && self.r#power == 2 { return 24886; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == false && self.r#power == 12 && self.r#facing == Facing::West { return 24851; }
-        if self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#facing == Facing::South && self.r#power == 10 { return 24742; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#power == 13 && self.r#waterlogged == false && self.r#facing == Facing::South { return 24761; }
-        if self.r#waterlogged == true && self.r#facing == Facing::East && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#power == 5 { return 24904; }
-        if self.r#power == 10 && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#facing == Facing::North && self.r#waterlogged == true { return 24648; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == false && self.r#power == 7 && self.r#facing == Facing::East { return 24917; }
-        if self.r#facing == Facing::North && self.r#power == 5 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == false { return 24615; }
-        if self.r#facing == Facing::South && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 6 && self.r#waterlogged == false { return 24721; }
-        if self.r#facing == Facing::South && self.r#power == 8 && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == true { return 24730; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#facing == Facing::West && self.r#power == 9 && self.r#waterlogged == true { return 24834; }
-        if self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#facing == Facing::North && self.r#power == 0 { return 24588; }
-        if self.r#facing == Facing::South && self.r#power == 2 && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == true { return 24694; }
-        if self.r#power == 7 && self.r#waterlogged == true && self.r#facing == Facing::North && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24626; }
-        if self.r#waterlogged == true && self.r#power == 2 && self.r#facing == Facing::South && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24692; }
-        if self.r#facing == Facing::West && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 12 && self.r#waterlogged == false { return 24853; }
-        if self.r#facing == Facing::East && self.r#waterlogged == true && self.r#power == 7 && self.r#sculk_sensor_phase == SculkSensorPhase::Active { return 24916; }
-        if self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#facing == Facing::East && self.r#power == 14 { return 24961; }
-        if self.r#waterlogged == false && self.r#facing == Facing::West && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#power == 8 { return 24825; }
-        if self.r#waterlogged == true && self.r#facing == Facing::West && self.r#power == 0 && self.r#sculk_sensor_phase == SculkSensorPhase::Active { return 24778; }
-        if self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#power == 1 && self.r#facing == Facing::West { return 24783; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#facing == Facing::South && self.r#waterlogged == true && self.r#power == 7 { return 24726; }
-        if self.r#waterlogged == false && self.r#power == 9 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#facing == Facing::South { return 24735; }
-        if self.r#power == 0 && self.r#facing == Facing::West && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == true { return 24780; }
-        if self.r#facing == Facing::East && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == true && self.r#power == 4 { return 24896; }
-        if self.r#facing == Facing::West && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == true && self.r#power == 3 { return 24794; }
-        if self.r#power == 1 && self.r#facing == Facing::South && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == true { return 24690; }
-        if self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 5 && self.r#facing == Facing::West { return 24811; }
-        if self.r#facing == Facing::East && self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#power == 4 { return 24898; }
-        if self.r#facing == Facing::North && self.r#power == 9 && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == false { return 24643; }
-        if self.r#facing == Facing::East && self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 8 { return 24925; }
-        if self.r#power == 15 && self.r#facing == Facing::East && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == true { return 24966; }
-        if self.r#waterlogged == true && self.r#facing == Facing::North && self.r#power == 4 && self.r#sculk_sensor_phase == SculkSensorPhase::Active { return 24610; }
-        if self.r#facing == Facing::South && self.r#power == 6 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == true { return 24716; }
-        if self.r#power == 5 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == false && self.r#facing == Facing::South { return 24711; }
-        if self.r#waterlogged == true && self.r#facing == Facing::South && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 14 { return 24768; }
-        if self.r#facing == Facing::South && self.r#power == 0 && self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Active { return 24682; }
-        if self.r#facing == Facing::North && self.r#waterlogged == false && self.r#power == 5 && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown { return 24619; }
-        if self.r#facing == Facing::South && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == false && self.r#power == 6 { return 24719; }
-        if self.r#power == 11 && self.r#waterlogged == false && self.r#facing == Facing::North && self.r#sculk_sensor_phase == SculkSensorPhase::Active { return 24653; }
-        if self.r#facing == Facing::East && self.r#power == 7 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == true { return 24914; }
-        if self.r#facing == Facing::East && self.r#power == 3 && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == false { return 24893; }
-        if self.r#waterlogged == true && self.r#facing == Facing::East && self.r#power == 15 && self.r#sculk_sensor_phase == SculkSensorPhase::Active { return 24964; }
-        if self.r#facing == Facing::West && self.r#power == 1 && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == false { return 24785; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#facing == Facing::North && self.r#waterlogged == true && self.r#power == 9 { return 24640; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#facing == Facing::West && self.r#power == 3 && self.r#waterlogged == false { return 24797; }
-        if self.r#power == 8 && self.r#waterlogged == true && self.r#facing == Facing::East && self.r#sculk_sensor_phase == SculkSensorPhase::Active { return 24922; }
-        if self.r#facing == Facing::East && self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#power == 10 { return 24933; }
-        if self.r#waterlogged == true && self.r#facing == Facing::North && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#power == 12 { return 24656; }
-        if self.r#waterlogged == true && self.r#facing == Facing::South && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#power == 9 { return 24736; }
-        if self.r#power == 14 && self.r#facing == Facing::West && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == true { return 24864; }
-        if self.r#power == 14 && self.r#waterlogged == false && self.r#facing == Facing::West && self.r#sculk_sensor_phase == SculkSensorPhase::Active { return 24863; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#facing == Facing::East && self.r#waterlogged == true && self.r#power == 6 { return 24910; }
-        if self.r#facing == Facing::West && self.r#power == 0 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == true { return 24776; }
-        if self.r#power == 2 && self.r#facing == Facing::South && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == true { return 24696; }
-        if self.r#waterlogged == true && self.r#power == 0 && self.r#facing == Facing::East && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown { return 24876; }
-        if self.r#power == 3 && self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#facing == Facing::East { return 24892; }
-        if self.r#facing == Facing::East && self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#power == 5 { return 24902; }
-        if self.r#waterlogged == false && self.r#facing == Facing::South && self.r#power == 8 && self.r#sculk_sensor_phase == SculkSensorPhase::Active { return 24731; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#facing == Facing::West && self.r#waterlogged == true && self.r#power == 6 { return 24812; }
-        if self.r#facing == Facing::South && self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#power == 5 { return 24713; }
-        if self.r#facing == Facing::West && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 2 && self.r#waterlogged == true { return 24792; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == false && self.r#power == 8 && self.r#facing == Facing::West { return 24829; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#facing == Facing::North && self.r#power == 1 && self.r#waterlogged == true { return 24590; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#facing == Facing::North && self.r#power == 8 && self.r#waterlogged == false { return 24633; }
-        if self.r#power == 15 && self.r#facing == Facing::South && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == false { return 24775; }
-        if self.r#facing == Facing::South && self.r#power == 5 && self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Active { return 24712; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == true && self.r#power == 12 && self.r#facing == Facing::West { return 24848; }
-        if self.r#facing == Facing::North && self.r#power == 9 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == false { return 24639; }
-        if self.r#facing == Facing::East && self.r#waterlogged == true && self.r#power == 1 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24878; }
-        if self.r#facing == Facing::East && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == true && self.r#power == 8 { return 24920; }
-        if self.r#waterlogged == false && self.r#facing == Facing::West && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#power == 3 { return 24795; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#facing == Facing::East && self.r#power == 13 && self.r#waterlogged == true { return 24952; }
-        if self.r#facing == Facing::West && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 10 && self.r#waterlogged == false { return 24841; }
-        if self.r#waterlogged == true && self.r#power == 13 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#facing == Facing::North { return 24662; }
-        if self.r#facing == Facing::North && self.r#power == 9 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == true { return 24638; }
-        if self.r#waterlogged == false && self.r#power == 7 && self.r#facing == Facing::South && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24723; }
-        if self.r#facing == Facing::South && self.r#power == 14 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == false { return 24765; }
-        if self.r#facing == Facing::South && self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#power == 15 { return 24773; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == false && self.r#facing == Facing::West && self.r#power == 6 { return 24817; }
-        if self.r#facing == Facing::North && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 10 && self.r#waterlogged == false { return 24649; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 14 && self.r#facing == Facing::North && self.r#waterlogged == false { return 24673; }
-        if self.r#power == 4 && self.r#waterlogged == false && self.r#facing == Facing::South && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown { return 24709; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#power == 9 && self.r#waterlogged == false && self.r#facing == Facing::South { return 24737; }
-        if self.r#facing == Facing::West && self.r#power == 8 && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == true { return 24828; }
-        if self.r#facing == Facing::South && self.r#power == 1 && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == false { return 24691; }
-        if self.r#facing == Facing::East && self.r#power == 1 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == false { return 24879; }
-        if self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#facing == Facing::East && self.r#power == 13 { return 24953; }
-        if self.r#facing == Facing::East && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == true && self.r#power == 14 { return 24956; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == true && self.r#power == 13 && self.r#facing == Facing::West { return 24858; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#facing == Facing::East && self.r#power == 4 && self.r#waterlogged == false { return 24899; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 7 && self.r#facing == Facing::West && self.r#waterlogged == false { return 24823; }
-        if self.r#facing == Facing::North && self.r#power == 6 && self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24621; }
-        if self.r#power == 4 && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == true && self.r#facing == Facing::South { return 24706; }
-        if self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#power == 7 && self.r#facing == Facing::South { return 24725; }
-        if self.r#power == 13 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == true && self.r#facing == Facing::East { return 24950; }
-        if self.r#facing == Facing::East && self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 9 { return 24931; }
-        if self.r#facing == Facing::North && self.r#waterlogged == true && self.r#power == 6 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24620; }
-        if self.r#facing == Facing::South && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == false && self.r#power == 13 { return 24759; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#facing == Facing::South && self.r#power == 4 && self.r#waterlogged == false { return 24707; }
-        if self.r#waterlogged == false && self.r#facing == Facing::West && self.r#power == 2 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24789; }
-        if self.r#facing == Facing::North && self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#power == 4 { return 24608; }
-        if self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#facing == Facing::West && self.r#power == 5 { return 24810; }
-        if self.r#power == 5 && self.r#waterlogged == true && self.r#facing == Facing::North && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown { return 24618; }
-        if self.r#waterlogged == true && self.r#facing == Facing::West && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 11 { return 24846; }
-        if self.r#power == 11 && self.r#waterlogged == false && self.r#facing == Facing::South && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24747; }
-        if self.r#facing == Facing::North && self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#power == 7 { return 24627; }
-        if self.r#power == 2 && self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#facing == Facing::South { return 24693; }
-        if self.r#waterlogged == true && self.r#power == 4 && self.r#facing == Facing::East && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown { return 24900; }
-        if self.r#waterlogged == true && self.r#power == 14 && self.r#facing == Facing::North && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown { return 24672; }
-        if self.r#waterlogged == false && self.r#facing == Facing::South && self.r#power == 8 && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown { return 24733; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#facing == Facing::East && self.r#waterlogged == false && self.r#power == 6 { return 24911; }
-        if self.r#facing == Facing::North && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == true && self.r#power == 9 { return 24642; }
-        if self.r#power == 11 && self.r#facing == Facing::East && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == true { return 24940; }
-        if self.r#facing == Facing::North && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == true && self.r#power == 12 { return 24660; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#power == 12 && self.r#waterlogged == true && self.r#facing == Facing::East { return 24944; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#power == 3 && self.r#facing == Facing::West && self.r#waterlogged == true { return 24796; }
-        if self.r#power == 8 && self.r#waterlogged == false && self.r#facing == Facing::South && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24729; }
-        if self.r#facing == Facing::North && self.r#waterlogged == false && self.r#power == 14 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24669; }
-        if self.r#power == 0 && self.r#facing == Facing::South && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == true { return 24684; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 15 && self.r#waterlogged == true && self.r#facing == Facing::South { return 24774; }
-        if self.r#waterlogged == false && self.r#facing == Facing::East && self.r#power == 13 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24951; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 15 && self.r#facing == Facing::West && self.r#waterlogged == false { return 24871; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#power == 3 && self.r#facing == Facing::South && self.r#waterlogged == false { return 24701; }
-        if self.r#facing == Facing::North && self.r#power == 13 && self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown { return 24667; }
-        if self.r#facing == Facing::East && self.r#power == 12 && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == false { return 24949; }
-        if self.r#power == 8 && self.r#facing == Facing::West && self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Active { return 24826; }
-        if self.r#power == 6 && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#facing == Facing::North && self.r#waterlogged == false { return 24625; }
-        if self.r#waterlogged == false && self.r#facing == Facing::North && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#power == 2 { return 24597; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#power == 6 && self.r#waterlogged == true && self.r#facing == Facing::South { return 24718; }
-        if self.r#facing == Facing::North && self.r#waterlogged == false && self.r#power == 1 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24591; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#facing == Facing::West && self.r#power == 10 && self.r#waterlogged == false { return 24837; }
-        if self.r#facing == Facing::East && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 5 && self.r#waterlogged == true { return 24906; }
-        if self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#facing == Facing::East && self.r#power == 6 { return 24908; }
-        if self.r#waterlogged == false && self.r#facing == Facing::East && self.r#power == 5 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24903; }
-        if self.r#facing == Facing::West && self.r#power == 15 && self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown { return 24870; }
-        if self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#facing == Facing::West && self.r#power == 5 { return 24809; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#facing == Facing::North && self.r#power == 0 && self.r#waterlogged == true { return 24586; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#facing == Facing::East && self.r#waterlogged == false && self.r#power == 8 { return 24923; }
-        if self.r#power == 15 && self.r#facing == Facing::North && self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24674; }
-        if self.r#facing == Facing::South && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#power == 3 && self.r#waterlogged == false { return 24699; }
-        if self.r#facing == Facing::South && self.r#power == 11 && self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24746; }
-        if self.r#facing == Facing::West && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 2 && self.r#waterlogged == false { return 24793; }
-        if self.r#power == 2 && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == false && self.r#facing == Facing::West { return 24791; }
-        if self.r#waterlogged == false && self.r#facing == Facing::West && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#power == 7 { return 24819; }
-        if self.r#power == 1 && self.r#facing == Facing::South && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == false { return 24689; }
-        if self.r#facing == Facing::West && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#power == 1 && self.r#waterlogged == true { return 24782; }
-        if self.r#power == 3 && self.r#waterlogged == true && self.r#facing == Facing::South && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown { return 24702; }
-        if self.r#facing == Facing::West && self.r#power == 10 && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == true { return 24838; }
-        if self.r#power == 13 && self.r#facing == Facing::West && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == false { return 24857; }
-        if self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#power == 2 && self.r#facing == Facing::North { return 24596; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == true && self.r#facing == Facing::South && self.r#power == 6 { return 24720; }
-        if self.r#facing == Facing::West && self.r#waterlogged == false && self.r#power == 5 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24807; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#power == 9 && self.r#facing == Facing::West && self.r#waterlogged == true { return 24832; }
-        if self.r#facing == Facing::West && self.r#power == 14 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == false { return 24861; }
-        if self.r#waterlogged == false && self.r#facing == Facing::East && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 2 { return 24889; }
-        if self.r#power == 5 && self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#facing == Facing::East { return 24907; }
-        if self.r#facing == Facing::East && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#power == 9 && self.r#waterlogged == true { return 24926; }
-        if self.r#power == 13 && self.r#facing == Facing::West && self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24854; }
-        if self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#facing == Facing::East && self.r#power == 0 { return 24875; }
-        if self.r#power == 9 && self.r#facing == Facing::East && self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24927; }
-        if self.r#waterlogged == true && self.r#power == 10 && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#facing == Facing::East { return 24936; }
-        if self.r#power == 11 && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#facing == Facing::East && self.r#waterlogged == false { return 24941; }
-        if self.r#power == 11 && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == false && self.r#facing == Facing::North { return 24655; }
-        if self.r#power == 5 && self.r#waterlogged == false && self.r#facing == Facing::North && self.r#sculk_sensor_phase == SculkSensorPhase::Active { return 24617; }
-        if self.r#facing == Facing::East && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#power == 9 && self.r#waterlogged == false { return 24929; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#facing == Facing::East && self.r#waterlogged == false && self.r#power == 13 { return 24955; }
-        if self.r#power == 15 && self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#facing == Facing::West { return 24869; }
-        if self.r#power == 8 && self.r#waterlogged == false && self.r#facing == Facing::West && self.r#sculk_sensor_phase == SculkSensorPhase::Active { return 24827; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#facing == Facing::South && self.r#power == 9 && self.r#waterlogged == true { return 24738; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#power == 11 && self.r#waterlogged == false && self.r#facing == Facing::West { return 24845; }
-        if self.r#facing == Facing::West && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#power == 4 && self.r#waterlogged == false { return 24803; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == false && self.r#facing == Facing::West && self.r#power == 10 { return 24839; }
-        if self.r#facing == Facing::East && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 11 && self.r#waterlogged == false { return 24943; }
-        if self.r#facing == Facing::East && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == false && self.r#power == 12 { return 24945; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#facing == Facing::East && self.r#waterlogged == true && self.r#power == 14 { return 24960; }
-        if self.r#waterlogged == false && self.r#facing == Facing::South && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 5 { return 24715; }
-        if self.r#facing == Facing::West && self.r#power == 15 && self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Active { return 24868; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == false && self.r#facing == Facing::North && self.r#power == 4 { return 24609; }
-        if self.r#facing == Facing::West && self.r#waterlogged == true && self.r#power == 9 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24830; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#facing == Facing::West && self.r#power == 10 && self.r#waterlogged == true { return 24840; }
-        if self.r#facing == Facing::East && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#power == 1 && self.r#waterlogged == false { return 24881; }
-        if self.r#power == 6 && self.r#facing == Facing::South && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == false { return 24717; }
-        if self.r#facing == Facing::North && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == true && self.r#power == 14 { return 24668; }
-        if self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 1 && self.r#facing == Facing::West { return 24787; }
-        if self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#power == 12 && self.r#facing == Facing::North { return 24657; }
-        if self.r#facing == Facing::East && self.r#power == 14 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == false { return 24957; }
-        if self.r#facing == Facing::East && self.r#power == 15 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == true { return 24962; }
-        if self.r#facing == Facing::West && self.r#power == 12 && self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Active { return 24850; }
-        if self.r#facing == Facing::North && self.r#power == 6 && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == false { return 24623; }
-        if self.r#power == 11 && self.r#facing == Facing::East && self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24939; }
-        if self.r#power == 2 && self.r#waterlogged == false && self.r#facing == Facing::East && self.r#sculk_sensor_phase == SculkSensorPhase::Active { return 24887; }
-        if self.r#facing == Facing::West && self.r#waterlogged == true && self.r#power == 7 && self.r#sculk_sensor_phase == SculkSensorPhase::Active { return 24820; }
-        if self.r#facing == Facing::West && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == true && self.r#power == 2 { return 24788; }
-        if self.r#power == 1 && self.r#waterlogged == true && self.r#facing == Facing::East && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown { return 24882; }
-        if self.r#facing == Facing::North && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == false && self.r#power == 12 { return 24659; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#facing == Facing::North && self.r#power == 12 && self.r#waterlogged == true { return 24658; }
-        if self.r#power == 6 && self.r#waterlogged == true && self.r#facing == Facing::West && self.r#sculk_sensor_phase == SculkSensorPhase::Active { return 24814; }
-        if self.r#power == 8 && self.r#facing == Facing::East && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == false { return 24921; }
-        if self.r#facing == Facing::East && self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 8 { return 24924; }
-        if self.r#power == 3 && self.r#facing == Facing::South && self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24698; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#facing == Facing::North && self.r#power == 3 && self.r#waterlogged == true { return 24602; }
-        if self.r#facing == Facing::West && self.r#power == 1 && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#waterlogged == true { return 24786; }
-        if self.r#facing == Facing::West && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#waterlogged == true && self.r#power == 4 { return 24802; }
-        if self.r#facing == Facing::West && self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#power == 7 { return 24818; }
-        if self.r#facing == Facing::West && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 9 && self.r#waterlogged == false { return 24835; }
-        if self.r#facing == Facing::South && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#waterlogged == false && self.r#power == 10 { return 24741; }
-        if self.r#power == 3 && self.r#waterlogged == false && self.r#facing == Facing::North && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24603; }
-        if self.r#facing == Facing::North && self.r#power == 8 && self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown { return 24636; }
-        if self.r#power == 4 && self.r#waterlogged == false && self.r#facing == Facing::West && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive { return 24801; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#power == 1 && self.r#facing == Facing::North && self.r#waterlogged == false { return 24595; }
-        if self.r#waterlogged == true && self.r#facing == Facing::North && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#power == 10 { return 24644; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown && self.r#facing == Facing::East && self.r#power == 4 && self.r#waterlogged == false { return 24901; }
-        if self.r#power == 15 && self.r#waterlogged == true && self.r#facing == Facing::South && self.r#sculk_sensor_phase == SculkSensorPhase::Active { return 24772; }
-        if self.r#power == 11 && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#facing == Facing::East && self.r#waterlogged == true { return 24938; }
-        if self.r#facing == Facing::North && self.r#waterlogged == false && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#power == 9 { return 24641; }
-        if self.r#facing == Facing::East && self.r#power == 11 && self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown { return 24942; }
-        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive && self.r#facing == Facing::East && self.r#power == 4 && self.r#waterlogged == false { return 24897; }
-        if self.r#facing == Facing::West && self.r#waterlogged == true && self.r#power == 13 && self.r#sculk_sensor_phase == SculkSensorPhase::Active { return 24856; }
-        if self.r#power == 1 && self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#facing == Facing::North { return 24592; }
-        if self.r#waterlogged == true && self.r#sculk_sensor_phase == SculkSensorPhase::Active && self.r#facing == Facing::South && self.r#power == 14 { return 24766; }
+        if self.r#facing == Facing::North
+            && self.r#power == 2
+            && self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+        {
+            return 24601;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::South
+            && self.r#power == 12
+        {
+            return 24755;
+        }
+        if self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#facing == Facing::North
+            && self.r#power == 0
+        {
+            return 24587;
+        }
+        if self.r#facing == Facing::West
+            && self.r#power == 9
+            && self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24831;
+        }
+        if self.r#facing == Facing::East
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == false
+            && self.r#power == 1
+        {
+            return 24883;
+        }
+        if self.r#waterlogged == false
+            && self.r#power == 7
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#facing == Facing::North
+        {
+            return 24629;
+        }
+        if self.r#power == 6
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::West
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+        {
+            return 24815;
+        }
+        if self.r#facing == Facing::West
+            && self.r#power == 10
+            && self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24836;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 13
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::South
+        {
+            return 24762;
+        }
+        if self.r#facing == Facing::East
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 6
+            && self.r#waterlogged == true
+        {
+            return 24912;
+        }
+        if self.r#facing == Facing::South
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#power == 8
+            && self.r#waterlogged == true
+        {
+            return 24728;
+        }
+        if self.r#power == 0
+            && self.r#facing == Facing::West
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == false
+        {
+            return 24781;
+        }
+        if self.r#facing == Facing::North
+            && self.r#waterlogged == true
+            && self.r#power == 7
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+        {
+            return 24630;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 6
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::West
+        {
+            return 24816;
+        }
+        if self.r#power == 4
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::South
+        {
+            return 24705;
+        }
+        if self.r#facing == Facing::South
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == true
+            && self.r#power == 1
+        {
+            return 24688;
+        }
+        if self.r#power == 12
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::South
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24752;
+        }
+        if self.r#waterlogged == false
+            && self.r#power == 7
+            && self.r#facing == Facing::South
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+        {
+            return 24727;
+        }
+        if self.r#power == 12
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#facing == Facing::South
+            && self.r#waterlogged == false
+        {
+            return 24757;
+        }
+        if self.r#power == 0
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#facing == Facing::East
+            && self.r#waterlogged == false
+        {
+            return 24873;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#facing == Facing::East
+            && self.r#waterlogged == true
+            && self.r#power == 9
+        {
+            return 24930;
+        }
+        if self.r#facing == Facing::West
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 4
+            && self.r#waterlogged == true
+        {
+            return 24804;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == true
+            && self.r#power == 13
+            && self.r#facing == Facing::North
+        {
+            return 24664;
+        }
+        if self.r#facing == Facing::East
+            && self.r#power == 10
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == true
+        {
+            return 24934;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == true
+            && self.r#power == 0
+            && self.r#facing == Facing::South
+        {
+            return 24680;
+        }
+        if self.r#facing == Facing::South
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == true
+            && self.r#power == 11
+        {
+            return 24750;
+        }
+        if self.r#facing == Facing::South
+            && self.r#power == 15
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == false
+        {
+            return 24771;
+        }
+        if self.r#power == 11
+            && self.r#facing == Facing::South
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == true
+        {
+            return 24748;
+        }
+        if self.r#power == 11
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::West
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+        {
+            return 24844;
+        }
+        if self.r#waterlogged == true
+            && self.r#facing == Facing::North
+            && self.r#power == 11
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24650;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#facing == Facing::South
+            && self.r#power == 9
+            && self.r#waterlogged == false
+        {
+            return 24739;
+        }
+        if self.r#facing == Facing::North
+            && self.r#power == 4
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == false
+        {
+            return 24611;
+        }
+        if self.r#waterlogged == true
+            && self.r#power == 15
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#facing == Facing::North
+        {
+            return 24676;
+        }
+        if self.r#power == 10
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#facing == Facing::South
+            && self.r#waterlogged == false
+        {
+            return 24743;
+        }
+        if self.r#power == 11
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::North
+        {
+            return 24654;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::North
+            && self.r#power == 2
+        {
+            return 24600;
+        }
+        if self.r#facing == Facing::South
+            && self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#power == 15
+        {
+            return 24770;
+        }
+        if self.r#facing == Facing::North
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == false
+            && self.r#power == 8
+        {
+            return 24635;
+        }
+        if self.r#facing == Facing::South
+            && self.r#power == 5
+            && self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24710;
+        }
+        if self.r#facing == Facing::West
+            && self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#power == 0
+        {
+            return 24777;
+        }
+        if self.r#power == 13
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::South
+        {
+            return 24760;
+        }
+        if self.r#waterlogged == false
+            && self.r#facing == Facing::West
+            && self.r#power == 12
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24849;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#power == 0
+            && self.r#facing == Facing::East
+            && self.r#waterlogged == true
+        {
+            return 24874;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#facing == Facing::East
+            && self.r#waterlogged == true
+            && self.r#power == 3
+        {
+            return 24890;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::East
+            && self.r#power == 7
+        {
+            return 24915;
+        }
+        if self.r#facing == Facing::East
+            && self.r#power == 7
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == true
+        {
+            return 24918;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#power == 14
+            && self.r#facing == Facing::North
+            && self.r#waterlogged == false
+        {
+            return 24671;
+        }
+        if self.r#waterlogged == false
+            && self.r#power == 3
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#facing == Facing::North
+        {
+            return 24605;
+        }
+        if self.r#power == 6
+            && self.r#facing == Facing::North
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == true
+        {
+            return 24624;
+        }
+        if self.r#facing == Facing::West
+            && self.r#power == 7
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == false
+        {
+            return 24821;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#power == 13
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::West
+        {
+            return 24855;
+        }
+        if self.r#power == 0
+            && self.r#facing == Facing::West
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == false
+        {
+            return 24779;
+        }
+        if self.r#waterlogged == true
+            && self.r#facing == Facing::East
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 12
+        {
+            return 24948;
+        }
+        if self.r#facing == Facing::South
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 11
+            && self.r#waterlogged == false
+        {
+            return 24751;
+        }
+        if self.r#waterlogged == true
+            && self.r#facing == Facing::West
+            && self.r#power == 2
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+        {
+            return 24790;
+        }
+        if self.r#facing == Facing::East
+            && self.r#power == 14
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == false
+        {
+            return 24959;
+        }
+        if self.r#power == 15
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::East
+        {
+            return 24965;
+        }
+        if self.r#power == 10
+            && self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#facing == Facing::South
+        {
+            return 24745;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#facing == Facing::West
+            && self.r#power == 4
+            && self.r#waterlogged == true
+        {
+            return 24800;
+        }
+        if self.r#power == 8
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::North
+        {
+            return 24634;
+        }
+        if self.r#facing == Facing::North
+            && self.r#power == 2
+            && self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+        {
+            return 24598;
+        }
+        if self.r#power == 3
+            && self.r#facing == Facing::East
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == false
+        {
+            return 24891;
+        }
+        if self.r#facing == Facing::North
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == true
+            && self.r#power == 15
+        {
+            return 24678;
+        }
+        if self.r#waterlogged == true
+            && self.r#facing == Facing::South
+            && self.r#power == 10
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+        {
+            return 24744;
+        }
+        if self.r#power == 0
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::East
+        {
+            return 24872;
+        }
+        if self.r#facing == Facing::North
+            && self.r#power == 1
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == true
+        {
+            return 24594;
+        }
+        if self.r#waterlogged == false
+            && self.r#power == 11
+            && self.r#facing == Facing::North
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24651;
+        }
+        if self.r#power == 14
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::South
+        {
+            return 24764;
+        }
+        if self.r#waterlogged == false
+            && self.r#facing == Facing::North
+            && self.r#power == 8
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+        {
+            return 24637;
+        }
+        if self.r#power == 7
+            && self.r#facing == Facing::North
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == true
+        {
+            return 24628;
+        }
+        if self.r#facing == Facing::South
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#power == 2
+            && self.r#waterlogged == false
+        {
+            return 24695;
+        }
+        if self.r#facing == Facing::South
+            && self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#power == 3
+        {
+            return 24700;
+        }
+        if self.r#power == 5
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#facing == Facing::South
+            && self.r#waterlogged == true
+        {
+            return 24714;
+        }
+        if self.r#facing == Facing::South
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == false
+            && self.r#power == 11
+        {
+            return 24749;
+        }
+        if self.r#facing == Facing::South
+            && self.r#power == 2
+            && self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+        {
+            return 24697;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#facing == Facing::North
+            && self.r#power == 4
+            && self.r#waterlogged == false
+        {
+            return 24613;
+        }
+        if self.r#power == 2
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#facing == Facing::East
+            && self.r#waterlogged == true
+        {
+            return 24884;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#facing == Facing::North
+            && self.r#power == 8
+            && self.r#waterlogged == true
+        {
+            return 24632;
+        }
+        if self.r#facing == Facing::West
+            && self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 14
+        {
+            return 24865;
+        }
+        if self.r#facing == Facing::North
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == true
+            && self.r#power == 5
+        {
+            return 24616;
+        }
+        if self.r#facing == Facing::East
+            && self.r#waterlogged == true
+            && self.r#power == 13
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+        {
+            return 24954;
+        }
+        if self.r#power == 2
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::East
+        {
+            return 24885;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#facing == Facing::South
+            && self.r#power == 7
+            && self.r#waterlogged == true
+        {
+            return 24724;
+        }
+        if self.r#waterlogged == false
+            && self.r#facing == Facing::North
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#power == 15
+        {
+            return 24675;
+        }
+        if self.r#power == 4
+            && self.r#facing == Facing::South
+            && self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24704;
+        }
+        if self.r#waterlogged == false
+            && self.r#facing == Facing::East
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 3
+        {
+            return 24895;
+        }
+        if self.r#waterlogged == true
+            && self.r#power == 10
+            && self.r#facing == Facing::East
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24932;
+        }
+        if self.r#facing == Facing::South
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == false
+            && self.r#power == 0
+        {
+            return 24683;
+        }
+        if self.r#power == 3
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::West
+        {
+            return 24798;
+        }
+        if self.r#facing == Facing::West
+            && self.r#power == 5
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == true
+        {
+            return 24808;
+        }
+        if self.r#waterlogged == false
+            && self.r#facing == Facing::North
+            && self.r#power == 10
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+        {
+            return 24647;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::South
+            && self.r#power == 14
+        {
+            return 24767;
+        }
+        if self.r#power == 13
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::West
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+        {
+            return 24859;
+        }
+        if self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#power == 9
+            && self.r#facing == Facing::East
+        {
+            return 24928;
+        }
+        if self.r#power == 14
+            && self.r#facing == Facing::East
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == true
+        {
+            return 24958;
+        }
+        if self.r#facing == Facing::North
+            && self.r#power == 14
+            && self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+        {
+            return 24670;
+        }
+        if self.r#power == 15
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::North
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+        {
+            return 24679;
+        }
+        if self.r#waterlogged == false
+            && self.r#power == 13
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#facing == Facing::North
+        {
+            return 24663;
+        }
+        if self.r#power == 7
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::South
+        {
+            return 24722;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#facing == Facing::North
+            && self.r#waterlogged == true
+            && self.r#power == 11
+        {
+            return 24652;
+        }
+        if self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#facing == Facing::West
+            && self.r#power == 5
+        {
+            return 24806;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == true
+            && self.r#power == 14
+            && self.r#facing == Facing::West
+        {
+            return 24860;
+        }
+        if self.r#power == 1
+            && self.r#facing == Facing::East
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == true
+        {
+            return 24880;
+        }
+        if self.r#facing == Facing::East
+            && self.r#power == 12
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == false
+        {
+            return 24947;
+        }
+        if self.r#facing == Facing::North
+            && self.r#waterlogged == true
+            && self.r#power == 13
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+        {
+            return 24666;
+        }
+        if self.r#waterlogged == true
+            && self.r#power == 10
+            && self.r#facing == Facing::South
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24740;
+        }
+        if self.r#waterlogged == false
+            && self.r#facing == Facing::East
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 0
+        {
+            return 24877;
+        }
+        if self.r#power == 12
+            && self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#facing == Facing::West
+        {
+            return 24852;
+        }
+        if self.r#facing == Facing::West
+            && self.r#power == 14
+            && self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+        {
+            return 24862;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#facing == Facing::West
+            && self.r#waterlogged == false
+            && self.r#power == 11
+        {
+            return 24847;
+        }
+        if self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#power == 1
+            && self.r#facing == Facing::North
+        {
+            return 24593;
+        }
+        if self.r#waterlogged == false
+            && self.r#facing == Facing::North
+            && self.r#power == 0
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+        {
+            return 24589;
+        }
+        if self.r#power == 7
+            && self.r#facing == Facing::North
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == false
+        {
+            return 24631;
+        }
+        if self.r#power == 6
+            && self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#facing == Facing::North
+        {
+            return 24622;
+        }
+        if self.r#facing == Facing::West
+            && self.r#waterlogged == true
+            && self.r#power == 11
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24842;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::North
+            && self.r#power == 13
+        {
+            return 24665;
+        }
+        if self.r#waterlogged == true
+            && self.r#power == 15
+            && self.r#facing == Facing::West
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24866;
+        }
+        if self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#power == 10
+            && self.r#facing == Facing::East
+        {
+            return 24935;
+        }
+        if self.r#facing == Facing::West
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == false
+            && self.r#power == 4
+        {
+            return 24805;
+        }
+        if self.r#power == 15
+            && self.r#facing == Facing::North
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == false
+        {
+            return 24677;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#facing == Facing::West
+            && self.r#power == 1
+            && self.r#waterlogged == true
+        {
+            return 24784;
+        }
+        if self.r#waterlogged == false
+            && self.r#power == 5
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#facing == Facing::East
+        {
+            return 24905;
+        }
+        if self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#facing == Facing::South
+            && self.r#power == 13
+        {
+            return 24763;
+        }
+        if self.r#waterlogged == true
+            && self.r#power == 1
+            && self.r#facing == Facing::South
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24686;
+        }
+        if self.r#power == 3
+            && self.r#facing == Facing::West
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == false
+        {
+            return 24799;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::North
+            && self.r#power == 2
+        {
+            return 24599;
+        }
+        if self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#power == 10
+            && self.r#facing == Facing::North
+        {
+            return 24646;
+        }
+        if self.r#facing == Facing::East
+            && self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#power == 12
+        {
+            return 24946;
+        }
+        if self.r#power == 12
+            && self.r#facing == Facing::North
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == false
+        {
+            return 24661;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#power == 0
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::South
+        {
+            return 24681;
+        }
+        if self.r#power == 3
+            && self.r#facing == Facing::North
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == false
+        {
+            return 24607;
+        }
+        if self.r#waterlogged == false
+            && self.r#power == 6
+            && self.r#facing == Facing::East
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+        {
+            return 24913;
+        }
+        if self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 10
+            && self.r#facing == Facing::East
+        {
+            return 24937;
+        }
+        if self.r#facing == Facing::North
+            && self.r#waterlogged == true
+            && self.r#power == 0
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24584;
+        }
+        if self.r#facing == Facing::East
+            && self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 15
+        {
+            return 24967;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#facing == Facing::South
+            && self.r#waterlogged == false
+            && self.r#power == 12
+        {
+            return 24753;
+        }
+        if self.r#facing == Facing::East
+            && self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#power == 6
+        {
+            return 24909;
+        }
+        if self.r#facing == Facing::West
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#power == 6
+            && self.r#waterlogged == false
+        {
+            return 24813;
+        }
+        if self.r#power == 3
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::East
+        {
+            return 24894;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == false
+            && self.r#power == 15
+            && self.r#facing == Facing::East
+        {
+            return 24963;
+        }
+        if self.r#power == 5
+            && self.r#facing == Facing::North
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == true
+        {
+            return 24614;
+        }
+        if self.r#power == 0
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::North
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24585;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 4
+            && self.r#facing == Facing::North
+            && self.r#waterlogged == true
+        {
+            return 24612;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#power == 13
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::South
+        {
+            return 24758;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#power == 8
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::West
+        {
+            return 24824;
+        }
+        if self.r#power == 1
+            && self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#facing == Facing::South
+        {
+            return 24687;
+        }
+        if self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#facing == Facing::South
+            && self.r#power == 0
+        {
+            return 24685;
+        }
+        if self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#facing == Facing::South
+            && self.r#power == 3
+        {
+            return 24703;
+        }
+        if self.r#power == 3
+            && self.r#facing == Facing::North
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == true
+        {
+            return 24604;
+        }
+        if self.r#facing == Facing::South
+            && self.r#power == 8
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == true
+        {
+            return 24732;
+        }
+        if self.r#waterlogged == true
+            && self.r#facing == Facing::South
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#power == 12
+        {
+            return 24754;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#power == 9
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::West
+        {
+            return 24833;
+        }
+        if self.r#power == 3
+            && self.r#facing == Facing::North
+            && self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+        {
+            return 24606;
+        }
+        if self.r#power == 10
+            && self.r#facing == Facing::North
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == false
+        {
+            return 24645;
+        }
+        if self.r#facing == Facing::South
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == true
+            && self.r#power == 12
+        {
+            return 24756;
+        }
+        if self.r#power == 14
+            && self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#facing == Facing::South
+        {
+            return 24769;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#facing == Facing::West
+            && self.r#waterlogged == false
+            && self.r#power == 15
+        {
+            return 24867;
+        }
+        if self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#facing == Facing::South
+            && self.r#power == 4
+        {
+            return 24708;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 2
+            && self.r#facing == Facing::East
+            && self.r#waterlogged == true
+        {
+            return 24888;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 7
+            && self.r#facing == Facing::East
+            && self.r#waterlogged == false
+        {
+            return 24919;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#power == 9
+            && self.r#facing == Facing::South
+            && self.r#waterlogged == true
+        {
+            return 24734;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 7
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::West
+        {
+            return 24822;
+        }
+        if self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#power == 11
+            && self.r#facing == Facing::West
+        {
+            return 24843;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::East
+            && self.r#power == 2
+        {
+            return 24886;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == false
+            && self.r#power == 12
+            && self.r#facing == Facing::West
+        {
+            return 24851;
+        }
+        if self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#facing == Facing::South
+            && self.r#power == 10
+        {
+            return 24742;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#power == 13
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::South
+        {
+            return 24761;
+        }
+        if self.r#waterlogged == true
+            && self.r#facing == Facing::East
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#power == 5
+        {
+            return 24904;
+        }
+        if self.r#power == 10
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#facing == Facing::North
+            && self.r#waterlogged == true
+        {
+            return 24648;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == false
+            && self.r#power == 7
+            && self.r#facing == Facing::East
+        {
+            return 24917;
+        }
+        if self.r#facing == Facing::North
+            && self.r#power == 5
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == false
+        {
+            return 24615;
+        }
+        if self.r#facing == Facing::South
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 6
+            && self.r#waterlogged == false
+        {
+            return 24721;
+        }
+        if self.r#facing == Facing::South
+            && self.r#power == 8
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == true
+        {
+            return 24730;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#facing == Facing::West
+            && self.r#power == 9
+            && self.r#waterlogged == true
+        {
+            return 24834;
+        }
+        if self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#facing == Facing::North
+            && self.r#power == 0
+        {
+            return 24588;
+        }
+        if self.r#facing == Facing::South
+            && self.r#power == 2
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == true
+        {
+            return 24694;
+        }
+        if self.r#power == 7
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::North
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24626;
+        }
+        if self.r#waterlogged == true
+            && self.r#power == 2
+            && self.r#facing == Facing::South
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24692;
+        }
+        if self.r#facing == Facing::West
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 12
+            && self.r#waterlogged == false
+        {
+            return 24853;
+        }
+        if self.r#facing == Facing::East
+            && self.r#waterlogged == true
+            && self.r#power == 7
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+        {
+            return 24916;
+        }
+        if self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#facing == Facing::East
+            && self.r#power == 14
+        {
+            return 24961;
+        }
+        if self.r#waterlogged == false
+            && self.r#facing == Facing::West
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#power == 8
+        {
+            return 24825;
+        }
+        if self.r#waterlogged == true
+            && self.r#facing == Facing::West
+            && self.r#power == 0
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+        {
+            return 24778;
+        }
+        if self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#power == 1
+            && self.r#facing == Facing::West
+        {
+            return 24783;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#facing == Facing::South
+            && self.r#waterlogged == true
+            && self.r#power == 7
+        {
+            return 24726;
+        }
+        if self.r#waterlogged == false
+            && self.r#power == 9
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#facing == Facing::South
+        {
+            return 24735;
+        }
+        if self.r#power == 0
+            && self.r#facing == Facing::West
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == true
+        {
+            return 24780;
+        }
+        if self.r#facing == Facing::East
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == true
+            && self.r#power == 4
+        {
+            return 24896;
+        }
+        if self.r#facing == Facing::West
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == true
+            && self.r#power == 3
+        {
+            return 24794;
+        }
+        if self.r#power == 1
+            && self.r#facing == Facing::South
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == true
+        {
+            return 24690;
+        }
+        if self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 5
+            && self.r#facing == Facing::West
+        {
+            return 24811;
+        }
+        if self.r#facing == Facing::East
+            && self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#power == 4
+        {
+            return 24898;
+        }
+        if self.r#facing == Facing::North
+            && self.r#power == 9
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == false
+        {
+            return 24643;
+        }
+        if self.r#facing == Facing::East
+            && self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 8
+        {
+            return 24925;
+        }
+        if self.r#power == 15
+            && self.r#facing == Facing::East
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == true
+        {
+            return 24966;
+        }
+        if self.r#waterlogged == true
+            && self.r#facing == Facing::North
+            && self.r#power == 4
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+        {
+            return 24610;
+        }
+        if self.r#facing == Facing::South
+            && self.r#power == 6
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == true
+        {
+            return 24716;
+        }
+        if self.r#power == 5
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::South
+        {
+            return 24711;
+        }
+        if self.r#waterlogged == true
+            && self.r#facing == Facing::South
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 14
+        {
+            return 24768;
+        }
+        if self.r#facing == Facing::South
+            && self.r#power == 0
+            && self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+        {
+            return 24682;
+        }
+        if self.r#facing == Facing::North
+            && self.r#waterlogged == false
+            && self.r#power == 5
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+        {
+            return 24619;
+        }
+        if self.r#facing == Facing::South
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == false
+            && self.r#power == 6
+        {
+            return 24719;
+        }
+        if self.r#power == 11
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::North
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+        {
+            return 24653;
+        }
+        if self.r#facing == Facing::East
+            && self.r#power == 7
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == true
+        {
+            return 24914;
+        }
+        if self.r#facing == Facing::East
+            && self.r#power == 3
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == false
+        {
+            return 24893;
+        }
+        if self.r#waterlogged == true
+            && self.r#facing == Facing::East
+            && self.r#power == 15
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+        {
+            return 24964;
+        }
+        if self.r#facing == Facing::West
+            && self.r#power == 1
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == false
+        {
+            return 24785;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#facing == Facing::North
+            && self.r#waterlogged == true
+            && self.r#power == 9
+        {
+            return 24640;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#facing == Facing::West
+            && self.r#power == 3
+            && self.r#waterlogged == false
+        {
+            return 24797;
+        }
+        if self.r#power == 8
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::East
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+        {
+            return 24922;
+        }
+        if self.r#facing == Facing::East
+            && self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#power == 10
+        {
+            return 24933;
+        }
+        if self.r#waterlogged == true
+            && self.r#facing == Facing::North
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#power == 12
+        {
+            return 24656;
+        }
+        if self.r#waterlogged == true
+            && self.r#facing == Facing::South
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#power == 9
+        {
+            return 24736;
+        }
+        if self.r#power == 14
+            && self.r#facing == Facing::West
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == true
+        {
+            return 24864;
+        }
+        if self.r#power == 14
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::West
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+        {
+            return 24863;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#facing == Facing::East
+            && self.r#waterlogged == true
+            && self.r#power == 6
+        {
+            return 24910;
+        }
+        if self.r#facing == Facing::West
+            && self.r#power == 0
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == true
+        {
+            return 24776;
+        }
+        if self.r#power == 2
+            && self.r#facing == Facing::South
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == true
+        {
+            return 24696;
+        }
+        if self.r#waterlogged == true
+            && self.r#power == 0
+            && self.r#facing == Facing::East
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+        {
+            return 24876;
+        }
+        if self.r#power == 3
+            && self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#facing == Facing::East
+        {
+            return 24892;
+        }
+        if self.r#facing == Facing::East
+            && self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#power == 5
+        {
+            return 24902;
+        }
+        if self.r#waterlogged == false
+            && self.r#facing == Facing::South
+            && self.r#power == 8
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+        {
+            return 24731;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#facing == Facing::West
+            && self.r#waterlogged == true
+            && self.r#power == 6
+        {
+            return 24812;
+        }
+        if self.r#facing == Facing::South
+            && self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#power == 5
+        {
+            return 24713;
+        }
+        if self.r#facing == Facing::West
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 2
+            && self.r#waterlogged == true
+        {
+            return 24792;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == false
+            && self.r#power == 8
+            && self.r#facing == Facing::West
+        {
+            return 24829;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#facing == Facing::North
+            && self.r#power == 1
+            && self.r#waterlogged == true
+        {
+            return 24590;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#facing == Facing::North
+            && self.r#power == 8
+            && self.r#waterlogged == false
+        {
+            return 24633;
+        }
+        if self.r#power == 15
+            && self.r#facing == Facing::South
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == false
+        {
+            return 24775;
+        }
+        if self.r#facing == Facing::South
+            && self.r#power == 5
+            && self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+        {
+            return 24712;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == true
+            && self.r#power == 12
+            && self.r#facing == Facing::West
+        {
+            return 24848;
+        }
+        if self.r#facing == Facing::North
+            && self.r#power == 9
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == false
+        {
+            return 24639;
+        }
+        if self.r#facing == Facing::East
+            && self.r#waterlogged == true
+            && self.r#power == 1
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24878;
+        }
+        if self.r#facing == Facing::East
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == true
+            && self.r#power == 8
+        {
+            return 24920;
+        }
+        if self.r#waterlogged == false
+            && self.r#facing == Facing::West
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#power == 3
+        {
+            return 24795;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#facing == Facing::East
+            && self.r#power == 13
+            && self.r#waterlogged == true
+        {
+            return 24952;
+        }
+        if self.r#facing == Facing::West
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 10
+            && self.r#waterlogged == false
+        {
+            return 24841;
+        }
+        if self.r#waterlogged == true
+            && self.r#power == 13
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#facing == Facing::North
+        {
+            return 24662;
+        }
+        if self.r#facing == Facing::North
+            && self.r#power == 9
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == true
+        {
+            return 24638;
+        }
+        if self.r#waterlogged == false
+            && self.r#power == 7
+            && self.r#facing == Facing::South
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24723;
+        }
+        if self.r#facing == Facing::South
+            && self.r#power == 14
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == false
+        {
+            return 24765;
+        }
+        if self.r#facing == Facing::South
+            && self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#power == 15
+        {
+            return 24773;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::West
+            && self.r#power == 6
+        {
+            return 24817;
+        }
+        if self.r#facing == Facing::North
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 10
+            && self.r#waterlogged == false
+        {
+            return 24649;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 14
+            && self.r#facing == Facing::North
+            && self.r#waterlogged == false
+        {
+            return 24673;
+        }
+        if self.r#power == 4
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::South
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+        {
+            return 24709;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#power == 9
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::South
+        {
+            return 24737;
+        }
+        if self.r#facing == Facing::West
+            && self.r#power == 8
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == true
+        {
+            return 24828;
+        }
+        if self.r#facing == Facing::South
+            && self.r#power == 1
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == false
+        {
+            return 24691;
+        }
+        if self.r#facing == Facing::East
+            && self.r#power == 1
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == false
+        {
+            return 24879;
+        }
+        if self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#facing == Facing::East
+            && self.r#power == 13
+        {
+            return 24953;
+        }
+        if self.r#facing == Facing::East
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == true
+            && self.r#power == 14
+        {
+            return 24956;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == true
+            && self.r#power == 13
+            && self.r#facing == Facing::West
+        {
+            return 24858;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#facing == Facing::East
+            && self.r#power == 4
+            && self.r#waterlogged == false
+        {
+            return 24899;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 7
+            && self.r#facing == Facing::West
+            && self.r#waterlogged == false
+        {
+            return 24823;
+        }
+        if self.r#facing == Facing::North
+            && self.r#power == 6
+            && self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24621;
+        }
+        if self.r#power == 4
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::South
+        {
+            return 24706;
+        }
+        if self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#power == 7
+            && self.r#facing == Facing::South
+        {
+            return 24725;
+        }
+        if self.r#power == 13
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::East
+        {
+            return 24950;
+        }
+        if self.r#facing == Facing::East
+            && self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 9
+        {
+            return 24931;
+        }
+        if self.r#facing == Facing::North
+            && self.r#waterlogged == true
+            && self.r#power == 6
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24620;
+        }
+        if self.r#facing == Facing::South
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == false
+            && self.r#power == 13
+        {
+            return 24759;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#facing == Facing::South
+            && self.r#power == 4
+            && self.r#waterlogged == false
+        {
+            return 24707;
+        }
+        if self.r#waterlogged == false
+            && self.r#facing == Facing::West
+            && self.r#power == 2
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24789;
+        }
+        if self.r#facing == Facing::North
+            && self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#power == 4
+        {
+            return 24608;
+        }
+        if self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#facing == Facing::West
+            && self.r#power == 5
+        {
+            return 24810;
+        }
+        if self.r#power == 5
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::North
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+        {
+            return 24618;
+        }
+        if self.r#waterlogged == true
+            && self.r#facing == Facing::West
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 11
+        {
+            return 24846;
+        }
+        if self.r#power == 11
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::South
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24747;
+        }
+        if self.r#facing == Facing::North
+            && self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#power == 7
+        {
+            return 24627;
+        }
+        if self.r#power == 2
+            && self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#facing == Facing::South
+        {
+            return 24693;
+        }
+        if self.r#waterlogged == true
+            && self.r#power == 4
+            && self.r#facing == Facing::East
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+        {
+            return 24900;
+        }
+        if self.r#waterlogged == true
+            && self.r#power == 14
+            && self.r#facing == Facing::North
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+        {
+            return 24672;
+        }
+        if self.r#waterlogged == false
+            && self.r#facing == Facing::South
+            && self.r#power == 8
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+        {
+            return 24733;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#facing == Facing::East
+            && self.r#waterlogged == false
+            && self.r#power == 6
+        {
+            return 24911;
+        }
+        if self.r#facing == Facing::North
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == true
+            && self.r#power == 9
+        {
+            return 24642;
+        }
+        if self.r#power == 11
+            && self.r#facing == Facing::East
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == true
+        {
+            return 24940;
+        }
+        if self.r#facing == Facing::North
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == true
+            && self.r#power == 12
+        {
+            return 24660;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#power == 12
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::East
+        {
+            return 24944;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#power == 3
+            && self.r#facing == Facing::West
+            && self.r#waterlogged == true
+        {
+            return 24796;
+        }
+        if self.r#power == 8
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::South
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24729;
+        }
+        if self.r#facing == Facing::North
+            && self.r#waterlogged == false
+            && self.r#power == 14
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24669;
+        }
+        if self.r#power == 0
+            && self.r#facing == Facing::South
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == true
+        {
+            return 24684;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 15
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::South
+        {
+            return 24774;
+        }
+        if self.r#waterlogged == false
+            && self.r#facing == Facing::East
+            && self.r#power == 13
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24951;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 15
+            && self.r#facing == Facing::West
+            && self.r#waterlogged == false
+        {
+            return 24871;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#power == 3
+            && self.r#facing == Facing::South
+            && self.r#waterlogged == false
+        {
+            return 24701;
+        }
+        if self.r#facing == Facing::North
+            && self.r#power == 13
+            && self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+        {
+            return 24667;
+        }
+        if self.r#facing == Facing::East
+            && self.r#power == 12
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == false
+        {
+            return 24949;
+        }
+        if self.r#power == 8
+            && self.r#facing == Facing::West
+            && self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+        {
+            return 24826;
+        }
+        if self.r#power == 6
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#facing == Facing::North
+            && self.r#waterlogged == false
+        {
+            return 24625;
+        }
+        if self.r#waterlogged == false
+            && self.r#facing == Facing::North
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#power == 2
+        {
+            return 24597;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#power == 6
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::South
+        {
+            return 24718;
+        }
+        if self.r#facing == Facing::North
+            && self.r#waterlogged == false
+            && self.r#power == 1
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24591;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#facing == Facing::West
+            && self.r#power == 10
+            && self.r#waterlogged == false
+        {
+            return 24837;
+        }
+        if self.r#facing == Facing::East
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 5
+            && self.r#waterlogged == true
+        {
+            return 24906;
+        }
+        if self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#facing == Facing::East
+            && self.r#power == 6
+        {
+            return 24908;
+        }
+        if self.r#waterlogged == false
+            && self.r#facing == Facing::East
+            && self.r#power == 5
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24903;
+        }
+        if self.r#facing == Facing::West
+            && self.r#power == 15
+            && self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+        {
+            return 24870;
+        }
+        if self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#facing == Facing::West
+            && self.r#power == 5
+        {
+            return 24809;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#facing == Facing::North
+            && self.r#power == 0
+            && self.r#waterlogged == true
+        {
+            return 24586;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#facing == Facing::East
+            && self.r#waterlogged == false
+            && self.r#power == 8
+        {
+            return 24923;
+        }
+        if self.r#power == 15
+            && self.r#facing == Facing::North
+            && self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24674;
+        }
+        if self.r#facing == Facing::South
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#power == 3
+            && self.r#waterlogged == false
+        {
+            return 24699;
+        }
+        if self.r#facing == Facing::South
+            && self.r#power == 11
+            && self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24746;
+        }
+        if self.r#facing == Facing::West
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 2
+            && self.r#waterlogged == false
+        {
+            return 24793;
+        }
+        if self.r#power == 2
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::West
+        {
+            return 24791;
+        }
+        if self.r#waterlogged == false
+            && self.r#facing == Facing::West
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#power == 7
+        {
+            return 24819;
+        }
+        if self.r#power == 1
+            && self.r#facing == Facing::South
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == false
+        {
+            return 24689;
+        }
+        if self.r#facing == Facing::West
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#power == 1
+            && self.r#waterlogged == true
+        {
+            return 24782;
+        }
+        if self.r#power == 3
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::South
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+        {
+            return 24702;
+        }
+        if self.r#facing == Facing::West
+            && self.r#power == 10
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == true
+        {
+            return 24838;
+        }
+        if self.r#power == 13
+            && self.r#facing == Facing::West
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == false
+        {
+            return 24857;
+        }
+        if self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#power == 2
+            && self.r#facing == Facing::North
+        {
+            return 24596;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::South
+            && self.r#power == 6
+        {
+            return 24720;
+        }
+        if self.r#facing == Facing::West
+            && self.r#waterlogged == false
+            && self.r#power == 5
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24807;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#power == 9
+            && self.r#facing == Facing::West
+            && self.r#waterlogged == true
+        {
+            return 24832;
+        }
+        if self.r#facing == Facing::West
+            && self.r#power == 14
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == false
+        {
+            return 24861;
+        }
+        if self.r#waterlogged == false
+            && self.r#facing == Facing::East
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 2
+        {
+            return 24889;
+        }
+        if self.r#power == 5
+            && self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#facing == Facing::East
+        {
+            return 24907;
+        }
+        if self.r#facing == Facing::East
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#power == 9
+            && self.r#waterlogged == true
+        {
+            return 24926;
+        }
+        if self.r#power == 13
+            && self.r#facing == Facing::West
+            && self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24854;
+        }
+        if self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#facing == Facing::East
+            && self.r#power == 0
+        {
+            return 24875;
+        }
+        if self.r#power == 9
+            && self.r#facing == Facing::East
+            && self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24927;
+        }
+        if self.r#waterlogged == true
+            && self.r#power == 10
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#facing == Facing::East
+        {
+            return 24936;
+        }
+        if self.r#power == 11
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#facing == Facing::East
+            && self.r#waterlogged == false
+        {
+            return 24941;
+        }
+        if self.r#power == 11
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::North
+        {
+            return 24655;
+        }
+        if self.r#power == 5
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::North
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+        {
+            return 24617;
+        }
+        if self.r#facing == Facing::East
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#power == 9
+            && self.r#waterlogged == false
+        {
+            return 24929;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#facing == Facing::East
+            && self.r#waterlogged == false
+            && self.r#power == 13
+        {
+            return 24955;
+        }
+        if self.r#power == 15
+            && self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#facing == Facing::West
+        {
+            return 24869;
+        }
+        if self.r#power == 8
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::West
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+        {
+            return 24827;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#facing == Facing::South
+            && self.r#power == 9
+            && self.r#waterlogged == true
+        {
+            return 24738;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#power == 11
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::West
+        {
+            return 24845;
+        }
+        if self.r#facing == Facing::West
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#power == 4
+            && self.r#waterlogged == false
+        {
+            return 24803;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::West
+            && self.r#power == 10
+        {
+            return 24839;
+        }
+        if self.r#facing == Facing::East
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 11
+            && self.r#waterlogged == false
+        {
+            return 24943;
+        }
+        if self.r#facing == Facing::East
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == false
+            && self.r#power == 12
+        {
+            return 24945;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#facing == Facing::East
+            && self.r#waterlogged == true
+            && self.r#power == 14
+        {
+            return 24960;
+        }
+        if self.r#waterlogged == false
+            && self.r#facing == Facing::South
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 5
+        {
+            return 24715;
+        }
+        if self.r#facing == Facing::West
+            && self.r#power == 15
+            && self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+        {
+            return 24868;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::North
+            && self.r#power == 4
+        {
+            return 24609;
+        }
+        if self.r#facing == Facing::West
+            && self.r#waterlogged == true
+            && self.r#power == 9
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24830;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#facing == Facing::West
+            && self.r#power == 10
+            && self.r#waterlogged == true
+        {
+            return 24840;
+        }
+        if self.r#facing == Facing::East
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#power == 1
+            && self.r#waterlogged == false
+        {
+            return 24881;
+        }
+        if self.r#power == 6
+            && self.r#facing == Facing::South
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == false
+        {
+            return 24717;
+        }
+        if self.r#facing == Facing::North
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == true
+            && self.r#power == 14
+        {
+            return 24668;
+        }
+        if self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 1
+            && self.r#facing == Facing::West
+        {
+            return 24787;
+        }
+        if self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#power == 12
+            && self.r#facing == Facing::North
+        {
+            return 24657;
+        }
+        if self.r#facing == Facing::East
+            && self.r#power == 14
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == false
+        {
+            return 24957;
+        }
+        if self.r#facing == Facing::East
+            && self.r#power == 15
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == true
+        {
+            return 24962;
+        }
+        if self.r#facing == Facing::West
+            && self.r#power == 12
+            && self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+        {
+            return 24850;
+        }
+        if self.r#facing == Facing::North
+            && self.r#power == 6
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == false
+        {
+            return 24623;
+        }
+        if self.r#power == 11
+            && self.r#facing == Facing::East
+            && self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24939;
+        }
+        if self.r#power == 2
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::East
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+        {
+            return 24887;
+        }
+        if self.r#facing == Facing::West
+            && self.r#waterlogged == true
+            && self.r#power == 7
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+        {
+            return 24820;
+        }
+        if self.r#facing == Facing::West
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == true
+            && self.r#power == 2
+        {
+            return 24788;
+        }
+        if self.r#power == 1
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::East
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+        {
+            return 24882;
+        }
+        if self.r#facing == Facing::North
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == false
+            && self.r#power == 12
+        {
+            return 24659;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#facing == Facing::North
+            && self.r#power == 12
+            && self.r#waterlogged == true
+        {
+            return 24658;
+        }
+        if self.r#power == 6
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::West
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+        {
+            return 24814;
+        }
+        if self.r#power == 8
+            && self.r#facing == Facing::East
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == false
+        {
+            return 24921;
+        }
+        if self.r#facing == Facing::East
+            && self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 8
+        {
+            return 24924;
+        }
+        if self.r#power == 3
+            && self.r#facing == Facing::South
+            && self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24698;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#facing == Facing::North
+            && self.r#power == 3
+            && self.r#waterlogged == true
+        {
+            return 24602;
+        }
+        if self.r#facing == Facing::West
+            && self.r#power == 1
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#waterlogged == true
+        {
+            return 24786;
+        }
+        if self.r#facing == Facing::West
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#waterlogged == true
+            && self.r#power == 4
+        {
+            return 24802;
+        }
+        if self.r#facing == Facing::West
+            && self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#power == 7
+        {
+            return 24818;
+        }
+        if self.r#facing == Facing::West
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 9
+            && self.r#waterlogged == false
+        {
+            return 24835;
+        }
+        if self.r#facing == Facing::South
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#waterlogged == false
+            && self.r#power == 10
+        {
+            return 24741;
+        }
+        if self.r#power == 3
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::North
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24603;
+        }
+        if self.r#facing == Facing::North
+            && self.r#power == 8
+            && self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+        {
+            return 24636;
+        }
+        if self.r#power == 4
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::West
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+        {
+            return 24801;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#power == 1
+            && self.r#facing == Facing::North
+            && self.r#waterlogged == false
+        {
+            return 24595;
+        }
+        if self.r#waterlogged == true
+            && self.r#facing == Facing::North
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#power == 10
+        {
+            return 24644;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+            && self.r#facing == Facing::East
+            && self.r#power == 4
+            && self.r#waterlogged == false
+        {
+            return 24901;
+        }
+        if self.r#power == 15
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::South
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+        {
+            return 24772;
+        }
+        if self.r#power == 11
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#facing == Facing::East
+            && self.r#waterlogged == true
+        {
+            return 24938;
+        }
+        if self.r#facing == Facing::North
+            && self.r#waterlogged == false
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#power == 9
+        {
+            return 24641;
+        }
+        if self.r#facing == Facing::East
+            && self.r#power == 11
+            && self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Cooldown
+        {
+            return 24942;
+        }
+        if self.r#sculk_sensor_phase == SculkSensorPhase::Inactive
+            && self.r#facing == Facing::East
+            && self.r#power == 4
+            && self.r#waterlogged == false
+        {
+            return 24897;
+        }
+        if self.r#facing == Facing::West
+            && self.r#waterlogged == true
+            && self.r#power == 13
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+        {
+            return 24856;
+        }
+        if self.r#power == 1
+            && self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#facing == Facing::North
+        {
+            return 24592;
+        }
+        if self.r#waterlogged == true
+            && self.r#sculk_sensor_phase == SculkSensorPhase::Active
+            && self.r#facing == Facing::South
+            && self.r#power == 14
+        {
+            return 24766;
+        }
         panic!("Invalid block state")
     }
 
@@ -3489,4 +5792,3 @@ impl BlockState for CalibratedSculkSensor {
         return None;
     }
 }
-

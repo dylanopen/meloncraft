@@ -1,9 +1,7 @@
 use crate::BlockState;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub struct CherryPlanks {
-}
-
+pub struct CherryPlanks {}
 
 impl BlockState for CherryPlanks {
     fn to_id(&self) -> i32 {
@@ -13,10 +11,8 @@ impl BlockState for CherryPlanks {
 
     fn from_id(state_id: i32) -> Option<Self> {
         if state_id == 20 {
-            return Some(CherryPlanks {
-            });
+            return Some(CherryPlanks {});
         }
         return None;
     }
 }
-

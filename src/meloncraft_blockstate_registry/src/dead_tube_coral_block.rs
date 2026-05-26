@@ -1,9 +1,7 @@
 use crate::BlockState;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub struct DeadTubeCoralBlock {
-}
-
+pub struct DeadTubeCoralBlock {}
 
 impl BlockState for DeadTubeCoralBlock {
     fn to_id(&self) -> i32 {
@@ -13,10 +11,8 @@ impl BlockState for DeadTubeCoralBlock {
 
     fn from_id(state_id: i32) -> Option<Self> {
         if state_id == 14935 {
-            return Some(DeadTubeCoralBlock {
-            });
+            return Some(DeadTubeCoralBlock {});
         }
         return None;
     }
 }
-

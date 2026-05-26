@@ -5,7 +5,6 @@ pub struct TallSeagrass {
     pub r#half: Half,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Half {
     Upper,
@@ -14,8 +13,12 @@ pub enum Half {
 
 impl BlockState for TallSeagrass {
     fn to_id(&self) -> i32 {
-        if self.r#half == Half::Upper { return 2055; }
-        if self.r#half == Half::Lower { return 2056; }
+        if self.r#half == Half::Upper {
+            return 2055;
+        }
+        if self.r#half == Half::Lower {
+            return 2056;
+        }
         panic!("Invalid block state")
     }
 
@@ -33,4 +36,3 @@ impl BlockState for TallSeagrass {
         return None;
     }
 }
-

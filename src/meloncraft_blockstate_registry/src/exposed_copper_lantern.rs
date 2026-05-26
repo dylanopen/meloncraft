@@ -6,13 +6,20 @@ pub struct ExposedCopperLantern {
     pub waterlogged: bool,
 }
 
-
 impl BlockState for ExposedCopperLantern {
     fn to_id(&self) -> i32 {
-        if self.r#waterlogged == false && self.r#hanging == false { return 20650; }
-        if self.r#hanging == false && self.r#waterlogged == true { return 20649; }
-        if self.r#hanging == true && self.r#waterlogged == true { return 20647; }
-        if self.r#hanging == true && self.r#waterlogged == false { return 20648; }
+        if self.r#waterlogged == false && self.r#hanging == false {
+            return 20650;
+        }
+        if self.r#hanging == false && self.r#waterlogged == true {
+            return 20649;
+        }
+        if self.r#hanging == true && self.r#waterlogged == true {
+            return 20647;
+        }
+        if self.r#hanging == true && self.r#waterlogged == false {
+            return 20648;
+        }
         panic!("Invalid block state")
     }
 
@@ -44,4 +51,3 @@ impl BlockState for ExposedCopperLantern {
         return None;
     }
 }
-

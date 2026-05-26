@@ -7,25 +7,56 @@ pub struct LightBlueCandle {
     pub lit: bool,
 }
 
-
 impl BlockState for LightBlueCandle {
     fn to_id(&self) -> i32 {
-        if self.r#lit == true && self.r#candles == 3 && self.r#waterlogged == false { return 22967; }
-        if self.r#candles == 2 && self.r#lit == false && self.r#waterlogged == true { return 22964; }
-        if self.r#candles == 1 && self.r#lit == false && self.r#waterlogged == true { return 22960; }
-        if self.r#lit == false && self.r#waterlogged == true && self.r#candles == 4 { return 22972; }
-        if self.r#candles == 1 && self.r#lit == true && self.r#waterlogged == false { return 22959; }
-        if self.r#candles == 1 && self.r#lit == true && self.r#waterlogged == true { return 22958; }
-        if self.r#waterlogged == false && self.r#candles == 3 && self.r#lit == false { return 22969; }
-        if self.r#lit == true && self.r#waterlogged == true && self.r#candles == 3 { return 22966; }
-        if self.r#candles == 1 && self.r#lit == false && self.r#waterlogged == false { return 22961; }
-        if self.r#candles == 2 && self.r#lit == false && self.r#waterlogged == false { return 22965; }
-        if self.r#lit == true && self.r#waterlogged == true && self.r#candles == 4 { return 22970; }
-        if self.r#waterlogged == false && self.r#candles == 4 && self.r#lit == false { return 22973; }
-        if self.r#candles == 2 && self.r#lit == true && self.r#waterlogged == true { return 22962; }
-        if self.r#lit == false && self.r#waterlogged == true && self.r#candles == 3 { return 22968; }
-        if self.r#candles == 2 && self.r#waterlogged == false && self.r#lit == true { return 22963; }
-        if self.r#candles == 4 && self.r#lit == true && self.r#waterlogged == false { return 22971; }
+        if self.r#lit == true && self.r#candles == 3 && self.r#waterlogged == false {
+            return 22967;
+        }
+        if self.r#candles == 2 && self.r#lit == false && self.r#waterlogged == true {
+            return 22964;
+        }
+        if self.r#candles == 1 && self.r#lit == false && self.r#waterlogged == true {
+            return 22960;
+        }
+        if self.r#lit == false && self.r#waterlogged == true && self.r#candles == 4 {
+            return 22972;
+        }
+        if self.r#candles == 1 && self.r#lit == true && self.r#waterlogged == false {
+            return 22959;
+        }
+        if self.r#candles == 1 && self.r#lit == true && self.r#waterlogged == true {
+            return 22958;
+        }
+        if self.r#waterlogged == false && self.r#candles == 3 && self.r#lit == false {
+            return 22969;
+        }
+        if self.r#lit == true && self.r#waterlogged == true && self.r#candles == 3 {
+            return 22966;
+        }
+        if self.r#candles == 1 && self.r#lit == false && self.r#waterlogged == false {
+            return 22961;
+        }
+        if self.r#candles == 2 && self.r#lit == false && self.r#waterlogged == false {
+            return 22965;
+        }
+        if self.r#lit == true && self.r#waterlogged == true && self.r#candles == 4 {
+            return 22970;
+        }
+        if self.r#waterlogged == false && self.r#candles == 4 && self.r#lit == false {
+            return 22973;
+        }
+        if self.r#candles == 2 && self.r#lit == true && self.r#waterlogged == true {
+            return 22962;
+        }
+        if self.r#lit == false && self.r#waterlogged == true && self.r#candles == 3 {
+            return 22968;
+        }
+        if self.r#candles == 2 && self.r#waterlogged == false && self.r#lit == true {
+            return 22963;
+        }
+        if self.r#candles == 4 && self.r#lit == true && self.r#waterlogged == false {
+            return 22971;
+        }
         panic!("Invalid block state")
     }
 
@@ -145,4 +176,3 @@ impl BlockState for LightBlueCandle {
         return None;
     }
 }
-

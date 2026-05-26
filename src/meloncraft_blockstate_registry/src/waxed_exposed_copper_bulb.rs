@@ -6,13 +6,20 @@ pub struct WaxedExposedCopperBulb {
     pub lit: bool,
 }
 
-
 impl BlockState for WaxedExposedCopperBulb {
     fn to_id(&self) -> i32 {
-        if self.r#lit == true && self.r#powered == true { return 26881; }
-        if self.r#lit == true && self.r#powered == false { return 26882; }
-        if self.r#lit == false && self.r#powered == true { return 26883; }
-        if self.r#powered == false && self.r#lit == false { return 26884; }
+        if self.r#lit == true && self.r#powered == true {
+            return 26881;
+        }
+        if self.r#lit == true && self.r#powered == false {
+            return 26882;
+        }
+        if self.r#lit == false && self.r#powered == true {
+            return 26883;
+        }
+        if self.r#powered == false && self.r#lit == false {
+            return 26884;
+        }
         panic!("Invalid block state")
     }
 
@@ -44,4 +51,3 @@ impl BlockState for WaxedExposedCopperBulb {
         return None;
     }
 }
-

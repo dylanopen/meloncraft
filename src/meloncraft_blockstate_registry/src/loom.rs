@@ -5,7 +5,6 @@ pub struct Loom {
     pub r#facing: Facing,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -16,10 +15,18 @@ pub enum Facing {
 
 impl BlockState for Loom {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::West { return 20538; }
-        if self.r#facing == Facing::South { return 20537; }
-        if self.r#facing == Facing::East { return 20539; }
-        if self.r#facing == Facing::North { return 20536; }
+        if self.r#facing == Facing::West {
+            return 20538;
+        }
+        if self.r#facing == Facing::South {
+            return 20537;
+        }
+        if self.r#facing == Facing::East {
+            return 20539;
+        }
+        if self.r#facing == Facing::North {
+            return 20536;
+        }
         panic!("Invalid block state")
     }
 
@@ -47,4 +54,3 @@ impl BlockState for Loom {
         return None;
     }
 }
-

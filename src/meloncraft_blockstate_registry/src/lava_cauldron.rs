@@ -1,9 +1,7 @@
 use crate::BlockState;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub struct LavaCauldron {
-}
-
+pub struct LavaCauldron {}
 
 impl BlockState for LavaCauldron {
     fn to_id(&self) -> i32 {
@@ -13,10 +11,8 @@ impl BlockState for LavaCauldron {
 
     fn from_id(state_id: i32) -> Option<Self> {
         if state_id == 9263 {
-            return Some(LavaCauldron {
-            });
+            return Some(LavaCauldron {});
         }
         return None;
     }
 }
-

@@ -7,7 +7,6 @@ pub struct PoweredRail {
     pub waterlogged: bool,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Shape {
     NorthSouth,
@@ -20,30 +19,139 @@ pub enum Shape {
 
 impl BlockState for PoweredRail {
     fn to_id(&self) -> i32 {
-        if self.r#shape == Shape::AscendingNorth && self.r#waterlogged == true && self.r#powered == true { return 1995; }
-        if self.r#waterlogged == true && self.r#shape == Shape::NorthSouth && self.r#powered == false { return 1999; }
-        if self.r#waterlogged == true && self.r#shape == Shape::AscendingEast && self.r#powered == false { return 2003; }
-        if self.r#shape == Shape::AscendingSouth && self.r#powered == true && self.r#waterlogged == true { return 1997; }
-        if self.r#powered == true && self.r#waterlogged == false && self.r#shape == Shape::AscendingEast { return 1992; }
-        if self.r#shape == Shape::AscendingWest && self.r#waterlogged == false && self.r#powered == false { return 2006; }
-        if self.r#waterlogged == true && self.r#powered == false && self.r#shape == Shape::AscendingSouth { return 2009; }
-        if self.r#shape == Shape::AscendingSouth && self.r#powered == false && self.r#waterlogged == false { return 2010; }
-        if self.r#waterlogged == false && self.r#shape == Shape::EastWest && self.r#powered == true { return 1990; }
-        if self.r#shape == Shape::AscendingNorth && self.r#powered == false && self.r#waterlogged == true { return 2007; }
-        if self.r#shape == Shape::NorthSouth && self.r#waterlogged == false && self.r#powered == false { return 2000; }
-        if self.r#waterlogged == false && self.r#powered == true && self.r#shape == Shape::AscendingSouth { return 1998; }
-        if self.r#powered == true && self.r#shape == Shape::AscendingEast && self.r#waterlogged == true { return 1991; }
-        if self.r#powered == true && self.r#shape == Shape::NorthSouth && self.r#waterlogged == true { return 1987; }
-        if self.r#powered == true && self.r#waterlogged == false && self.r#shape == Shape::AscendingNorth { return 1996; }
-        if self.r#waterlogged == true && self.r#shape == Shape::AscendingWest && self.r#powered == true { return 1993; }
-        if self.r#shape == Shape::EastWest && self.r#powered == false && self.r#waterlogged == true { return 2001; }
-        if self.r#waterlogged == false && self.r#shape == Shape::AscendingEast && self.r#powered == false { return 2004; }
-        if self.r#powered == true && self.r#shape == Shape::EastWest && self.r#waterlogged == true { return 1989; }
-        if self.r#shape == Shape::AscendingWest && self.r#waterlogged == false && self.r#powered == true { return 1994; }
-        if self.r#shape == Shape::EastWest && self.r#waterlogged == false && self.r#powered == false { return 2002; }
-        if self.r#powered == false && self.r#shape == Shape::AscendingWest && self.r#waterlogged == true { return 2005; }
-        if self.r#powered == false && self.r#shape == Shape::AscendingNorth && self.r#waterlogged == false { return 2008; }
-        if self.r#waterlogged == false && self.r#powered == true && self.r#shape == Shape::NorthSouth { return 1988; }
+        if self.r#shape == Shape::AscendingNorth
+            && self.r#waterlogged == true
+            && self.r#powered == true
+        {
+            return 1995;
+        }
+        if self.r#waterlogged == true
+            && self.r#shape == Shape::NorthSouth
+            && self.r#powered == false
+        {
+            return 1999;
+        }
+        if self.r#waterlogged == true
+            && self.r#shape == Shape::AscendingEast
+            && self.r#powered == false
+        {
+            return 2003;
+        }
+        if self.r#shape == Shape::AscendingSouth
+            && self.r#powered == true
+            && self.r#waterlogged == true
+        {
+            return 1997;
+        }
+        if self.r#powered == true
+            && self.r#waterlogged == false
+            && self.r#shape == Shape::AscendingEast
+        {
+            return 1992;
+        }
+        if self.r#shape == Shape::AscendingWest
+            && self.r#waterlogged == false
+            && self.r#powered == false
+        {
+            return 2006;
+        }
+        if self.r#waterlogged == true
+            && self.r#powered == false
+            && self.r#shape == Shape::AscendingSouth
+        {
+            return 2009;
+        }
+        if self.r#shape == Shape::AscendingSouth
+            && self.r#powered == false
+            && self.r#waterlogged == false
+        {
+            return 2010;
+        }
+        if self.r#waterlogged == false && self.r#shape == Shape::EastWest && self.r#powered == true
+        {
+            return 1990;
+        }
+        if self.r#shape == Shape::AscendingNorth
+            && self.r#powered == false
+            && self.r#waterlogged == true
+        {
+            return 2007;
+        }
+        if self.r#shape == Shape::NorthSouth
+            && self.r#waterlogged == false
+            && self.r#powered == false
+        {
+            return 2000;
+        }
+        if self.r#waterlogged == false
+            && self.r#powered == true
+            && self.r#shape == Shape::AscendingSouth
+        {
+            return 1998;
+        }
+        if self.r#powered == true
+            && self.r#shape == Shape::AscendingEast
+            && self.r#waterlogged == true
+        {
+            return 1991;
+        }
+        if self.r#powered == true && self.r#shape == Shape::NorthSouth && self.r#waterlogged == true
+        {
+            return 1987;
+        }
+        if self.r#powered == true
+            && self.r#waterlogged == false
+            && self.r#shape == Shape::AscendingNorth
+        {
+            return 1996;
+        }
+        if self.r#waterlogged == true
+            && self.r#shape == Shape::AscendingWest
+            && self.r#powered == true
+        {
+            return 1993;
+        }
+        if self.r#shape == Shape::EastWest && self.r#powered == false && self.r#waterlogged == true
+        {
+            return 2001;
+        }
+        if self.r#waterlogged == false
+            && self.r#shape == Shape::AscendingEast
+            && self.r#powered == false
+        {
+            return 2004;
+        }
+        if self.r#powered == true && self.r#shape == Shape::EastWest && self.r#waterlogged == true {
+            return 1989;
+        }
+        if self.r#shape == Shape::AscendingWest
+            && self.r#waterlogged == false
+            && self.r#powered == true
+        {
+            return 1994;
+        }
+        if self.r#shape == Shape::EastWest && self.r#waterlogged == false && self.r#powered == false
+        {
+            return 2002;
+        }
+        if self.r#powered == false
+            && self.r#shape == Shape::AscendingWest
+            && self.r#waterlogged == true
+        {
+            return 2005;
+        }
+        if self.r#powered == false
+            && self.r#shape == Shape::AscendingNorth
+            && self.r#waterlogged == false
+        {
+            return 2008;
+        }
+        if self.r#waterlogged == false
+            && self.r#powered == true
+            && self.r#shape == Shape::NorthSouth
+        {
+            return 1988;
+        }
         panic!("Invalid block state")
     }
 
@@ -219,4 +327,3 @@ impl BlockState for PoweredRail {
         return None;
     }
 }
-

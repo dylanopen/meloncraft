@@ -1,9 +1,7 @@
 use crate::BlockState;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub struct Shroomlight {
-}
-
+pub struct Shroomlight {}
 
 impl BlockState for Shroomlight {
     fn to_id(&self) -> i32 {
@@ -13,10 +11,8 @@ impl BlockState for Shroomlight {
 
     fn from_id(state_id: i32) -> Option<Self> {
         if state_id == 20774 {
-            return Some(Shroomlight {
-            });
+            return Some(Shroomlight {});
         }
         return None;
     }
 }
-

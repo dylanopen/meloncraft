@@ -6,7 +6,6 @@ pub struct TuffSlab {
     pub r#type: Type,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Type {
     Top,
@@ -16,12 +15,24 @@ pub enum Type {
 
 impl BlockState for TuffSlab {
     fn to_id(&self) -> i32 {
-        if self.r#type == Type::Top && self.r#waterlogged == true { return 23251; }
-        if self.r#type == Type::Double && self.r#waterlogged == true { return 23255; }
-        if self.r#type == Type::Bottom && self.r#waterlogged == true { return 23253; }
-        if self.r#type == Type::Bottom && self.r#waterlogged == false { return 23254; }
-        if self.r#type == Type::Double && self.r#waterlogged == false { return 23256; }
-        if self.r#waterlogged == false && self.r#type == Type::Top { return 23252; }
+        if self.r#type == Type::Top && self.r#waterlogged == true {
+            return 23251;
+        }
+        if self.r#type == Type::Double && self.r#waterlogged == true {
+            return 23255;
+        }
+        if self.r#type == Type::Bottom && self.r#waterlogged == true {
+            return 23253;
+        }
+        if self.r#type == Type::Bottom && self.r#waterlogged == false {
+            return 23254;
+        }
+        if self.r#type == Type::Double && self.r#waterlogged == false {
+            return 23256;
+        }
+        if self.r#waterlogged == false && self.r#type == Type::Top {
+            return 23252;
+        }
         panic!("Invalid block state")
     }
 
@@ -65,4 +76,3 @@ impl BlockState for TuffSlab {
         return None;
     }
 }
-

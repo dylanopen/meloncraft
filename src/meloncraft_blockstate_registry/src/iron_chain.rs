@@ -6,7 +6,6 @@ pub struct IronChain {
     pub r#axis: Axis,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Axis {
     X,
@@ -16,12 +15,24 @@ pub enum Axis {
 
 impl BlockState for IronChain {
     fn to_id(&self) -> i32 {
-        if self.r#axis == Axis::Z && self.r#waterlogged == true { return 8049; }
-        if self.r#axis == Axis::X && self.r#waterlogged == true { return 8045; }
-        if self.r#waterlogged == false && self.r#axis == Axis::Y { return 8048; }
-        if self.r#waterlogged == false && self.r#axis == Axis::X { return 8046; }
-        if self.r#waterlogged == false && self.r#axis == Axis::Z { return 8050; }
-        if self.r#axis == Axis::Y && self.r#waterlogged == true { return 8047; }
+        if self.r#axis == Axis::Z && self.r#waterlogged == true {
+            return 8049;
+        }
+        if self.r#axis == Axis::X && self.r#waterlogged == true {
+            return 8045;
+        }
+        if self.r#waterlogged == false && self.r#axis == Axis::Y {
+            return 8048;
+        }
+        if self.r#waterlogged == false && self.r#axis == Axis::X {
+            return 8046;
+        }
+        if self.r#waterlogged == false && self.r#axis == Axis::Z {
+            return 8050;
+        }
+        if self.r#axis == Axis::Y && self.r#waterlogged == true {
+            return 8047;
+        }
         panic!("Invalid block state")
     }
 
@@ -65,4 +76,3 @@ impl BlockState for IronChain {
         return None;
     }
 }
-

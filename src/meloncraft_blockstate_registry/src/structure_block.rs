@@ -5,7 +5,6 @@ pub struct StructureBlock {
     pub r#mode: Mode,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Mode {
     Save,
@@ -16,18 +15,24 @@ pub enum Mode {
 
 impl BlockState for StructureBlock {
     fn to_id(&self) -> i32 {
-        if self.r#mode == Mode::Data { return 21523; }
-        if self.r#mode == Mode::Corner { return 21522; }
-        if self.r#mode == Mode::Save { return 21520; }
-        if self.r#mode == Mode::Load { return 21521; }
+        if self.r#mode == Mode::Data {
+            return 21523;
+        }
+        if self.r#mode == Mode::Corner {
+            return 21522;
+        }
+        if self.r#mode == Mode::Save {
+            return 21520;
+        }
+        if self.r#mode == Mode::Load {
+            return 21521;
+        }
         panic!("Invalid block state")
     }
 
     fn from_id(state_id: i32) -> Option<Self> {
         if state_id == 21523 {
-            return Some(StructureBlock {
-                r#mode: Mode::Data,
-            });
+            return Some(StructureBlock { r#mode: Mode::Data });
         }
         if state_id == 21522 {
             return Some(StructureBlock {
@@ -35,16 +40,11 @@ impl BlockState for StructureBlock {
             });
         }
         if state_id == 21520 {
-            return Some(StructureBlock {
-                r#mode: Mode::Save,
-            });
+            return Some(StructureBlock { r#mode: Mode::Save });
         }
         if state_id == 21521 {
-            return Some(StructureBlock {
-                r#mode: Mode::Load,
-            });
+            return Some(StructureBlock { r#mode: Mode::Load });
         }
         return None;
     }
 }
-

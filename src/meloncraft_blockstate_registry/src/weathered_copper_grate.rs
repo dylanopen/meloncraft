@@ -5,11 +5,14 @@ pub struct WeatheredCopperGrate {
     pub waterlogged: bool,
 }
 
-
 impl BlockState for WeatheredCopperGrate {
     fn to_id(&self) -> i32 {
-        if self.r#waterlogged == true { return 26849; }
-        if self.r#waterlogged == false { return 26850; }
+        if self.r#waterlogged == true {
+            return 26849;
+        }
+        if self.r#waterlogged == false {
+            return 26850;
+        }
         panic!("Invalid block state")
     }
 
@@ -27,4 +30,3 @@ impl BlockState for WeatheredCopperGrate {
         return None;
     }
 }
-

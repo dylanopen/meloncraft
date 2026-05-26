@@ -6,7 +6,6 @@ pub struct Dispenser {
     pub triggered: bool,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -19,18 +18,42 @@ pub enum Facing {
 
 impl BlockState for Dispenser {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::Down && self.r#triggered == false { return 577; }
-        if self.r#triggered == true && self.r#facing == Facing::East { return 568; }
-        if self.r#facing == Facing::South && self.r#triggered == true { return 570; }
-        if self.r#triggered == true && self.r#facing == Facing::West { return 572; }
-        if self.r#facing == Facing::South && self.r#triggered == false { return 571; }
-        if self.r#facing == Facing::East && self.r#triggered == false { return 569; }
-        if self.r#triggered == true && self.r#facing == Facing::North { return 566; }
-        if self.r#triggered == true && self.r#facing == Facing::Down { return 576; }
-        if self.r#facing == Facing::Up && self.r#triggered == false { return 575; }
-        if self.r#triggered == true && self.r#facing == Facing::Up { return 574; }
-        if self.r#facing == Facing::West && self.r#triggered == false { return 573; }
-        if self.r#triggered == false && self.r#facing == Facing::North { return 567; }
+        if self.r#facing == Facing::Down && self.r#triggered == false {
+            return 577;
+        }
+        if self.r#triggered == true && self.r#facing == Facing::East {
+            return 568;
+        }
+        if self.r#facing == Facing::South && self.r#triggered == true {
+            return 570;
+        }
+        if self.r#triggered == true && self.r#facing == Facing::West {
+            return 572;
+        }
+        if self.r#facing == Facing::South && self.r#triggered == false {
+            return 571;
+        }
+        if self.r#facing == Facing::East && self.r#triggered == false {
+            return 569;
+        }
+        if self.r#triggered == true && self.r#facing == Facing::North {
+            return 566;
+        }
+        if self.r#triggered == true && self.r#facing == Facing::Down {
+            return 576;
+        }
+        if self.r#facing == Facing::Up && self.r#triggered == false {
+            return 575;
+        }
+        if self.r#triggered == true && self.r#facing == Facing::Up {
+            return 574;
+        }
+        if self.r#facing == Facing::West && self.r#triggered == false {
+            return 573;
+        }
+        if self.r#triggered == false && self.r#facing == Facing::North {
+            return 567;
+        }
         panic!("Invalid block state")
     }
 
@@ -110,4 +133,3 @@ impl BlockState for Dispenser {
         return None;
     }
 }
-

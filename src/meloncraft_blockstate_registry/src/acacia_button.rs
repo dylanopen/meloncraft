@@ -7,7 +7,6 @@ pub struct AcaciaButton {
     pub powered: bool,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Face {
     Floor,
@@ -25,30 +24,84 @@ pub enum Facing {
 
 impl BlockState for AcaciaButton {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::South && self.r#powered == true && self.r#face == Face::Floor { return 10571; }
-        if self.r#powered == false && self.r#face == Face::Ceiling && self.r#facing == Facing::North { return 10586; }
-        if self.r#powered == false && self.r#facing == Facing::South && self.r#face == Face::Floor { return 10572; }
-        if self.r#face == Face::Ceiling && self.r#facing == Facing::West && self.r#powered == true { return 10589; }
-        if self.r#face == Face::Floor && self.r#powered == true && self.r#facing == Facing::East { return 10575; }
-        if self.r#facing == Facing::North && self.r#face == Face::Floor && self.r#powered == true { return 10569; }
-        if self.r#facing == Facing::West && self.r#powered == false && self.r#face == Face::Floor { return 10574; }
-        if self.r#face == Face::Wall && self.r#facing == Facing::South && self.r#powered == true { return 10579; }
-        if self.r#powered == false && self.r#face == Face::Wall && self.r#facing == Facing::North { return 10578; }
-        if self.r#facing == Facing::South && self.r#face == Face::Wall && self.r#powered == false { return 10580; }
-        if self.r#powered == true && self.r#face == Face::Wall && self.r#facing == Facing::North { return 10577; }
-        if self.r#face == Face::Floor && self.r#facing == Facing::North && self.r#powered == false { return 10570; }
-        if self.r#facing == Facing::East && self.r#powered == true && self.r#face == Face::Wall { return 10583; }
-        if self.r#face == Face::Wall && self.r#facing == Facing::East && self.r#powered == false { return 10584; }
-        if self.r#face == Face::Ceiling && self.r#facing == Facing::South && self.r#powered == true { return 10587; }
-        if self.r#powered == true && self.r#face == Face::Ceiling && self.r#facing == Facing::North { return 10585; }
-        if self.r#powered == false && self.r#facing == Facing::East && self.r#face == Face::Floor { return 10576; }
-        if self.r#face == Face::Ceiling && self.r#powered == false && self.r#facing == Facing::East { return 10592; }
-        if self.r#facing == Facing::West && self.r#face == Face::Wall && self.r#powered == true { return 10581; }
-        if self.r#face == Face::Ceiling && self.r#facing == Facing::West && self.r#powered == false { return 10590; }
-        if self.r#facing == Facing::West && self.r#powered == false && self.r#face == Face::Wall { return 10582; }
-        if self.r#powered == true && self.r#facing == Facing::West && self.r#face == Face::Floor { return 10573; }
-        if self.r#facing == Facing::South && self.r#powered == false && self.r#face == Face::Ceiling { return 10588; }
-        if self.r#powered == true && self.r#face == Face::Ceiling && self.r#facing == Facing::East { return 10591; }
+        if self.r#facing == Facing::South && self.r#powered == true && self.r#face == Face::Floor {
+            return 10571;
+        }
+        if self.r#powered == false && self.r#face == Face::Ceiling && self.r#facing == Facing::North
+        {
+            return 10586;
+        }
+        if self.r#powered == false && self.r#facing == Facing::South && self.r#face == Face::Floor {
+            return 10572;
+        }
+        if self.r#face == Face::Ceiling && self.r#facing == Facing::West && self.r#powered == true {
+            return 10589;
+        }
+        if self.r#face == Face::Floor && self.r#powered == true && self.r#facing == Facing::East {
+            return 10575;
+        }
+        if self.r#facing == Facing::North && self.r#face == Face::Floor && self.r#powered == true {
+            return 10569;
+        }
+        if self.r#facing == Facing::West && self.r#powered == false && self.r#face == Face::Floor {
+            return 10574;
+        }
+        if self.r#face == Face::Wall && self.r#facing == Facing::South && self.r#powered == true {
+            return 10579;
+        }
+        if self.r#powered == false && self.r#face == Face::Wall && self.r#facing == Facing::North {
+            return 10578;
+        }
+        if self.r#facing == Facing::South && self.r#face == Face::Wall && self.r#powered == false {
+            return 10580;
+        }
+        if self.r#powered == true && self.r#face == Face::Wall && self.r#facing == Facing::North {
+            return 10577;
+        }
+        if self.r#face == Face::Floor && self.r#facing == Facing::North && self.r#powered == false {
+            return 10570;
+        }
+        if self.r#facing == Facing::East && self.r#powered == true && self.r#face == Face::Wall {
+            return 10583;
+        }
+        if self.r#face == Face::Wall && self.r#facing == Facing::East && self.r#powered == false {
+            return 10584;
+        }
+        if self.r#face == Face::Ceiling && self.r#facing == Facing::South && self.r#powered == true
+        {
+            return 10587;
+        }
+        if self.r#powered == true && self.r#face == Face::Ceiling && self.r#facing == Facing::North
+        {
+            return 10585;
+        }
+        if self.r#powered == false && self.r#facing == Facing::East && self.r#face == Face::Floor {
+            return 10576;
+        }
+        if self.r#face == Face::Ceiling && self.r#powered == false && self.r#facing == Facing::East
+        {
+            return 10592;
+        }
+        if self.r#facing == Facing::West && self.r#face == Face::Wall && self.r#powered == true {
+            return 10581;
+        }
+        if self.r#face == Face::Ceiling && self.r#facing == Facing::West && self.r#powered == false
+        {
+            return 10590;
+        }
+        if self.r#facing == Facing::West && self.r#powered == false && self.r#face == Face::Wall {
+            return 10582;
+        }
+        if self.r#powered == true && self.r#facing == Facing::West && self.r#face == Face::Floor {
+            return 10573;
+        }
+        if self.r#facing == Facing::South && self.r#powered == false && self.r#face == Face::Ceiling
+        {
+            return 10588;
+        }
+        if self.r#powered == true && self.r#face == Face::Ceiling && self.r#facing == Facing::East {
+            return 10591;
+        }
         panic!("Invalid block state")
     }
 
@@ -224,4 +277,3 @@ impl BlockState for AcaciaButton {
         return None;
     }
 }
-

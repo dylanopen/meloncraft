@@ -6,7 +6,6 @@ pub struct EndPortalFrame {
     pub eye: bool,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -17,14 +16,30 @@ pub enum Facing {
 
 impl BlockState for EndPortalFrame {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::North && self.r#eye == true { return 9268; }
-        if self.r#eye == true && self.r#facing == Facing::East { return 9271; }
-        if self.r#facing == Facing::North && self.r#eye == false { return 9272; }
-        if self.r#facing == Facing::West && self.r#eye == false { return 9274; }
-        if self.r#eye == false && self.r#facing == Facing::South { return 9273; }
-        if self.r#eye == true && self.r#facing == Facing::West { return 9270; }
-        if self.r#facing == Facing::South && self.r#eye == true { return 9269; }
-        if self.r#eye == false && self.r#facing == Facing::East { return 9275; }
+        if self.r#facing == Facing::North && self.r#eye == true {
+            return 9268;
+        }
+        if self.r#eye == true && self.r#facing == Facing::East {
+            return 9271;
+        }
+        if self.r#facing == Facing::North && self.r#eye == false {
+            return 9272;
+        }
+        if self.r#facing == Facing::West && self.r#eye == false {
+            return 9274;
+        }
+        if self.r#eye == false && self.r#facing == Facing::South {
+            return 9273;
+        }
+        if self.r#eye == true && self.r#facing == Facing::West {
+            return 9270;
+        }
+        if self.r#facing == Facing::South && self.r#eye == true {
+            return 9269;
+        }
+        if self.r#eye == false && self.r#facing == Facing::East {
+            return 9275;
+        }
         panic!("Invalid block state")
     }
 
@@ -80,4 +95,3 @@ impl BlockState for EndPortalFrame {
         return None;
     }
 }
-

@@ -6,13 +6,20 @@ pub struct OxidizedCopperBulb {
     pub lit: bool,
 }
 
-
 impl BlockState for OxidizedCopperBulb {
     fn to_id(&self) -> i32 {
-        if self.r#lit == false && self.r#powered == true { return 26875; }
-        if self.r#lit == false && self.r#powered == false { return 26876; }
-        if self.r#lit == true && self.r#powered == true { return 26873; }
-        if self.r#lit == true && self.r#powered == false { return 26874; }
+        if self.r#lit == false && self.r#powered == true {
+            return 26875;
+        }
+        if self.r#lit == false && self.r#powered == false {
+            return 26876;
+        }
+        if self.r#lit == true && self.r#powered == true {
+            return 26873;
+        }
+        if self.r#lit == true && self.r#powered == false {
+            return 26874;
+        }
         panic!("Invalid block state")
     }
 
@@ -44,4 +51,3 @@ impl BlockState for OxidizedCopperBulb {
         return None;
     }
 }
-

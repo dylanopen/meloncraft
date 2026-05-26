@@ -1,9 +1,7 @@
 use crate::BlockState;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub struct MossBlock {
-}
-
+pub struct MossBlock {}
 
 impl BlockState for MossBlock {
     fn to_id(&self) -> i32 {
@@ -13,10 +11,8 @@ impl BlockState for MossBlock {
 
     fn from_id(state_id: i32) -> Option<Self> {
         if state_id == 27660 {
-            return Some(MossBlock {
-            });
+            return Some(MossBlock {});
         }
         return None;
     }
 }
-

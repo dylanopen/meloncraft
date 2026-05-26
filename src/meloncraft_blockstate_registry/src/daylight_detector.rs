@@ -6,41 +6,104 @@ pub struct DaylightDetector {
     pub power: i32,
 }
 
-
 impl BlockState for DaylightDetector {
     fn to_id(&self) -> i32 {
-        if self.r#inverted == true && self.r#power == 14 { return 11091; }
-        if self.r#inverted == true && self.r#power == 0 { return 11077; }
-        if self.r#power == 8 && self.r#inverted == true { return 11085; }
-        if self.r#inverted == true && self.r#power == 3 { return 11080; }
-        if self.r#inverted == true && self.r#power == 2 { return 11079; }
-        if self.r#power == 9 && self.r#inverted == false { return 11102; }
-        if self.r#inverted == false && self.r#power == 4 { return 11097; }
-        if self.r#inverted == false && self.r#power == 8 { return 11101; }
-        if self.r#inverted == true && self.r#power == 6 { return 11083; }
-        if self.r#inverted == false && self.r#power == 7 { return 11100; }
-        if self.r#inverted == false && self.r#power == 0 { return 11093; }
-        if self.r#inverted == false && self.r#power == 6 { return 11099; }
-        if self.r#inverted == false && self.r#power == 12 { return 11105; }
-        if self.r#inverted == false && self.r#power == 15 { return 11108; }
-        if self.r#inverted == true && self.r#power == 13 { return 11090; }
-        if self.r#power == 11 && self.r#inverted == true { return 11088; }
-        if self.r#inverted == true && self.r#power == 15 { return 11092; }
-        if self.r#inverted == true && self.r#power == 10 { return 11087; }
-        if self.r#inverted == true && self.r#power == 4 { return 11081; }
-        if self.r#power == 12 && self.r#inverted == true { return 11089; }
-        if self.r#inverted == false && self.r#power == 5 { return 11098; }
-        if self.r#inverted == false && self.r#power == 10 { return 11103; }
-        if self.r#inverted == false && self.r#power == 14 { return 11107; }
-        if self.r#inverted == true && self.r#power == 9 { return 11086; }
-        if self.r#inverted == true && self.r#power == 1 { return 11078; }
-        if self.r#power == 7 && self.r#inverted == true { return 11084; }
-        if self.r#inverted == true && self.r#power == 5 { return 11082; }
-        if self.r#power == 13 && self.r#inverted == false { return 11106; }
-        if self.r#power == 3 && self.r#inverted == false { return 11096; }
-        if self.r#power == 11 && self.r#inverted == false { return 11104; }
-        if self.r#power == 2 && self.r#inverted == false { return 11095; }
-        if self.r#power == 1 && self.r#inverted == false { return 11094; }
+        if self.r#inverted == true && self.r#power == 14 {
+            return 11091;
+        }
+        if self.r#inverted == true && self.r#power == 0 {
+            return 11077;
+        }
+        if self.r#power == 8 && self.r#inverted == true {
+            return 11085;
+        }
+        if self.r#inverted == true && self.r#power == 3 {
+            return 11080;
+        }
+        if self.r#inverted == true && self.r#power == 2 {
+            return 11079;
+        }
+        if self.r#power == 9 && self.r#inverted == false {
+            return 11102;
+        }
+        if self.r#inverted == false && self.r#power == 4 {
+            return 11097;
+        }
+        if self.r#inverted == false && self.r#power == 8 {
+            return 11101;
+        }
+        if self.r#inverted == true && self.r#power == 6 {
+            return 11083;
+        }
+        if self.r#inverted == false && self.r#power == 7 {
+            return 11100;
+        }
+        if self.r#inverted == false && self.r#power == 0 {
+            return 11093;
+        }
+        if self.r#inverted == false && self.r#power == 6 {
+            return 11099;
+        }
+        if self.r#inverted == false && self.r#power == 12 {
+            return 11105;
+        }
+        if self.r#inverted == false && self.r#power == 15 {
+            return 11108;
+        }
+        if self.r#inverted == true && self.r#power == 13 {
+            return 11090;
+        }
+        if self.r#power == 11 && self.r#inverted == true {
+            return 11088;
+        }
+        if self.r#inverted == true && self.r#power == 15 {
+            return 11092;
+        }
+        if self.r#inverted == true && self.r#power == 10 {
+            return 11087;
+        }
+        if self.r#inverted == true && self.r#power == 4 {
+            return 11081;
+        }
+        if self.r#power == 12 && self.r#inverted == true {
+            return 11089;
+        }
+        if self.r#inverted == false && self.r#power == 5 {
+            return 11098;
+        }
+        if self.r#inverted == false && self.r#power == 10 {
+            return 11103;
+        }
+        if self.r#inverted == false && self.r#power == 14 {
+            return 11107;
+        }
+        if self.r#inverted == true && self.r#power == 9 {
+            return 11086;
+        }
+        if self.r#inverted == true && self.r#power == 1 {
+            return 11078;
+        }
+        if self.r#power == 7 && self.r#inverted == true {
+            return 11084;
+        }
+        if self.r#inverted == true && self.r#power == 5 {
+            return 11082;
+        }
+        if self.r#power == 13 && self.r#inverted == false {
+            return 11106;
+        }
+        if self.r#power == 3 && self.r#inverted == false {
+            return 11096;
+        }
+        if self.r#power == 11 && self.r#inverted == false {
+            return 11104;
+        }
+        if self.r#power == 2 && self.r#inverted == false {
+            return 11095;
+        }
+        if self.r#power == 1 && self.r#inverted == false {
+            return 11094;
+        }
         panic!("Invalid block state")
     }
 
@@ -240,4 +303,3 @@ impl BlockState for DaylightDetector {
         return None;
     }
 }
-

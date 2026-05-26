@@ -5,7 +5,6 @@ pub struct ChippedAnvil {
     pub r#facing: Facing,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -16,10 +15,18 @@ pub enum Facing {
 
 impl BlockState for ChippedAnvil {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::West { return 10999; }
-        if self.r#facing == Facing::South { return 10998; }
-        if self.r#facing == Facing::East { return 11000; }
-        if self.r#facing == Facing::North { return 10997; }
+        if self.r#facing == Facing::West {
+            return 10999;
+        }
+        if self.r#facing == Facing::South {
+            return 10998;
+        }
+        if self.r#facing == Facing::East {
+            return 11000;
+        }
+        if self.r#facing == Facing::North {
+            return 10997;
+        }
         panic!("Invalid block state")
     }
 
@@ -47,4 +54,3 @@ impl BlockState for ChippedAnvil {
         return None;
     }
 }
-
