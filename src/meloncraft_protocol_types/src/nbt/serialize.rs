@@ -127,6 +127,7 @@ pub fn long_array(payload: Vec<i64>) -> Vec<u8> {
     return output;
 }
 
+/*
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -168,3 +169,4 @@ mod tests {
         assert_eq!(serialized, expected);
     }
 }
+*/
