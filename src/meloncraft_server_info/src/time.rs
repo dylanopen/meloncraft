@@ -1,5 +1,6 @@
 //! Module for resource struct [`GameTime`].
 
+use bevy::ecs::message::Message;
 use bevy::ecs::resource::Resource;
 
 /// The current Minecraft day time, in ticks.
@@ -27,4 +28,11 @@ pub struct OpenTime(pub u64);
 /// - False means that [`DayTime`] and [`OpenTime`] are frozen unless manually changed.
 #[derive(Resource, Debug, Clone, Copy)]
 pub struct DaylightCycle(pub bool);
+
+/// Message to send when you want to forward the current game time resources to all clients.
+///
+/// You should send this after manually updating the time, as the forwarding system wouldn't be able
+/// to distinguish between manual component changes and automatic increments each tick.
+#[derive(Message, Debug, Clone)]
+pub struct TimeChanged;
 
