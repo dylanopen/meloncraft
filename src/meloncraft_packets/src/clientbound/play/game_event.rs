@@ -1,7 +1,6 @@
 use bevy::ecs::entity::Entity;
 use bevy::ecs::message::Message;
 use meloncraft_client::connection_state::ConnectionState;
-use crate::network_messages::ClientboundNetworkPacket;
 use meloncraft_core::game_event::GameEventType;
 use meloncraft_protocol_types::ProtocolType as _;
 

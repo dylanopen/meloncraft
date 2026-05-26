@@ -3,7 +3,6 @@ use bevy::ecs::message::Message;
 use bevy::math::IVec2;
 use meloncraft_chunk::block_section::ChunkBlockSection;
 use meloncraft_client::connection_state::ConnectionState;
-use crate::network_messages::ClientboundNetworkPacket;
 use meloncraft_protocol_types::{PrefixedArray, ProtocolType as _, VarInt};
 use meloncraft_protocol_types::chunk_lighting::ChunkLighting;
 use crate::clientbound_packet::ClientboundPacket;

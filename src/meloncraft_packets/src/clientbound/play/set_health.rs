@@ -3,7 +3,6 @@ use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_entity::health::current::CurrentHealth;
 use meloncraft_entity::health::food::{FoodHealth, FoodSaturation};
-use crate::network_messages::ClientboundNetworkPacket;
 use meloncraft_protocol_types::{ProtocolType as _, VarInt};
 use crate::clientbound_packet::ClientboundPacket;
 

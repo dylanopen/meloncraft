@@ -2,7 +2,6 @@ use bevy::ecs::message::Message;
 use bevy::math::IVec3;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
-use crate::network_messages::ClientboundNetworkPacket;
 use meloncraft_protocol_types::{NetworkLocation, ProtocolType as _};
 use crate::clientbound_packet::ClientboundPacket;
 

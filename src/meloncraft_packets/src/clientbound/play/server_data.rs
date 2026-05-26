@@ -4,7 +4,6 @@ use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_nbt::{NbtString, NbtTag, NbtValue};
 use meloncraft_server_info::icon::ServerIcon;
 use meloncraft_server_info::motd::Motd;
-use crate::network_messages::ClientboundNetworkPacket;
 use meloncraft_protocol_types::{PrefixedArray, ProtocolType as _};
 use crate::clientbound_packet::ClientboundPacket;
 
