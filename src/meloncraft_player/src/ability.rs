@@ -11,3 +11,8 @@ use bevy::ecs::component::Component;
 #[derive(Component, Debug, Clone, Copy)]
 pub struct Invulnerable;
 
+/// This component is present on any player who is *currently* flying.
+/// Any player not flying will not have it on their entity.
+#[derive(Component, Debug, Clone, Copy)]
+pub struct IsFlying;
+
