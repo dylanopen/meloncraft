@@ -783,6 +783,7 @@ dependencies = [
  "meloncraft_chunk",
  "meloncraft_client",
  "meloncraft_command",
+ "meloncraft_component_forwarding",
  "meloncraft_core",
  "meloncraft_default_commands",
  "meloncraft_entity",
@@ -843,6 +844,16 @@ name = "meloncraft_command"
 version = "0.1.0"
 dependencies = [
  "bevy",
+]
+
+[[package]]
+name = "meloncraft_component_forwarding"
+version = "0.1.0"
+dependencies = [
+ "bevy",
+ "meloncraft_entity",
+ "meloncraft_packets",
+ "meloncraft_player",
 ]
 
 [[package]]
@@ -997,6 +1008,7 @@ dependencies = [
  "bevy",
  "meloncraft_core",
  "meloncraft_entity",
+ "meloncraft_logger",
  "meloncraft_packets",
  "meloncraft_player",
 ]

@@ -38,7 +38,7 @@ pub fn send_server_data_on_change_motd(
 ) {
     if !motd.is_changed() {
         let Some(icon) = &icon else { return };
-        if icon.is_changed() { return; }
+        if !icon.is_changed() { return; }
     }
     #[expect(clippy::bind_instead_of_map, reason = "clippy suggestion does does not dereference, it seems.")]
     let icon = icon.and_then(|icon| return Some(icon.clone()));

@@ -48,6 +48,9 @@ pub use set_border_warning_distance::ClientboundSetBorderWarningDistance;
 mod server_data;
 pub use server_data::ClientboundServerData;
 
+mod set_health;
+pub use set_health::ClientboundSetHealth;
+
 pub fn register_clientbound_play_packets(app: &mut App) {
     use crate::clientbound_messenger::fwd;
     use bevy::app::PostUpdate;
@@ -99,4 +102,7 @@ pub fn register_clientbound_play_packets(app: &mut App) {
 
     app.add_message::<ClientboundServerData>();
     app.add_systems(PostUpdate, fwd::<ClientboundServerData>);
+
+    app.add_message::<ClientboundSetHealth>();
+    app.add_systems(PostUpdate, fwd::<ClientboundSetHealth>);
 }
