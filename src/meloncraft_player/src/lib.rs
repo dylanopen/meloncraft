@@ -33,6 +33,7 @@ mod marker;
 
 pub mod client_action;
 pub mod ability;
+pub mod experience;
 
 pub use plugin::MeloncraftPlayerPlugin;
 pub use allow_player_listings::AllowPlayerListings;
