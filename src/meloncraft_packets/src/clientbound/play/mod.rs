@@ -57,6 +57,9 @@ pub use player_abilities::ClientboundPlayerAbilities;
 mod set_time;
 pub use set_time::ClientboundSetTime;
 
+mod set_experience;
+pub use set_experience::ClientboundSetExperience;
+
 pub fn register_clientbound_play_packets(app: &mut App) {
     use crate::clientbound_messenger::fwd;
     use bevy::app::PostUpdate;
@@ -117,4 +120,7 @@ pub fn register_clientbound_play_packets(app: &mut App) {
 
     app.add_message::<ClientboundSetTime>();
     app.add_systems(PostUpdate, fwd::<ClientboundSetTime>);
+
+    app.add_message::<ClientboundSetExperience>();
+    app.add_systems(PostUpdate, fwd::<ClientboundSetExperience>);
 }
