@@ -62,10 +62,4 @@ pub trait ServerboundPacket: Sized + Message + Debug + Clone {
         }
         return Ok(());
     }
-
-    #[must_use]
-    fn from_packet(incoming: &ServerboundNetworkPacket) -> Option<Self> {
-        Self::validate(incoming).ok()?;
-        return Some(Self::deserialize(incoming).unwrap());
-    }
 }
