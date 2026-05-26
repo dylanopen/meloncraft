@@ -3,30 +3,29 @@
 
 use bevy::ecs::component::Component;
 
-/// This component is present on any player/entity who *cannot be hurt*.
-/// Any player who can be damaged *will not have* this component.
+/// This component is tru on any player/entity who *cannot be hurt*.
+/// False on any player who can be damaged.
 /// 
 /// You may want to query for `Without<Invulnerable>` in any systems which involve a player taking
 /// damage, for example.
 #[derive(Component, Debug, Clone, Copy)]
-pub struct Invulnerable;
+pub struct Invulnerable(pub bool);
 
-/// This component is present on any player who is *currently* flying.
-/// Any player not flying will not have it on their entity.
+/// This component is true on any player who is *currently* flying.
+/// False on any player not flying.
 #[derive(Component, Debug, Clone, Copy)]
-pub struct IsFlying;
+pub struct IsFlying(pub bool);
 
-/// This component is present on any player who is *allowed* to fly.
-/// Any player without the ability to fly (by double pressing space) will not have it on their
-/// entity.
+/// This component is true on any player who is *allowed* to fly.
+/// Any player without the ability to fly (by double pressing space) will have it as false.
 #[derive(Component, Debug, Clone, Copy)]
-pub struct CanFly;
+pub struct CanFly(pub bool);
 
-/// This component is present on any player who is able to *break any block instantly* (like in
+/// This component is true on any player who is able to *break any block instantly* (like in
 /// creative mode).
-/// Any player without this breaking ability will not have the component on their entity.
+/// Any player without this breaking ability will have this component be false.
 #[derive(Component, Debug, Clone, Copy)]
-pub struct CanInstantBreak;
+pub struct CanInstantBreak(pub bool);
 
 /// The speed, in arbitrary units as a float, that the player is able to travel at while they are
 /// flying.

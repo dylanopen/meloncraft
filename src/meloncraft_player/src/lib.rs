@@ -32,7 +32,7 @@ mod action_status;
 mod marker;
 
 pub mod client_action;
-mod ability;
+pub mod ability;
 
 pub use plugin::MeloncraftPlayerPlugin;
 pub use allow_player_listings::AllowPlayerListings;
