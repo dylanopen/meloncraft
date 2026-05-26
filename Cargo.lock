@@ -851,6 +851,7 @@ name = "meloncraft_component_forwarding"
 version = "0.1.0"
 dependencies = [
  "bevy",
+ "meloncraft_entity",
  "meloncraft_packets",
  "meloncraft_player",
 ]

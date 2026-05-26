@@ -2,6 +2,8 @@
 
 use bevy::app::{App, Plugin, Update};
 
+use crate::health;
+
 /// Registers systems to send components to clients in packets, when the components change or players
 /// join.
 ///
@@ -11,7 +13,7 @@ pub struct MeloncraftComponentForwardingPlugin;
 
 impl Plugin for MeloncraftComponentForwardingPlugin {
     fn build(&self, app: &mut App) {
-
+        app.add_systems(Update, health::send_health);
     }
 }
 
