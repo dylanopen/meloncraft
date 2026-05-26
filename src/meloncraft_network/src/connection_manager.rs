@@ -43,8 +43,7 @@ pub fn connection_manager(
             },
         });
 
-        // move to the Configuration state upon receiving LoginAcknowledged
-        // (0x03) packet
+        // move to the Configuration state upon receiving LoginAcknowledged (0x03) packet
         if packet.id == 0x03 && client.state == ConnectionState::Login {
             client.state = ConnectionState::Configuration;
         }
