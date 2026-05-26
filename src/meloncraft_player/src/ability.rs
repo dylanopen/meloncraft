@@ -32,11 +32,13 @@ pub struct CanInstantBreak;
 /// flying.
 ///
 /// Default value: `0.05` for a normal creative-mode flying player.
+#[derive(Component, Debug, Clone, Copy)]
 pub struct FlySpeed(pub f32);
 
 /// The distortion to the player's FOV. In vanilla, this can be changed with things like a speed
 /// potion.
 ///
 /// Default is `0.1` for a player without speed.
+#[derive(Component, Debug, Clone, Copy)]
 pub struct FovModifier(pub f32);
 

@@ -51,6 +51,9 @@ pub use server_data::ClientboundServerData;
 mod set_health;
 pub use set_health::ClientboundSetHealth;
 
+mod player_abilities;
+pub use player_abilities::ClientboundPlayerAbilities;
+
 pub fn register_clientbound_play_packets(app: &mut App) {
     use crate::clientbound_messenger::fwd;
     use bevy::app::PostUpdate;
@@ -105,4 +108,7 @@ pub fn register_clientbound_play_packets(app: &mut App) {
 
     app.add_message::<ClientboundSetHealth>();
     app.add_systems(PostUpdate, fwd::<ClientboundSetHealth>);
+
+    app.add_message::<ClientboundPlayerAbilities>();
+    app.add_systems(PostUpdate, fwd::<ClientboundPlayerAbilities>);
 }
