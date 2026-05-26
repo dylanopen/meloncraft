@@ -7,7 +7,7 @@ use meloncraft_protocol_types::ProtocolType as _;
 
 #[derive(Message, Debug, Clone)]
 pub struct ClientboundSetCompression {
-    pub entity: Entity,
+    pub client: Entity,
     pub threshold: i32,
 }
 
@@ -20,9 +20,14 @@ impl ClientboundPacket for ClientboundSetCompression {
         return ConnectionState::Login
     }
 
+
+    fn client(&self) -> Entity {
+        return self.client;
+    }
+
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         return Some(ClientboundNetworkPacket {
-            client: self.entity,
+            client: self.client,
             id: Self::id(),
             data: self.threshold.net_serialize(),
         })

@@ -21,6 +21,11 @@ impl ClientboundPacket for ClientboundCustomReportDetails {
         return ConnectionState::Configuration
     }
 
+
+    fn client(&self) -> Entity {
+        return self.client;
+    }
+
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let data = PrefixedArray(self.report.clone()).net_serialize();
         return Some(ClientboundNetworkPacket {

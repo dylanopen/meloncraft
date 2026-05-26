@@ -21,6 +21,11 @@ impl ClientboundPacket for ClientboundCookieRequest {
         return ConnectionState::Configuration
     }
 
+
+    fn client(&self) -> Entity {
+        return self.client;
+    }
+
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let mut data = Vec::new();
         data.append(&mut self.key.net_serialize());

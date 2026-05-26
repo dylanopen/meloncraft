@@ -21,6 +21,11 @@ impl ClientboundPacket for ClientboundSelectKnownPacks {
         return ConnectionState::Configuration
     }
 
+
+    fn client(&self) -> Entity {
+        return self.client;
+    }
+
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let data = PrefixedArray(self.known_packs.clone()).net_serialize();
         return Some(ClientboundNetworkPacket {

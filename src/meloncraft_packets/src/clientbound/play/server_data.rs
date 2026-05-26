@@ -29,6 +29,11 @@ impl ClientboundPacket for ClientboundServerData {
         return ConnectionState::Play
     }
 
+
+    fn client(&self) -> Entity {
+        return self.client;
+    }
+
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let mut data = Vec::new();
 

@@ -22,6 +22,11 @@ impl ClientboundPacket for ClientboundGameEvent {
         return ConnectionState::Play
     }
 
+
+    fn client(&self) -> Entity {
+        return self.client;
+    }
+
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let mut data = Vec::new();
         data.extend(self.event.net_serialize());

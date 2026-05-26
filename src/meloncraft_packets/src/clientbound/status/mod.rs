@@ -1,6 +1,7 @@
-mod status_response;
 
 use bevy::app::App;
+
+mod status_response;
 pub use status_response::ClientboundStatusResponse;
 
 mod pong;

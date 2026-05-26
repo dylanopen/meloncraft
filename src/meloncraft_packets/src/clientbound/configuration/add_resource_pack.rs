@@ -26,6 +26,11 @@ impl ClientboundPacket for ClientboundAddResourcePack {
         return ConnectionState::Configuration
     }
 
+
+    fn client(&self) -> Entity {
+        return self.client;
+    }
+
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let mut data = self.resource_pack_uuid.net_serialize();
         data.extend(self.url.net_serialize());

@@ -21,6 +21,11 @@ impl ClientboundPacket for ClientboundServerLinks {
         return ConnectionState::Configuration
     }
 
+
+    fn client(&self) -> Entity {
+        return self.client;
+    }
+
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let data = PrefixedArray(self.links.clone()).net_serialize();
         return Some(ClientboundNetworkPacket {

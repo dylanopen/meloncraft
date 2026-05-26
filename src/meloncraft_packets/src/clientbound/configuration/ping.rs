@@ -20,6 +20,11 @@ impl ClientboundPacket for ClientboundPing {
         return ConnectionState::Configuration
     }
 
+
+    fn client(&self) -> Entity {
+        return self.client;
+    }
+
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let data = self.id.net_serialize();
         return Some(ClientboundNetworkPacket {

@@ -18,6 +18,11 @@ impl ClientboundPacket for ClientboundResetChat {
         return ConnectionState::Configuration
     }
 
+
+    fn client(&self) -> Entity {
+        return self.client;
+    }
+
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let data = Vec::new();
         return Some(ClientboundNetworkPacket {

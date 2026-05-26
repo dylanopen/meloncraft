@@ -22,6 +22,11 @@ impl ClientboundPacket for ClientboundStatusResponse {
     fn state() -> ConnectionState {
         return ConnectionState::Status
     }
+
+    fn client(&self) -> Entity {
+        return self.client;
+    }
+
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let json = format!(
             "{{\"version\": {{\"name\": \"{}\",\"protocol\": {}}},\"players\": {{\"max\": {},\"online\": {},\"sample\": []}},\"description\": {{\"text\": \"{}\"}},\"enforcesSecureChat\": {}}}",

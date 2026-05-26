@@ -22,6 +22,11 @@ impl ClientboundPacket for ClientboundStoreCookie {
         return ConnectionState::Configuration
     }
 
+
+    fn client(&self) -> Entity {
+        return self.client;
+    }
+
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let mut data = self.key.net_serialize();
         data.extend(PrefixedArray(self.value.clone()).net_serialize());

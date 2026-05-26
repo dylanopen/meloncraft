@@ -21,6 +21,11 @@ impl ClientboundPacket for ClientboundTransfer {
         return ConnectionState::Configuration
     }
 
+
+    fn client(&self) -> Entity {
+        return self.client;
+    }
+
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let mut data = self.hostname.net_serialize();
         data.extend(VarInt(self.port.into()).net_serialize());

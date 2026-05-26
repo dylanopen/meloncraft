@@ -37,9 +37,15 @@ impl ClientboundPacket for ClientboundPlayLogin {
     fn id() -> i32 {
         return 0x30
     }
+
     fn state() -> ConnectionState {
         return ConnectionState::Play
     }
+
+    fn client(&self) -> Entity {
+        return self.client;
+    }
+
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let mut data = Vec::new();
         data.extend(self.entity_id.net_serialize());

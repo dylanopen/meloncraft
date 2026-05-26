@@ -1,6 +1,6 @@
-mod disconnect;
-
 use bevy::app::App;
+
+mod disconnect;
 pub use disconnect::ClientboundLoginDisconnect;
 
 mod encryption_request;

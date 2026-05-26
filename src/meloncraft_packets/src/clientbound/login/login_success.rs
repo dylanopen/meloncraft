@@ -21,6 +21,11 @@ impl ClientboundPacket for ClientboundLoginSuccess {
         return ConnectionState::Login
     }
 
+
+    fn client(&self) -> Entity {
+        return self.client;
+    }
+
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         return Some(ClientboundNetworkPacket {
             client: self.client,

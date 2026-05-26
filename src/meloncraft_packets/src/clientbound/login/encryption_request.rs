@@ -21,6 +21,11 @@ impl ClientboundPacket for ClientboundEncryptionRequest {
     fn state() -> ConnectionState {
         return ConnectionState::Login
     }
+
+    fn client(&self) -> Entity {
+        return self.client;
+    }
+
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let mut serial = Vec::new();
         serial.append(&mut self.server_id.net_serialize());

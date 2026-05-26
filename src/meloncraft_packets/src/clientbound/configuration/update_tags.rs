@@ -21,6 +21,11 @@ impl ClientboundPacket for ClientboundUpdateTags {
         return ConnectionState::Configuration
     }
 
+
+    fn client(&self) -> Entity {
+        return self.client;
+    }
+
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let data = PrefixedArray(self.registries.clone()).net_serialize();
         return Some(ClientboundNetworkPacket {

@@ -24,6 +24,11 @@ impl ClientboundPacket for ClientboundRegistryData {
         return ConnectionState::Configuration
     }
 
+
+    fn client(&self) -> Entity {
+        return self.client;
+    }
+
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let mut data = self.registry_id.net_serialize();
         let mut entries_data = Vec::new();

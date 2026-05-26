@@ -18,6 +18,11 @@ impl ClientboundPacket for ClientboundKeepAlive {
         return ConnectionState::Configuration
     }
 
+
+    fn client(&self) -> Entity {
+        return self.client;
+    }
+
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         return Some(ClientboundNetworkPacket {
             client: self.client,

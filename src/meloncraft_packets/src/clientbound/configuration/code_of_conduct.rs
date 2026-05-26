@@ -20,6 +20,11 @@ impl ClientboundPacket for ClientboundCodeOfConduct {
         return ConnectionState::Configuration
     }
 
+
+    fn client(&self) -> Entity {
+        return self.client;
+    }
+
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let data = self.code_of_conduct.net_serialize();
         return Some(ClientboundNetworkPacket {

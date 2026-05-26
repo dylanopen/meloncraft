@@ -17,6 +17,11 @@ impl ClientboundPacket for ClientboundPong {
     fn state() -> ConnectionState {
         return ConnectionState::Status
     }
+
+    fn client(&self) -> Entity {
+        return self.client;
+    }
+
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         return Some(ClientboundNetworkPacket {
             client: self.client,
