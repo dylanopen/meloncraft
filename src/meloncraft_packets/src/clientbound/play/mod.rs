@@ -54,6 +54,9 @@ pub use set_health::ClientboundSetHealth;
 mod player_abilities;
 pub use player_abilities::ClientboundPlayerAbilities;
 
+mod set_time;
+pub use set_time::ClientboundSetTime;
+
 pub fn register_clientbound_play_packets(app: &mut App) {
     use crate::clientbound_messenger::fwd;
     use bevy::app::PostUpdate;
@@ -111,4 +114,7 @@ pub fn register_clientbound_play_packets(app: &mut App) {
 
     app.add_message::<ClientboundPlayerAbilities>();
     app.add_systems(PostUpdate, fwd::<ClientboundPlayerAbilities>);
+
+    app.add_message::<ClientboundSetTime>();
+    app.add_systems(PostUpdate, fwd::<ClientboundSetTime>);
 }
