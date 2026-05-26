@@ -45,8 +45,7 @@ impl ClientboundPacket for ClientboundPlayerAbilities {
         return self.client;
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let mut data = Vec::new();
+    fn data(&self, data: &mut Vec<u8>) {
 
         data.extend((
                 u8::from(self.invulnerable.0)
@@ -57,11 +56,6 @@ impl ClientboundPacket for ClientboundPlayerAbilities {
         data.extend(self.fly_speed.0.net_serialize());
         data.extend(self.fov_modifier.0.net_serialize());
 
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data,
-        })
     }
 }
 

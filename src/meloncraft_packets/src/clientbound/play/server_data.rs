@@ -34,19 +34,13 @@ impl ClientboundPacket for ClientboundServerData {
         return self.client;
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let mut data = Vec::new();
+    fn data(&self, data: &mut Vec<u8>) {
 
         data.extend(NbtTag::new(String::new(), NbtValue::String(NbtString(self.motd.0.clone()))).net_serialize());
         data.extend(self.icon.clone()
             .map(|icon_data| return PrefixedArray(icon_data.0))
             .net_serialize());
 
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data,
-        })
     }
 }
 

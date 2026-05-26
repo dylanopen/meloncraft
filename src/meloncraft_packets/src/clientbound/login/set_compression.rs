@@ -25,11 +25,7 @@ impl ClientboundPacket for ClientboundSetCompression {
         return self.client;
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data: self.threshold.net_serialize(),
-        })
+    fn data(&self, data: &mut Vec<u8>) {
+        data.extend(self.threshold.net_serialize());
     }
 }

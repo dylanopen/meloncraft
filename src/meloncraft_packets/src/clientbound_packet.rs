@@ -8,5 +8,15 @@ pub trait ClientboundPacket: Sized + Message + Debug + Clone {
     fn id() -> i32;
     fn state() -> ConnectionState;
     fn client(&self) -> Entity;
-    fn serialize(&self) -> Option<ClientboundNetworkPacket>;
+    fn data(&self, data: &mut Vec<u8>);
+
+    fn serialize(&self) -> ClientboundNetworkPacket {
+        let mut body_buffer = Vec::new();
+        self.data(&mut body_buffer);
+        return ClientboundNetworkPacket {
+            client: self.client(),
+            id: Self::id(),
+            data: body_buffer
+        };
+    }
 }

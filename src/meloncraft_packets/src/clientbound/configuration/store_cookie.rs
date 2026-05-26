@@ -27,13 +27,8 @@ impl ClientboundPacket for ClientboundStoreCookie {
         return self.client;
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let mut data = self.key.net_serialize();
+    fn data(&self, data: &mut Vec<u8>) {
+        data.extend(self.key.net_serialize());
         data.extend(PrefixedArray(self.value.clone()).net_serialize());
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data,
-        })
     }
 }

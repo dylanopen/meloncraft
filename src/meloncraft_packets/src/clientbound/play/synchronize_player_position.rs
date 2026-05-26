@@ -31,19 +31,13 @@ impl ClientboundPacket for ClientboundSynchronizePlayerPosition {
         return self.client;
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let mut data = Vec::new();
+    fn data(&self, data: &mut Vec<u8>) {
         data.extend(VarInt(self.teleport_id).net_serialize());
         data.extend(self.position.net_serialize());
         data.extend(self.velocity.net_serialize());
         data.extend(self.yaw.net_serialize());
         data.extend(self.pitch.net_serialize());
         data.extend(0_i32.net_serialize()); // teleport flags, I think 0 will work fine?
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data,
-        })
     }
 }
 

@@ -22,11 +22,7 @@ impl ClientboundPacket for ClientboundPong {
         return self.client;
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data: self.timestamp.net_serialize(),
-        })
+    fn data(&self, data: &mut Vec<u8>) {
+        data.extend(self.timestamp.net_serialize());
     }
 }

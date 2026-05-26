@@ -26,12 +26,7 @@ impl ClientboundPacket for ClientboundUpdateTags {
         return self.client;
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let data = PrefixedArray(self.registries.clone()).net_serialize();
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data,
-        })
+    fn data(&self, data: &mut Vec<u8>) {
+        data.extend(PrefixedArray(self.registries.clone()).net_serialize());
     }
 }

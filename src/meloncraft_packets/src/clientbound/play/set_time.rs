@@ -37,18 +37,12 @@ impl ClientboundPacket for ClientboundSetTime {
         return self.client;
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let mut data = Vec::new();
+    fn data(&self, data: &mut Vec<u8>) {
 
         data.extend(self.open_time.0.net_serialize());
         data.extend(self.day_time.0.net_serialize());
         data.extend(self.daylight_cycle.0.net_serialize());
 
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data,
-        })
     }
 }
 

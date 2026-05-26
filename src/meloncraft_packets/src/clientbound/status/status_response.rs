@@ -27,8 +27,8 @@ impl ClientboundPacket for ClientboundStatusResponse {
         return self.client;
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let json = format!(
+    fn data(&self, data: &mut Vec<u8>) {
+        let json: String = format!(
             "{{\"version\": {{\"name\": \"{}\",\"protocol\": {}}},\"players\": {{\"max\": {},\"online\": {},\"sample\": []}},\"description\": {{\"text\": \"{}\"}},\"enforcesSecureChat\": {}}}",
             self.version_name,
             self.version_protocol,
@@ -37,10 +37,6 @@ impl ClientboundPacket for ClientboundStatusResponse {
             self.description,
             self.enforces_secure_chat,
         );
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data: json.net_serialize(),
-        })
+        data.extend(json.net_serialize());
     }
 }

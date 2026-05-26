@@ -23,11 +23,5 @@ impl ClientboundPacket for ClientboundFinishConfiguration {
         return self.client;
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data: Vec::new(),
-        })
-    }
+    fn data(&self, data: &mut Vec<u8>) {}
 }

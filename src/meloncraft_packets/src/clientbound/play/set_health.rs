@@ -29,18 +29,12 @@ impl ClientboundPacket for ClientboundSetHealth {
         return self.client;
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let mut data = Vec::new();
+    fn data(&self, data: &mut Vec<u8>) {
 
         data.extend(self.current.0.net_serialize());
         data.extend(VarInt(self.food.0).net_serialize());
         data.extend(self.saturation.0.net_serialize());
 
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data,
-        })
     }
 }
 

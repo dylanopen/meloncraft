@@ -46,8 +46,7 @@ impl ClientboundPacket for ClientboundPlayLogin {
         return self.client;
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let mut data = Vec::new();
+    fn data(&self, data: &mut Vec<u8>) {
         data.extend(self.entity_id.net_serialize());
         data.extend(self.is_hardcore.net_serialize());
         data.extend(self.dimension_names.net_serialize());
@@ -73,10 +72,5 @@ impl ClientboundPacket for ClientboundPlayLogin {
         data.extend(VarInt(self.portal_cooldown).net_serialize());
         data.extend(VarInt(self.sea_level).net_serialize());
         data.extend(self.enforces_secure_chat.net_serialize());
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data,
-        })
     }
 }

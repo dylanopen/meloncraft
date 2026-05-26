@@ -2,7 +2,6 @@ use crate::clientbound_packet::ClientboundPacket;
 use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
-use crate::network_messages::ClientboundNetworkPacket;
 use meloncraft_player::Uuid;
 use meloncraft_protocol_types::ProtocolType as _;
 use meloncraft_text::NbtText;
@@ -31,16 +30,11 @@ impl ClientboundPacket for ClientboundAddResourcePack {
         return self.client;
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let mut data = self.resource_pack_uuid.net_serialize();
+    fn data(&self, data: &mut Vec<u8>) {
+        data.extend(self.resource_pack_uuid.net_serialize());
         data.extend(self.url.net_serialize());
         data.extend(self.sha1_hash.net_serialize());
         data.extend(self.force_accept.net_serialize());
         data.extend(self.prompt_message.net_serialize());
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data,
-        })
     }
 }

@@ -2,7 +2,6 @@ use crate::clientbound_packet::ClientboundPacket;
 use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
-use crate::network_messages::ClientboundNetworkPacket;
 use meloncraft_protocol_types::{Byte, PrefixedArray, ProtocolType as _};
 
 #[derive(Message, Debug, Clone)]
@@ -26,17 +25,10 @@ impl ClientboundPacket for ClientboundEncryptionRequest {
         return self.client;
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let mut serial = Vec::new();
-        serial.append(&mut self.server_id.net_serialize());
-        serial.append(&mut PrefixedArray::from(self.public_key.clone()).net_serialize());
-        serial.append(&mut PrefixedArray::from(self.verify_token.clone()).net_serialize());
-        serial.append(&mut self.should_authenticate.net_serialize());
-
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data: serial,
-        })
+    fn data(&self, data: &mut Vec<u8>) {
+        data.append(&mut self.server_id.net_serialize());
+        data.append(&mut PrefixedArray::from(self.public_key.clone()).net_serialize());
+        data.append(&mut PrefixedArray::from(self.verify_token.clone()).net_serialize());
+        data.append(&mut self.should_authenticate.net_serialize());
     }
 }

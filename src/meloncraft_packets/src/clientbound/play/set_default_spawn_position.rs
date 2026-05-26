@@ -41,19 +41,13 @@ impl ClientboundPacket for ClientboundSetDefaultSpawnPosition {
         return self.client;
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let mut data = Vec::new();
+    fn data(&self, data: &mut Vec<u8>) {
 
         data.extend(self.dimension.net_serialize());
         data.extend(NetworkLocation(self.location).net_serialize());
         data.extend(self.yaw.net_serialize());
         data.extend(self.pitch.net_serialize());
 
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data,
-        })
     }
 }
 

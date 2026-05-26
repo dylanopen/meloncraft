@@ -25,12 +25,7 @@ impl ClientboundPacket for ClientboundPing {
         return self.client;
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let data = self.id.net_serialize();
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data,
-        })
+    fn data(&self, data: &mut Vec<u8>) {
+        data.extend(self.id.net_serialize());
     }
 }

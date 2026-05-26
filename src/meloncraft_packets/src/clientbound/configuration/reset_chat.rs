@@ -23,12 +23,5 @@ impl ClientboundPacket for ClientboundResetChat {
         return self.client;
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let data = Vec::new();
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data,
-        })
-    }
+    fn data(&self, data: &mut Vec<u8>) {}
 }

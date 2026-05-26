@@ -23,12 +23,5 @@ impl ClientboundPacket for ClientboundClearDialog {
         return self.client;
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let data = Vec::new();
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data,
-        })
-    }
+    fn data(&self, _data: &mut Vec<u8>) {}
 }

@@ -2,7 +2,6 @@ use crate::clientbound_packet::ClientboundPacket;
 use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
-use crate::network_messages::ClientboundNetworkPacket;
 use meloncraft_protocol_types::ProtocolType as _;
 use meloncraft_text::SnbtText;
 
@@ -26,11 +25,7 @@ impl ClientboundPacket for ClientboundLoginDisconnect {
         return self.client;
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data: self.reason.net_serialize(),
-        })
+    fn data(&self, data: &mut Vec<u8>) {
+        data.extend(self.reason.net_serialize());
     }
 }

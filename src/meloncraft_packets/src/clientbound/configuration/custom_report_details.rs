@@ -26,12 +26,7 @@ impl ClientboundPacket for ClientboundCustomReportDetails {
         return self.client;
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let data = PrefixedArray(self.report.clone()).net_serialize();
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data,
-        })
+    fn data(&self, data: &mut Vec<u8>) {
+        data.extend(PrefixedArray(self.report.clone()).net_serialize());
     }
 }

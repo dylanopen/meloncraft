@@ -26,11 +26,7 @@ impl ClientboundPacket for ClientboundLoginSuccess {
         return self.client;
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data: self.game_profile.net_serialize(),
-        })
+    fn data(&self, data: &mut Vec<u8>) {
+        data.extend(self.game_profile.net_serialize());
     }
 }

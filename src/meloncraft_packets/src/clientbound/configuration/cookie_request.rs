@@ -26,13 +26,7 @@ impl ClientboundPacket for ClientboundCookieRequest {
         return self.client;
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let mut data = Vec::new();
-        data.append(&mut self.key.net_serialize());
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data,
-        })
+    fn data(&self, data: &mut Vec<u8>) {
+        data.extend(self.key.net_serialize());
     }
 }

@@ -32,9 +32,7 @@ impl ClientboundPacket for ClientboundChunkData {
         return self.client;
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let mut data = Vec::new();
-
+    fn data(&self, data: &mut Vec<u8>) {
         data.extend(self.chunk_pos.net_serialize());
         data.extend(VarInt(0).net_serialize()); // heightmap array length 0, as not strictly required
 
@@ -46,12 +44,6 @@ impl ClientboundPacket for ClientboundChunkData {
 
         data.extend(VarInt(0).net_serialize()); // block entities array length 0, again, not strictly required
         data.extend(self.light.clone().net_serialize());
-
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data,
-        })
     }
 }
 

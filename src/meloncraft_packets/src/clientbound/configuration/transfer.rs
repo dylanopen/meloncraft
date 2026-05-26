@@ -26,13 +26,8 @@ impl ClientboundPacket for ClientboundTransfer {
         return self.client;
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let mut data = self.hostname.net_serialize();
+    fn data(&self, data: &mut Vec<u8>) {
+        data.extend(self.hostname.net_serialize());
         data.extend(VarInt(self.port.into()).net_serialize());
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data,
-        })
     }
 }

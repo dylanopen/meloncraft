@@ -29,8 +29,8 @@ impl ClientboundPacket for ClientboundRegistryData {
         return self.client;
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let mut data = self.registry_id.net_serialize();
+    fn data(&self, data: &mut Vec<u8>) {
+        data.extend(self.registry_id.net_serialize());
         let mut entries_data = Vec::new();
         for entry in &self.registry_entries {
             let entry_compound = NbtTag {
@@ -41,10 +41,5 @@ impl ClientboundPacket for ClientboundRegistryData {
             entries_data.extend(entry_compound.net_serialize());
         }
         data.extend(PrefixedArray(entries_data).net_serialize());
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data,
-        })
     }
 }

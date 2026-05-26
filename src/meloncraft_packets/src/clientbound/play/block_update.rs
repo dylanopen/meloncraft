@@ -28,17 +28,11 @@ impl ClientboundPacket for ClientboundBlockUpdate {
         return self.client;
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let mut data = Vec::new();
+    fn data(&self, data: &mut Vec<u8>) {
 
         data.extend(NetworkLocation(self.block_location).net_serialize());
         data.extend(VarInt(self.new_block.state_id).net_serialize());
 
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data,
-        })
     }
 }
 

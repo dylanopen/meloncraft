@@ -26,11 +26,7 @@ impl ClientboundPacket for ClientboundRemoveResourcePack {
         return self.client;
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data: self.resource_pack_uuid.net_serialize(),
-        })
+    fn data(&self, data: &mut Vec<u8>) {
+        data.extend(self.resource_pack_uuid.net_serialize());
     }
 }

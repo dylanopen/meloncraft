@@ -26,12 +26,7 @@ impl ClientboundPacket for ClientboundShowDialog {
         return self.client;
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let data = self.dialog.net_serialize();
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data,
-        })
+    fn data(&self, data: &mut Vec<u8>) {
+        data.extend(self.dialog.net_serialize());
     }
 }
