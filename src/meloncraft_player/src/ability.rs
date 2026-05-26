@@ -22,3 +22,9 @@ pub struct IsFlying;
 #[derive(Component, Debug, Clone, Copy)]
 pub struct CanFly;
 
+/// This component is present on any player who is able to *break any block instantly* (like in
+/// creative mode).
+/// Any player without this breaking ability will not have the component on their entity.
+#[derive(Component, Debug, Clone, Copy)]
+pub struct CanInstantBreak;
+
