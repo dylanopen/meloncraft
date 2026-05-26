@@ -32,7 +32,7 @@ mod action_status;
 mod marker;
 
 pub mod client_action;
-pub mod ability;
+mod ability;
 
 pub use plugin::MeloncraftPlayerPlugin;
 pub use allow_player_listings::AllowPlayerListings;
@@ -50,3 +50,4 @@ pub use uuid::Uuid;
 pub use view_distance::ClientViewDistance;
 pub use action_status::PlayerActionStatus;
 pub use marker::PlayerMarker;
+pub use ability::*;
