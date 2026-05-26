@@ -1,5 +1,14 @@
 //! Module for [`Experience`] and related helper functions.
 
+use bevy::ecs::component::Component;
+
+/// Component of a player storing the *total* amount of experience points they have.
+/// This is a single number, from which the level and level-fraction progress can be deduced.
+///
+/// See [`total_to_level`] for conversion methods.
+#[derive(Component, Debug, Clone, Copy)]
+pub struct Experience(pub i32);
+
 /// Get the total number of experience levels a player has, based on their experience *total* (see
 /// [`Experience`].
 ///
