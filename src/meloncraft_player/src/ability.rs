@@ -16,3 +16,9 @@ pub struct Invulnerable;
 #[derive(Component, Debug, Clone, Copy)]
 pub struct IsFlying;
 
+/// This component is present on any player who is *allowed* to fly.
+/// Any player without the ability to fly (by double pressing space) will not have it on their
+/// entity.
+#[derive(Component, Debug, Clone, Copy)]
+pub struct CanFly;
+
