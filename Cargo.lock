@@ -985,6 +985,7 @@ dependencies = [
  "meloncraft_client",
  "meloncraft_core",
  "meloncraft_entity",
+ "meloncraft_logger",
  "meloncraft_nbt",
  "meloncraft_player",
  "meloncraft_protocol_types",

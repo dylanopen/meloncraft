@@ -17,11 +17,10 @@ impl ServerboundPacket for ServerboundChatCommand {
     fn state() -> ConnectionState {
         return ConnectionState::Play
     }
-    fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
-        let mut incoming = packet.clone();
-        let client = incoming.client;
+    fn deserialize(mut packet: ServerboundNetworkPacket) -> Option<Self> {
+        let client = packet.client;
 
-        let command = incoming.data.net_deserialize().ok()?;
+        let command = packet.data.net_deserialize().ok()?;
 
         return Some(Self {
             client,

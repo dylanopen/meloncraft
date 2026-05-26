@@ -18,12 +18,12 @@ impl ServerboundPacket for ServerboundBundleItemSelected {
     fn state() -> ConnectionState {
         return ConnectionState::Play
     }
-    fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
-        let mut incoming = packet.clone();
-        let client = incoming.client;
+    fn deserialize(packet: ServerboundNetworkPacket) -> Option<Self> {
+        let mut packet = packet.clone();
+        let client = packet.client;
 
-        let inventory_slot = VarInt::net_deserialize(&mut incoming.data).unwrap().0;
-        let bundle_slot = VarInt::net_deserialize(&mut incoming.data).unwrap().0;
+        let inventory_slot = VarInt::net_deserialize(&mut packet.data).unwrap().0;
+        let bundle_slot = VarInt::net_deserialize(&mut packet.data).unwrap().0;
 
         return Some(Self {
             client,

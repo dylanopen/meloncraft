@@ -21,7 +21,7 @@ impl ServerboundPacket for ServerboundSelectKnownPacks {
         return ConnectionState::Configuration
     }
 
-    fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
+    fn deserialize(packet: ServerboundNetworkPacket) -> Option<Self> {
         let mut data = packet.data.clone();
         let client = packet.client;
         let known_packs: PrefixedArray<DatapackMetadata> = data.net_deserialize().unwrap();

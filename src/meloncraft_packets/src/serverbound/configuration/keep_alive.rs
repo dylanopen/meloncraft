@@ -18,7 +18,7 @@ impl ServerboundPacket for ServerboundConfigurationKeepAlive {
         return ConnectionState::Configuration
     }
 
-    fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
+    fn deserialize(packet: ServerboundNetworkPacket) -> Option<Self> {
         let mut data = packet.data.clone();
         let client = packet.client;
         let id = data.net_deserialize().unwrap();

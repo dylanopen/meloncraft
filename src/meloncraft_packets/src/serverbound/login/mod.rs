@@ -1,6 +1,6 @@
-mod encryption_response;
-
 use bevy::app::App;
+
+mod encryption_response;
 pub use encryption_response::ServerboundEncryptionResponse;
 
 mod login_acknowledged;

@@ -18,12 +18,12 @@ impl ServerboundPacket for ServerboundQueryBlockEntityTag {
     fn state() -> ConnectionState {
         return ConnectionState::Play
     }
-    fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
-        let mut incoming = packet.clone();
-        let client = incoming.client;
+    fn deserialize(packet: ServerboundNetworkPacket) -> Option<Self> {
+        let mut packet = packet.clone();
+        let client = packet.client;
 
-        let transaction_id = VarInt::net_deserialize(&mut incoming.data).unwrap().0;
-        let location = NetworkLocation::net_deserialize(&mut incoming.data).ok()?;
+        let transaction_id = VarInt::net_deserialize(&mut packet.data).unwrap().0;
+        let location = NetworkLocation::net_deserialize(&mut packet.data).ok()?;
 
         return Some(Self {
             client,

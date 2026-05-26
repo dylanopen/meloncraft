@@ -1,6 +1,6 @@
-mod client_information;
-
 use bevy::app::App;
+
+mod client_information;
 pub use client_information::ServerboundClientInformation;
 
 mod cookie_response;

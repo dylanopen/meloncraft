@@ -18,12 +18,12 @@ impl ServerboundPacket for ServerboundSetPlayerPosition {
     fn state() -> ConnectionState {
         return ConnectionState::Play
     }
-    fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
-        let mut incoming = packet.clone();
-        let client = incoming.client;
+    fn deserialize(packet: ServerboundNetworkPacket) -> Option<Self> {
+        let mut packet = packet.clone();
+        let client = packet.client;
 
-        let location = incoming.data.net_deserialize().ok()?;
-        let byte_flags = u8::net_deserialize(&mut incoming.data).ok()?;
+        let location = packet.data.net_deserialize().ok()?;
+        let byte_flags = u8::net_deserialize(&mut packet.data).ok()?;
         let flags = EntityPositionFlags::from(byte_flags);
 
         return Some(Self {

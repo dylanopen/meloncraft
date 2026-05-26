@@ -17,11 +17,10 @@ impl ServerboundPacket for ServerboundAcknowledgeChat {
     fn state() -> ConnectionState {
         return ConnectionState::Play
     }
-    fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
-        let mut incoming = packet.clone();
-        let client = incoming.client;
+    fn deserialize(packet: ServerboundNetworkPacket) -> Option<Self> {
+        let client = packet.client;
 
-        let message_count = VarInt::net_deserialize(&mut incoming.data).ok()?.0;
+        let message_count = VarInt::net_deserialize(&mut packet.data).ok()?.0;
 
         return Some(Self {
             client,

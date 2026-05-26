@@ -31,7 +31,7 @@ impl ServerboundPacket for ServerboundClientInformation {
         return ConnectionState::Configuration
     }
 
-    fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
+    fn deserialize(packet: ServerboundNetworkPacket) -> Option<Self> {
         let mut data = packet.data.clone();
         let client = packet.client;
         let locale = Locale(data.net_deserialize().unwrap());
