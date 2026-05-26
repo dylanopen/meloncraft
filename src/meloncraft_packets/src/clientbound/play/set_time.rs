@@ -11,12 +11,13 @@ use crate::clientbound_packet::ClientboundPacket;
 pub struct ClientboundSetTime {
     pub client: Entity,
 
-    /// The current game time, in ticks, see [`DayTime`] for more info.
-    pub day_time: DayTime,
-
     /// The real-world time, in ticks, the server has run for (across all program runs).
+    /// Also known as `World Age` in the protocol.
     /// See [`OpenTime`] for more info.
     pub open_time: OpenTime,
+
+    /// The current game time, in ticks, see [`DayTime`] for more info.
+    pub day_time: DayTime,
 
     /// Whether or not time is advancing, see [`DaylightCycle`] for information.
     pub daylight_cycle: DaylightCycle,
@@ -34,8 +35,8 @@ impl ClientboundPacket for ClientboundSetTime {
     fn serialize(&self) -> Option<ClientboundNetworkPacket> {
         let mut data = Vec::new();
 
-        data.extend(self.day_time.0.net_serialize());
         data.extend(self.open_time.0.net_serialize());
+        data.extend(self.day_time.0.net_serialize());
         data.extend(self.daylight_cycle.0.net_serialize());
 
         return Some(ClientboundNetworkPacket {

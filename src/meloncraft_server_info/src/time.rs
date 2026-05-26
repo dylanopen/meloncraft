@@ -19,6 +19,7 @@ pub struct DayTime(pub u64);
 /// This does *not* change when sleeping, setting the time, or any other 'artificial' ways of
 /// passing time.
 ///
+/// Also known as `World Age`.
 /// Dividing [`OpenTime::0`] by `20` will give the total runtime, in seconds, of the server.
 #[derive(Resource, Debug, Clone, Copy)]
 pub struct OpenTime(pub u64);
