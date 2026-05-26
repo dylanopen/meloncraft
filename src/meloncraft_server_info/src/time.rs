@@ -14,3 +14,10 @@ use bevy::ecs::resource::Resource;
 #[derive(Resource, Debug, Clone, Copy)]
 pub struct DayTime(pub u64);
 
+/// The amount of time (in ticks) that the server has been online for, **total**.
+/// This does *not* change when sleeping, setting the time, or any other 'artificial' ways of
+/// passing time.
+///
+/// Dividing [`OpenTime::0`] by `20` will give the total runtime, in seconds, of the server.
+pub struct OpenTime(pub u64);
+
