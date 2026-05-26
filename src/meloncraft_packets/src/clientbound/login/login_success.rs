@@ -13,13 +13,12 @@ pub struct ClientboundLoginSuccess {
 
 impl ClientboundPacket for ClientboundLoginSuccess {
     fn id() -> i32 {
-        return 0x02
+        return 0x02;
     }
 
     fn state() -> ConnectionState {
-        return ConnectionState::Login
+        return ConnectionState::Login;
     }
-
 
     fn client(&self) -> Entity {
         return self.client;

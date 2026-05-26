@@ -1,8 +1,8 @@
 use bevy::prelude::{MessageReader, MessageWriter};
 use meloncraft_packets::ClientboundChunkData;
-use meloncraft_world::messages::SendChunk;
 use meloncraft_protocol_types::bitset::BitSet;
 use meloncraft_protocol_types::chunk_lighting::ChunkLighting;
+use meloncraft_world::messages::SendChunk;
 
 pub fn send_chunk(
     mut send_chunk_mr: MessageReader<SendChunk>,
@@ -18,7 +18,9 @@ pub fn send_chunk(
                 sky_mask: BitSet::with_capacity(send_chunk.chunk.get_height_in_chunks() + 2),
                 block_mask: BitSet::with_capacity(send_chunk.chunk.get_height_in_chunks() + 2),
                 empty_sky_mask: BitSet::with_capacity(send_chunk.chunk.get_height_in_chunks() + 2),
-                empty_block_mask: BitSet::with_capacity(send_chunk.chunk.get_height_in_chunks() + 2),
+                empty_block_mask: BitSet::with_capacity(
+                    send_chunk.chunk.get_height_in_chunks() + 2,
+                ),
                 sky_data: vec![],
                 block_data: vec![],
             },

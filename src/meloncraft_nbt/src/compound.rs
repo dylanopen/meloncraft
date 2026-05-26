@@ -15,7 +15,7 @@ use core::ops::{Deref, DerefMut};
 ///   [`NbtTag::key`] which it is referenced by - a bit like a `HashMap`. Indeed, this struct
 ///   provides methods for acting on the [`NbtTag`]s in the compoundd similarly to the `HashMap`'s
 ///   interface.
-/// 
+///
 /// ## Deref
 /// Dereferencing this (and most other [`NbtValue`](`crate::NbtValue`)s) will yield the wrapped type.
 /// In this case, a `Vec<NbtTag>` representing all the [`NbtTag`] key-[`value`](`NbtValue`) pairs in the array.
@@ -30,7 +30,6 @@ use core::ops::{Deref, DerefMut};
 /// - Wiki page on NBT: <https://minecraft.wiki/w/NBT_format>.
 #[derive(Debug, Clone, PartialEq)]
 pub struct NbtCompound(
-
     /// A list of [`NbtTag`]s.
     /// You shouldn't access this field manually. Instead, consider the methods on [`NbtCompound`]
     /// for getting and setting values *by their [`NbtTag`] key* instead.
@@ -61,12 +60,11 @@ impl From<Vec<NbtTag>> for NbtCompound {
 }
 
 impl NbtCompound {
-    
     /// Get a reference to a [`NbtTag`], querying by the [`NbtTag::key`] (a string key).
     ///
     /// ## Parameters
     /// - `key`: an `&str` representing the key (or key path) of the [`NbtTag`] to return from the compound.
-    /// 
+    ///
     /// ## Returns
     /// - `Some(&NbtTag)` with the full tag corresponding to the provided `key`, if that tag exists
     ///   in the compound.
@@ -93,7 +91,7 @@ impl NbtCompound {
                 return None;
             };
             current_compound = compound;
-        };
+        }
         return None;
     }
 
@@ -105,7 +103,7 @@ impl NbtCompound {
     ///
     /// ## Parameters
     /// - `key`: an `&str` representing the key (or key path) of the [`NbtTag`]'s [`NbtValue`] to return from the compound.
-    /// 
+    ///
     /// ## Returns
     /// - `Some(&NbtValue)` with just the tag's [`NbtValue`] corresponding to the provided `key`, if that tag exists
     ///   in the compound.
@@ -119,16 +117,15 @@ impl NbtCompound {
     ///   compound for an [`NbtTag`] with a key of `plains`, and **return that tag's [`NbtValue`]**.
     #[must_use]
     pub fn get_value(&self, key: &str) -> Option<&NbtValue> {
-        return self.get(key)
-            .map(|tag| return &tag.value);
+        return self.get(key).map(|tag| return &tag.value);
     }
-    
+
     /// Get a ***mutable*** reference to a [`NbtTag`], querying by the [`NbtTag::key`] (a string key).
     /// > Mutable version of [`NbtCompound::get`].
     ///
     /// ## Parameters
     /// - `key`: an `&str` representing the key (or key path) of the [`NbtTag`] to return from the compound.
-    /// 
+    ///
     /// ## Returns
     /// - `Some(&mut NbtTag)` with the full tag corresponding to the provided `key`, if that tag exists
     ///   in the compound.
@@ -150,11 +147,12 @@ impl NbtCompound {
             if tree.len() == 1 {
                 return current_compound.get_mut(tree.first()?);
             }
-            let NbtValue::Compound(compound) = current_compound.get_value_mut(tree.remove(0))? else {
+            let NbtValue::Compound(compound) = current_compound.get_value_mut(tree.remove(0))?
+            else {
                 return None;
             };
             current_compound = compound;
-        };
+        }
         return None;
     }
 
@@ -169,7 +167,7 @@ impl NbtCompound {
     ///
     /// ## Parameters
     /// - `key`: an `&str` representing the key (or key path) of the [`NbtTag`]'s [`NbtValue`] to return from the compound.
-    /// 
+    ///
     /// ## Returns
     /// - `Some(&mut NbtValue)` with just the tag's [`NbtValue`] corresponding to the provided `key`, if that tag exists
     ///   in the compound.
@@ -202,7 +200,7 @@ impl NbtCompound {
     /// - If a tag with the name of the passed in `tag`'s [`NbtTag::key`] does not already exist in
     ///   the compound, then the passed in `tag` is simply added to the compound (pushed to the
     ///   internal `Vec` of [`NbtTag`]s).
-    /// 
+    ///
     /// ## Parameters
     /// - `&mut self`: the [`NbtTag`] to insert into.
     /// - `tag`: the [`NbtTag`] to insert into the compound. See above for details on how it is added.
@@ -215,7 +213,7 @@ impl NbtCompound {
     }
 
     /// Remove an [`NbtTag`] from the compound, if it exists, by its key.
-    /// 
+    ///
     /// ## Nested key paths
     /// Note: currently this **does not** support nested key paths like the
     /// [`get`](`NbtCompound::get`) method (and derivatives) do. This may be added in the future,
@@ -250,7 +248,7 @@ impl NbtCompound {
     /// ## Returns
     /// - `true` if the compound contains a tag with the provided `key`.
     /// - `false` if the compound does not contain a tag with the provided `key`.
-    /// 
+    ///
     /// ## Value checking
     /// If you want to check whether the compound contains a tag with a specific value, you can use
     /// the [`contains_value`](`NbtCompound::contains_value`) method instead, which checks whether
@@ -359,7 +357,7 @@ impl NbtCompound {
     }
 
     /// Get a `Vec` of references to the **values** of all tags in the compound.
-    /// 
+    ///
     /// Use this if you only want the [`NbtValue`]s of the tags in the compound, and don't care
     /// about the keys. If you want the keys as well, you should use the [`NbtCompound::tags`]
     /// method instead, which returns the full tags, including both keys and values (or just deref).
@@ -389,7 +387,7 @@ impl NbtCompound {
 
     /// Get a `Vec` of ***mutable*** references to the **values** of all tags in the compound.
     /// > Mutable version of [`NbtCompound::values`].
-    /// 
+    ///
     /// Use this if you only want mutable references to the [`NbtValue`]s of the tags in the
     /// compound, and don't care about the keys. If you want the keys as well, you should use the
     /// [`NbtCompound::tags`] method instead, which returns the full tags, including both keys and
@@ -446,7 +444,7 @@ impl NbtCompound {
 
     /// Get a `Vec` of ***mutable*** references to the **full tags** of all tags in the compound,
     /// including both keys and values.
-    /// > Mutable version of [`NbtCompound::tags`]. 
+    /// > Mutable version of [`NbtCompound::tags`].
     ///
     /// Use this if you want mutable references to the full [`NbtTag`]s of the tags in the compound,
     /// including both keys and values.

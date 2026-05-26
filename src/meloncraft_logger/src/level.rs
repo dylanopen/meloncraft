@@ -17,7 +17,6 @@ pub enum LogLevel {
 }
 
 impl LogLevel {
-
     /// Returns the string representation of the log level, as it should appear in the log.
     /// For example, `LogLevel::Info.as_str()` will return `"INFO"`.
     #[must_use]
@@ -43,13 +42,13 @@ impl LogLevel {
         return match self {
             // TODO: base color code on terminal background color, e.g. use bright colors for
             // dark backgrounds and dark colors for light backgrounds
-            LogLevel::Trace => "\x1b[36m", // bright black
-            LogLevel::Debug => "\x1b[32m", // bright cyan
-            LogLevel::Info => "\x1b[94m", // bright
-            LogLevel::Command => "\x1b[95m", // bright magenta
-            LogLevel::Chat => "\x1b[97m", // magenta
-            LogLevel::Warn => "\x1b[93m", // yellow
-            LogLevel::Error => "\x1b[91;1m", // bright red and bold
+            LogLevel::Trace => "\x1b[36m",     // bright black
+            LogLevel::Debug => "\x1b[32m",     // bright cyan
+            LogLevel::Info => "\x1b[94m",      // bright
+            LogLevel::Command => "\x1b[95m",   // bright magenta
+            LogLevel::Chat => "\x1b[97m",      // magenta
+            LogLevel::Warn => "\x1b[93m",      // yellow
+            LogLevel::Error => "\x1b[91;1m",   // bright red and bold
             LogLevel::Fatal => "\x1b[31;1;5m", // red, bold and blinking
         };
     }
@@ -60,7 +59,6 @@ impl fmt::Display for LogLevel {
         return write!(f, "{}", self.as_str());
     }
 }
-
 
 #[cfg(test)]
 mod tests {
@@ -90,4 +88,3 @@ mod tests {
         assert_eq!(LogLevel::Fatal.to_string(), "FATAL");
     }
 }
-

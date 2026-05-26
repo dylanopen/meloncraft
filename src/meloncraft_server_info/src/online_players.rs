@@ -20,7 +20,6 @@ use core::ops::{Deref, DerefMut};
 /// on the server, instead of the number of online players.
 #[derive(Resource)]
 pub struct OnlinePlayers(
-
     /// The value of the current number of online players.
     /// See [`OnlinePlayers`] for more information.
     pub u32,

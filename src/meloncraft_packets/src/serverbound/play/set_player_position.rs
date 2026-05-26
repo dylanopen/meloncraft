@@ -1,8 +1,8 @@
 use crate::ServerboundPacket;
+use crate::network_messages::ServerboundNetworkPacket;
 use bevy::prelude::{Entity, Message};
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_entity::position::{EntityPosition, flags::EntityPositionFlags};
-use crate::network_messages::ServerboundNetworkPacket;
 use meloncraft_protocol_types::{ProtocolBuffer as _, ProtocolType as _};
 
 #[derive(Message, Debug, Clone)]
@@ -13,10 +13,10 @@ pub struct ServerboundSetPlayerPosition {
 
 impl ServerboundPacket for ServerboundSetPlayerPosition {
     fn id() -> i32 {
-        return 0x1D
+        return 0x1D;
     }
     fn state() -> ConnectionState {
-        return ConnectionState::Play
+        return ConnectionState::Play;
     }
     fn deserialize(packet: ServerboundNetworkPacket) -> Option<Self> {
         let mut packet = packet;
@@ -28,10 +28,7 @@ impl ServerboundPacket for ServerboundSetPlayerPosition {
 
         return Some(Self {
             client,
-            position: EntityPosition {
-                location,
-                flags
-            }
-        })
+            position: EntityPosition { location, flags },
+        });
     }
 }

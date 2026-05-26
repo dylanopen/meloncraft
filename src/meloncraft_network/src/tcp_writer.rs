@@ -1,6 +1,8 @@
-use meloncraft_packets::network_messages::{ClientboundNetworkPacket, ClientboundNetworkPacketReceived};
 use bevy::prelude::{Entity, MessageReader, Query};
 use meloncraft_client::connection::ClientConnection;
+use meloncraft_packets::network_messages::{
+    ClientboundNetworkPacket, ClientboundNetworkPacketReceived,
+};
 use meloncraft_protocol_types::{ProtocolType as _, VarInt};
 use std::collections::HashMap;
 use std::io::Write as _;
@@ -9,7 +11,8 @@ use std::net::TcpStream;
 fn send_packet(stream: &mut TcpStream, packet_id: i32, mut data: Vec<u8>) {
     let mut response: Vec<u8> = VarInt(packet_id).net_serialize();
     response.append(&mut data);
-    let mut length_prefixed_response: Vec<u8> = VarInt(response.len().try_into().unwrap()).net_serialize();
+    let mut length_prefixed_response: Vec<u8> =
+        VarInt(response.len().try_into().unwrap()).net_serialize();
     length_prefixed_response.append(&mut response);
 
     stream
@@ -34,7 +37,10 @@ pub fn send_packets(
             }
         }
     }
-    #[expect(clippy::iter_over_hash_type, reason = "We don't mind which clients we send packets to first, unordered iteration is fine.")]
+    #[expect(
+        clippy::iter_over_hash_type,
+        reason = "We don't mind which clients we send packets to first, unordered iteration is fine."
+    )]
     for (client, packets) in client_packets {
         let mut stream = client_connections
             .get_mut(client)

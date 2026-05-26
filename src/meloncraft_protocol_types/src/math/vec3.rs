@@ -18,4 +18,3 @@ impl ProtocolType for Vec3 {
         return Ok(Vec3 { x, y, z });
     }
 }
-

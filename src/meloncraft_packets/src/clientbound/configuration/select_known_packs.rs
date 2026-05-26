@@ -13,13 +13,12 @@ pub struct ClientboundSelectKnownPacks {
 
 impl ClientboundPacket for ClientboundSelectKnownPacks {
     fn id() -> i32 {
-        return 0x0E
+        return 0x0E;
     }
 
     fn state() -> ConnectionState {
-        return ConnectionState::Configuration
+        return ConnectionState::Configuration;
     }
-
 
     fn client(&self) -> Entity {
         return self.client;

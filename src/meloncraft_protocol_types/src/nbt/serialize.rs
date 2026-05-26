@@ -8,7 +8,9 @@ pub fn tag(tag: NbtTag) -> Vec<u8> {
     output.push(tag.value.to_id());
 
     if tag.key.is_empty() {
-        debuglog!("Serialized a tag with an empty string as the key! This seems to have a weird format and I've added a hack to get it working. Expect bugs if you serialize this data.");
+        debuglog!(
+            "Serialized a tag with an empty string as the key! This seems to have a weird format and I've added a hack to get it working. Expect bugs if you serialize this data."
+        );
     } else {
         output.extend(string(tag.key)); // Empty name for root
     }
@@ -60,10 +62,14 @@ pub fn list(mut payload: Vec<NbtValue>) -> Vec<u8> {
     }
 
     // check if all same type
-    if !payload.iter().all(|v| return v.to_id() == payload.first().unwrap().to_id()) {
+    if !payload
+        .iter()
+        .all(|v| return v.to_id() == payload.first().unwrap().to_id())
+    {
         // make all same type by converting to compound of key "":
         for value in &mut payload {
-            if let NbtValue::Compound(_) = value {} else {
+            if let NbtValue::Compound(_) = value {
+            } else {
                 let new_compound = vec![NbtTag {
                     key: String::new(),
                     value: value.clone(),

@@ -28,7 +28,9 @@ pub fn send_difficulty_on_change(
     difficulty: Res<Difficulty>,
     mut change_difficulty_pw: MessageWriter<ClientboundChangeDifficulty>,
 ) {
-    if !difficulty.is_changed() { return; }
+    if !difficulty.is_changed() {
+        return;
+    }
 
     for client in player_q {
         change_difficulty_pw.write(ClientboundChangeDifficulty {
@@ -38,4 +40,3 @@ pub fn send_difficulty_on_change(
         });
     }
 }
-

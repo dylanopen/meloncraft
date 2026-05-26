@@ -18,7 +18,7 @@ use meloncraft_block::block::Block;
 /// provided methods to interact with the blocks in the chunk.
 #[derive(Debug, Clone, Eq, PartialEq)]
 pub struct Chunk {
-    /// A `Vec<Block>` of all the blocks in the chunk. 
+    /// A `Vec<Block>` of all the blocks in the chunk.
     ///
     /// ## Block order
     /// The blocks are stored in a specific order, as follows:
@@ -83,9 +83,7 @@ impl Chunk {
     /// ```
     #[must_use]
     pub const fn new(blocks: Vec<Block>) -> Self {
-        return Chunk {
-            blocks
-        };
+        return Chunk { blocks };
     }
 
     /// Get the height, in **number of chunk sections**, of the chunk.
@@ -105,11 +103,11 @@ impl Chunk {
     ///   in height (6 * 16).
     #[must_use]
     pub const fn get_height_in_chunks(&self) -> usize {
-        return self.blocks.len() / (16*16*16);
+        return self.blocks.len() / (16 * 16 * 16);
     }
 
     /// Get the height of the chunk in **number of blocks upwards**.
-    /// 
+    ///
     /// In the default vanilla overworld, this is 384 blocks.
     ///
     /// The number of chunk sections is 16 times this value (as each [`ChunkBlockSection`] is made
@@ -120,7 +118,7 @@ impl Chunk {
     /// method, which returns the height in chunk sections (each chunk section is 16 blocks).
     #[must_use]
     pub const fn get_height_in_blocks(&self) -> usize {
-        return self.blocks.len() / (16*16);
+        return self.blocks.len() / (16 * 16);
     }
 
     /// Get **a reference** to the [`Block`] at the specified `location` in the chunk.
@@ -129,7 +127,7 @@ impl Chunk {
     ///
     /// ## Parameters
     /// - `location`: An [`UVec3`] representing the location of the block in the chunk.
-    /// 
+    ///
     /// ## Returns
     /// - `Some(&Block)` if the `location` is valid and within the bounds of the chunk.
     /// - [`None`] if the `location` is out of bounds, meaning that any of the coordinates are outside
@@ -196,7 +194,7 @@ impl Chunk {
     /// - `None` if the block could not be set, for example, because the `location` was out of
     ///   bounds for the chunk.
     pub fn set_block(&mut self, location: UVec3, block: Block) -> Option<()> {
-        let index = self.get_index(location)?; 
+        let index = self.get_index(location)?;
         let b = self.blocks.get_mut(index)?;
         *b = block;
         return Some(());
@@ -226,10 +224,13 @@ impl Chunk {
     pub fn to_chunk_sections(&self) -> Vec<ChunkBlockSection> {
         let mut sections = Vec::new();
         let biomes = [Biome::new(40); 64]; // temporarily set all biomes to plains
-        #[expect(clippy::indexing_slicing, reason = "Bounds are already manually checked, by iterating only over self.get_height()")]
+        #[expect(
+            clippy::indexing_slicing,
+            reason = "Bounds are already manually checked, by iterating only over self.get_height()"
+        )]
         for i in 0..self.get_height_in_chunks() {
             let mut section_blocks = [Block::new(0); 4096];
-            section_blocks.copy_from_slice(&self.blocks[i*16*16*16..(i+1)*16*16*16]);
+            section_blocks.copy_from_slice(&self.blocks[i * 16 * 16 * 16..(i + 1) * 16 * 16 * 16]);
             let section = ChunkBlockSection::new(section_blocks, biomes);
             sections.push(section);
         }
@@ -263,10 +264,16 @@ impl Chunk {
     /// - If either of those happen, you have bigger issues than a panic...
     #[must_use]
     pub fn get_index(&self, location: UVec3) -> Option<usize> {
-        if location.x >= 16 { return None; }
-        if location.z >= 16 { return None; }
-        if location.y >= self.get_height_in_blocks().try_into().unwrap() { return None; }
+        if location.x >= 16 {
+            return None;
+        }
+        if location.z >= 16 {
+            return None;
+        }
+        if location.y >= self.get_height_in_blocks().try_into().unwrap() {
+            return None;
+        }
 
-        return Some(usize::try_from(location.y * 16*16 + location.z * 16 + location.x).unwrap());
+        return Some(usize::try_from(location.y * 16 * 16 + location.z * 16 + location.x).unwrap());
     }
 }

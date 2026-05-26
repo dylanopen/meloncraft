@@ -1,9 +1,10 @@
+mod math;
 mod nbt;
 mod pause_menu;
-mod math;
 
 mod boolean;
 mod byte;
+mod chunk_block_section;
 mod datapack_metadata;
 mod disconnect_report;
 mod displayed_skin_parts;
@@ -17,13 +18,15 @@ mod i64;
 mod i8;
 mod identifier;
 mod item_tag;
-mod snbt_text;
+mod location;
 mod nbt_text;
 mod option;
+mod player_action;
 mod prefixed_array;
 mod protocol_type;
 mod registry_entry;
 mod registry_tags;
+mod snbt_text;
 mod string;
 mod u128;
 mod u16;
@@ -33,20 +36,16 @@ mod u8;
 mod ubyte;
 mod uuid;
 mod varint;
-mod location;
-mod player_action;
-mod chunk_block_section;
 
-pub mod game_event;
 pub mod bitset;
 pub mod chunk_lighting;
 pub mod chunk_section_light_data;
+pub mod game_event;
 
 pub use byte::Byte;
+pub use location::NetworkLocation;
 pub use prefixed_array::PrefixedArray;
 pub use protocol_type::ProtocolBuffer;
 pub use protocol_type::ProtocolType;
 pub use ubyte::UByte;
 pub use varint::VarInt;
-pub use location::NetworkLocation;
-

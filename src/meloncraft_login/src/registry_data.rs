@@ -1,9 +1,11 @@
 use bevy::ecs::entity::Entity;
 use bevy::ecs::message::{MessageReader, MessageWriter};
-use meloncraft_packets::ServerboundSelectKnownPacks;
 use meloncraft_packets::ClientboundRegistryData;
+use meloncraft_packets::ServerboundSelectKnownPacks;
 use meloncraft_packets::clientbound_packet::ClientboundPacket;
-use meloncraft_packets::network_messages::{ClientboundNetworkPacket, ClientboundNetworkPacketReceived};
+use meloncraft_packets::network_messages::{
+    ClientboundNetworkPacket, ClientboundNetworkPacketReceived,
+};
 
 pub fn send_registry_data(
     mut select_known_packs_spr: MessageReader<ServerboundSelectKnownPacks>,
@@ -41,24 +43,29 @@ pub fn send_registry_data(
         }
 
         // TODO: send update tags packet, data is in the registry_nbt folder.
-        let mut update_tags_data = include_bytes!("../../meloncraft_login/registry_nbt/update_tags.nbt").to_vec();
+        let mut update_tags_data =
+            include_bytes!("../../meloncraft_login/registry_nbt/update_tags.nbt").to_vec();
         update_tags_data.remove(0); // Remove packet ID byte
-        network_pw.write(ClientboundNetworkPacketReceived { packet: ClientboundNetworkPacket {
-            client: packet.client,
-            id: 0x0D,
-            data: update_tags_data,
-        }});
+        network_pw.write(ClientboundNetworkPacketReceived {
+            packet: ClientboundNetworkPacket {
+                client: packet.client,
+                id: 0x0D,
+                data: update_tags_data,
+            },
+        });
     }
 }
 
 fn send_raw_registry(client: Entity, packet_data: Vec<u8>) -> ClientboundNetworkPacketReceived {
     let mut data = packet_data.clone();
     data.remove(0); // Remove the packet ID byte
-    ClientboundNetworkPacketReceived { packet: ClientboundNetworkPacket {
-        client,
-        id: ClientboundRegistryData::id(),
-        data,
-    }}
+    ClientboundNetworkPacketReceived {
+        packet: ClientboundNetworkPacket {
+            client,
+            id: ClientboundRegistryData::id(),
+            data,
+        },
+    }
 }
 
 /*fn send_registry(

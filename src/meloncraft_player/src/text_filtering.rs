@@ -3,7 +3,7 @@
 use bevy::prelude::Component;
 
 /// Whether the client has enabled text filtering or not.
-/// 
+///
 /// If they do, the server should filter text before sending it to the client, and if they don't,
 /// the server can send unfiltered text to the client. The exact filtering method is up to you, but
 /// it should filter out innapropriate text.
@@ -17,7 +17,6 @@ use bevy::prelude::Component;
 /// See [`EnableTextFiltering::0`] for the protocol ID for each boolean value.
 #[derive(Component, Debug, Clone, Copy)]
 pub struct EnableTextFiltering(
-
     /// Whether the client has enabled text filtering or not. See [`EnableTextFiltering`].
     /// - If `true`: The client has enabled text filtering, and the server should filter out any
     ///   inappropriate text before sending it to the client.

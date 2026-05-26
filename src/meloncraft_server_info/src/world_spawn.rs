@@ -7,7 +7,6 @@ use bevy::math::IVec3;
 /// bed will spawn.
 #[derive(Resource, Debug, Clone)]
 pub struct WorldSpawn {
-
     /// The block location of the world spawn, as 3 i32s.
     pub location: IVec3,
 }
@@ -15,10 +14,7 @@ pub struct WorldSpawn {
 impl WorldSpawn {
     /// Create a new instance of [`WorldSpawn`] with the given `location`.
     #[must_use]
-    pub const fn new(location: IVec3) -> WorldSpawn{
-        return WorldSpawn {
-            location,
-        };
+    pub const fn new(location: IVec3) -> WorldSpawn {
+        return WorldSpawn { location };
     }
 }
-

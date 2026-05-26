@@ -1,7 +1,7 @@
 use bevy::math::DVec3;
 use bevy::prelude::{MessageReader, MessageWriter, Query, With};
-use meloncraft_entity::position::moved::EntityMoved;
 use meloncraft_entity::position::EntityPosition;
+use meloncraft_entity::position::moved::EntityMoved;
 use meloncraft_entity::position::teleport::TeleportEntity;
 use meloncraft_packets::{ClientboundSynchronizePlayerPosition, ServerboundSetPlayerPosition};
 use meloncraft_player::GameProfile;
@@ -21,8 +21,10 @@ pub fn fwd_player_moved(
     existing_positions: Query<&EntityPosition, With<GameProfile>>,
 ) {
     for packet in set_position_pr.read() {
-        let old_position = existing_positions.get(packet.client)
-            .map_or_else(|_| return packet.position.clone(), |old_position| return old_position.clone());
+        let old_position = existing_positions.get(packet.client).map_or_else(
+            |_| return packet.position.clone(),
+            |old_position| return old_position.clone(),
+        );
         player_moved_mw.write(EntityMoved {
             entity: packet.client,
             old_position,
@@ -37,7 +39,7 @@ pub fn fwd_player_teleport(
     mut synchronize_player_position_pw: MessageWriter<ClientboundSynchronizePlayerPosition>,
 ) {
     for teleport_entity in teleport_entity_mr.read() {
-        if game_profile_q.get(teleport_entity.entity).is_err() { 
+        if game_profile_q.get(teleport_entity.entity).is_err() {
             continue; // the entity isn't a player, we don't teleport them in this crate.
         }
         synchronize_player_position_pw.write(ClientboundSynchronizePlayerPosition {
@@ -54,4 +56,3 @@ pub fn fwd_player_teleport(
     // between sending this packet and receiving acknowledgement from the client.
     // Otherwise we may store incorrect values.
 }
-

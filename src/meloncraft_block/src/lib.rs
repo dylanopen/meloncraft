@@ -16,7 +16,7 @@
 //! state or external mutable parameters).
 
 pub mod block;
-pub mod face;
-pub mod set;
 pub mod broken;
+pub mod face;
 pub mod plugin;
+pub mod set;

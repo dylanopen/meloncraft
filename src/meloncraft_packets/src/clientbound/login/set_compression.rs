@@ -12,13 +12,12 @@ pub struct ClientboundSetCompression {
 
 impl ClientboundPacket for ClientboundSetCompression {
     fn id() -> i32 {
-        return 0x03
+        return 0x03;
     }
 
     fn state() -> ConnectionState {
-        return ConnectionState::Login
+        return ConnectionState::Login;
     }
-
 
     fn client(&self) -> Entity {
         return self.client;

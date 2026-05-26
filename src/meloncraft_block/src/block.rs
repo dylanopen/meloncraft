@@ -27,13 +27,12 @@
 ///   *CRASH*.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub struct Block {
-
     /// The numerical ID that the Minecraft client understands as the block's state.
     /// This ID is unique to every block state type. You can see the generated crate
     /// `meloncraft_blockstate_registry` for more information about the blockstate IDs.
     ///
     /// Use the [`Block::new`] constructor to create a new `Block` with a specific `state_id`.
-    /// 
+    ///
     /// ## Packet usage
     /// Packets should use this field, which is a unique ID as defined in the internal Minecraft
     /// block state registry.

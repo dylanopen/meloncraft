@@ -10,7 +10,7 @@ use bevy::ecs::resource::Resource;
 /// - Increases when a player sleeps in a bed to skip the night.
 /// - Can legally be changed manually, by changing the resource yourself or by defining a time set
 ///   command.
-/// 
+///
 /// This determines the daylight cycle and can show in the client's F3 screen as the 'day count'.
 #[derive(Resource, Debug, Clone, Copy)]
 pub struct DayTime(pub u64);
@@ -36,4 +36,3 @@ pub struct DaylightCycle(pub bool);
 /// to distinguish between manual component changes and automatic increments each tick.
 #[derive(Message, Debug, Clone)]
 pub struct TimeChanged;
-

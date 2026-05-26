@@ -16,7 +16,6 @@ use bevy::prelude::Component;
 #[derive(Component, Debug, Clone, Copy, Eq, PartialEq)]
 #[repr(i32)]
 pub enum MainHand {
-
     /// Indicates that a player's main hand/arm is their *left* hand/arm.
     /// **Protocol ID: `0`**.
     /// This is the hand they swing and hold mainhand items in. See [`MainHand`] for more info.
@@ -48,7 +47,6 @@ impl From<MainHand> for i32 {
         return match value {
             MainHand::Left => 0,
             MainHand::Right => 1,
-        }
+        };
     }
 }
-

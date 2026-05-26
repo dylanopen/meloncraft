@@ -7,7 +7,9 @@ pub fn save_profile(
     mut commands: Commands,
 ) {
     for message in offline_login_started_mr.read() {
-        commands.entity(message.client).insert(message.profile.clone());
+        commands
+            .entity(message.client)
+            .insert(message.profile.clone());
     }
 }
 

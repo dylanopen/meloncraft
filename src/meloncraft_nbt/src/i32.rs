@@ -3,7 +3,7 @@
 use core::ops::{Deref, DerefMut};
 
 /// NBT wrapper to represent a signed 32-bit integer (`i32`).
-/// 
+///
 /// ## Deref
 /// Dereferencing this (and most other [`NbtValue`](`crate::NbtValue`)s will yield the wrapped type.
 /// In this case, the `i32` representation of the value.
@@ -14,7 +14,6 @@ use core::ops::{Deref, DerefMut};
 /// [`NbtValue`](`crate::NbtValue`) and [`NbtTag`](`crate::NbtTag`) types.
 #[derive(Debug, Clone, Eq, PartialEq)]
 pub struct NbtI32(
-
     /// An `i32` representing the value of this NBT value or tag.
     pub i32,
 );

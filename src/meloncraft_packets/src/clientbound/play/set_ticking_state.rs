@@ -1,11 +1,11 @@
+use crate::clientbound_packet::ClientboundPacket;
 use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
-use meloncraft_server_info::tick::{TickRate, TickingFrozen};
 use meloncraft_protocol_types::ProtocolType as _;
-use crate::clientbound_packet::ClientboundPacket;
+use meloncraft_server_info::tick::{TickRate, TickingFrozen};
 
-/// Used to adjust the ticking rate of the client, and whether it's frozen. 
+/// Used to adjust the ticking rate of the client, and whether it's frozen.
 ///
 /// <https://minecraft.wiki/w/Java_Edition_protocol/Packets#Set_Ticking_State>.
 #[derive(Message, Debug, Clone)]
@@ -26,19 +26,15 @@ impl ClientboundPacket for ClientboundSetTickingState {
     }
 
     fn state() -> ConnectionState {
-        return ConnectionState::Play
+        return ConnectionState::Play;
     }
-
 
     fn client(&self) -> Entity {
         return self.client;
     }
 
     fn data(&self, data: &mut Vec<u8>) {
-
         data.extend(self.tick_rate.0.net_serialize());
         data.extend(self.ticking_frozen.0.net_serialize());
-
     }
 }
-

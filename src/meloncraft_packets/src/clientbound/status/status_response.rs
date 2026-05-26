@@ -16,10 +16,10 @@ pub struct ClientboundStatusResponse {
 
 impl ClientboundPacket for ClientboundStatusResponse {
     fn id() -> i32 {
-        return 0x00
+        return 0x00;
     }
     fn state() -> ConnectionState {
-        return ConnectionState::Status
+        return ConnectionState::Status;
     }
 
     fn client(&self) -> Entity {

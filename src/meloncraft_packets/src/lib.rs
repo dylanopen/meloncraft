@@ -5,13 +5,13 @@ pub mod serverbound_packet;
 
 pub mod clientbound;
 pub mod clientbound_messenger;
+pub mod network_messages;
 pub mod serverbound;
 pub mod serverbound_messenger;
-pub mod network_messages;
 
 use bevy::app::{App, Plugin};
-pub use serverbound_packet::ServerboundPacket;
 pub use clientbound_packet::ClientboundPacket;
+pub use serverbound_packet::ServerboundPacket;
 
 pub use clientbound::*;
 pub use serverbound::*;

@@ -1,7 +1,7 @@
 use core::ops::{Deref, DerefMut};
 
 /// NBT wrapper to represent a signed 16-bit short integer (`i16`).
-/// 
+///
 /// ## Deref
 /// Dereferencing this (and most other [`NbtValue`](`crate::NbtValue`)s will yield the wrapped type.
 /// In this case, the `i16` representation of the value.
@@ -12,9 +12,8 @@ use core::ops::{Deref, DerefMut};
 /// [`NbtValue`](`crate::NbtValue`) and [`NbtTag`](`crate::NbtTag`) types.
 #[derive(Debug, Clone, Eq, PartialEq)]
 pub struct NbtI16(
-
     /// An `i16` representing the value of this NBT value or tag.
-    pub i16
+    pub i16,
 );
 
 impl Deref for NbtI16 {

@@ -1,10 +1,10 @@
 use crate::ServerboundPacket;
+use crate::network_messages::ServerboundNetworkPacket;
 use bevy::prelude::{Entity, Message};
 use meloncraft_block::face::BlockFaceType;
 use meloncraft_client::connection_state::ConnectionState;
-use crate::network_messages::ServerboundNetworkPacket;
 use meloncraft_player::PlayerActionStatus;
-use meloncraft_protocol_types::{NetworkLocation, ProtocolType as _, ProtocolBuffer as _, VarInt};
+use meloncraft_protocol_types::{NetworkLocation, ProtocolBuffer as _, ProtocolType as _, VarInt};
 
 #[derive(Message, Debug, Clone)]
 pub struct ServerboundPlayerAction {
@@ -17,18 +17,25 @@ pub struct ServerboundPlayerAction {
 
 impl ServerboundPacket for ServerboundPlayerAction {
     fn id() -> i32 {
-        return 0x28
+        return 0x28;
     }
     fn state() -> ConnectionState {
-        return ConnectionState::Play
+        return ConnectionState::Play;
     }
     fn deserialize(packet: ServerboundNetworkPacket) -> Option<Self> {
         let mut packet = packet;
         let client = packet.client;
 
-        let status = VarInt::net_deserialize(&mut packet.data).ok()?.0.try_into().unwrap();
+        let status = VarInt::net_deserialize(&mut packet.data)
+            .ok()?
+            .0
+            .try_into()
+            .unwrap();
         let block_location = packet.data.net_deserialize().ok()?;
-        let block_face = u8::net_deserialize(&mut packet.data).ok()?.try_into().ok()?;
+        let block_face = u8::net_deserialize(&mut packet.data)
+            .ok()?
+            .try_into()
+            .ok()?;
         let sequence = VarInt::net_deserialize(&mut packet.data).ok()?.0;
 
         return Some(Self {
@@ -37,6 +44,6 @@ impl ServerboundPacket for ServerboundPlayerAction {
             block_location,
             block_face,
             sequence,
-        })
+        });
     }
 }

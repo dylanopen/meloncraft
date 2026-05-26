@@ -23,4 +23,3 @@ pub struct WorldBorderWarningDelay(pub i32);
 /// This is the number of blocks before the red effect shows for the client.
 #[derive(Resource, Debug, Clone)]
 pub struct WorldBorderWarningDistance(pub i32);
-

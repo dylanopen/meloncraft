@@ -61,7 +61,9 @@ mod tests {
     }
     #[test]
     fn deserialize_prefixed_array_string() {
-        let mut data = vec![2, 5, b'h', b'e', b'l', b'l', b'o', 5, b'w', b'o', b'r', b'l', b'd'];
+        let mut data = vec![
+            2, 5, b'h', b'e', b'l', b'l', b'o', 5, b'w', b'o', b'r', b'l', b'd',
+        ];
         let deserialized = PrefixedArray::<String>::net_deserialize(&mut data).unwrap();
         let expected = PrefixedArray(vec!["hello".to_string(), "world".to_string()]);
         assert_eq!(deserialized.0, expected.0);
@@ -109,4 +111,3 @@ mod tests {
         assert_eq!(array.0, deserialized.0);
     }
 }
-

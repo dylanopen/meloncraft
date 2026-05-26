@@ -1,26 +1,28 @@
-#![expect(clippy::non_std_lazy_statics, reason = "I will use LazyLock soon, but for now, lazy_static! works.")]
+#![expect(
+    clippy::non_std_lazy_statics,
+    reason = "I will use LazyLock soon, but for now, lazy_static! works."
+)]
 
 use crate::connection_listener::ConnectionListener;
 use crate::connection_manager::connection_manager;
-use meloncraft_packets::network_messages::{
-    ClientboundNetworkPacket, ClientboundNetworkPacketReceived,
-    ServerboundNetworkPacketReceived,
-};
 use crate::tcp_reader::receive_new_clients;
 use crate::tcp_writer::send_packets;
 use bevy::app::{App, Plugin, Update};
 use lazy_static::lazy_static;
+use meloncraft_packets::network_messages::{
+    ClientboundNetworkPacket, ClientboundNetworkPacketReceived, ServerboundNetworkPacketReceived,
+};
 use std::net::TcpListener;
 use std::sync::Mutex;
 use std::thread;
 
 use self::tcp_reader::ServerboundTcpPacket;
 
+pub mod client_connections;
 pub mod connection_listener;
 pub mod connection_manager;
 pub mod tcp_reader;
 pub mod tcp_writer;
-pub mod client_connections;
 
 lazy_static! {
     pub static ref SERVERBOUND_PACKETS: Mutex<Vec<ServerboundTcpPacket>> = {

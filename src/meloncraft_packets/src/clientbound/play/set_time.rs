@@ -1,9 +1,9 @@
+use crate::clientbound_packet::ClientboundPacket;
 use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
-use meloncraft_server_info::time::{DayTime, DaylightCycle, OpenTime};
 use meloncraft_protocol_types::ProtocolType as _;
-use crate::clientbound_packet::ClientboundPacket;
+use meloncraft_server_info::time::{DayTime, DaylightCycle, OpenTime};
 
 /// Set the center of the active worldborder to the specified [`WorldBorderCenter`].
 #[derive(Message, Debug, Clone)]
@@ -24,24 +24,20 @@ pub struct ClientboundSetTime {
 
 impl ClientboundPacket for ClientboundSetTime {
     fn id() -> i32 {
-        return 0x6F
+        return 0x6F;
     }
 
     fn state() -> ConnectionState {
-        return ConnectionState::Play
+        return ConnectionState::Play;
     }
-
 
     fn client(&self) -> Entity {
         return self.client;
     }
 
     fn data(&self, data: &mut Vec<u8>) {
-
         data.extend(self.open_time.0.net_serialize());
         data.extend(self.day_time.0.net_serialize());
         data.extend(self.daylight_cycle.0.net_serialize());
-
     }
 }
-

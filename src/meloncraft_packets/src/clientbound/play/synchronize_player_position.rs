@@ -18,13 +18,12 @@ pub struct ClientboundSynchronizePlayerPosition {
 
 impl ClientboundPacket for ClientboundSynchronizePlayerPosition {
     fn id() -> i32 {
-        return 0x46
+        return 0x46;
     }
 
     fn state() -> ConnectionState {
-        return ConnectionState::Play
+        return ConnectionState::Play;
     }
-
 
     fn client(&self) -> Entity {
         return self.client;
@@ -39,4 +38,3 @@ impl ClientboundPacket for ClientboundSynchronizePlayerPosition {
         data.extend(0_i32.net_serialize()); // teleport flags, I think 0 will work fine?
     }
 }
-

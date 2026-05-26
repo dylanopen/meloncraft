@@ -47,4 +47,3 @@ mod tests {
         assert!(deserialized.is_err());
     }
 }
-

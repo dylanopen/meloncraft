@@ -13,13 +13,12 @@ pub struct ClientboundCookieRequest {
 
 impl ClientboundPacket for ClientboundCookieRequest {
     fn id() -> i32 {
-        return 0x00
+        return 0x00;
     }
 
     fn state() -> ConnectionState {
-        return ConnectionState::Configuration
+        return ConnectionState::Configuration;
     }
-
 
     fn client(&self) -> Entity {
         return self.client;

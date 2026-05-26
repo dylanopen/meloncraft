@@ -16,20 +16,36 @@ type AbilityChanged = Or<(
     Changed<FovModifier>,
 )>;
 
-#[expect(clippy::type_complexity, reason = "Having it here in the method signature makes it much more clear what we're querying for.")]
+#[expect(
+    clippy::type_complexity,
+    reason = "Having it here in the method signature makes it much more clear what we're querying for."
+)]
 pub fn send_player_abilities(
-    player_q: Query<(
-        Entity,
-        &Invulnerable,
-        &IsFlying,
-        &CanFly,
-        &CanInstantBreak,
-        &FlySpeed,
-        &FovModifier,
-    ), AbilityChanged>,
+    player_q: Query<
+        (
+            Entity,
+            &Invulnerable,
+            &IsFlying,
+            &CanFly,
+            &CanInstantBreak,
+            &FlySpeed,
+            &FovModifier,
+        ),
+        AbilityChanged,
+    >,
     mut player_abilities_pw: MessageWriter<ClientboundPlayerAbilities>,
 ) {
-    for (client, invulnerable, is_flying, can_fly, can_instant_break, fly_speed, fov_modifier) in player_q {
-        player_abilities_pw.write(ClientboundPlayerAbilities { client, invulnerable: *invulnerable, is_flying: *is_flying, allow_flying: *can_fly, instant_break: *can_instant_break, fly_speed: *fly_speed, fov_modifier: *fov_modifier });
+    for (client, invulnerable, is_flying, can_fly, can_instant_break, fly_speed, fov_modifier) in
+        player_q
+    {
+        player_abilities_pw.write(ClientboundPlayerAbilities {
+            client,
+            invulnerable: *invulnerable,
+            is_flying: *is_flying,
+            allow_flying: *can_fly,
+            instant_break: *can_instant_break,
+            fly_speed: *fly_speed,
+            fov_modifier: *fov_modifier,
+        });
     }
 }

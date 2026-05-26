@@ -16,5 +16,3 @@ impl ProtocolType for DVec2 {
         return Ok(DVec2 { x, y });
     }
 }
-
-

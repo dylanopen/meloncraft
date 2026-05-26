@@ -13,13 +13,12 @@ pub struct ClientboundCustomReportDetails {
 
 impl ClientboundPacket for ClientboundCustomReportDetails {
     fn id() -> i32 {
-        return 0x0F
+        return 0x0F;
     }
 
     fn state() -> ConnectionState {
-        return ConnectionState::Configuration
+        return ConnectionState::Configuration;
     }
-
 
     fn client(&self) -> Entity {
         return self.client;

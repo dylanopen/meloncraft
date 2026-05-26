@@ -1,11 +1,11 @@
 use crate::ServerboundPacket;
+use crate::network_messages::ServerboundNetworkPacket;
 use bevy::ecs::entity::Entity;
 use bevy::ecs::message::Message;
 use meloncraft_client::connection_state::ConnectionState;
-use crate::network_messages::ServerboundNetworkPacket;
 use meloncraft_player::{
-    AllowPlayerListings, ChatColors, ChatMode, DisplayedSkinParts, EnableTextFiltering, Locale,
-    MainHand, ParticleRenderingMode, ClientViewDistance,
+    AllowPlayerListings, ChatColors, ChatMode, ClientViewDistance, DisplayedSkinParts,
+    EnableTextFiltering, Locale, MainHand, ParticleRenderingMode,
 };
 use meloncraft_protocol_types::{Byte, ProtocolBuffer as _, VarInt};
 
@@ -25,10 +25,10 @@ pub struct ServerboundClientInformation {
 
 impl ServerboundPacket for ServerboundClientInformation {
     fn id() -> i32 {
-        return 0x00
+        return 0x00;
     }
     fn state() -> ConnectionState {
-        return ConnectionState::Configuration
+        return ConnectionState::Configuration;
     }
 
     fn deserialize(packet: ServerboundNetworkPacket) -> Option<Self> {
@@ -61,6 +61,6 @@ impl ServerboundPacket for ServerboundClientInformation {
             enable_text_filtering,
             allow_player_listings,
             particle_rendering_mode,
-        })
+        });
     }
 }

@@ -12,13 +12,12 @@ pub struct ClientboundCodeOfConduct {
 
 impl ClientboundPacket for ClientboundCodeOfConduct {
     fn id() -> i32 {
-        return 0x13
+        return 0x13;
     }
 
     fn state() -> ConnectionState {
-        return ConnectionState::Configuration
+        return ConnectionState::Configuration;
     }
-
 
     fn client(&self) -> Entity {
         return self.client;

@@ -16,11 +16,14 @@ impl ProtocolType for NbtText {
 
     fn net_deserialize(data: &mut Vec<u8>) -> Result<Self, ()> {
         let nbt: NbtTag = data.net_deserialize()?;
-        #[expect(clippy::wildcard_enum_match_arm, reason = "Any future NbtValue variants will not be deserializable to text, so we will always ignore other variants.")]
+        #[expect(
+            clippy::wildcard_enum_match_arm,
+            reason = "Any future NbtValue variants will not be deserializable to text, so we will always ignore other variants."
+        )]
         return match nbt.value {
             NbtValue::String(nbt) => Ok(NbtText::Plain(nbt)),
             NbtValue::Compound(nbt) => Ok(NbtText::Formatted(nbt)),
             _ => Err(()),
-        }
+        };
     }
 }

@@ -10,13 +10,12 @@ pub struct ClientboundResetChat {
 
 impl ClientboundPacket for ClientboundResetChat {
     fn id() -> i32 {
-        return 0x06
+        return 0x06;
     }
 
     fn state() -> ConnectionState {
-        return ConnectionState::Configuration
+        return ConnectionState::Configuration;
     }
-
 
     fn client(&self) -> Entity {
         return self.client;

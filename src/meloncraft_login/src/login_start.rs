@@ -1,8 +1,8 @@
 use crate::encryption::EncryptionMode;
+use crate::messages::OfflineLoggedIn;
 use bevy::prelude::{MessageReader, MessageWriter, Res};
 use meloncraft_packets::ServerboundLoginStart;
 use meloncraft_player::GameProfile;
-use crate::messages::OfflineLoggedIn;
 
 pub fn login_offline_unencrypted_fwd(
     mut login_start_pr: MessageReader<ServerboundLoginStart>,

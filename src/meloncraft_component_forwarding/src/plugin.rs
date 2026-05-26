@@ -18,4 +18,3 @@ impl Plugin for MeloncraftComponentForwardingPlugin {
         app.add_systems(Update, experience::send_player_experience);
     }
 }
-

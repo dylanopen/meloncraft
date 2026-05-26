@@ -44,7 +44,6 @@ use crate::{
 /// See each variant or type's documentation to find out more.
 #[derive(Debug, Clone, PartialEq)]
 pub enum NbtValue {
-
     /// Protocol ID: `0x01` (1).
     /// Stores an unsigned 8-bit integer (`u8`), wrapped in an [`NbtU8`] struct.
     /// See [`NbtU8`] for more information about this type.
@@ -130,7 +129,6 @@ pub enum NbtValue {
 }
 
 impl NbtValue {
-
     /// Returns a reference to the children of this NBT value if it is a compound, or `None` if it
     /// is not a compound. The children of a compound are the NBT tags contained within it, which
     /// are **ordered** key-value pairs where the key is a string and the value is an NBT value.
@@ -298,7 +296,7 @@ impl NbtValue {
     /// - A `u8`, ready for serialization, containing the ID representing the tag type.
     ///
     /// ## Mapping
-    /// 
+    ///
     /// - `U8` => 1
     /// - `I16` => 2
     /// - `I32` => 3

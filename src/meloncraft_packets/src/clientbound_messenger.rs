@@ -1,6 +1,6 @@
 use crate::clientbound_packet::ClientboundPacket;
-use bevy::prelude::{Message, MessageReader, MessageWriter};
 use crate::network_messages::ClientboundNetworkPacketReceived;
+use bevy::prelude::{Message, MessageReader, MessageWriter};
 
 pub fn fwd<T: Message + ClientboundPacket>(
     mut packet_reader: MessageReader<T>,

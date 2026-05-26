@@ -10,7 +10,6 @@ use bevy::ecs::resource::Resource;
 /// <https://minecraft.wiki/w/Difficulty>.
 #[derive(Resource, Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum Difficulty {
-
     /// **Peaceful** [`Difficulty`].
     /// Protocol ID: `0`.
     /// See <https://minecraft.wiki/w/Difficulty#Peaceful> for more information about peaceful mode.

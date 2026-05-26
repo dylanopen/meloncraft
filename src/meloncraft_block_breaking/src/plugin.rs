@@ -11,4 +11,3 @@ impl Plugin for MeloncraftBlockBreakingPlugin {
         app.add_systems(Update, forward::set_broken_blocks);
     }
 }
-

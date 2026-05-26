@@ -32,7 +32,10 @@ pub fn cmd_teleport(
         let entity = get_player_entity_by_name(player_name, player_profile_q).unwrap();
         let new_position = EntityPosition {
             location: DVec3::new(new_x, new_y, new_z),
-            flags: EntityPositionFlags { on_ground: false, pushing_against_wall: false },
+            flags: EntityPositionFlags {
+                on_ground: false,
+                pushing_against_wall: false,
+            },
         };
 
         teleport_entity_mw.write(TeleportEntity {

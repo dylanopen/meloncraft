@@ -20,7 +20,6 @@ use crate::position::flags::EntityPositionFlags;
 /// this component.
 #[derive(Component, Debug, Clone)]
 pub struct EntityPosition {
-
     /// The entity's position in the world, in absolute coordinates.
     /// It can be thought of as a transform of the entity's feet in the world.
     /// Stored as a bevy [`DVec3`].

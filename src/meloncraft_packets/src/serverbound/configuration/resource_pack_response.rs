@@ -1,8 +1,8 @@
 use crate::ServerboundPacket;
+use crate::network_messages::ServerboundNetworkPacket;
 use bevy::prelude::{Entity, Message};
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_core::ResourcePackLoadResult;
-use crate::network_messages::ServerboundNetworkPacket;
 use meloncraft_player::Uuid;
 use meloncraft_protocol_types::{ProtocolBuffer as _, VarInt};
 
@@ -15,10 +15,10 @@ pub struct ServerboundResourcePackResponse {
 
 impl ServerboundPacket for ServerboundResourcePackResponse {
     fn id() -> i32 {
-        return 0x06
+        return 0x06;
     }
     fn state() -> ConnectionState {
-        return ConnectionState::Configuration
+        return ConnectionState::Configuration;
     }
 
     fn deserialize(packet: ServerboundNetworkPacket) -> Option<Self> {
@@ -32,6 +32,6 @@ impl ServerboundPacket for ServerboundResourcePackResponse {
             client,
             uuid,
             load_result,
-        })
+        });
     }
 }

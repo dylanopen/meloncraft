@@ -12,14 +12,13 @@ use bevy::prelude::Entity;
 /// No information about the block is sent with this message, except for the block's position. You
 /// may want to use other components and messages to, say, get the block type from a `Chunk` /
 /// `World`.
-/// 
+///
 /// ## Alternatives
 /// - If you want to respond only when a player breaks a block, and ignore other causes, listen to
 ///   the [`PlayerBrokeBlock`] message instead, which wraps this message as a submessage, as well as
 ///   other info.
 #[derive(Message, Debug, Clone)]
 pub struct BlockBroken {
-
     /// The location of the block that was broken, as an [`IVec3`].
     /// The coordinates are in block coordinates, not chunk coordinates. These will be the same as
     /// are visible in the client's F3 menu.
@@ -31,7 +30,7 @@ pub struct BlockBroken {
 /// Message sent whenever a block is broken by a player.
 ///
 /// You should listen to this event if you want to respond only when a player breaks a block, and
-/// ignore other causes. 
+/// ignore other causes.
 ///
 /// This message contains the submessage for the [`BlockBroken`] message, as well as the `Entity` of
 /// the player who broke the block, and the [sequence number](`PlayerBrokeBlock::sequence`) of the
@@ -43,7 +42,6 @@ pub struct BlockBroken {
 ///   not contain the player or sequence info.
 #[derive(Message, Debug, Clone)]
 pub struct PlayerBrokeBlock {
-
     /// The submessage for the [`BlockBroken`] message, which contains the block's position.
     /// This message will be a clone of the [`BlockBroken`] message, also sent after the event
     /// triggering this message. A [`BlockBroken`] message will always be sent whenever a

@@ -36,14 +36,24 @@ impl ClientboundPacket for ClientboundSetExperience {
         return self.client;
     }
 
-    #[expect(clippy::as_conversions, clippy::modulo_arithmetic, clippy::cast_possible_truncation, reason = "Both are needed for calculating experience level and bar size")]
+    #[expect(
+        clippy::as_conversions,
+        clippy::modulo_arithmetic,
+        clippy::cast_possible_truncation,
+        reason = "Both are needed for calculating experience level and bar size"
+    )]
     fn data(&self, data: &mut Vec<u8>) {
-        let bar = self.bar.map_or_else(|| return experience::total_to_level(self.total.0) % 1.0, |bar| return bar);
-        let level = self.level.map_or_else(|| return experience::total_to_level(self.total.0) as i32, |level| return level);
+        let bar = self.bar.map_or_else(
+            || return experience::total_to_level(self.total.0) % 1.0,
+            |bar| return bar,
+        );
+        let level = self.level.map_or_else(
+            || return experience::total_to_level(self.total.0) as i32,
+            |level| return level,
+        );
 
         data.extend(bar.net_serialize());
         data.extend(VarInt(level).net_serialize());
         data.extend(VarInt(self.total.0).net_serialize());
     }
 }
-

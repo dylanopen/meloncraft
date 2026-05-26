@@ -1,10 +1,10 @@
 use crate::ServerboundPacket;
+use crate::network_messages::ServerboundNetworkPacket;
 use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_client::intention_type::IntentionType;
 use meloncraft_logger::errorlog;
-use crate::network_messages::ServerboundNetworkPacket;
 use meloncraft_protocol_types::{ProtocolType as _, VarInt};
 
 #[derive(Message, Debug, Clone)]
@@ -18,10 +18,10 @@ pub struct ServerboundIntention {
 
 impl ServerboundPacket for ServerboundIntention {
     fn id() -> i32 {
-        return 0x00
+        return 0x00;
     }
     fn state() -> ConnectionState {
-        return ConnectionState::Handshaking
+        return ConnectionState::Handshaking;
     }
     fn deserialize(packet: ServerboundNetworkPacket) -> Option<Self> {
         let mut incoming = packet;
@@ -33,7 +33,9 @@ impl ServerboundPacket for ServerboundIntention {
             2 => IntentionType::Login,
             3 => IntentionType::Transfer,
             next_state_id => {
-                errorlog!("Expected Status (1), Login (2) or Transfer (3) IntentionType, but found value {next_state_id} instead.");
+                errorlog!(
+                    "Expected Status (1), Login (2) or Transfer (3) IntentionType, but found value {next_state_id} instead."
+                );
                 return None;
             }
         };
@@ -44,6 +46,6 @@ impl ServerboundPacket for ServerboundIntention {
             server_address,
             server_port,
             next_state,
-        })
+        });
     }
 }

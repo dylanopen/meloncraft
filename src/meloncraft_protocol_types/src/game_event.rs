@@ -1,5 +1,5 @@
-use meloncraft_core::game_event::{GameEventType, ShouldShowCredits, ShouldShowRespawnScreen};
 use meloncraft_core::WeatherIntensity;
+use meloncraft_core::game_event::{GameEventType, ShouldShowCredits, ShouldShowRespawnScreen};
 
 use crate::ProtocolType;
 
@@ -11,14 +11,18 @@ impl ProtocolType for GameEventType {
             GameEventType::BeginRaining => (1, 0_f32),
             GameEventType::EndRaining => (2, 0_f32),
             GameEventType::ChangeGameMode(mode) => (3, u8::from(*mode).into()),
-            GameEventType::WinGame(ShouldShowCredits(show_credits)) => (4, if *show_credits { 1.0 } else { 0.0 }),
+            GameEventType::WinGame(ShouldShowCredits(show_credits)) => {
+                (4, if *show_credits { 1.0 } else { 0.0 })
+            }
             GameEventType::DemoEvent(event) => (5, (*event).into()),
             GameEventType::ArrowHitPlayer => (6, 0_f32),
             GameEventType::RainLevelChange(intensity) => (7, intensity.0),
             GameEventType::ThunderLevelChange(intensity) => (8, intensity.0),
             GameEventType::PufferfishSting => (9, 0_f32),
             GameEventType::ElderGuardianAppearance => (10, 0_f32),
-            GameEventType::EnableRespawnScreen(ShouldShowRespawnScreen(show_screen)) => (11, if *show_screen { 0.0 } else { 1.0 }), // because... minecraft.
+            GameEventType::EnableRespawnScreen(ShouldShowRespawnScreen(show_screen)) => {
+                (11, if *show_screen { 0.0 } else { 1.0 })
+            } // because... minecraft.
             GameEventType::LimitedCrafting(enabled) => (12, if *enabled { 1.0 } else { 0.0 }),
             GameEventType::WaitForChunks => (13, 0_f32),
         };
@@ -54,4 +58,3 @@ impl ProtocolType for GameEventType {
         });
     }
 }
-

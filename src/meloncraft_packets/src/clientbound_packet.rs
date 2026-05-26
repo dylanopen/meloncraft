@@ -1,8 +1,8 @@
+use crate::network_messages::ClientboundNetworkPacket;
 use bevy::ecs::entity::Entity;
 use bevy::prelude::Message;
-use meloncraft_client::connection_state::ConnectionState;
-use crate::network_messages::ClientboundNetworkPacket;
 use core::fmt::Debug;
+use meloncraft_client::connection_state::ConnectionState;
 
 pub trait ClientboundPacket: Sized + Message + Debug + Clone {
     fn id() -> i32;
@@ -16,7 +16,7 @@ pub trait ClientboundPacket: Sized + Message + Debug + Clone {
         return ClientboundNetworkPacket {
             client: self.client(),
             id: Self::id(),
-            data: body_buffer
+            data: body_buffer,
         };
     }
 }

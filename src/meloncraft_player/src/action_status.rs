@@ -2,7 +2,7 @@
 
 /// An enum representing the various types of player actions that can be sent in a
 /// `ServerboundPlayerAction` packet.
-/// 
+///
 /// This includes actions such as starting or finishing digging, dropping items, updating the held
 /// item, and swapping the offhand item, among many other things.
 ///
@@ -13,7 +13,6 @@
 /// this struct.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum PlayerActionStatus {
-
     /// **Protocol ID: `0`**.
     /// A [`PlayerActionStatus`] indicating that a player has *started* to break a block.
     /// This may be the only packet sent for this block, if the block can be instamined. In some
@@ -58,7 +57,7 @@ pub enum PlayerActionStatus {
     ///
     /// Not sent when dropping an entire stack of items. See [`PlayerActionStatus::DropItemStack`].
     DropSingleItem,
-    
+
     /// **Protocol ID: `5`**.
     /// A [`PlayerActionStatus`] indicating that a player has updated the item they are currently
     /// holding. This is sent when a player changes the item they are holding in their hand, by
@@ -88,7 +87,7 @@ impl TryFrom<u8> for PlayerActionStatus {
             5 => Ok(Self::UpdateHeldItem),
             6 => Ok(Self::SwapOffhand),
             _ => Err(()),
-        }
+        };
     }
 }
 
@@ -102,7 +101,7 @@ impl From<PlayerActionStatus> for u8 {
             PlayerActionStatus::DropSingleItem => 4,
             PlayerActionStatus::UpdateHeldItem => 5,
             PlayerActionStatus::SwapOffhand => 6,
-        }
+        };
     }
 }
 

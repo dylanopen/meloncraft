@@ -1,7 +1,7 @@
 //! Module for component struct [`LastEntityPosition`].
 
-use bevy::prelude::Component;
 use crate::position::EntityPosition;
+use bevy::prelude::Component;
 
 /// Convenience component for storing the *last* position an entity was in.
 ///

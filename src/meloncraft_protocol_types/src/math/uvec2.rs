@@ -16,4 +16,3 @@ impl ProtocolType for UVec2 {
         return Ok(UVec2 { x, y });
     }
 }
-

@@ -13,13 +13,12 @@ pub struct ClientboundTransfer {
 
 impl ClientboundPacket for ClientboundTransfer {
     fn id() -> i32 {
-        return 0x0B
+        return 0x0B;
     }
 
     fn state() -> ConnectionState {
-        return ConnectionState::Configuration
+        return ConnectionState::Configuration;
     }
-
 
     fn client(&self) -> Entity {
         return self.client;

@@ -13,13 +13,12 @@ pub struct ClientboundRemoveResourcePack {
 
 impl ClientboundPacket for ClientboundRemoveResourcePack {
     fn id() -> i32 {
-        return 0x08
+        return 0x08;
     }
 
     fn state() -> ConnectionState {
-        return ConnectionState::Configuration
+        return ConnectionState::Configuration;
     }
-
 
     fn client(&self) -> Entity {
         return self.client;

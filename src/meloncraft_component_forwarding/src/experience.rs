@@ -10,6 +10,11 @@ pub fn send_player_experience(
     mut set_experience_pw: MessageWriter<ClientboundSetExperience>,
 ) {
     for (entity, experience) in player_q {
-        set_experience_pw.write(ClientboundSetExperience { client: entity, total: *experience, level: None, bar: None });
+        set_experience_pw.write(ClientboundSetExperience {
+            client: entity,
+            total: *experience,
+            level: None,
+            bar: None,
+        });
     }
 }

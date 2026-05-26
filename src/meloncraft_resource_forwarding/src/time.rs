@@ -14,7 +14,12 @@ pub fn send_set_time_on_join(
     mut set_time_pw: MessageWriter<ClientboundSetTime>,
 ) {
     for player in player_q {
-        set_time_pw.write(ClientboundSetTime { client: player, day_time: *day_time, open_time: *open_time, daylight_cycle: *daylight_cycle });
+        set_time_pw.write(ClientboundSetTime {
+            client: player,
+            day_time: *day_time,
+            open_time: *open_time,
+            daylight_cycle: *daylight_cycle,
+        });
     }
 }
 
@@ -28,8 +33,12 @@ pub fn send_set_time_on_change(
 ) {
     for _ in time_changed_mr.read() {
         for player in player_q {
-            set_time_pw.write(ClientboundSetTime { client: player, day_time: *day_time, open_time: *open_time, daylight_cycle: *daylight_cycle });
+            set_time_pw.write(ClientboundSetTime {
+                client: player,
+                day_time: *day_time,
+                open_time: *open_time,
+                daylight_cycle: *daylight_cycle,
+            });
         }
     }
 }
-

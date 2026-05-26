@@ -8,7 +8,9 @@ pub fn fwd_block_broken(
     mut block_broken_mw: MessageWriter<BlockBroken>,
 ) {
     for player_action in player_action_pr.read() {
-        if player_action.status != PlayerActionStatus::StartedDigging { continue; } // ignore any actions which aren't starting digging
+        if player_action.status != PlayerActionStatus::StartedDigging {
+            continue;
+        } // ignore any actions which aren't starting digging
         block_broken_mw.write(BlockBroken {
             block_location: player_action.block_location.0,
         });
@@ -20,7 +22,9 @@ pub fn fwd_player_broke_block(
     mut player_broke_block_mw: MessageWriter<PlayerBrokeBlock>,
 ) {
     for player_action in player_action_pr.read() {
-        if player_action.status != PlayerActionStatus::StartedDigging { continue; } // ignore any actions which aren't starting digging
+        if player_action.status != PlayerActionStatus::StartedDigging {
+            continue;
+        } // ignore any actions which aren't starting digging
         player_broke_block_mw.write(PlayerBrokeBlock {
             player: player_action.client,
             block_broken: BlockBroken {

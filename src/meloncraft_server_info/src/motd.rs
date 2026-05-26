@@ -14,7 +14,6 @@ use core::ops::{Deref, DerefMut};
 /// runtime to change the MOTD of your server on the fly.
 #[derive(Resource, Debug, Clone)]
 pub struct Motd(
-
     /// The string representing the value of the server's MOTD.
     /// This is the message that shows on the multiplayer server list screen for your server, see
     /// [`Motd`] for more info.

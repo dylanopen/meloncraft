@@ -3,7 +3,7 @@
 use core::ops::{Deref, DerefMut};
 
 /// NBT wrapper to represent a **UTF-8-encoded string**.
-/// 
+///
 /// ## Deref
 /// Dereferencing this (and most other [`NbtValue`](`crate::NbtValue`)s) will yield the wrapped type.
 /// In this case, a `String` representing the *value* of the NBT value / tag.
@@ -17,7 +17,6 @@ use core::ops::{Deref, DerefMut};
 /// [`NbtValue`](`crate::NbtValue`) and [`NbtTag`](`crate::NbtTag`) types.
 #[derive(Debug, Clone, Eq, PartialEq)]
 pub struct NbtString(
-
     /// A `String` representing the *value* of the NBT value / tag.
     pub String,
 );

@@ -1,8 +1,8 @@
 use crate::ServerboundPacket;
+use crate::network_messages::ServerboundNetworkPacket;
 use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
-use crate::network_messages::ServerboundNetworkPacket;
 use meloncraft_protocol_types::{Byte, PrefixedArray, ProtocolBuffer as _};
 
 #[derive(Message, Debug, Clone)]
@@ -14,11 +14,11 @@ pub struct ServerboundEncryptionResponse {
 
 impl ServerboundPacket for ServerboundEncryptionResponse {
     fn id() -> i32 {
-        return 0x01
+        return 0x01;
     }
 
     fn state() -> ConnectionState {
-        return ConnectionState::Login
+        return ConnectionState::Login;
     }
 
     fn deserialize(packet: ServerboundNetworkPacket) -> Option<Self> {
@@ -31,6 +31,6 @@ impl ServerboundPacket for ServerboundEncryptionResponse {
             client: incoming.client,
             shared_secret,
             verify_token,
-        })
+        });
     }
 }

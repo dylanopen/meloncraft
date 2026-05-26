@@ -39,19 +39,28 @@ impl BitSet {
         return (index, bit_pos);
     }
 
-    #[expect(clippy::indexing_slicing, reason = "Much simpler to mutate value than .get_mut(index).unwrap()")]
+    #[expect(
+        clippy::indexing_slicing,
+        reason = "Much simpler to mutate value than .get_mut(index).unwrap()"
+    )]
     pub fn set(&mut self, pos: usize) {
         let (index, bit_pos) = self.get_location(pos);
         self.bits[index] |= 1 << bit_pos;
     }
 
-    #[expect(clippy::indexing_slicing, reason = "Much simpler to mutate value than .get_mut(index).unwrap()")]
+    #[expect(
+        clippy::indexing_slicing,
+        reason = "Much simpler to mutate value than .get_mut(index).unwrap()"
+    )]
     pub fn unset(&mut self, pos: usize) {
         let (index, bit_pos) = self.get_location(pos);
         self.bits[index] &= !(1 << bit_pos);
     }
 
-    #[expect(clippy::indexing_slicing, reason = "Much simpler to mutate value than .get_mut(index).unwrap()")]
+    #[expect(
+        clippy::indexing_slicing,
+        reason = "Much simpler to mutate value than .get_mut(index).unwrap()"
+    )]
     pub fn toggle(&mut self, pos: usize) {
         let (index, bit_pos) = self.get_location(pos);
         self.bits[index] ^= 1 << bit_pos;
@@ -83,8 +92,8 @@ impl ProtocolType for BitSet {
 
 #[cfg(test)]
 mod tests {
-    use crate::ProtocolBuffer;
     use super::*;
+    use crate::ProtocolBuffer;
 
     #[test]
     fn bitset_create() {
@@ -125,7 +134,7 @@ mod tests {
     fn bitset_toggle() {
         let mut bitset = BitSet::default();
         bitset.toggle(2);
-        assert!(bitset.get( 2));
+        assert!(bitset.get(2));
         bitset.toggle(2);
         assert!(!bitset.get(2));
     }

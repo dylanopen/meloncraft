@@ -10,13 +10,12 @@ pub struct ClientboundKeepAlive {
 
 impl ClientboundPacket for ClientboundKeepAlive {
     fn id() -> i32 {
-        return 0x04
+        return 0x04;
     }
 
     fn state() -> ConnectionState {
-        return ConnectionState::Configuration
+        return ConnectionState::Configuration;
     }
-
 
     fn client(&self) -> Entity {
         return self.client;

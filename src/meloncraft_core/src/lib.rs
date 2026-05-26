@@ -1,6 +1,6 @@
 //! Crate containing core datatypes used in various places throughout
 //! [Meloncraft](https://github.com/dylanopen/meloncraft).
-//! 
+//!
 //! The main purpose of this crate is to store datatypes which don't fit into any other datatype
 //! crates, and aren't complex enough to warrant their own crate.
 //! For example, the `Difficulty` enum is used in many places throughout the codebase, but it's
@@ -16,18 +16,18 @@
 //! state or external mutable parameters).
 
 pub mod datapack;
+pub mod demo_event;
 pub mod disconnect_report;
+pub mod game_event;
+pub mod gamemode;
 pub mod identifier;
 pub mod pause_menu;
 pub mod resource_pack_load_result;
-pub mod gamemode;
-pub mod demo_event;
 pub mod weather_intensity;
-pub mod game_event;
 
+pub use demo_event::DemoEventType;
 pub use disconnect_report::DisconnectReport;
+pub use gamemode::GameMode;
 pub use identifier::Identifier;
 pub use resource_pack_load_result::ResourcePackLoadResult;
-pub use gamemode::GameMode;
-pub use demo_event::DemoEventType;
 pub use weather_intensity::WeatherIntensity;

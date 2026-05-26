@@ -36,7 +36,11 @@ impl TryFrom<JsonValue> for NbtValue {
                     return Ok(NbtValue::I64(crate::NbtI64(i)));
                 }
                 if let Some(f) = val.as_f64() {
-                    #[expect(clippy::as_conversions, clippy::cast_possible_truncation, reason = "This is what we're testing for: we want to see if it gets rounded / is out of bounds")]
+                    #[expect(
+                        clippy::as_conversions,
+                        clippy::cast_possible_truncation,
+                        reason = "This is what we're testing for: we want to see if it gets rounded / is out of bounds"
+                    )]
                     if (f64::from(f as f32) - f) <= 0.000_000_1 {
                         // convert to f32 if possible without a loss of precision
                         return Ok(NbtValue::F32(NbtF32(f as f32)));
@@ -66,7 +70,10 @@ impl TryFrom<JsonValue> for NbtValue {
     }
 }
 
-#[expect(clippy::fallible_impl_from, reason = "This code is not used currently anyway. But all unwraps should be infallible anyway, just due to conversions.")]
+#[expect(
+    clippy::fallible_impl_from,
+    reason = "This code is not used currently anyway. But all unwraps should be infallible anyway, just due to conversions."
+)]
 impl From<NbtValue> for JsonValue {
     fn from(value: NbtValue) -> Self {
         match value {
@@ -74,8 +81,12 @@ impl From<NbtValue> for JsonValue {
             NbtValue::I16(nbt_i16) => return JsonValue::Number(serde_json::Number::from(*nbt_i16)),
             NbtValue::I32(nbt_i32) => return JsonValue::Number(serde_json::Number::from(*nbt_i32)),
             NbtValue::I64(nbt_i64) => return JsonValue::Number(serde_json::Number::from(*nbt_i64)),
-            NbtValue::F32(nbt_f32) => return JsonValue::Number(serde_json::Number::from_f64((*nbt_f32).into()).unwrap()),
-            NbtValue::F64(nbt_f64) => return JsonValue::Number(serde_json::Number::from_f64(*nbt_f64).unwrap()),
+            NbtValue::F32(nbt_f32) => {
+                return JsonValue::Number(serde_json::Number::from_f64((*nbt_f32).into()).unwrap());
+            }
+            NbtValue::F64(nbt_f64) => {
+                return JsonValue::Number(serde_json::Number::from_f64(*nbt_f64).unwrap());
+            }
             NbtValue::String(nbt_string) => return JsonValue::String((*nbt_string).clone()),
             NbtValue::ArrayU8(nbt_array_u8) => {
                 let vals: Vec<JsonValue> = nbt_array_u8

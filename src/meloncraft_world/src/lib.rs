@@ -17,14 +17,13 @@
 
 use bevy::app::{App, Plugin};
 
-
 use self::messages::{ChunkGenerated, ChunkRequest, GenerateChunk, SendChunk};
 
-pub mod world;
 pub mod messages;
+pub mod world;
 
 /// Plugin for registering messages related to a Minecraft world, e.g. chunk sending and generation.
-/// 
+///
 /// ## Registered messages:
 /// - [`ChunkRequest`]
 /// - [`ChunkGenerated`]

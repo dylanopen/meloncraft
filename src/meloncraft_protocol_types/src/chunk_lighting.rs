@@ -1,6 +1,6 @@
 use crate::bitset::BitSet;
-use crate::{PrefixedArray, ProtocolBuffer as _, ProtocolType};
 use crate::chunk_section_light_data::ChunkSectionLightData;
+use crate::{PrefixedArray, ProtocolBuffer as _, ProtocolType};
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct ChunkLighting {
@@ -43,8 +43,6 @@ impl ProtocolType for ChunkLighting {
     }
 }
 
-
-
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -52,10 +50,18 @@ mod tests {
     #[test]
     fn chunk_lighting_serde() {
         let chunk_lighting = ChunkLighting {
-            sky_mask: BitSet { bits: vec![0b10101010, 0b01010101] },
-            block_mask: BitSet { bits: vec![0b11110000, 0b00001111] },
-            empty_sky_mask: BitSet { bits: vec![0b11001100, 0b00110011] },
-            empty_block_mask: BitSet { bits: vec![0b11111111, 0b00000000] },
+            sky_mask: BitSet {
+                bits: vec![0b10101010, 0b01010101],
+            },
+            block_mask: BitSet {
+                bits: vec![0b11110000, 0b00001111],
+            },
+            empty_sky_mask: BitSet {
+                bits: vec![0b11001100, 0b00110011],
+            },
+            empty_block_mask: BitSet {
+                bits: vec![0b11111111, 0b00000000],
+            },
             sky_data: vec![
                 ChunkSectionLightData { data: [1u8; 2048] },
                 ChunkSectionLightData { data: [2u8; 2048] },

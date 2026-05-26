@@ -24,7 +24,7 @@ use std::net::TcpStream;
 ///   packets, as well as to send clientbound packets back to them.
 /// - The client's connection state, [`ConnectionState`], so that packets can be parsed differently
 ///   depending on what state (handshaking, status, login, configuration or play) the client is in.
-/// 
+///
 /// ## ECS
 /// - [`ClientConnection`] is a Bevy component. It should be attached to the bevy `Entity` that
 ///   stores all the data about the client and player.
@@ -35,9 +35,8 @@ use std::net::TcpStream;
 ///   packets to and from the client. Modifying them may break the netcode.
 #[derive(Component, Debug)]
 pub struct ClientConnection {
-    
     /// The client's IP address, as a [`SocketAddr`].
-    /// 
+    ///
     /// ## Modification
     /// - Modifying this field **will** mean that serverbound packets will be missed from that client.
     /// - While the network crate should still send clientbound packets to the old address (as the
@@ -68,7 +67,7 @@ pub struct ClientConnection {
     /// serverbound packets. See the [`ConnectionState`] documentation for more information.
     ///
     /// The connectionState is specific to each client.
-    /// 
+    ///
     /// ## Modification
     /// You should modify this field whenever a client changes connection state, for example, when
     /// they finish the [`ConnectionState::Handshaking`] state and move to the

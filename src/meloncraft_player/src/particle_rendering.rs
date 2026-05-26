@@ -3,7 +3,7 @@
 use bevy::prelude::Component;
 
 /// The player's choice of particles they want to render.
-/// Depending on the user's configuration, clients may request to only be sent a minimal or 
+/// Depending on the user's configuration, clients may request to only be sent a minimal or
 /// decreased number of particles.
 ///
 /// *This is a component for player entities*.
@@ -15,7 +15,6 @@ use bevy::prelude::Component;
 /// See the variants of this enum for the protocol IDs (as `i32`s) of each variant.
 #[derive(Component, Debug, Clone)]
 pub enum ParticleRenderingMode {
-
     /// The client wants to receive all particles.
     /// **Protocol ID: `0`**.
     ///
@@ -66,7 +65,6 @@ impl From<ParticleRenderingMode> for i32 {
             ParticleRenderingMode::All => 0,
             ParticleRenderingMode::Decreased => 1,
             ParticleRenderingMode::Minimal => 2,
-        }
+        };
     }
 }
-

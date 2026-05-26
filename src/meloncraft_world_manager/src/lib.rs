@@ -1,9 +1,9 @@
-pub mod marker;
-mod sender;
 mod generator;
-mod state;
-mod setblock;
+pub mod marker;
 mod request_forwarding;
+mod sender;
+mod setblock;
+mod state;
 
 use bevy::app::{App, Plugin, PostStartup, Update};
 

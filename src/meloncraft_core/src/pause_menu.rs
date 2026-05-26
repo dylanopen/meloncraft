@@ -12,12 +12,12 @@ use meloncraft_text::NbtText;
 /// These are the labels that are already built into the Minecraft client, and you can use them
 /// without needing to worry about the text formatting or length constraints, since the client
 /// already knows about them. They have an ID, which are documented in the individual variants.
-/// 
+///
 /// ## Packet usage
 /// This enum just stores variants and functions for getting the ID of each default label. The enum
 /// used in packets is the [`PauseMenuLink`] enum, which stores a link and a [`PauseMenuLabel`]
 /// (which can be either a default label or a custom label).
-/// 
+///
 /// ## Building a [`PauseMenuLink`]
 /// To build a [`PauseMenuLink`] with a default label, you can use the [`PauseMenuLabel::Builtin`]
 /// variant, and pass in the default label you want to use.
@@ -26,7 +26,6 @@ use meloncraft_text::NbtText;
 /// See the [`PauseMenuLink`] documentation for more information on how to build a link.
 #[derive(Debug, Clone)]
 pub enum BuiltinPauseMenuLabel {
-
     /// A built-in [`PauseMenuLabel`] shown on connection error screens.
     /// Built-in label ID: `0`.
     /// See [`BuiltinPauseMenuLabel`] for docs on what default labels are and how to use them.
@@ -46,7 +45,7 @@ pub enum BuiltinPauseMenuLabel {
     /// Built-in label ID: `3`.
     /// See [`BuiltinPauseMenuLabel`] for docs on what default labels are and how to use them.
     Status,
-    
+
     /// A built-in [`PauseMenuLabel`] that can be shown in the pause menu.
     /// Built-in label ID: `4`.
     /// See [`BuiltinPauseMenuLabel`] for docs on what default labels are and how to use them.
@@ -143,7 +142,6 @@ pub struct CustomPauseMenuLabel(pub NbtText);
 /// either a built-in or custom label.
 #[derive(Debug, Clone)]
 pub enum PauseMenuLabel {
-
     /// Represents a built-in label to use as the label of a link in the pause menu.
     /// These are labels that the client already knows about, and the only thing needed to construct
     /// one is the ID (encoded in [`BuiltinPauseMenuLabel`]) variants.
@@ -194,10 +192,9 @@ pub enum PauseMenuLabel {
 /// ```
 #[derive(Debug, Clone)]
 pub struct PauseMenuLink {
-
     /// The label of the link, which can be either a built-in label (see [`BuiltinPauseMenuLabel`])
     /// or a custom label (see [`CustomPauseMenuLabel`]), wrapped in the [`PauseMenuLabel`] enum.
-    /// 
+    ///
     /// This is the text displayed to the client in the pause menu. It's the part that the client
     /// clicks on to open the URL, so it should be descriptive of the URL it's linking to.
     pub label: PauseMenuLabel,

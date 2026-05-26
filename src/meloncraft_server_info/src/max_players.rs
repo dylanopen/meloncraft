@@ -14,7 +14,6 @@ use core::ops::{Deref, DerefMut};
 /// runtime to change the max player count of your server while it's running.
 #[derive(Resource)]
 pub struct MaxPlayers(
-
     /// The `u32` value representing the maximum number of players that can join the server.
     /// See [`MaxPlayers`] for more information.
     pub u32,

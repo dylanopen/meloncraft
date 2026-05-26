@@ -23,4 +23,3 @@ pub struct ShouldShowCredits(pub bool);
 
 #[derive(Debug, Clone)]
 pub struct ShouldShowRespawnScreen(pub bool);
-

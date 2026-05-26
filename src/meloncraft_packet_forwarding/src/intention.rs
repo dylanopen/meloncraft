@@ -1,7 +1,7 @@
 use bevy::prelude::{MessageReader, MessageWriter};
 use meloncraft_client::intention_type::IntentionType;
-use meloncraft_packets::ServerboundIntention;
 use meloncraft_handshaking::handshaken::{LoginHandshaken, StatusHandshaken, TransferHandshaken};
+use meloncraft_packets::ServerboundIntention;
 
 pub fn fwd_handshaken(
     mut handshake_pr: MessageReader<ServerboundIntention>,
@@ -15,18 +15,17 @@ pub fn fwd_handshaken(
                 status_received_mw.write(StatusHandshaken {
                     player: packet.client,
                 });
-            },
+            }
             IntentionType::Login => {
                 login_received_mw.write(LoginHandshaken {
                     player: packet.client,
                 });
-            },
+            }
             IntentionType::Transfer => {
                 transfer_received_mw.write(TransferHandshaken {
                     player: packet.client,
                 });
-            },
+            }
         }
-
     }
 }

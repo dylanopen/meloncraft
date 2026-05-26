@@ -10,13 +10,12 @@ pub struct ClientboundClearDialog {
 
 impl ClientboundPacket for ClientboundClearDialog {
     fn id() -> i32 {
-        return 0x11
+        return 0x11;
     }
 
     fn state() -> ConnectionState {
-        return ConnectionState::Configuration
+        return ConnectionState::Configuration;
     }
-
 
     fn client(&self) -> Entity {
         return self.client;

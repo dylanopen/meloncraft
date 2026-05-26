@@ -13,13 +13,12 @@ pub struct ClientboundConfigurationDisconnect {
 
 impl ClientboundPacket for ClientboundConfigurationDisconnect {
     fn id() -> i32 {
-        return 0x02
+        return 0x02;
     }
 
     fn state() -> ConnectionState {
-        return ConnectionState::Configuration
+        return ConnectionState::Configuration;
     }
-
 
     fn client(&self) -> Entity {
         return self.client;
