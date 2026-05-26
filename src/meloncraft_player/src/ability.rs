@@ -28,3 +28,9 @@ pub struct CanFly;
 #[derive(Component, Debug, Clone, Copy)]
 pub struct CanInstantBreak;
 
+/// The speed, in arbitrary units as a float, that the player is able to travel at while they are
+/// flying.
+///
+/// Default value: `0.05` for a normal creative-mode flying player.
+pub struct FlySpeed(pub f32);
+
