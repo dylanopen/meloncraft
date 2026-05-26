@@ -7,8 +7,4 @@ pub trait ClientboundPacket: Sized + Message + Debug + Clone {
     fn id() -> i32;
     fn state() -> ConnectionState;
     fn serialize(&self) -> Option<ClientboundNetworkPacket>;
-
-    fn to_packet(&self) -> Option<ClientboundNetworkPacket> {
-        return self.serialize();
-    }
 }
