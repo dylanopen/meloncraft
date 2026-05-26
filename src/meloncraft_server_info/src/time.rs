@@ -19,5 +19,12 @@ pub struct DayTime(pub u64);
 /// passing time.
 ///
 /// Dividing [`OpenTime::0`] by `20` will give the total runtime, in seconds, of the server.
+#[derive(Resource, Debug, Clone, Copy)]
 pub struct OpenTime(pub u64);
+
+/// Whether or not the server should advance time each tick.
+/// - True means that [`DayTime`] and [`OpenTime`] will increase by `1` for every server tick.
+/// - False means that [`DayTime`] and [`OpenTime`] are frozen unless manually changed.
+#[derive(Resource, Debug, Clone, Copy)]
+pub struct DaylightCycle(pub bool);
 
