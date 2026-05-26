@@ -6,7 +6,6 @@ pub struct BigDripleafStem {
     pub waterlogged: bool,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -17,14 +16,30 @@ pub enum Facing {
 
 impl BlockState for BigDripleafStem {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::North && self.r#waterlogged == false { return 27694; }
-        if self.r#facing == Facing::West && self.r#waterlogged == false { return 27698; }
-        if self.r#facing == Facing::East && self.r#waterlogged == true { return 27699; }
-        if self.r#waterlogged == true && self.r#facing == Facing::West { return 27697; }
-        if self.r#facing == Facing::East && self.r#waterlogged == false { return 27700; }
-        if self.r#waterlogged == true && self.r#facing == Facing::North { return 27693; }
-        if self.r#waterlogged == true && self.r#facing == Facing::South { return 27695; }
-        if self.r#facing == Facing::South && self.r#waterlogged == false { return 27696; }
+        if self.r#facing == Facing::North && self.r#waterlogged == false {
+            return 27694;
+        }
+        if self.r#facing == Facing::West && self.r#waterlogged == false {
+            return 27698;
+        }
+        if self.r#facing == Facing::East && self.r#waterlogged == true {
+            return 27699;
+        }
+        if self.r#waterlogged == true && self.r#facing == Facing::West {
+            return 27697;
+        }
+        if self.r#facing == Facing::East && self.r#waterlogged == false {
+            return 27700;
+        }
+        if self.r#waterlogged == true && self.r#facing == Facing::North {
+            return 27693;
+        }
+        if self.r#waterlogged == true && self.r#facing == Facing::South {
+            return 27695;
+        }
+        if self.r#facing == Facing::South && self.r#waterlogged == false {
+            return 27696;
+        }
         panic!("Invalid block state")
     }
 
@@ -80,4 +95,3 @@ impl BlockState for BigDripleafStem {
         return None;
     }
 }
-

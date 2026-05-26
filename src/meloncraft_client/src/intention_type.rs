@@ -22,7 +22,6 @@ use core::fmt;
 ///   the same as the client's **current** `ConnectionState`.
 #[derive(Debug, Clone, Eq, PartialEq)]
 pub enum IntentionType {
-
     /// The client intends to query the server's status.
     ///
     /// The next packet will be sent in the `Status` connection state, and the clien'ts connection

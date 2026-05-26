@@ -7,7 +7,6 @@ pub struct Comparator {
     pub r#mode: Mode,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -24,22 +23,72 @@ pub enum Mode {
 
 impl BlockState for Comparator {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::South && self.r#mode == Mode::Compare && self.r#powered == false { return 11066; }
-        if self.r#facing == Facing::North && self.r#powered == false && self.r#mode == Mode::Compare { return 11062; }
-        if self.r#mode == Mode::Compare && self.r#powered == false && self.r#facing == Facing::East { return 11074; }
-        if self.r#facing == Facing::East && self.r#mode == Mode::Compare && self.r#powered == true { return 11073; }
-        if self.r#powered == true && self.r#mode == Mode::Subtract && self.r#facing == Facing::East { return 11075; }
-        if self.r#mode == Mode::Compare && self.r#powered == true && self.r#facing == Facing::North { return 11061; }
-        if self.r#mode == Mode::Subtract && self.r#powered == false && self.r#facing == Facing::East { return 11076; }
-        if self.r#powered == true && self.r#facing == Facing::West && self.r#mode == Mode::Subtract { return 11071; }
-        if self.r#powered == false && self.r#facing == Facing::North && self.r#mode == Mode::Subtract { return 11064; }
-        if self.r#mode == Mode::Subtract && self.r#powered == true && self.r#facing == Facing::North { return 11063; }
-        if self.r#facing == Facing::South && self.r#mode == Mode::Compare && self.r#powered == true { return 11065; }
-        if self.r#powered == false && self.r#mode == Mode::Compare && self.r#facing == Facing::West { return 11070; }
-        if self.r#powered == false && self.r#facing == Facing::West && self.r#mode == Mode::Subtract { return 11072; }
-        if self.r#facing == Facing::South && self.r#powered == true && self.r#mode == Mode::Subtract { return 11067; }
-        if self.r#mode == Mode::Subtract && self.r#powered == false && self.r#facing == Facing::South { return 11068; }
-        if self.r#facing == Facing::West && self.r#powered == true && self.r#mode == Mode::Compare { return 11069; }
+        if self.r#facing == Facing::South && self.r#mode == Mode::Compare && self.r#powered == false
+        {
+            return 11066;
+        }
+        if self.r#facing == Facing::North && self.r#powered == false && self.r#mode == Mode::Compare
+        {
+            return 11062;
+        }
+        if self.r#mode == Mode::Compare && self.r#powered == false && self.r#facing == Facing::East
+        {
+            return 11074;
+        }
+        if self.r#facing == Facing::East && self.r#mode == Mode::Compare && self.r#powered == true {
+            return 11073;
+        }
+        if self.r#powered == true && self.r#mode == Mode::Subtract && self.r#facing == Facing::East
+        {
+            return 11075;
+        }
+        if self.r#mode == Mode::Compare && self.r#powered == true && self.r#facing == Facing::North
+        {
+            return 11061;
+        }
+        if self.r#mode == Mode::Subtract && self.r#powered == false && self.r#facing == Facing::East
+        {
+            return 11076;
+        }
+        if self.r#powered == true && self.r#facing == Facing::West && self.r#mode == Mode::Subtract
+        {
+            return 11071;
+        }
+        if self.r#powered == false
+            && self.r#facing == Facing::North
+            && self.r#mode == Mode::Subtract
+        {
+            return 11064;
+        }
+        if self.r#mode == Mode::Subtract && self.r#powered == true && self.r#facing == Facing::North
+        {
+            return 11063;
+        }
+        if self.r#facing == Facing::South && self.r#mode == Mode::Compare && self.r#powered == true
+        {
+            return 11065;
+        }
+        if self.r#powered == false && self.r#mode == Mode::Compare && self.r#facing == Facing::West
+        {
+            return 11070;
+        }
+        if self.r#powered == false && self.r#facing == Facing::West && self.r#mode == Mode::Subtract
+        {
+            return 11072;
+        }
+        if self.r#facing == Facing::South && self.r#powered == true && self.r#mode == Mode::Subtract
+        {
+            return 11067;
+        }
+        if self.r#mode == Mode::Subtract
+            && self.r#powered == false
+            && self.r#facing == Facing::South
+        {
+            return 11068;
+        }
+        if self.r#facing == Facing::West && self.r#powered == true && self.r#mode == Mode::Compare {
+            return 11069;
+        }
         panic!("Invalid block state")
     }
 
@@ -159,4 +208,3 @@ impl BlockState for Comparator {
         return None;
     }
 }
-

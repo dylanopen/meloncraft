@@ -6,7 +6,6 @@ pub struct LeafLitter {
     pub segment_amount: i32,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -17,22 +16,54 @@ pub enum Facing {
 
 impl BlockState for LeafLitter {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::West && self.r#segment_amount == 1 { return 27652; }
-        if self.r#segment_amount == 4 && self.r#facing == Facing::North { return 27647; }
-        if self.r#segment_amount == 2 && self.r#facing == Facing::West { return 27653; }
-        if self.r#facing == Facing::East && self.r#segment_amount == 4 { return 27659; }
-        if self.r#facing == Facing::South && self.r#segment_amount == 2 { return 27649; }
-        if self.r#segment_amount == 2 && self.r#facing == Facing::East { return 27657; }
-        if self.r#facing == Facing::South && self.r#segment_amount == 3 { return 27650; }
-        if self.r#segment_amount == 3 && self.r#facing == Facing::West { return 27654; }
-        if self.r#segment_amount == 2 && self.r#facing == Facing::North { return 27645; }
-        if self.r#segment_amount == 3 && self.r#facing == Facing::North { return 27646; }
-        if self.r#segment_amount == 1 && self.r#facing == Facing::South { return 27648; }
-        if self.r#segment_amount == 4 && self.r#facing == Facing::South { return 27651; }
-        if self.r#segment_amount == 4 && self.r#facing == Facing::West { return 27655; }
-        if self.r#facing == Facing::East && self.r#segment_amount == 1 { return 27656; }
-        if self.r#facing == Facing::North && self.r#segment_amount == 1 { return 27644; }
-        if self.r#facing == Facing::East && self.r#segment_amount == 3 { return 27658; }
+        if self.r#facing == Facing::West && self.r#segment_amount == 1 {
+            return 27652;
+        }
+        if self.r#segment_amount == 4 && self.r#facing == Facing::North {
+            return 27647;
+        }
+        if self.r#segment_amount == 2 && self.r#facing == Facing::West {
+            return 27653;
+        }
+        if self.r#facing == Facing::East && self.r#segment_amount == 4 {
+            return 27659;
+        }
+        if self.r#facing == Facing::South && self.r#segment_amount == 2 {
+            return 27649;
+        }
+        if self.r#segment_amount == 2 && self.r#facing == Facing::East {
+            return 27657;
+        }
+        if self.r#facing == Facing::South && self.r#segment_amount == 3 {
+            return 27650;
+        }
+        if self.r#segment_amount == 3 && self.r#facing == Facing::West {
+            return 27654;
+        }
+        if self.r#segment_amount == 2 && self.r#facing == Facing::North {
+            return 27645;
+        }
+        if self.r#segment_amount == 3 && self.r#facing == Facing::North {
+            return 27646;
+        }
+        if self.r#segment_amount == 1 && self.r#facing == Facing::South {
+            return 27648;
+        }
+        if self.r#segment_amount == 4 && self.r#facing == Facing::South {
+            return 27651;
+        }
+        if self.r#segment_amount == 4 && self.r#facing == Facing::West {
+            return 27655;
+        }
+        if self.r#facing == Facing::East && self.r#segment_amount == 1 {
+            return 27656;
+        }
+        if self.r#facing == Facing::North && self.r#segment_amount == 1 {
+            return 27644;
+        }
+        if self.r#facing == Facing::East && self.r#segment_amount == 3 {
+            return 27658;
+        }
         panic!("Invalid block state")
     }
 
@@ -136,4 +167,3 @@ impl BlockState for LeafLitter {
         return None;
     }
 }
-

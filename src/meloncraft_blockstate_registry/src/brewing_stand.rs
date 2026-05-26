@@ -7,17 +7,54 @@ pub struct BrewingStand {
     pub has_bottle_0: bool,
 }
 
-
 impl BlockState for BrewingStand {
     fn to_id(&self) -> i32 {
-        if self.r#has_bottle_2 == false && self.r#has_bottle_1 == true && self.r#has_bottle_0 == true { return 9252; }
-        if self.r#has_bottle_0 == true && self.r#has_bottle_2 == true && self.r#has_bottle_1 == false { return 9253; }
-        if self.r#has_bottle_2 == false && self.r#has_bottle_0 == true && self.r#has_bottle_1 == false { return 9254; }
-        if self.r#has_bottle_0 == true && self.r#has_bottle_1 == true && self.r#has_bottle_2 == true { return 9251; }
-        if self.r#has_bottle_2 == true && self.r#has_bottle_0 == false && self.r#has_bottle_1 == false { return 9257; }
-        if self.r#has_bottle_1 == true && self.r#has_bottle_0 == false && self.r#has_bottle_2 == true { return 9255; }
-        if self.r#has_bottle_2 == false && self.r#has_bottle_1 == false && self.r#has_bottle_0 == false { return 9258; }
-        if self.r#has_bottle_0 == false && self.r#has_bottle_1 == true && self.r#has_bottle_2 == false { return 9256; }
+        if self.r#has_bottle_2 == false
+            && self.r#has_bottle_1 == true
+            && self.r#has_bottle_0 == true
+        {
+            return 9252;
+        }
+        if self.r#has_bottle_0 == true
+            && self.r#has_bottle_2 == true
+            && self.r#has_bottle_1 == false
+        {
+            return 9253;
+        }
+        if self.r#has_bottle_2 == false
+            && self.r#has_bottle_0 == true
+            && self.r#has_bottle_1 == false
+        {
+            return 9254;
+        }
+        if self.r#has_bottle_0 == true && self.r#has_bottle_1 == true && self.r#has_bottle_2 == true
+        {
+            return 9251;
+        }
+        if self.r#has_bottle_2 == true
+            && self.r#has_bottle_0 == false
+            && self.r#has_bottle_1 == false
+        {
+            return 9257;
+        }
+        if self.r#has_bottle_1 == true
+            && self.r#has_bottle_0 == false
+            && self.r#has_bottle_2 == true
+        {
+            return 9255;
+        }
+        if self.r#has_bottle_2 == false
+            && self.r#has_bottle_1 == false
+            && self.r#has_bottle_0 == false
+        {
+            return 9258;
+        }
+        if self.r#has_bottle_0 == false
+            && self.r#has_bottle_1 == true
+            && self.r#has_bottle_2 == false
+        {
+            return 9256;
+        }
         panic!("Invalid block state")
     }
 
@@ -81,4 +118,3 @@ impl BlockState for BrewingStand {
         return None;
     }
 }
-

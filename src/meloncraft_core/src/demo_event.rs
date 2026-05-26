@@ -9,7 +9,6 @@
 /// Used in the `GameEvent` packet.
 #[derive(Debug, Clone, Copy)]
 pub enum DemoEventType {
-
     /// Notification to welcome the client to the demo screen.
     /// This is usually the **first** demo event sent.
     /// - Predecessor: None
@@ -39,7 +38,7 @@ pub enum DemoEventType {
     /// This is usually the **fifth** and **final** demo event sent.
     /// - Predecessor: [`DemoEventType::InventoryControl`]
     /// - Successor: None
-    DemoOver, 
+    DemoOver,
 }
 
 impl From<DemoEventType> for u8 {
@@ -67,7 +66,6 @@ impl TryFrom<u8> for DemoEventType {
         };
     }
 }
-
 
 impl From<DemoEventType> for f32 {
     fn from(demo_event_type: DemoEventType) -> Self {

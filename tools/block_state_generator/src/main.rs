@@ -30,10 +30,16 @@ fn main() {
         let block_states_json = block["states"].clone();
         for block_state in block_states_json.members() {
             let state_id = block_state["id"].as_i32().unwrap();
-            block_state_ids.entry(block_name.to_owned()).or_default().push(state_id);
+            block_state_ids
+                .entry(block_name.to_owned())
+                .or_default()
+                .push(state_id);
             let mut state_properties: HashMap<String, String> = HashMap::new();
             for (property_name, property_value) in block_state["properties"].entries() {
-                state_properties.insert(property_name.to_owned(), property_value.as_str().unwrap().to_string());
+                state_properties.insert(
+                    property_name.to_owned(),
+                    property_value.as_str().unwrap().to_string(),
+                );
             }
             block_states.insert(state_id, state_properties);
         }
@@ -41,7 +47,12 @@ fn main() {
     }
 
     write_block_state_matcher(&block_state_ids);
-    write_lib_rs(block_state_ids.keys().map(|k| k.replace("minecraft:", "")).collect());
+    write_lib_rs(
+        block_state_ids
+            .keys()
+            .map(|k| k.replace("minecraft:", ""))
+            .collect(),
+    );
 }
 
 fn write_block_properties(block_name: &str, block_properties: HashMap<String, Vec<String>>) {
@@ -73,18 +84,27 @@ fn write_block_properties(block_name: &str, block_properties: HashMap<String, Ve
         }
         if property_variant_type.is_empty() {
             property_variant_type = snake_to_upper_camel_case(property_name);
-            struct_output.push_str(&format!("    pub r#{}: {},\n", property_name, property_variant_type));
+            struct_output.push_str(&format!(
+                "    pub r#{}: {},\n",
+                property_name, property_variant_type
+            ));
 
             properties_output.push_str("#[derive(Debug, Clone, Copy, PartialEq, Eq)]\n");
             properties_output.push_str(&format!("pub enum {} {{\n", property_variant_type));
             for property_variant in &block_properties[property_name] {
-                properties_output.push_str(&format!("    {},\n", snake_to_upper_camel_case(property_variant)));
+                properties_output.push_str(&format!(
+                    "    {},\n",
+                    snake_to_upper_camel_case(property_variant)
+                ));
             }
             properties_output.push_str("}\n\n");
         } else {
-            struct_output.push_str(&format!("    pub {}: {},\n", property_name, property_variant_type));
+            struct_output.push_str(&format!(
+                "    pub {}: {},\n",
+                property_name, property_variant_type
+            ));
         }
-        }
+    }
 
     struct_output.push_str("}\n\n");
 
@@ -94,16 +114,15 @@ fn write_block_properties(block_name: &str, block_properties: HashMap<String, Ve
 }
 
 fn append_block_states(block_name: &str, block_states: &mut HashMap<i32, HashMap<String, String>>) {
-
     /*
-impl BlockState for _BlockName_ {
-    fn to_id(&self) -> i32 {
-        if self.property1 == value1 && self.property2 == value2 {
-            return id;
+    impl BlockState for _BlockName_ {
+        fn to_id(&self) -> i32 {
+            if self.property1 == value1 && self.property2 == value2 {
+                return id;
+            }
+            // ...
         }
-        // ...
-    }
-    */
+        */
 
     let block_name = block_name.replace("minecraft:", "");
     let block_struct_name = snake_to_upper_camel_case(&block_name);
@@ -114,7 +133,7 @@ impl BlockState for _BlockName_ {
     let block_state_count = block_states.len();
 
     states_output.push_str("    fn to_id(&self) -> i32 {\n");
-    
+
     for (id, block_state) in &mut *block_states {
         if block_state_count == 1 {
             states_output.push_str(&format!("        return {};\n", id));
@@ -132,10 +151,15 @@ impl BlockState for _BlockName_ {
                 "true".to_string()
             } else if property_value == "false" {
                 "false".to_string()
-            } else if property_value.parse::<i32>().is_ok() || property_value.parse::<f32>().is_ok() {
+            } else if property_value.parse::<i32>().is_ok() || property_value.parse::<f32>().is_ok()
+            {
                 property_value.to_string()
             } else {
-                format!("{}::{}", snake_to_upper_camel_case(property_name), snake_to_upper_camel_case(property_value))
+                format!(
+                    "{}::{}",
+                    snake_to_upper_camel_case(property_name),
+                    snake_to_upper_camel_case(property_value)
+                )
             };
             states_output.push_str(&format!("self.r#{} == {}", property_name, matched_value));
         }
@@ -144,22 +168,32 @@ impl BlockState for _BlockName_ {
     states_output.push_str("        panic!(\"Invalid block state\")\n");
     states_output.push_str("    }\n\n");
 
-
     states_output.push_str("    fn from_id(state_id: i32) -> Option<Self> {\n");
     for (id, block_state) in block_states {
         states_output.push_str(&format!("        if state_id == {} {{\n", id));
-        states_output.push_str(&format!("            return Some({} {{\n", block_struct_name));
+        states_output.push_str(&format!(
+            "            return Some({} {{\n",
+            block_struct_name
+        ));
         for (property_name, property_value) in block_state {
             let matched_value = if property_value == "true" {
                 "true".to_string()
             } else if property_value == "false" {
                 "false".to_string()
-            } else if property_value.parse::<i32>().is_ok() || property_value.parse::<f32>().is_ok() {
+            } else if property_value.parse::<i32>().is_ok() || property_value.parse::<f32>().is_ok()
+            {
                 property_value.to_string()
             } else {
-                format!("{}::{}", snake_to_upper_camel_case(property_name), snake_to_upper_camel_case(property_value))
+                format!(
+                    "{}::{}",
+                    snake_to_upper_camel_case(property_name),
+                    snake_to_upper_camel_case(property_value)
+                )
             };
-            states_output.push_str(&format!("                r#{}: {},\n", property_name, matched_value));
+            states_output.push_str(&format!(
+                "                r#{}: {},\n",
+                property_name, matched_value
+            ));
         }
         states_output.push_str("            });\n");
         states_output.push_str("        }\n");
@@ -184,7 +218,7 @@ fn snake_to_upper_camel_case(s: &str) -> String {
                 Some(f) => f.to_uppercase().collect::<String>() + chars.as_str(),
             }
         })
-    .collect()
+        .collect()
 }
 
 fn write_block_state_matcher(block_state_ids: &HashMap<String, Vec<i32>>) {
@@ -196,7 +230,12 @@ fn write_block_state_matcher(block_state_ids: &HashMap<String, Vec<i32>>) {
     for (block_name, state_ids) in block_state_ids {
         for state_id in state_ids {
             let block_name = block_name.replace("minecraft:", "");
-            output.push_str(&format!("        {} => Some(Box::new(crate::{}::{}::from_id(id)?)),\n", state_id, &block_name, snake_to_upper_camel_case(&block_name)));
+            output.push_str(&format!(
+                "        {} => Some(Box::new(crate::{}::{}::from_id(id)?)),\n",
+                state_id,
+                &block_name,
+                snake_to_upper_camel_case(&block_name)
+            ));
         }
     }
     output.push_str("        _ => None,\n");
@@ -214,11 +253,15 @@ fn write_lib_rs(block_names: Vec<String>) {
     output.push_str("pub position block_state;\n");
     output.push_str("pub use block_state::*;\n");
 
-    fs::write(format!("{}/block_state.rs", OUTPUT_DIR), "\
+    fs::write(
+        format!("{}/block_state.rs", OUTPUT_DIR),
+        "\
     pub trait BlockState {
     fn to_id(&self) -> i32 where Self: Sized;
     fn from_id(state_id: i32) -> Option<Self> where Self: Sized;
-}\n").unwrap();
+}\n",
+    )
+    .unwrap();
 
     for block_name in block_names {
         output.push_str(&format!("pub position {};\n", block_name));
@@ -226,4 +269,3 @@ fn write_lib_rs(block_names: Vec<String>) {
 
     std::fs::write(format!("{}/lib.rs", OUTPUT_DIR), output).unwrap();
 }
-

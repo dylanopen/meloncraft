@@ -5,7 +5,7 @@ use bevy::ecs::component::Component;
 
 /// This component is tru on any player/entity who *cannot be hurt*.
 /// False on any player who can be damaged.
-/// 
+///
 /// You may want to query for `Without<Invulnerable>` in any systems which involve a player taking
 /// damage, for example.
 #[derive(Component, Debug, Clone, Copy)]
@@ -40,4 +40,3 @@ pub struct FlySpeed(pub f32);
 /// Default is `0.1` for a player without speed.
 #[derive(Component, Debug, Clone, Copy)]
 pub struct FovModifier(pub f32);
-

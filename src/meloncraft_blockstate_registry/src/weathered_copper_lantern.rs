@@ -6,13 +6,20 @@ pub struct WeatheredCopperLantern {
     pub waterlogged: bool,
 }
 
-
 impl BlockState for WeatheredCopperLantern {
     fn to_id(&self) -> i32 {
-        if self.r#waterlogged == false && self.r#hanging == false { return 20654; }
-        if self.r#hanging == true && self.r#waterlogged == true { return 20651; }
-        if self.r#waterlogged == true && self.r#hanging == false { return 20653; }
-        if self.r#waterlogged == false && self.r#hanging == true { return 20652; }
+        if self.r#waterlogged == false && self.r#hanging == false {
+            return 20654;
+        }
+        if self.r#hanging == true && self.r#waterlogged == true {
+            return 20651;
+        }
+        if self.r#waterlogged == true && self.r#hanging == false {
+            return 20653;
+        }
+        if self.r#waterlogged == false && self.r#hanging == true {
+            return 20652;
+        }
         panic!("Invalid block state")
     }
 
@@ -44,4 +51,3 @@ impl BlockState for WeatheredCopperLantern {
         return None;
     }
 }
-

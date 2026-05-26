@@ -1,9 +1,7 @@
 use crate::BlockState;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub struct FletchingTable {
-}
-
+pub struct FletchingTable {}
 
 impl BlockState for FletchingTable {
     fn to_id(&self) -> i32 {
@@ -13,10 +11,8 @@ impl BlockState for FletchingTable {
 
     fn from_id(state_id: i32) -> Option<Self> {
         if state_id == 20569 {
-            return Some(FletchingTable {
-            });
+            return Some(FletchingTable {});
         }
         return None;
     }
 }
-

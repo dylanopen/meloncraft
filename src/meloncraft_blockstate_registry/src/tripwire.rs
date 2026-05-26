@@ -11,137 +11,1288 @@ pub struct Tripwire {
     pub north: bool,
 }
 
-
 impl BlockState for Tripwire {
     fn to_id(&self) -> i32 {
-        if self.r#west == true && self.r#disarmed == true && self.r#north == true && self.r#powered == false && self.r#attached == true && self.r#east == false && self.r#south == true { return 9418; }
-        if self.r#west == false && self.r#south == false && self.r#east == false && self.r#attached == true && self.r#north == false && self.r#disarmed == true && self.r#powered == true { return 9425; }
-        if self.r#south == false && self.r#west == true && self.r#disarmed == false && self.r#east == false && self.r#attached == true && self.r#north == false && self.r#powered == true { return 9456; }
-        if self.r#attached == true && self.r#powered == false && self.r#east == false && self.r#south == false && self.r#west == true && self.r#disarmed == false && self.r#north == true { return 9452; }
-        if self.r#west == true && self.r#south == false && self.r#attached == false && self.r#north == false && self.r#disarmed == true && self.r#east == true && self.r#powered == false { return 9476; }
-        if self.r#attached == false && self.r#north == true && self.r#powered == true && self.r#south == true && self.r#disarmed == false && self.r#west == true && self.r#east == true { return 9494; }
-        if self.r#east == true && self.r#attached == true && self.r#north == false && self.r#powered == false && self.r#west == true && self.r#disarmed == true && self.r#south == true { return 9410; }
-        if self.r#west == true && self.r#disarmed == true && self.r#attached == false && self.r#north == false && self.r#east == false && self.r#south == false && self.r#powered == false { return 9492; }
-        if self.r#disarmed == true && self.r#south == false && self.r#attached == true && self.r#west == true && self.r#powered == true && self.r#east == false && self.r#north == true { return 9416; }
-        if self.r#disarmed == true && self.r#attached == false && self.r#east == false && self.r#north == false && self.r#south == false && self.r#powered == false && self.r#west == false { return 9493; }
-        if self.r#west == false && self.r#north == true && self.r#east == false && self.r#attached == true && self.r#disarmed == true && self.r#powered == false && self.r#south == true { return 9419; }
-        if self.r#disarmed == false && self.r#north == true && self.r#south == true && self.r#west == false && self.r#powered == false && self.r#east == false && self.r#attached == true { return 9451; }
-        if self.r#west == false && self.r#attached == true && self.r#disarmed == false && self.r#south == true && self.r#powered == false && self.r#north == true && self.r#east == true { return 9435; }
-        if self.r#attached == false && self.r#powered == true && self.r#disarmed == true && self.r#east == false && self.r#north == true && self.r#west == true && self.r#south == true { return 9478; }
-        if self.r#powered == false && self.r#south == false && self.r#west == true && self.r#east == true && self.r#attached == true && self.r#disarmed == false && self.r#north == false { return 9444; }
-        if self.r#attached == false && self.r#north == true && self.r#disarmed == true && self.r#powered == false && self.r#south == true && self.r#east == true && self.r#west == false { return 9467; }
-        if self.r#disarmed == true && self.r#east == false && self.r#north == true && self.r#powered == false && self.r#attached == false && self.r#south == false && self.r#west == false { return 9485; }
-        if self.r#north == true && self.r#south == true && self.r#east == false && self.r#disarmed == false && self.r#attached == true && self.r#powered == false && self.r#west == true { return 9450; }
-        if self.r#east == true && self.r#attached == true && self.r#north == false && self.r#powered == true && self.r#south == true && self.r#disarmed == true && self.r#west == false { return 9407; }
-        if self.r#attached == true && self.r#east == false && self.r#west == false && self.r#north == false && self.r#south == true && self.r#disarmed == true && self.r#powered == true { return 9423; }
-        if self.r#west == true && self.r#north == false && self.r#disarmed == true && self.r#attached == false && self.r#powered == true && self.r#east == true && self.r#south == true { return 9470; }
-        if self.r#attached == true && self.r#east == false && self.r#north == true && self.r#powered == false && self.r#south == false && self.r#disarmed == true && self.r#west == false { return 9421; }
-        if self.r#disarmed == false && self.r#west == true && self.r#north == true && self.r#east == false && self.r#south == false && self.r#powered == false && self.r#attached == false { return 9516; }
-        if self.r#attached == true && self.r#east == true && self.r#north == true && self.r#powered == true && self.r#south == false && self.r#west == true && self.r#disarmed == true { return 9400; }
-        if self.r#attached == true && self.r#east == false && self.r#north == false && self.r#west == false && self.r#powered == true && self.r#south == true && self.r#disarmed == false { return 9455; }
-        if self.r#attached == false && self.r#powered == true && self.r#west == true && self.r#disarmed == true && self.r#east == false && self.r#north == false && self.r#south == true { return 9486; }
-        if self.r#east == false && self.r#powered == false && self.r#attached == true && self.r#west == true && self.r#north == true && self.r#disarmed == true && self.r#south == false { return 9420; }
-        if self.r#powered == true && self.r#north == false && self.r#west == true && self.r#attached == true && self.r#disarmed == false && self.r#east == false && self.r#south == true { return 9454; }
-        if self.r#east == false && self.r#north == true && self.r#west == false && self.r#disarmed == true && self.r#attached == true && self.r#powered == true && self.r#south == true { return 9415; }
-        if self.r#south == false && self.r#disarmed == true && self.r#north == true && self.r#powered == true && self.r#west == true && self.r#attached == false && self.r#east == true { return 9464; }
-        if self.r#disarmed == false && self.r#west == true && self.r#north == false && self.r#east == false && self.r#attached == false && self.r#powered == true && self.r#south == true { return 9518; }
-        if self.r#west == true && self.r#disarmed == true && self.r#north == true && self.r#east == false && self.r#powered == false && self.r#south == true && self.r#attached == false { return 9482; }
-        if self.r#west == false && self.r#south == true && self.r#attached == true && self.r#disarmed == true && self.r#north == false && self.r#powered == false && self.r#east == true { return 9411; }
-        if self.r#west == false && self.r#east == true && self.r#attached == false && self.r#north == false && self.r#disarmed == true && self.r#powered == true && self.r#south == true { return 9471; }
-        if self.r#east == true && self.r#west == true && self.r#north == false && self.r#attached == true && self.r#powered == false && self.r#south == true && self.r#disarmed == false { return 9442; }
-        if self.r#powered == false && self.r#disarmed == false && self.r#north == false && self.r#west == true && self.r#east == false && self.r#attached == false && self.r#south == true { return 9522; }
-        if self.r#south == true && self.r#attached == true && self.r#disarmed == false && self.r#powered == false && self.r#north == false && self.r#west == true && self.r#east == false { return 9458; }
-        if self.r#south == true && self.r#west == false && self.r#disarmed == false && self.r#attached == false && self.r#powered == true && self.r#north == false && self.r#east == true { return 9503; }
-        if self.r#east == true && self.r#powered == true && self.r#attached == false && self.r#disarmed == true && self.r#south == false && self.r#west == true && self.r#north == false { return 9472; }
-        if self.r#east == true && self.r#south == false && self.r#disarmed == true && self.r#north == false && self.r#west == false && self.r#attached == true && self.r#powered == true { return 9409; }
-        if self.r#south == true && self.r#attached == false && self.r#east == false && self.r#west == false && self.r#disarmed == false && self.r#north == false && self.r#powered == false { return 9523; }
-        if self.r#north == false && self.r#powered == false && self.r#attached == false && self.r#east == true && self.r#south == false && self.r#west == false && self.r#disarmed == false { return 9509; }
-        if self.r#north == false && self.r#west == false && self.r#attached == false && self.r#south == false && self.r#disarmed == false && self.r#east == true && self.r#powered == true { return 9505; }
-        if self.r#north == false && self.r#attached == true && self.r#disarmed == false && self.r#powered == true && self.r#east == false && self.r#south == false && self.r#west == false { return 9457; }
-        if self.r#attached == true && self.r#disarmed == true && self.r#powered == true && self.r#south == true && self.r#west == true && self.r#east == true && self.r#north == false { return 9406; }
-        if self.r#south == false && self.r#attached == false && self.r#disarmed == true && self.r#east == true && self.r#west == true && self.r#powered == false && self.r#north == true { return 9468; }
-        if self.r#north == false && self.r#disarmed == false && self.r#east == false && self.r#south == true && self.r#attached == false && self.r#west == false && self.r#powered == true { return 9519; }
-        if self.r#powered == true && self.r#south == false && self.r#east == false && self.r#north == true && self.r#west == true && self.r#attached == false && self.r#disarmed == false { return 9512; }
-        if self.r#attached == true && self.r#north == true && self.r#east == true && self.r#disarmed == false && self.r#powered == false && self.r#south == false && self.r#west == false { return 9437; }
-        if self.r#powered == false && self.r#east == true && self.r#west == true && self.r#north == true && self.r#south == true && self.r#disarmed == true && self.r#attached == true { return 9402; }
-        if self.r#west == false && self.r#east == true && self.r#disarmed == false && self.r#attached == true && self.r#north == false && self.r#powered == false && self.r#south == true { return 9443; }
-        if self.r#west == false && self.r#east == false && self.r#north == true && self.r#powered == false && self.r#attached == true && self.r#disarmed == false && self.r#south == false { return 9453; }
-        if self.r#attached == true && self.r#west == false && self.r#south == false && self.r#east == true && self.r#north == true && self.r#powered == true && self.r#disarmed == false { return 9433; }
-        if self.r#east == false && self.r#attached == true && self.r#south == true && self.r#powered == true && self.r#disarmed == true && self.r#west == true && self.r#north == false { return 9422; }
-        if self.r#south == false && self.r#disarmed == true && self.r#north == true && self.r#west == true && self.r#attached == false && self.r#east == false && self.r#powered == false { return 9484; }
-        if self.r#east == true && self.r#powered == false && self.r#south == false && self.r#west == true && self.r#disarmed == false && self.r#attached == false && self.r#north == true { return 9500; }
-        if self.r#disarmed == false && self.r#attached == false && self.r#east == true && self.r#north == false && self.r#powered == true && self.r#south == false && self.r#west == true { return 9504; }
-        if self.r#attached == false && self.r#east == true && self.r#powered == false && self.r#south == false && self.r#west == true && self.r#disarmed == false && self.r#north == false { return 9508; }
-        if self.r#east == true && self.r#powered == true && self.r#north == false && self.r#west == true && self.r#attached == true && self.r#south == false && self.r#disarmed == false { return 9440; }
-        if self.r#west == true && self.r#north == false && self.r#disarmed == false && self.r#east == false && self.r#attached == false && self.r#powered == false && self.r#south == false { return 9524; }
-        if self.r#attached == true && self.r#disarmed == true && self.r#west == false && self.r#north == false && self.r#south == true && self.r#east == false && self.r#powered == false { return 9427; }
-        if self.r#east == true && self.r#attached == true && self.r#disarmed == true && self.r#north == false && self.r#west == false && self.r#powered == false && self.r#south == false { return 9413; }
-        if self.r#west == true && self.r#attached == true && self.r#disarmed == false && self.r#east == true && self.r#powered == false && self.r#north == true && self.r#south == false { return 9436; }
-        if self.r#west == false && self.r#disarmed == true && self.r#north == true && self.r#attached == true && self.r#east == true && self.r#powered == true && self.r#south == false { return 9401; }
-        if self.r#disarmed == false && self.r#attached == false && self.r#east == false && self.r#north == true && self.r#powered == true && self.r#south == true && self.r#west == false { return 9511; }
-        if self.r#disarmed == false && self.r#attached == true && self.r#north == false && self.r#west == false && self.r#east == false && self.r#south == false && self.r#powered == false { return 9461; }
-        if self.r#west == false && self.r#east == false && self.r#disarmed == true && self.r#south == false && self.r#powered == true && self.r#attached == true && self.r#north == true { return 9417; }
-        if self.r#south == false && self.r#north == true && self.r#disarmed == true && self.r#east == false && self.r#powered == true && self.r#west == false && self.r#attached == false { return 9481; }
-        if self.r#east == false && self.r#attached == false && self.r#north == false && self.r#west == true && self.r#powered == true && self.r#disarmed == false && self.r#south == false { return 9520; }
-        if self.r#powered == false && self.r#attached == false && self.r#east == true && self.r#disarmed == true && self.r#north == false && self.r#south == false && self.r#west == false { return 9477; }
-        if self.r#west == true && self.r#attached == true && self.r#disarmed == true && self.r#east == true && self.r#north == false && self.r#south == false && self.r#powered == true { return 9408; }
-        if self.r#north == true && self.r#powered == true && self.r#east == false && self.r#south == false && self.r#disarmed == false && self.r#attached == true && self.r#west == false { return 9449; }
-        if self.r#south == true && self.r#east == true && self.r#north == true && self.r#disarmed == true && self.r#powered == true && self.r#west == false && self.r#attached == false { return 9463; }
-        if self.r#west == false && self.r#attached == true && self.r#powered == true && self.r#south == true && self.r#disarmed == false && self.r#east == true && self.r#north == true { return 9431; }
-        if self.r#south == false && self.r#west == true && self.r#east == false && self.r#north == false && self.r#disarmed == true && self.r#powered == true && self.r#attached == true { return 9424; }
-        if self.r#disarmed == true && self.r#attached == true && self.r#south == true && self.r#west == true && self.r#powered == true && self.r#north == true && self.r#east == true { return 9398; }
-        if self.r#north == true && self.r#west == false && self.r#disarmed == false && self.r#south == true && self.r#powered == true && self.r#attached == true && self.r#east == false { return 9447; }
-        if self.r#east == false && self.r#disarmed == true && self.r#attached == true && self.r#north == false && self.r#powered == false && self.r#south == true && self.r#west == true { return 9426; }
-        if self.r#south == true && self.r#attached == false && self.r#disarmed == false && self.r#north == true && self.r#west == false && self.r#east == false && self.r#powered == false { return 9515; }
-        if self.r#attached == true && self.r#disarmed == false && self.r#north == false && self.r#west == false && self.r#powered == true && self.r#south == false && self.r#east == true { return 9441; }
-        if self.r#powered == true && self.r#south == false && self.r#east == false && self.r#north == true && self.r#disarmed == true && self.r#west == true && self.r#attached == false { return 9480; }
-        if self.r#east == true && self.r#south == false && self.r#attached == false && self.r#powered == true && self.r#disarmed == false && self.r#west == false && self.r#north == true { return 9497; }
-        if self.r#south == true && self.r#attached == true && self.r#east == true && self.r#disarmed == false && self.r#north == true && self.r#powered == true && self.r#west == true { return 9430; }
-        if self.r#north == false && self.r#powered == false && self.r#south == false && self.r#west == false && self.r#east == false && self.r#attached == true && self.r#disarmed == true { return 9429; }
-        if self.r#west == false && self.r#east == false && self.r#disarmed == true && self.r#attached == false && self.r#powered == false && self.r#north == true && self.r#south == true { return 9483; }
-        if self.r#attached == true && self.r#west == false && self.r#north == true && self.r#powered == false && self.r#south == false && self.r#east == true && self.r#disarmed == true { return 9405; }
-        if self.r#east == false && self.r#attached == true && self.r#south == true && self.r#west == true && self.r#powered == true && self.r#disarmed == true && self.r#north == true { return 9414; }
-        if self.r#north == false && self.r#powered == true && self.r#south == true && self.r#west == false && self.r#disarmed == false && self.r#attached == true && self.r#east == true { return 9439; }
-        if self.r#attached == true && self.r#disarmed == true && self.r#east == true && self.r#north == true && self.r#powered == false && self.r#south == false && self.r#west == true { return 9404; }
-        if self.r#attached == false && self.r#north == true && self.r#disarmed == false && self.r#west == false && self.r#east == true && self.r#powered == true && self.r#south == true { return 9495; }
-        if self.r#powered == true && self.r#south == false && self.r#east == true && self.r#disarmed == false && self.r#north == true && self.r#attached == true && self.r#west == true { return 9432; }
-        if self.r#west == false && self.r#north == false && self.r#attached == false && self.r#powered == false && self.r#disarmed == false && self.r#east == false && self.r#south == false { return 9525; }
-        if self.r#south == true && self.r#attached == false && self.r#disarmed == true && self.r#north == true && self.r#east == true && self.r#powered == false && self.r#west == true { return 9466; }
-        if self.r#disarmed == false && self.r#north == false && self.r#attached == true && self.r#east == true && self.r#powered == false && self.r#west == false && self.r#south == false { return 9445; }
-        if self.r#disarmed == true && self.r#attached == false && self.r#north == false && self.r#east == false && self.r#powered == true && self.r#south == false && self.r#west == false { return 9489; }
-        if self.r#disarmed == true && self.r#west == false && self.r#east == true && self.r#attached == true && self.r#north == true && self.r#powered == false && self.r#south == true { return 9403; }
-        if self.r#powered == true && self.r#attached == false && self.r#disarmed == true && self.r#north == true && self.r#east == false && self.r#south == true && self.r#west == false { return 9479; }
-        if self.r#attached == true && self.r#west == true && self.r#north == false && self.r#east == false && self.r#powered == false && self.r#south == false && self.r#disarmed == false { return 9460; }
-        if self.r#east == true && self.r#south == true && self.r#west == false && self.r#disarmed == true && self.r#attached == true && self.r#north == true && self.r#powered == true { return 9399; }
-        if self.r#north == false && self.r#attached == true && self.r#south == false && self.r#disarmed == true && self.r#west == true && self.r#east == false && self.r#powered == false { return 9428; }
-        if self.r#east == true && self.r#attached == false && self.r#south == true && self.r#disarmed == true && self.r#powered == false && self.r#north == false && self.r#west == true { return 9474; }
-        if self.r#disarmed == false && self.r#powered == false && self.r#south == true && self.r#east == true && self.r#attached == false && self.r#north == true && self.r#west == false { return 9499; }
-        if self.r#attached == false && self.r#north == true && self.r#east == false && self.r#disarmed == false && self.r#powered == true && self.r#south == true && self.r#west == true { return 9510; }
-        if self.r#east == true && self.r#powered == false && self.r#west == false && self.r#disarmed == true && self.r#attached == false && self.r#north == false && self.r#south == true { return 9475; }
-        if self.r#north == false && self.r#powered == true && self.r#disarmed == false && self.r#south == false && self.r#west == false && self.r#east == false && self.r#attached == false { return 9521; }
-        if self.r#west == false && self.r#east == true && self.r#attached == false && self.r#north == false && self.r#south == false && self.r#disarmed == true && self.r#powered == true { return 9473; }
-        if self.r#attached == true && self.r#east == true && self.r#powered == true && self.r#south == true && self.r#north == false && self.r#west == true && self.r#disarmed == false { return 9438; }
-        if self.r#east == false && self.r#powered == true && self.r#north == false && self.r#attached == false && self.r#disarmed == true && self.r#south == true && self.r#west == false { return 9487; }
-        if self.r#west == true && self.r#east == true && self.r#south == false && self.r#attached == false && self.r#north == true && self.r#disarmed == false && self.r#powered == true { return 9496; }
-        if self.r#powered == true && self.r#disarmed == false && self.r#west == true && self.r#north == false && self.r#south == true && self.r#east == true && self.r#attached == false { return 9502; }
-        if self.r#disarmed == true && self.r#north == false && self.r#powered == false && self.r#south == true && self.r#west == false && self.r#attached == false && self.r#east == false { return 9491; }
-        if self.r#north == false && self.r#south == true && self.r#powered == false && self.r#west == false && self.r#attached == false && self.r#east == true && self.r#disarmed == false { return 9507; }
-        if self.r#disarmed == true && self.r#east == true && self.r#north == true && self.r#south == false && self.r#west == false && self.r#attached == false && self.r#powered == false { return 9469; }
-        if self.r#north == true && self.r#east == true && self.r#south == true && self.r#attached == false && self.r#powered == true && self.r#west == true && self.r#disarmed == true { return 9462; }
-        if self.r#disarmed == false && self.r#west == false && self.r#north == true && self.r#powered == false && self.r#south == false && self.r#attached == false && self.r#east == true { return 9501; }
-        if self.r#east == false && self.r#west == true && self.r#powered == true && self.r#attached == true && self.r#disarmed == false && self.r#north == true && self.r#south == false { return 9448; }
-        if self.r#west == true && self.r#south == true && self.r#powered == false && self.r#attached == false && self.r#disarmed == false && self.r#north == false && self.r#east == true { return 9506; }
-        if self.r#attached == true && self.r#disarmed == false && self.r#east == false && self.r#north == true && self.r#powered == true && self.r#south == true && self.r#west == true { return 9446; }
-        if self.r#east == false && self.r#powered == false && self.r#attached == false && self.r#north == true && self.r#south == true && self.r#disarmed == false && self.r#west == true { return 9514; }
-        if self.r#east == true && self.r#north == true && self.r#powered == false && self.r#south == true && self.r#attached == false && self.r#disarmed == false && self.r#west == true { return 9498; }
-        if self.r#attached == true && self.r#east == true && self.r#north == true && self.r#powered == false && self.r#south == true && self.r#west == true && self.r#disarmed == false { return 9434; }
-        if self.r#south == true && self.r#east == false && self.r#disarmed == false && self.r#north == false && self.r#west == false && self.r#powered == false && self.r#attached == true { return 9459; }
-        if self.r#disarmed == false && self.r#powered == true && self.r#north == true && self.r#attached == false && self.r#east == false && self.r#south == false && self.r#west == false { return 9513; }
-        if self.r#attached == true && self.r#north == false && self.r#south == false && self.r#powered == false && self.r#disarmed == true && self.r#west == true && self.r#east == true { return 9412; }
-        if self.r#south == false && self.r#east == false && self.r#attached == false && self.r#west == false && self.r#powered == false && self.r#disarmed == false && self.r#north == true { return 9517; }
-        if self.r#attached == false && self.r#disarmed == true && self.r#north == true && self.r#east == true && self.r#powered == true && self.r#south == false && self.r#west == false { return 9465; }
-        if self.r#attached == false && self.r#disarmed == true && self.r#east == false && self.r#powered == true && self.r#north == false && self.r#south == false && self.r#west == true { return 9488; }
-        if self.r#south == true && self.r#disarmed == true && self.r#north == false && self.r#powered == false && self.r#east == false && self.r#attached == false && self.r#west == true { return 9490; }
+        if self.r#west == true
+            && self.r#disarmed == true
+            && self.r#north == true
+            && self.r#powered == false
+            && self.r#attached == true
+            && self.r#east == false
+            && self.r#south == true
+        {
+            return 9418;
+        }
+        if self.r#west == false
+            && self.r#south == false
+            && self.r#east == false
+            && self.r#attached == true
+            && self.r#north == false
+            && self.r#disarmed == true
+            && self.r#powered == true
+        {
+            return 9425;
+        }
+        if self.r#south == false
+            && self.r#west == true
+            && self.r#disarmed == false
+            && self.r#east == false
+            && self.r#attached == true
+            && self.r#north == false
+            && self.r#powered == true
+        {
+            return 9456;
+        }
+        if self.r#attached == true
+            && self.r#powered == false
+            && self.r#east == false
+            && self.r#south == false
+            && self.r#west == true
+            && self.r#disarmed == false
+            && self.r#north == true
+        {
+            return 9452;
+        }
+        if self.r#west == true
+            && self.r#south == false
+            && self.r#attached == false
+            && self.r#north == false
+            && self.r#disarmed == true
+            && self.r#east == true
+            && self.r#powered == false
+        {
+            return 9476;
+        }
+        if self.r#attached == false
+            && self.r#north == true
+            && self.r#powered == true
+            && self.r#south == true
+            && self.r#disarmed == false
+            && self.r#west == true
+            && self.r#east == true
+        {
+            return 9494;
+        }
+        if self.r#east == true
+            && self.r#attached == true
+            && self.r#north == false
+            && self.r#powered == false
+            && self.r#west == true
+            && self.r#disarmed == true
+            && self.r#south == true
+        {
+            return 9410;
+        }
+        if self.r#west == true
+            && self.r#disarmed == true
+            && self.r#attached == false
+            && self.r#north == false
+            && self.r#east == false
+            && self.r#south == false
+            && self.r#powered == false
+        {
+            return 9492;
+        }
+        if self.r#disarmed == true
+            && self.r#south == false
+            && self.r#attached == true
+            && self.r#west == true
+            && self.r#powered == true
+            && self.r#east == false
+            && self.r#north == true
+        {
+            return 9416;
+        }
+        if self.r#disarmed == true
+            && self.r#attached == false
+            && self.r#east == false
+            && self.r#north == false
+            && self.r#south == false
+            && self.r#powered == false
+            && self.r#west == false
+        {
+            return 9493;
+        }
+        if self.r#west == false
+            && self.r#north == true
+            && self.r#east == false
+            && self.r#attached == true
+            && self.r#disarmed == true
+            && self.r#powered == false
+            && self.r#south == true
+        {
+            return 9419;
+        }
+        if self.r#disarmed == false
+            && self.r#north == true
+            && self.r#south == true
+            && self.r#west == false
+            && self.r#powered == false
+            && self.r#east == false
+            && self.r#attached == true
+        {
+            return 9451;
+        }
+        if self.r#west == false
+            && self.r#attached == true
+            && self.r#disarmed == false
+            && self.r#south == true
+            && self.r#powered == false
+            && self.r#north == true
+            && self.r#east == true
+        {
+            return 9435;
+        }
+        if self.r#attached == false
+            && self.r#powered == true
+            && self.r#disarmed == true
+            && self.r#east == false
+            && self.r#north == true
+            && self.r#west == true
+            && self.r#south == true
+        {
+            return 9478;
+        }
+        if self.r#powered == false
+            && self.r#south == false
+            && self.r#west == true
+            && self.r#east == true
+            && self.r#attached == true
+            && self.r#disarmed == false
+            && self.r#north == false
+        {
+            return 9444;
+        }
+        if self.r#attached == false
+            && self.r#north == true
+            && self.r#disarmed == true
+            && self.r#powered == false
+            && self.r#south == true
+            && self.r#east == true
+            && self.r#west == false
+        {
+            return 9467;
+        }
+        if self.r#disarmed == true
+            && self.r#east == false
+            && self.r#north == true
+            && self.r#powered == false
+            && self.r#attached == false
+            && self.r#south == false
+            && self.r#west == false
+        {
+            return 9485;
+        }
+        if self.r#north == true
+            && self.r#south == true
+            && self.r#east == false
+            && self.r#disarmed == false
+            && self.r#attached == true
+            && self.r#powered == false
+            && self.r#west == true
+        {
+            return 9450;
+        }
+        if self.r#east == true
+            && self.r#attached == true
+            && self.r#north == false
+            && self.r#powered == true
+            && self.r#south == true
+            && self.r#disarmed == true
+            && self.r#west == false
+        {
+            return 9407;
+        }
+        if self.r#attached == true
+            && self.r#east == false
+            && self.r#west == false
+            && self.r#north == false
+            && self.r#south == true
+            && self.r#disarmed == true
+            && self.r#powered == true
+        {
+            return 9423;
+        }
+        if self.r#west == true
+            && self.r#north == false
+            && self.r#disarmed == true
+            && self.r#attached == false
+            && self.r#powered == true
+            && self.r#east == true
+            && self.r#south == true
+        {
+            return 9470;
+        }
+        if self.r#attached == true
+            && self.r#east == false
+            && self.r#north == true
+            && self.r#powered == false
+            && self.r#south == false
+            && self.r#disarmed == true
+            && self.r#west == false
+        {
+            return 9421;
+        }
+        if self.r#disarmed == false
+            && self.r#west == true
+            && self.r#north == true
+            && self.r#east == false
+            && self.r#south == false
+            && self.r#powered == false
+            && self.r#attached == false
+        {
+            return 9516;
+        }
+        if self.r#attached == true
+            && self.r#east == true
+            && self.r#north == true
+            && self.r#powered == true
+            && self.r#south == false
+            && self.r#west == true
+            && self.r#disarmed == true
+        {
+            return 9400;
+        }
+        if self.r#attached == true
+            && self.r#east == false
+            && self.r#north == false
+            && self.r#west == false
+            && self.r#powered == true
+            && self.r#south == true
+            && self.r#disarmed == false
+        {
+            return 9455;
+        }
+        if self.r#attached == false
+            && self.r#powered == true
+            && self.r#west == true
+            && self.r#disarmed == true
+            && self.r#east == false
+            && self.r#north == false
+            && self.r#south == true
+        {
+            return 9486;
+        }
+        if self.r#east == false
+            && self.r#powered == false
+            && self.r#attached == true
+            && self.r#west == true
+            && self.r#north == true
+            && self.r#disarmed == true
+            && self.r#south == false
+        {
+            return 9420;
+        }
+        if self.r#powered == true
+            && self.r#north == false
+            && self.r#west == true
+            && self.r#attached == true
+            && self.r#disarmed == false
+            && self.r#east == false
+            && self.r#south == true
+        {
+            return 9454;
+        }
+        if self.r#east == false
+            && self.r#north == true
+            && self.r#west == false
+            && self.r#disarmed == true
+            && self.r#attached == true
+            && self.r#powered == true
+            && self.r#south == true
+        {
+            return 9415;
+        }
+        if self.r#south == false
+            && self.r#disarmed == true
+            && self.r#north == true
+            && self.r#powered == true
+            && self.r#west == true
+            && self.r#attached == false
+            && self.r#east == true
+        {
+            return 9464;
+        }
+        if self.r#disarmed == false
+            && self.r#west == true
+            && self.r#north == false
+            && self.r#east == false
+            && self.r#attached == false
+            && self.r#powered == true
+            && self.r#south == true
+        {
+            return 9518;
+        }
+        if self.r#west == true
+            && self.r#disarmed == true
+            && self.r#north == true
+            && self.r#east == false
+            && self.r#powered == false
+            && self.r#south == true
+            && self.r#attached == false
+        {
+            return 9482;
+        }
+        if self.r#west == false
+            && self.r#south == true
+            && self.r#attached == true
+            && self.r#disarmed == true
+            && self.r#north == false
+            && self.r#powered == false
+            && self.r#east == true
+        {
+            return 9411;
+        }
+        if self.r#west == false
+            && self.r#east == true
+            && self.r#attached == false
+            && self.r#north == false
+            && self.r#disarmed == true
+            && self.r#powered == true
+            && self.r#south == true
+        {
+            return 9471;
+        }
+        if self.r#east == true
+            && self.r#west == true
+            && self.r#north == false
+            && self.r#attached == true
+            && self.r#powered == false
+            && self.r#south == true
+            && self.r#disarmed == false
+        {
+            return 9442;
+        }
+        if self.r#powered == false
+            && self.r#disarmed == false
+            && self.r#north == false
+            && self.r#west == true
+            && self.r#east == false
+            && self.r#attached == false
+            && self.r#south == true
+        {
+            return 9522;
+        }
+        if self.r#south == true
+            && self.r#attached == true
+            && self.r#disarmed == false
+            && self.r#powered == false
+            && self.r#north == false
+            && self.r#west == true
+            && self.r#east == false
+        {
+            return 9458;
+        }
+        if self.r#south == true
+            && self.r#west == false
+            && self.r#disarmed == false
+            && self.r#attached == false
+            && self.r#powered == true
+            && self.r#north == false
+            && self.r#east == true
+        {
+            return 9503;
+        }
+        if self.r#east == true
+            && self.r#powered == true
+            && self.r#attached == false
+            && self.r#disarmed == true
+            && self.r#south == false
+            && self.r#west == true
+            && self.r#north == false
+        {
+            return 9472;
+        }
+        if self.r#east == true
+            && self.r#south == false
+            && self.r#disarmed == true
+            && self.r#north == false
+            && self.r#west == false
+            && self.r#attached == true
+            && self.r#powered == true
+        {
+            return 9409;
+        }
+        if self.r#south == true
+            && self.r#attached == false
+            && self.r#east == false
+            && self.r#west == false
+            && self.r#disarmed == false
+            && self.r#north == false
+            && self.r#powered == false
+        {
+            return 9523;
+        }
+        if self.r#north == false
+            && self.r#powered == false
+            && self.r#attached == false
+            && self.r#east == true
+            && self.r#south == false
+            && self.r#west == false
+            && self.r#disarmed == false
+        {
+            return 9509;
+        }
+        if self.r#north == false
+            && self.r#west == false
+            && self.r#attached == false
+            && self.r#south == false
+            && self.r#disarmed == false
+            && self.r#east == true
+            && self.r#powered == true
+        {
+            return 9505;
+        }
+        if self.r#north == false
+            && self.r#attached == true
+            && self.r#disarmed == false
+            && self.r#powered == true
+            && self.r#east == false
+            && self.r#south == false
+            && self.r#west == false
+        {
+            return 9457;
+        }
+        if self.r#attached == true
+            && self.r#disarmed == true
+            && self.r#powered == true
+            && self.r#south == true
+            && self.r#west == true
+            && self.r#east == true
+            && self.r#north == false
+        {
+            return 9406;
+        }
+        if self.r#south == false
+            && self.r#attached == false
+            && self.r#disarmed == true
+            && self.r#east == true
+            && self.r#west == true
+            && self.r#powered == false
+            && self.r#north == true
+        {
+            return 9468;
+        }
+        if self.r#north == false
+            && self.r#disarmed == false
+            && self.r#east == false
+            && self.r#south == true
+            && self.r#attached == false
+            && self.r#west == false
+            && self.r#powered == true
+        {
+            return 9519;
+        }
+        if self.r#powered == true
+            && self.r#south == false
+            && self.r#east == false
+            && self.r#north == true
+            && self.r#west == true
+            && self.r#attached == false
+            && self.r#disarmed == false
+        {
+            return 9512;
+        }
+        if self.r#attached == true
+            && self.r#north == true
+            && self.r#east == true
+            && self.r#disarmed == false
+            && self.r#powered == false
+            && self.r#south == false
+            && self.r#west == false
+        {
+            return 9437;
+        }
+        if self.r#powered == false
+            && self.r#east == true
+            && self.r#west == true
+            && self.r#north == true
+            && self.r#south == true
+            && self.r#disarmed == true
+            && self.r#attached == true
+        {
+            return 9402;
+        }
+        if self.r#west == false
+            && self.r#east == true
+            && self.r#disarmed == false
+            && self.r#attached == true
+            && self.r#north == false
+            && self.r#powered == false
+            && self.r#south == true
+        {
+            return 9443;
+        }
+        if self.r#west == false
+            && self.r#east == false
+            && self.r#north == true
+            && self.r#powered == false
+            && self.r#attached == true
+            && self.r#disarmed == false
+            && self.r#south == false
+        {
+            return 9453;
+        }
+        if self.r#attached == true
+            && self.r#west == false
+            && self.r#south == false
+            && self.r#east == true
+            && self.r#north == true
+            && self.r#powered == true
+            && self.r#disarmed == false
+        {
+            return 9433;
+        }
+        if self.r#east == false
+            && self.r#attached == true
+            && self.r#south == true
+            && self.r#powered == true
+            && self.r#disarmed == true
+            && self.r#west == true
+            && self.r#north == false
+        {
+            return 9422;
+        }
+        if self.r#south == false
+            && self.r#disarmed == true
+            && self.r#north == true
+            && self.r#west == true
+            && self.r#attached == false
+            && self.r#east == false
+            && self.r#powered == false
+        {
+            return 9484;
+        }
+        if self.r#east == true
+            && self.r#powered == false
+            && self.r#south == false
+            && self.r#west == true
+            && self.r#disarmed == false
+            && self.r#attached == false
+            && self.r#north == true
+        {
+            return 9500;
+        }
+        if self.r#disarmed == false
+            && self.r#attached == false
+            && self.r#east == true
+            && self.r#north == false
+            && self.r#powered == true
+            && self.r#south == false
+            && self.r#west == true
+        {
+            return 9504;
+        }
+        if self.r#attached == false
+            && self.r#east == true
+            && self.r#powered == false
+            && self.r#south == false
+            && self.r#west == true
+            && self.r#disarmed == false
+            && self.r#north == false
+        {
+            return 9508;
+        }
+        if self.r#east == true
+            && self.r#powered == true
+            && self.r#north == false
+            && self.r#west == true
+            && self.r#attached == true
+            && self.r#south == false
+            && self.r#disarmed == false
+        {
+            return 9440;
+        }
+        if self.r#west == true
+            && self.r#north == false
+            && self.r#disarmed == false
+            && self.r#east == false
+            && self.r#attached == false
+            && self.r#powered == false
+            && self.r#south == false
+        {
+            return 9524;
+        }
+        if self.r#attached == true
+            && self.r#disarmed == true
+            && self.r#west == false
+            && self.r#north == false
+            && self.r#south == true
+            && self.r#east == false
+            && self.r#powered == false
+        {
+            return 9427;
+        }
+        if self.r#east == true
+            && self.r#attached == true
+            && self.r#disarmed == true
+            && self.r#north == false
+            && self.r#west == false
+            && self.r#powered == false
+            && self.r#south == false
+        {
+            return 9413;
+        }
+        if self.r#west == true
+            && self.r#attached == true
+            && self.r#disarmed == false
+            && self.r#east == true
+            && self.r#powered == false
+            && self.r#north == true
+            && self.r#south == false
+        {
+            return 9436;
+        }
+        if self.r#west == false
+            && self.r#disarmed == true
+            && self.r#north == true
+            && self.r#attached == true
+            && self.r#east == true
+            && self.r#powered == true
+            && self.r#south == false
+        {
+            return 9401;
+        }
+        if self.r#disarmed == false
+            && self.r#attached == false
+            && self.r#east == false
+            && self.r#north == true
+            && self.r#powered == true
+            && self.r#south == true
+            && self.r#west == false
+        {
+            return 9511;
+        }
+        if self.r#disarmed == false
+            && self.r#attached == true
+            && self.r#north == false
+            && self.r#west == false
+            && self.r#east == false
+            && self.r#south == false
+            && self.r#powered == false
+        {
+            return 9461;
+        }
+        if self.r#west == false
+            && self.r#east == false
+            && self.r#disarmed == true
+            && self.r#south == false
+            && self.r#powered == true
+            && self.r#attached == true
+            && self.r#north == true
+        {
+            return 9417;
+        }
+        if self.r#south == false
+            && self.r#north == true
+            && self.r#disarmed == true
+            && self.r#east == false
+            && self.r#powered == true
+            && self.r#west == false
+            && self.r#attached == false
+        {
+            return 9481;
+        }
+        if self.r#east == false
+            && self.r#attached == false
+            && self.r#north == false
+            && self.r#west == true
+            && self.r#powered == true
+            && self.r#disarmed == false
+            && self.r#south == false
+        {
+            return 9520;
+        }
+        if self.r#powered == false
+            && self.r#attached == false
+            && self.r#east == true
+            && self.r#disarmed == true
+            && self.r#north == false
+            && self.r#south == false
+            && self.r#west == false
+        {
+            return 9477;
+        }
+        if self.r#west == true
+            && self.r#attached == true
+            && self.r#disarmed == true
+            && self.r#east == true
+            && self.r#north == false
+            && self.r#south == false
+            && self.r#powered == true
+        {
+            return 9408;
+        }
+        if self.r#north == true
+            && self.r#powered == true
+            && self.r#east == false
+            && self.r#south == false
+            && self.r#disarmed == false
+            && self.r#attached == true
+            && self.r#west == false
+        {
+            return 9449;
+        }
+        if self.r#south == true
+            && self.r#east == true
+            && self.r#north == true
+            && self.r#disarmed == true
+            && self.r#powered == true
+            && self.r#west == false
+            && self.r#attached == false
+        {
+            return 9463;
+        }
+        if self.r#west == false
+            && self.r#attached == true
+            && self.r#powered == true
+            && self.r#south == true
+            && self.r#disarmed == false
+            && self.r#east == true
+            && self.r#north == true
+        {
+            return 9431;
+        }
+        if self.r#south == false
+            && self.r#west == true
+            && self.r#east == false
+            && self.r#north == false
+            && self.r#disarmed == true
+            && self.r#powered == true
+            && self.r#attached == true
+        {
+            return 9424;
+        }
+        if self.r#disarmed == true
+            && self.r#attached == true
+            && self.r#south == true
+            && self.r#west == true
+            && self.r#powered == true
+            && self.r#north == true
+            && self.r#east == true
+        {
+            return 9398;
+        }
+        if self.r#north == true
+            && self.r#west == false
+            && self.r#disarmed == false
+            && self.r#south == true
+            && self.r#powered == true
+            && self.r#attached == true
+            && self.r#east == false
+        {
+            return 9447;
+        }
+        if self.r#east == false
+            && self.r#disarmed == true
+            && self.r#attached == true
+            && self.r#north == false
+            && self.r#powered == false
+            && self.r#south == true
+            && self.r#west == true
+        {
+            return 9426;
+        }
+        if self.r#south == true
+            && self.r#attached == false
+            && self.r#disarmed == false
+            && self.r#north == true
+            && self.r#west == false
+            && self.r#east == false
+            && self.r#powered == false
+        {
+            return 9515;
+        }
+        if self.r#attached == true
+            && self.r#disarmed == false
+            && self.r#north == false
+            && self.r#west == false
+            && self.r#powered == true
+            && self.r#south == false
+            && self.r#east == true
+        {
+            return 9441;
+        }
+        if self.r#powered == true
+            && self.r#south == false
+            && self.r#east == false
+            && self.r#north == true
+            && self.r#disarmed == true
+            && self.r#west == true
+            && self.r#attached == false
+        {
+            return 9480;
+        }
+        if self.r#east == true
+            && self.r#south == false
+            && self.r#attached == false
+            && self.r#powered == true
+            && self.r#disarmed == false
+            && self.r#west == false
+            && self.r#north == true
+        {
+            return 9497;
+        }
+        if self.r#south == true
+            && self.r#attached == true
+            && self.r#east == true
+            && self.r#disarmed == false
+            && self.r#north == true
+            && self.r#powered == true
+            && self.r#west == true
+        {
+            return 9430;
+        }
+        if self.r#north == false
+            && self.r#powered == false
+            && self.r#south == false
+            && self.r#west == false
+            && self.r#east == false
+            && self.r#attached == true
+            && self.r#disarmed == true
+        {
+            return 9429;
+        }
+        if self.r#west == false
+            && self.r#east == false
+            && self.r#disarmed == true
+            && self.r#attached == false
+            && self.r#powered == false
+            && self.r#north == true
+            && self.r#south == true
+        {
+            return 9483;
+        }
+        if self.r#attached == true
+            && self.r#west == false
+            && self.r#north == true
+            && self.r#powered == false
+            && self.r#south == false
+            && self.r#east == true
+            && self.r#disarmed == true
+        {
+            return 9405;
+        }
+        if self.r#east == false
+            && self.r#attached == true
+            && self.r#south == true
+            && self.r#west == true
+            && self.r#powered == true
+            && self.r#disarmed == true
+            && self.r#north == true
+        {
+            return 9414;
+        }
+        if self.r#north == false
+            && self.r#powered == true
+            && self.r#south == true
+            && self.r#west == false
+            && self.r#disarmed == false
+            && self.r#attached == true
+            && self.r#east == true
+        {
+            return 9439;
+        }
+        if self.r#attached == true
+            && self.r#disarmed == true
+            && self.r#east == true
+            && self.r#north == true
+            && self.r#powered == false
+            && self.r#south == false
+            && self.r#west == true
+        {
+            return 9404;
+        }
+        if self.r#attached == false
+            && self.r#north == true
+            && self.r#disarmed == false
+            && self.r#west == false
+            && self.r#east == true
+            && self.r#powered == true
+            && self.r#south == true
+        {
+            return 9495;
+        }
+        if self.r#powered == true
+            && self.r#south == false
+            && self.r#east == true
+            && self.r#disarmed == false
+            && self.r#north == true
+            && self.r#attached == true
+            && self.r#west == true
+        {
+            return 9432;
+        }
+        if self.r#west == false
+            && self.r#north == false
+            && self.r#attached == false
+            && self.r#powered == false
+            && self.r#disarmed == false
+            && self.r#east == false
+            && self.r#south == false
+        {
+            return 9525;
+        }
+        if self.r#south == true
+            && self.r#attached == false
+            && self.r#disarmed == true
+            && self.r#north == true
+            && self.r#east == true
+            && self.r#powered == false
+            && self.r#west == true
+        {
+            return 9466;
+        }
+        if self.r#disarmed == false
+            && self.r#north == false
+            && self.r#attached == true
+            && self.r#east == true
+            && self.r#powered == false
+            && self.r#west == false
+            && self.r#south == false
+        {
+            return 9445;
+        }
+        if self.r#disarmed == true
+            && self.r#attached == false
+            && self.r#north == false
+            && self.r#east == false
+            && self.r#powered == true
+            && self.r#south == false
+            && self.r#west == false
+        {
+            return 9489;
+        }
+        if self.r#disarmed == true
+            && self.r#west == false
+            && self.r#east == true
+            && self.r#attached == true
+            && self.r#north == true
+            && self.r#powered == false
+            && self.r#south == true
+        {
+            return 9403;
+        }
+        if self.r#powered == true
+            && self.r#attached == false
+            && self.r#disarmed == true
+            && self.r#north == true
+            && self.r#east == false
+            && self.r#south == true
+            && self.r#west == false
+        {
+            return 9479;
+        }
+        if self.r#attached == true
+            && self.r#west == true
+            && self.r#north == false
+            && self.r#east == false
+            && self.r#powered == false
+            && self.r#south == false
+            && self.r#disarmed == false
+        {
+            return 9460;
+        }
+        if self.r#east == true
+            && self.r#south == true
+            && self.r#west == false
+            && self.r#disarmed == true
+            && self.r#attached == true
+            && self.r#north == true
+            && self.r#powered == true
+        {
+            return 9399;
+        }
+        if self.r#north == false
+            && self.r#attached == true
+            && self.r#south == false
+            && self.r#disarmed == true
+            && self.r#west == true
+            && self.r#east == false
+            && self.r#powered == false
+        {
+            return 9428;
+        }
+        if self.r#east == true
+            && self.r#attached == false
+            && self.r#south == true
+            && self.r#disarmed == true
+            && self.r#powered == false
+            && self.r#north == false
+            && self.r#west == true
+        {
+            return 9474;
+        }
+        if self.r#disarmed == false
+            && self.r#powered == false
+            && self.r#south == true
+            && self.r#east == true
+            && self.r#attached == false
+            && self.r#north == true
+            && self.r#west == false
+        {
+            return 9499;
+        }
+        if self.r#attached == false
+            && self.r#north == true
+            && self.r#east == false
+            && self.r#disarmed == false
+            && self.r#powered == true
+            && self.r#south == true
+            && self.r#west == true
+        {
+            return 9510;
+        }
+        if self.r#east == true
+            && self.r#powered == false
+            && self.r#west == false
+            && self.r#disarmed == true
+            && self.r#attached == false
+            && self.r#north == false
+            && self.r#south == true
+        {
+            return 9475;
+        }
+        if self.r#north == false
+            && self.r#powered == true
+            && self.r#disarmed == false
+            && self.r#south == false
+            && self.r#west == false
+            && self.r#east == false
+            && self.r#attached == false
+        {
+            return 9521;
+        }
+        if self.r#west == false
+            && self.r#east == true
+            && self.r#attached == false
+            && self.r#north == false
+            && self.r#south == false
+            && self.r#disarmed == true
+            && self.r#powered == true
+        {
+            return 9473;
+        }
+        if self.r#attached == true
+            && self.r#east == true
+            && self.r#powered == true
+            && self.r#south == true
+            && self.r#north == false
+            && self.r#west == true
+            && self.r#disarmed == false
+        {
+            return 9438;
+        }
+        if self.r#east == false
+            && self.r#powered == true
+            && self.r#north == false
+            && self.r#attached == false
+            && self.r#disarmed == true
+            && self.r#south == true
+            && self.r#west == false
+        {
+            return 9487;
+        }
+        if self.r#west == true
+            && self.r#east == true
+            && self.r#south == false
+            && self.r#attached == false
+            && self.r#north == true
+            && self.r#disarmed == false
+            && self.r#powered == true
+        {
+            return 9496;
+        }
+        if self.r#powered == true
+            && self.r#disarmed == false
+            && self.r#west == true
+            && self.r#north == false
+            && self.r#south == true
+            && self.r#east == true
+            && self.r#attached == false
+        {
+            return 9502;
+        }
+        if self.r#disarmed == true
+            && self.r#north == false
+            && self.r#powered == false
+            && self.r#south == true
+            && self.r#west == false
+            && self.r#attached == false
+            && self.r#east == false
+        {
+            return 9491;
+        }
+        if self.r#north == false
+            && self.r#south == true
+            && self.r#powered == false
+            && self.r#west == false
+            && self.r#attached == false
+            && self.r#east == true
+            && self.r#disarmed == false
+        {
+            return 9507;
+        }
+        if self.r#disarmed == true
+            && self.r#east == true
+            && self.r#north == true
+            && self.r#south == false
+            && self.r#west == false
+            && self.r#attached == false
+            && self.r#powered == false
+        {
+            return 9469;
+        }
+        if self.r#north == true
+            && self.r#east == true
+            && self.r#south == true
+            && self.r#attached == false
+            && self.r#powered == true
+            && self.r#west == true
+            && self.r#disarmed == true
+        {
+            return 9462;
+        }
+        if self.r#disarmed == false
+            && self.r#west == false
+            && self.r#north == true
+            && self.r#powered == false
+            && self.r#south == false
+            && self.r#attached == false
+            && self.r#east == true
+        {
+            return 9501;
+        }
+        if self.r#east == false
+            && self.r#west == true
+            && self.r#powered == true
+            && self.r#attached == true
+            && self.r#disarmed == false
+            && self.r#north == true
+            && self.r#south == false
+        {
+            return 9448;
+        }
+        if self.r#west == true
+            && self.r#south == true
+            && self.r#powered == false
+            && self.r#attached == false
+            && self.r#disarmed == false
+            && self.r#north == false
+            && self.r#east == true
+        {
+            return 9506;
+        }
+        if self.r#attached == true
+            && self.r#disarmed == false
+            && self.r#east == false
+            && self.r#north == true
+            && self.r#powered == true
+            && self.r#south == true
+            && self.r#west == true
+        {
+            return 9446;
+        }
+        if self.r#east == false
+            && self.r#powered == false
+            && self.r#attached == false
+            && self.r#north == true
+            && self.r#south == true
+            && self.r#disarmed == false
+            && self.r#west == true
+        {
+            return 9514;
+        }
+        if self.r#east == true
+            && self.r#north == true
+            && self.r#powered == false
+            && self.r#south == true
+            && self.r#attached == false
+            && self.r#disarmed == false
+            && self.r#west == true
+        {
+            return 9498;
+        }
+        if self.r#attached == true
+            && self.r#east == true
+            && self.r#north == true
+            && self.r#powered == false
+            && self.r#south == true
+            && self.r#west == true
+            && self.r#disarmed == false
+        {
+            return 9434;
+        }
+        if self.r#south == true
+            && self.r#east == false
+            && self.r#disarmed == false
+            && self.r#north == false
+            && self.r#west == false
+            && self.r#powered == false
+            && self.r#attached == true
+        {
+            return 9459;
+        }
+        if self.r#disarmed == false
+            && self.r#powered == true
+            && self.r#north == true
+            && self.r#attached == false
+            && self.r#east == false
+            && self.r#south == false
+            && self.r#west == false
+        {
+            return 9513;
+        }
+        if self.r#attached == true
+            && self.r#north == false
+            && self.r#south == false
+            && self.r#powered == false
+            && self.r#disarmed == true
+            && self.r#west == true
+            && self.r#east == true
+        {
+            return 9412;
+        }
+        if self.r#south == false
+            && self.r#east == false
+            && self.r#attached == false
+            && self.r#west == false
+            && self.r#powered == false
+            && self.r#disarmed == false
+            && self.r#north == true
+        {
+            return 9517;
+        }
+        if self.r#attached == false
+            && self.r#disarmed == true
+            && self.r#north == true
+            && self.r#east == true
+            && self.r#powered == true
+            && self.r#south == false
+            && self.r#west == false
+        {
+            return 9465;
+        }
+        if self.r#attached == false
+            && self.r#disarmed == true
+            && self.r#east == false
+            && self.r#powered == true
+            && self.r#north == false
+            && self.r#south == false
+            && self.r#west == true
+        {
+            return 9488;
+        }
+        if self.r#south == true
+            && self.r#disarmed == true
+            && self.r#north == false
+            && self.r#powered == false
+            && self.r#east == false
+            && self.r#attached == false
+            && self.r#west == true
+        {
+            return 9490;
+        }
         panic!("Invalid block state")
     }
 
@@ -1557,4 +2708,3 @@ impl BlockState for Tripwire {
         return None;
     }
 }
-

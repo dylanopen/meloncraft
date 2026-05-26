@@ -5,11 +5,14 @@ pub struct Barrier {
     pub waterlogged: bool,
 }
 
-
 impl BlockState for Barrier {
     fn to_id(&self) -> i32 {
-        if self.r#waterlogged == false { return 12332; }
-        if self.r#waterlogged == true { return 12331; }
+        if self.r#waterlogged == false {
+            return 12332;
+        }
+        if self.r#waterlogged == true {
+            return 12331;
+        }
         panic!("Invalid block state")
     }
 
@@ -27,4 +30,3 @@ impl BlockState for Barrier {
         return None;
     }
 }
-

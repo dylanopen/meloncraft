@@ -7,7 +7,6 @@ pub struct Bamboo {
     pub stage: i32,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Leaves {
     None,
@@ -17,18 +16,42 @@ pub enum Leaves {
 
 impl BlockState for Bamboo {
     fn to_id(&self) -> i32 {
-        if self.r#stage == 1 && self.r#age == 1 && self.r#leaves == Leaves::Large { return 15088; }
-        if self.r#stage == 1 && self.r#age == 0 && self.r#leaves == Leaves::Small { return 15080; }
-        if self.r#age == 1 && self.r#leaves == Leaves::None && self.r#stage == 1 { return 15084; }
-        if self.r#stage == 0 && self.r#age == 0 && self.r#leaves == Leaves::Small { return 15079; }
-        if self.r#leaves == Leaves::None && self.r#stage == 0 && self.r#age == 1 { return 15083; }
-        if self.r#age == 1 && self.r#leaves == Leaves::Small && self.r#stage == 1 { return 15086; }
-        if self.r#stage == 0 && self.r#leaves == Leaves::Large && self.r#age == 1 { return 15087; }
-        if self.r#age == 1 && self.r#leaves == Leaves::Small && self.r#stage == 0 { return 15085; }
-        if self.r#leaves == Leaves::Large && self.r#stage == 1 && self.r#age == 0 { return 15082; }
-        if self.r#stage == 0 && self.r#leaves == Leaves::None && self.r#age == 0 { return 15077; }
-        if self.r#stage == 1 && self.r#age == 0 && self.r#leaves == Leaves::None { return 15078; }
-        if self.r#leaves == Leaves::Large && self.r#stage == 0 && self.r#age == 0 { return 15081; }
+        if self.r#stage == 1 && self.r#age == 1 && self.r#leaves == Leaves::Large {
+            return 15088;
+        }
+        if self.r#stage == 1 && self.r#age == 0 && self.r#leaves == Leaves::Small {
+            return 15080;
+        }
+        if self.r#age == 1 && self.r#leaves == Leaves::None && self.r#stage == 1 {
+            return 15084;
+        }
+        if self.r#stage == 0 && self.r#age == 0 && self.r#leaves == Leaves::Small {
+            return 15079;
+        }
+        if self.r#leaves == Leaves::None && self.r#stage == 0 && self.r#age == 1 {
+            return 15083;
+        }
+        if self.r#age == 1 && self.r#leaves == Leaves::Small && self.r#stage == 1 {
+            return 15086;
+        }
+        if self.r#stage == 0 && self.r#leaves == Leaves::Large && self.r#age == 1 {
+            return 15087;
+        }
+        if self.r#age == 1 && self.r#leaves == Leaves::Small && self.r#stage == 0 {
+            return 15085;
+        }
+        if self.r#leaves == Leaves::Large && self.r#stage == 1 && self.r#age == 0 {
+            return 15082;
+        }
+        if self.r#stage == 0 && self.r#leaves == Leaves::None && self.r#age == 0 {
+            return 15077;
+        }
+        if self.r#stage == 1 && self.r#age == 0 && self.r#leaves == Leaves::None {
+            return 15078;
+        }
+        if self.r#leaves == Leaves::Large && self.r#stage == 0 && self.r#age == 0 {
+            return 15081;
+        }
         panic!("Invalid block state")
     }
 
@@ -120,4 +143,3 @@ impl BlockState for Bamboo {
         return None;
     }
 }
-

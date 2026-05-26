@@ -16,13 +16,12 @@ pub struct ClientboundRegistryData {
 
 impl ClientboundPacket for ClientboundRegistryData {
     fn id() -> i32 {
-        return 0x07
+        return 0x07;
     }
 
     fn state() -> ConnectionState {
-        return ConnectionState::Configuration
+        return ConnectionState::Configuration;
     }
-
 
     fn client(&self) -> Entity {
         return self.client;

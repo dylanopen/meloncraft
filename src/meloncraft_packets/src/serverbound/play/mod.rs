@@ -48,7 +48,7 @@ pub fn register_serverbound_play_packets(app: &mut App) {
 
     app.add_message::<ServerboundAcknowledgeChat>();
     app.add_systems(PreUpdate, fwd::<ServerboundAcknowledgeChat>);
-    
+
     app.add_message::<ServerboundSetPlayerPosition>();
     app.add_systems(PreUpdate, fwd::<ServerboundSetPlayerPosition>);
 

@@ -14,13 +14,12 @@ pub struct ClientboundGameEvent {
 
 impl ClientboundPacket for ClientboundGameEvent {
     fn id() -> i32 {
-        return 0x26
+        return 0x26;
     }
 
     fn state() -> ConnectionState {
-        return ConnectionState::Play
+        return ConnectionState::Play;
     }
-
 
     fn client(&self) -> Entity {
         return self.client;

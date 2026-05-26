@@ -10,73 +10,584 @@ pub struct MushroomStem {
     pub north: bool,
 }
 
-
 impl BlockState for MushroomStem {
     fn to_id(&self) -> i32 {
-        if self.r#east == false && self.r#west == true && self.r#north == true && self.r#down == true && self.r#south == false && self.r#up == false { return 7715; }
-        if self.r#north == true && self.r#south == true && self.r#east == true && self.r#down == true && self.r#up == false && self.r#west == false { return 7696; }
-        if self.r#east == true && self.r#up == false && self.r#west == true && self.r#north == true && self.r#south == true && self.r#down == true { return 7695; }
-        if self.r#east == false && self.r#south == false && self.r#up == false && self.r#down == true && self.r#north == false && self.r#west == true { return 7723; }
-        if self.r#south == true && self.r#up == true && self.r#north == false && self.r#east == false && self.r#down == false && self.r#west == false { return 7750; }
-        if self.r#down == false && self.r#south == false && self.r#west == true && self.r#up == true && self.r#east == true && self.r#north == false { return 7737; }
-        if self.r#east == false && self.r#west == true && self.r#down == true && self.r#north == false && self.r#south == false && self.r#up == true { return 7721; }
-        if self.r#west == true && self.r#down == true && self.r#south == false && self.r#north == false && self.r#east == true && self.r#up == true { return 7705; }
-        if self.r#south == true && self.r#up == false && self.r#west == false && self.r#down == false && self.r#north == true && self.r#east == true { return 7728; }
-        if self.r#north == true && self.r#down == false && self.r#up == false && self.r#east == false && self.r#south == false && self.r#west == false { return 7748; }
-        if self.r#east == false && self.r#north == true && self.r#south == true && self.r#west == true && self.r#up == true && self.r#down == true { return 7709; }
-        if self.r#east == false && self.r#down == false && self.r#up == false && self.r#north == false && self.r#south == true && self.r#west == true { return 7751; }
-        if self.r#west == false && self.r#north == false && self.r#east == true && self.r#south == true && self.r#up == false && self.r#down == true { return 7704; }
-        if self.r#up == true && self.r#west == true && self.r#south == false && self.r#east == false && self.r#north == true && self.r#down == false { return 7745; }
-        if self.r#up == true && self.r#down == true && self.r#west == false && self.r#south == false && self.r#east == false && self.r#north == true { return 7714; }
-        if self.r#down == false && self.r#up == false && self.r#west == true && self.r#north == false && self.r#south == true && self.r#east == true { return 7735; }
-        if self.r#up == true && self.r#east == false && self.r#north == false && self.r#west == false && self.r#down == true && self.r#south == true { return 7718; }
-        if self.r#east == false && self.r#down == true && self.r#west == false && self.r#south == true && self.r#up == false && self.r#north == true { return 7712; }
-        if self.r#east == true && self.r#west == false && self.r#down == true && self.r#up == true && self.r#north == false && self.r#south == false { return 7706; }
-        if self.r#west == true && self.r#down == false && self.r#up == true && self.r#east == false && self.r#north == true && self.r#south == true { return 7741; }
-        if self.r#east == true && self.r#west == true && self.r#down == false && self.r#north == false && self.r#south == true && self.r#up == true { return 7733; }
-        if self.r#down == false && self.r#north == true && self.r#east == true && self.r#west == true && self.r#up == true && self.r#south == true { return 7725; }
-        if self.r#down == false && self.r#east == false && self.r#north == true && self.r#south == false && self.r#west == true && self.r#up == false { return 7747; }
-        if self.r#west == false && self.r#north == false && self.r#down == false && self.r#south == true && self.r#east == true && self.r#up == false { return 7736; }
-        if self.r#down == false && self.r#west == false && self.r#north == false && self.r#south == false && self.r#east == true && self.r#up == false { return 7740; }
-        if self.r#down == false && self.r#north == true && self.r#up == true && self.r#east == true && self.r#west == true && self.r#south == false { return 7729; }
-        if self.r#west == false && self.r#north == false && self.r#east == false && self.r#down == false && self.r#up == true && self.r#south == false { return 7754; }
-        if self.r#down == true && self.r#up == true && self.r#south == true && self.r#east == true && self.r#west == false && self.r#north == false { return 7702; }
-        if self.r#up == true && self.r#east == false && self.r#west == false && self.r#down == false && self.r#north == true && self.r#south == false { return 7746; }
-        if self.r#west == true && self.r#down == true && self.r#south == true && self.r#east == true && self.r#north == false && self.r#up == false { return 7703; }
-        if self.r#south == true && self.r#up == true && self.r#down == true && self.r#north == true && self.r#west == false && self.r#east == false { return 7710; }
-        if self.r#down == true && self.r#east == false && self.r#north == false && self.r#south == false && self.r#up == true && self.r#west == false { return 7722; }
-        if self.r#east == false && self.r#down == true && self.r#south == false && self.r#up == false && self.r#west == false && self.r#north == false { return 7724; }
-        if self.r#down == false && self.r#east == true && self.r#north == true && self.r#south == true && self.r#up == false && self.r#west == true { return 7727; }
-        if self.r#down == false && self.r#east == false && self.r#south == false && self.r#west == true && self.r#up == true && self.r#north == false { return 7753; }
-        if self.r#east == true && self.r#south == true && self.r#up == true && self.r#west == false && self.r#down == false && self.r#north == false { return 7734; }
-        if self.r#down == false && self.r#north == false && self.r#east == false && self.r#south == true && self.r#west == false && self.r#up == false { return 7752; }
-        if self.r#east == true && self.r#south == false && self.r#up == false && self.r#down == true && self.r#north == false && self.r#west == true { return 7707; }
-        if self.r#east == false && self.r#north == false && self.r#down == false && self.r#south == false && self.r#west == false && self.r#up == false { return 7756; }
-        if self.r#north == true && self.r#south == true && self.r#east == false && self.r#down == false && self.r#up == true && self.r#west == false { return 7742; }
-        if self.r#east == false && self.r#up == true && self.r#north == false && self.r#down == true && self.r#south == true && self.r#west == true { return 7717; }
-        if self.r#west == false && self.r#east == true && self.r#south == false && self.r#up == true && self.r#north == true && self.r#down == true { return 7698; }
-        if self.r#down == false && self.r#north == false && self.r#south == false && self.r#west == true && self.r#east == false && self.r#up == false { return 7755; }
-        if self.r#east == true && self.r#south == false && self.r#down == true && self.r#west == false && self.r#north == true && self.r#up == false { return 7700; }
-        if self.r#north == true && self.r#south == true && self.r#up == true && self.r#east == true && self.r#west == false && self.r#down == true { return 7694; }
-        if self.r#west == true && self.r#north == true && self.r#east == true && self.r#up == false && self.r#down == true && self.r#south == false { return 7699; }
-        if self.r#down == false && self.r#south == false && self.r#west == false && self.r#east == true && self.r#north == true && self.r#up == false { return 7732; }
-        if self.r#south == false && self.r#up == true && self.r#west == false && self.r#east == true && self.r#north == false && self.r#down == false { return 7738; }
-        if self.r#south == true && self.r#down == true && self.r#up == false && self.r#east == false && self.r#west == true && self.r#north == false { return 7719; }
-        if self.r#down == false && self.r#up == false && self.r#east == true && self.r#south == false && self.r#west == true && self.r#north == true { return 7731; }
-        if self.r#down == false && self.r#up == false && self.r#north == false && self.r#south == false && self.r#west == true && self.r#east == true { return 7739; }
-        if self.r#south == false && self.r#north == true && self.r#east == false && self.r#west == false && self.r#down == true && self.r#up == false { return 7716; }
-        if self.r#east == false && self.r#north == true && self.r#up == false && self.r#down == false && self.r#west == true && self.r#south == true { return 7743; }
-        if self.r#west == true && self.r#east == false && self.r#down == true && self.r#south == true && self.r#north == true && self.r#up == false { return 7711; }
-        if self.r#east == true && self.r#down == true && self.r#north == true && self.r#south == true && self.r#up == true && self.r#west == true { return 7693; }
-        if self.r#north == false && self.r#up == true && self.r#west == true && self.r#east == false && self.r#south == true && self.r#down == false { return 7749; }
-        if self.r#north == false && self.r#down == true && self.r#west == false && self.r#south == false && self.r#east == true && self.r#up == false { return 7708; }
-        if self.r#west == false && self.r#east == true && self.r#down == false && self.r#north == true && self.r#south == true && self.r#up == true { return 7726; }
-        if self.r#east == true && self.r#down == true && self.r#south == true && self.r#north == false && self.r#up == true && self.r#west == true { return 7701; }
-        if self.r#north == true && self.r#south == false && self.r#down == true && self.r#up == true && self.r#west == true && self.r#east == true { return 7697; }
-        if self.r#east == true && self.r#down == false && self.r#south == false && self.r#up == true && self.r#west == false && self.r#north == true { return 7730; }
-        if self.r#down == false && self.r#east == false && self.r#up == false && self.r#north == true && self.r#south == true && self.r#west == false { return 7744; }
-        if self.r#north == true && self.r#south == false && self.r#up == true && self.r#down == true && self.r#west == true && self.r#east == false { return 7713; }
-        if self.r#east == false && self.r#north == false && self.r#up == false && self.r#west == false && self.r#down == true && self.r#south == true { return 7720; }
+        if self.r#east == false
+            && self.r#west == true
+            && self.r#north == true
+            && self.r#down == true
+            && self.r#south == false
+            && self.r#up == false
+        {
+            return 7715;
+        }
+        if self.r#north == true
+            && self.r#south == true
+            && self.r#east == true
+            && self.r#down == true
+            && self.r#up == false
+            && self.r#west == false
+        {
+            return 7696;
+        }
+        if self.r#east == true
+            && self.r#up == false
+            && self.r#west == true
+            && self.r#north == true
+            && self.r#south == true
+            && self.r#down == true
+        {
+            return 7695;
+        }
+        if self.r#east == false
+            && self.r#south == false
+            && self.r#up == false
+            && self.r#down == true
+            && self.r#north == false
+            && self.r#west == true
+        {
+            return 7723;
+        }
+        if self.r#south == true
+            && self.r#up == true
+            && self.r#north == false
+            && self.r#east == false
+            && self.r#down == false
+            && self.r#west == false
+        {
+            return 7750;
+        }
+        if self.r#down == false
+            && self.r#south == false
+            && self.r#west == true
+            && self.r#up == true
+            && self.r#east == true
+            && self.r#north == false
+        {
+            return 7737;
+        }
+        if self.r#east == false
+            && self.r#west == true
+            && self.r#down == true
+            && self.r#north == false
+            && self.r#south == false
+            && self.r#up == true
+        {
+            return 7721;
+        }
+        if self.r#west == true
+            && self.r#down == true
+            && self.r#south == false
+            && self.r#north == false
+            && self.r#east == true
+            && self.r#up == true
+        {
+            return 7705;
+        }
+        if self.r#south == true
+            && self.r#up == false
+            && self.r#west == false
+            && self.r#down == false
+            && self.r#north == true
+            && self.r#east == true
+        {
+            return 7728;
+        }
+        if self.r#north == true
+            && self.r#down == false
+            && self.r#up == false
+            && self.r#east == false
+            && self.r#south == false
+            && self.r#west == false
+        {
+            return 7748;
+        }
+        if self.r#east == false
+            && self.r#north == true
+            && self.r#south == true
+            && self.r#west == true
+            && self.r#up == true
+            && self.r#down == true
+        {
+            return 7709;
+        }
+        if self.r#east == false
+            && self.r#down == false
+            && self.r#up == false
+            && self.r#north == false
+            && self.r#south == true
+            && self.r#west == true
+        {
+            return 7751;
+        }
+        if self.r#west == false
+            && self.r#north == false
+            && self.r#east == true
+            && self.r#south == true
+            && self.r#up == false
+            && self.r#down == true
+        {
+            return 7704;
+        }
+        if self.r#up == true
+            && self.r#west == true
+            && self.r#south == false
+            && self.r#east == false
+            && self.r#north == true
+            && self.r#down == false
+        {
+            return 7745;
+        }
+        if self.r#up == true
+            && self.r#down == true
+            && self.r#west == false
+            && self.r#south == false
+            && self.r#east == false
+            && self.r#north == true
+        {
+            return 7714;
+        }
+        if self.r#down == false
+            && self.r#up == false
+            && self.r#west == true
+            && self.r#north == false
+            && self.r#south == true
+            && self.r#east == true
+        {
+            return 7735;
+        }
+        if self.r#up == true
+            && self.r#east == false
+            && self.r#north == false
+            && self.r#west == false
+            && self.r#down == true
+            && self.r#south == true
+        {
+            return 7718;
+        }
+        if self.r#east == false
+            && self.r#down == true
+            && self.r#west == false
+            && self.r#south == true
+            && self.r#up == false
+            && self.r#north == true
+        {
+            return 7712;
+        }
+        if self.r#east == true
+            && self.r#west == false
+            && self.r#down == true
+            && self.r#up == true
+            && self.r#north == false
+            && self.r#south == false
+        {
+            return 7706;
+        }
+        if self.r#west == true
+            && self.r#down == false
+            && self.r#up == true
+            && self.r#east == false
+            && self.r#north == true
+            && self.r#south == true
+        {
+            return 7741;
+        }
+        if self.r#east == true
+            && self.r#west == true
+            && self.r#down == false
+            && self.r#north == false
+            && self.r#south == true
+            && self.r#up == true
+        {
+            return 7733;
+        }
+        if self.r#down == false
+            && self.r#north == true
+            && self.r#east == true
+            && self.r#west == true
+            && self.r#up == true
+            && self.r#south == true
+        {
+            return 7725;
+        }
+        if self.r#down == false
+            && self.r#east == false
+            && self.r#north == true
+            && self.r#south == false
+            && self.r#west == true
+            && self.r#up == false
+        {
+            return 7747;
+        }
+        if self.r#west == false
+            && self.r#north == false
+            && self.r#down == false
+            && self.r#south == true
+            && self.r#east == true
+            && self.r#up == false
+        {
+            return 7736;
+        }
+        if self.r#down == false
+            && self.r#west == false
+            && self.r#north == false
+            && self.r#south == false
+            && self.r#east == true
+            && self.r#up == false
+        {
+            return 7740;
+        }
+        if self.r#down == false
+            && self.r#north == true
+            && self.r#up == true
+            && self.r#east == true
+            && self.r#west == true
+            && self.r#south == false
+        {
+            return 7729;
+        }
+        if self.r#west == false
+            && self.r#north == false
+            && self.r#east == false
+            && self.r#down == false
+            && self.r#up == true
+            && self.r#south == false
+        {
+            return 7754;
+        }
+        if self.r#down == true
+            && self.r#up == true
+            && self.r#south == true
+            && self.r#east == true
+            && self.r#west == false
+            && self.r#north == false
+        {
+            return 7702;
+        }
+        if self.r#up == true
+            && self.r#east == false
+            && self.r#west == false
+            && self.r#down == false
+            && self.r#north == true
+            && self.r#south == false
+        {
+            return 7746;
+        }
+        if self.r#west == true
+            && self.r#down == true
+            && self.r#south == true
+            && self.r#east == true
+            && self.r#north == false
+            && self.r#up == false
+        {
+            return 7703;
+        }
+        if self.r#south == true
+            && self.r#up == true
+            && self.r#down == true
+            && self.r#north == true
+            && self.r#west == false
+            && self.r#east == false
+        {
+            return 7710;
+        }
+        if self.r#down == true
+            && self.r#east == false
+            && self.r#north == false
+            && self.r#south == false
+            && self.r#up == true
+            && self.r#west == false
+        {
+            return 7722;
+        }
+        if self.r#east == false
+            && self.r#down == true
+            && self.r#south == false
+            && self.r#up == false
+            && self.r#west == false
+            && self.r#north == false
+        {
+            return 7724;
+        }
+        if self.r#down == false
+            && self.r#east == true
+            && self.r#north == true
+            && self.r#south == true
+            && self.r#up == false
+            && self.r#west == true
+        {
+            return 7727;
+        }
+        if self.r#down == false
+            && self.r#east == false
+            && self.r#south == false
+            && self.r#west == true
+            && self.r#up == true
+            && self.r#north == false
+        {
+            return 7753;
+        }
+        if self.r#east == true
+            && self.r#south == true
+            && self.r#up == true
+            && self.r#west == false
+            && self.r#down == false
+            && self.r#north == false
+        {
+            return 7734;
+        }
+        if self.r#down == false
+            && self.r#north == false
+            && self.r#east == false
+            && self.r#south == true
+            && self.r#west == false
+            && self.r#up == false
+        {
+            return 7752;
+        }
+        if self.r#east == true
+            && self.r#south == false
+            && self.r#up == false
+            && self.r#down == true
+            && self.r#north == false
+            && self.r#west == true
+        {
+            return 7707;
+        }
+        if self.r#east == false
+            && self.r#north == false
+            && self.r#down == false
+            && self.r#south == false
+            && self.r#west == false
+            && self.r#up == false
+        {
+            return 7756;
+        }
+        if self.r#north == true
+            && self.r#south == true
+            && self.r#east == false
+            && self.r#down == false
+            && self.r#up == true
+            && self.r#west == false
+        {
+            return 7742;
+        }
+        if self.r#east == false
+            && self.r#up == true
+            && self.r#north == false
+            && self.r#down == true
+            && self.r#south == true
+            && self.r#west == true
+        {
+            return 7717;
+        }
+        if self.r#west == false
+            && self.r#east == true
+            && self.r#south == false
+            && self.r#up == true
+            && self.r#north == true
+            && self.r#down == true
+        {
+            return 7698;
+        }
+        if self.r#down == false
+            && self.r#north == false
+            && self.r#south == false
+            && self.r#west == true
+            && self.r#east == false
+            && self.r#up == false
+        {
+            return 7755;
+        }
+        if self.r#east == true
+            && self.r#south == false
+            && self.r#down == true
+            && self.r#west == false
+            && self.r#north == true
+            && self.r#up == false
+        {
+            return 7700;
+        }
+        if self.r#north == true
+            && self.r#south == true
+            && self.r#up == true
+            && self.r#east == true
+            && self.r#west == false
+            && self.r#down == true
+        {
+            return 7694;
+        }
+        if self.r#west == true
+            && self.r#north == true
+            && self.r#east == true
+            && self.r#up == false
+            && self.r#down == true
+            && self.r#south == false
+        {
+            return 7699;
+        }
+        if self.r#down == false
+            && self.r#south == false
+            && self.r#west == false
+            && self.r#east == true
+            && self.r#north == true
+            && self.r#up == false
+        {
+            return 7732;
+        }
+        if self.r#south == false
+            && self.r#up == true
+            && self.r#west == false
+            && self.r#east == true
+            && self.r#north == false
+            && self.r#down == false
+        {
+            return 7738;
+        }
+        if self.r#south == true
+            && self.r#down == true
+            && self.r#up == false
+            && self.r#east == false
+            && self.r#west == true
+            && self.r#north == false
+        {
+            return 7719;
+        }
+        if self.r#down == false
+            && self.r#up == false
+            && self.r#east == true
+            && self.r#south == false
+            && self.r#west == true
+            && self.r#north == true
+        {
+            return 7731;
+        }
+        if self.r#down == false
+            && self.r#up == false
+            && self.r#north == false
+            && self.r#south == false
+            && self.r#west == true
+            && self.r#east == true
+        {
+            return 7739;
+        }
+        if self.r#south == false
+            && self.r#north == true
+            && self.r#east == false
+            && self.r#west == false
+            && self.r#down == true
+            && self.r#up == false
+        {
+            return 7716;
+        }
+        if self.r#east == false
+            && self.r#north == true
+            && self.r#up == false
+            && self.r#down == false
+            && self.r#west == true
+            && self.r#south == true
+        {
+            return 7743;
+        }
+        if self.r#west == true
+            && self.r#east == false
+            && self.r#down == true
+            && self.r#south == true
+            && self.r#north == true
+            && self.r#up == false
+        {
+            return 7711;
+        }
+        if self.r#east == true
+            && self.r#down == true
+            && self.r#north == true
+            && self.r#south == true
+            && self.r#up == true
+            && self.r#west == true
+        {
+            return 7693;
+        }
+        if self.r#north == false
+            && self.r#up == true
+            && self.r#west == true
+            && self.r#east == false
+            && self.r#south == true
+            && self.r#down == false
+        {
+            return 7749;
+        }
+        if self.r#north == false
+            && self.r#down == true
+            && self.r#west == false
+            && self.r#south == false
+            && self.r#east == true
+            && self.r#up == false
+        {
+            return 7708;
+        }
+        if self.r#west == false
+            && self.r#east == true
+            && self.r#down == false
+            && self.r#north == true
+            && self.r#south == true
+            && self.r#up == true
+        {
+            return 7726;
+        }
+        if self.r#east == true
+            && self.r#down == true
+            && self.r#south == true
+            && self.r#north == false
+            && self.r#up == true
+            && self.r#west == true
+        {
+            return 7701;
+        }
+        if self.r#north == true
+            && self.r#south == false
+            && self.r#down == true
+            && self.r#up == true
+            && self.r#west == true
+            && self.r#east == true
+        {
+            return 7697;
+        }
+        if self.r#east == true
+            && self.r#down == false
+            && self.r#south == false
+            && self.r#up == true
+            && self.r#west == false
+            && self.r#north == true
+        {
+            return 7730;
+        }
+        if self.r#down == false
+            && self.r#east == false
+            && self.r#up == false
+            && self.r#north == true
+            && self.r#south == true
+            && self.r#west == false
+        {
+            return 7744;
+        }
+        if self.r#north == true
+            && self.r#south == false
+            && self.r#up == true
+            && self.r#down == true
+            && self.r#west == true
+            && self.r#east == false
+        {
+            return 7713;
+        }
+        if self.r#east == false
+            && self.r#north == false
+            && self.r#up == false
+            && self.r#west == false
+            && self.r#down == true
+            && self.r#south == true
+        {
+            return 7720;
+        }
         panic!("Invalid block state")
     }
 
@@ -724,4 +1235,3 @@ impl BlockState for MushroomStem {
         return None;
     }
 }
-

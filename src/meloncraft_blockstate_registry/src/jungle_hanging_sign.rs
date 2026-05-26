@@ -7,73 +7,200 @@ pub struct JungleHangingSign {
     pub attached: bool,
 }
 
-
 impl BlockState for JungleHangingSign {
     fn to_id(&self) -> i32 {
-        if self.r#attached == false && self.r#rotation == 2 && self.r#waterlogged == false { return 6063; }
-        if self.r#attached == true && self.r#waterlogged == true && self.r#rotation == 12 { return 6050; }
-        if self.r#waterlogged == false && self.r#attached == false && self.r#rotation == 7 { return 6073; }
-        if self.r#waterlogged == true && self.r#attached == false && self.r#rotation == 0 { return 6058; }
-        if self.r#rotation == 8 && self.r#waterlogged == true && self.r#attached == false { return 6074; }
-        if self.r#waterlogged == false && self.r#rotation == 2 && self.r#attached == true { return 6031; }
-        if self.r#waterlogged == false && self.r#rotation == 9 && self.r#attached == true { return 6045; }
-        if self.r#attached == true && self.r#rotation == 10 && self.r#waterlogged == false { return 6047; }
-        if self.r#rotation == 11 && self.r#waterlogged == true && self.r#attached == true { return 6048; }
-        if self.r#attached == true && self.r#waterlogged == true && self.r#rotation == 10 { return 6046; }
-        if self.r#attached == false && self.r#waterlogged == true && self.r#rotation == 5 { return 6068; }
-        if self.r#rotation == 3 && self.r#waterlogged == true && self.r#attached == false { return 6064; }
-        if self.r#rotation == 0 && self.r#attached == true && self.r#waterlogged == true { return 6026; }
-        if self.r#rotation == 1 && self.r#waterlogged == false && self.r#attached == false { return 6061; }
-        if self.r#attached == false && self.r#rotation == 4 && self.r#waterlogged == false { return 6067; }
-        if self.r#waterlogged == false && self.r#attached == false && self.r#rotation == 12 { return 6083; }
-        if self.r#waterlogged == true && self.r#attached == true && self.r#rotation == 3 { return 6032; }
-        if self.r#attached == true && self.r#rotation == 1 && self.r#waterlogged == true { return 6028; }
-        if self.r#rotation == 4 && self.r#attached == true && self.r#waterlogged == true { return 6034; }
-        if self.r#waterlogged == false && self.r#attached == false && self.r#rotation == 11 { return 6081; }
-        if self.r#rotation == 14 && self.r#waterlogged == false && self.r#attached == false { return 6087; }
-        if self.r#attached == true && self.r#rotation == 3 && self.r#waterlogged == false { return 6033; }
-        if self.r#waterlogged == false && self.r#attached == true && self.r#rotation == 7 { return 6041; }
-        if self.r#waterlogged == false && self.r#rotation == 6 && self.r#attached == false { return 6071; }
-        if self.r#rotation == 9 && self.r#waterlogged == true && self.r#attached == true { return 6044; }
-        if self.r#attached == false && self.r#rotation == 7 && self.r#waterlogged == true { return 6072; }
-        if self.r#attached == false && self.r#waterlogged == false && self.r#rotation == 3 { return 6065; }
-        if self.r#rotation == 11 && self.r#attached == true && self.r#waterlogged == false { return 6049; }
-        if self.r#rotation == 8 && self.r#waterlogged == true && self.r#attached == true { return 6042; }
-        if self.r#rotation == 1 && self.r#attached == false && self.r#waterlogged == true { return 6060; }
-        if self.r#attached == true && self.r#waterlogged == false && self.r#rotation == 1 { return 6029; }
-        if self.r#rotation == 5 && self.r#waterlogged == true && self.r#attached == true { return 6036; }
-        if self.r#waterlogged == true && self.r#attached == true && self.r#rotation == 13 { return 6052; }
-        if self.r#rotation == 13 && self.r#waterlogged == false && self.r#attached == true { return 6053; }
-        if self.r#attached == true && self.r#rotation == 7 && self.r#waterlogged == true { return 6040; }
-        if self.r#rotation == 14 && self.r#attached == true && self.r#waterlogged == true { return 6054; }
-        if self.r#attached == false && self.r#rotation == 0 && self.r#waterlogged == false { return 6059; }
-        if self.r#rotation == 0 && self.r#attached == true && self.r#waterlogged == false { return 6027; }
-        if self.r#attached == false && self.r#waterlogged == true && self.r#rotation == 2 { return 6062; }
-        if self.r#attached == false && self.r#rotation == 4 && self.r#waterlogged == true { return 6066; }
-        if self.r#attached == true && self.r#rotation == 5 && self.r#waterlogged == false { return 6037; }
-        if self.r#attached == true && self.r#waterlogged == true && self.r#rotation == 15 { return 6056; }
-        if self.r#waterlogged == false && self.r#rotation == 14 && self.r#attached == true { return 6055; }
-        if self.r#attached == true && self.r#rotation == 8 && self.r#waterlogged == false { return 6043; }
-        if self.r#waterlogged == true && self.r#attached == false && self.r#rotation == 12 { return 6082; }
-        if self.r#attached == false && self.r#rotation == 10 && self.r#waterlogged == true { return 6078; }
-        if self.r#rotation == 15 && self.r#waterlogged == true && self.r#attached == false { return 6088; }
-        if self.r#rotation == 6 && self.r#attached == true && self.r#waterlogged == true { return 6038; }
-        if self.r#rotation == 5 && self.r#waterlogged == false && self.r#attached == false { return 6069; }
-        if self.r#attached == false && self.r#waterlogged == true && self.r#rotation == 13 { return 6084; }
-        if self.r#attached == true && self.r#waterlogged == false && self.r#rotation == 6 { return 6039; }
-        if self.r#rotation == 2 && self.r#waterlogged == true && self.r#attached == true { return 6030; }
-        if self.r#rotation == 13 && self.r#waterlogged == false && self.r#attached == false { return 6085; }
-        if self.r#attached == false && self.r#rotation == 9 && self.r#waterlogged == false { return 6077; }
-        if self.r#waterlogged == true && self.r#attached == false && self.r#rotation == 6 { return 6070; }
-        if self.r#attached == false && self.r#rotation == 14 && self.r#waterlogged == true { return 6086; }
-        if self.r#waterlogged == false && self.r#attached == false && self.r#rotation == 15 { return 6089; }
-        if self.r#waterlogged == false && self.r#attached == true && self.r#rotation == 15 { return 6057; }
-        if self.r#attached == false && self.r#rotation == 9 && self.r#waterlogged == true { return 6076; }
-        if self.r#waterlogged == false && self.r#rotation == 12 && self.r#attached == true { return 6051; }
-        if self.r#rotation == 11 && self.r#waterlogged == true && self.r#attached == false { return 6080; }
-        if self.r#waterlogged == false && self.r#attached == false && self.r#rotation == 10 { return 6079; }
-        if self.r#attached == true && self.r#rotation == 4 && self.r#waterlogged == false { return 6035; }
-        if self.r#attached == false && self.r#rotation == 8 && self.r#waterlogged == false { return 6075; }
+        if self.r#attached == false && self.r#rotation == 2 && self.r#waterlogged == false {
+            return 6063;
+        }
+        if self.r#attached == true && self.r#waterlogged == true && self.r#rotation == 12 {
+            return 6050;
+        }
+        if self.r#waterlogged == false && self.r#attached == false && self.r#rotation == 7 {
+            return 6073;
+        }
+        if self.r#waterlogged == true && self.r#attached == false && self.r#rotation == 0 {
+            return 6058;
+        }
+        if self.r#rotation == 8 && self.r#waterlogged == true && self.r#attached == false {
+            return 6074;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 2 && self.r#attached == true {
+            return 6031;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 9 && self.r#attached == true {
+            return 6045;
+        }
+        if self.r#attached == true && self.r#rotation == 10 && self.r#waterlogged == false {
+            return 6047;
+        }
+        if self.r#rotation == 11 && self.r#waterlogged == true && self.r#attached == true {
+            return 6048;
+        }
+        if self.r#attached == true && self.r#waterlogged == true && self.r#rotation == 10 {
+            return 6046;
+        }
+        if self.r#attached == false && self.r#waterlogged == true && self.r#rotation == 5 {
+            return 6068;
+        }
+        if self.r#rotation == 3 && self.r#waterlogged == true && self.r#attached == false {
+            return 6064;
+        }
+        if self.r#rotation == 0 && self.r#attached == true && self.r#waterlogged == true {
+            return 6026;
+        }
+        if self.r#rotation == 1 && self.r#waterlogged == false && self.r#attached == false {
+            return 6061;
+        }
+        if self.r#attached == false && self.r#rotation == 4 && self.r#waterlogged == false {
+            return 6067;
+        }
+        if self.r#waterlogged == false && self.r#attached == false && self.r#rotation == 12 {
+            return 6083;
+        }
+        if self.r#waterlogged == true && self.r#attached == true && self.r#rotation == 3 {
+            return 6032;
+        }
+        if self.r#attached == true && self.r#rotation == 1 && self.r#waterlogged == true {
+            return 6028;
+        }
+        if self.r#rotation == 4 && self.r#attached == true && self.r#waterlogged == true {
+            return 6034;
+        }
+        if self.r#waterlogged == false && self.r#attached == false && self.r#rotation == 11 {
+            return 6081;
+        }
+        if self.r#rotation == 14 && self.r#waterlogged == false && self.r#attached == false {
+            return 6087;
+        }
+        if self.r#attached == true && self.r#rotation == 3 && self.r#waterlogged == false {
+            return 6033;
+        }
+        if self.r#waterlogged == false && self.r#attached == true && self.r#rotation == 7 {
+            return 6041;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 6 && self.r#attached == false {
+            return 6071;
+        }
+        if self.r#rotation == 9 && self.r#waterlogged == true && self.r#attached == true {
+            return 6044;
+        }
+        if self.r#attached == false && self.r#rotation == 7 && self.r#waterlogged == true {
+            return 6072;
+        }
+        if self.r#attached == false && self.r#waterlogged == false && self.r#rotation == 3 {
+            return 6065;
+        }
+        if self.r#rotation == 11 && self.r#attached == true && self.r#waterlogged == false {
+            return 6049;
+        }
+        if self.r#rotation == 8 && self.r#waterlogged == true && self.r#attached == true {
+            return 6042;
+        }
+        if self.r#rotation == 1 && self.r#attached == false && self.r#waterlogged == true {
+            return 6060;
+        }
+        if self.r#attached == true && self.r#waterlogged == false && self.r#rotation == 1 {
+            return 6029;
+        }
+        if self.r#rotation == 5 && self.r#waterlogged == true && self.r#attached == true {
+            return 6036;
+        }
+        if self.r#waterlogged == true && self.r#attached == true && self.r#rotation == 13 {
+            return 6052;
+        }
+        if self.r#rotation == 13 && self.r#waterlogged == false && self.r#attached == true {
+            return 6053;
+        }
+        if self.r#attached == true && self.r#rotation == 7 && self.r#waterlogged == true {
+            return 6040;
+        }
+        if self.r#rotation == 14 && self.r#attached == true && self.r#waterlogged == true {
+            return 6054;
+        }
+        if self.r#attached == false && self.r#rotation == 0 && self.r#waterlogged == false {
+            return 6059;
+        }
+        if self.r#rotation == 0 && self.r#attached == true && self.r#waterlogged == false {
+            return 6027;
+        }
+        if self.r#attached == false && self.r#waterlogged == true && self.r#rotation == 2 {
+            return 6062;
+        }
+        if self.r#attached == false && self.r#rotation == 4 && self.r#waterlogged == true {
+            return 6066;
+        }
+        if self.r#attached == true && self.r#rotation == 5 && self.r#waterlogged == false {
+            return 6037;
+        }
+        if self.r#attached == true && self.r#waterlogged == true && self.r#rotation == 15 {
+            return 6056;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 14 && self.r#attached == true {
+            return 6055;
+        }
+        if self.r#attached == true && self.r#rotation == 8 && self.r#waterlogged == false {
+            return 6043;
+        }
+        if self.r#waterlogged == true && self.r#attached == false && self.r#rotation == 12 {
+            return 6082;
+        }
+        if self.r#attached == false && self.r#rotation == 10 && self.r#waterlogged == true {
+            return 6078;
+        }
+        if self.r#rotation == 15 && self.r#waterlogged == true && self.r#attached == false {
+            return 6088;
+        }
+        if self.r#rotation == 6 && self.r#attached == true && self.r#waterlogged == true {
+            return 6038;
+        }
+        if self.r#rotation == 5 && self.r#waterlogged == false && self.r#attached == false {
+            return 6069;
+        }
+        if self.r#attached == false && self.r#waterlogged == true && self.r#rotation == 13 {
+            return 6084;
+        }
+        if self.r#attached == true && self.r#waterlogged == false && self.r#rotation == 6 {
+            return 6039;
+        }
+        if self.r#rotation == 2 && self.r#waterlogged == true && self.r#attached == true {
+            return 6030;
+        }
+        if self.r#rotation == 13 && self.r#waterlogged == false && self.r#attached == false {
+            return 6085;
+        }
+        if self.r#attached == false && self.r#rotation == 9 && self.r#waterlogged == false {
+            return 6077;
+        }
+        if self.r#waterlogged == true && self.r#attached == false && self.r#rotation == 6 {
+            return 6070;
+        }
+        if self.r#attached == false && self.r#rotation == 14 && self.r#waterlogged == true {
+            return 6086;
+        }
+        if self.r#waterlogged == false && self.r#attached == false && self.r#rotation == 15 {
+            return 6089;
+        }
+        if self.r#waterlogged == false && self.r#attached == true && self.r#rotation == 15 {
+            return 6057;
+        }
+        if self.r#attached == false && self.r#rotation == 9 && self.r#waterlogged == true {
+            return 6076;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 12 && self.r#attached == true {
+            return 6051;
+        }
+        if self.r#rotation == 11 && self.r#waterlogged == true && self.r#attached == false {
+            return 6080;
+        }
+        if self.r#waterlogged == false && self.r#attached == false && self.r#rotation == 10 {
+            return 6079;
+        }
+        if self.r#attached == true && self.r#rotation == 4 && self.r#waterlogged == false {
+            return 6035;
+        }
+        if self.r#attached == false && self.r#rotation == 8 && self.r#waterlogged == false {
+            return 6075;
+        }
         panic!("Invalid block state")
     }
 
@@ -529,4 +656,3 @@ impl BlockState for JungleHangingSign {
         return None;
     }
 }
-

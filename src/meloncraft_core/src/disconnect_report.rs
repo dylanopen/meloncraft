@@ -11,7 +11,6 @@
 /// See that packet's documentation for more information.
 #[derive(Debug, Clone)]
 pub struct DisconnectReport {
-
     /// The (main) title of the disconnect report shown to the client.
     /// You should probably keep this as a short summary, and save longer explanations for the
     /// [`DisconnectReport::description`] field.

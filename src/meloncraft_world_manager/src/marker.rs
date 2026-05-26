@@ -8,4 +8,3 @@ use bevy::ecs::component::Component;
 /// You should only have one world with this component in your game.
 #[derive(Component)]
 pub struct Overworld;
-

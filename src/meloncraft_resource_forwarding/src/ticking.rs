@@ -11,7 +11,7 @@ pub fn send_ticking_state_on_join(
     new_player_q: Query<Entity, Added<PlayerMarker>>,
     tick_rate: Res<TickRate>,
     ticking_frozen: Res<TickingFrozen>,
-    mut set_ticking_state_pw: MessageWriter<ClientboundSetTickingState>
+    mut set_ticking_state_pw: MessageWriter<ClientboundSetTickingState>,
 ) {
     for client in new_player_q {
         set_ticking_state_pw.write(ClientboundSetTickingState {
@@ -26,9 +26,11 @@ pub fn send_ticking_state_on_change(
     player_q: Query<Entity, With<PlayerMarker>>,
     tick_rate: Res<TickRate>,
     ticking_frozen: Res<TickingFrozen>,
-    mut set_ticking_state_pw: MessageWriter<ClientboundSetTickingState>
+    mut set_ticking_state_pw: MessageWriter<ClientboundSetTickingState>,
 ) {
-    if !tick_rate.is_changed() && !ticking_frozen.is_changed() { return; }
+    if !tick_rate.is_changed() && !ticking_frozen.is_changed() {
+        return;
+    }
     for client in player_q {
         set_ticking_state_pw.write(ClientboundSetTickingState {
             client,
@@ -37,4 +39,3 @@ pub fn send_ticking_state_on_change(
         });
     }
 }
-

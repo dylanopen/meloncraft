@@ -21,7 +21,6 @@ use meloncraft_block::block::Block;
 ///   when changing a block.
 #[derive(Debug, Clone)]
 pub struct ChunkBlockSection {
-
     /// The number of non-air blocks in the [`ChunkBlockSection`].
     /// This is automatically calculated when calling [`ChunkBlockSection::new`].
     /// See [`sum_non_air_blocks`] for more information on how it is calculated.
@@ -46,7 +45,6 @@ pub struct ChunkBlockSection {
 }
 
 impl ChunkBlockSection {
-
     /// Create a new [`ChunkBlockSection`] with the provided `blocks` and `biomes`.
     ///
     /// This function calculates the `block_count` (see [`ChunkBlockSection::block_count`])
@@ -67,7 +65,11 @@ impl ChunkBlockSection {
     #[must_use]
     pub fn new(blocks: [Block; 4096], biomes: [Biome; 64]) -> Self {
         let block_count = sum_non_air_blocks(&blocks);
-        return ChunkBlockSection { block_count, blocks, biomes }
+        return ChunkBlockSection {
+            block_count,
+            blocks,
+            biomes,
+        };
     }
 }
 
@@ -82,11 +84,16 @@ impl ChunkBlockSection {
 ///
 /// ## Returns
 /// - An `i16` (short) representing the total number of non-air blocks in the chunk section array.
-/// 
+///
 /// ## Panics
 /// - The only unwrap is in converting the non-air count from a `usize` to an `i32`. By type check,
 ///   this is at most 4096, so **panics should be impossible**.
 #[must_use]
 pub fn sum_non_air_blocks(blocks: &[Block; 4096]) -> i16 {
-    return blocks.iter().filter(|block| return block.state_id != 0).count().try_into().unwrap();
+    return blocks
+        .iter()
+        .filter(|block| return block.state_id != 0)
+        .count()
+        .try_into()
+        .unwrap();
 }

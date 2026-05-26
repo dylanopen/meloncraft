@@ -7,7 +7,6 @@ pub struct Crafter {
     pub triggered: bool,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Orientation {
     DownEast,
@@ -26,54 +25,294 @@ pub enum Orientation {
 
 impl BlockState for Crafter {
     fn to_id(&self) -> i32 {
-        if self.r#orientation == Orientation::UpNorth && self.r#crafting == false && self.r#triggered == true { return 29441; }
-        if self.r#triggered == true && self.r#crafting == false && self.r#orientation == Orientation::UpWest { return 29445; }
-        if self.r#triggered == true && self.r#orientation == Orientation::NorthUp && self.r#crafting == true { return 29427; }
-        if self.r#orientation == Orientation::WestUp && self.r#crafting == true && self.r#triggered == true { return 29423; }
-        if self.r#orientation == Orientation::DownSouth && self.r#triggered == true && self.r#crafting == false { return 29435; }
-        if self.r#crafting == false && self.r#triggered == false && self.r#orientation == Orientation::UpNorth { return 29442; }
-        if self.r#crafting == false && self.r#triggered == false && self.r#orientation == Orientation::DownWest { return 29438; }
-        if self.r#orientation == Orientation::UpEast && self.r#crafting == true && self.r#triggered == true { return 29415; }
-        if self.r#crafting == true && self.r#orientation == Orientation::DownSouth && self.r#triggered == false { return 29412; }
-        if self.r#crafting == false && self.r#triggered == true && self.r#orientation == Orientation::EastUp { return 29449; }
-        if self.r#crafting == false && self.r#triggered == false && self.r#orientation == Orientation::EastUp { return 29450; }
-        if self.r#crafting == true && self.r#orientation == Orientation::UpNorth && self.r#triggered == false { return 29418; }
-        if self.r#crafting == false && self.r#orientation == Orientation::NorthUp && self.r#triggered == true { return 29451; }
-        if self.r#orientation == Orientation::WestUp && self.r#triggered == true && self.r#crafting == false { return 29447; }
-        if self.r#orientation == Orientation::NorthUp && self.r#triggered == false && self.r#crafting == false { return 29452; }
-        if self.r#crafting == false && self.r#orientation == Orientation::DownEast && self.r#triggered == true { return 29431; }
-        if self.r#triggered == false && self.r#crafting == true && self.r#orientation == Orientation::DownNorth { return 29410; }
-        if self.r#triggered == false && self.r#crafting == true && self.r#orientation == Orientation::EastUp { return 29426; }
-        if self.r#orientation == Orientation::DownNorth && self.r#crafting == false && self.r#triggered == true { return 29433; }
-        if self.r#orientation == Orientation::SouthUp && self.r#triggered == false && self.r#crafting == true { return 29430; }
-        if self.r#triggered == false && self.r#crafting == false && self.r#orientation == Orientation::UpEast { return 29440; }
-        if self.r#orientation == Orientation::SouthUp && self.r#crafting == false && self.r#triggered == true { return 29453; }
-        if self.r#triggered == true && self.r#crafting == true && self.r#orientation == Orientation::DownSouth { return 29411; }
-        if self.r#triggered == false && self.r#crafting == true && self.r#orientation == Orientation::UpWest { return 29422; }
-        if self.r#crafting == false && self.r#triggered == false && self.r#orientation == Orientation::WestUp { return 29448; }
-        if self.r#triggered == true && self.r#crafting == true && self.r#orientation == Orientation::EastUp { return 29425; }
-        if self.r#triggered == true && self.r#orientation == Orientation::DownWest && self.r#crafting == false { return 29437; }
-        if self.r#orientation == Orientation::DownEast && self.r#triggered == false && self.r#crafting == false { return 29432; }
-        if self.r#triggered == true && self.r#crafting == true && self.r#orientation == Orientation::DownNorth { return 29409; }
-        if self.r#crafting == false && self.r#triggered == true && self.r#orientation == Orientation::UpSouth { return 29443; }
-        if self.r#orientation == Orientation::SouthUp && self.r#triggered == false && self.r#crafting == false { return 29454; }
-        if self.r#orientation == Orientation::DownEast && self.r#crafting == true && self.r#triggered == true { return 29407; }
-        if self.r#triggered == false && self.r#crafting == false && self.r#orientation == Orientation::UpSouth { return 29444; }
-        if self.r#triggered == false && self.r#crafting == true && self.r#orientation == Orientation::UpSouth { return 29420; }
-        if self.r#crafting == false && self.r#orientation == Orientation::DownSouth && self.r#triggered == false { return 29436; }
-        if self.r#triggered == true && self.r#crafting == true && self.r#orientation == Orientation::UpNorth { return 29417; }
-        if self.r#triggered == true && self.r#crafting == true && self.r#orientation == Orientation::SouthUp { return 29429; }
-        if self.r#crafting == false && self.r#orientation == Orientation::UpEast && self.r#triggered == true { return 29439; }
-        if self.r#orientation == Orientation::UpWest && self.r#triggered == false && self.r#crafting == false { return 29446; }
-        if self.r#orientation == Orientation::NorthUp && self.r#triggered == false && self.r#crafting == true { return 29428; }
-        if self.r#crafting == true && self.r#orientation == Orientation::UpWest && self.r#triggered == true { return 29421; }
-        if self.r#crafting == false && self.r#orientation == Orientation::DownNorth && self.r#triggered == false { return 29434; }
-        if self.r#crafting == true && self.r#orientation == Orientation::DownEast && self.r#triggered == false { return 29408; }
-        if self.r#orientation == Orientation::DownWest && self.r#crafting == true && self.r#triggered == true { return 29413; }
-        if self.r#orientation == Orientation::UpEast && self.r#triggered == false && self.r#crafting == true { return 29416; }
-        if self.r#crafting == true && self.r#orientation == Orientation::WestUp && self.r#triggered == false { return 29424; }
-        if self.r#crafting == true && self.r#triggered == false && self.r#orientation == Orientation::DownWest { return 29414; }
-        if self.r#crafting == true && self.r#orientation == Orientation::UpSouth && self.r#triggered == true { return 29419; }
+        if self.r#orientation == Orientation::UpNorth
+            && self.r#crafting == false
+            && self.r#triggered == true
+        {
+            return 29441;
+        }
+        if self.r#triggered == true
+            && self.r#crafting == false
+            && self.r#orientation == Orientation::UpWest
+        {
+            return 29445;
+        }
+        if self.r#triggered == true
+            && self.r#orientation == Orientation::NorthUp
+            && self.r#crafting == true
+        {
+            return 29427;
+        }
+        if self.r#orientation == Orientation::WestUp
+            && self.r#crafting == true
+            && self.r#triggered == true
+        {
+            return 29423;
+        }
+        if self.r#orientation == Orientation::DownSouth
+            && self.r#triggered == true
+            && self.r#crafting == false
+        {
+            return 29435;
+        }
+        if self.r#crafting == false
+            && self.r#triggered == false
+            && self.r#orientation == Orientation::UpNorth
+        {
+            return 29442;
+        }
+        if self.r#crafting == false
+            && self.r#triggered == false
+            && self.r#orientation == Orientation::DownWest
+        {
+            return 29438;
+        }
+        if self.r#orientation == Orientation::UpEast
+            && self.r#crafting == true
+            && self.r#triggered == true
+        {
+            return 29415;
+        }
+        if self.r#crafting == true
+            && self.r#orientation == Orientation::DownSouth
+            && self.r#triggered == false
+        {
+            return 29412;
+        }
+        if self.r#crafting == false
+            && self.r#triggered == true
+            && self.r#orientation == Orientation::EastUp
+        {
+            return 29449;
+        }
+        if self.r#crafting == false
+            && self.r#triggered == false
+            && self.r#orientation == Orientation::EastUp
+        {
+            return 29450;
+        }
+        if self.r#crafting == true
+            && self.r#orientation == Orientation::UpNorth
+            && self.r#triggered == false
+        {
+            return 29418;
+        }
+        if self.r#crafting == false
+            && self.r#orientation == Orientation::NorthUp
+            && self.r#triggered == true
+        {
+            return 29451;
+        }
+        if self.r#orientation == Orientation::WestUp
+            && self.r#triggered == true
+            && self.r#crafting == false
+        {
+            return 29447;
+        }
+        if self.r#orientation == Orientation::NorthUp
+            && self.r#triggered == false
+            && self.r#crafting == false
+        {
+            return 29452;
+        }
+        if self.r#crafting == false
+            && self.r#orientation == Orientation::DownEast
+            && self.r#triggered == true
+        {
+            return 29431;
+        }
+        if self.r#triggered == false
+            && self.r#crafting == true
+            && self.r#orientation == Orientation::DownNorth
+        {
+            return 29410;
+        }
+        if self.r#triggered == false
+            && self.r#crafting == true
+            && self.r#orientation == Orientation::EastUp
+        {
+            return 29426;
+        }
+        if self.r#orientation == Orientation::DownNorth
+            && self.r#crafting == false
+            && self.r#triggered == true
+        {
+            return 29433;
+        }
+        if self.r#orientation == Orientation::SouthUp
+            && self.r#triggered == false
+            && self.r#crafting == true
+        {
+            return 29430;
+        }
+        if self.r#triggered == false
+            && self.r#crafting == false
+            && self.r#orientation == Orientation::UpEast
+        {
+            return 29440;
+        }
+        if self.r#orientation == Orientation::SouthUp
+            && self.r#crafting == false
+            && self.r#triggered == true
+        {
+            return 29453;
+        }
+        if self.r#triggered == true
+            && self.r#crafting == true
+            && self.r#orientation == Orientation::DownSouth
+        {
+            return 29411;
+        }
+        if self.r#triggered == false
+            && self.r#crafting == true
+            && self.r#orientation == Orientation::UpWest
+        {
+            return 29422;
+        }
+        if self.r#crafting == false
+            && self.r#triggered == false
+            && self.r#orientation == Orientation::WestUp
+        {
+            return 29448;
+        }
+        if self.r#triggered == true
+            && self.r#crafting == true
+            && self.r#orientation == Orientation::EastUp
+        {
+            return 29425;
+        }
+        if self.r#triggered == true
+            && self.r#orientation == Orientation::DownWest
+            && self.r#crafting == false
+        {
+            return 29437;
+        }
+        if self.r#orientation == Orientation::DownEast
+            && self.r#triggered == false
+            && self.r#crafting == false
+        {
+            return 29432;
+        }
+        if self.r#triggered == true
+            && self.r#crafting == true
+            && self.r#orientation == Orientation::DownNorth
+        {
+            return 29409;
+        }
+        if self.r#crafting == false
+            && self.r#triggered == true
+            && self.r#orientation == Orientation::UpSouth
+        {
+            return 29443;
+        }
+        if self.r#orientation == Orientation::SouthUp
+            && self.r#triggered == false
+            && self.r#crafting == false
+        {
+            return 29454;
+        }
+        if self.r#orientation == Orientation::DownEast
+            && self.r#crafting == true
+            && self.r#triggered == true
+        {
+            return 29407;
+        }
+        if self.r#triggered == false
+            && self.r#crafting == false
+            && self.r#orientation == Orientation::UpSouth
+        {
+            return 29444;
+        }
+        if self.r#triggered == false
+            && self.r#crafting == true
+            && self.r#orientation == Orientation::UpSouth
+        {
+            return 29420;
+        }
+        if self.r#crafting == false
+            && self.r#orientation == Orientation::DownSouth
+            && self.r#triggered == false
+        {
+            return 29436;
+        }
+        if self.r#triggered == true
+            && self.r#crafting == true
+            && self.r#orientation == Orientation::UpNorth
+        {
+            return 29417;
+        }
+        if self.r#triggered == true
+            && self.r#crafting == true
+            && self.r#orientation == Orientation::SouthUp
+        {
+            return 29429;
+        }
+        if self.r#crafting == false
+            && self.r#orientation == Orientation::UpEast
+            && self.r#triggered == true
+        {
+            return 29439;
+        }
+        if self.r#orientation == Orientation::UpWest
+            && self.r#triggered == false
+            && self.r#crafting == false
+        {
+            return 29446;
+        }
+        if self.r#orientation == Orientation::NorthUp
+            && self.r#triggered == false
+            && self.r#crafting == true
+        {
+            return 29428;
+        }
+        if self.r#crafting == true
+            && self.r#orientation == Orientation::UpWest
+            && self.r#triggered == true
+        {
+            return 29421;
+        }
+        if self.r#crafting == false
+            && self.r#orientation == Orientation::DownNorth
+            && self.r#triggered == false
+        {
+            return 29434;
+        }
+        if self.r#crafting == true
+            && self.r#orientation == Orientation::DownEast
+            && self.r#triggered == false
+        {
+            return 29408;
+        }
+        if self.r#orientation == Orientation::DownWest
+            && self.r#crafting == true
+            && self.r#triggered == true
+        {
+            return 29413;
+        }
+        if self.r#orientation == Orientation::UpEast
+            && self.r#triggered == false
+            && self.r#crafting == true
+        {
+            return 29416;
+        }
+        if self.r#crafting == true
+            && self.r#orientation == Orientation::WestUp
+            && self.r#triggered == false
+        {
+            return 29424;
+        }
+        if self.r#crafting == true
+            && self.r#triggered == false
+            && self.r#orientation == Orientation::DownWest
+        {
+            return 29414;
+        }
+        if self.r#crafting == true
+            && self.r#orientation == Orientation::UpSouth
+            && self.r#triggered == true
+        {
+            return 29419;
+        }
         panic!("Invalid block state")
     }
 
@@ -417,4 +656,3 @@ impl BlockState for Crafter {
         return None;
     }
 }
-

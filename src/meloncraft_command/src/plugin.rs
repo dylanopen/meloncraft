@@ -15,4 +15,3 @@ impl Plugin for MeloncraftCommandPlugin {
         app.add_message::<RawCommand>();
     }
 }
-

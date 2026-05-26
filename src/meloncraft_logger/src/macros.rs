@@ -64,4 +64,3 @@ macro_rules! fatallog {
         $crate::log!($crate::level::LogLevel::Fatal, $($arg)+);
     };
 }
-

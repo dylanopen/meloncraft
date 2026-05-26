@@ -11,10 +11,10 @@ pub struct ClientboundPong {
 
 impl ClientboundPacket for ClientboundPong {
     fn id() -> i32 {
-        return 0x01
+        return 0x01;
     }
     fn state() -> ConnectionState {
-        return ConnectionState::Status
+        return ConnectionState::Status;
     }
 
     fn client(&self) -> Entity {

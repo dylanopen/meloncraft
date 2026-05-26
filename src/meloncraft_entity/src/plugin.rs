@@ -1,8 +1,8 @@
 //! Module for [`MeloncraftEntityPlugin`].
 
-use bevy::app::{App, Plugin};
 use crate::position::moved::EntityMoved;
 use crate::position::teleport::TeleportEntity;
+use bevy::app::{App, Plugin};
 
 /// Meloncraft plugin to initialize messages related to entities.
 ///

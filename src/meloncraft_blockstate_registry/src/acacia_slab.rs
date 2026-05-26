@@ -6,7 +6,6 @@ pub struct AcaciaSlab {
     pub waterlogged: bool,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Type {
     Top,
@@ -16,12 +15,24 @@ pub enum Type {
 
 impl BlockState for AcaciaSlab {
     fn to_id(&self) -> i32 {
-        if self.r#type == Type::Top && self.r#waterlogged == false { return 13153; }
-        if self.r#waterlogged == false && self.r#type == Type::Bottom { return 13155; }
-        if self.r#type == Type::Top && self.r#waterlogged == true { return 13152; }
-        if self.r#type == Type::Double && self.r#waterlogged == false { return 13157; }
-        if self.r#type == Type::Double && self.r#waterlogged == true { return 13156; }
-        if self.r#type == Type::Bottom && self.r#waterlogged == true { return 13154; }
+        if self.r#type == Type::Top && self.r#waterlogged == false {
+            return 13153;
+        }
+        if self.r#waterlogged == false && self.r#type == Type::Bottom {
+            return 13155;
+        }
+        if self.r#type == Type::Top && self.r#waterlogged == true {
+            return 13152;
+        }
+        if self.r#type == Type::Double && self.r#waterlogged == false {
+            return 13157;
+        }
+        if self.r#type == Type::Double && self.r#waterlogged == true {
+            return 13156;
+        }
+        if self.r#type == Type::Bottom && self.r#waterlogged == true {
+            return 13154;
+        }
         panic!("Invalid block state")
     }
 
@@ -65,4 +76,3 @@ impl BlockState for AcaciaSlab {
         return None;
     }
 }
-

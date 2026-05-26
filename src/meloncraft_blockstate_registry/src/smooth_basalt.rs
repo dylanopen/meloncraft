@@ -1,9 +1,7 @@
 use crate::BlockState;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub struct SmoothBasalt {
-}
-
+pub struct SmoothBasalt {}
 
 impl BlockState for SmoothBasalt {
     fn to_id(&self) -> i32 {
@@ -13,10 +11,8 @@ impl BlockState for SmoothBasalt {
 
     fn from_id(state_id: i32) -> Option<Self> {
         if state_id == 29374 {
-            return Some(SmoothBasalt {
-            });
+            return Some(SmoothBasalt {});
         }
         return None;
     }
 }
-

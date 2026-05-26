@@ -6,13 +6,20 @@ pub struct WaxedWeatheredCopperBulb {
     pub lit: bool,
 }
 
-
 impl BlockState for WaxedWeatheredCopperBulb {
     fn to_id(&self) -> i32 {
-        if self.r#powered == true && self.r#lit == true { return 26885; }
-        if self.r#lit == true && self.r#powered == false { return 26886; }
-        if self.r#lit == false && self.r#powered == true { return 26887; }
-        if self.r#lit == false && self.r#powered == false { return 26888; }
+        if self.r#powered == true && self.r#lit == true {
+            return 26885;
+        }
+        if self.r#lit == true && self.r#powered == false {
+            return 26886;
+        }
+        if self.r#lit == false && self.r#powered == true {
+            return 26887;
+        }
+        if self.r#lit == false && self.r#powered == false {
+            return 26888;
+        }
         panic!("Invalid block state")
     }
 
@@ -44,4 +51,3 @@ impl BlockState for WaxedWeatheredCopperBulb {
         return None;
     }
 }
-

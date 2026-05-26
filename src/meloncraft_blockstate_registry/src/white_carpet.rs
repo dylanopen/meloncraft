@@ -1,9 +1,7 @@
 use crate::BlockState;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub struct WhiteCarpet {
-}
-
+pub struct WhiteCarpet {}
 
 impl BlockState for WhiteCarpet {
     fn to_id(&self) -> i32 {
@@ -13,10 +11,8 @@ impl BlockState for WhiteCarpet {
 
     fn from_id(state_id: i32) -> Option<Self> {
         if state_id == 12694 {
-            return Some(WhiteCarpet {
-            });
+            return Some(WhiteCarpet {});
         }
         return None;
     }
 }
-

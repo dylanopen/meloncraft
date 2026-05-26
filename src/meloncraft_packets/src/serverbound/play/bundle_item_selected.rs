@@ -1,7 +1,7 @@
 use crate::ServerboundPacket;
+use crate::network_messages::ServerboundNetworkPacket;
 use bevy::prelude::{Entity, Message};
 use meloncraft_client::connection_state::ConnectionState;
-use crate::network_messages::ServerboundNetworkPacket;
 use meloncraft_protocol_types::{ProtocolType as _, VarInt};
 
 #[derive(Message, Debug, Clone)]
@@ -13,10 +13,10 @@ pub struct ServerboundBundleItemSelected {
 
 impl ServerboundPacket for ServerboundBundleItemSelected {
     fn id() -> i32 {
-        return 0x02
+        return 0x02;
     }
     fn state() -> ConnectionState {
-        return ConnectionState::Play
+        return ConnectionState::Play;
     }
     fn deserialize(packet: ServerboundNetworkPacket) -> Option<Self> {
         let mut packet = packet;
@@ -28,7 +28,7 @@ impl ServerboundPacket for ServerboundBundleItemSelected {
         return Some(Self {
             client,
             inventory_slot,
-            bundle_slot
-        })
+            bundle_slot,
+        });
     }
 }

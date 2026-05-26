@@ -1,4 +1,3 @@
-
 use bevy::app::App;
 
 mod status_response;

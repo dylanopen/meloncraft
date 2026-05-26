@@ -5,7 +5,6 @@ pub struct SoulWallTorch {
     pub r#facing: Facing,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -16,10 +15,18 @@ pub enum Facing {
 
 impl BlockState for SoulWallTorch {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::South { return 6807; }
-        if self.r#facing == Facing::North { return 6806; }
-        if self.r#facing == Facing::West { return 6808; }
-        if self.r#facing == Facing::East { return 6809; }
+        if self.r#facing == Facing::South {
+            return 6807;
+        }
+        if self.r#facing == Facing::North {
+            return 6806;
+        }
+        if self.r#facing == Facing::West {
+            return 6808;
+        }
+        if self.r#facing == Facing::East {
+            return 6809;
+        }
         panic!("Invalid block state")
     }
 
@@ -47,4 +54,3 @@ impl BlockState for SoulWallTorch {
         return None;
     }
 }
-

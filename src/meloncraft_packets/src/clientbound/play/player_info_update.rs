@@ -1,8 +1,8 @@
 use bevy::ecs::entity::Entity;
 use bevy::ecs::message::Message;
 use meloncraft_client::connection_state::ConnectionState;
-use meloncraft_player::client_action::ClientPlayerAction;
 use meloncraft_player::Uuid;
+use meloncraft_player::client_action::ClientPlayerAction;
 use meloncraft_protocol_types::{ProtocolType as _, VarInt};
 
 use crate::clientbound_packet::ClientboundPacket;
@@ -16,13 +16,12 @@ pub struct ClientboundPlayerInfoUpdate {
 
 impl ClientboundPacket for ClientboundPlayerInfoUpdate {
     fn id() -> i32 {
-        return 0x44
+        return 0x44;
     }
 
     fn state() -> ConnectionState {
-        return ConnectionState::Play
+        return ConnectionState::Play;
     }
-
 
     fn client(&self) -> Entity {
         return self.client;
@@ -40,4 +39,3 @@ impl ClientboundPacket for ClientboundPlayerInfoUpdate {
         }
     }
 }
-

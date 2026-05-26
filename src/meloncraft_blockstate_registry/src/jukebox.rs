@@ -5,11 +5,14 @@ pub struct Jukebox {
     pub has_record: bool,
 }
 
-
 impl BlockState for Jukebox {
     fn to_id(&self) -> i32 {
-        if self.r#has_record == false { return 6763; }
-        if self.r#has_record == true { return 6762; }
+        if self.r#has_record == false {
+            return 6763;
+        }
+        if self.r#has_record == true {
+            return 6762;
+        }
         panic!("Invalid block state")
     }
 
@@ -20,11 +23,8 @@ impl BlockState for Jukebox {
             });
         }
         if state_id == 6762 {
-            return Some(Jukebox {
-                r#has_record: true,
-            });
+            return Some(Jukebox { r#has_record: true });
         }
         return None;
     }
 }
-

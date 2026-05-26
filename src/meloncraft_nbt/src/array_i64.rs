@@ -6,7 +6,7 @@ use core::ops::{Deref, DerefMut};
 ///
 /// These are a special type of list in the NBT format; this struct acts as a marker that the
 /// contained value should be treated as an NBT array of i64s.
-/// 
+///
 /// ## Deref
 /// Dereferencing this (and most other [`NbtValue`](`crate::NbtValue`)s) will yield the wrapped type.
 /// In this case, a `Vec<i64>` representing all the bytes in the array.
@@ -17,9 +17,8 @@ use core::ops::{Deref, DerefMut};
 /// [`NbtValue`](`crate::NbtValue`) and [`NbtTag`](`crate::NbtTag`) types.
 #[derive(Debug, Clone, Eq, PartialEq)]
 pub struct NbtArrayI64(
-
     /// A `Vec` containing a variable number of `i64`s. This is the *value* of the NBT value / tag.
-    pub Vec<i64>
+    pub Vec<i64>,
 );
 
 impl Deref for NbtArrayI64 {

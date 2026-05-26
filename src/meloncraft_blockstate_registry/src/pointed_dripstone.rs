@@ -7,7 +7,6 @@ pub struct PointedDripstone {
     pub r#vertical_direction: VerticalDirection,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Thickness {
     TipMerge,
@@ -25,26 +24,126 @@ pub enum VerticalDirection {
 
 impl BlockState for PointedDripstone {
     fn to_id(&self) -> i32 {
-        if self.r#vertical_direction == VerticalDirection::Up && self.r#thickness == Thickness::Base && self.r#waterlogged == false { return 27550; }
-        if self.r#waterlogged == true && self.r#vertical_direction == VerticalDirection::Up && self.r#thickness == Thickness::TipMerge { return 27533; }
-        if self.r#vertical_direction == VerticalDirection::Up && self.r#waterlogged == false && self.r#thickness == Thickness::Frustum { return 27542; }
-        if self.r#thickness == Thickness::Base && self.r#waterlogged == false && self.r#vertical_direction == VerticalDirection::Down { return 27552; }
-        if self.r#vertical_direction == VerticalDirection::Down && self.r#waterlogged == true && self.r#thickness == Thickness::Tip { return 27539; }
-        if self.r#waterlogged == false && self.r#thickness == Thickness::Frustum && self.r#vertical_direction == VerticalDirection::Down { return 27544; }
-        if self.r#waterlogged == true && self.r#vertical_direction == VerticalDirection::Up && self.r#thickness == Thickness::Middle { return 27545; }
-        if self.r#vertical_direction == VerticalDirection::Down && self.r#waterlogged == true && self.r#thickness == Thickness::Frustum { return 27543; }
-        if self.r#thickness == Thickness::Tip && self.r#vertical_direction == VerticalDirection::Up && self.r#waterlogged == false { return 27538; }
-        if self.r#thickness == Thickness::Middle && self.r#vertical_direction == VerticalDirection::Down && self.r#waterlogged == true { return 27547; }
-        if self.r#vertical_direction == VerticalDirection::Down && self.r#waterlogged == false && self.r#thickness == Thickness::Middle { return 27548; }
-        if self.r#vertical_direction == VerticalDirection::Down && self.r#thickness == Thickness::Tip && self.r#waterlogged == false { return 27540; }
-        if self.r#waterlogged == true && self.r#thickness == Thickness::TipMerge && self.r#vertical_direction == VerticalDirection::Down { return 27535; }
-        if self.r#waterlogged == false && self.r#thickness == Thickness::Middle && self.r#vertical_direction == VerticalDirection::Up { return 27546; }
-        if self.r#thickness == Thickness::TipMerge && self.r#vertical_direction == VerticalDirection::Up && self.r#waterlogged == false { return 27534; }
-        if self.r#thickness == Thickness::Base && self.r#waterlogged == true && self.r#vertical_direction == VerticalDirection::Up { return 27549; }
-        if self.r#waterlogged == false && self.r#vertical_direction == VerticalDirection::Down && self.r#thickness == Thickness::TipMerge { return 27536; }
-        if self.r#vertical_direction == VerticalDirection::Up && self.r#waterlogged == true && self.r#thickness == Thickness::Tip { return 27537; }
-        if self.r#thickness == Thickness::Base && self.r#waterlogged == true && self.r#vertical_direction == VerticalDirection::Down { return 27551; }
-        if self.r#thickness == Thickness::Frustum && self.r#vertical_direction == VerticalDirection::Up && self.r#waterlogged == true { return 27541; }
+        if self.r#vertical_direction == VerticalDirection::Up
+            && self.r#thickness == Thickness::Base
+            && self.r#waterlogged == false
+        {
+            return 27550;
+        }
+        if self.r#waterlogged == true
+            && self.r#vertical_direction == VerticalDirection::Up
+            && self.r#thickness == Thickness::TipMerge
+        {
+            return 27533;
+        }
+        if self.r#vertical_direction == VerticalDirection::Up
+            && self.r#waterlogged == false
+            && self.r#thickness == Thickness::Frustum
+        {
+            return 27542;
+        }
+        if self.r#thickness == Thickness::Base
+            && self.r#waterlogged == false
+            && self.r#vertical_direction == VerticalDirection::Down
+        {
+            return 27552;
+        }
+        if self.r#vertical_direction == VerticalDirection::Down
+            && self.r#waterlogged == true
+            && self.r#thickness == Thickness::Tip
+        {
+            return 27539;
+        }
+        if self.r#waterlogged == false
+            && self.r#thickness == Thickness::Frustum
+            && self.r#vertical_direction == VerticalDirection::Down
+        {
+            return 27544;
+        }
+        if self.r#waterlogged == true
+            && self.r#vertical_direction == VerticalDirection::Up
+            && self.r#thickness == Thickness::Middle
+        {
+            return 27545;
+        }
+        if self.r#vertical_direction == VerticalDirection::Down
+            && self.r#waterlogged == true
+            && self.r#thickness == Thickness::Frustum
+        {
+            return 27543;
+        }
+        if self.r#thickness == Thickness::Tip
+            && self.r#vertical_direction == VerticalDirection::Up
+            && self.r#waterlogged == false
+        {
+            return 27538;
+        }
+        if self.r#thickness == Thickness::Middle
+            && self.r#vertical_direction == VerticalDirection::Down
+            && self.r#waterlogged == true
+        {
+            return 27547;
+        }
+        if self.r#vertical_direction == VerticalDirection::Down
+            && self.r#waterlogged == false
+            && self.r#thickness == Thickness::Middle
+        {
+            return 27548;
+        }
+        if self.r#vertical_direction == VerticalDirection::Down
+            && self.r#thickness == Thickness::Tip
+            && self.r#waterlogged == false
+        {
+            return 27540;
+        }
+        if self.r#waterlogged == true
+            && self.r#thickness == Thickness::TipMerge
+            && self.r#vertical_direction == VerticalDirection::Down
+        {
+            return 27535;
+        }
+        if self.r#waterlogged == false
+            && self.r#thickness == Thickness::Middle
+            && self.r#vertical_direction == VerticalDirection::Up
+        {
+            return 27546;
+        }
+        if self.r#thickness == Thickness::TipMerge
+            && self.r#vertical_direction == VerticalDirection::Up
+            && self.r#waterlogged == false
+        {
+            return 27534;
+        }
+        if self.r#thickness == Thickness::Base
+            && self.r#waterlogged == true
+            && self.r#vertical_direction == VerticalDirection::Up
+        {
+            return 27549;
+        }
+        if self.r#waterlogged == false
+            && self.r#vertical_direction == VerticalDirection::Down
+            && self.r#thickness == Thickness::TipMerge
+        {
+            return 27536;
+        }
+        if self.r#vertical_direction == VerticalDirection::Up
+            && self.r#waterlogged == true
+            && self.r#thickness == Thickness::Tip
+        {
+            return 27537;
+        }
+        if self.r#thickness == Thickness::Base
+            && self.r#waterlogged == true
+            && self.r#vertical_direction == VerticalDirection::Down
+        {
+            return 27551;
+        }
+        if self.r#thickness == Thickness::Frustum
+            && self.r#vertical_direction == VerticalDirection::Up
+            && self.r#waterlogged == true
+        {
+            return 27541;
+        }
         panic!("Invalid block state")
     }
 
@@ -192,4 +291,3 @@ impl BlockState for PointedDripstone {
         return None;
     }
 }
-

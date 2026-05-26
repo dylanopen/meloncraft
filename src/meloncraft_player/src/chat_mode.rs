@@ -16,7 +16,6 @@ use bevy::prelude::Component;
 #[derive(Component, Debug, Clone, Copy)]
 #[repr(i32)]
 pub enum ChatMode {
-
     /// [`ChatMode`] component variant on a player, indicating that the player would like to receive
     /// *all* types of chat messages, including normal chat messages, system messages, and command
     /// feedback.
@@ -30,9 +29,9 @@ pub enum ChatMode {
     /// - `ClientboundDisguisedChatMessage`: Messages sent by non-players using the commands /say,
     ///   /me, /msg, /tell, /w and /teammsg.
     /// - `ClientboundSystemChatMessage`: Feedback from running a command, such as "Your game mode
-    ///   has been updated to creative." 
+    ///   has been updated to creative."
     /// - `CilentboundSystemChatMessage` *with overlay*: Game state information that is displayed above
-    ///   the hot bar, such as "You may not rest now, the bed is too far away". 
+    ///   the hot bar, such as "You may not rest now, the bed is too far away".
     ///
     /// ## Disabled clientbound packets
     /// None, the server should send all chat message types to a player with this chat mode.
@@ -58,9 +57,9 @@ pub enum ChatMode {
     /// ## Enabled clientbound packets
     /// The server should send only these types of packets to a player with this chat mode:
     /// - `ClientboundSystemChatMessage`: Feedback from running a command, such as "Your game mode
-    ///   has been updated to creative." 
+    ///   has been updated to creative."
     /// - `CilentboundSystemChatMessage` *with overlay*: Game state information that is displayed above
-    ///   the hot bar, such as "You may not rest now, the bed is too far away". 
+    ///   the hot bar, such as "You may not rest now, the bed is too far away".
     ///
     /// ## Disabled clientbound packets
     /// The server **should not** send these types of packets to a player with this chat mode:
@@ -93,7 +92,7 @@ pub enum ChatMode {
     /// ## Enabled clientbound packets
     /// The server should send only these types of packets to a player with this chat mode:
     /// - `CilentboundSystemChatMessage` *with overlay*: Game state information that is displayed above
-    ///   the hot bar, such as "You may not rest now, the bed is too far away". 
+    ///   the hot bar, such as "You may not rest now, the bed is too far away".
     ///
     /// ## Disabled clientbound packets
     /// The server **should not** send these types of packets to a player with this chat mode:
@@ -102,7 +101,7 @@ pub enum ChatMode {
     /// - `ClientboundDisguisedChatMessage`: Messages sent by non-players using the commands /say,
     ///   /me, /msg, /tell, /w and /teammsg.
     /// - `ClientboundSystemChatMessage`: Feedback from running a command, such as "Your game mode
-    ///   has been updated to creative." 
+    ///   has been updated to creative."
     ///
     /// ## Enabled serverbound packets
     /// Clients in the [`ChatMode::Hidden`] state *shouldn't send any chat-related packets*.

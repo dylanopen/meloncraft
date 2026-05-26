@@ -1,9 +1,7 @@
 use crate::BlockState;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub struct EndGateway {
-}
-
+pub struct EndGateway {}
 
 impl BlockState for EndGateway {
     fn to_id(&self) -> i32 {
@@ -13,10 +11,8 @@ impl BlockState for EndGateway {
 
     fn from_id(state_id: i32) -> Option<Self> {
         if state_id == 14614 {
-            return Some(EndGateway {
-            });
+            return Some(EndGateway {});
         }
         return None;
     }
 }
-

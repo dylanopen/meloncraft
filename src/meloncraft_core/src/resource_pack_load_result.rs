@@ -12,7 +12,6 @@
 /// See <https://minecraft.wiki/w/Java_Edition_protocol/Packets#Resource_Pack_Response_(configuration)>.
 #[derive(Debug, Clone)]
 pub enum ResourcePackLoadResult {
-
     /// The client successfully loaded the resource pack.
     /// This is sent by the client after successfully downloading *and loading* the resource
     /// pack requested. It may not be the first result received.
@@ -89,4 +88,3 @@ impl From<ResourcePackLoadResult> for i32 {
         };
     }
 }
-

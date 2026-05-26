@@ -6,7 +6,6 @@ pub struct BeeNest {
     pub r#facing: Facing,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -17,30 +16,78 @@ pub enum Facing {
 
 impl BlockState for BeeNest {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::North && self.r#honey_level == 4 { return 21570; }
-        if self.r#facing == Facing::North && self.r#honey_level == 5 { return 21571; }
-        if self.r#facing == Facing::West && self.r#honey_level == 1 { return 21579; }
-        if self.r#facing == Facing::West && self.r#honey_level == 2 { return 21580; }
-        if self.r#honey_level == 3 && self.r#facing == Facing::North { return 21569; }
-        if self.r#honey_level == 5 && self.r#facing == Facing::South { return 21577; }
-        if self.r#facing == Facing::South && self.r#honey_level == 0 { return 21572; }
-        if self.r#honey_level == 0 && self.r#facing == Facing::North { return 21566; }
-        if self.r#facing == Facing::West && self.r#honey_level == 0 { return 21578; }
-        if self.r#facing == Facing::North && self.r#honey_level == 1 { return 21567; }
-        if self.r#facing == Facing::North && self.r#honey_level == 2 { return 21568; }
-        if self.r#facing == Facing::South && self.r#honey_level == 1 { return 21573; }
-        if self.r#facing == Facing::East && self.r#honey_level == 0 { return 21584; }
-        if self.r#facing == Facing::East && self.r#honey_level == 3 { return 21587; }
-        if self.r#facing == Facing::East && self.r#honey_level == 4 { return 21588; }
-        if self.r#facing == Facing::East && self.r#honey_level == 2 { return 21586; }
-        if self.r#facing == Facing::South && self.r#honey_level == 2 { return 21574; }
-        if self.r#honey_level == 4 && self.r#facing == Facing::South { return 21576; }
-        if self.r#facing == Facing::West && self.r#honey_level == 4 { return 21582; }
-        if self.r#honey_level == 3 && self.r#facing == Facing::South { return 21575; }
-        if self.r#facing == Facing::East && self.r#honey_level == 5 { return 21589; }
-        if self.r#honey_level == 1 && self.r#facing == Facing::East { return 21585; }
-        if self.r#honey_level == 5 && self.r#facing == Facing::West { return 21583; }
-        if self.r#honey_level == 3 && self.r#facing == Facing::West { return 21581; }
+        if self.r#facing == Facing::North && self.r#honey_level == 4 {
+            return 21570;
+        }
+        if self.r#facing == Facing::North && self.r#honey_level == 5 {
+            return 21571;
+        }
+        if self.r#facing == Facing::West && self.r#honey_level == 1 {
+            return 21579;
+        }
+        if self.r#facing == Facing::West && self.r#honey_level == 2 {
+            return 21580;
+        }
+        if self.r#honey_level == 3 && self.r#facing == Facing::North {
+            return 21569;
+        }
+        if self.r#honey_level == 5 && self.r#facing == Facing::South {
+            return 21577;
+        }
+        if self.r#facing == Facing::South && self.r#honey_level == 0 {
+            return 21572;
+        }
+        if self.r#honey_level == 0 && self.r#facing == Facing::North {
+            return 21566;
+        }
+        if self.r#facing == Facing::West && self.r#honey_level == 0 {
+            return 21578;
+        }
+        if self.r#facing == Facing::North && self.r#honey_level == 1 {
+            return 21567;
+        }
+        if self.r#facing == Facing::North && self.r#honey_level == 2 {
+            return 21568;
+        }
+        if self.r#facing == Facing::South && self.r#honey_level == 1 {
+            return 21573;
+        }
+        if self.r#facing == Facing::East && self.r#honey_level == 0 {
+            return 21584;
+        }
+        if self.r#facing == Facing::East && self.r#honey_level == 3 {
+            return 21587;
+        }
+        if self.r#facing == Facing::East && self.r#honey_level == 4 {
+            return 21588;
+        }
+        if self.r#facing == Facing::East && self.r#honey_level == 2 {
+            return 21586;
+        }
+        if self.r#facing == Facing::South && self.r#honey_level == 2 {
+            return 21574;
+        }
+        if self.r#honey_level == 4 && self.r#facing == Facing::South {
+            return 21576;
+        }
+        if self.r#facing == Facing::West && self.r#honey_level == 4 {
+            return 21582;
+        }
+        if self.r#honey_level == 3 && self.r#facing == Facing::South {
+            return 21575;
+        }
+        if self.r#facing == Facing::East && self.r#honey_level == 5 {
+            return 21589;
+        }
+        if self.r#honey_level == 1 && self.r#facing == Facing::East {
+            return 21585;
+        }
+        if self.r#honey_level == 5 && self.r#facing == Facing::West {
+            return 21583;
+        }
+        if self.r#honey_level == 3 && self.r#facing == Facing::West {
+            return 21581;
+        }
         panic!("Invalid block state")
     }
 
@@ -192,4 +239,3 @@ impl BlockState for BeeNest {
         return None;
     }
 }
-

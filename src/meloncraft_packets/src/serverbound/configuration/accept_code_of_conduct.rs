@@ -1,7 +1,7 @@
 use crate::ServerboundPacket;
+use crate::network_messages::ServerboundNetworkPacket;
 use bevy::prelude::{Entity, Message};
 use meloncraft_client::connection_state::ConnectionState;
-use crate::network_messages::ServerboundNetworkPacket;
 
 #[derive(Message, Debug, Clone)]
 pub struct ServerboundAcceptCodeOfConduct {
@@ -10,15 +10,15 @@ pub struct ServerboundAcceptCodeOfConduct {
 
 impl ServerboundPacket for ServerboundAcceptCodeOfConduct {
     fn id() -> i32 {
-        return 0x09
+        return 0x09;
     }
     fn state() -> ConnectionState {
-        return ConnectionState::Configuration
+        return ConnectionState::Configuration;
     }
 
     fn deserialize(packet: ServerboundNetworkPacket) -> Option<Self> {
         let client = packet.client;
 
-        return Some(Self { client })
+        return Some(Self { client });
     }
 }

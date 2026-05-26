@@ -1,2 +1,2 @@
-pub mod plugin;
 mod movement;
+pub mod plugin;

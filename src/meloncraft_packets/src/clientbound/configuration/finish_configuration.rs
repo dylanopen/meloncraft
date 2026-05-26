@@ -10,13 +10,12 @@ pub struct ClientboundFinishConfiguration {
 
 impl ClientboundPacket for ClientboundFinishConfiguration {
     fn id() -> i32 {
-        return 0x03
+        return 0x03;
     }
 
     fn state() -> ConnectionState {
-        return ConnectionState::Configuration
+        return ConnectionState::Configuration;
     }
-
 
     fn client(&self) -> Entity {
         return self.client;

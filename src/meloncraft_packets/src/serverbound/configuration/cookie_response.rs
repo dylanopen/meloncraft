@@ -1,8 +1,8 @@
 use crate::ServerboundPacket;
+use crate::network_messages::ServerboundNetworkPacket;
 use bevy::prelude::{Entity, Message};
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_core::Identifier;
-use crate::network_messages::ServerboundNetworkPacket;
 use meloncraft_protocol_types::{Byte, PrefixedArray, ProtocolBuffer as _, ProtocolType as _};
 
 #[derive(Message, Debug, Clone)]
@@ -14,10 +14,10 @@ pub struct ServerboundCookieResponse {
 
 impl ServerboundPacket for ServerboundCookieResponse {
     fn id() -> i32 {
-        return 0x01
+        return 0x01;
     }
     fn state() -> ConnectionState {
-        return ConnectionState::Configuration
+        return ConnectionState::Configuration;
     }
 
     fn deserialize(packet: ServerboundNetworkPacket) -> Option<Self> {
@@ -26,6 +26,6 @@ impl ServerboundPacket for ServerboundCookieResponse {
         let key = data.net_deserialize().unwrap();
         let value = PrefixedArray::<Byte>::net_deserialize(&mut data).unwrap().0;
 
-        return Some(Self { client, key, value })
+        return Some(Self { client, key, value });
     }
 }

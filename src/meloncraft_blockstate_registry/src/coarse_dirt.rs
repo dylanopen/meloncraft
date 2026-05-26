@@ -1,9 +1,7 @@
 use crate::BlockState;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub struct CoarseDirt {
-}
-
+pub struct CoarseDirt {}
 
 impl BlockState for CoarseDirt {
     fn to_id(&self) -> i32 {
@@ -13,10 +11,8 @@ impl BlockState for CoarseDirt {
 
     fn from_id(state_id: i32) -> Option<Self> {
         if state_id == 11 {
-            return Some(CoarseDirt {
-            });
+            return Some(CoarseDirt {});
         }
         return None;
     }
 }
-

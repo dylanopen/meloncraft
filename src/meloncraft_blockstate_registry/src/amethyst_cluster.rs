@@ -6,7 +6,6 @@ pub struct AmethystCluster {
     pub waterlogged: bool,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -19,18 +18,42 @@ pub enum Facing {
 
 impl BlockState for AmethystCluster {
     fn to_id(&self) -> i32 {
-        if self.r#waterlogged == false && self.r#facing == Facing::Down { return 23213; }
-        if self.r#facing == Facing::East && self.r#waterlogged == true { return 23204; }
-        if self.r#facing == Facing::South && self.r#waterlogged == true { return 23206; }
-        if self.r#facing == Facing::South && self.r#waterlogged == false { return 23207; }
-        if self.r#facing == Facing::East && self.r#waterlogged == false { return 23205; }
-        if self.r#waterlogged == true && self.r#facing == Facing::North { return 23202; }
-        if self.r#facing == Facing::West && self.r#waterlogged == true { return 23208; }
-        if self.r#waterlogged == false && self.r#facing == Facing::West { return 23209; }
-        if self.r#facing == Facing::Up && self.r#waterlogged == true { return 23210; }
-        if self.r#facing == Facing::Down && self.r#waterlogged == true { return 23212; }
-        if self.r#waterlogged == false && self.r#facing == Facing::Up { return 23211; }
-        if self.r#facing == Facing::North && self.r#waterlogged == false { return 23203; }
+        if self.r#waterlogged == false && self.r#facing == Facing::Down {
+            return 23213;
+        }
+        if self.r#facing == Facing::East && self.r#waterlogged == true {
+            return 23204;
+        }
+        if self.r#facing == Facing::South && self.r#waterlogged == true {
+            return 23206;
+        }
+        if self.r#facing == Facing::South && self.r#waterlogged == false {
+            return 23207;
+        }
+        if self.r#facing == Facing::East && self.r#waterlogged == false {
+            return 23205;
+        }
+        if self.r#waterlogged == true && self.r#facing == Facing::North {
+            return 23202;
+        }
+        if self.r#facing == Facing::West && self.r#waterlogged == true {
+            return 23208;
+        }
+        if self.r#waterlogged == false && self.r#facing == Facing::West {
+            return 23209;
+        }
+        if self.r#facing == Facing::Up && self.r#waterlogged == true {
+            return 23210;
+        }
+        if self.r#facing == Facing::Down && self.r#waterlogged == true {
+            return 23212;
+        }
+        if self.r#waterlogged == false && self.r#facing == Facing::Up {
+            return 23211;
+        }
+        if self.r#facing == Facing::North && self.r#waterlogged == false {
+            return 23203;
+        }
         panic!("Invalid block state")
     }
 
@@ -110,4 +133,3 @@ impl BlockState for AmethystCluster {
         return None;
     }
 }
-

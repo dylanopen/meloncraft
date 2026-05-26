@@ -1,10 +1,10 @@
 //! Module for [`MeloncraftPlayerStatePlugin`].
 
-use bevy::app::{App, Plugin, Update};
-use crate::health;
-use crate::movement;
 use crate::client_action;
 use crate::gamemode;
+use crate::health;
+use crate::movement;
+use bevy::app::{App, Plugin, Update};
 
 pub struct MeloncraftPlayerStatePlugin;
 
@@ -17,19 +17,23 @@ impl Plugin for MeloncraftPlayerStatePlugin {
         app.add_systems(Update, movement::fwd_player_moved);
         app.add_systems(Update, movement::fwd_player_teleport);
 
-        app.add_systems(Update, (
-            client_action::send_client_player_action,
-            client_action::send_add_player,
-        ));
+        app.add_systems(
+            Update,
+            (
+                client_action::send_client_player_action,
+                client_action::send_add_player,
+            ),
+        );
 
-        app.add_systems(Update, (
+        app.add_systems(
+            Update,
+            (
                 gamemode::insert_gamemode,
                 gamemode::send_gamemode_info_update,
                 gamemode::send_gamemode_game_event,
-        ));
+            ),
+        );
 
-        app.add_systems(Update, (
-                health::insert_health,
-        ));
+        app.add_systems(Update, (health::insert_health,));
     }
 }

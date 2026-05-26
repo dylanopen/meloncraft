@@ -5,7 +5,6 @@ pub struct EndRod {
     pub r#facing: Facing,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -18,12 +17,24 @@ pub enum Facing {
 
 impl BlockState for EndRod {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::South { return 14436; }
-        if self.r#facing == Facing::West { return 14437; }
-        if self.r#facing == Facing::Up { return 14438; }
-        if self.r#facing == Facing::Down { return 14439; }
-        if self.r#facing == Facing::East { return 14435; }
-        if self.r#facing == Facing::North { return 14434; }
+        if self.r#facing == Facing::South {
+            return 14436;
+        }
+        if self.r#facing == Facing::West {
+            return 14437;
+        }
+        if self.r#facing == Facing::Up {
+            return 14438;
+        }
+        if self.r#facing == Facing::Down {
+            return 14439;
+        }
+        if self.r#facing == Facing::East {
+            return 14435;
+        }
+        if self.r#facing == Facing::North {
+            return 14434;
+        }
         panic!("Invalid block state")
     }
 
@@ -61,4 +72,3 @@ impl BlockState for EndRod {
         return None;
     }
 }
-

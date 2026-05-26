@@ -5,7 +5,6 @@ pub struct Sunflower {
     pub r#half: Half,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Half {
     Upper,
@@ -14,8 +13,12 @@ pub enum Half {
 
 impl BlockState for Sunflower {
     fn to_id(&self) -> i32 {
-        if self.r#half == Half::Lower { return 12714; }
-        if self.r#half == Half::Upper { return 12713; }
+        if self.r#half == Half::Lower {
+            return 12714;
+        }
+        if self.r#half == Half::Upper {
+            return 12713;
+        }
         panic!("Invalid block state")
     }
 
@@ -33,4 +36,3 @@ impl BlockState for Sunflower {
         return None;
     }
 }
-

@@ -3,8 +3,8 @@
 
 pub mod handshaken;
 
-use bevy::app::Plugin;
 use bevy::app::App;
+use bevy::app::Plugin;
 
 use self::handshaken::LoginHandshaken;
 use self::handshaken::StatusHandshaken;

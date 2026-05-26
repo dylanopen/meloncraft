@@ -8,7 +8,6 @@ pub struct SoulCampfire {
     pub signal_fire: bool,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -19,38 +18,230 @@ pub enum Facing {
 
 impl BlockState for SoulCampfire {
     fn to_id(&self) -> i32 {
-        if self.r#signal_fire == true && self.r#waterlogged == true && self.r#facing == Facing::South && self.r#lit == false { return 20719; }
-        if self.r#waterlogged == false && self.r#signal_fire == true && self.r#facing == Facing::East && self.r#lit == true { return 20732; }
-        if self.r#lit == false && self.r#waterlogged == false && self.r#signal_fire == false && self.r#facing == Facing::East { return 20738; }
-        if self.r#signal_fire == false && self.r#lit == true && self.r#facing == Facing::North && self.r#waterlogged == false { return 20710; }
-        if self.r#facing == Facing::North && self.r#signal_fire == false && self.r#waterlogged == true && self.r#lit == false { return 20713; }
-        if self.r#facing == Facing::West && self.r#lit == true && self.r#signal_fire == true && self.r#waterlogged == true { return 20723; }
-        if self.r#lit == false && self.r#waterlogged == false && self.r#facing == Facing::East && self.r#signal_fire == true { return 20736; }
-        if self.r#facing == Facing::North && self.r#signal_fire == true && self.r#lit == true && self.r#waterlogged == true { return 20707; }
-        if self.r#lit == false && self.r#waterlogged == true && self.r#facing == Facing::West && self.r#signal_fire == true { return 20727; }
-        if self.r#lit == true && self.r#facing == Facing::South && self.r#signal_fire == false && self.r#waterlogged == false { return 20718; }
-        if self.r#signal_fire == true && self.r#facing == Facing::North && self.r#lit == false && self.r#waterlogged == true { return 20711; }
-        if self.r#lit == true && self.r#facing == Facing::West && self.r#signal_fire == false && self.r#waterlogged == true { return 20725; }
-        if self.r#facing == Facing::North && self.r#lit == false && self.r#signal_fire == true && self.r#waterlogged == false { return 20712; }
-        if self.r#waterlogged == true && self.r#facing == Facing::East && self.r#signal_fire == true && self.r#lit == false { return 20735; }
-        if self.r#waterlogged == true && self.r#lit == true && self.r#facing == Facing::East && self.r#signal_fire == false { return 20733; }
-        if self.r#waterlogged == true && self.r#lit == false && self.r#signal_fire == false && self.r#facing == Facing::South { return 20721; }
-        if self.r#waterlogged == true && self.r#facing == Facing::South && self.r#lit == true && self.r#signal_fire == true { return 20715; }
-        if self.r#facing == Facing::North && self.r#signal_fire == true && self.r#lit == true && self.r#waterlogged == false { return 20708; }
-        if self.r#lit == true && self.r#signal_fire == false && self.r#facing == Facing::North && self.r#waterlogged == true { return 20709; }
-        if self.r#signal_fire == true && self.r#facing == Facing::East && self.r#lit == true && self.r#waterlogged == true { return 20731; }
-        if self.r#lit == false && self.r#facing == Facing::West && self.r#waterlogged == true && self.r#signal_fire == false { return 20729; }
-        if self.r#facing == Facing::South && self.r#waterlogged == true && self.r#signal_fire == false && self.r#lit == true { return 20717; }
-        if self.r#waterlogged == false && self.r#signal_fire == false && self.r#lit == false && self.r#facing == Facing::West { return 20730; }
-        if self.r#facing == Facing::West && self.r#lit == true && self.r#waterlogged == false && self.r#signal_fire == false { return 20726; }
-        if self.r#lit == true && self.r#facing == Facing::South && self.r#waterlogged == false && self.r#signal_fire == true { return 20716; }
-        if self.r#facing == Facing::East && self.r#lit == false && self.r#waterlogged == true && self.r#signal_fire == false { return 20737; }
-        if self.r#waterlogged == false && self.r#facing == Facing::West && self.r#lit == false && self.r#signal_fire == true { return 20728; }
-        if self.r#lit == false && self.r#facing == Facing::South && self.r#signal_fire == true && self.r#waterlogged == false { return 20720; }
-        if self.r#lit == false && self.r#waterlogged == false && self.r#signal_fire == false && self.r#facing == Facing::North { return 20714; }
-        if self.r#facing == Facing::East && self.r#lit == true && self.r#signal_fire == false && self.r#waterlogged == false { return 20734; }
-        if self.r#signal_fire == true && self.r#waterlogged == false && self.r#lit == true && self.r#facing == Facing::West { return 20724; }
-        if self.r#signal_fire == false && self.r#facing == Facing::South && self.r#waterlogged == false && self.r#lit == false { return 20722; }
+        if self.r#signal_fire == true
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::South
+            && self.r#lit == false
+        {
+            return 20719;
+        }
+        if self.r#waterlogged == false
+            && self.r#signal_fire == true
+            && self.r#facing == Facing::East
+            && self.r#lit == true
+        {
+            return 20732;
+        }
+        if self.r#lit == false
+            && self.r#waterlogged == false
+            && self.r#signal_fire == false
+            && self.r#facing == Facing::East
+        {
+            return 20738;
+        }
+        if self.r#signal_fire == false
+            && self.r#lit == true
+            && self.r#facing == Facing::North
+            && self.r#waterlogged == false
+        {
+            return 20710;
+        }
+        if self.r#facing == Facing::North
+            && self.r#signal_fire == false
+            && self.r#waterlogged == true
+            && self.r#lit == false
+        {
+            return 20713;
+        }
+        if self.r#facing == Facing::West
+            && self.r#lit == true
+            && self.r#signal_fire == true
+            && self.r#waterlogged == true
+        {
+            return 20723;
+        }
+        if self.r#lit == false
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::East
+            && self.r#signal_fire == true
+        {
+            return 20736;
+        }
+        if self.r#facing == Facing::North
+            && self.r#signal_fire == true
+            && self.r#lit == true
+            && self.r#waterlogged == true
+        {
+            return 20707;
+        }
+        if self.r#lit == false
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::West
+            && self.r#signal_fire == true
+        {
+            return 20727;
+        }
+        if self.r#lit == true
+            && self.r#facing == Facing::South
+            && self.r#signal_fire == false
+            && self.r#waterlogged == false
+        {
+            return 20718;
+        }
+        if self.r#signal_fire == true
+            && self.r#facing == Facing::North
+            && self.r#lit == false
+            && self.r#waterlogged == true
+        {
+            return 20711;
+        }
+        if self.r#lit == true
+            && self.r#facing == Facing::West
+            && self.r#signal_fire == false
+            && self.r#waterlogged == true
+        {
+            return 20725;
+        }
+        if self.r#facing == Facing::North
+            && self.r#lit == false
+            && self.r#signal_fire == true
+            && self.r#waterlogged == false
+        {
+            return 20712;
+        }
+        if self.r#waterlogged == true
+            && self.r#facing == Facing::East
+            && self.r#signal_fire == true
+            && self.r#lit == false
+        {
+            return 20735;
+        }
+        if self.r#waterlogged == true
+            && self.r#lit == true
+            && self.r#facing == Facing::East
+            && self.r#signal_fire == false
+        {
+            return 20733;
+        }
+        if self.r#waterlogged == true
+            && self.r#lit == false
+            && self.r#signal_fire == false
+            && self.r#facing == Facing::South
+        {
+            return 20721;
+        }
+        if self.r#waterlogged == true
+            && self.r#facing == Facing::South
+            && self.r#lit == true
+            && self.r#signal_fire == true
+        {
+            return 20715;
+        }
+        if self.r#facing == Facing::North
+            && self.r#signal_fire == true
+            && self.r#lit == true
+            && self.r#waterlogged == false
+        {
+            return 20708;
+        }
+        if self.r#lit == true
+            && self.r#signal_fire == false
+            && self.r#facing == Facing::North
+            && self.r#waterlogged == true
+        {
+            return 20709;
+        }
+        if self.r#signal_fire == true
+            && self.r#facing == Facing::East
+            && self.r#lit == true
+            && self.r#waterlogged == true
+        {
+            return 20731;
+        }
+        if self.r#lit == false
+            && self.r#facing == Facing::West
+            && self.r#waterlogged == true
+            && self.r#signal_fire == false
+        {
+            return 20729;
+        }
+        if self.r#facing == Facing::South
+            && self.r#waterlogged == true
+            && self.r#signal_fire == false
+            && self.r#lit == true
+        {
+            return 20717;
+        }
+        if self.r#waterlogged == false
+            && self.r#signal_fire == false
+            && self.r#lit == false
+            && self.r#facing == Facing::West
+        {
+            return 20730;
+        }
+        if self.r#facing == Facing::West
+            && self.r#lit == true
+            && self.r#waterlogged == false
+            && self.r#signal_fire == false
+        {
+            return 20726;
+        }
+        if self.r#lit == true
+            && self.r#facing == Facing::South
+            && self.r#waterlogged == false
+            && self.r#signal_fire == true
+        {
+            return 20716;
+        }
+        if self.r#facing == Facing::East
+            && self.r#lit == false
+            && self.r#waterlogged == true
+            && self.r#signal_fire == false
+        {
+            return 20737;
+        }
+        if self.r#waterlogged == false
+            && self.r#facing == Facing::West
+            && self.r#lit == false
+            && self.r#signal_fire == true
+        {
+            return 20728;
+        }
+        if self.r#lit == false
+            && self.r#facing == Facing::South
+            && self.r#signal_fire == true
+            && self.r#waterlogged == false
+        {
+            return 20720;
+        }
+        if self.r#lit == false
+            && self.r#waterlogged == false
+            && self.r#signal_fire == false
+            && self.r#facing == Facing::North
+        {
+            return 20714;
+        }
+        if self.r#facing == Facing::East
+            && self.r#lit == true
+            && self.r#signal_fire == false
+            && self.r#waterlogged == false
+        {
+            return 20734;
+        }
+        if self.r#signal_fire == true
+            && self.r#waterlogged == false
+            && self.r#lit == true
+            && self.r#facing == Facing::West
+        {
+            return 20724;
+        }
+        if self.r#signal_fire == false
+            && self.r#facing == Facing::South
+            && self.r#waterlogged == false
+            && self.r#lit == false
+        {
+            return 20722;
+        }
         panic!("Invalid block state")
     }
 
@@ -314,4 +505,3 @@ impl BlockState for SoulCampfire {
         return None;
     }
 }
-

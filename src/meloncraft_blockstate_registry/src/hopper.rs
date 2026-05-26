@@ -6,7 +6,6 @@ pub struct Hopper {
     pub r#facing: Facing,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     Down,
@@ -18,16 +17,36 @@ pub enum Facing {
 
 impl BlockState for Hopper {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::North && self.r#enabled == false { return 11117; }
-        if self.r#enabled == false && self.r#facing == Facing::East { return 11120; }
-        if self.r#enabled == true && self.r#facing == Facing::North { return 11112; }
-        if self.r#enabled == true && self.r#facing == Facing::East { return 11115; }
-        if self.r#facing == Facing::South && self.r#enabled == false { return 11118; }
-        if self.r#enabled == true && self.r#facing == Facing::Down { return 11111; }
-        if self.r#enabled == false && self.r#facing == Facing::Down { return 11116; }
-        if self.r#enabled == true && self.r#facing == Facing::West { return 11114; }
-        if self.r#enabled == false && self.r#facing == Facing::West { return 11119; }
-        if self.r#enabled == true && self.r#facing == Facing::South { return 11113; }
+        if self.r#facing == Facing::North && self.r#enabled == false {
+            return 11117;
+        }
+        if self.r#enabled == false && self.r#facing == Facing::East {
+            return 11120;
+        }
+        if self.r#enabled == true && self.r#facing == Facing::North {
+            return 11112;
+        }
+        if self.r#enabled == true && self.r#facing == Facing::East {
+            return 11115;
+        }
+        if self.r#facing == Facing::South && self.r#enabled == false {
+            return 11118;
+        }
+        if self.r#enabled == true && self.r#facing == Facing::Down {
+            return 11111;
+        }
+        if self.r#enabled == false && self.r#facing == Facing::Down {
+            return 11116;
+        }
+        if self.r#enabled == true && self.r#facing == Facing::West {
+            return 11114;
+        }
+        if self.r#enabled == false && self.r#facing == Facing::West {
+            return 11119;
+        }
+        if self.r#enabled == true && self.r#facing == Facing::South {
+            return 11113;
+        }
         panic!("Invalid block state")
     }
 
@@ -95,4 +114,3 @@ impl BlockState for Hopper {
         return None;
     }
 }
-

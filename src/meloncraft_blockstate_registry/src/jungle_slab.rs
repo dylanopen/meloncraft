@@ -6,7 +6,6 @@ pub struct JungleSlab {
     pub r#type: Type,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Type {
     Top,
@@ -16,12 +15,24 @@ pub enum Type {
 
 impl BlockState for JungleSlab {
     fn to_id(&self) -> i32 {
-        if self.r#type == Type::Double && self.r#waterlogged == false { return 13151; }
-        if self.r#type == Type::Top && self.r#waterlogged == true { return 13146; }
-        if self.r#type == Type::Bottom && self.r#waterlogged == true { return 13148; }
-        if self.r#type == Type::Top && self.r#waterlogged == false { return 13147; }
-        if self.r#type == Type::Bottom && self.r#waterlogged == false { return 13149; }
-        if self.r#type == Type::Double && self.r#waterlogged == true { return 13150; }
+        if self.r#type == Type::Double && self.r#waterlogged == false {
+            return 13151;
+        }
+        if self.r#type == Type::Top && self.r#waterlogged == true {
+            return 13146;
+        }
+        if self.r#type == Type::Bottom && self.r#waterlogged == true {
+            return 13148;
+        }
+        if self.r#type == Type::Top && self.r#waterlogged == false {
+            return 13147;
+        }
+        if self.r#type == Type::Bottom && self.r#waterlogged == false {
+            return 13149;
+        }
+        if self.r#type == Type::Double && self.r#waterlogged == true {
+            return 13150;
+        }
         panic!("Invalid block state")
     }
 
@@ -65,4 +76,3 @@ impl BlockState for JungleSlab {
         return None;
     }
 }
-

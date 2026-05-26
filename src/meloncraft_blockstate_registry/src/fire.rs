@@ -10,521 +10,4616 @@ pub struct Fire {
     pub north: bool,
 }
 
-
 impl BlockState for Fire {
     fn to_id(&self) -> i32 {
-        if self.r#up == true && self.r#west == true && self.r#north == false && self.r#age == 7 && self.r#east == true && self.r#south == true { return 3406; }
-        if self.r#north == false && self.r#east == false && self.r#south == false && self.r#age == 2 && self.r#up == true && self.r#west == true { return 3266; }
-        if self.r#west == true && self.r#east == true && self.r#north == false && self.r#age == 14 && self.r#south == false && self.r#up == false { return 3636; }
-        if self.r#age == 4 && self.r#south == true && self.r#east == false && self.r#west == true && self.r#up == true && self.r#north == true { return 3318; }
-        if self.r#east == false && self.r#south == false && self.r#north == true && self.r#up == false && self.r#west == false && self.r#age == 9 { return 3485; }
-        if self.r#west == true && self.r#north == true && self.r#age == 13 && self.r#east == false && self.r#south == true && self.r#up == true { return 3606; }
-        if self.r#west == true && self.r#age == 6 && self.r#south == true && self.r#north == false && self.r#up == false && self.r#east == true { return 3376; }
-        if self.r#east == true && self.r#south == true && self.r#age == 14 && self.r#up == false && self.r#north == false && self.r#west == true { return 3632; }
-        if self.r#south == true && self.r#west == false && self.r#north == true && self.r#age == 14 && self.r#up == false && self.r#east == false { return 3641; }
-        if self.r#south == false && self.r#west == false && self.r#up == true && self.r#north == true && self.r#age == 11 && self.r#east == false { return 3547; }
-        if self.r#age == 15 && self.r#south == true && self.r#east == true && self.r#up == true && self.r#west == false && self.r#north == true { return 3655; }
-        if self.r#age == 0 && self.r#north == true && self.r#south == false && self.r#up == true && self.r#west == false && self.r#east == false { return 3195; }
-        if self.r#age == 1 && self.r#east == true && self.r#north == false && self.r#south == false && self.r#west == false && self.r#up == false { return 3221; }
-        if self.r#south == false && self.r#up == false && self.r#north == true && self.r#west == false && self.r#east == true && self.r#age == 1 { return 3213; }
-        if self.r#west == true && self.r#north == true && self.r#east == true && self.r#up == false && self.r#age == 4 && self.r#south == true { return 3304; }
-        if self.r#age == 10 && self.r#north == false && self.r#west == false && self.r#south == true && self.r#east == true && self.r#up == true { return 3503; }
-        if self.r#north == true && self.r#up == true && self.r#east == false && self.r#age == 13 && self.r#west == false && self.r#south == true { return 3607; }
-        if self.r#age == 1 && self.r#up == false && self.r#south == true && self.r#east == false && self.r#north == false && self.r#west == false { return 3233; }
-        if self.r#east == true && self.r#south == true && self.r#up == true && self.r#west == false && self.r#age == 11 && self.r#north == true { return 3527; }
-        if self.r#south == true && self.r#age == 10 && self.r#north == true && self.r#up == true && self.r#east == false && self.r#west == false { return 3511; }
-        if self.r#west == true && self.r#east == false && self.r#north == true && self.r#up == false && self.r#age == 15 && self.r#south == false { return 3676; }
-        if self.r#age == 3 && self.r#east == true && self.r#up == false && self.r#west == true && self.r#south == false && self.r#north == true { return 3276; }
-        if self.r#north == false && self.r#age == 14 && self.r#east == true && self.r#south == false && self.r#up == true && self.r#west == true { return 3634; }
-        if self.r#west == true && self.r#up == false && self.r#east == false && self.r#south == true && self.r#age == 0 && self.r#north == true { return 3192; }
-        if self.r#age == 5 && self.r#east == false && self.r#north == true && self.r#south == true && self.r#west == true && self.r#up == false { return 3352; }
-        if self.r#south == false && self.r#up == false && self.r#north == false && self.r#west == false && self.r#east == true && self.r#age == 12 { return 3573; }
-        if self.r#up == false && self.r#west == true && self.r#age == 15 && self.r#north == false && self.r#east == false && self.r#south == false { return 3684; }
-        if self.r#age == 3 && self.r#east == false && self.r#up == true && self.r#west == false && self.r#north == false && self.r#south == true { return 3295; }
-        if self.r#up == true && self.r#west == false && self.r#age == 12 && self.r#north == false && self.r#south == false && self.r#east == false { return 3587; }
-        if self.r#north == false && self.r#south == false && self.r#age == 15 && self.r#east == true && self.r#up == true && self.r#west == true { return 3666; }
-        if self.r#up == true && self.r#age == 0 && self.r#west == false && self.r#east == true && self.r#north == true && self.r#south == true { return 3175; }
-        if self.r#north == true && self.r#age == 10 && self.r#west == false && self.r#south == false && self.r#east == true && self.r#up == false { return 3501; }
-        if self.r#north == false && self.r#west == true && self.r#east == true && self.r#south == false && self.r#age == 12 && self.r#up == false { return 3572; }
-        if self.r#up == true && self.r#east == false && self.r#north == false && self.r#south == true && self.r#west == true && self.r#age == 0 { return 3198; }
-        if self.r#east == false && self.r#up == false && self.r#south == true && self.r#north == true && self.r#age == 6 && self.r#west == false { return 3385; }
-        if self.r#east == false && self.r#south == true && self.r#west == true && self.r#north == false && self.r#age == 13 && self.r#up == false { return 3616; }
-        if self.r#age == 1 && self.r#east == false && self.r#north == false && self.r#up == false && self.r#south == false && self.r#west == true { return 3236; }
-        if self.r#age == 12 && self.r#north == true && self.r#south == false && self.r#west == true && self.r#up == true && self.r#east == true { return 3562; }
-        if self.r#age == 5 && self.r#up == false && self.r#south == false && self.r#west == true && self.r#north == false && self.r#east == false { return 3364; }
-        if self.r#south == true && self.r#age == 8 && self.r#east == true && self.r#north == true && self.r#up == true && self.r#west == false { return 3431; }
-        if self.r#east == true && self.r#south == true && self.r#west == true && self.r#age == 11 && self.r#north == false && self.r#up == false { return 3536; }
-        if self.r#west == true && self.r#up == true && self.r#north == false && self.r#age == 3 && self.r#east == true && self.r#south == false { return 3282; }
-        if self.r#west == true && self.r#north == true && self.r#age == 14 && self.r#east == true && self.r#up == true && self.r#south == true { return 3622; }
-        if self.r#east == true && self.r#age == 2 && self.r#up == true && self.r#north == true && self.r#south == true && self.r#west == true { return 3238; }
-        if self.r#west == false && self.r#east == true && self.r#up == false && self.r#north == true && self.r#south == false && self.r#age == 7 { return 3405; }
-        if self.r#north == true && self.r#up == false && self.r#south == true && self.r#east == true && self.r#age == 1 && self.r#west == true { return 3208; }
-        if self.r#west == true && self.r#up == true && self.r#age == 4 && self.r#east == false && self.r#south == false && self.r#north == false { return 3330; }
-        if self.r#east == true && self.r#up == true && self.r#west == false && self.r#south == true && self.r#age == 6 && self.r#north == true { return 3367; }
-        if self.r#east == false && self.r#up == false && self.r#west == true && self.r#age == 11 && self.r#south == true && self.r#north == false { return 3552; }
-        if self.r#age == 13 && self.r#north == true && self.r#up == false && self.r#south == false && self.r#west == false && self.r#east == false { return 3613; }
-        if self.r#east == true && self.r#north == true && self.r#west == false && self.r#age == 6 && self.r#south == true && self.r#up == false { return 3369; }
-        if self.r#age == 2 && self.r#east == false && self.r#south == false && self.r#up == true && self.r#north == true && self.r#west == true { return 3258; }
-        if self.r#north == true && self.r#age == 10 && self.r#east == false && self.r#south == false && self.r#up == true && self.r#west == false { return 3515; }
-        if self.r#south == true && self.r#up == false && self.r#west == true && self.r#north == false && self.r#age == 10 && self.r#east == false { return 3520; }
-        if self.r#south == true && self.r#west == false && self.r#east == false && self.r#up == false && self.r#north == false && self.r#age == 11 { return 3553; }
-        if self.r#north == false && self.r#east == true && self.r#age == 11 && self.r#south == false && self.r#up == false && self.r#west == false { return 3541; }
-        if self.r#west == false && self.r#up == true && self.r#north == false && self.r#age == 15 && self.r#east == false && self.r#south == false { return 3683; }
-        if self.r#up == true && self.r#age == 4 && self.r#east == true && self.r#west == false && self.r#north == false && self.r#south == true { return 3311; }
-        if self.r#up == false && self.r#age == 2 && self.r#west == false && self.r#east == true && self.r#north == false && self.r#south == true { return 3249; }
-        if self.r#north == true && self.r#up == true && self.r#west == false && self.r#east == false && self.r#age == 7 && self.r#south == false { return 3419; }
-        if self.r#age == 5 && self.r#north == true && self.r#west == true && self.r#up == true && self.r#east == true && self.r#south == true { return 3334; }
-        if self.r#age == 11 && self.r#north == true && self.r#south == false && self.r#up == true && self.r#east == true && self.r#west == true { return 3530; }
-        if self.r#north == true && self.r#up == false && self.r#west == false && self.r#east == true && self.r#south == false && self.r#age == 12 { return 3565; }
-        if self.r#west == true && self.r#age == 1 && self.r#east == true && self.r#north == false && self.r#up == true && self.r#south == true { return 3214; }
-        if self.r#west == false && self.r#north == false && self.r#up == false && self.r#east == true && self.r#age == 1 && self.r#south == true { return 3217; }
-        if self.r#south == false && self.r#north == false && self.r#up == true && self.r#west == false && self.r#age == 3 && self.r#east == true { return 3283; }
-        if self.r#up == false && self.r#west == true && self.r#east == true && self.r#age == 13 && self.r#north == true && self.r#south == false { return 3596; }
-        if self.r#west == false && self.r#south == true && self.r#age == 13 && self.r#east == false && self.r#north == false && self.r#up == true { return 3615; }
-        if self.r#west == false && self.r#age == 10 && self.r#east == false && self.r#south == false && self.r#north == false && self.r#up == false { return 3525; }
-        if self.r#north == true && self.r#age == 5 && self.r#east == false && self.r#west == true && self.r#up == true && self.r#south == true { return 3350; }
-        if self.r#south == false && self.r#age == 12 && self.r#east == false && self.r#west == false && self.r#north == true && self.r#up == false { return 3581; }
-        if self.r#south == false && self.r#north == true && self.r#east == false && self.r#up == false && self.r#age == 6 && self.r#west == false { return 3389; }
-        if self.r#east == true && self.r#up == false && self.r#age == 1 && self.r#south == true && self.r#west == true && self.r#north == false { return 3216; }
-        if self.r#up == false && self.r#east == true && self.r#west == true && self.r#south == true && self.r#north == false && self.r#age == 5 { return 3344; }
-        if self.r#age == 11 && self.r#east == true && self.r#up == true && self.r#south == true && self.r#west == true && self.r#north == false { return 3534; }
-        if self.r#age == 1 && self.r#up == false && self.r#north == true && self.r#south == true && self.r#west == false && self.r#east == true { return 3209; }
-        if self.r#south == false && self.r#up == false && self.r#east == true && self.r#west == true && self.r#age == 1 && self.r#north == false { return 3220; }
-        if self.r#age == 4 && self.r#west == true && self.r#east == false && self.r#up == false && self.r#south == false && self.r#north == false { return 3332; }
-        if self.r#south == true && self.r#up == false && self.r#north == false && self.r#east == true && self.r#west == true && self.r#age == 13 { return 3600; }
-        if self.r#north == false && self.r#east == true && self.r#age == 9 && self.r#west == true && self.r#up == false && self.r#south == true { return 3472; }
-        if self.r#age == 5 && self.r#east == true && self.r#south == false && self.r#up == false && self.r#west == true && self.r#north == false { return 3348; }
-        if self.r#east == true && self.r#up == true && self.r#north == true && self.r#west == true && self.r#south == true && self.r#age == 13 { return 3590; }
-        if self.r#west == false && self.r#north == true && self.r#up == false && self.r#age == 15 && self.r#east == true && self.r#south == true { return 3657; }
-        if self.r#age == 9 && self.r#east == false && self.r#south == true && self.r#up == true && self.r#west == false && self.r#north == true { return 3479; }
-        if self.r#north == true && self.r#up == true && self.r#south == false && self.r#west == false && self.r#east == true && self.r#age == 9 { return 3467; }
-        if self.r#up == false && self.r#age == 13 && self.r#north == false && self.r#south == false && self.r#east == true && self.r#west == false { return 3605; }
-        if self.r#up == false && self.r#east == false && self.r#age == 5 && self.r#south == true && self.r#north == false && self.r#west == false { return 3361; }
-        if self.r#age == 13 && self.r#north == true && self.r#up == false && self.r#south == true && self.r#west == true && self.r#east == true { return 3592; }
-        if self.r#south == false && self.r#north == true && self.r#up == false && self.r#east == false && self.r#west == false && self.r#age == 5 { return 3357; }
-        if self.r#up == true && self.r#age == 8 && self.r#east == false && self.r#south == false && self.r#north == false && self.r#west == false { return 3459; }
-        if self.r#east == false && self.r#north == false && self.r#south == true && self.r#up == true && self.r#age == 3 && self.r#west == true { return 3294; }
-        if self.r#age == 2 && self.r#west == false && self.r#up == false && self.r#east == false && self.r#north == true && self.r#south == false { return 3261; }
-        if self.r#north == false && self.r#age == 2 && self.r#east == false && self.r#south == true && self.r#up == false && self.r#west == false { return 3265; }
-        if self.r#north == true && self.r#age == 4 && self.r#south == true && self.r#up == false && self.r#west == true && self.r#east == false { return 3320; }
-        if self.r#south == false && self.r#east == false && self.r#up == true && self.r#age == 14 && self.r#north == false && self.r#west == false { return 3651; }
-        if self.r#south == false && self.r#up == true && self.r#east == true && self.r#west == false && self.r#north == true && self.r#age == 0 { return 3179; }
-        if self.r#up == false && self.r#age == 4 && self.r#south == false && self.r#west == true && self.r#north == true && self.r#east == false { return 3324; }
-        if self.r#south == false && self.r#west == false && self.r#east == true && self.r#age == 5 && self.r#up == true && self.r#north == true { return 3339; }
-        if self.r#north == true && self.r#east == true && self.r#age == 9 && self.r#south == false && self.r#up == false && self.r#west == true { return 3468; }
-        if self.r#south == true && self.r#up == true && self.r#west == true && self.r#north == false && self.r#age == 4 && self.r#east == false { return 3326; }
-        if self.r#west == true && self.r#east == true && self.r#north == false && self.r#south == false && self.r#up == true && self.r#age == 1 { return 3218; }
-        if self.r#south == true && self.r#north == true && self.r#age == 5 && self.r#up == true && self.r#east == true && self.r#west == false { return 3335; }
-        if self.r#up == false && self.r#south == false && self.r#east == true && self.r#north == false && self.r#west == false && self.r#age == 6 { return 3381; }
-        if self.r#west == true && self.r#east == false && self.r#south == false && self.r#up == true && self.r#north == false && self.r#age == 8 { return 3458; }
-        if self.r#west == true && self.r#north == true && self.r#south == false && self.r#age == 4 && self.r#up == false && self.r#east == true { return 3308; }
-        if self.r#north == true && self.r#age == 7 && self.r#south == true && self.r#up == false && self.r#west == true && self.r#east == true { return 3400; }
-        if self.r#age == 12 && self.r#west == false && self.r#east == false && self.r#north == true && self.r#south == true && self.r#up == true { return 3575; }
-        if self.r#age == 2 && self.r#west == false && self.r#south == false && self.r#up == false && self.r#east == true && self.r#north == true { return 3245; }
-        if self.r#south == false && self.r#up == false && self.r#west == true && self.r#north == false && self.r#age == 7 && self.r#east == true { return 3412; }
-        if self.r#north == false && self.r#east == true && self.r#south == false && self.r#up == true && self.r#west == true && self.r#age == 11 { return 3538; }
-        if self.r#up == false && self.r#age == 15 && self.r#west == true && self.r#east == true && self.r#south == true && self.r#north == false { return 3664; }
-        if self.r#up == false && self.r#west == true && self.r#north == true && self.r#age == 15 && self.r#east == false && self.r#south == true { return 3672; }
-        if self.r#east == false && self.r#south == false && self.r#up == true && self.r#west == true && self.r#north == true && self.r#age == 3 { return 3290; }
-        if self.r#north == false && self.r#south == false && self.r#east == false && self.r#age == 2 && self.r#up == false && self.r#west == false { return 3269; }
-        if self.r#age == 0 && self.r#west == false && self.r#north == true && self.r#south == true && self.r#east == true && self.r#up == false { return 3177; }
-        if self.r#west == true && self.r#north == true && self.r#east == true && self.r#age == 2 && self.r#south == false && self.r#up == true { return 3242; }
-        if self.r#east == false && self.r#up == true && self.r#west == false && self.r#age == 0 && self.r#north == false && self.r#south == false { return 3203; }
-        if self.r#east == true && self.r#up == true && self.r#west == true && self.r#age == 10 && self.r#north == false && self.r#south == true { return 3502; }
-        if self.r#north == false && self.r#up == false && self.r#west == false && self.r#east == true && self.r#south == true && self.r#age == 7 { return 3409; }
-        if self.r#east == true && self.r#up == true && self.r#north == true && self.r#south == true && self.r#age == 14 && self.r#west == false { return 3623; }
-        if self.r#east == true && self.r#age == 15 && self.r#south == false && self.r#west == false && self.r#up == false && self.r#north == true { return 3661; }
-        if self.r#north == false && self.r#west == false && self.r#east == true && self.r#age == 11 && self.r#south == true && self.r#up == true { return 3535; }
-        if self.r#age == 7 && self.r#west == true && self.r#south == false && self.r#east == true && self.r#north == true && self.r#up == true { return 3402; }
-        if self.r#age == 10 && self.r#up == false && self.r#east == true && self.r#west == false && self.r#north == true && self.r#south == true { return 3497; }
-        if self.r#north == true && self.r#age == 14 && self.r#west == true && self.r#east == false && self.r#south == true && self.r#up == false { return 3640; }
-        if self.r#south == false && self.r#north == false && self.r#east == false && self.r#west == false && self.r#age == 14 && self.r#up == false { return 3653; }
-        if self.r#age == 4 && self.r#south == true && self.r#up == false && self.r#west == false && self.r#east == false && self.r#north == false { return 3329; }
-        if self.r#up == false && self.r#north == true && self.r#east == false && self.r#south == true && self.r#age == 1 && self.r#west == false { return 3225; }
-        if self.r#up == true && self.r#west == true && self.r#age == 8 && self.r#south == false && self.r#north == true && self.r#east == true { return 3434; }
-        if self.r#west == false && self.r#south == false && self.r#north == false && self.r#east == true && self.r#age == 4 && self.r#up == false { return 3317; }
-        if self.r#north == false && self.r#age == 11 && self.r#up == true && self.r#south == false && self.r#east == false && self.r#west == false { return 3555; }
-        if self.r#north == false && self.r#west == false && self.r#south == true && self.r#age == 9 && self.r#up == true && self.r#east == false { return 3487; }
-        if self.r#east == false && self.r#age == 1 && self.r#north == true && self.r#south == true && self.r#west == true && self.r#up == true { return 3222; }
-        if self.r#south == false && self.r#up == false && self.r#west == true && self.r#age == 2 && self.r#east == true && self.r#north == true { return 3244; }
-        if self.r#south == true && self.r#north == false && self.r#west == true && self.r#age == 3 && self.r#up == true && self.r#east == true { return 3278; }
-        if self.r#east == false && self.r#west == false && self.r#age == 9 && self.r#up == false && self.r#south == true && self.r#north == true { return 3481; }
-        if self.r#south == false && self.r#north == true && self.r#east == false && self.r#age == 4 && self.r#up == false && self.r#west == false { return 3325; }
-        if self.r#north == true && self.r#south == false && self.r#up == false && self.r#east == true && self.r#age == 7 && self.r#west == true { return 3404; }
-        if self.r#north == true && self.r#east == true && self.r#up == false && self.r#age == 14 && self.r#south == false && self.r#west == true { return 3628; }
-        if self.r#east == true && self.r#west == false && self.r#south == true && self.r#up == true && self.r#age == 14 && self.r#north == false { return 3631; }
-        if self.r#up == false && self.r#east == true && self.r#age == 3 && self.r#west == true && self.r#north == true && self.r#south == true { return 3272; }
-        if self.r#age == 7 && self.r#north == true && self.r#south == true && self.r#west == true && self.r#up == true && self.r#east == false { return 3414; }
-        if self.r#age == 13 && self.r#east == false && self.r#north == true && self.r#west == false && self.r#south == false && self.r#up == true { return 3611; }
-        if self.r#up == true && self.r#east == false && self.r#west == false && self.r#age == 2 && self.r#north == false && self.r#south == true { return 3263; }
-        if self.r#age == 15 && self.r#south == true && self.r#up == false && self.r#north == false && self.r#east == false && self.r#west == true { return 3680; }
-        if self.r#north == true && self.r#up == false && self.r#west == false && self.r#age == 8 && self.r#east == true && self.r#south == false { return 3437; }
-        if self.r#east == false && self.r#west == false && self.r#up == false && self.r#north == false && self.r#age == 6 && self.r#south == true { return 3393; }
-        if self.r#north == true && self.r#age == 15 && self.r#south == true && self.r#up == false && self.r#west == true && self.r#east == true { return 3656; }
-        if self.r#west == true && self.r#north == true && self.r#age == 6 && self.r#east == false && self.r#south == true && self.r#up == true { return 3382; }
-        if self.r#east == false && self.r#west == false && self.r#south == true && self.r#north == true && self.r#up == true && self.r#age == 5 { return 3351; }
-        if self.r#west == true && self.r#east == false && self.r#up == true && self.r#north == false && self.r#age == 15 && self.r#south == false { return 3682; }
-        if self.r#south == false && self.r#up == false && self.r#west == true && self.r#east == false && self.r#age == 5 && self.r#north == true { return 3356; }
-        if self.r#up == false && self.r#north == true && self.r#west == false && self.r#age == 5 && self.r#east == true && self.r#south == true { return 3337; }
-        if self.r#west == false && self.r#north == true && self.r#age == 13 && self.r#south == true && self.r#up == false && self.r#east == false { return 3609; }
-        if self.r#up == false && self.r#west == true && self.r#age == 14 && self.r#south == true && self.r#north == false && self.r#east == false { return 3648; }
-        if self.r#west == false && self.r#north == true && self.r#up == true && self.r#east == true && self.r#south == true && self.r#age == 9 { return 3463; }
-        if self.r#east == false && self.r#up == true && self.r#age == 6 && self.r#west == true && self.r#south == true && self.r#north == false { return 3390; }
-        if self.r#up == false && self.r#age == 0 && self.r#west == false && self.r#east == false && self.r#south == true && self.r#north == false { return 3201; }
-        if self.r#south == true && self.r#north == false && self.r#age == 14 && self.r#west == true && self.r#up == true && self.r#east == false { return 3646; }
-        if self.r#south == true && self.r#up == true && self.r#east == false && self.r#north == true && self.r#age == 12 && self.r#west == true { return 3574; }
-        if self.r#age == 5 && self.r#south == false && self.r#up == false && self.r#west == false && self.r#east == false && self.r#north == false { return 3365; }
-        if self.r#west == true && self.r#up == false && self.r#east == false && self.r#age == 2 && self.r#north == true && self.r#south == false { return 3260; }
-        if self.r#west == true && self.r#north == true && self.r#south == false && self.r#age == 14 && self.r#up == true && self.r#east == false { return 3642; }
-        if self.r#age == 12 && self.r#east == false && self.r#up == true && self.r#north == false && self.r#west == false && self.r#south == true { return 3583; }
-        if self.r#up == false && self.r#south == true && self.r#west == false && self.r#age == 12 && self.r#east == false && self.r#north == true { return 3577; }
-        if self.r#east == false && self.r#up == false && self.r#age == 10 && self.r#north == true && self.r#west == false && self.r#south == false { return 3517; }
-        if self.r#east == true && self.r#age == 0 && self.r#north == true && self.r#up == false && self.r#west == true && self.r#south == false { return 3180; }
-        if self.r#up == true && self.r#south == true && self.r#west == false && self.r#east == true && self.r#age == 7 && self.r#north == true { return 3399; }
-        if self.r#north == false && self.r#west == true && self.r#east == false && self.r#age == 12 && self.r#south == true && self.r#up == true { return 3582; }
-        if self.r#age == 15 && self.r#east == true && self.r#south == false && self.r#west == false && self.r#up == true && self.r#north == true { return 3659; }
-        if self.r#east == false && self.r#age == 9 && self.r#north == true && self.r#up == true && self.r#west == false && self.r#south == false { return 3483; }
-        if self.r#west == false && self.r#age == 12 && self.r#south == false && self.r#north == false && self.r#east == false && self.r#up == false { return 3589; }
-        if self.r#age == 6 && self.r#up == true && self.r#west == false && self.r#east == false && self.r#north == false && self.r#south == true { return 3391; }
-        if self.r#south == true && self.r#up == false && self.r#age == 5 && self.r#east == false && self.r#north == false && self.r#west == true { return 3360; }
-        if self.r#west == false && self.r#age == 11 && self.r#east == true && self.r#south == true && self.r#up == false && self.r#north == true { return 3529; }
-        if self.r#west == false && self.r#age == 13 && self.r#north == false && self.r#up == true && self.r#east == false && self.r#south == false { return 3619; }
-        if self.r#north == true && self.r#south == false && self.r#up == true && self.r#age == 14 && self.r#west == true && self.r#east == true { return 3626; }
-        if self.r#south == false && self.r#age == 8 && self.r#east == true && self.r#west == false && self.r#up == true && self.r#north == false { return 3443; }
-        if self.r#east == false && self.r#age == 2 && self.r#south == true && self.r#up == false && self.r#west == true && self.r#north == true { return 3256; }
-        if self.r#up == false && self.r#west == false && self.r#south == false && self.r#age == 3 && self.r#east == false && self.r#north == false { return 3301; }
-        if self.r#up == true && self.r#west == false && self.r#east == true && self.r#age == 5 && self.r#north == false && self.r#south == false { return 3347; }
-        if self.r#age == 9 && self.r#north == false && self.r#west == true && self.r#south == false && self.r#up == false && self.r#east == false { return 3492; }
-        if self.r#west == false && self.r#up == true && self.r#age == 2 && self.r#east == true && self.r#north == false && self.r#south == false { return 3251; }
-        if self.r#up == true && self.r#north == true && self.r#south == true && self.r#west == true && self.r#east == true && self.r#age == 0 { return 3174; }
-        if self.r#north == false && self.r#west == false && self.r#up == true && self.r#age == 10 && self.r#east == false && self.r#south == true { return 3519; }
-        if self.r#east == false && self.r#west == false && self.r#north == false && self.r#age == 10 && self.r#south == false && self.r#up == true { return 3523; }
-        if self.r#age == 0 && self.r#south == true && self.r#east == false && self.r#up == true && self.r#west == false && self.r#north == true { return 3191; }
-        if self.r#east == false && self.r#age == 0 && self.r#south == true && self.r#up == true && self.r#west == false && self.r#north == false { return 3199; }
-        if self.r#south == false && self.r#east == false && self.r#age == 11 && self.r#west == true && self.r#up == false && self.r#north == true { return 3548; }
-        if self.r#age == 2 && self.r#west == false && self.r#north == true && self.r#east == true && self.r#up == true && self.r#south == false { return 3243; }
-        if self.r#north == true && self.r#east == true && self.r#up == true && self.r#south == true && self.r#west == false && self.r#age == 1 { return 3207; }
-        if self.r#age == 0 && self.r#east == false && self.r#north == true && self.r#south == false && self.r#up == false && self.r#west == true { return 3196; }
-        if self.r#south == false && self.r#up == true && self.r#east == true && self.r#age == 9 && self.r#north == false && self.r#west == true { return 3474; }
-        if self.r#west == false && self.r#north == true && self.r#east == true && self.r#age == 7 && self.r#up == false && self.r#south == true { return 3401; }
-        if self.r#north == true && self.r#age == 5 && self.r#up == true && self.r#east == false && self.r#west == false && self.r#south == false { return 3355; }
-        if self.r#south == true && self.r#up == true && self.r#west == false && self.r#east == false && self.r#north == false && self.r#age == 7 { return 3423; }
-        if self.r#age == 7 && self.r#east == false && self.r#north == false && self.r#south == false && self.r#up == false && self.r#west == true { return 3428; }
-        if self.r#up == true && self.r#west == false && self.r#age == 6 && self.r#south == false && self.r#east == false && self.r#north == true { return 3387; }
-        if self.r#north == false && self.r#age == 4 && self.r#south == true && self.r#up == false && self.r#east == false && self.r#west == true { return 3328; }
-        if self.r#south == true && self.r#age == 3 && self.r#west == false && self.r#up == true && self.r#north == true && self.r#east == true { return 3271; }
-        if self.r#north == false && self.r#south == false && self.r#age == 0 && self.r#up == false && self.r#east == false && self.r#west == false { return 3205; }
-        if self.r#south == true && self.r#up == true && self.r#west == true && self.r#age == 8 && self.r#north == true && self.r#east == true { return 3430; }
-        if self.r#up == false && self.r#east == true && self.r#north == false && self.r#south == false && self.r#west == false && self.r#age == 10 { return 3509; }
-        if self.r#north == false && self.r#south == false && self.r#age == 2 && self.r#west == true && self.r#east == true && self.r#up == true { return 3250; }
-        if self.r#south == true && self.r#north == false && self.r#up == false && self.r#age == 2 && self.r#east == false && self.r#west == true { return 3264; }
-        if self.r#age == 5 && self.r#up == false && self.r#west == true && self.r#north == true && self.r#south == false && self.r#east == true { return 3340; }
-        if self.r#age == 7 && self.r#south == false && self.r#up == true && self.r#north == false && self.r#west == true && self.r#east == true { return 3410; }
-        if self.r#west == true && self.r#age == 9 && self.r#north == true && self.r#south == true && self.r#east == false && self.r#up == true { return 3478; }
-        if self.r#south == false && self.r#up == false && self.r#age == 7 && self.r#west == false && self.r#north == true && self.r#east == false { return 3421; }
-        if self.r#west == true && self.r#up == false && self.r#age == 0 && self.r#north == false && self.r#south == true && self.r#east == false { return 3200; }
-        if self.r#east == true && self.r#south == false && self.r#age == 2 && self.r#north == false && self.r#up == false && self.r#west == false { return 3253; }
-        if self.r#age == 8 && self.r#west == false && self.r#east == true && self.r#up == true && self.r#south == true && self.r#north == false { return 3439; }
-        if self.r#east == true && self.r#south == true && self.r#up == false && self.r#north == true && self.r#west == true && self.r#age == 10 { return 3496; }
-        if self.r#up == false && self.r#east == true && self.r#south == true && self.r#west == false && self.r#north == true && self.r#age == 2 { return 3241; }
-        if self.r#up == true && self.r#west == true && self.r#east == false && self.r#age == 10 && self.r#north == false && self.r#south == false { return 3522; }
-        if self.r#south == false && self.r#age == 10 && self.r#north == false && self.r#east == false && self.r#up == false && self.r#west == true { return 3524; }
-        if self.r#east == false && self.r#south == false && self.r#age == 8 && self.r#up == false && self.r#north == false && self.r#west == false { return 3461; }
-        if self.r#north == false && self.r#south == false && self.r#age == 12 && self.r#up == true && self.r#east == true && self.r#west == false { return 3571; }
-        if self.r#south == true && self.r#east == true && self.r#west == false && self.r#age == 14 && self.r#up == false && self.r#north == true { return 3625; }
-        if self.r#south == false && self.r#west == true && self.r#north == false && self.r#east == false && self.r#age == 0 && self.r#up == true { return 3202; }
-        if self.r#up == true && self.r#south == true && self.r#west == true && self.r#east == true && self.r#age == 7 && self.r#north == true { return 3398; }
-        if self.r#up == false && self.r#south == true && self.r#north == true && self.r#west == true && self.r#east == false && self.r#age == 13 { return 3608; }
-        if self.r#age == 13 && self.r#north == false && self.r#east == true && self.r#south == true && self.r#west == true && self.r#up == true { return 3598; }
-        if self.r#age == 15 && self.r#west == false && self.r#north == false && self.r#up == true && self.r#south == true && self.r#east == false { return 3679; }
-        if self.r#north == false && self.r#south == false && self.r#east == true && self.r#west == true && self.r#age == 10 && self.r#up == true { return 3506; }
-        if self.r#west == false && self.r#south == false && self.r#age == 13 && self.r#north == false && self.r#east == false && self.r#up == false { return 3621; }
-        if self.r#west == false && self.r#east == true && self.r#age == 4 && self.r#up == true && self.r#north == false && self.r#south == false { return 3315; }
-        if self.r#up == true && self.r#age == 15 && self.r#north == true && self.r#south == true && self.r#west == true && self.r#east == true { return 3654; }
-        if self.r#south == false && self.r#north == true && self.r#up == true && self.r#east == false && self.r#age == 11 && self.r#west == true { return 3546; }
-        if self.r#up == false && self.r#age == 5 && self.r#west == false && self.r#east == false && self.r#north == true && self.r#south == true { return 3353; }
-        if self.r#up == true && self.r#west == true && self.r#south == false && self.r#age == 14 && self.r#north == false && self.r#east == false { return 3650; }
-        if self.r#age == 8 && self.r#south == false && self.r#west == false && self.r#east == false && self.r#up == false && self.r#north == true { return 3453; }
-        if self.r#west == true && self.r#up == false && self.r#north == true && self.r#east == false && self.r#age == 12 && self.r#south == false { return 3580; }
-        if self.r#north == false && self.r#south == true && self.r#west == false && self.r#east == true && self.r#up == true && self.r#age == 15 { return 3663; }
-        if self.r#age == 7 && self.r#up == false && self.r#north == true && self.r#south == false && self.r#west == true && self.r#east == false { return 3420; }
-        if self.r#age == 2 && self.r#south == true && self.r#east == false && self.r#up == true && self.r#west == false && self.r#north == true { return 3255; }
-        if self.r#up == true && self.r#east == false && self.r#age == 1 && self.r#west == true && self.r#north == false && self.r#south == true { return 3230; }
-        if self.r#west == false && self.r#up == true && self.r#north == false && self.r#age == 11 && self.r#east == true && self.r#south == false { return 3539; }
-        if self.r#up == false && self.r#west == false && self.r#age == 8 && self.r#east == false && self.r#north == true && self.r#south == true { return 3449; }
-        if self.r#west == true && self.r#north == false && self.r#south == true && self.r#east == false && self.r#age == 8 && self.r#up == false { return 3456; }
-        if self.r#east == false && self.r#north == false && self.r#age == 13 && self.r#up == false && self.r#west == true && self.r#south == false { return 3620; }
-        if self.r#west == true && self.r#east == true && self.r#age == 2 && self.r#north == false && self.r#south == false && self.r#up == false { return 3252; }
-        if self.r#age == 12 && self.r#north == true && self.r#south == true && self.r#up == false && self.r#west == true && self.r#east == false { return 3576; }
-        if self.r#east == true && self.r#north == false && self.r#age == 6 && self.r#south == false && self.r#up == true && self.r#west == true { return 3378; }
-        if self.r#east == false && self.r#south == true && self.r#west == false && self.r#up == false && self.r#age == 13 && self.r#north == false { return 3617; }
-        if self.r#age == 5 && self.r#south == true && self.r#up == true && self.r#west == true && self.r#east == false && self.r#north == false { return 3358; }
-        if self.r#west == true && self.r#age == 6 && self.r#south == false && self.r#up == false && self.r#north == false && self.r#east == false { return 3396; }
-        if self.r#west == true && self.r#south == true && self.r#up == false && self.r#north == true && self.r#age == 5 && self.r#east == true { return 3336; }
-        if self.r#north == false && self.r#east == true && self.r#west == true && self.r#south == true && self.r#up == true && self.r#age == 6 { return 3374; }
-        if self.r#south == false && self.r#age == 13 && self.r#east == false && self.r#north == false && self.r#up == true && self.r#west == true { return 3618; }
-        if self.r#age == 4 && self.r#north == false && self.r#south == false && self.r#east == false && self.r#up == false && self.r#west == false { return 3333; }
-        if self.r#east == false && self.r#up == true && self.r#west == true && self.r#south == true && self.r#age == 15 && self.r#north == true { return 3670; }
-        if self.r#age == 15 && self.r#west == false && self.r#north == false && self.r#up == false && self.r#east == false && self.r#south == true { return 3681; }
-        if self.r#north == false && self.r#east == false && self.r#south == true && self.r#age == 14 && self.r#up == false && self.r#west == false { return 3649; }
-        if self.r#north == false && self.r#west == true && self.r#age == 12 && self.r#up == true && self.r#east == true && self.r#south == false { return 3570; }
-        if self.r#age == 7 && self.r#north == false && self.r#east == true && self.r#south == false && self.r#up == false && self.r#west == false { return 3413; }
-        if self.r#age == 10 && self.r#east == false && self.r#north == false && self.r#south == true && self.r#up == false && self.r#west == false { return 3521; }
-        if self.r#north == true && self.r#south == false && self.r#age == 15 && self.r#up == true && self.r#east == false && self.r#west == false { return 3675; }
-        if self.r#age == 12 && self.r#south == true && self.r#north == true && self.r#east == true && self.r#up == false && self.r#west == false { return 3561; }
-        if self.r#up == true && self.r#south == false && self.r#east == false && self.r#age == 3 && self.r#west == true && self.r#north == false { return 3298; }
-        if self.r#north == false && self.r#south == true && self.r#west == false && self.r#age == 1 && self.r#east == true && self.r#up == true { return 3215; }
-        if self.r#west == true && self.r#east == true && self.r#south == false && self.r#up == false && self.r#north == true && self.r#age == 12 { return 3564; }
-        if self.r#east == true && self.r#up == true && self.r#north == true && self.r#age == 10 && self.r#south == false && self.r#west == false { return 3499; }
-        if self.r#age == 6 && self.r#east == true && self.r#north == true && self.r#up == true && self.r#west == false && self.r#south == false { return 3371; }
-        if self.r#age == 4 && self.r#west == true && self.r#south == false && self.r#east == true && self.r#north == false && self.r#up == false { return 3316; }
-        if self.r#age == 8 && self.r#west == true && self.r#north == false && self.r#south == false && self.r#east == true && self.r#up == true { return 3442; }
-        if self.r#up == true && self.r#west == false && self.r#south == false && self.r#age == 12 && self.r#east == false && self.r#north == true { return 3579; }
-        if self.r#north == false && self.r#west == false && self.r#east == true && self.r#up == false && self.r#age == 9 && self.r#south == true { return 3473; }
-        if self.r#south == true && self.r#west == false && self.r#age == 11 && self.r#east == false && self.r#north == false && self.r#up == true { return 3551; }
-        if self.r#up == true && self.r#east == false && self.r#age == 5 && self.r#west == true && self.r#south == false && self.r#north == true { return 3354; }
-        if self.r#age == 3 && self.r#south == false && self.r#up == false && self.r#west == false && self.r#east == true && self.r#north == false { return 3285; }
-        if self.r#west == false && self.r#north == true && self.r#east == false && self.r#south == false && self.r#age == 3 && self.r#up == true { return 3291; }
-        if self.r#south == false && self.r#west == false && self.r#age == 13 && self.r#east == true && self.r#up == false && self.r#north == true { return 3597; }
-        if self.r#age == 13 && self.r#south == true && self.r#west == false && self.r#up == false && self.r#east == true && self.r#north == true { return 3593; }
-        if self.r#east == true && self.r#south == true && self.r#up == true && self.r#north == false && self.r#west == false && self.r#age == 0 { return 3183; }
-        if self.r#up == false && self.r#west == false && self.r#south == true && self.r#north == true && self.r#east == true && self.r#age == 4 { return 3305; }
-        if self.r#south == false && self.r#up == true && self.r#east == false && self.r#west == false && self.r#age == 2 && self.r#north == false { return 3267; }
-        if self.r#east == false && self.r#north == false && self.r#up == true && self.r#south == true && self.r#west == true && self.r#age == 15 { return 3678; }
-        if self.r#west == true && self.r#south == true && self.r#age == 8 && self.r#east == false && self.r#north == false && self.r#up == true { return 3454; }
-        if self.r#age == 1 && self.r#east == false && self.r#south == false && self.r#west == true && self.r#north == false && self.r#up == true { return 3234; }
-        if self.r#north == false && self.r#south == false && self.r#age == 6 && self.r#up == true && self.r#east == false && self.r#west == true { return 3394; }
-        if self.r#west == true && self.r#north == false && self.r#south == true && self.r#age == 1 && self.r#east == false && self.r#up == false { return 3232; }
-        if self.r#east == false && self.r#up == false && self.r#age == 1 && self.r#south == true && self.r#west == true && self.r#north == true { return 3224; }
-        if self.r#west == false && self.r#up == false && self.r#age == 7 && self.r#north == false && self.r#east == false && self.r#south == false { return 3429; }
-        if self.r#age == 6 && self.r#south == true && self.r#up == true && self.r#east == false && self.r#west == false && self.r#north == true { return 3383; }
-        if self.r#age == 8 && self.r#east == true && self.r#up == false && self.r#north == false && self.r#south == true && self.r#west == true { return 3440; }
-        if self.r#east == false && self.r#age == 8 && self.r#north == true && self.r#south == true && self.r#west == true && self.r#up == false { return 3448; }
-        if self.r#east == true && self.r#age == 10 && self.r#south == false && self.r#west == true && self.r#up == false && self.r#north == false { return 3508; }
-        if self.r#up == false && self.r#west == false && self.r#north == false && self.r#south == true && self.r#age == 0 && self.r#east == true { return 3185; }
-        if self.r#up == false && self.r#east == false && self.r#west == true && self.r#age == 10 && self.r#north == true && self.r#south == true { return 3512; }
-        if self.r#west == false && self.r#east == true && self.r#age == 3 && self.r#up == false && self.r#north == false && self.r#south == true { return 3281; }
-        if self.r#age == 7 && self.r#up == false && self.r#west == true && self.r#east == false && self.r#south == true && self.r#north == true { return 3416; }
-        if self.r#age == 9 && self.r#east == true && self.r#west == true && self.r#south == true && self.r#up == true && self.r#north == true { return 3462; }
-        if self.r#east == true && self.r#up == true && self.r#west == true && self.r#age == 0 && self.r#north == false && self.r#south == true { return 3182; }
-        if self.r#east == false && self.r#north == true && self.r#age == 1 && self.r#south == false && self.r#up == false && self.r#west == true { return 3228; }
-        if self.r#east == true && self.r#up == true && self.r#north == false && self.r#west == true && self.r#south == false && self.r#age == 4 { return 3314; }
-        if self.r#west == true && self.r#north == false && self.r#age == 8 && self.r#south == false && self.r#up == false && self.r#east == true { return 3444; }
-        if self.r#south == true && self.r#east == false && self.r#age == 11 && self.r#up == false && self.r#west == false && self.r#north == true { return 3545; }
-        if self.r#age == 15 && self.r#east == true && self.r#up == true && self.r#north == true && self.r#south == false && self.r#west == true { return 3658; }
-        if self.r#west == false && self.r#east == false && self.r#north == false && self.r#up == true && self.r#age == 4 && self.r#south == false { return 3331; }
-        if self.r#north == false && self.r#east == false && self.r#age == 6 && self.r#south == false && self.r#west == false && self.r#up == false { return 3397; }
-        if self.r#south == false && self.r#up == true && self.r#west == true && self.r#east == true && self.r#north == false && self.r#age == 5 { return 3346; }
-        if self.r#up == true && self.r#south == true && self.r#east == true && self.r#north == false && self.r#age == 13 && self.r#west == false { return 3599; }
-        if self.r#age == 0 && self.r#up == false && self.r#north == true && self.r#west == false && self.r#south == false && self.r#east == false { return 3197; }
-        if self.r#east == true && self.r#south == false && self.r#west == true && self.r#north == false && self.r#up == false && self.r#age == 11 { return 3540; }
-        if self.r#east == true && self.r#north == false && self.r#age == 5 && self.r#south == true && self.r#up == true && self.r#west == true { return 3342; }
-        if self.r#north == false && self.r#age == 5 && self.r#up == false && self.r#west == false && self.r#east == true && self.r#south == false { return 3349; }
-        if self.r#west == true && self.r#north == false && self.r#age == 15 && self.r#east == true && self.r#south == true && self.r#up == true { return 3662; }
-        if self.r#east == true && self.r#north == false && self.r#south == false && self.r#west == false && self.r#up == false && self.r#age == 15 { return 3669; }
-        if self.r#west == true && self.r#north == true && self.r#south == true && self.r#up == true && self.r#east == false && self.r#age == 8 { return 3446; }
-        if self.r#east == false && self.r#north == false && self.r#up == false && self.r#age == 0 && self.r#south == false && self.r#west == true { return 3204; }
-        if self.r#age == 3 && self.r#south == true && self.r#up == false && self.r#east == true && self.r#north == true && self.r#west == false { return 3273; }
-        if self.r#west == true && self.r#north == true && self.r#age == 5 && self.r#east == true && self.r#south == false && self.r#up == true { return 3338; }
-        if self.r#north == false && self.r#age == 7 && self.r#east == true && self.r#west == false && self.r#up == true && self.r#south == true { return 3407; }
-        if self.r#west == false && self.r#north == true && self.r#age == 8 && self.r#up == true && self.r#east == false && self.r#south == true { return 3447; }
-        if self.r#south == true && self.r#up == false && self.r#west == true && self.r#east == false && self.r#north == false && self.r#age == 9 { return 3488; }
-        if self.r#age == 12 && self.r#east == false && self.r#north == false && self.r#south == false && self.r#up == true && self.r#west == true { return 3586; }
-        if self.r#up == false && self.r#west == true && self.r#north == true && self.r#age == 10 && self.r#east == false && self.r#south == false { return 3516; }
-        if self.r#west == true && self.r#up == false && self.r#age == 6 && self.r#north == true && self.r#east == false && self.r#south == true { return 3384; }
-        if self.r#east == false && self.r#up == false && self.r#north == false && self.r#age == 1 && self.r#south == false && self.r#west == false { return 3237; }
-        if self.r#south == true && self.r#west == true && self.r#east == true && self.r#age == 9 && self.r#north == true && self.r#up == false { return 3464; }
-        if self.r#north == true && self.r#east == false && self.r#south == false && self.r#west == true && self.r#age == 3 && self.r#up == false { return 3292; }
-        if self.r#west == false && self.r#north == false && self.r#east == false && self.r#up == true && self.r#age == 4 && self.r#south == true { return 3327; }
-        if self.r#age == 4 && self.r#south == true && self.r#west == false && self.r#north == true && self.r#up == true && self.r#east == true { return 3303; }
-        if self.r#east == false && self.r#age == 0 && self.r#south == true && self.r#north == true && self.r#up == false && self.r#west == false { return 3193; }
-        if self.r#age == 1 && self.r#up == true && self.r#west == true && self.r#east == true && self.r#north == true && self.r#south == true { return 3206; }
-        if self.r#south == true && self.r#north == true && self.r#east == false && self.r#up == true && self.r#age == 1 && self.r#west == false { return 3223; }
-        if self.r#west == true && self.r#north == false && self.r#age == 6 && self.r#east == false && self.r#south == true && self.r#up == false { return 3392; }
-        if self.r#up == false && self.r#north == true && self.r#west == true && self.r#east == false && self.r#south == false && self.r#age == 6 { return 3388; }
-        if self.r#west == false && self.r#east == true && self.r#age == 15 && self.r#north == false && self.r#south == true && self.r#up == false { return 3665; }
-        if self.r#age == 14 && self.r#east == false && self.r#up == true && self.r#south == false && self.r#west == false && self.r#north == true { return 3643; }
-        if self.r#west == false && self.r#up == true && self.r#south == false && self.r#age == 7 && self.r#east == false && self.r#north == false { return 3427; }
-        if self.r#east == true && self.r#north == false && self.r#south == false && self.r#age == 15 && self.r#up == true && self.r#west == false { return 3667; }
-        if self.r#south == true && self.r#north == true && self.r#up == true && self.r#east == true && self.r#age == 2 && self.r#west == false { return 3239; }
-        if self.r#south == false && self.r#up == false && self.r#north == false && self.r#age == 0 && self.r#east == true && self.r#west == true { return 3188; }
-        if self.r#up == false && self.r#west == false && self.r#age == 4 && self.r#south == false && self.r#east == true && self.r#north == true { return 3309; }
-        if self.r#up == true && self.r#age == 0 && self.r#west == true && self.r#south == false && self.r#north == true && self.r#east == true { return 3178; }
-        if self.r#east == false && self.r#age == 4 && self.r#west == true && self.r#north == true && self.r#south == false && self.r#up == true { return 3322; }
-        if self.r#east == true && self.r#up == false && self.r#age == 11 && self.r#south == true && self.r#north == false && self.r#west == false { return 3537; }
-        if self.r#up == false && self.r#west == false && self.r#east == false && self.r#age == 11 && self.r#north == true && self.r#south == false { return 3549; }
-        if self.r#age == 3 && self.r#up == true && self.r#west == true && self.r#east == false && self.r#north == true && self.r#south == true { return 3286; }
-        if self.r#west == true && self.r#east == false && self.r#north == false && self.r#age == 10 && self.r#south == true && self.r#up == true { return 3518; }
-        if self.r#age == 9 && self.r#east == true && self.r#north == false && self.r#south == true && self.r#west == false && self.r#up == true { return 3471; }
-        if self.r#up == false && self.r#east == false && self.r#west == false && self.r#north == true && self.r#age == 10 && self.r#south == true { return 3513; }
-        if self.r#age == 14 && self.r#north == false && self.r#up == false && self.r#east == true && self.r#south == true && self.r#west == false { return 3633; }
-        if self.r#east == true && self.r#age == 10 && self.r#up == true && self.r#west == true && self.r#south == true && self.r#north == true { return 3494; }
-        if self.r#age == 1 && self.r#east == true && self.r#north == true && self.r#south == false && self.r#up == true && self.r#west == false { return 3211; }
-        if self.r#age == 13 && self.r#south == false && self.r#north == false && self.r#east == true && self.r#up == true && self.r#west == true { return 3602; }
-        if self.r#age == 12 && self.r#east == false && self.r#up == true && self.r#south == false && self.r#west == true && self.r#north == true { return 3578; }
-        if self.r#age == 2 && self.r#north == false && self.r#up == true && self.r#south == true && self.r#east == true && self.r#west == false { return 3247; }
-        if self.r#north == true && self.r#east == true && self.r#south == true && self.r#age == 6 && self.r#west == true && self.r#up == true { return 3366; }
-        if self.r#west == true && self.r#east == false && self.r#north == true && self.r#south == true && self.r#age == 9 && self.r#up == false { return 3480; }
-        if self.r#east == true && self.r#south == false && self.r#west == true && self.r#north == true && self.r#age == 15 && self.r#up == false { return 3660; }
-        if self.r#north == false && self.r#up == true && self.r#age == 1 && self.r#south == false && self.r#west == false && self.r#east == true { return 3219; }
-        if self.r#north == true && self.r#south == true && self.r#age == 3 && self.r#up == true && self.r#east == false && self.r#west == false { return 3287; }
-        if self.r#east == true && self.r#up == true && self.r#west == false && self.r#south == false && self.r#north == true && self.r#age == 8 { return 3435; }
-        if self.r#age == 10 && self.r#north == true && self.r#south == false && self.r#east == false && self.r#up == true && self.r#west == true { return 3514; }
-        if self.r#south == false && self.r#up == true && self.r#east == true && self.r#west == false && self.r#age == 0 && self.r#north == false { return 3187; }
-        if self.r#age == 5 && self.r#east == true && self.r#up == true && self.r#west == false && self.r#north == false && self.r#south == true { return 3343; }
-        if self.r#south == false && self.r#north == false && self.r#age == 5 && self.r#up == true && self.r#west == false && self.r#east == false { return 3363; }
-        if self.r#east == false && self.r#age == 9 && self.r#south == false && self.r#up == true && self.r#north == true && self.r#west == true { return 3482; }
-        if self.r#south == false && self.r#west == false && self.r#up == true && self.r#age == 1 && self.r#east == false && self.r#north == false { return 3235; }
-        if self.r#north == false && self.r#age == 13 && self.r#east == true && self.r#south == true && self.r#up == false && self.r#west == false { return 3601; }
-        if self.r#east == false && self.r#west == false && self.r#north == true && self.r#south == true && self.r#age == 14 && self.r#up == true { return 3639; }
-        if self.r#up == true && self.r#north == true && self.r#west == false && self.r#age == 11 && self.r#east == false && self.r#south == true { return 3543; }
-        if self.r#east == false && self.r#age == 11 && self.r#south == false && self.r#north == false && self.r#up == false && self.r#west == false { return 3557; }
-        if self.r#age == 2 && self.r#up == true && self.r#north == false && self.r#west == true && self.r#east == true && self.r#south == true { return 3246; }
-        if self.r#east == false && self.r#north == true && self.r#south == false && self.r#west == false && self.r#up == false && self.r#age == 3 { return 3293; }
-        if self.r#up == true && self.r#west == true && self.r#north == true && self.r#south == false && self.r#east == true && self.r#age == 10 { return 3498; }
-        if self.r#north == false && self.r#south == false && self.r#age == 7 && self.r#west == true && self.r#up == true && self.r#east == false { return 3426; }
-        if self.r#west == true && self.r#age == 1 && self.r#south == false && self.r#north == true && self.r#up == true && self.r#east == false { return 3226; }
-        if self.r#south == false && self.r#up == false && self.r#west == true && self.r#age == 11 && self.r#north == false && self.r#east == false { return 3556; }
-        if self.r#east == true && self.r#north == true && self.r#south == false && self.r#up == false && self.r#age == 3 && self.r#west == false { return 3277; }
-        if self.r#age == 9 && self.r#east == true && self.r#south == false && self.r#up == false && self.r#west == true && self.r#north == false { return 3476; }
-        if self.r#east == true && self.r#age == 3 && self.r#north == true && self.r#south == false && self.r#up == true && self.r#west == true { return 3274; }
-        if self.r#up == false && self.r#north == false && self.r#south == true && self.r#west == false && self.r#age == 7 && self.r#east == false { return 3425; }
-        if self.r#west == false && self.r#up == false && self.r#east == false && self.r#north == false && self.r#south == false && self.r#age == 9 { return 3493; }
-        if self.r#east == true && self.r#up == true && self.r#south == true && self.r#west == true && self.r#north == false && self.r#age == 12 { return 3566; }
-        if self.r#north == false && self.r#up == false && self.r#south == false && self.r#west == true && self.r#east == false && self.r#age == 2 { return 3268; }
-        if self.r#age == 12 && self.r#east == true && self.r#north == true && self.r#west == true && self.r#up == false && self.r#south == true { return 3560; }
-        if self.r#age == 13 && self.r#up == true && self.r#south == false && self.r#east == true && self.r#west == true && self.r#north == true { return 3594; }
-        if self.r#age == 6 && self.r#south == true && self.r#east == true && self.r#up == true && self.r#north == false && self.r#west == false { return 3375; }
-        if self.r#east == false && self.r#north == false && self.r#west == false && self.r#age == 12 && self.r#south == true && self.r#up == false { return 3585; }
-        if self.r#east == true && self.r#south == true && self.r#north == false && self.r#up == true && self.r#west == false && self.r#age == 3 { return 3279; }
-        if self.r#up == false && self.r#age == 3 && self.r#south == true && self.r#west == true && self.r#north == false && self.r#east == true { return 3280; }
-        if self.r#up == true && self.r#north == false && self.r#east == true && self.r#age == 6 && self.r#south == false && self.r#west == false { return 3379; }
-        if self.r#up == false && self.r#east == false && self.r#south == false && self.r#age == 15 && self.r#north == false && self.r#west == false { return 3685; }
-        if self.r#up == true && self.r#north == true && self.r#age == 15 && self.r#south == true && self.r#west == false && self.r#east == false { return 3671; }
-        if self.r#west == false && self.r#north == false && self.r#east == false && self.r#south == true && self.r#up == true && self.r#age == 14 { return 3647; }
-        if self.r#age == 13 && self.r#north == true && self.r#up == true && self.r#east == true && self.r#south == false && self.r#west == false { return 3595; }
-        if self.r#age == 10 && self.r#east == true && self.r#west == false && self.r#south == true && self.r#up == false && self.r#north == false { return 3505; }
-        if self.r#south == true && self.r#age == 4 && self.r#west == true && self.r#north == true && self.r#east == true && self.r#up == true { return 3302; }
-        if self.r#north == true && self.r#south == true && self.r#east == false && self.r#up == true && self.r#west == true && self.r#age == 10 { return 3510; }
-        if self.r#up == false && self.r#west == true && self.r#age == 10 && self.r#east == true && self.r#south == true && self.r#north == false { return 3504; }
-        if self.r#age == 3 && self.r#north == false && self.r#east == false && self.r#south == false && self.r#up == false && self.r#west == true { return 3300; }
-        if self.r#west == true && self.r#east == true && self.r#age == 7 && self.r#north == false && self.r#up == false && self.r#south == true { return 3408; }
-        if self.r#up == false && self.r#north == true && self.r#east == false && self.r#age == 1 && self.r#south == false && self.r#west == false { return 3229; }
-        if self.r#age == 12 && self.r#north == false && self.r#south == false && self.r#up == false && self.r#east == false && self.r#west == true { return 3588; }
-        if self.r#age == 4 && self.r#east == true && self.r#north == false && self.r#west == true && self.r#south == true && self.r#up == true { return 3310; }
-        if self.r#up == false && self.r#south == true && self.r#east == false && self.r#west == true && self.r#age == 11 && self.r#north == true { return 3544; }
-        if self.r#south == false && self.r#west == false && self.r#north == true && self.r#east == true && self.r#age == 0 && self.r#up == false { return 3181; }
-        if self.r#north == true && self.r#east == false && self.r#age == 2 && self.r#south == true && self.r#up == true && self.r#west == true { return 3254; }
-        if self.r#age == 6 && self.r#east == true && self.r#south == false && self.r#west == true && self.r#north == false && self.r#up == false { return 3380; }
-        if self.r#east == true && self.r#age == 11 && self.r#north == true && self.r#south == false && self.r#up == false && self.r#west == false { return 3533; }
-        if self.r#up == true && self.r#age == 11 && self.r#north == false && self.r#east == false && self.r#west == true && self.r#south == false { return 3554; }
-        if self.r#up == true && self.r#age == 3 && self.r#west == false && self.r#east == true && self.r#north == true && self.r#south == false { return 3275; }
-        if self.r#age == 4 && self.r#up == true && self.r#east == false && self.r#south == true && self.r#west == false && self.r#north == true { return 3319; }
-        if self.r#east == false && self.r#up == false && self.r#west == false && self.r#south == true && self.r#age == 4 && self.r#north == true { return 3321; }
-        if self.r#age == 13 && self.r#south == false && self.r#north == false && self.r#up == false && self.r#east == true && self.r#west == true { return 3604; }
-        if self.r#age == 9 && self.r#north == true && self.r#east == true && self.r#up == false && self.r#south == false && self.r#west == false { return 3469; }
-        if self.r#south == true && self.r#up == true && self.r#east == false && self.r#age == 13 && self.r#north == false && self.r#west == true { return 3614; }
-        if self.r#age == 4 && self.r#north == true && self.r#west == true && self.r#south == false && self.r#up == true && self.r#east == true { return 3306; }
-        if self.r#west == true && self.r#north == true && self.r#east == false && self.r#age == 3 && self.r#up == false && self.r#south == true { return 3288; }
-        if self.r#south == false && self.r#west == true && self.r#age == 8 && self.r#east == false && self.r#up == false && self.r#north == false { return 3460; }
-        if self.r#up == false && self.r#west == true && self.r#east == true && self.r#north == true && self.r#south == false && self.r#age == 8 { return 3436; }
-        if self.r#south == true && self.r#up == false && self.r#east == true && self.r#age == 6 && self.r#north == true && self.r#west == true { return 3368; }
-        if self.r#age == 8 && self.r#north == false && self.r#south == false && self.r#up == false && self.r#east == true && self.r#west == false { return 3445; }
-        if self.r#up == true && self.r#west == true && self.r#age == 6 && self.r#east == false && self.r#north == true && self.r#south == false { return 3386; }
-        if self.r#west == true && self.r#up == false && self.r#north == true && self.r#east == true && self.r#south == true && self.r#age == 8 { return 3432; }
-        if self.r#east == false && self.r#age == 14 && self.r#south == false && self.r#west == true && self.r#up == false && self.r#north == false { return 3652; }
-        if self.r#south == true && self.r#age == 6 && self.r#east == true && self.r#west == false && self.r#up == false && self.r#north == false { return 3377; }
-        if self.r#up == false && self.r#south == true && self.r#west == false && self.r#east == true && self.r#north == true && self.r#age == 8 { return 3433; }
-        if self.r#up == true && self.r#age == 9 && self.r#east == true && self.r#south == true && self.r#west == true && self.r#north == false { return 3470; }
-        if self.r#age == 14 && self.r#east == true && self.r#west == false && self.r#up == false && self.r#north == false && self.r#south == false { return 3637; }
-        if self.r#east == false && self.r#west == true && self.r#south == true && self.r#north == false && self.r#up == true && self.r#age == 2 { return 3262; }
-        if self.r#up == true && self.r#west == false && self.r#age == 5 && self.r#east == false && self.r#south == true && self.r#north == false { return 3359; }
-        if self.r#west == false && self.r#age == 8 && self.r#east == true && self.r#south == true && self.r#north == false && self.r#up == false { return 3441; }
-        if self.r#east == false && self.r#north == false && self.r#south == true && self.r#west == false && self.r#age == 9 && self.r#up == false { return 3489; }
-        if self.r#age == 10 && self.r#east == true && self.r#north == true && self.r#west == false && self.r#south == true && self.r#up == true { return 3495; }
-        if self.r#south == true && self.r#west == false && self.r#north == false && self.r#age == 8 && self.r#east == false && self.r#up == false { return 3457; }
-        if self.r#west == true && self.r#south == false && self.r#east == true && self.r#up == true && self.r#north == true && self.r#age == 1 { return 3210; }
-        if self.r#east == true && self.r#age == 11 && self.r#west == false && self.r#up == true && self.r#south == false && self.r#north == true { return 3531; }
-        if self.r#west == true && self.r#north == true && self.r#age == 0 && self.r#south == true && self.r#up == false && self.r#east == true { return 3176; }
-        if self.r#east == false && self.r#south == true && self.r#up == false && self.r#west == true && self.r#age == 12 && self.r#north == false { return 3584; }
-        if self.r#north == true && self.r#up == false && self.r#west == true && self.r#age == 13 && self.r#east == false && self.r#south == false { return 3612; }
-        if self.r#age == 15 && self.r#north == false && self.r#east == true && self.r#south == false && self.r#up == false && self.r#west == true { return 3668; }
-        if self.r#age == 6 && self.r#south == false && self.r#west == true && self.r#up == true && self.r#east == true && self.r#north == true { return 3370; }
-        if self.r#south == false && self.r#west == false && self.r#age == 9 && self.r#north == false && self.r#east == true && self.r#up == true { return 3475; }
-        if self.r#east == false && self.r#west == true && self.r#age == 9 && self.r#north == true && self.r#south == false && self.r#up == false { return 3484; }
-        if self.r#south == false && self.r#age == 8 && self.r#east == false && self.r#up == false && self.r#north == true && self.r#west == true { return 3452; }
-        if self.r#west == true && self.r#age == 11 && self.r#north == true && self.r#south == false && self.r#east == true && self.r#up == false { return 3532; }
-        if self.r#up == false && self.r#east == true && self.r#south == false && self.r#west == false && self.r#age == 0 && self.r#north == false { return 3189; }
-        if self.r#north == true && self.r#south == false && self.r#up == true && self.r#west == true && self.r#age == 15 && self.r#east == false { return 3674; }
-        if self.r#east == true && self.r#west == true && self.r#age == 2 && self.r#north == false && self.r#south == true && self.r#up == false { return 3248; }
-        if self.r#age == 5 && self.r#south == true && self.r#up == false && self.r#west == false && self.r#north == false && self.r#east == true { return 3345; }
-        if self.r#up == false && self.r#west == false && self.r#south == true && self.r#east == false && self.r#north == true && self.r#age == 7 { return 3417; }
-        if self.r#west == true && self.r#up == false && self.r#north == false && self.r#age == 3 && self.r#east == false && self.r#south == true { return 3296; }
-        if self.r#east == true && self.r#south == true && self.r#north == false && self.r#age == 12 && self.r#up == false && self.r#west == false { return 3569; }
-        if self.r#up == false && self.r#west == false && self.r#north == true && self.r#east == false && self.r#south == true && self.r#age == 2 { return 3257; }
-        if self.r#east == true && self.r#north == false && self.r#age == 0 && self.r#up == true && self.r#south == false && self.r#west == true { return 3186; }
-        if self.r#west == false && self.r#north == true && self.r#age == 4 && self.r#east == true && self.r#south == false && self.r#up == true { return 3307; }
-        if self.r#west == false && self.r#north == true && self.r#east == false && self.r#age == 8 && self.r#south == false && self.r#up == true { return 3451; }
-        if self.r#east == true && self.r#age == 12 && self.r#south == true && self.r#west == false && self.r#north == false && self.r#up == true { return 3567; }
-        if self.r#age == 3 && self.r#north == true && self.r#south == true && self.r#up == true && self.r#east == true && self.r#west == true { return 3270; }
-        if self.r#east == false && self.r#up == true && self.r#west == false && self.r#north == true && self.r#age == 4 && self.r#south == false { return 3323; }
-        if self.r#west == true && self.r#east == true && self.r#south == true && self.r#up == false && self.r#north == false && self.r#age == 0 { return 3184; }
-        if self.r#age == 7 && self.r#east == false && self.r#up == true && self.r#north == true && self.r#south == false && self.r#west == true { return 3418; }
-        if self.r#up == false && self.r#age == 9 && self.r#east == true && self.r#west == false && self.r#south == true && self.r#north == true { return 3465; }
-        if self.r#south == false && self.r#up == true && self.r#west == true && self.r#north == true && self.r#age == 13 && self.r#east == false { return 3610; }
-        if self.r#age == 13 && self.r#east == true && self.r#west == false && self.r#north == false && self.r#up == true && self.r#south == false { return 3603; }
-        if self.r#west == false && self.r#east == false && self.r#south == false && self.r#north == true && self.r#age == 14 && self.r#up == false { return 3645; }
-        if self.r#east == false && self.r#south == false && self.r#north == false && self.r#age == 9 && self.r#up == true && self.r#west == true { return 3490; }
-        if self.r#south == false && self.r#up == true && self.r#west == false && self.r#age == 14 && self.r#east == true && self.r#north == false { return 3635; }
-        if self.r#east == true && self.r#age == 2 && self.r#north == true && self.r#up == false && self.r#south == true && self.r#west == true { return 3240; }
-        if self.r#south == false && self.r#west == false && self.r#east == true && self.r#north == true && self.r#up == true && self.r#age == 7 { return 3403; }
-        if self.r#south == true && self.r#age == 11 && self.r#west == true && self.r#east == false && self.r#up == true && self.r#north == true { return 3542; }
-        if self.r#north == false && self.r#up == true && self.r#west == true && self.r#south == true && self.r#age == 9 && self.r#east == false { return 3486; }
-        if self.r#up == true && self.r#age == 12 && self.r#south == true && self.r#west == true && self.r#east == true && self.r#north == true { return 3558; }
-        if self.r#east == true && self.r#north == false && self.r#west == true && self.r#south == true && self.r#up == true && self.r#age == 14 { return 3630; }
-        if self.r#east == true && self.r#south == false && self.r#age == 12 && self.r#up == true && self.r#west == false && self.r#north == true { return 3563; }
-        if self.r#up == false && self.r#age == 3 && self.r#west == false && self.r#east == false && self.r#north == false && self.r#south == true { return 3297; }
-        if self.r#age == 0 && self.r#south == false && self.r#east == false && self.r#north == true && self.r#west == true && self.r#up == true { return 3194; }
-        if self.r#west == false && self.r#age == 10 && self.r#south == false && self.r#north == false && self.r#east == true && self.r#up == true { return 3507; }
-        if self.r#east == true && self.r#south == false && self.r#west == true && self.r#up == false && self.r#north == true && self.r#age == 10 { return 3500; }
-        if self.r#up == true && self.r#south == false && self.r#age == 14 && self.r#east == true && self.r#north == true && self.r#west == false { return 3627; }
-        if self.r#up == false && self.r#south == true && self.r#north == false && self.r#east == true && self.r#age == 4 && self.r#west == true { return 3312; }
-        if self.r#west == false && self.r#south == true && self.r#age == 7 && self.r#east == false && self.r#north == true && self.r#up == true { return 3415; }
-        if self.r#age == 12 && self.r#east == true && self.r#up == false && self.r#north == false && self.r#south == true && self.r#west == true { return 3568; }
-        if self.r#north == false && self.r#east == true && self.r#south == true && self.r#west == false && self.r#age == 4 && self.r#up == false { return 3313; }
-        if self.r#east == true && self.r#north == false && self.r#up == true && self.r#age == 8 && self.r#west == true && self.r#south == true { return 3438; }
-        if self.r#north == true && self.r#west == true && self.r#south == false && self.r#age == 8 && self.r#east == false && self.r#up == true { return 3450; }
-        if self.r#east == false && self.r#west == true && self.r#age == 7 && self.r#north == false && self.r#up == false && self.r#south == true { return 3424; }
-        if self.r#age == 13 && self.r#south == true && self.r#west == false && self.r#north == true && self.r#up == true && self.r#east == true { return 3591; }
-        if self.r#north == true && self.r#south == false && self.r#east == true && self.r#age == 14 && self.r#up == false && self.r#west == false { return 3629; }
-        if self.r#up == true && self.r#north == true && self.r#west == true && self.r#age == 14 && self.r#south == true && self.r#east == false { return 3638; }
-        if self.r#south == false && self.r#north == false && self.r#age == 7 && self.r#west == false && self.r#east == true && self.r#up == true { return 3411; }
-        if self.r#north == true && self.r#west == false && self.r#south == false && self.r#east == false && self.r#up == true && self.r#age == 2 { return 3259; }
-        if self.r#up == true && self.r#east == false && self.r#north == false && self.r#south == false && self.r#west == false && self.r#age == 6 { return 3395; }
-        if self.r#age == 5 && self.r#up == false && self.r#east == true && self.r#north == true && self.r#south == false && self.r#west == false { return 3341; }
-        if self.r#north == true && self.r#up == false && self.r#east == false && self.r#west == false && self.r#age == 3 && self.r#south == true { return 3289; }
-        if self.r#west == false && self.r#east == true && self.r#south == true && self.r#age == 12 && self.r#up == true && self.r#north == true { return 3559; }
-        if self.r#up == false && self.r#north == true && self.r#east == true && self.r#west == true && self.r#age == 14 && self.r#south == true { return 3624; }
-        if self.r#north == false && self.r#east == false && self.r#age == 11 && self.r#up == true && self.r#west == true && self.r#south == true { return 3550; }
-        if self.r#east == false && self.r#age == 15 && self.r#west == false && self.r#north == true && self.r#south == true && self.r#up == false { return 3673; }
-        if self.r#west == true && self.r#north == true && self.r#up == true && self.r#age == 0 && self.r#east == false && self.r#south == true { return 3190; }
-        if self.r#up == false && self.r#west == false && self.r#age == 9 && self.r#south == false && self.r#north == false && self.r#east == true { return 3477; }
-        if self.r#south == true && self.r#up == true && self.r#east == true && self.r#west == true && self.r#age == 11 && self.r#north == true { return 3526; }
-        if self.r#north == true && self.r#age == 15 && self.r#up == false && self.r#east == false && self.r#west == false && self.r#south == false { return 3677; }
-        if self.r#west == false && self.r#age == 8 && self.r#east == false && self.r#north == false && self.r#south == true && self.r#up == true { return 3455; }
-        if self.r#age == 3 && self.r#south == false && self.r#up == false && self.r#west == true && self.r#east == true && self.r#north == false { return 3284; }
-        if self.r#up == false && self.r#age == 1 && self.r#north == true && self.r#east == true && self.r#south == false && self.r#west == true { return 3212; }
-        if self.r#up == true && self.r#east == false && self.r#south == false && self.r#west == false && self.r#age == 3 && self.r#north == false { return 3299; }
-        if self.r#south == false && self.r#up == true && self.r#west == false && self.r#east == false && self.r#age == 9 && self.r#north == false { return 3491; }
-        if self.r#up == false && self.r#east == false && self.r#north == true && self.r#age == 14 && self.r#south == false && self.r#west == true { return 3644; }
-        if self.r#north == false && self.r#up == true && self.r#west == true && self.r#age == 7 && self.r#east == false && self.r#south == true { return 3422; }
-        if self.r#east == true && self.r#up == false && self.r#west == true && self.r#south == false && self.r#age == 6 && self.r#north == true { return 3372; }
-        if self.r#south == true && self.r#age == 11 && self.r#east == true && self.r#up == false && self.r#north == true && self.r#west == true { return 3528; }
-        if self.r#north == false && self.r#south == false && self.r#east == false && self.r#age == 5 && self.r#west == true && self.r#up == true { return 3362; }
-        if self.r#north == true && self.r#south == false && self.r#east == true && self.r#up == true && self.r#age == 9 && self.r#west == true { return 3466; }
-        if self.r#up == false && self.r#west == false && self.r#south == false && self.r#age == 6 && self.r#east == true && self.r#north == true { return 3373; }
-        if self.r#west == false && self.r#age == 1 && self.r#south == true && self.r#north == false && self.r#up == true && self.r#east == false { return 3231; }
-        if self.r#age == 1 && self.r#west == false && self.r#east == false && self.r#north == true && self.r#up == true && self.r#south == false { return 3227; }
+        if self.r#up == true
+            && self.r#west == true
+            && self.r#north == false
+            && self.r#age == 7
+            && self.r#east == true
+            && self.r#south == true
+        {
+            return 3406;
+        }
+        if self.r#north == false
+            && self.r#east == false
+            && self.r#south == false
+            && self.r#age == 2
+            && self.r#up == true
+            && self.r#west == true
+        {
+            return 3266;
+        }
+        if self.r#west == true
+            && self.r#east == true
+            && self.r#north == false
+            && self.r#age == 14
+            && self.r#south == false
+            && self.r#up == false
+        {
+            return 3636;
+        }
+        if self.r#age == 4
+            && self.r#south == true
+            && self.r#east == false
+            && self.r#west == true
+            && self.r#up == true
+            && self.r#north == true
+        {
+            return 3318;
+        }
+        if self.r#east == false
+            && self.r#south == false
+            && self.r#north == true
+            && self.r#up == false
+            && self.r#west == false
+            && self.r#age == 9
+        {
+            return 3485;
+        }
+        if self.r#west == true
+            && self.r#north == true
+            && self.r#age == 13
+            && self.r#east == false
+            && self.r#south == true
+            && self.r#up == true
+        {
+            return 3606;
+        }
+        if self.r#west == true
+            && self.r#age == 6
+            && self.r#south == true
+            && self.r#north == false
+            && self.r#up == false
+            && self.r#east == true
+        {
+            return 3376;
+        }
+        if self.r#east == true
+            && self.r#south == true
+            && self.r#age == 14
+            && self.r#up == false
+            && self.r#north == false
+            && self.r#west == true
+        {
+            return 3632;
+        }
+        if self.r#south == true
+            && self.r#west == false
+            && self.r#north == true
+            && self.r#age == 14
+            && self.r#up == false
+            && self.r#east == false
+        {
+            return 3641;
+        }
+        if self.r#south == false
+            && self.r#west == false
+            && self.r#up == true
+            && self.r#north == true
+            && self.r#age == 11
+            && self.r#east == false
+        {
+            return 3547;
+        }
+        if self.r#age == 15
+            && self.r#south == true
+            && self.r#east == true
+            && self.r#up == true
+            && self.r#west == false
+            && self.r#north == true
+        {
+            return 3655;
+        }
+        if self.r#age == 0
+            && self.r#north == true
+            && self.r#south == false
+            && self.r#up == true
+            && self.r#west == false
+            && self.r#east == false
+        {
+            return 3195;
+        }
+        if self.r#age == 1
+            && self.r#east == true
+            && self.r#north == false
+            && self.r#south == false
+            && self.r#west == false
+            && self.r#up == false
+        {
+            return 3221;
+        }
+        if self.r#south == false
+            && self.r#up == false
+            && self.r#north == true
+            && self.r#west == false
+            && self.r#east == true
+            && self.r#age == 1
+        {
+            return 3213;
+        }
+        if self.r#west == true
+            && self.r#north == true
+            && self.r#east == true
+            && self.r#up == false
+            && self.r#age == 4
+            && self.r#south == true
+        {
+            return 3304;
+        }
+        if self.r#age == 10
+            && self.r#north == false
+            && self.r#west == false
+            && self.r#south == true
+            && self.r#east == true
+            && self.r#up == true
+        {
+            return 3503;
+        }
+        if self.r#north == true
+            && self.r#up == true
+            && self.r#east == false
+            && self.r#age == 13
+            && self.r#west == false
+            && self.r#south == true
+        {
+            return 3607;
+        }
+        if self.r#age == 1
+            && self.r#up == false
+            && self.r#south == true
+            && self.r#east == false
+            && self.r#north == false
+            && self.r#west == false
+        {
+            return 3233;
+        }
+        if self.r#east == true
+            && self.r#south == true
+            && self.r#up == true
+            && self.r#west == false
+            && self.r#age == 11
+            && self.r#north == true
+        {
+            return 3527;
+        }
+        if self.r#south == true
+            && self.r#age == 10
+            && self.r#north == true
+            && self.r#up == true
+            && self.r#east == false
+            && self.r#west == false
+        {
+            return 3511;
+        }
+        if self.r#west == true
+            && self.r#east == false
+            && self.r#north == true
+            && self.r#up == false
+            && self.r#age == 15
+            && self.r#south == false
+        {
+            return 3676;
+        }
+        if self.r#age == 3
+            && self.r#east == true
+            && self.r#up == false
+            && self.r#west == true
+            && self.r#south == false
+            && self.r#north == true
+        {
+            return 3276;
+        }
+        if self.r#north == false
+            && self.r#age == 14
+            && self.r#east == true
+            && self.r#south == false
+            && self.r#up == true
+            && self.r#west == true
+        {
+            return 3634;
+        }
+        if self.r#west == true
+            && self.r#up == false
+            && self.r#east == false
+            && self.r#south == true
+            && self.r#age == 0
+            && self.r#north == true
+        {
+            return 3192;
+        }
+        if self.r#age == 5
+            && self.r#east == false
+            && self.r#north == true
+            && self.r#south == true
+            && self.r#west == true
+            && self.r#up == false
+        {
+            return 3352;
+        }
+        if self.r#south == false
+            && self.r#up == false
+            && self.r#north == false
+            && self.r#west == false
+            && self.r#east == true
+            && self.r#age == 12
+        {
+            return 3573;
+        }
+        if self.r#up == false
+            && self.r#west == true
+            && self.r#age == 15
+            && self.r#north == false
+            && self.r#east == false
+            && self.r#south == false
+        {
+            return 3684;
+        }
+        if self.r#age == 3
+            && self.r#east == false
+            && self.r#up == true
+            && self.r#west == false
+            && self.r#north == false
+            && self.r#south == true
+        {
+            return 3295;
+        }
+        if self.r#up == true
+            && self.r#west == false
+            && self.r#age == 12
+            && self.r#north == false
+            && self.r#south == false
+            && self.r#east == false
+        {
+            return 3587;
+        }
+        if self.r#north == false
+            && self.r#south == false
+            && self.r#age == 15
+            && self.r#east == true
+            && self.r#up == true
+            && self.r#west == true
+        {
+            return 3666;
+        }
+        if self.r#up == true
+            && self.r#age == 0
+            && self.r#west == false
+            && self.r#east == true
+            && self.r#north == true
+            && self.r#south == true
+        {
+            return 3175;
+        }
+        if self.r#north == true
+            && self.r#age == 10
+            && self.r#west == false
+            && self.r#south == false
+            && self.r#east == true
+            && self.r#up == false
+        {
+            return 3501;
+        }
+        if self.r#north == false
+            && self.r#west == true
+            && self.r#east == true
+            && self.r#south == false
+            && self.r#age == 12
+            && self.r#up == false
+        {
+            return 3572;
+        }
+        if self.r#up == true
+            && self.r#east == false
+            && self.r#north == false
+            && self.r#south == true
+            && self.r#west == true
+            && self.r#age == 0
+        {
+            return 3198;
+        }
+        if self.r#east == false
+            && self.r#up == false
+            && self.r#south == true
+            && self.r#north == true
+            && self.r#age == 6
+            && self.r#west == false
+        {
+            return 3385;
+        }
+        if self.r#east == false
+            && self.r#south == true
+            && self.r#west == true
+            && self.r#north == false
+            && self.r#age == 13
+            && self.r#up == false
+        {
+            return 3616;
+        }
+        if self.r#age == 1
+            && self.r#east == false
+            && self.r#north == false
+            && self.r#up == false
+            && self.r#south == false
+            && self.r#west == true
+        {
+            return 3236;
+        }
+        if self.r#age == 12
+            && self.r#north == true
+            && self.r#south == false
+            && self.r#west == true
+            && self.r#up == true
+            && self.r#east == true
+        {
+            return 3562;
+        }
+        if self.r#age == 5
+            && self.r#up == false
+            && self.r#south == false
+            && self.r#west == true
+            && self.r#north == false
+            && self.r#east == false
+        {
+            return 3364;
+        }
+        if self.r#south == true
+            && self.r#age == 8
+            && self.r#east == true
+            && self.r#north == true
+            && self.r#up == true
+            && self.r#west == false
+        {
+            return 3431;
+        }
+        if self.r#east == true
+            && self.r#south == true
+            && self.r#west == true
+            && self.r#age == 11
+            && self.r#north == false
+            && self.r#up == false
+        {
+            return 3536;
+        }
+        if self.r#west == true
+            && self.r#up == true
+            && self.r#north == false
+            && self.r#age == 3
+            && self.r#east == true
+            && self.r#south == false
+        {
+            return 3282;
+        }
+        if self.r#west == true
+            && self.r#north == true
+            && self.r#age == 14
+            && self.r#east == true
+            && self.r#up == true
+            && self.r#south == true
+        {
+            return 3622;
+        }
+        if self.r#east == true
+            && self.r#age == 2
+            && self.r#up == true
+            && self.r#north == true
+            && self.r#south == true
+            && self.r#west == true
+        {
+            return 3238;
+        }
+        if self.r#west == false
+            && self.r#east == true
+            && self.r#up == false
+            && self.r#north == true
+            && self.r#south == false
+            && self.r#age == 7
+        {
+            return 3405;
+        }
+        if self.r#north == true
+            && self.r#up == false
+            && self.r#south == true
+            && self.r#east == true
+            && self.r#age == 1
+            && self.r#west == true
+        {
+            return 3208;
+        }
+        if self.r#west == true
+            && self.r#up == true
+            && self.r#age == 4
+            && self.r#east == false
+            && self.r#south == false
+            && self.r#north == false
+        {
+            return 3330;
+        }
+        if self.r#east == true
+            && self.r#up == true
+            && self.r#west == false
+            && self.r#south == true
+            && self.r#age == 6
+            && self.r#north == true
+        {
+            return 3367;
+        }
+        if self.r#east == false
+            && self.r#up == false
+            && self.r#west == true
+            && self.r#age == 11
+            && self.r#south == true
+            && self.r#north == false
+        {
+            return 3552;
+        }
+        if self.r#age == 13
+            && self.r#north == true
+            && self.r#up == false
+            && self.r#south == false
+            && self.r#west == false
+            && self.r#east == false
+        {
+            return 3613;
+        }
+        if self.r#east == true
+            && self.r#north == true
+            && self.r#west == false
+            && self.r#age == 6
+            && self.r#south == true
+            && self.r#up == false
+        {
+            return 3369;
+        }
+        if self.r#age == 2
+            && self.r#east == false
+            && self.r#south == false
+            && self.r#up == true
+            && self.r#north == true
+            && self.r#west == true
+        {
+            return 3258;
+        }
+        if self.r#north == true
+            && self.r#age == 10
+            && self.r#east == false
+            && self.r#south == false
+            && self.r#up == true
+            && self.r#west == false
+        {
+            return 3515;
+        }
+        if self.r#south == true
+            && self.r#up == false
+            && self.r#west == true
+            && self.r#north == false
+            && self.r#age == 10
+            && self.r#east == false
+        {
+            return 3520;
+        }
+        if self.r#south == true
+            && self.r#west == false
+            && self.r#east == false
+            && self.r#up == false
+            && self.r#north == false
+            && self.r#age == 11
+        {
+            return 3553;
+        }
+        if self.r#north == false
+            && self.r#east == true
+            && self.r#age == 11
+            && self.r#south == false
+            && self.r#up == false
+            && self.r#west == false
+        {
+            return 3541;
+        }
+        if self.r#west == false
+            && self.r#up == true
+            && self.r#north == false
+            && self.r#age == 15
+            && self.r#east == false
+            && self.r#south == false
+        {
+            return 3683;
+        }
+        if self.r#up == true
+            && self.r#age == 4
+            && self.r#east == true
+            && self.r#west == false
+            && self.r#north == false
+            && self.r#south == true
+        {
+            return 3311;
+        }
+        if self.r#up == false
+            && self.r#age == 2
+            && self.r#west == false
+            && self.r#east == true
+            && self.r#north == false
+            && self.r#south == true
+        {
+            return 3249;
+        }
+        if self.r#north == true
+            && self.r#up == true
+            && self.r#west == false
+            && self.r#east == false
+            && self.r#age == 7
+            && self.r#south == false
+        {
+            return 3419;
+        }
+        if self.r#age == 5
+            && self.r#north == true
+            && self.r#west == true
+            && self.r#up == true
+            && self.r#east == true
+            && self.r#south == true
+        {
+            return 3334;
+        }
+        if self.r#age == 11
+            && self.r#north == true
+            && self.r#south == false
+            && self.r#up == true
+            && self.r#east == true
+            && self.r#west == true
+        {
+            return 3530;
+        }
+        if self.r#north == true
+            && self.r#up == false
+            && self.r#west == false
+            && self.r#east == true
+            && self.r#south == false
+            && self.r#age == 12
+        {
+            return 3565;
+        }
+        if self.r#west == true
+            && self.r#age == 1
+            && self.r#east == true
+            && self.r#north == false
+            && self.r#up == true
+            && self.r#south == true
+        {
+            return 3214;
+        }
+        if self.r#west == false
+            && self.r#north == false
+            && self.r#up == false
+            && self.r#east == true
+            && self.r#age == 1
+            && self.r#south == true
+        {
+            return 3217;
+        }
+        if self.r#south == false
+            && self.r#north == false
+            && self.r#up == true
+            && self.r#west == false
+            && self.r#age == 3
+            && self.r#east == true
+        {
+            return 3283;
+        }
+        if self.r#up == false
+            && self.r#west == true
+            && self.r#east == true
+            && self.r#age == 13
+            && self.r#north == true
+            && self.r#south == false
+        {
+            return 3596;
+        }
+        if self.r#west == false
+            && self.r#south == true
+            && self.r#age == 13
+            && self.r#east == false
+            && self.r#north == false
+            && self.r#up == true
+        {
+            return 3615;
+        }
+        if self.r#west == false
+            && self.r#age == 10
+            && self.r#east == false
+            && self.r#south == false
+            && self.r#north == false
+            && self.r#up == false
+        {
+            return 3525;
+        }
+        if self.r#north == true
+            && self.r#age == 5
+            && self.r#east == false
+            && self.r#west == true
+            && self.r#up == true
+            && self.r#south == true
+        {
+            return 3350;
+        }
+        if self.r#south == false
+            && self.r#age == 12
+            && self.r#east == false
+            && self.r#west == false
+            && self.r#north == true
+            && self.r#up == false
+        {
+            return 3581;
+        }
+        if self.r#south == false
+            && self.r#north == true
+            && self.r#east == false
+            && self.r#up == false
+            && self.r#age == 6
+            && self.r#west == false
+        {
+            return 3389;
+        }
+        if self.r#east == true
+            && self.r#up == false
+            && self.r#age == 1
+            && self.r#south == true
+            && self.r#west == true
+            && self.r#north == false
+        {
+            return 3216;
+        }
+        if self.r#up == false
+            && self.r#east == true
+            && self.r#west == true
+            && self.r#south == true
+            && self.r#north == false
+            && self.r#age == 5
+        {
+            return 3344;
+        }
+        if self.r#age == 11
+            && self.r#east == true
+            && self.r#up == true
+            && self.r#south == true
+            && self.r#west == true
+            && self.r#north == false
+        {
+            return 3534;
+        }
+        if self.r#age == 1
+            && self.r#up == false
+            && self.r#north == true
+            && self.r#south == true
+            && self.r#west == false
+            && self.r#east == true
+        {
+            return 3209;
+        }
+        if self.r#south == false
+            && self.r#up == false
+            && self.r#east == true
+            && self.r#west == true
+            && self.r#age == 1
+            && self.r#north == false
+        {
+            return 3220;
+        }
+        if self.r#age == 4
+            && self.r#west == true
+            && self.r#east == false
+            && self.r#up == false
+            && self.r#south == false
+            && self.r#north == false
+        {
+            return 3332;
+        }
+        if self.r#south == true
+            && self.r#up == false
+            && self.r#north == false
+            && self.r#east == true
+            && self.r#west == true
+            && self.r#age == 13
+        {
+            return 3600;
+        }
+        if self.r#north == false
+            && self.r#east == true
+            && self.r#age == 9
+            && self.r#west == true
+            && self.r#up == false
+            && self.r#south == true
+        {
+            return 3472;
+        }
+        if self.r#age == 5
+            && self.r#east == true
+            && self.r#south == false
+            && self.r#up == false
+            && self.r#west == true
+            && self.r#north == false
+        {
+            return 3348;
+        }
+        if self.r#east == true
+            && self.r#up == true
+            && self.r#north == true
+            && self.r#west == true
+            && self.r#south == true
+            && self.r#age == 13
+        {
+            return 3590;
+        }
+        if self.r#west == false
+            && self.r#north == true
+            && self.r#up == false
+            && self.r#age == 15
+            && self.r#east == true
+            && self.r#south == true
+        {
+            return 3657;
+        }
+        if self.r#age == 9
+            && self.r#east == false
+            && self.r#south == true
+            && self.r#up == true
+            && self.r#west == false
+            && self.r#north == true
+        {
+            return 3479;
+        }
+        if self.r#north == true
+            && self.r#up == true
+            && self.r#south == false
+            && self.r#west == false
+            && self.r#east == true
+            && self.r#age == 9
+        {
+            return 3467;
+        }
+        if self.r#up == false
+            && self.r#age == 13
+            && self.r#north == false
+            && self.r#south == false
+            && self.r#east == true
+            && self.r#west == false
+        {
+            return 3605;
+        }
+        if self.r#up == false
+            && self.r#east == false
+            && self.r#age == 5
+            && self.r#south == true
+            && self.r#north == false
+            && self.r#west == false
+        {
+            return 3361;
+        }
+        if self.r#age == 13
+            && self.r#north == true
+            && self.r#up == false
+            && self.r#south == true
+            && self.r#west == true
+            && self.r#east == true
+        {
+            return 3592;
+        }
+        if self.r#south == false
+            && self.r#north == true
+            && self.r#up == false
+            && self.r#east == false
+            && self.r#west == false
+            && self.r#age == 5
+        {
+            return 3357;
+        }
+        if self.r#up == true
+            && self.r#age == 8
+            && self.r#east == false
+            && self.r#south == false
+            && self.r#north == false
+            && self.r#west == false
+        {
+            return 3459;
+        }
+        if self.r#east == false
+            && self.r#north == false
+            && self.r#south == true
+            && self.r#up == true
+            && self.r#age == 3
+            && self.r#west == true
+        {
+            return 3294;
+        }
+        if self.r#age == 2
+            && self.r#west == false
+            && self.r#up == false
+            && self.r#east == false
+            && self.r#north == true
+            && self.r#south == false
+        {
+            return 3261;
+        }
+        if self.r#north == false
+            && self.r#age == 2
+            && self.r#east == false
+            && self.r#south == true
+            && self.r#up == false
+            && self.r#west == false
+        {
+            return 3265;
+        }
+        if self.r#north == true
+            && self.r#age == 4
+            && self.r#south == true
+            && self.r#up == false
+            && self.r#west == true
+            && self.r#east == false
+        {
+            return 3320;
+        }
+        if self.r#south == false
+            && self.r#east == false
+            && self.r#up == true
+            && self.r#age == 14
+            && self.r#north == false
+            && self.r#west == false
+        {
+            return 3651;
+        }
+        if self.r#south == false
+            && self.r#up == true
+            && self.r#east == true
+            && self.r#west == false
+            && self.r#north == true
+            && self.r#age == 0
+        {
+            return 3179;
+        }
+        if self.r#up == false
+            && self.r#age == 4
+            && self.r#south == false
+            && self.r#west == true
+            && self.r#north == true
+            && self.r#east == false
+        {
+            return 3324;
+        }
+        if self.r#south == false
+            && self.r#west == false
+            && self.r#east == true
+            && self.r#age == 5
+            && self.r#up == true
+            && self.r#north == true
+        {
+            return 3339;
+        }
+        if self.r#north == true
+            && self.r#east == true
+            && self.r#age == 9
+            && self.r#south == false
+            && self.r#up == false
+            && self.r#west == true
+        {
+            return 3468;
+        }
+        if self.r#south == true
+            && self.r#up == true
+            && self.r#west == true
+            && self.r#north == false
+            && self.r#age == 4
+            && self.r#east == false
+        {
+            return 3326;
+        }
+        if self.r#west == true
+            && self.r#east == true
+            && self.r#north == false
+            && self.r#south == false
+            && self.r#up == true
+            && self.r#age == 1
+        {
+            return 3218;
+        }
+        if self.r#south == true
+            && self.r#north == true
+            && self.r#age == 5
+            && self.r#up == true
+            && self.r#east == true
+            && self.r#west == false
+        {
+            return 3335;
+        }
+        if self.r#up == false
+            && self.r#south == false
+            && self.r#east == true
+            && self.r#north == false
+            && self.r#west == false
+            && self.r#age == 6
+        {
+            return 3381;
+        }
+        if self.r#west == true
+            && self.r#east == false
+            && self.r#south == false
+            && self.r#up == true
+            && self.r#north == false
+            && self.r#age == 8
+        {
+            return 3458;
+        }
+        if self.r#west == true
+            && self.r#north == true
+            && self.r#south == false
+            && self.r#age == 4
+            && self.r#up == false
+            && self.r#east == true
+        {
+            return 3308;
+        }
+        if self.r#north == true
+            && self.r#age == 7
+            && self.r#south == true
+            && self.r#up == false
+            && self.r#west == true
+            && self.r#east == true
+        {
+            return 3400;
+        }
+        if self.r#age == 12
+            && self.r#west == false
+            && self.r#east == false
+            && self.r#north == true
+            && self.r#south == true
+            && self.r#up == true
+        {
+            return 3575;
+        }
+        if self.r#age == 2
+            && self.r#west == false
+            && self.r#south == false
+            && self.r#up == false
+            && self.r#east == true
+            && self.r#north == true
+        {
+            return 3245;
+        }
+        if self.r#south == false
+            && self.r#up == false
+            && self.r#west == true
+            && self.r#north == false
+            && self.r#age == 7
+            && self.r#east == true
+        {
+            return 3412;
+        }
+        if self.r#north == false
+            && self.r#east == true
+            && self.r#south == false
+            && self.r#up == true
+            && self.r#west == true
+            && self.r#age == 11
+        {
+            return 3538;
+        }
+        if self.r#up == false
+            && self.r#age == 15
+            && self.r#west == true
+            && self.r#east == true
+            && self.r#south == true
+            && self.r#north == false
+        {
+            return 3664;
+        }
+        if self.r#up == false
+            && self.r#west == true
+            && self.r#north == true
+            && self.r#age == 15
+            && self.r#east == false
+            && self.r#south == true
+        {
+            return 3672;
+        }
+        if self.r#east == false
+            && self.r#south == false
+            && self.r#up == true
+            && self.r#west == true
+            && self.r#north == true
+            && self.r#age == 3
+        {
+            return 3290;
+        }
+        if self.r#north == false
+            && self.r#south == false
+            && self.r#east == false
+            && self.r#age == 2
+            && self.r#up == false
+            && self.r#west == false
+        {
+            return 3269;
+        }
+        if self.r#age == 0
+            && self.r#west == false
+            && self.r#north == true
+            && self.r#south == true
+            && self.r#east == true
+            && self.r#up == false
+        {
+            return 3177;
+        }
+        if self.r#west == true
+            && self.r#north == true
+            && self.r#east == true
+            && self.r#age == 2
+            && self.r#south == false
+            && self.r#up == true
+        {
+            return 3242;
+        }
+        if self.r#east == false
+            && self.r#up == true
+            && self.r#west == false
+            && self.r#age == 0
+            && self.r#north == false
+            && self.r#south == false
+        {
+            return 3203;
+        }
+        if self.r#east == true
+            && self.r#up == true
+            && self.r#west == true
+            && self.r#age == 10
+            && self.r#north == false
+            && self.r#south == true
+        {
+            return 3502;
+        }
+        if self.r#north == false
+            && self.r#up == false
+            && self.r#west == false
+            && self.r#east == true
+            && self.r#south == true
+            && self.r#age == 7
+        {
+            return 3409;
+        }
+        if self.r#east == true
+            && self.r#up == true
+            && self.r#north == true
+            && self.r#south == true
+            && self.r#age == 14
+            && self.r#west == false
+        {
+            return 3623;
+        }
+        if self.r#east == true
+            && self.r#age == 15
+            && self.r#south == false
+            && self.r#west == false
+            && self.r#up == false
+            && self.r#north == true
+        {
+            return 3661;
+        }
+        if self.r#north == false
+            && self.r#west == false
+            && self.r#east == true
+            && self.r#age == 11
+            && self.r#south == true
+            && self.r#up == true
+        {
+            return 3535;
+        }
+        if self.r#age == 7
+            && self.r#west == true
+            && self.r#south == false
+            && self.r#east == true
+            && self.r#north == true
+            && self.r#up == true
+        {
+            return 3402;
+        }
+        if self.r#age == 10
+            && self.r#up == false
+            && self.r#east == true
+            && self.r#west == false
+            && self.r#north == true
+            && self.r#south == true
+        {
+            return 3497;
+        }
+        if self.r#north == true
+            && self.r#age == 14
+            && self.r#west == true
+            && self.r#east == false
+            && self.r#south == true
+            && self.r#up == false
+        {
+            return 3640;
+        }
+        if self.r#south == false
+            && self.r#north == false
+            && self.r#east == false
+            && self.r#west == false
+            && self.r#age == 14
+            && self.r#up == false
+        {
+            return 3653;
+        }
+        if self.r#age == 4
+            && self.r#south == true
+            && self.r#up == false
+            && self.r#west == false
+            && self.r#east == false
+            && self.r#north == false
+        {
+            return 3329;
+        }
+        if self.r#up == false
+            && self.r#north == true
+            && self.r#east == false
+            && self.r#south == true
+            && self.r#age == 1
+            && self.r#west == false
+        {
+            return 3225;
+        }
+        if self.r#up == true
+            && self.r#west == true
+            && self.r#age == 8
+            && self.r#south == false
+            && self.r#north == true
+            && self.r#east == true
+        {
+            return 3434;
+        }
+        if self.r#west == false
+            && self.r#south == false
+            && self.r#north == false
+            && self.r#east == true
+            && self.r#age == 4
+            && self.r#up == false
+        {
+            return 3317;
+        }
+        if self.r#north == false
+            && self.r#age == 11
+            && self.r#up == true
+            && self.r#south == false
+            && self.r#east == false
+            && self.r#west == false
+        {
+            return 3555;
+        }
+        if self.r#north == false
+            && self.r#west == false
+            && self.r#south == true
+            && self.r#age == 9
+            && self.r#up == true
+            && self.r#east == false
+        {
+            return 3487;
+        }
+        if self.r#east == false
+            && self.r#age == 1
+            && self.r#north == true
+            && self.r#south == true
+            && self.r#west == true
+            && self.r#up == true
+        {
+            return 3222;
+        }
+        if self.r#south == false
+            && self.r#up == false
+            && self.r#west == true
+            && self.r#age == 2
+            && self.r#east == true
+            && self.r#north == true
+        {
+            return 3244;
+        }
+        if self.r#south == true
+            && self.r#north == false
+            && self.r#west == true
+            && self.r#age == 3
+            && self.r#up == true
+            && self.r#east == true
+        {
+            return 3278;
+        }
+        if self.r#east == false
+            && self.r#west == false
+            && self.r#age == 9
+            && self.r#up == false
+            && self.r#south == true
+            && self.r#north == true
+        {
+            return 3481;
+        }
+        if self.r#south == false
+            && self.r#north == true
+            && self.r#east == false
+            && self.r#age == 4
+            && self.r#up == false
+            && self.r#west == false
+        {
+            return 3325;
+        }
+        if self.r#north == true
+            && self.r#south == false
+            && self.r#up == false
+            && self.r#east == true
+            && self.r#age == 7
+            && self.r#west == true
+        {
+            return 3404;
+        }
+        if self.r#north == true
+            && self.r#east == true
+            && self.r#up == false
+            && self.r#age == 14
+            && self.r#south == false
+            && self.r#west == true
+        {
+            return 3628;
+        }
+        if self.r#east == true
+            && self.r#west == false
+            && self.r#south == true
+            && self.r#up == true
+            && self.r#age == 14
+            && self.r#north == false
+        {
+            return 3631;
+        }
+        if self.r#up == false
+            && self.r#east == true
+            && self.r#age == 3
+            && self.r#west == true
+            && self.r#north == true
+            && self.r#south == true
+        {
+            return 3272;
+        }
+        if self.r#age == 7
+            && self.r#north == true
+            && self.r#south == true
+            && self.r#west == true
+            && self.r#up == true
+            && self.r#east == false
+        {
+            return 3414;
+        }
+        if self.r#age == 13
+            && self.r#east == false
+            && self.r#north == true
+            && self.r#west == false
+            && self.r#south == false
+            && self.r#up == true
+        {
+            return 3611;
+        }
+        if self.r#up == true
+            && self.r#east == false
+            && self.r#west == false
+            && self.r#age == 2
+            && self.r#north == false
+            && self.r#south == true
+        {
+            return 3263;
+        }
+        if self.r#age == 15
+            && self.r#south == true
+            && self.r#up == false
+            && self.r#north == false
+            && self.r#east == false
+            && self.r#west == true
+        {
+            return 3680;
+        }
+        if self.r#north == true
+            && self.r#up == false
+            && self.r#west == false
+            && self.r#age == 8
+            && self.r#east == true
+            && self.r#south == false
+        {
+            return 3437;
+        }
+        if self.r#east == false
+            && self.r#west == false
+            && self.r#up == false
+            && self.r#north == false
+            && self.r#age == 6
+            && self.r#south == true
+        {
+            return 3393;
+        }
+        if self.r#north == true
+            && self.r#age == 15
+            && self.r#south == true
+            && self.r#up == false
+            && self.r#west == true
+            && self.r#east == true
+        {
+            return 3656;
+        }
+        if self.r#west == true
+            && self.r#north == true
+            && self.r#age == 6
+            && self.r#east == false
+            && self.r#south == true
+            && self.r#up == true
+        {
+            return 3382;
+        }
+        if self.r#east == false
+            && self.r#west == false
+            && self.r#south == true
+            && self.r#north == true
+            && self.r#up == true
+            && self.r#age == 5
+        {
+            return 3351;
+        }
+        if self.r#west == true
+            && self.r#east == false
+            && self.r#up == true
+            && self.r#north == false
+            && self.r#age == 15
+            && self.r#south == false
+        {
+            return 3682;
+        }
+        if self.r#south == false
+            && self.r#up == false
+            && self.r#west == true
+            && self.r#east == false
+            && self.r#age == 5
+            && self.r#north == true
+        {
+            return 3356;
+        }
+        if self.r#up == false
+            && self.r#north == true
+            && self.r#west == false
+            && self.r#age == 5
+            && self.r#east == true
+            && self.r#south == true
+        {
+            return 3337;
+        }
+        if self.r#west == false
+            && self.r#north == true
+            && self.r#age == 13
+            && self.r#south == true
+            && self.r#up == false
+            && self.r#east == false
+        {
+            return 3609;
+        }
+        if self.r#up == false
+            && self.r#west == true
+            && self.r#age == 14
+            && self.r#south == true
+            && self.r#north == false
+            && self.r#east == false
+        {
+            return 3648;
+        }
+        if self.r#west == false
+            && self.r#north == true
+            && self.r#up == true
+            && self.r#east == true
+            && self.r#south == true
+            && self.r#age == 9
+        {
+            return 3463;
+        }
+        if self.r#east == false
+            && self.r#up == true
+            && self.r#age == 6
+            && self.r#west == true
+            && self.r#south == true
+            && self.r#north == false
+        {
+            return 3390;
+        }
+        if self.r#up == false
+            && self.r#age == 0
+            && self.r#west == false
+            && self.r#east == false
+            && self.r#south == true
+            && self.r#north == false
+        {
+            return 3201;
+        }
+        if self.r#south == true
+            && self.r#north == false
+            && self.r#age == 14
+            && self.r#west == true
+            && self.r#up == true
+            && self.r#east == false
+        {
+            return 3646;
+        }
+        if self.r#south == true
+            && self.r#up == true
+            && self.r#east == false
+            && self.r#north == true
+            && self.r#age == 12
+            && self.r#west == true
+        {
+            return 3574;
+        }
+        if self.r#age == 5
+            && self.r#south == false
+            && self.r#up == false
+            && self.r#west == false
+            && self.r#east == false
+            && self.r#north == false
+        {
+            return 3365;
+        }
+        if self.r#west == true
+            && self.r#up == false
+            && self.r#east == false
+            && self.r#age == 2
+            && self.r#north == true
+            && self.r#south == false
+        {
+            return 3260;
+        }
+        if self.r#west == true
+            && self.r#north == true
+            && self.r#south == false
+            && self.r#age == 14
+            && self.r#up == true
+            && self.r#east == false
+        {
+            return 3642;
+        }
+        if self.r#age == 12
+            && self.r#east == false
+            && self.r#up == true
+            && self.r#north == false
+            && self.r#west == false
+            && self.r#south == true
+        {
+            return 3583;
+        }
+        if self.r#up == false
+            && self.r#south == true
+            && self.r#west == false
+            && self.r#age == 12
+            && self.r#east == false
+            && self.r#north == true
+        {
+            return 3577;
+        }
+        if self.r#east == false
+            && self.r#up == false
+            && self.r#age == 10
+            && self.r#north == true
+            && self.r#west == false
+            && self.r#south == false
+        {
+            return 3517;
+        }
+        if self.r#east == true
+            && self.r#age == 0
+            && self.r#north == true
+            && self.r#up == false
+            && self.r#west == true
+            && self.r#south == false
+        {
+            return 3180;
+        }
+        if self.r#up == true
+            && self.r#south == true
+            && self.r#west == false
+            && self.r#east == true
+            && self.r#age == 7
+            && self.r#north == true
+        {
+            return 3399;
+        }
+        if self.r#north == false
+            && self.r#west == true
+            && self.r#east == false
+            && self.r#age == 12
+            && self.r#south == true
+            && self.r#up == true
+        {
+            return 3582;
+        }
+        if self.r#age == 15
+            && self.r#east == true
+            && self.r#south == false
+            && self.r#west == false
+            && self.r#up == true
+            && self.r#north == true
+        {
+            return 3659;
+        }
+        if self.r#east == false
+            && self.r#age == 9
+            && self.r#north == true
+            && self.r#up == true
+            && self.r#west == false
+            && self.r#south == false
+        {
+            return 3483;
+        }
+        if self.r#west == false
+            && self.r#age == 12
+            && self.r#south == false
+            && self.r#north == false
+            && self.r#east == false
+            && self.r#up == false
+        {
+            return 3589;
+        }
+        if self.r#age == 6
+            && self.r#up == true
+            && self.r#west == false
+            && self.r#east == false
+            && self.r#north == false
+            && self.r#south == true
+        {
+            return 3391;
+        }
+        if self.r#south == true
+            && self.r#up == false
+            && self.r#age == 5
+            && self.r#east == false
+            && self.r#north == false
+            && self.r#west == true
+        {
+            return 3360;
+        }
+        if self.r#west == false
+            && self.r#age == 11
+            && self.r#east == true
+            && self.r#south == true
+            && self.r#up == false
+            && self.r#north == true
+        {
+            return 3529;
+        }
+        if self.r#west == false
+            && self.r#age == 13
+            && self.r#north == false
+            && self.r#up == true
+            && self.r#east == false
+            && self.r#south == false
+        {
+            return 3619;
+        }
+        if self.r#north == true
+            && self.r#south == false
+            && self.r#up == true
+            && self.r#age == 14
+            && self.r#west == true
+            && self.r#east == true
+        {
+            return 3626;
+        }
+        if self.r#south == false
+            && self.r#age == 8
+            && self.r#east == true
+            && self.r#west == false
+            && self.r#up == true
+            && self.r#north == false
+        {
+            return 3443;
+        }
+        if self.r#east == false
+            && self.r#age == 2
+            && self.r#south == true
+            && self.r#up == false
+            && self.r#west == true
+            && self.r#north == true
+        {
+            return 3256;
+        }
+        if self.r#up == false
+            && self.r#west == false
+            && self.r#south == false
+            && self.r#age == 3
+            && self.r#east == false
+            && self.r#north == false
+        {
+            return 3301;
+        }
+        if self.r#up == true
+            && self.r#west == false
+            && self.r#east == true
+            && self.r#age == 5
+            && self.r#north == false
+            && self.r#south == false
+        {
+            return 3347;
+        }
+        if self.r#age == 9
+            && self.r#north == false
+            && self.r#west == true
+            && self.r#south == false
+            && self.r#up == false
+            && self.r#east == false
+        {
+            return 3492;
+        }
+        if self.r#west == false
+            && self.r#up == true
+            && self.r#age == 2
+            && self.r#east == true
+            && self.r#north == false
+            && self.r#south == false
+        {
+            return 3251;
+        }
+        if self.r#up == true
+            && self.r#north == true
+            && self.r#south == true
+            && self.r#west == true
+            && self.r#east == true
+            && self.r#age == 0
+        {
+            return 3174;
+        }
+        if self.r#north == false
+            && self.r#west == false
+            && self.r#up == true
+            && self.r#age == 10
+            && self.r#east == false
+            && self.r#south == true
+        {
+            return 3519;
+        }
+        if self.r#east == false
+            && self.r#west == false
+            && self.r#north == false
+            && self.r#age == 10
+            && self.r#south == false
+            && self.r#up == true
+        {
+            return 3523;
+        }
+        if self.r#age == 0
+            && self.r#south == true
+            && self.r#east == false
+            && self.r#up == true
+            && self.r#west == false
+            && self.r#north == true
+        {
+            return 3191;
+        }
+        if self.r#east == false
+            && self.r#age == 0
+            && self.r#south == true
+            && self.r#up == true
+            && self.r#west == false
+            && self.r#north == false
+        {
+            return 3199;
+        }
+        if self.r#south == false
+            && self.r#east == false
+            && self.r#age == 11
+            && self.r#west == true
+            && self.r#up == false
+            && self.r#north == true
+        {
+            return 3548;
+        }
+        if self.r#age == 2
+            && self.r#west == false
+            && self.r#north == true
+            && self.r#east == true
+            && self.r#up == true
+            && self.r#south == false
+        {
+            return 3243;
+        }
+        if self.r#north == true
+            && self.r#east == true
+            && self.r#up == true
+            && self.r#south == true
+            && self.r#west == false
+            && self.r#age == 1
+        {
+            return 3207;
+        }
+        if self.r#age == 0
+            && self.r#east == false
+            && self.r#north == true
+            && self.r#south == false
+            && self.r#up == false
+            && self.r#west == true
+        {
+            return 3196;
+        }
+        if self.r#south == false
+            && self.r#up == true
+            && self.r#east == true
+            && self.r#age == 9
+            && self.r#north == false
+            && self.r#west == true
+        {
+            return 3474;
+        }
+        if self.r#west == false
+            && self.r#north == true
+            && self.r#east == true
+            && self.r#age == 7
+            && self.r#up == false
+            && self.r#south == true
+        {
+            return 3401;
+        }
+        if self.r#north == true
+            && self.r#age == 5
+            && self.r#up == true
+            && self.r#east == false
+            && self.r#west == false
+            && self.r#south == false
+        {
+            return 3355;
+        }
+        if self.r#south == true
+            && self.r#up == true
+            && self.r#west == false
+            && self.r#east == false
+            && self.r#north == false
+            && self.r#age == 7
+        {
+            return 3423;
+        }
+        if self.r#age == 7
+            && self.r#east == false
+            && self.r#north == false
+            && self.r#south == false
+            && self.r#up == false
+            && self.r#west == true
+        {
+            return 3428;
+        }
+        if self.r#up == true
+            && self.r#west == false
+            && self.r#age == 6
+            && self.r#south == false
+            && self.r#east == false
+            && self.r#north == true
+        {
+            return 3387;
+        }
+        if self.r#north == false
+            && self.r#age == 4
+            && self.r#south == true
+            && self.r#up == false
+            && self.r#east == false
+            && self.r#west == true
+        {
+            return 3328;
+        }
+        if self.r#south == true
+            && self.r#age == 3
+            && self.r#west == false
+            && self.r#up == true
+            && self.r#north == true
+            && self.r#east == true
+        {
+            return 3271;
+        }
+        if self.r#north == false
+            && self.r#south == false
+            && self.r#age == 0
+            && self.r#up == false
+            && self.r#east == false
+            && self.r#west == false
+        {
+            return 3205;
+        }
+        if self.r#south == true
+            && self.r#up == true
+            && self.r#west == true
+            && self.r#age == 8
+            && self.r#north == true
+            && self.r#east == true
+        {
+            return 3430;
+        }
+        if self.r#up == false
+            && self.r#east == true
+            && self.r#north == false
+            && self.r#south == false
+            && self.r#west == false
+            && self.r#age == 10
+        {
+            return 3509;
+        }
+        if self.r#north == false
+            && self.r#south == false
+            && self.r#age == 2
+            && self.r#west == true
+            && self.r#east == true
+            && self.r#up == true
+        {
+            return 3250;
+        }
+        if self.r#south == true
+            && self.r#north == false
+            && self.r#up == false
+            && self.r#age == 2
+            && self.r#east == false
+            && self.r#west == true
+        {
+            return 3264;
+        }
+        if self.r#age == 5
+            && self.r#up == false
+            && self.r#west == true
+            && self.r#north == true
+            && self.r#south == false
+            && self.r#east == true
+        {
+            return 3340;
+        }
+        if self.r#age == 7
+            && self.r#south == false
+            && self.r#up == true
+            && self.r#north == false
+            && self.r#west == true
+            && self.r#east == true
+        {
+            return 3410;
+        }
+        if self.r#west == true
+            && self.r#age == 9
+            && self.r#north == true
+            && self.r#south == true
+            && self.r#east == false
+            && self.r#up == true
+        {
+            return 3478;
+        }
+        if self.r#south == false
+            && self.r#up == false
+            && self.r#age == 7
+            && self.r#west == false
+            && self.r#north == true
+            && self.r#east == false
+        {
+            return 3421;
+        }
+        if self.r#west == true
+            && self.r#up == false
+            && self.r#age == 0
+            && self.r#north == false
+            && self.r#south == true
+            && self.r#east == false
+        {
+            return 3200;
+        }
+        if self.r#east == true
+            && self.r#south == false
+            && self.r#age == 2
+            && self.r#north == false
+            && self.r#up == false
+            && self.r#west == false
+        {
+            return 3253;
+        }
+        if self.r#age == 8
+            && self.r#west == false
+            && self.r#east == true
+            && self.r#up == true
+            && self.r#south == true
+            && self.r#north == false
+        {
+            return 3439;
+        }
+        if self.r#east == true
+            && self.r#south == true
+            && self.r#up == false
+            && self.r#north == true
+            && self.r#west == true
+            && self.r#age == 10
+        {
+            return 3496;
+        }
+        if self.r#up == false
+            && self.r#east == true
+            && self.r#south == true
+            && self.r#west == false
+            && self.r#north == true
+            && self.r#age == 2
+        {
+            return 3241;
+        }
+        if self.r#up == true
+            && self.r#west == true
+            && self.r#east == false
+            && self.r#age == 10
+            && self.r#north == false
+            && self.r#south == false
+        {
+            return 3522;
+        }
+        if self.r#south == false
+            && self.r#age == 10
+            && self.r#north == false
+            && self.r#east == false
+            && self.r#up == false
+            && self.r#west == true
+        {
+            return 3524;
+        }
+        if self.r#east == false
+            && self.r#south == false
+            && self.r#age == 8
+            && self.r#up == false
+            && self.r#north == false
+            && self.r#west == false
+        {
+            return 3461;
+        }
+        if self.r#north == false
+            && self.r#south == false
+            && self.r#age == 12
+            && self.r#up == true
+            && self.r#east == true
+            && self.r#west == false
+        {
+            return 3571;
+        }
+        if self.r#south == true
+            && self.r#east == true
+            && self.r#west == false
+            && self.r#age == 14
+            && self.r#up == false
+            && self.r#north == true
+        {
+            return 3625;
+        }
+        if self.r#south == false
+            && self.r#west == true
+            && self.r#north == false
+            && self.r#east == false
+            && self.r#age == 0
+            && self.r#up == true
+        {
+            return 3202;
+        }
+        if self.r#up == true
+            && self.r#south == true
+            && self.r#west == true
+            && self.r#east == true
+            && self.r#age == 7
+            && self.r#north == true
+        {
+            return 3398;
+        }
+        if self.r#up == false
+            && self.r#south == true
+            && self.r#north == true
+            && self.r#west == true
+            && self.r#east == false
+            && self.r#age == 13
+        {
+            return 3608;
+        }
+        if self.r#age == 13
+            && self.r#north == false
+            && self.r#east == true
+            && self.r#south == true
+            && self.r#west == true
+            && self.r#up == true
+        {
+            return 3598;
+        }
+        if self.r#age == 15
+            && self.r#west == false
+            && self.r#north == false
+            && self.r#up == true
+            && self.r#south == true
+            && self.r#east == false
+        {
+            return 3679;
+        }
+        if self.r#north == false
+            && self.r#south == false
+            && self.r#east == true
+            && self.r#west == true
+            && self.r#age == 10
+            && self.r#up == true
+        {
+            return 3506;
+        }
+        if self.r#west == false
+            && self.r#south == false
+            && self.r#age == 13
+            && self.r#north == false
+            && self.r#east == false
+            && self.r#up == false
+        {
+            return 3621;
+        }
+        if self.r#west == false
+            && self.r#east == true
+            && self.r#age == 4
+            && self.r#up == true
+            && self.r#north == false
+            && self.r#south == false
+        {
+            return 3315;
+        }
+        if self.r#up == true
+            && self.r#age == 15
+            && self.r#north == true
+            && self.r#south == true
+            && self.r#west == true
+            && self.r#east == true
+        {
+            return 3654;
+        }
+        if self.r#south == false
+            && self.r#north == true
+            && self.r#up == true
+            && self.r#east == false
+            && self.r#age == 11
+            && self.r#west == true
+        {
+            return 3546;
+        }
+        if self.r#up == false
+            && self.r#age == 5
+            && self.r#west == false
+            && self.r#east == false
+            && self.r#north == true
+            && self.r#south == true
+        {
+            return 3353;
+        }
+        if self.r#up == true
+            && self.r#west == true
+            && self.r#south == false
+            && self.r#age == 14
+            && self.r#north == false
+            && self.r#east == false
+        {
+            return 3650;
+        }
+        if self.r#age == 8
+            && self.r#south == false
+            && self.r#west == false
+            && self.r#east == false
+            && self.r#up == false
+            && self.r#north == true
+        {
+            return 3453;
+        }
+        if self.r#west == true
+            && self.r#up == false
+            && self.r#north == true
+            && self.r#east == false
+            && self.r#age == 12
+            && self.r#south == false
+        {
+            return 3580;
+        }
+        if self.r#north == false
+            && self.r#south == true
+            && self.r#west == false
+            && self.r#east == true
+            && self.r#up == true
+            && self.r#age == 15
+        {
+            return 3663;
+        }
+        if self.r#age == 7
+            && self.r#up == false
+            && self.r#north == true
+            && self.r#south == false
+            && self.r#west == true
+            && self.r#east == false
+        {
+            return 3420;
+        }
+        if self.r#age == 2
+            && self.r#south == true
+            && self.r#east == false
+            && self.r#up == true
+            && self.r#west == false
+            && self.r#north == true
+        {
+            return 3255;
+        }
+        if self.r#up == true
+            && self.r#east == false
+            && self.r#age == 1
+            && self.r#west == true
+            && self.r#north == false
+            && self.r#south == true
+        {
+            return 3230;
+        }
+        if self.r#west == false
+            && self.r#up == true
+            && self.r#north == false
+            && self.r#age == 11
+            && self.r#east == true
+            && self.r#south == false
+        {
+            return 3539;
+        }
+        if self.r#up == false
+            && self.r#west == false
+            && self.r#age == 8
+            && self.r#east == false
+            && self.r#north == true
+            && self.r#south == true
+        {
+            return 3449;
+        }
+        if self.r#west == true
+            && self.r#north == false
+            && self.r#south == true
+            && self.r#east == false
+            && self.r#age == 8
+            && self.r#up == false
+        {
+            return 3456;
+        }
+        if self.r#east == false
+            && self.r#north == false
+            && self.r#age == 13
+            && self.r#up == false
+            && self.r#west == true
+            && self.r#south == false
+        {
+            return 3620;
+        }
+        if self.r#west == true
+            && self.r#east == true
+            && self.r#age == 2
+            && self.r#north == false
+            && self.r#south == false
+            && self.r#up == false
+        {
+            return 3252;
+        }
+        if self.r#age == 12
+            && self.r#north == true
+            && self.r#south == true
+            && self.r#up == false
+            && self.r#west == true
+            && self.r#east == false
+        {
+            return 3576;
+        }
+        if self.r#east == true
+            && self.r#north == false
+            && self.r#age == 6
+            && self.r#south == false
+            && self.r#up == true
+            && self.r#west == true
+        {
+            return 3378;
+        }
+        if self.r#east == false
+            && self.r#south == true
+            && self.r#west == false
+            && self.r#up == false
+            && self.r#age == 13
+            && self.r#north == false
+        {
+            return 3617;
+        }
+        if self.r#age == 5
+            && self.r#south == true
+            && self.r#up == true
+            && self.r#west == true
+            && self.r#east == false
+            && self.r#north == false
+        {
+            return 3358;
+        }
+        if self.r#west == true
+            && self.r#age == 6
+            && self.r#south == false
+            && self.r#up == false
+            && self.r#north == false
+            && self.r#east == false
+        {
+            return 3396;
+        }
+        if self.r#west == true
+            && self.r#south == true
+            && self.r#up == false
+            && self.r#north == true
+            && self.r#age == 5
+            && self.r#east == true
+        {
+            return 3336;
+        }
+        if self.r#north == false
+            && self.r#east == true
+            && self.r#west == true
+            && self.r#south == true
+            && self.r#up == true
+            && self.r#age == 6
+        {
+            return 3374;
+        }
+        if self.r#south == false
+            && self.r#age == 13
+            && self.r#east == false
+            && self.r#north == false
+            && self.r#up == true
+            && self.r#west == true
+        {
+            return 3618;
+        }
+        if self.r#age == 4
+            && self.r#north == false
+            && self.r#south == false
+            && self.r#east == false
+            && self.r#up == false
+            && self.r#west == false
+        {
+            return 3333;
+        }
+        if self.r#east == false
+            && self.r#up == true
+            && self.r#west == true
+            && self.r#south == true
+            && self.r#age == 15
+            && self.r#north == true
+        {
+            return 3670;
+        }
+        if self.r#age == 15
+            && self.r#west == false
+            && self.r#north == false
+            && self.r#up == false
+            && self.r#east == false
+            && self.r#south == true
+        {
+            return 3681;
+        }
+        if self.r#north == false
+            && self.r#east == false
+            && self.r#south == true
+            && self.r#age == 14
+            && self.r#up == false
+            && self.r#west == false
+        {
+            return 3649;
+        }
+        if self.r#north == false
+            && self.r#west == true
+            && self.r#age == 12
+            && self.r#up == true
+            && self.r#east == true
+            && self.r#south == false
+        {
+            return 3570;
+        }
+        if self.r#age == 7
+            && self.r#north == false
+            && self.r#east == true
+            && self.r#south == false
+            && self.r#up == false
+            && self.r#west == false
+        {
+            return 3413;
+        }
+        if self.r#age == 10
+            && self.r#east == false
+            && self.r#north == false
+            && self.r#south == true
+            && self.r#up == false
+            && self.r#west == false
+        {
+            return 3521;
+        }
+        if self.r#north == true
+            && self.r#south == false
+            && self.r#age == 15
+            && self.r#up == true
+            && self.r#east == false
+            && self.r#west == false
+        {
+            return 3675;
+        }
+        if self.r#age == 12
+            && self.r#south == true
+            && self.r#north == true
+            && self.r#east == true
+            && self.r#up == false
+            && self.r#west == false
+        {
+            return 3561;
+        }
+        if self.r#up == true
+            && self.r#south == false
+            && self.r#east == false
+            && self.r#age == 3
+            && self.r#west == true
+            && self.r#north == false
+        {
+            return 3298;
+        }
+        if self.r#north == false
+            && self.r#south == true
+            && self.r#west == false
+            && self.r#age == 1
+            && self.r#east == true
+            && self.r#up == true
+        {
+            return 3215;
+        }
+        if self.r#west == true
+            && self.r#east == true
+            && self.r#south == false
+            && self.r#up == false
+            && self.r#north == true
+            && self.r#age == 12
+        {
+            return 3564;
+        }
+        if self.r#east == true
+            && self.r#up == true
+            && self.r#north == true
+            && self.r#age == 10
+            && self.r#south == false
+            && self.r#west == false
+        {
+            return 3499;
+        }
+        if self.r#age == 6
+            && self.r#east == true
+            && self.r#north == true
+            && self.r#up == true
+            && self.r#west == false
+            && self.r#south == false
+        {
+            return 3371;
+        }
+        if self.r#age == 4
+            && self.r#west == true
+            && self.r#south == false
+            && self.r#east == true
+            && self.r#north == false
+            && self.r#up == false
+        {
+            return 3316;
+        }
+        if self.r#age == 8
+            && self.r#west == true
+            && self.r#north == false
+            && self.r#south == false
+            && self.r#east == true
+            && self.r#up == true
+        {
+            return 3442;
+        }
+        if self.r#up == true
+            && self.r#west == false
+            && self.r#south == false
+            && self.r#age == 12
+            && self.r#east == false
+            && self.r#north == true
+        {
+            return 3579;
+        }
+        if self.r#north == false
+            && self.r#west == false
+            && self.r#east == true
+            && self.r#up == false
+            && self.r#age == 9
+            && self.r#south == true
+        {
+            return 3473;
+        }
+        if self.r#south == true
+            && self.r#west == false
+            && self.r#age == 11
+            && self.r#east == false
+            && self.r#north == false
+            && self.r#up == true
+        {
+            return 3551;
+        }
+        if self.r#up == true
+            && self.r#east == false
+            && self.r#age == 5
+            && self.r#west == true
+            && self.r#south == false
+            && self.r#north == true
+        {
+            return 3354;
+        }
+        if self.r#age == 3
+            && self.r#south == false
+            && self.r#up == false
+            && self.r#west == false
+            && self.r#east == true
+            && self.r#north == false
+        {
+            return 3285;
+        }
+        if self.r#west == false
+            && self.r#north == true
+            && self.r#east == false
+            && self.r#south == false
+            && self.r#age == 3
+            && self.r#up == true
+        {
+            return 3291;
+        }
+        if self.r#south == false
+            && self.r#west == false
+            && self.r#age == 13
+            && self.r#east == true
+            && self.r#up == false
+            && self.r#north == true
+        {
+            return 3597;
+        }
+        if self.r#age == 13
+            && self.r#south == true
+            && self.r#west == false
+            && self.r#up == false
+            && self.r#east == true
+            && self.r#north == true
+        {
+            return 3593;
+        }
+        if self.r#east == true
+            && self.r#south == true
+            && self.r#up == true
+            && self.r#north == false
+            && self.r#west == false
+            && self.r#age == 0
+        {
+            return 3183;
+        }
+        if self.r#up == false
+            && self.r#west == false
+            && self.r#south == true
+            && self.r#north == true
+            && self.r#east == true
+            && self.r#age == 4
+        {
+            return 3305;
+        }
+        if self.r#south == false
+            && self.r#up == true
+            && self.r#east == false
+            && self.r#west == false
+            && self.r#age == 2
+            && self.r#north == false
+        {
+            return 3267;
+        }
+        if self.r#east == false
+            && self.r#north == false
+            && self.r#up == true
+            && self.r#south == true
+            && self.r#west == true
+            && self.r#age == 15
+        {
+            return 3678;
+        }
+        if self.r#west == true
+            && self.r#south == true
+            && self.r#age == 8
+            && self.r#east == false
+            && self.r#north == false
+            && self.r#up == true
+        {
+            return 3454;
+        }
+        if self.r#age == 1
+            && self.r#east == false
+            && self.r#south == false
+            && self.r#west == true
+            && self.r#north == false
+            && self.r#up == true
+        {
+            return 3234;
+        }
+        if self.r#north == false
+            && self.r#south == false
+            && self.r#age == 6
+            && self.r#up == true
+            && self.r#east == false
+            && self.r#west == true
+        {
+            return 3394;
+        }
+        if self.r#west == true
+            && self.r#north == false
+            && self.r#south == true
+            && self.r#age == 1
+            && self.r#east == false
+            && self.r#up == false
+        {
+            return 3232;
+        }
+        if self.r#east == false
+            && self.r#up == false
+            && self.r#age == 1
+            && self.r#south == true
+            && self.r#west == true
+            && self.r#north == true
+        {
+            return 3224;
+        }
+        if self.r#west == false
+            && self.r#up == false
+            && self.r#age == 7
+            && self.r#north == false
+            && self.r#east == false
+            && self.r#south == false
+        {
+            return 3429;
+        }
+        if self.r#age == 6
+            && self.r#south == true
+            && self.r#up == true
+            && self.r#east == false
+            && self.r#west == false
+            && self.r#north == true
+        {
+            return 3383;
+        }
+        if self.r#age == 8
+            && self.r#east == true
+            && self.r#up == false
+            && self.r#north == false
+            && self.r#south == true
+            && self.r#west == true
+        {
+            return 3440;
+        }
+        if self.r#east == false
+            && self.r#age == 8
+            && self.r#north == true
+            && self.r#south == true
+            && self.r#west == true
+            && self.r#up == false
+        {
+            return 3448;
+        }
+        if self.r#east == true
+            && self.r#age == 10
+            && self.r#south == false
+            && self.r#west == true
+            && self.r#up == false
+            && self.r#north == false
+        {
+            return 3508;
+        }
+        if self.r#up == false
+            && self.r#west == false
+            && self.r#north == false
+            && self.r#south == true
+            && self.r#age == 0
+            && self.r#east == true
+        {
+            return 3185;
+        }
+        if self.r#up == false
+            && self.r#east == false
+            && self.r#west == true
+            && self.r#age == 10
+            && self.r#north == true
+            && self.r#south == true
+        {
+            return 3512;
+        }
+        if self.r#west == false
+            && self.r#east == true
+            && self.r#age == 3
+            && self.r#up == false
+            && self.r#north == false
+            && self.r#south == true
+        {
+            return 3281;
+        }
+        if self.r#age == 7
+            && self.r#up == false
+            && self.r#west == true
+            && self.r#east == false
+            && self.r#south == true
+            && self.r#north == true
+        {
+            return 3416;
+        }
+        if self.r#age == 9
+            && self.r#east == true
+            && self.r#west == true
+            && self.r#south == true
+            && self.r#up == true
+            && self.r#north == true
+        {
+            return 3462;
+        }
+        if self.r#east == true
+            && self.r#up == true
+            && self.r#west == true
+            && self.r#age == 0
+            && self.r#north == false
+            && self.r#south == true
+        {
+            return 3182;
+        }
+        if self.r#east == false
+            && self.r#north == true
+            && self.r#age == 1
+            && self.r#south == false
+            && self.r#up == false
+            && self.r#west == true
+        {
+            return 3228;
+        }
+        if self.r#east == true
+            && self.r#up == true
+            && self.r#north == false
+            && self.r#west == true
+            && self.r#south == false
+            && self.r#age == 4
+        {
+            return 3314;
+        }
+        if self.r#west == true
+            && self.r#north == false
+            && self.r#age == 8
+            && self.r#south == false
+            && self.r#up == false
+            && self.r#east == true
+        {
+            return 3444;
+        }
+        if self.r#south == true
+            && self.r#east == false
+            && self.r#age == 11
+            && self.r#up == false
+            && self.r#west == false
+            && self.r#north == true
+        {
+            return 3545;
+        }
+        if self.r#age == 15
+            && self.r#east == true
+            && self.r#up == true
+            && self.r#north == true
+            && self.r#south == false
+            && self.r#west == true
+        {
+            return 3658;
+        }
+        if self.r#west == false
+            && self.r#east == false
+            && self.r#north == false
+            && self.r#up == true
+            && self.r#age == 4
+            && self.r#south == false
+        {
+            return 3331;
+        }
+        if self.r#north == false
+            && self.r#east == false
+            && self.r#age == 6
+            && self.r#south == false
+            && self.r#west == false
+            && self.r#up == false
+        {
+            return 3397;
+        }
+        if self.r#south == false
+            && self.r#up == true
+            && self.r#west == true
+            && self.r#east == true
+            && self.r#north == false
+            && self.r#age == 5
+        {
+            return 3346;
+        }
+        if self.r#up == true
+            && self.r#south == true
+            && self.r#east == true
+            && self.r#north == false
+            && self.r#age == 13
+            && self.r#west == false
+        {
+            return 3599;
+        }
+        if self.r#age == 0
+            && self.r#up == false
+            && self.r#north == true
+            && self.r#west == false
+            && self.r#south == false
+            && self.r#east == false
+        {
+            return 3197;
+        }
+        if self.r#east == true
+            && self.r#south == false
+            && self.r#west == true
+            && self.r#north == false
+            && self.r#up == false
+            && self.r#age == 11
+        {
+            return 3540;
+        }
+        if self.r#east == true
+            && self.r#north == false
+            && self.r#age == 5
+            && self.r#south == true
+            && self.r#up == true
+            && self.r#west == true
+        {
+            return 3342;
+        }
+        if self.r#north == false
+            && self.r#age == 5
+            && self.r#up == false
+            && self.r#west == false
+            && self.r#east == true
+            && self.r#south == false
+        {
+            return 3349;
+        }
+        if self.r#west == true
+            && self.r#north == false
+            && self.r#age == 15
+            && self.r#east == true
+            && self.r#south == true
+            && self.r#up == true
+        {
+            return 3662;
+        }
+        if self.r#east == true
+            && self.r#north == false
+            && self.r#south == false
+            && self.r#west == false
+            && self.r#up == false
+            && self.r#age == 15
+        {
+            return 3669;
+        }
+        if self.r#west == true
+            && self.r#north == true
+            && self.r#south == true
+            && self.r#up == true
+            && self.r#east == false
+            && self.r#age == 8
+        {
+            return 3446;
+        }
+        if self.r#east == false
+            && self.r#north == false
+            && self.r#up == false
+            && self.r#age == 0
+            && self.r#south == false
+            && self.r#west == true
+        {
+            return 3204;
+        }
+        if self.r#age == 3
+            && self.r#south == true
+            && self.r#up == false
+            && self.r#east == true
+            && self.r#north == true
+            && self.r#west == false
+        {
+            return 3273;
+        }
+        if self.r#west == true
+            && self.r#north == true
+            && self.r#age == 5
+            && self.r#east == true
+            && self.r#south == false
+            && self.r#up == true
+        {
+            return 3338;
+        }
+        if self.r#north == false
+            && self.r#age == 7
+            && self.r#east == true
+            && self.r#west == false
+            && self.r#up == true
+            && self.r#south == true
+        {
+            return 3407;
+        }
+        if self.r#west == false
+            && self.r#north == true
+            && self.r#age == 8
+            && self.r#up == true
+            && self.r#east == false
+            && self.r#south == true
+        {
+            return 3447;
+        }
+        if self.r#south == true
+            && self.r#up == false
+            && self.r#west == true
+            && self.r#east == false
+            && self.r#north == false
+            && self.r#age == 9
+        {
+            return 3488;
+        }
+        if self.r#age == 12
+            && self.r#east == false
+            && self.r#north == false
+            && self.r#south == false
+            && self.r#up == true
+            && self.r#west == true
+        {
+            return 3586;
+        }
+        if self.r#up == false
+            && self.r#west == true
+            && self.r#north == true
+            && self.r#age == 10
+            && self.r#east == false
+            && self.r#south == false
+        {
+            return 3516;
+        }
+        if self.r#west == true
+            && self.r#up == false
+            && self.r#age == 6
+            && self.r#north == true
+            && self.r#east == false
+            && self.r#south == true
+        {
+            return 3384;
+        }
+        if self.r#east == false
+            && self.r#up == false
+            && self.r#north == false
+            && self.r#age == 1
+            && self.r#south == false
+            && self.r#west == false
+        {
+            return 3237;
+        }
+        if self.r#south == true
+            && self.r#west == true
+            && self.r#east == true
+            && self.r#age == 9
+            && self.r#north == true
+            && self.r#up == false
+        {
+            return 3464;
+        }
+        if self.r#north == true
+            && self.r#east == false
+            && self.r#south == false
+            && self.r#west == true
+            && self.r#age == 3
+            && self.r#up == false
+        {
+            return 3292;
+        }
+        if self.r#west == false
+            && self.r#north == false
+            && self.r#east == false
+            && self.r#up == true
+            && self.r#age == 4
+            && self.r#south == true
+        {
+            return 3327;
+        }
+        if self.r#age == 4
+            && self.r#south == true
+            && self.r#west == false
+            && self.r#north == true
+            && self.r#up == true
+            && self.r#east == true
+        {
+            return 3303;
+        }
+        if self.r#east == false
+            && self.r#age == 0
+            && self.r#south == true
+            && self.r#north == true
+            && self.r#up == false
+            && self.r#west == false
+        {
+            return 3193;
+        }
+        if self.r#age == 1
+            && self.r#up == true
+            && self.r#west == true
+            && self.r#east == true
+            && self.r#north == true
+            && self.r#south == true
+        {
+            return 3206;
+        }
+        if self.r#south == true
+            && self.r#north == true
+            && self.r#east == false
+            && self.r#up == true
+            && self.r#age == 1
+            && self.r#west == false
+        {
+            return 3223;
+        }
+        if self.r#west == true
+            && self.r#north == false
+            && self.r#age == 6
+            && self.r#east == false
+            && self.r#south == true
+            && self.r#up == false
+        {
+            return 3392;
+        }
+        if self.r#up == false
+            && self.r#north == true
+            && self.r#west == true
+            && self.r#east == false
+            && self.r#south == false
+            && self.r#age == 6
+        {
+            return 3388;
+        }
+        if self.r#west == false
+            && self.r#east == true
+            && self.r#age == 15
+            && self.r#north == false
+            && self.r#south == true
+            && self.r#up == false
+        {
+            return 3665;
+        }
+        if self.r#age == 14
+            && self.r#east == false
+            && self.r#up == true
+            && self.r#south == false
+            && self.r#west == false
+            && self.r#north == true
+        {
+            return 3643;
+        }
+        if self.r#west == false
+            && self.r#up == true
+            && self.r#south == false
+            && self.r#age == 7
+            && self.r#east == false
+            && self.r#north == false
+        {
+            return 3427;
+        }
+        if self.r#east == true
+            && self.r#north == false
+            && self.r#south == false
+            && self.r#age == 15
+            && self.r#up == true
+            && self.r#west == false
+        {
+            return 3667;
+        }
+        if self.r#south == true
+            && self.r#north == true
+            && self.r#up == true
+            && self.r#east == true
+            && self.r#age == 2
+            && self.r#west == false
+        {
+            return 3239;
+        }
+        if self.r#south == false
+            && self.r#up == false
+            && self.r#north == false
+            && self.r#age == 0
+            && self.r#east == true
+            && self.r#west == true
+        {
+            return 3188;
+        }
+        if self.r#up == false
+            && self.r#west == false
+            && self.r#age == 4
+            && self.r#south == false
+            && self.r#east == true
+            && self.r#north == true
+        {
+            return 3309;
+        }
+        if self.r#up == true
+            && self.r#age == 0
+            && self.r#west == true
+            && self.r#south == false
+            && self.r#north == true
+            && self.r#east == true
+        {
+            return 3178;
+        }
+        if self.r#east == false
+            && self.r#age == 4
+            && self.r#west == true
+            && self.r#north == true
+            && self.r#south == false
+            && self.r#up == true
+        {
+            return 3322;
+        }
+        if self.r#east == true
+            && self.r#up == false
+            && self.r#age == 11
+            && self.r#south == true
+            && self.r#north == false
+            && self.r#west == false
+        {
+            return 3537;
+        }
+        if self.r#up == false
+            && self.r#west == false
+            && self.r#east == false
+            && self.r#age == 11
+            && self.r#north == true
+            && self.r#south == false
+        {
+            return 3549;
+        }
+        if self.r#age == 3
+            && self.r#up == true
+            && self.r#west == true
+            && self.r#east == false
+            && self.r#north == true
+            && self.r#south == true
+        {
+            return 3286;
+        }
+        if self.r#west == true
+            && self.r#east == false
+            && self.r#north == false
+            && self.r#age == 10
+            && self.r#south == true
+            && self.r#up == true
+        {
+            return 3518;
+        }
+        if self.r#age == 9
+            && self.r#east == true
+            && self.r#north == false
+            && self.r#south == true
+            && self.r#west == false
+            && self.r#up == true
+        {
+            return 3471;
+        }
+        if self.r#up == false
+            && self.r#east == false
+            && self.r#west == false
+            && self.r#north == true
+            && self.r#age == 10
+            && self.r#south == true
+        {
+            return 3513;
+        }
+        if self.r#age == 14
+            && self.r#north == false
+            && self.r#up == false
+            && self.r#east == true
+            && self.r#south == true
+            && self.r#west == false
+        {
+            return 3633;
+        }
+        if self.r#east == true
+            && self.r#age == 10
+            && self.r#up == true
+            && self.r#west == true
+            && self.r#south == true
+            && self.r#north == true
+        {
+            return 3494;
+        }
+        if self.r#age == 1
+            && self.r#east == true
+            && self.r#north == true
+            && self.r#south == false
+            && self.r#up == true
+            && self.r#west == false
+        {
+            return 3211;
+        }
+        if self.r#age == 13
+            && self.r#south == false
+            && self.r#north == false
+            && self.r#east == true
+            && self.r#up == true
+            && self.r#west == true
+        {
+            return 3602;
+        }
+        if self.r#age == 12
+            && self.r#east == false
+            && self.r#up == true
+            && self.r#south == false
+            && self.r#west == true
+            && self.r#north == true
+        {
+            return 3578;
+        }
+        if self.r#age == 2
+            && self.r#north == false
+            && self.r#up == true
+            && self.r#south == true
+            && self.r#east == true
+            && self.r#west == false
+        {
+            return 3247;
+        }
+        if self.r#north == true
+            && self.r#east == true
+            && self.r#south == true
+            && self.r#age == 6
+            && self.r#west == true
+            && self.r#up == true
+        {
+            return 3366;
+        }
+        if self.r#west == true
+            && self.r#east == false
+            && self.r#north == true
+            && self.r#south == true
+            && self.r#age == 9
+            && self.r#up == false
+        {
+            return 3480;
+        }
+        if self.r#east == true
+            && self.r#south == false
+            && self.r#west == true
+            && self.r#north == true
+            && self.r#age == 15
+            && self.r#up == false
+        {
+            return 3660;
+        }
+        if self.r#north == false
+            && self.r#up == true
+            && self.r#age == 1
+            && self.r#south == false
+            && self.r#west == false
+            && self.r#east == true
+        {
+            return 3219;
+        }
+        if self.r#north == true
+            && self.r#south == true
+            && self.r#age == 3
+            && self.r#up == true
+            && self.r#east == false
+            && self.r#west == false
+        {
+            return 3287;
+        }
+        if self.r#east == true
+            && self.r#up == true
+            && self.r#west == false
+            && self.r#south == false
+            && self.r#north == true
+            && self.r#age == 8
+        {
+            return 3435;
+        }
+        if self.r#age == 10
+            && self.r#north == true
+            && self.r#south == false
+            && self.r#east == false
+            && self.r#up == true
+            && self.r#west == true
+        {
+            return 3514;
+        }
+        if self.r#south == false
+            && self.r#up == true
+            && self.r#east == true
+            && self.r#west == false
+            && self.r#age == 0
+            && self.r#north == false
+        {
+            return 3187;
+        }
+        if self.r#age == 5
+            && self.r#east == true
+            && self.r#up == true
+            && self.r#west == false
+            && self.r#north == false
+            && self.r#south == true
+        {
+            return 3343;
+        }
+        if self.r#south == false
+            && self.r#north == false
+            && self.r#age == 5
+            && self.r#up == true
+            && self.r#west == false
+            && self.r#east == false
+        {
+            return 3363;
+        }
+        if self.r#east == false
+            && self.r#age == 9
+            && self.r#south == false
+            && self.r#up == true
+            && self.r#north == true
+            && self.r#west == true
+        {
+            return 3482;
+        }
+        if self.r#south == false
+            && self.r#west == false
+            && self.r#up == true
+            && self.r#age == 1
+            && self.r#east == false
+            && self.r#north == false
+        {
+            return 3235;
+        }
+        if self.r#north == false
+            && self.r#age == 13
+            && self.r#east == true
+            && self.r#south == true
+            && self.r#up == false
+            && self.r#west == false
+        {
+            return 3601;
+        }
+        if self.r#east == false
+            && self.r#west == false
+            && self.r#north == true
+            && self.r#south == true
+            && self.r#age == 14
+            && self.r#up == true
+        {
+            return 3639;
+        }
+        if self.r#up == true
+            && self.r#north == true
+            && self.r#west == false
+            && self.r#age == 11
+            && self.r#east == false
+            && self.r#south == true
+        {
+            return 3543;
+        }
+        if self.r#east == false
+            && self.r#age == 11
+            && self.r#south == false
+            && self.r#north == false
+            && self.r#up == false
+            && self.r#west == false
+        {
+            return 3557;
+        }
+        if self.r#age == 2
+            && self.r#up == true
+            && self.r#north == false
+            && self.r#west == true
+            && self.r#east == true
+            && self.r#south == true
+        {
+            return 3246;
+        }
+        if self.r#east == false
+            && self.r#north == true
+            && self.r#south == false
+            && self.r#west == false
+            && self.r#up == false
+            && self.r#age == 3
+        {
+            return 3293;
+        }
+        if self.r#up == true
+            && self.r#west == true
+            && self.r#north == true
+            && self.r#south == false
+            && self.r#east == true
+            && self.r#age == 10
+        {
+            return 3498;
+        }
+        if self.r#north == false
+            && self.r#south == false
+            && self.r#age == 7
+            && self.r#west == true
+            && self.r#up == true
+            && self.r#east == false
+        {
+            return 3426;
+        }
+        if self.r#west == true
+            && self.r#age == 1
+            && self.r#south == false
+            && self.r#north == true
+            && self.r#up == true
+            && self.r#east == false
+        {
+            return 3226;
+        }
+        if self.r#south == false
+            && self.r#up == false
+            && self.r#west == true
+            && self.r#age == 11
+            && self.r#north == false
+            && self.r#east == false
+        {
+            return 3556;
+        }
+        if self.r#east == true
+            && self.r#north == true
+            && self.r#south == false
+            && self.r#up == false
+            && self.r#age == 3
+            && self.r#west == false
+        {
+            return 3277;
+        }
+        if self.r#age == 9
+            && self.r#east == true
+            && self.r#south == false
+            && self.r#up == false
+            && self.r#west == true
+            && self.r#north == false
+        {
+            return 3476;
+        }
+        if self.r#east == true
+            && self.r#age == 3
+            && self.r#north == true
+            && self.r#south == false
+            && self.r#up == true
+            && self.r#west == true
+        {
+            return 3274;
+        }
+        if self.r#up == false
+            && self.r#north == false
+            && self.r#south == true
+            && self.r#west == false
+            && self.r#age == 7
+            && self.r#east == false
+        {
+            return 3425;
+        }
+        if self.r#west == false
+            && self.r#up == false
+            && self.r#east == false
+            && self.r#north == false
+            && self.r#south == false
+            && self.r#age == 9
+        {
+            return 3493;
+        }
+        if self.r#east == true
+            && self.r#up == true
+            && self.r#south == true
+            && self.r#west == true
+            && self.r#north == false
+            && self.r#age == 12
+        {
+            return 3566;
+        }
+        if self.r#north == false
+            && self.r#up == false
+            && self.r#south == false
+            && self.r#west == true
+            && self.r#east == false
+            && self.r#age == 2
+        {
+            return 3268;
+        }
+        if self.r#age == 12
+            && self.r#east == true
+            && self.r#north == true
+            && self.r#west == true
+            && self.r#up == false
+            && self.r#south == true
+        {
+            return 3560;
+        }
+        if self.r#age == 13
+            && self.r#up == true
+            && self.r#south == false
+            && self.r#east == true
+            && self.r#west == true
+            && self.r#north == true
+        {
+            return 3594;
+        }
+        if self.r#age == 6
+            && self.r#south == true
+            && self.r#east == true
+            && self.r#up == true
+            && self.r#north == false
+            && self.r#west == false
+        {
+            return 3375;
+        }
+        if self.r#east == false
+            && self.r#north == false
+            && self.r#west == false
+            && self.r#age == 12
+            && self.r#south == true
+            && self.r#up == false
+        {
+            return 3585;
+        }
+        if self.r#east == true
+            && self.r#south == true
+            && self.r#north == false
+            && self.r#up == true
+            && self.r#west == false
+            && self.r#age == 3
+        {
+            return 3279;
+        }
+        if self.r#up == false
+            && self.r#age == 3
+            && self.r#south == true
+            && self.r#west == true
+            && self.r#north == false
+            && self.r#east == true
+        {
+            return 3280;
+        }
+        if self.r#up == true
+            && self.r#north == false
+            && self.r#east == true
+            && self.r#age == 6
+            && self.r#south == false
+            && self.r#west == false
+        {
+            return 3379;
+        }
+        if self.r#up == false
+            && self.r#east == false
+            && self.r#south == false
+            && self.r#age == 15
+            && self.r#north == false
+            && self.r#west == false
+        {
+            return 3685;
+        }
+        if self.r#up == true
+            && self.r#north == true
+            && self.r#age == 15
+            && self.r#south == true
+            && self.r#west == false
+            && self.r#east == false
+        {
+            return 3671;
+        }
+        if self.r#west == false
+            && self.r#north == false
+            && self.r#east == false
+            && self.r#south == true
+            && self.r#up == true
+            && self.r#age == 14
+        {
+            return 3647;
+        }
+        if self.r#age == 13
+            && self.r#north == true
+            && self.r#up == true
+            && self.r#east == true
+            && self.r#south == false
+            && self.r#west == false
+        {
+            return 3595;
+        }
+        if self.r#age == 10
+            && self.r#east == true
+            && self.r#west == false
+            && self.r#south == true
+            && self.r#up == false
+            && self.r#north == false
+        {
+            return 3505;
+        }
+        if self.r#south == true
+            && self.r#age == 4
+            && self.r#west == true
+            && self.r#north == true
+            && self.r#east == true
+            && self.r#up == true
+        {
+            return 3302;
+        }
+        if self.r#north == true
+            && self.r#south == true
+            && self.r#east == false
+            && self.r#up == true
+            && self.r#west == true
+            && self.r#age == 10
+        {
+            return 3510;
+        }
+        if self.r#up == false
+            && self.r#west == true
+            && self.r#age == 10
+            && self.r#east == true
+            && self.r#south == true
+            && self.r#north == false
+        {
+            return 3504;
+        }
+        if self.r#age == 3
+            && self.r#north == false
+            && self.r#east == false
+            && self.r#south == false
+            && self.r#up == false
+            && self.r#west == true
+        {
+            return 3300;
+        }
+        if self.r#west == true
+            && self.r#east == true
+            && self.r#age == 7
+            && self.r#north == false
+            && self.r#up == false
+            && self.r#south == true
+        {
+            return 3408;
+        }
+        if self.r#up == false
+            && self.r#north == true
+            && self.r#east == false
+            && self.r#age == 1
+            && self.r#south == false
+            && self.r#west == false
+        {
+            return 3229;
+        }
+        if self.r#age == 12
+            && self.r#north == false
+            && self.r#south == false
+            && self.r#up == false
+            && self.r#east == false
+            && self.r#west == true
+        {
+            return 3588;
+        }
+        if self.r#age == 4
+            && self.r#east == true
+            && self.r#north == false
+            && self.r#west == true
+            && self.r#south == true
+            && self.r#up == true
+        {
+            return 3310;
+        }
+        if self.r#up == false
+            && self.r#south == true
+            && self.r#east == false
+            && self.r#west == true
+            && self.r#age == 11
+            && self.r#north == true
+        {
+            return 3544;
+        }
+        if self.r#south == false
+            && self.r#west == false
+            && self.r#north == true
+            && self.r#east == true
+            && self.r#age == 0
+            && self.r#up == false
+        {
+            return 3181;
+        }
+        if self.r#north == true
+            && self.r#east == false
+            && self.r#age == 2
+            && self.r#south == true
+            && self.r#up == true
+            && self.r#west == true
+        {
+            return 3254;
+        }
+        if self.r#age == 6
+            && self.r#east == true
+            && self.r#south == false
+            && self.r#west == true
+            && self.r#north == false
+            && self.r#up == false
+        {
+            return 3380;
+        }
+        if self.r#east == true
+            && self.r#age == 11
+            && self.r#north == true
+            && self.r#south == false
+            && self.r#up == false
+            && self.r#west == false
+        {
+            return 3533;
+        }
+        if self.r#up == true
+            && self.r#age == 11
+            && self.r#north == false
+            && self.r#east == false
+            && self.r#west == true
+            && self.r#south == false
+        {
+            return 3554;
+        }
+        if self.r#up == true
+            && self.r#age == 3
+            && self.r#west == false
+            && self.r#east == true
+            && self.r#north == true
+            && self.r#south == false
+        {
+            return 3275;
+        }
+        if self.r#age == 4
+            && self.r#up == true
+            && self.r#east == false
+            && self.r#south == true
+            && self.r#west == false
+            && self.r#north == true
+        {
+            return 3319;
+        }
+        if self.r#east == false
+            && self.r#up == false
+            && self.r#west == false
+            && self.r#south == true
+            && self.r#age == 4
+            && self.r#north == true
+        {
+            return 3321;
+        }
+        if self.r#age == 13
+            && self.r#south == false
+            && self.r#north == false
+            && self.r#up == false
+            && self.r#east == true
+            && self.r#west == true
+        {
+            return 3604;
+        }
+        if self.r#age == 9
+            && self.r#north == true
+            && self.r#east == true
+            && self.r#up == false
+            && self.r#south == false
+            && self.r#west == false
+        {
+            return 3469;
+        }
+        if self.r#south == true
+            && self.r#up == true
+            && self.r#east == false
+            && self.r#age == 13
+            && self.r#north == false
+            && self.r#west == true
+        {
+            return 3614;
+        }
+        if self.r#age == 4
+            && self.r#north == true
+            && self.r#west == true
+            && self.r#south == false
+            && self.r#up == true
+            && self.r#east == true
+        {
+            return 3306;
+        }
+        if self.r#west == true
+            && self.r#north == true
+            && self.r#east == false
+            && self.r#age == 3
+            && self.r#up == false
+            && self.r#south == true
+        {
+            return 3288;
+        }
+        if self.r#south == false
+            && self.r#west == true
+            && self.r#age == 8
+            && self.r#east == false
+            && self.r#up == false
+            && self.r#north == false
+        {
+            return 3460;
+        }
+        if self.r#up == false
+            && self.r#west == true
+            && self.r#east == true
+            && self.r#north == true
+            && self.r#south == false
+            && self.r#age == 8
+        {
+            return 3436;
+        }
+        if self.r#south == true
+            && self.r#up == false
+            && self.r#east == true
+            && self.r#age == 6
+            && self.r#north == true
+            && self.r#west == true
+        {
+            return 3368;
+        }
+        if self.r#age == 8
+            && self.r#north == false
+            && self.r#south == false
+            && self.r#up == false
+            && self.r#east == true
+            && self.r#west == false
+        {
+            return 3445;
+        }
+        if self.r#up == true
+            && self.r#west == true
+            && self.r#age == 6
+            && self.r#east == false
+            && self.r#north == true
+            && self.r#south == false
+        {
+            return 3386;
+        }
+        if self.r#west == true
+            && self.r#up == false
+            && self.r#north == true
+            && self.r#east == true
+            && self.r#south == true
+            && self.r#age == 8
+        {
+            return 3432;
+        }
+        if self.r#east == false
+            && self.r#age == 14
+            && self.r#south == false
+            && self.r#west == true
+            && self.r#up == false
+            && self.r#north == false
+        {
+            return 3652;
+        }
+        if self.r#south == true
+            && self.r#age == 6
+            && self.r#east == true
+            && self.r#west == false
+            && self.r#up == false
+            && self.r#north == false
+        {
+            return 3377;
+        }
+        if self.r#up == false
+            && self.r#south == true
+            && self.r#west == false
+            && self.r#east == true
+            && self.r#north == true
+            && self.r#age == 8
+        {
+            return 3433;
+        }
+        if self.r#up == true
+            && self.r#age == 9
+            && self.r#east == true
+            && self.r#south == true
+            && self.r#west == true
+            && self.r#north == false
+        {
+            return 3470;
+        }
+        if self.r#age == 14
+            && self.r#east == true
+            && self.r#west == false
+            && self.r#up == false
+            && self.r#north == false
+            && self.r#south == false
+        {
+            return 3637;
+        }
+        if self.r#east == false
+            && self.r#west == true
+            && self.r#south == true
+            && self.r#north == false
+            && self.r#up == true
+            && self.r#age == 2
+        {
+            return 3262;
+        }
+        if self.r#up == true
+            && self.r#west == false
+            && self.r#age == 5
+            && self.r#east == false
+            && self.r#south == true
+            && self.r#north == false
+        {
+            return 3359;
+        }
+        if self.r#west == false
+            && self.r#age == 8
+            && self.r#east == true
+            && self.r#south == true
+            && self.r#north == false
+            && self.r#up == false
+        {
+            return 3441;
+        }
+        if self.r#east == false
+            && self.r#north == false
+            && self.r#south == true
+            && self.r#west == false
+            && self.r#age == 9
+            && self.r#up == false
+        {
+            return 3489;
+        }
+        if self.r#age == 10
+            && self.r#east == true
+            && self.r#north == true
+            && self.r#west == false
+            && self.r#south == true
+            && self.r#up == true
+        {
+            return 3495;
+        }
+        if self.r#south == true
+            && self.r#west == false
+            && self.r#north == false
+            && self.r#age == 8
+            && self.r#east == false
+            && self.r#up == false
+        {
+            return 3457;
+        }
+        if self.r#west == true
+            && self.r#south == false
+            && self.r#east == true
+            && self.r#up == true
+            && self.r#north == true
+            && self.r#age == 1
+        {
+            return 3210;
+        }
+        if self.r#east == true
+            && self.r#age == 11
+            && self.r#west == false
+            && self.r#up == true
+            && self.r#south == false
+            && self.r#north == true
+        {
+            return 3531;
+        }
+        if self.r#west == true
+            && self.r#north == true
+            && self.r#age == 0
+            && self.r#south == true
+            && self.r#up == false
+            && self.r#east == true
+        {
+            return 3176;
+        }
+        if self.r#east == false
+            && self.r#south == true
+            && self.r#up == false
+            && self.r#west == true
+            && self.r#age == 12
+            && self.r#north == false
+        {
+            return 3584;
+        }
+        if self.r#north == true
+            && self.r#up == false
+            && self.r#west == true
+            && self.r#age == 13
+            && self.r#east == false
+            && self.r#south == false
+        {
+            return 3612;
+        }
+        if self.r#age == 15
+            && self.r#north == false
+            && self.r#east == true
+            && self.r#south == false
+            && self.r#up == false
+            && self.r#west == true
+        {
+            return 3668;
+        }
+        if self.r#age == 6
+            && self.r#south == false
+            && self.r#west == true
+            && self.r#up == true
+            && self.r#east == true
+            && self.r#north == true
+        {
+            return 3370;
+        }
+        if self.r#south == false
+            && self.r#west == false
+            && self.r#age == 9
+            && self.r#north == false
+            && self.r#east == true
+            && self.r#up == true
+        {
+            return 3475;
+        }
+        if self.r#east == false
+            && self.r#west == true
+            && self.r#age == 9
+            && self.r#north == true
+            && self.r#south == false
+            && self.r#up == false
+        {
+            return 3484;
+        }
+        if self.r#south == false
+            && self.r#age == 8
+            && self.r#east == false
+            && self.r#up == false
+            && self.r#north == true
+            && self.r#west == true
+        {
+            return 3452;
+        }
+        if self.r#west == true
+            && self.r#age == 11
+            && self.r#north == true
+            && self.r#south == false
+            && self.r#east == true
+            && self.r#up == false
+        {
+            return 3532;
+        }
+        if self.r#up == false
+            && self.r#east == true
+            && self.r#south == false
+            && self.r#west == false
+            && self.r#age == 0
+            && self.r#north == false
+        {
+            return 3189;
+        }
+        if self.r#north == true
+            && self.r#south == false
+            && self.r#up == true
+            && self.r#west == true
+            && self.r#age == 15
+            && self.r#east == false
+        {
+            return 3674;
+        }
+        if self.r#east == true
+            && self.r#west == true
+            && self.r#age == 2
+            && self.r#north == false
+            && self.r#south == true
+            && self.r#up == false
+        {
+            return 3248;
+        }
+        if self.r#age == 5
+            && self.r#south == true
+            && self.r#up == false
+            && self.r#west == false
+            && self.r#north == false
+            && self.r#east == true
+        {
+            return 3345;
+        }
+        if self.r#up == false
+            && self.r#west == false
+            && self.r#south == true
+            && self.r#east == false
+            && self.r#north == true
+            && self.r#age == 7
+        {
+            return 3417;
+        }
+        if self.r#west == true
+            && self.r#up == false
+            && self.r#north == false
+            && self.r#age == 3
+            && self.r#east == false
+            && self.r#south == true
+        {
+            return 3296;
+        }
+        if self.r#east == true
+            && self.r#south == true
+            && self.r#north == false
+            && self.r#age == 12
+            && self.r#up == false
+            && self.r#west == false
+        {
+            return 3569;
+        }
+        if self.r#up == false
+            && self.r#west == false
+            && self.r#north == true
+            && self.r#east == false
+            && self.r#south == true
+            && self.r#age == 2
+        {
+            return 3257;
+        }
+        if self.r#east == true
+            && self.r#north == false
+            && self.r#age == 0
+            && self.r#up == true
+            && self.r#south == false
+            && self.r#west == true
+        {
+            return 3186;
+        }
+        if self.r#west == false
+            && self.r#north == true
+            && self.r#age == 4
+            && self.r#east == true
+            && self.r#south == false
+            && self.r#up == true
+        {
+            return 3307;
+        }
+        if self.r#west == false
+            && self.r#north == true
+            && self.r#east == false
+            && self.r#age == 8
+            && self.r#south == false
+            && self.r#up == true
+        {
+            return 3451;
+        }
+        if self.r#east == true
+            && self.r#age == 12
+            && self.r#south == true
+            && self.r#west == false
+            && self.r#north == false
+            && self.r#up == true
+        {
+            return 3567;
+        }
+        if self.r#age == 3
+            && self.r#north == true
+            && self.r#south == true
+            && self.r#up == true
+            && self.r#east == true
+            && self.r#west == true
+        {
+            return 3270;
+        }
+        if self.r#east == false
+            && self.r#up == true
+            && self.r#west == false
+            && self.r#north == true
+            && self.r#age == 4
+            && self.r#south == false
+        {
+            return 3323;
+        }
+        if self.r#west == true
+            && self.r#east == true
+            && self.r#south == true
+            && self.r#up == false
+            && self.r#north == false
+            && self.r#age == 0
+        {
+            return 3184;
+        }
+        if self.r#age == 7
+            && self.r#east == false
+            && self.r#up == true
+            && self.r#north == true
+            && self.r#south == false
+            && self.r#west == true
+        {
+            return 3418;
+        }
+        if self.r#up == false
+            && self.r#age == 9
+            && self.r#east == true
+            && self.r#west == false
+            && self.r#south == true
+            && self.r#north == true
+        {
+            return 3465;
+        }
+        if self.r#south == false
+            && self.r#up == true
+            && self.r#west == true
+            && self.r#north == true
+            && self.r#age == 13
+            && self.r#east == false
+        {
+            return 3610;
+        }
+        if self.r#age == 13
+            && self.r#east == true
+            && self.r#west == false
+            && self.r#north == false
+            && self.r#up == true
+            && self.r#south == false
+        {
+            return 3603;
+        }
+        if self.r#west == false
+            && self.r#east == false
+            && self.r#south == false
+            && self.r#north == true
+            && self.r#age == 14
+            && self.r#up == false
+        {
+            return 3645;
+        }
+        if self.r#east == false
+            && self.r#south == false
+            && self.r#north == false
+            && self.r#age == 9
+            && self.r#up == true
+            && self.r#west == true
+        {
+            return 3490;
+        }
+        if self.r#south == false
+            && self.r#up == true
+            && self.r#west == false
+            && self.r#age == 14
+            && self.r#east == true
+            && self.r#north == false
+        {
+            return 3635;
+        }
+        if self.r#east == true
+            && self.r#age == 2
+            && self.r#north == true
+            && self.r#up == false
+            && self.r#south == true
+            && self.r#west == true
+        {
+            return 3240;
+        }
+        if self.r#south == false
+            && self.r#west == false
+            && self.r#east == true
+            && self.r#north == true
+            && self.r#up == true
+            && self.r#age == 7
+        {
+            return 3403;
+        }
+        if self.r#south == true
+            && self.r#age == 11
+            && self.r#west == true
+            && self.r#east == false
+            && self.r#up == true
+            && self.r#north == true
+        {
+            return 3542;
+        }
+        if self.r#north == false
+            && self.r#up == true
+            && self.r#west == true
+            && self.r#south == true
+            && self.r#age == 9
+            && self.r#east == false
+        {
+            return 3486;
+        }
+        if self.r#up == true
+            && self.r#age == 12
+            && self.r#south == true
+            && self.r#west == true
+            && self.r#east == true
+            && self.r#north == true
+        {
+            return 3558;
+        }
+        if self.r#east == true
+            && self.r#north == false
+            && self.r#west == true
+            && self.r#south == true
+            && self.r#up == true
+            && self.r#age == 14
+        {
+            return 3630;
+        }
+        if self.r#east == true
+            && self.r#south == false
+            && self.r#age == 12
+            && self.r#up == true
+            && self.r#west == false
+            && self.r#north == true
+        {
+            return 3563;
+        }
+        if self.r#up == false
+            && self.r#age == 3
+            && self.r#west == false
+            && self.r#east == false
+            && self.r#north == false
+            && self.r#south == true
+        {
+            return 3297;
+        }
+        if self.r#age == 0
+            && self.r#south == false
+            && self.r#east == false
+            && self.r#north == true
+            && self.r#west == true
+            && self.r#up == true
+        {
+            return 3194;
+        }
+        if self.r#west == false
+            && self.r#age == 10
+            && self.r#south == false
+            && self.r#north == false
+            && self.r#east == true
+            && self.r#up == true
+        {
+            return 3507;
+        }
+        if self.r#east == true
+            && self.r#south == false
+            && self.r#west == true
+            && self.r#up == false
+            && self.r#north == true
+            && self.r#age == 10
+        {
+            return 3500;
+        }
+        if self.r#up == true
+            && self.r#south == false
+            && self.r#age == 14
+            && self.r#east == true
+            && self.r#north == true
+            && self.r#west == false
+        {
+            return 3627;
+        }
+        if self.r#up == false
+            && self.r#south == true
+            && self.r#north == false
+            && self.r#east == true
+            && self.r#age == 4
+            && self.r#west == true
+        {
+            return 3312;
+        }
+        if self.r#west == false
+            && self.r#south == true
+            && self.r#age == 7
+            && self.r#east == false
+            && self.r#north == true
+            && self.r#up == true
+        {
+            return 3415;
+        }
+        if self.r#age == 12
+            && self.r#east == true
+            && self.r#up == false
+            && self.r#north == false
+            && self.r#south == true
+            && self.r#west == true
+        {
+            return 3568;
+        }
+        if self.r#north == false
+            && self.r#east == true
+            && self.r#south == true
+            && self.r#west == false
+            && self.r#age == 4
+            && self.r#up == false
+        {
+            return 3313;
+        }
+        if self.r#east == true
+            && self.r#north == false
+            && self.r#up == true
+            && self.r#age == 8
+            && self.r#west == true
+            && self.r#south == true
+        {
+            return 3438;
+        }
+        if self.r#north == true
+            && self.r#west == true
+            && self.r#south == false
+            && self.r#age == 8
+            && self.r#east == false
+            && self.r#up == true
+        {
+            return 3450;
+        }
+        if self.r#east == false
+            && self.r#west == true
+            && self.r#age == 7
+            && self.r#north == false
+            && self.r#up == false
+            && self.r#south == true
+        {
+            return 3424;
+        }
+        if self.r#age == 13
+            && self.r#south == true
+            && self.r#west == false
+            && self.r#north == true
+            && self.r#up == true
+            && self.r#east == true
+        {
+            return 3591;
+        }
+        if self.r#north == true
+            && self.r#south == false
+            && self.r#east == true
+            && self.r#age == 14
+            && self.r#up == false
+            && self.r#west == false
+        {
+            return 3629;
+        }
+        if self.r#up == true
+            && self.r#north == true
+            && self.r#west == true
+            && self.r#age == 14
+            && self.r#south == true
+            && self.r#east == false
+        {
+            return 3638;
+        }
+        if self.r#south == false
+            && self.r#north == false
+            && self.r#age == 7
+            && self.r#west == false
+            && self.r#east == true
+            && self.r#up == true
+        {
+            return 3411;
+        }
+        if self.r#north == true
+            && self.r#west == false
+            && self.r#south == false
+            && self.r#east == false
+            && self.r#up == true
+            && self.r#age == 2
+        {
+            return 3259;
+        }
+        if self.r#up == true
+            && self.r#east == false
+            && self.r#north == false
+            && self.r#south == false
+            && self.r#west == false
+            && self.r#age == 6
+        {
+            return 3395;
+        }
+        if self.r#age == 5
+            && self.r#up == false
+            && self.r#east == true
+            && self.r#north == true
+            && self.r#south == false
+            && self.r#west == false
+        {
+            return 3341;
+        }
+        if self.r#north == true
+            && self.r#up == false
+            && self.r#east == false
+            && self.r#west == false
+            && self.r#age == 3
+            && self.r#south == true
+        {
+            return 3289;
+        }
+        if self.r#west == false
+            && self.r#east == true
+            && self.r#south == true
+            && self.r#age == 12
+            && self.r#up == true
+            && self.r#north == true
+        {
+            return 3559;
+        }
+        if self.r#up == false
+            && self.r#north == true
+            && self.r#east == true
+            && self.r#west == true
+            && self.r#age == 14
+            && self.r#south == true
+        {
+            return 3624;
+        }
+        if self.r#north == false
+            && self.r#east == false
+            && self.r#age == 11
+            && self.r#up == true
+            && self.r#west == true
+            && self.r#south == true
+        {
+            return 3550;
+        }
+        if self.r#east == false
+            && self.r#age == 15
+            && self.r#west == false
+            && self.r#north == true
+            && self.r#south == true
+            && self.r#up == false
+        {
+            return 3673;
+        }
+        if self.r#west == true
+            && self.r#north == true
+            && self.r#up == true
+            && self.r#age == 0
+            && self.r#east == false
+            && self.r#south == true
+        {
+            return 3190;
+        }
+        if self.r#up == false
+            && self.r#west == false
+            && self.r#age == 9
+            && self.r#south == false
+            && self.r#north == false
+            && self.r#east == true
+        {
+            return 3477;
+        }
+        if self.r#south == true
+            && self.r#up == true
+            && self.r#east == true
+            && self.r#west == true
+            && self.r#age == 11
+            && self.r#north == true
+        {
+            return 3526;
+        }
+        if self.r#north == true
+            && self.r#age == 15
+            && self.r#up == false
+            && self.r#east == false
+            && self.r#west == false
+            && self.r#south == false
+        {
+            return 3677;
+        }
+        if self.r#west == false
+            && self.r#age == 8
+            && self.r#east == false
+            && self.r#north == false
+            && self.r#south == true
+            && self.r#up == true
+        {
+            return 3455;
+        }
+        if self.r#age == 3
+            && self.r#south == false
+            && self.r#up == false
+            && self.r#west == true
+            && self.r#east == true
+            && self.r#north == false
+        {
+            return 3284;
+        }
+        if self.r#up == false
+            && self.r#age == 1
+            && self.r#north == true
+            && self.r#east == true
+            && self.r#south == false
+            && self.r#west == true
+        {
+            return 3212;
+        }
+        if self.r#up == true
+            && self.r#east == false
+            && self.r#south == false
+            && self.r#west == false
+            && self.r#age == 3
+            && self.r#north == false
+        {
+            return 3299;
+        }
+        if self.r#south == false
+            && self.r#up == true
+            && self.r#west == false
+            && self.r#east == false
+            && self.r#age == 9
+            && self.r#north == false
+        {
+            return 3491;
+        }
+        if self.r#up == false
+            && self.r#east == false
+            && self.r#north == true
+            && self.r#age == 14
+            && self.r#south == false
+            && self.r#west == true
+        {
+            return 3644;
+        }
+        if self.r#north == false
+            && self.r#up == true
+            && self.r#west == true
+            && self.r#age == 7
+            && self.r#east == false
+            && self.r#south == true
+        {
+            return 3422;
+        }
+        if self.r#east == true
+            && self.r#up == false
+            && self.r#west == true
+            && self.r#south == false
+            && self.r#age == 6
+            && self.r#north == true
+        {
+            return 3372;
+        }
+        if self.r#south == true
+            && self.r#age == 11
+            && self.r#east == true
+            && self.r#up == false
+            && self.r#north == true
+            && self.r#west == true
+        {
+            return 3528;
+        }
+        if self.r#north == false
+            && self.r#south == false
+            && self.r#east == false
+            && self.r#age == 5
+            && self.r#west == true
+            && self.r#up == true
+        {
+            return 3362;
+        }
+        if self.r#north == true
+            && self.r#south == false
+            && self.r#east == true
+            && self.r#up == true
+            && self.r#age == 9
+            && self.r#west == true
+        {
+            return 3466;
+        }
+        if self.r#up == false
+            && self.r#west == false
+            && self.r#south == false
+            && self.r#age == 6
+            && self.r#east == true
+            && self.r#north == true
+        {
+            return 3373;
+        }
+        if self.r#west == false
+            && self.r#age == 1
+            && self.r#south == true
+            && self.r#north == false
+            && self.r#up == true
+            && self.r#east == false
+        {
+            return 3231;
+        }
+        if self.r#age == 1
+            && self.r#west == false
+            && self.r#east == false
+            && self.r#north == true
+            && self.r#up == true
+            && self.r#south == false
+        {
+            return 3227;
+        }
         panic!("Invalid block state")
     }
 
@@ -5652,4 +9747,3 @@ impl BlockState for Fire {
         return None;
     }
 }
-

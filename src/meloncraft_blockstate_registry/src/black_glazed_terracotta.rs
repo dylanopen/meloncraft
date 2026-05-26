@@ -5,7 +5,6 @@ pub struct BlackGlazedTerracotta {
     pub r#facing: Facing,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -16,10 +15,18 @@ pub enum Facing {
 
 impl BlockState for BlackGlazedTerracotta {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::East { return 14827; }
-        if self.r#facing == Facing::West { return 14826; }
-        if self.r#facing == Facing::North { return 14824; }
-        if self.r#facing == Facing::South { return 14825; }
+        if self.r#facing == Facing::East {
+            return 14827;
+        }
+        if self.r#facing == Facing::West {
+            return 14826;
+        }
+        if self.r#facing == Facing::North {
+            return 14824;
+        }
+        if self.r#facing == Facing::South {
+            return 14825;
+        }
         panic!("Invalid block state")
     }
 
@@ -47,4 +54,3 @@ impl BlockState for BlackGlazedTerracotta {
         return None;
     }
 }
-

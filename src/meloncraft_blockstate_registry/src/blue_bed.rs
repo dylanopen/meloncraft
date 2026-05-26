@@ -7,7 +7,6 @@ pub struct BlueBed {
     pub r#facing: Facing,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Part {
     Head,
@@ -24,22 +23,54 @@ pub enum Facing {
 
 impl BlockState for BlueBed {
     fn to_id(&self) -> i32 {
-        if self.r#occupied == false && self.r#part == Part::Foot && self.r#facing == Facing::North { return 1910; }
-        if self.r#facing == Facing::South && self.r#occupied == false && self.r#part == Part::Head { return 1913; }
-        if self.r#facing == Facing::East && self.r#part == Part::Head && self.r#occupied == false { return 1921; }
-        if self.r#occupied == true && self.r#part == Part::Foot && self.r#facing == Facing::East { return 1920; }
-        if self.r#occupied == true && self.r#facing == Facing::West && self.r#part == Part::Foot { return 1916; }
-        if self.r#facing == Facing::North && self.r#part == Part::Head && self.r#occupied == true { return 1907; }
-        if self.r#occupied == true && self.r#part == Part::Head && self.r#facing == Facing::South { return 1911; }
-        if self.r#occupied == false && self.r#facing == Facing::West && self.r#part == Part::Foot { return 1918; }
-        if self.r#facing == Facing::South && self.r#occupied == false && self.r#part == Part::Foot { return 1914; }
-        if self.r#occupied == true && self.r#facing == Facing::West && self.r#part == Part::Head { return 1915; }
-        if self.r#part == Part::Head && self.r#occupied == true && self.r#facing == Facing::East { return 1919; }
-        if self.r#facing == Facing::North && self.r#occupied == true && self.r#part == Part::Foot { return 1908; }
-        if self.r#facing == Facing::North && self.r#occupied == false && self.r#part == Part::Head { return 1909; }
-        if self.r#occupied == false && self.r#part == Part::Foot && self.r#facing == Facing::East { return 1922; }
-        if self.r#occupied == true && self.r#part == Part::Foot && self.r#facing == Facing::South { return 1912; }
-        if self.r#occupied == false && self.r#part == Part::Head && self.r#facing == Facing::West { return 1917; }
+        if self.r#occupied == false && self.r#part == Part::Foot && self.r#facing == Facing::North {
+            return 1910;
+        }
+        if self.r#facing == Facing::South && self.r#occupied == false && self.r#part == Part::Head {
+            return 1913;
+        }
+        if self.r#facing == Facing::East && self.r#part == Part::Head && self.r#occupied == false {
+            return 1921;
+        }
+        if self.r#occupied == true && self.r#part == Part::Foot && self.r#facing == Facing::East {
+            return 1920;
+        }
+        if self.r#occupied == true && self.r#facing == Facing::West && self.r#part == Part::Foot {
+            return 1916;
+        }
+        if self.r#facing == Facing::North && self.r#part == Part::Head && self.r#occupied == true {
+            return 1907;
+        }
+        if self.r#occupied == true && self.r#part == Part::Head && self.r#facing == Facing::South {
+            return 1911;
+        }
+        if self.r#occupied == false && self.r#facing == Facing::West && self.r#part == Part::Foot {
+            return 1918;
+        }
+        if self.r#facing == Facing::South && self.r#occupied == false && self.r#part == Part::Foot {
+            return 1914;
+        }
+        if self.r#occupied == true && self.r#facing == Facing::West && self.r#part == Part::Head {
+            return 1915;
+        }
+        if self.r#part == Part::Head && self.r#occupied == true && self.r#facing == Facing::East {
+            return 1919;
+        }
+        if self.r#facing == Facing::North && self.r#occupied == true && self.r#part == Part::Foot {
+            return 1908;
+        }
+        if self.r#facing == Facing::North && self.r#occupied == false && self.r#part == Part::Head {
+            return 1909;
+        }
+        if self.r#occupied == false && self.r#part == Part::Foot && self.r#facing == Facing::East {
+            return 1922;
+        }
+        if self.r#occupied == true && self.r#part == Part::Foot && self.r#facing == Facing::South {
+            return 1912;
+        }
+        if self.r#occupied == false && self.r#part == Part::Head && self.r#facing == Facing::West {
+            return 1917;
+        }
         panic!("Invalid block state")
     }
 
@@ -159,4 +190,3 @@ impl BlockState for BlueBed {
         return None;
     }
 }
-

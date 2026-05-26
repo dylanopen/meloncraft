@@ -1,9 +1,9 @@
 use crate::ServerboundPacket;
+use crate::network_messages::ServerboundNetworkPacket;
 use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_core::datapack::DatapackMetadata;
-use crate::network_messages::ServerboundNetworkPacket;
 use meloncraft_protocol_types::{PrefixedArray, ProtocolBuffer as _};
 
 #[derive(Message, Debug, Clone)]
@@ -14,11 +14,11 @@ pub struct ServerboundSelectKnownPacks {
 
 impl ServerboundPacket for ServerboundSelectKnownPacks {
     fn id() -> i32 {
-        return 0x07
+        return 0x07;
     }
 
     fn state() -> ConnectionState {
-        return ConnectionState::Configuration
+        return ConnectionState::Configuration;
     }
 
     fn deserialize(packet: ServerboundNetworkPacket) -> Option<Self> {
@@ -29,6 +29,6 @@ impl ServerboundPacket for ServerboundSelectKnownPacks {
         return Some(Self {
             client,
             known_packs,
-        })
+        });
     }
 }

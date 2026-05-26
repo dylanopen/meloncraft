@@ -13,13 +13,12 @@ pub struct ClientboundShowDialog {
 
 impl ClientboundPacket for ClientboundShowDialog {
     fn id() -> i32 {
-        return 0x12
+        return 0x12;
     }
 
     fn state() -> ConnectionState {
-        return ConnectionState::Configuration
+        return ConnectionState::Configuration;
     }
-
 
     fn client(&self) -> Entity {
         return self.client;

@@ -13,13 +13,12 @@ pub struct ClientboundServerLinks {
 
 impl ClientboundPacket for ClientboundServerLinks {
     fn id() -> i32 {
-        return 0x10
+        return 0x10;
     }
 
     fn state() -> ConnectionState {
-        return ConnectionState::Configuration
+        return ConnectionState::Configuration;
     }
-
 
     fn client(&self) -> Entity {
         return self.client;

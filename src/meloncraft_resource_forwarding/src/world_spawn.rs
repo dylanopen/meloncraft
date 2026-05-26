@@ -28,9 +28,11 @@ pub fn send_world_spawn_on_join(
 pub fn send_world_spawn_on_change(
     player_q: Query<Entity, With<PlayerMarker>>,
     world_spawn: Res<WorldSpawn>,
-    mut set_default_spawn_position_pw: MessageWriter<ClientboundSetDefaultSpawnPosition>
+    mut set_default_spawn_position_pw: MessageWriter<ClientboundSetDefaultSpawnPosition>,
 ) {
-    if !world_spawn.is_changed() { return; }
+    if !world_spawn.is_changed() {
+        return;
+    }
     for client in player_q {
         set_default_spawn_position_pw.write(ClientboundSetDefaultSpawnPosition {
             client,
@@ -41,4 +43,3 @@ pub fn send_world_spawn_on_change(
         });
     }
 }
-

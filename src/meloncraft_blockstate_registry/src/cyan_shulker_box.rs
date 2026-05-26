@@ -5,7 +5,6 @@ pub struct CyanShulkerBox {
     pub r#facing: Facing,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -18,12 +17,24 @@ pub enum Facing {
 
 impl BlockState for CyanShulkerBox {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::Down { return 14727; }
-        if self.r#facing == Facing::North { return 14722; }
-        if self.r#facing == Facing::South { return 14724; }
-        if self.r#facing == Facing::East { return 14723; }
-        if self.r#facing == Facing::West { return 14725; }
-        if self.r#facing == Facing::Up { return 14726; }
+        if self.r#facing == Facing::Down {
+            return 14727;
+        }
+        if self.r#facing == Facing::North {
+            return 14722;
+        }
+        if self.r#facing == Facing::South {
+            return 14724;
+        }
+        if self.r#facing == Facing::East {
+            return 14723;
+        }
+        if self.r#facing == Facing::West {
+            return 14725;
+        }
+        if self.r#facing == Facing::Up {
+            return 14726;
+        }
         panic!("Invalid block state")
     }
 
@@ -61,4 +72,3 @@ impl BlockState for CyanShulkerBox {
         return None;
     }
 }
-

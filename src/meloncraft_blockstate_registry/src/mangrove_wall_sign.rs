@@ -6,7 +6,6 @@ pub struct MangroveWallSign {
     pub r#facing: Facing,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -17,14 +16,30 @@ pub enum Facing {
 
 impl BlockState for MangroveWallSign {
     fn to_id(&self) -> i32 {
-        if self.r#waterlogged == true && self.r#facing == Facing::South { return 5692; }
-        if self.r#waterlogged == true && self.r#facing == Facing::East { return 5696; }
-        if self.r#facing == Facing::North && self.r#waterlogged == false { return 5691; }
-        if self.r#waterlogged == true && self.r#facing == Facing::North { return 5690; }
-        if self.r#waterlogged == false && self.r#facing == Facing::East { return 5697; }
-        if self.r#facing == Facing::West && self.r#waterlogged == true { return 5694; }
-        if self.r#facing == Facing::West && self.r#waterlogged == false { return 5695; }
-        if self.r#waterlogged == false && self.r#facing == Facing::South { return 5693; }
+        if self.r#waterlogged == true && self.r#facing == Facing::South {
+            return 5692;
+        }
+        if self.r#waterlogged == true && self.r#facing == Facing::East {
+            return 5696;
+        }
+        if self.r#facing == Facing::North && self.r#waterlogged == false {
+            return 5691;
+        }
+        if self.r#waterlogged == true && self.r#facing == Facing::North {
+            return 5690;
+        }
+        if self.r#waterlogged == false && self.r#facing == Facing::East {
+            return 5697;
+        }
+        if self.r#facing == Facing::West && self.r#waterlogged == true {
+            return 5694;
+        }
+        if self.r#facing == Facing::West && self.r#waterlogged == false {
+            return 5695;
+        }
+        if self.r#waterlogged == false && self.r#facing == Facing::South {
+            return 5693;
+        }
         panic!("Invalid block state")
     }
 
@@ -80,4 +95,3 @@ impl BlockState for MangroveWallSign {
         return None;
     }
 }
-

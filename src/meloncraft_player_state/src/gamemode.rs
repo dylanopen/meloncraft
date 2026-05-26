@@ -12,12 +12,12 @@ use meloncraft_player::client_action::{ClientPlayerAction, UpdateClientPlayerAct
 
 /// Inserts a [`GameMode`] component with the default value of `Creative` for each player that has
 /// just loaded in.
-pub fn insert_gamemode(
-    mut commands: Commands,
-    added_player_q: Query<Entity, Added<PlayerMarker>>,
-) {
+pub fn insert_gamemode(mut commands: Commands, added_player_q: Query<Entity, Added<PlayerMarker>>) {
     for added_player in added_player_q {
-        commands.get_entity(added_player).unwrap().insert(GameMode::Creative);
+        commands
+            .get_entity(added_player)
+            .unwrap()
+            .insert(GameMode::Creative);
     }
 }
 
@@ -49,4 +49,3 @@ pub fn send_gamemode_game_event(
         });
     }
 }
-

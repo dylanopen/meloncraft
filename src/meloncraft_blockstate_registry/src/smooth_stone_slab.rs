@@ -6,7 +6,6 @@ pub struct SmoothStoneSlab {
     pub waterlogged: bool,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Type {
     Top,
@@ -16,12 +15,24 @@ pub enum Type {
 
 impl BlockState for SmoothStoneSlab {
     fn to_id(&self) -> i32 {
-        if self.r#waterlogged == false && self.r#type == Type::Top { return 13201; }
-        if self.r#waterlogged == false && self.r#type == Type::Bottom { return 13203; }
-        if self.r#type == Type::Double && self.r#waterlogged == false { return 13205; }
-        if self.r#waterlogged == true && self.r#type == Type::Bottom { return 13202; }
-        if self.r#type == Type::Top && self.r#waterlogged == true { return 13200; }
-        if self.r#waterlogged == true && self.r#type == Type::Double { return 13204; }
+        if self.r#waterlogged == false && self.r#type == Type::Top {
+            return 13201;
+        }
+        if self.r#waterlogged == false && self.r#type == Type::Bottom {
+            return 13203;
+        }
+        if self.r#type == Type::Double && self.r#waterlogged == false {
+            return 13205;
+        }
+        if self.r#waterlogged == true && self.r#type == Type::Bottom {
+            return 13202;
+        }
+        if self.r#type == Type::Top && self.r#waterlogged == true {
+            return 13200;
+        }
+        if self.r#waterlogged == true && self.r#type == Type::Double {
+            return 13204;
+        }
         panic!("Invalid block state")
     }
 
@@ -65,4 +76,3 @@ impl BlockState for SmoothStoneSlab {
         return None;
     }
 }
-

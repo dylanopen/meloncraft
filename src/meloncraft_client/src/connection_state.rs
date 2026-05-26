@@ -34,7 +34,6 @@ use core::fmt::Display;
 ///   or the connection to be terminated.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
 pub enum ConnectionState {
-
     /// Handshaking is always the first [`ConnectionState`] that a client is in when they connect to
     /// the server.
     ///
@@ -62,7 +61,7 @@ pub enum ConnectionState {
     /// - **Status**: The client can only go to the `Status` state from the `Handshaking` state, by
     ///   sending the `Intention` packet with the `next_state` field set to `IntentionType::Status`.
     /// - The client cannot be transferred to the `Status` state from any other state.
-    /// 
+    ///
     /// ## Successive states
     /// - This state is terminal: a client cannot go from the `Status` state to any other
     ///   [`ConnectionState`], and in the modern protocol (pre-1.7 worked a bit differently), the
@@ -136,7 +135,7 @@ pub enum ConnectionState {
     /// - **Configuration**: only once the configuration stage has finished and the server has send
     ///   the `FinishConfiguration` packet should the client's connection state be changed to
     ///   [`ConnectionState::Play`].
-    /// 
+    ///
     /// ## Successive states
     /// - This state is terminal.
     /// - No successive states.

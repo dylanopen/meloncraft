@@ -6,7 +6,6 @@ pub struct Rail {
     pub waterlogged: bool,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Shape {
     NorthSouth,
@@ -23,26 +22,66 @@ pub enum Shape {
 
 impl BlockState for Rail {
     fn to_id(&self) -> i32 {
-        if self.r#shape == Shape::EastWest && self.r#waterlogged == true { return 5528; }
-        if self.r#waterlogged == false && self.r#shape == Shape::AscendingWest { return 5533; }
-        if self.r#shape == Shape::SouthEast && self.r#waterlogged == false { return 5539; }
-        if self.r#shape == Shape::AscendingEast && self.r#waterlogged == true { return 5530; }
-        if self.r#shape == Shape::NorthWest && self.r#waterlogged == false { return 5543; }
-        if self.r#waterlogged == false && self.r#shape == Shape::AscendingSouth { return 5537; }
-        if self.r#waterlogged == false && self.r#shape == Shape::NorthEast { return 5545; }
-        if self.r#waterlogged == false && self.r#shape == Shape::AscendingNorth { return 5535; }
-        if self.r#shape == Shape::SouthWest && self.r#waterlogged == true { return 5540; }
-        if self.r#waterlogged == true && self.r#shape == Shape::NorthSouth { return 5526; }
-        if self.r#waterlogged == false && self.r#shape == Shape::EastWest { return 5529; }
-        if self.r#waterlogged == false && self.r#shape == Shape::AscendingEast { return 5531; }
-        if self.r#waterlogged == false && self.r#shape == Shape::SouthWest { return 5541; }
-        if self.r#waterlogged == true && self.r#shape == Shape::AscendingNorth { return 5534; }
-        if self.r#waterlogged == true && self.r#shape == Shape::NorthWest { return 5542; }
-        if self.r#shape == Shape::NorthSouth && self.r#waterlogged == false { return 5527; }
-        if self.r#shape == Shape::AscendingSouth && self.r#waterlogged == true { return 5536; }
-        if self.r#shape == Shape::NorthEast && self.r#waterlogged == true { return 5544; }
-        if self.r#shape == Shape::SouthEast && self.r#waterlogged == true { return 5538; }
-        if self.r#waterlogged == true && self.r#shape == Shape::AscendingWest { return 5532; }
+        if self.r#shape == Shape::EastWest && self.r#waterlogged == true {
+            return 5528;
+        }
+        if self.r#waterlogged == false && self.r#shape == Shape::AscendingWest {
+            return 5533;
+        }
+        if self.r#shape == Shape::SouthEast && self.r#waterlogged == false {
+            return 5539;
+        }
+        if self.r#shape == Shape::AscendingEast && self.r#waterlogged == true {
+            return 5530;
+        }
+        if self.r#shape == Shape::NorthWest && self.r#waterlogged == false {
+            return 5543;
+        }
+        if self.r#waterlogged == false && self.r#shape == Shape::AscendingSouth {
+            return 5537;
+        }
+        if self.r#waterlogged == false && self.r#shape == Shape::NorthEast {
+            return 5545;
+        }
+        if self.r#waterlogged == false && self.r#shape == Shape::AscendingNorth {
+            return 5535;
+        }
+        if self.r#shape == Shape::SouthWest && self.r#waterlogged == true {
+            return 5540;
+        }
+        if self.r#waterlogged == true && self.r#shape == Shape::NorthSouth {
+            return 5526;
+        }
+        if self.r#waterlogged == false && self.r#shape == Shape::EastWest {
+            return 5529;
+        }
+        if self.r#waterlogged == false && self.r#shape == Shape::AscendingEast {
+            return 5531;
+        }
+        if self.r#waterlogged == false && self.r#shape == Shape::SouthWest {
+            return 5541;
+        }
+        if self.r#waterlogged == true && self.r#shape == Shape::AscendingNorth {
+            return 5534;
+        }
+        if self.r#waterlogged == true && self.r#shape == Shape::NorthWest {
+            return 5542;
+        }
+        if self.r#shape == Shape::NorthSouth && self.r#waterlogged == false {
+            return 5527;
+        }
+        if self.r#shape == Shape::AscendingSouth && self.r#waterlogged == true {
+            return 5536;
+        }
+        if self.r#shape == Shape::NorthEast && self.r#waterlogged == true {
+            return 5544;
+        }
+        if self.r#shape == Shape::SouthEast && self.r#waterlogged == true {
+            return 5538;
+        }
+        if self.r#waterlogged == true && self.r#shape == Shape::AscendingWest {
+            return 5532;
+        }
         panic!("Invalid block state")
     }
 
@@ -170,4 +209,3 @@ impl BlockState for Rail {
         return None;
     }
 }
-

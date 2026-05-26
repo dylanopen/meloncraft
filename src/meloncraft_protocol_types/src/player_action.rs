@@ -16,8 +16,12 @@ impl ProtocolType for AddPlayerAction {
 
     fn net_deserialize(data: &mut Vec<u8>) -> Result<Self, ()> {
         let name = data.net_deserialize()?;
-        let game_profile_properties: PrefixedArray<GameProfileProperties> = data.net_deserialize()?;
-        return Ok(AddPlayerAction { name, game_profile_properties: game_profile_properties.0 });
+        let game_profile_properties: PrefixedArray<GameProfileProperties> =
+            data.net_deserialize()?;
+        return Ok(AddPlayerAction {
+            name,
+            game_profile_properties: game_profile_properties.0,
+        });
     }
 }
 
@@ -40,7 +44,7 @@ impl ProtocolType for InitializeChatAction {
             session_id,
             public_key_expiry_time,
             encoded_public_key: encoded_public_key.0,
-            public_key_signature: public_key_signature.0
+            public_key_signature: public_key_signature.0,
         });
     }
 }
@@ -48,35 +52,25 @@ impl ProtocolType for InitializeChatAction {
 impl ProtocolType for ClientPlayerAction {
     fn net_serialize(&self) -> Vec<u8> {
         return match self {
-            ClientPlayerAction::AddPlayer(action) => {
-                action.net_serialize()
-            },
-            ClientPlayerAction::InitializeChat(action) => {
-                action.net_serialize()
-            },
-            ClientPlayerAction::UpdateGameMode(game_mode) => {
-                VarInt(*game_mode).net_serialize()
-            },
-            ClientPlayerAction::UpdateListed(listed) => {
-                listed.net_serialize()
-            },
-            ClientPlayerAction::UpdateLatency(latency) => {
-                VarInt(*latency).net_serialize()
-            },
-            ClientPlayerAction::UpdateDisplayName(display_name) => {
-                display_name.net_serialize()
-            },
-            ClientPlayerAction::UpdateListPriority(priority) => {
-                VarInt(*priority).net_serialize()
-            },
-            ClientPlayerAction::UpdateHat(visible) => {
-                visible.net_serialize()
-            }
+            ClientPlayerAction::AddPlayer(action) => action.net_serialize(),
+            ClientPlayerAction::InitializeChat(action) => action.net_serialize(),
+            ClientPlayerAction::UpdateGameMode(game_mode) => VarInt(*game_mode).net_serialize(),
+            ClientPlayerAction::UpdateListed(listed) => listed.net_serialize(),
+            ClientPlayerAction::UpdateLatency(latency) => VarInt(*latency).net_serialize(),
+            ClientPlayerAction::UpdateDisplayName(display_name) => display_name.net_serialize(),
+            ClientPlayerAction::UpdateListPriority(priority) => VarInt(*priority).net_serialize(),
+            ClientPlayerAction::UpdateHat(visible) => visible.net_serialize(),
         };
     }
 
-    #[expect(clippy::panic, clippy::panic_in_result_fn, reason = "This feature is currently unimplemented. It should panic when called, but it should not be used in the first place.")]
+    #[expect(
+        clippy::panic,
+        clippy::panic_in_result_fn,
+        reason = "This feature is currently unimplemented. It should panic when called, but it should not be used in the first place."
+    )]
     fn net_deserialize(_data: &mut Vec<u8>) -> Result<Self, ()> {
-        panic!("ClientPlayerAction cannot currently be deserialized. Please implement this if you need it, or open an issue requesting it.");
+        panic!(
+            "ClientPlayerAction cannot currently be deserialized. Please implement this if you need it, or open an issue requesting it."
+        );
     }
 }

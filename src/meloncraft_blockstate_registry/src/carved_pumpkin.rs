@@ -5,7 +5,6 @@ pub struct CarvedPumpkin {
     pub r#facing: Facing,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -16,10 +15,18 @@ pub enum Facing {
 
 impl BlockState for CarvedPumpkin {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::West { return 6820; }
-        if self.r#facing == Facing::North { return 6818; }
-        if self.r#facing == Facing::South { return 6819; }
-        if self.r#facing == Facing::East { return 6821; }
+        if self.r#facing == Facing::West {
+            return 6820;
+        }
+        if self.r#facing == Facing::North {
+            return 6818;
+        }
+        if self.r#facing == Facing::South {
+            return 6819;
+        }
+        if self.r#facing == Facing::East {
+            return 6821;
+        }
         panic!("Invalid block state")
     }
 
@@ -47,4 +54,3 @@ impl BlockState for CarvedPumpkin {
         return None;
     }
 }
-

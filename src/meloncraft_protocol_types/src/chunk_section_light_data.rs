@@ -21,8 +21,6 @@ impl ProtocolType for ChunkSectionLightData {
     }
 }
 
-
-
 #[cfg(test)]
 mod tests {
     use super::*;

@@ -26,10 +26,22 @@ impl Plugin for MeloncraftResourceForwardingPlugin {
         app.add_systems(Update, world_border::send_world_border_center_on_change);
         app.add_systems(Update, world_border::send_world_border_diameter_on_join);
         app.add_systems(Update, world_border::send_world_border_diameter_on_change);
-        app.add_systems(Update, world_border::send_world_border_warning_delay_on_join);
-        app.add_systems(Update, world_border::send_world_border_warning_delay_on_change);
-        app.add_systems(Update, world_border::send_world_border_warning_distance_on_join);
-        app.add_systems(Update, world_border::send_world_border_warning_distance_on_change);
+        app.add_systems(
+            Update,
+            world_border::send_world_border_warning_delay_on_join,
+        );
+        app.add_systems(
+            Update,
+            world_border::send_world_border_warning_delay_on_change,
+        );
+        app.add_systems(
+            Update,
+            world_border::send_world_border_warning_distance_on_join,
+        );
+        app.add_systems(
+            Update,
+            world_border::send_world_border_warning_distance_on_change,
+        );
 
         app.add_systems(Update, time::send_set_time_on_join);
         app.add_systems(Update, time::send_set_time_on_change);
@@ -38,4 +50,3 @@ impl Plugin for MeloncraftResourceForwardingPlugin {
         app.add_systems(Update, data::send_server_data_on_change_motd);
     }
 }
-

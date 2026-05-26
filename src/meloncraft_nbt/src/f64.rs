@@ -4,7 +4,7 @@ use core::ops::{Deref, DerefMut};
 ///
 /// This is used when we need to send numbers with decimal (fractional) parts *and need more
 /// precision than an `f32`. If not, we use [`NbtF32`](`crate::NbtF32`).
-/// 
+///
 /// ## Deref
 /// Dereferencing this (and most other [`NbtValue`](`crate::NbtValue`)s) will yield the wrapped type.
 /// In this case, the `f64` representation of the value.
@@ -15,9 +15,8 @@ use core::ops::{Deref, DerefMut};
 /// [`NbtValue`](`crate::NbtValue`) and [`NbtTag`](`crate::NbtTag`) types.
 #[derive(Debug, Clone, PartialEq)]
 pub struct NbtF64(
-
     /// An `f64` representing the floating-point value of this NBT value or tag.
-    pub f64
+    pub f64,
 );
 
 impl Deref for NbtF64 {

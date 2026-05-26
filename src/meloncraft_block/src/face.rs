@@ -15,7 +15,7 @@
 /// - The ID of each face type is documented in the individual variants. See the documentation of
 ///   each variant for more information on the ID of each face type, and the `From` and `TryFrom`
 ///   implementations for converting between the enum and its integer representation.
-/// 
+///
 /// ## Offsets
 /// Each face type is associated with an offset from the block's position. For example, the
 /// `North` face is associated with the offset `-Z`, since it's the face of the block that is closest to the negative Z direction. The offsets of each face type are
@@ -23,7 +23,6 @@
 /// See the documentation of each variant for more information on the offset of each face type.
 #[derive(Debug, Clone)]
 pub enum BlockFaceType {
-
     /// - The bottom face of a block.
     /// - Opposite to the [`BlockFaceType::Top`] face.
     /// - This is the closest face to the negative Y direction - closest to the void at the bottom
@@ -77,7 +76,7 @@ impl From<BlockFaceType> for u8 {
             BlockFaceType::South => 3,
             BlockFaceType::West => 4,
             BlockFaceType::East => 5,
-        }
+        };
     }
 }
 
@@ -93,6 +92,6 @@ impl TryFrom<u8> for BlockFaceType {
             4 => Ok(Self::West),
             5 => Ok(Self::East),
             _ => Err(()),
-        }
+        };
     }
 }

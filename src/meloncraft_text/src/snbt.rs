@@ -17,7 +17,6 @@
 /// See [`SnbtText::data`] for more information about the data this type should hold.
 #[derive(Debug, Clone)]
 pub struct SnbtText {
-
     /// The SNBT string representing the text component. This should be a valid SNBT string,
     /// following the format specified in the Minecraft wiki, see both:
     /// - <https://minecraft.wiki/w/Text_component_format>

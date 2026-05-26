@@ -1,12 +1,15 @@
-use bevy::prelude::{MessageReader, MessageWriter};
-use meloncraft_packets::ServerboundClientInformation;
 use crate::messages::{
     ClientAllowPlayerListingsReceived, ClientChatColorsReceived, ClientChatModeReceived,
     ClientDisplayedSkinPartsReceived, ClientEnableTextFilteringReceived, ClientLocaleReceived,
     ClientMainHandReceived, ClientParticleRenderingModeReceived, ClientViewDistanceReceived,
 };
+use bevy::prelude::{MessageReader, MessageWriter};
+use meloncraft_packets::ServerboundClientInformation;
 
-#[expect(clippy::too_many_arguments, reason = "All args necessary, they're just message writers")]
+#[expect(
+    clippy::too_many_arguments,
+    reason = "All args necessary, they're just message writers"
+)]
 pub fn client_information_listener(
     mut login_acknowledged_pr: MessageReader<ServerboundClientInformation>,
     mut locale_mw: MessageWriter<ClientLocaleReceived>,

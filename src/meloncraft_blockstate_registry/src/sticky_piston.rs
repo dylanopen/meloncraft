@@ -6,7 +6,6 @@ pub struct StickyPiston {
     pub extended: bool,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -19,18 +18,42 @@ pub enum Facing {
 
 impl BlockState for StickyPiston {
     fn to_id(&self) -> i32 {
-        if self.r#extended == true && self.r#facing == Facing::Up { return 2039; }
-        if self.r#facing == Facing::West && self.r#extended == true { return 2038; }
-        if self.r#extended == true && self.r#facing == Facing::North { return 2035; }
-        if self.r#extended == true && self.r#facing == Facing::South { return 2037; }
-        if self.r#extended == true && self.r#facing == Facing::East { return 2036; }
-        if self.r#extended == false && self.r#facing == Facing::North { return 2041; }
-        if self.r#extended == true && self.r#facing == Facing::Down { return 2040; }
-        if self.r#facing == Facing::West && self.r#extended == false { return 2044; }
-        if self.r#facing == Facing::East && self.r#extended == false { return 2042; }
-        if self.r#facing == Facing::Down && self.r#extended == false { return 2046; }
-        if self.r#extended == false && self.r#facing == Facing::Up { return 2045; }
-        if self.r#facing == Facing::South && self.r#extended == false { return 2043; }
+        if self.r#extended == true && self.r#facing == Facing::Up {
+            return 2039;
+        }
+        if self.r#facing == Facing::West && self.r#extended == true {
+            return 2038;
+        }
+        if self.r#extended == true && self.r#facing == Facing::North {
+            return 2035;
+        }
+        if self.r#extended == true && self.r#facing == Facing::South {
+            return 2037;
+        }
+        if self.r#extended == true && self.r#facing == Facing::East {
+            return 2036;
+        }
+        if self.r#extended == false && self.r#facing == Facing::North {
+            return 2041;
+        }
+        if self.r#extended == true && self.r#facing == Facing::Down {
+            return 2040;
+        }
+        if self.r#facing == Facing::West && self.r#extended == false {
+            return 2044;
+        }
+        if self.r#facing == Facing::East && self.r#extended == false {
+            return 2042;
+        }
+        if self.r#facing == Facing::Down && self.r#extended == false {
+            return 2046;
+        }
+        if self.r#extended == false && self.r#facing == Facing::Up {
+            return 2045;
+        }
+        if self.r#facing == Facing::South && self.r#extended == false {
+            return 2043;
+        }
         panic!("Invalid block state")
     }
 
@@ -110,4 +133,3 @@ impl BlockState for StickyPiston {
         return None;
     }
 }
-

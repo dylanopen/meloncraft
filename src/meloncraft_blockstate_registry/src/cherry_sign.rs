@@ -6,41 +6,104 @@ pub struct CherrySign {
     pub waterlogged: bool,
 }
 
-
 impl BlockState for CherrySign {
     fn to_id(&self) -> i32 {
-        if self.r#waterlogged == false && self.r#rotation == 12 { return 5287; }
-        if self.r#rotation == 10 && self.r#waterlogged == false { return 5283; }
-        if self.r#rotation == 14 && self.r#waterlogged == true { return 5290; }
-        if self.r#rotation == 3 && self.r#waterlogged == false { return 5269; }
-        if self.r#rotation == 11 && self.r#waterlogged == true { return 5284; }
-        if self.r#rotation == 1 && self.r#waterlogged == false { return 5265; }
-        if self.r#rotation == 4 && self.r#waterlogged == true { return 5270; }
-        if self.r#rotation == 8 && self.r#waterlogged == false { return 5279; }
-        if self.r#waterlogged == true && self.r#rotation == 9 { return 5280; }
-        if self.r#rotation == 0 && self.r#waterlogged == true { return 5262; }
-        if self.r#waterlogged == true && self.r#rotation == 10 { return 5282; }
-        if self.r#waterlogged == false && self.r#rotation == 13 { return 5289; }
-        if self.r#waterlogged == true && self.r#rotation == 15 { return 5292; }
-        if self.r#waterlogged == false && self.r#rotation == 0 { return 5263; }
-        if self.r#waterlogged == true && self.r#rotation == 2 { return 5266; }
-        if self.r#rotation == 6 && self.r#waterlogged == true { return 5274; }
-        if self.r#rotation == 5 && self.r#waterlogged == false { return 5273; }
-        if self.r#rotation == 12 && self.r#waterlogged == true { return 5286; }
-        if self.r#waterlogged == false && self.r#rotation == 15 { return 5293; }
-        if self.r#waterlogged == false && self.r#rotation == 6 { return 5275; }
-        if self.r#waterlogged == false && self.r#rotation == 2 { return 5267; }
-        if self.r#rotation == 3 && self.r#waterlogged == true { return 5268; }
-        if self.r#waterlogged == false && self.r#rotation == 7 { return 5277; }
-        if self.r#waterlogged == true && self.r#rotation == 13 { return 5288; }
-        if self.r#waterlogged == true && self.r#rotation == 8 { return 5278; }
-        if self.r#waterlogged == false && self.r#rotation == 11 { return 5285; }
-        if self.r#waterlogged == true && self.r#rotation == 7 { return 5276; }
-        if self.r#waterlogged == true && self.r#rotation == 1 { return 5264; }
-        if self.r#waterlogged == false && self.r#rotation == 4 { return 5271; }
-        if self.r#rotation == 9 && self.r#waterlogged == false { return 5281; }
-        if self.r#waterlogged == true && self.r#rotation == 5 { return 5272; }
-        if self.r#waterlogged == false && self.r#rotation == 14 { return 5291; }
+        if self.r#waterlogged == false && self.r#rotation == 12 {
+            return 5287;
+        }
+        if self.r#rotation == 10 && self.r#waterlogged == false {
+            return 5283;
+        }
+        if self.r#rotation == 14 && self.r#waterlogged == true {
+            return 5290;
+        }
+        if self.r#rotation == 3 && self.r#waterlogged == false {
+            return 5269;
+        }
+        if self.r#rotation == 11 && self.r#waterlogged == true {
+            return 5284;
+        }
+        if self.r#rotation == 1 && self.r#waterlogged == false {
+            return 5265;
+        }
+        if self.r#rotation == 4 && self.r#waterlogged == true {
+            return 5270;
+        }
+        if self.r#rotation == 8 && self.r#waterlogged == false {
+            return 5279;
+        }
+        if self.r#waterlogged == true && self.r#rotation == 9 {
+            return 5280;
+        }
+        if self.r#rotation == 0 && self.r#waterlogged == true {
+            return 5262;
+        }
+        if self.r#waterlogged == true && self.r#rotation == 10 {
+            return 5282;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 13 {
+            return 5289;
+        }
+        if self.r#waterlogged == true && self.r#rotation == 15 {
+            return 5292;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 0 {
+            return 5263;
+        }
+        if self.r#waterlogged == true && self.r#rotation == 2 {
+            return 5266;
+        }
+        if self.r#rotation == 6 && self.r#waterlogged == true {
+            return 5274;
+        }
+        if self.r#rotation == 5 && self.r#waterlogged == false {
+            return 5273;
+        }
+        if self.r#rotation == 12 && self.r#waterlogged == true {
+            return 5286;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 15 {
+            return 5293;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 6 {
+            return 5275;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 2 {
+            return 5267;
+        }
+        if self.r#rotation == 3 && self.r#waterlogged == true {
+            return 5268;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 7 {
+            return 5277;
+        }
+        if self.r#waterlogged == true && self.r#rotation == 13 {
+            return 5288;
+        }
+        if self.r#waterlogged == true && self.r#rotation == 8 {
+            return 5278;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 11 {
+            return 5285;
+        }
+        if self.r#waterlogged == true && self.r#rotation == 7 {
+            return 5276;
+        }
+        if self.r#waterlogged == true && self.r#rotation == 1 {
+            return 5264;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 4 {
+            return 5271;
+        }
+        if self.r#rotation == 9 && self.r#waterlogged == false {
+            return 5281;
+        }
+        if self.r#waterlogged == true && self.r#rotation == 5 {
+            return 5272;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 14 {
+            return 5291;
+        }
         panic!("Invalid block state")
     }
 
@@ -240,4 +303,3 @@ impl BlockState for CherrySign {
         return None;
     }
 }
-

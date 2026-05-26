@@ -14,7 +14,7 @@ pub fn select_known_packs(
                 namespace: "minecraft".to_string(),
                 id: "core".to_string(),
                 version: "1.21.10".to_string(),
-            }]
+            }],
         });
     }
 }

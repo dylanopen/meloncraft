@@ -23,8 +23,7 @@ fn string(data: &mut Vec<u8>) -> Result<String, ()> {
         return Err(());
     }
     let string_bytes = data.drain(0..length).collect::<Vec<u8>>();
-    return String::from_utf8(string_bytes)
-        .map_or(Err(()), Ok);
+    return String::from_utf8(string_bytes).map_or(Err(()), Ok);
 }
 
 pub fn value(tag_type: u8, data: &mut Vec<u8>) -> Result<NbtValue, ()> {
@@ -80,7 +79,7 @@ pub fn value(tag_type: u8, data: &mut Vec<u8>) -> Result<NbtValue, ()> {
 }
 
 fn byte_array(length: i32, data: &mut Vec<u8>) -> Result<NbtValue, ()> {
-    if data.len() < length.try_into().unwrap(){
+    if data.len() < length.try_into().unwrap() {
         return Err(());
     }
     let mut bytes = Vec::with_capacity(length.try_into().unwrap());

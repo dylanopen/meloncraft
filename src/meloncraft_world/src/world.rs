@@ -1,9 +1,9 @@
 //! Module for struct [`World`].
 
-use std::collections::HashMap;
 use bevy::ecs::component::Component;
 use bevy::math::{IVec2, IVec3};
 use meloncraft_chunk::Chunk;
+use std::collections::HashMap;
 
 /// A struct representing the world, which is a collection of chunks.
 ///
@@ -41,7 +41,6 @@ pub struct World {
 }
 
 impl World {
-
     /// Inserts a chunk into the world at the specified position.
     ///
     /// ## Replacement
@@ -99,7 +98,7 @@ impl World {
     }
 
     /// Return `true` if there is a chunk at the specified *chunk* position, else `false`.
-    /// 
+    ///
     /// ## Parameters
     /// - `&self`: The world to check for the chunk, as a reference to a `World` struct.
     /// - `chunk_pos`: The **chunk** position of the chunk to check for, as an [`IVec2`].
@@ -107,7 +106,7 @@ impl World {
     /// ## Returns
     /// - `true` if there is a chunk at the specified position.
     /// - `false` if there is no chunk at the specified position.
-    /// 
+    ///
     /// ## Alternatives
     /// - You can also check for the existence of a chunk by using [`World::get_chunk`] and
     ///   checking if the result is `Some(&chunk)` or `None`.
@@ -186,10 +185,7 @@ impl World {
     ///   as an [`IVec2`].
     #[must_use]
     pub const fn get_chunk_pos_from_block_pos(block_pos: &IVec3) -> IVec2 {
-        return IVec2::new(
-            block_pos.x.div_euclid(16),
-            block_pos.z.div_euclid(16),
-        );
+        return IVec2::new(block_pos.x.div_euclid(16), block_pos.z.div_euclid(16));
     }
 
     /// Return the actual chunk corresponding to the given block position, if it exists, else `None`.

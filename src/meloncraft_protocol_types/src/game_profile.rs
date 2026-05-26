@@ -19,7 +19,10 @@ impl ProtocolType for GameProfile {
     }
 }
 
-#[expect(clippy::todo, reason = "GameProfileProperties serialization and deserialization is not implemented yet")]
+#[expect(
+    clippy::todo,
+    reason = "GameProfileProperties serialization and deserialization is not implemented yet"
+)]
 impl ProtocolType for GameProfileProperties {
     fn net_serialize(&self) -> Vec<u8> {
         todo!("GameProfileProperties serialization");

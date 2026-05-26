@@ -5,7 +5,6 @@ pub struct AttachedMelonStem {
     pub r#facing: Facing,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -16,10 +15,18 @@ pub enum Facing {
 
 impl BlockState for AttachedMelonStem {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::East { return 8140; }
-        if self.r#facing == Facing::West { return 8139; }
-        if self.r#facing == Facing::South { return 8138; }
-        if self.r#facing == Facing::North { return 8137; }
+        if self.r#facing == Facing::East {
+            return 8140;
+        }
+        if self.r#facing == Facing::West {
+            return 8139;
+        }
+        if self.r#facing == Facing::South {
+            return 8138;
+        }
+        if self.r#facing == Facing::North {
+            return 8137;
+        }
         panic!("Invalid block state")
     }
 
@@ -47,4 +54,3 @@ impl BlockState for AttachedMelonStem {
         return None;
     }
 }
-

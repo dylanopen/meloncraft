@@ -5,7 +5,6 @@ pub struct JackOLantern {
     pub r#facing: Facing,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -16,10 +15,18 @@ pub enum Facing {
 
 impl BlockState for JackOLantern {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::East { return 6825; }
-        if self.r#facing == Facing::West { return 6824; }
-        if self.r#facing == Facing::North { return 6822; }
-        if self.r#facing == Facing::South { return 6823; }
+        if self.r#facing == Facing::East {
+            return 6825;
+        }
+        if self.r#facing == Facing::West {
+            return 6824;
+        }
+        if self.r#facing == Facing::North {
+            return 6822;
+        }
+        if self.r#facing == Facing::South {
+            return 6823;
+        }
         panic!("Invalid block state")
     }
 
@@ -47,4 +54,3 @@ impl BlockState for JackOLantern {
         return None;
     }
 }
-

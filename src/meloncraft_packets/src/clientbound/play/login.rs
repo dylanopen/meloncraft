@@ -4,7 +4,10 @@ use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_core::Identifier;
 use meloncraft_protocol_types::{NetworkLocation, PrefixedArray, ProtocolType as _, VarInt};
 
-#[expect(clippy::struct_excessive_bools, reason = "It's a packet: we need all those bools, and it's not a state machine.")]
+#[expect(
+    clippy::struct_excessive_bools,
+    reason = "It's a packet: we need all those bools, and it's not a state machine."
+)]
 #[derive(Message, Debug, Clone)]
 pub struct ClientboundPlayLogin {
     pub client: Entity,
@@ -34,11 +37,11 @@ pub struct ClientboundPlayLogin {
 
 impl ClientboundPacket for ClientboundPlayLogin {
     fn id() -> i32 {
-        return 0x30
+        return 0x30;
     }
 
     fn state() -> ConnectionState {
-        return ConnectionState::Play
+        return ConnectionState::Play;
     }
 
     fn client(&self) -> Entity {

@@ -6,7 +6,6 @@ pub struct DragonWallHead {
     pub powered: bool,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -17,14 +16,30 @@ pub enum Facing {
 
 impl BlockState for DragonWallHead {
     fn to_id(&self) -> i32 {
-        if self.r#powered == false && self.r#facing == Facing::West { return 10950; }
-        if self.r#facing == Facing::North && self.r#powered == false { return 10946; }
-        if self.r#facing == Facing::North && self.r#powered == true { return 10945; }
-        if self.r#facing == Facing::South && self.r#powered == false { return 10948; }
-        if self.r#powered == true && self.r#facing == Facing::South { return 10947; }
-        if self.r#powered == true && self.r#facing == Facing::West { return 10949; }
-        if self.r#powered == true && self.r#facing == Facing::East { return 10951; }
-        if self.r#powered == false && self.r#facing == Facing::East { return 10952; }
+        if self.r#powered == false && self.r#facing == Facing::West {
+            return 10950;
+        }
+        if self.r#facing == Facing::North && self.r#powered == false {
+            return 10946;
+        }
+        if self.r#facing == Facing::North && self.r#powered == true {
+            return 10945;
+        }
+        if self.r#facing == Facing::South && self.r#powered == false {
+            return 10948;
+        }
+        if self.r#powered == true && self.r#facing == Facing::South {
+            return 10947;
+        }
+        if self.r#powered == true && self.r#facing == Facing::West {
+            return 10949;
+        }
+        if self.r#powered == true && self.r#facing == Facing::East {
+            return 10951;
+        }
+        if self.r#powered == false && self.r#facing == Facing::East {
+            return 10952;
+        }
         panic!("Invalid block state")
     }
 
@@ -80,4 +95,3 @@ impl BlockState for DragonWallHead {
         return None;
     }
 }
-

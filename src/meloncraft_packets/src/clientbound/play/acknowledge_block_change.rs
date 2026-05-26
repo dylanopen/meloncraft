@@ -1,8 +1,8 @@
+use crate::clientbound_packet::ClientboundPacket;
 use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_protocol_types::{ProtocolType as _, VarInt};
-use crate::clientbound_packet::ClientboundPacket;
 
 #[derive(Message, Debug, Clone)]
 pub struct ClientboundAcknowledgeBlockChange {
@@ -12,22 +12,18 @@ pub struct ClientboundAcknowledgeBlockChange {
 
 impl ClientboundPacket for ClientboundAcknowledgeBlockChange {
     fn id() -> i32 {
-        return 0x04
+        return 0x04;
     }
 
     fn state() -> ConnectionState {
-        return ConnectionState::Play
+        return ConnectionState::Play;
     }
-
 
     fn client(&self) -> Entity {
         return self.client;
     }
 
     fn data(&self, data: &mut Vec<u8>) {
-
         data.extend(VarInt(self.sequence).net_serialize());
-
     }
 }
-

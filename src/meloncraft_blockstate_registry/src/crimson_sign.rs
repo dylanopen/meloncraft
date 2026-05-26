@@ -6,41 +6,104 @@ pub struct CrimsonSign {
     pub waterlogged: bool,
 }
 
-
 impl BlockState for CrimsonSign {
     fn to_id(&self) -> i32 {
-        if self.r#rotation == 14 && self.r#waterlogged == false { return 21469; }
-        if self.r#waterlogged == false && self.r#rotation == 1 { return 21443; }
-        if self.r#waterlogged == true && self.r#rotation == 1 { return 21442; }
-        if self.r#rotation == 8 && self.r#waterlogged == false { return 21457; }
-        if self.r#rotation == 3 && self.r#waterlogged == false { return 21447; }
-        if self.r#waterlogged == true && self.r#rotation == 14 { return 21468; }
-        if self.r#rotation == 13 && self.r#waterlogged == false { return 21467; }
-        if self.r#rotation == 13 && self.r#waterlogged == true { return 21466; }
-        if self.r#rotation == 5 && self.r#waterlogged == false { return 21451; }
-        if self.r#rotation == 6 && self.r#waterlogged == true { return 21452; }
-        if self.r#waterlogged == true && self.r#rotation == 10 { return 21460; }
-        if self.r#waterlogged == false && self.r#rotation == 9 { return 21459; }
-        if self.r#waterlogged == true && self.r#rotation == 2 { return 21444; }
-        if self.r#rotation == 15 && self.r#waterlogged == true { return 21470; }
-        if self.r#rotation == 0 && self.r#waterlogged == true { return 21440; }
-        if self.r#rotation == 0 && self.r#waterlogged == false { return 21441; }
-        if self.r#waterlogged == false && self.r#rotation == 11 { return 21463; }
-        if self.r#rotation == 8 && self.r#waterlogged == true { return 21456; }
-        if self.r#waterlogged == false && self.r#rotation == 12 { return 21465; }
-        if self.r#rotation == 15 && self.r#waterlogged == false { return 21471; }
-        if self.r#rotation == 9 && self.r#waterlogged == true { return 21458; }
-        if self.r#waterlogged == false && self.r#rotation == 2 { return 21445; }
-        if self.r#rotation == 4 && self.r#waterlogged == false { return 21449; }
-        if self.r#rotation == 3 && self.r#waterlogged == true { return 21446; }
-        if self.r#rotation == 7 && self.r#waterlogged == false { return 21455; }
-        if self.r#rotation == 6 && self.r#waterlogged == false { return 21453; }
-        if self.r#waterlogged == true && self.r#rotation == 12 { return 21464; }
-        if self.r#rotation == 10 && self.r#waterlogged == false { return 21461; }
-        if self.r#waterlogged == true && self.r#rotation == 5 { return 21450; }
-        if self.r#rotation == 4 && self.r#waterlogged == true { return 21448; }
-        if self.r#rotation == 7 && self.r#waterlogged == true { return 21454; }
-        if self.r#rotation == 11 && self.r#waterlogged == true { return 21462; }
+        if self.r#rotation == 14 && self.r#waterlogged == false {
+            return 21469;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 1 {
+            return 21443;
+        }
+        if self.r#waterlogged == true && self.r#rotation == 1 {
+            return 21442;
+        }
+        if self.r#rotation == 8 && self.r#waterlogged == false {
+            return 21457;
+        }
+        if self.r#rotation == 3 && self.r#waterlogged == false {
+            return 21447;
+        }
+        if self.r#waterlogged == true && self.r#rotation == 14 {
+            return 21468;
+        }
+        if self.r#rotation == 13 && self.r#waterlogged == false {
+            return 21467;
+        }
+        if self.r#rotation == 13 && self.r#waterlogged == true {
+            return 21466;
+        }
+        if self.r#rotation == 5 && self.r#waterlogged == false {
+            return 21451;
+        }
+        if self.r#rotation == 6 && self.r#waterlogged == true {
+            return 21452;
+        }
+        if self.r#waterlogged == true && self.r#rotation == 10 {
+            return 21460;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 9 {
+            return 21459;
+        }
+        if self.r#waterlogged == true && self.r#rotation == 2 {
+            return 21444;
+        }
+        if self.r#rotation == 15 && self.r#waterlogged == true {
+            return 21470;
+        }
+        if self.r#rotation == 0 && self.r#waterlogged == true {
+            return 21440;
+        }
+        if self.r#rotation == 0 && self.r#waterlogged == false {
+            return 21441;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 11 {
+            return 21463;
+        }
+        if self.r#rotation == 8 && self.r#waterlogged == true {
+            return 21456;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 12 {
+            return 21465;
+        }
+        if self.r#rotation == 15 && self.r#waterlogged == false {
+            return 21471;
+        }
+        if self.r#rotation == 9 && self.r#waterlogged == true {
+            return 21458;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 2 {
+            return 21445;
+        }
+        if self.r#rotation == 4 && self.r#waterlogged == false {
+            return 21449;
+        }
+        if self.r#rotation == 3 && self.r#waterlogged == true {
+            return 21446;
+        }
+        if self.r#rotation == 7 && self.r#waterlogged == false {
+            return 21455;
+        }
+        if self.r#rotation == 6 && self.r#waterlogged == false {
+            return 21453;
+        }
+        if self.r#waterlogged == true && self.r#rotation == 12 {
+            return 21464;
+        }
+        if self.r#rotation == 10 && self.r#waterlogged == false {
+            return 21461;
+        }
+        if self.r#waterlogged == true && self.r#rotation == 5 {
+            return 21450;
+        }
+        if self.r#rotation == 4 && self.r#waterlogged == true {
+            return 21448;
+        }
+        if self.r#rotation == 7 && self.r#waterlogged == true {
+            return 21454;
+        }
+        if self.r#rotation == 11 && self.r#waterlogged == true {
+            return 21462;
+        }
         panic!("Invalid block state")
     }
 
@@ -240,4 +303,3 @@ impl BlockState for CrimsonSign {
         return None;
     }
 }
-

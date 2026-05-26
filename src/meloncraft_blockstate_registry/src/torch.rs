@@ -1,9 +1,7 @@
 use crate::BlockState;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub struct Torch {
-}
-
+pub struct Torch {}
 
 impl BlockState for Torch {
     fn to_id(&self) -> i32 {
@@ -13,10 +11,8 @@ impl BlockState for Torch {
 
     fn from_id(state_id: i32) -> Option<Self> {
         if state_id == 3169 {
-            return Some(Torch {
-            });
+            return Some(Torch {});
         }
         return None;
     }
 }
-

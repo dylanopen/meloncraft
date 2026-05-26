@@ -6,7 +6,6 @@ pub struct Cocoa {
     pub r#facing: Facing,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -17,18 +16,42 @@ pub enum Facing {
 
 impl BlockState for Cocoa {
     fn to_id(&self) -> i32 {
-        if self.r#age == 0 && self.r#facing == Facing::North { return 9280; }
-        if self.r#age == 0 && self.r#facing == Facing::West { return 9282; }
-        if self.r#age == 2 && self.r#facing == Facing::North { return 9288; }
-        if self.r#facing == Facing::West && self.r#age == 2 { return 9290; }
-        if self.r#facing == Facing::South && self.r#age == 1 { return 9285; }
-        if self.r#age == 0 && self.r#facing == Facing::South { return 9281; }
-        if self.r#age == 2 && self.r#facing == Facing::South { return 9289; }
-        if self.r#age == 1 && self.r#facing == Facing::North { return 9284; }
-        if self.r#age == 1 && self.r#facing == Facing::West { return 9286; }
-        if self.r#age == 0 && self.r#facing == Facing::East { return 9283; }
-        if self.r#age == 1 && self.r#facing == Facing::East { return 9287; }
-        if self.r#facing == Facing::East && self.r#age == 2 { return 9291; }
+        if self.r#age == 0 && self.r#facing == Facing::North {
+            return 9280;
+        }
+        if self.r#age == 0 && self.r#facing == Facing::West {
+            return 9282;
+        }
+        if self.r#age == 2 && self.r#facing == Facing::North {
+            return 9288;
+        }
+        if self.r#facing == Facing::West && self.r#age == 2 {
+            return 9290;
+        }
+        if self.r#facing == Facing::South && self.r#age == 1 {
+            return 9285;
+        }
+        if self.r#age == 0 && self.r#facing == Facing::South {
+            return 9281;
+        }
+        if self.r#age == 2 && self.r#facing == Facing::South {
+            return 9289;
+        }
+        if self.r#age == 1 && self.r#facing == Facing::North {
+            return 9284;
+        }
+        if self.r#age == 1 && self.r#facing == Facing::West {
+            return 9286;
+        }
+        if self.r#age == 0 && self.r#facing == Facing::East {
+            return 9283;
+        }
+        if self.r#age == 1 && self.r#facing == Facing::East {
+            return 9287;
+        }
+        if self.r#facing == Facing::East && self.r#age == 2 {
+            return 9291;
+        }
         panic!("Invalid block state")
     }
 
@@ -108,4 +131,3 @@ impl BlockState for Cocoa {
         return None;
     }
 }
-

@@ -1,8 +1,8 @@
 //! Module for [`MeloncraftBlockPlugin`].
 
-use bevy::app::{App, Plugin};
 use crate::broken::{BlockBroken, PlayerBrokeBlock};
 use crate::set::SetBlock;
+use bevy::app::{App, Plugin};
 
 /// Plugin to register Bevy messages for the `block` crate.
 ///

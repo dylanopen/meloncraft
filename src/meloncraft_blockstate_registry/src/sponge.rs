@@ -1,9 +1,7 @@
 use crate::BlockState;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub struct Sponge {
-}
-
+pub struct Sponge {}
 
 impl BlockState for Sponge {
     fn to_id(&self) -> i32 {
@@ -13,10 +11,8 @@ impl BlockState for Sponge {
 
     fn from_id(state_id: i32) -> Option<Self> {
         if state_id == 560 {
-            return Some(Sponge {
-            });
+            return Some(Sponge {});
         }
         return None;
     }
 }
-

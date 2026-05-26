@@ -6,7 +6,6 @@ pub struct CutRedSandstoneSlab {
     pub waterlogged: bool,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Type {
     Top,
@@ -16,12 +15,24 @@ pub enum Type {
 
 impl BlockState for CutRedSandstoneSlab {
     fn to_id(&self) -> i32 {
-        if self.r#type == Type::Double && self.r#waterlogged == false { return 13271; }
-        if self.r#type == Type::Bottom && self.r#waterlogged == true { return 13268; }
-        if self.r#type == Type::Top && self.r#waterlogged == true { return 13266; }
-        if self.r#waterlogged == false && self.r#type == Type::Bottom { return 13269; }
-        if self.r#type == Type::Top && self.r#waterlogged == false { return 13267; }
-        if self.r#type == Type::Double && self.r#waterlogged == true { return 13270; }
+        if self.r#type == Type::Double && self.r#waterlogged == false {
+            return 13271;
+        }
+        if self.r#type == Type::Bottom && self.r#waterlogged == true {
+            return 13268;
+        }
+        if self.r#type == Type::Top && self.r#waterlogged == true {
+            return 13266;
+        }
+        if self.r#waterlogged == false && self.r#type == Type::Bottom {
+            return 13269;
+        }
+        if self.r#type == Type::Top && self.r#waterlogged == false {
+            return 13267;
+        }
+        if self.r#type == Type::Double && self.r#waterlogged == true {
+            return 13270;
+        }
         panic!("Invalid block state")
     }
 
@@ -65,4 +76,3 @@ impl BlockState for CutRedSandstoneSlab {
         return None;
     }
 }
-

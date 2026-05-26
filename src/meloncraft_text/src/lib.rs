@@ -16,8 +16,8 @@
 //! logic, etc. are fine but only if they operate on the datatype itself, and not on any external
 //! state or external mutable parameters).
 
-mod snbt;
 mod nbt;
+mod snbt;
 
-pub use snbt::SnbtText;
 pub use nbt::NbtText;
+pub use snbt::SnbtText;

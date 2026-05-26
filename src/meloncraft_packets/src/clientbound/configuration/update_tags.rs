@@ -13,13 +13,12 @@ pub struct ClientboundUpdateTags {
 
 impl ClientboundPacket for ClientboundUpdateTags {
     fn id() -> i32 {
-        return 0x0D
+        return 0x0D;
     }
 
     fn state() -> ConnectionState {
-        return ConnectionState::Configuration
+        return ConnectionState::Configuration;
     }
-
 
     fn client(&self) -> Entity {
         return self.client;

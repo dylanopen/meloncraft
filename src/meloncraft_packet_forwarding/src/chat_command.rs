@@ -7,7 +7,11 @@ pub fn fwd_raw_command(
     mut raw_command_mw: MessageWriter<RawCommand>,
 ) {
     for chat_command in chat_command_pr.read() {
-        let words: Vec<String> = chat_command.command.split_whitespace().map(|s| return s.to_owned()).collect();
+        let words: Vec<String> = chat_command
+            .command
+            .split_whitespace()
+            .map(|s| return s.to_owned())
+            .collect();
         let Some(name) = words.first() else { continue };
         let Some(args) = words.get(1..) else { continue };
         let args = args.to_vec();

@@ -17,7 +17,6 @@ use crate::value::NbtValue;
 ///   the [`meloncraft_nbt`](`crate`) crate (e.g. `NbtU8`).
 #[derive(Debug, Clone, PartialEq)]
 pub struct NbtTag {
-
     /// The key that can be used to refer to this tag.
     ///
     /// If this tag is part of a compound, this can be used as an index to this tag's [`NbtValue`],
@@ -35,7 +34,6 @@ pub struct NbtTag {
 }
 
 impl NbtTag {
-
     /// Creates a new [`NbtTag`] with the given key and value.
     ///
     /// ## Parameters

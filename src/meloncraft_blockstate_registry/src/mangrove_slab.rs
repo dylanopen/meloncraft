@@ -6,7 +6,6 @@ pub struct MangroveSlab {
     pub r#type: Type,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Type {
     Top,
@@ -16,12 +15,24 @@ pub enum Type {
 
 impl BlockState for MangroveSlab {
     fn to_id(&self) -> i32 {
-        if self.r#waterlogged == false && self.r#type == Type::Bottom { return 13179; }
-        if self.r#waterlogged == true && self.r#type == Type::Bottom { return 13178; }
-        if self.r#waterlogged == true && self.r#type == Type::Top { return 13176; }
-        if self.r#waterlogged == false && self.r#type == Type::Double { return 13181; }
-        if self.r#waterlogged == false && self.r#type == Type::Top { return 13177; }
-        if self.r#type == Type::Double && self.r#waterlogged == true { return 13180; }
+        if self.r#waterlogged == false && self.r#type == Type::Bottom {
+            return 13179;
+        }
+        if self.r#waterlogged == true && self.r#type == Type::Bottom {
+            return 13178;
+        }
+        if self.r#waterlogged == true && self.r#type == Type::Top {
+            return 13176;
+        }
+        if self.r#waterlogged == false && self.r#type == Type::Double {
+            return 13181;
+        }
+        if self.r#waterlogged == false && self.r#type == Type::Top {
+            return 13177;
+        }
+        if self.r#type == Type::Double && self.r#waterlogged == true {
+            return 13180;
+        }
         panic!("Invalid block state")
     }
 
@@ -65,4 +76,3 @@ impl BlockState for MangroveSlab {
         return None;
     }
 }
-

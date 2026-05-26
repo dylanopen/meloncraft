@@ -18,4 +18,3 @@ impl ProtocolType for IVec3 {
         return Ok(IVec3 { x, y, z });
     }
 }
-

@@ -7,7 +7,6 @@ pub struct LightningRod {
     pub waterlogged: bool,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -20,30 +19,80 @@ pub enum Facing {
 
 impl BlockState for LightningRod {
     fn to_id(&self) -> i32 {
-        if self.r#powered == false && self.r#waterlogged == true && self.r#facing == Facing::South { return 27351; }
-        if self.r#facing == Facing::Down && self.r#powered == false && self.r#waterlogged == true { return 27363; }
-        if self.r#facing == Facing::North && self.r#powered == false && self.r#waterlogged == false { return 27344; }
-        if self.r#waterlogged == false && self.r#facing == Facing::North && self.r#powered == true { return 27342; }
-        if self.r#powered == true && self.r#facing == Facing::East && self.r#waterlogged == true { return 27345; }
-        if self.r#facing == Facing::South && self.r#powered == true && self.r#waterlogged == true { return 27349; }
-        if self.r#facing == Facing::West && self.r#powered == false && self.r#waterlogged == true { return 27355; }
-        if self.r#waterlogged == true && self.r#powered == false && self.r#facing == Facing::North { return 27343; }
-        if self.r#facing == Facing::East && self.r#powered == false && self.r#waterlogged == false { return 27348; }
-        if self.r#facing == Facing::West && self.r#powered == true && self.r#waterlogged == true { return 27353; }
-        if self.r#powered == false && self.r#waterlogged == false && self.r#facing == Facing::South { return 27352; }
-        if self.r#facing == Facing::Up && self.r#waterlogged == true && self.r#powered == true { return 27357; }
-        if self.r#facing == Facing::Up && self.r#powered == false && self.r#waterlogged == true { return 27359; }
-        if self.r#facing == Facing::East && self.r#waterlogged == false && self.r#powered == true { return 27346; }
-        if self.r#facing == Facing::West && self.r#powered == false && self.r#waterlogged == false { return 27356; }
-        if self.r#waterlogged == false && self.r#powered == true && self.r#facing == Facing::West { return 27354; }
-        if self.r#waterlogged == false && self.r#powered == true && self.r#facing == Facing::Up { return 27358; }
-        if self.r#facing == Facing::East && self.r#waterlogged == true && self.r#powered == false { return 27347; }
-        if self.r#powered == true && self.r#waterlogged == false && self.r#facing == Facing::South { return 27350; }
-        if self.r#waterlogged == true && self.r#facing == Facing::Down && self.r#powered == true { return 27361; }
-        if self.r#powered == false && self.r#facing == Facing::Up && self.r#waterlogged == false { return 27360; }
-        if self.r#facing == Facing::North && self.r#waterlogged == true && self.r#powered == true { return 27341; }
-        if self.r#powered == false && self.r#facing == Facing::Down && self.r#waterlogged == false { return 27364; }
-        if self.r#powered == true && self.r#waterlogged == false && self.r#facing == Facing::Down { return 27362; }
+        if self.r#powered == false && self.r#waterlogged == true && self.r#facing == Facing::South {
+            return 27351;
+        }
+        if self.r#facing == Facing::Down && self.r#powered == false && self.r#waterlogged == true {
+            return 27363;
+        }
+        if self.r#facing == Facing::North && self.r#powered == false && self.r#waterlogged == false
+        {
+            return 27344;
+        }
+        if self.r#waterlogged == false && self.r#facing == Facing::North && self.r#powered == true {
+            return 27342;
+        }
+        if self.r#powered == true && self.r#facing == Facing::East && self.r#waterlogged == true {
+            return 27345;
+        }
+        if self.r#facing == Facing::South && self.r#powered == true && self.r#waterlogged == true {
+            return 27349;
+        }
+        if self.r#facing == Facing::West && self.r#powered == false && self.r#waterlogged == true {
+            return 27355;
+        }
+        if self.r#waterlogged == true && self.r#powered == false && self.r#facing == Facing::North {
+            return 27343;
+        }
+        if self.r#facing == Facing::East && self.r#powered == false && self.r#waterlogged == false {
+            return 27348;
+        }
+        if self.r#facing == Facing::West && self.r#powered == true && self.r#waterlogged == true {
+            return 27353;
+        }
+        if self.r#powered == false && self.r#waterlogged == false && self.r#facing == Facing::South
+        {
+            return 27352;
+        }
+        if self.r#facing == Facing::Up && self.r#waterlogged == true && self.r#powered == true {
+            return 27357;
+        }
+        if self.r#facing == Facing::Up && self.r#powered == false && self.r#waterlogged == true {
+            return 27359;
+        }
+        if self.r#facing == Facing::East && self.r#waterlogged == false && self.r#powered == true {
+            return 27346;
+        }
+        if self.r#facing == Facing::West && self.r#powered == false && self.r#waterlogged == false {
+            return 27356;
+        }
+        if self.r#waterlogged == false && self.r#powered == true && self.r#facing == Facing::West {
+            return 27354;
+        }
+        if self.r#waterlogged == false && self.r#powered == true && self.r#facing == Facing::Up {
+            return 27358;
+        }
+        if self.r#facing == Facing::East && self.r#waterlogged == true && self.r#powered == false {
+            return 27347;
+        }
+        if self.r#powered == true && self.r#waterlogged == false && self.r#facing == Facing::South {
+            return 27350;
+        }
+        if self.r#waterlogged == true && self.r#facing == Facing::Down && self.r#powered == true {
+            return 27361;
+        }
+        if self.r#powered == false && self.r#facing == Facing::Up && self.r#waterlogged == false {
+            return 27360;
+        }
+        if self.r#facing == Facing::North && self.r#waterlogged == true && self.r#powered == true {
+            return 27341;
+        }
+        if self.r#powered == false && self.r#facing == Facing::Down && self.r#waterlogged == false {
+            return 27364;
+        }
+        if self.r#powered == true && self.r#waterlogged == false && self.r#facing == Facing::Down {
+            return 27362;
+        }
         panic!("Invalid block state")
     }
 
@@ -219,4 +268,3 @@ impl BlockState for LightningRod {
         return None;
     }
 }
-

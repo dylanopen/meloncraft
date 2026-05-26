@@ -14,8 +14,8 @@
 //! logic, etc. are fine but only if they operate on the datatype itself, and not on any external
 //! state or external mutable parameters).
 
-pub mod chunk;
-pub mod block_section;
 pub mod biome;
+pub mod block_section;
+pub mod chunk;
 
 pub use chunk::Chunk;

@@ -1,9 +1,7 @@
 use crate::BlockState;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub struct CartographyTable {
-}
-
+pub struct CartographyTable {}
 
 impl BlockState for CartographyTable {
     fn to_id(&self) -> i32 {
@@ -13,10 +11,8 @@ impl BlockState for CartographyTable {
 
     fn from_id(state_id: i32) -> Option<Self> {
         if state_id == 20568 {
-            return Some(CartographyTable {
-            });
+            return Some(CartographyTable {});
         }
         return None;
     }
 }
-

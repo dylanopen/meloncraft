@@ -6,7 +6,6 @@ pub struct WaxedCopperChain {
     pub waterlogged: bool,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Axis {
     X,
@@ -16,12 +15,24 @@ pub enum Axis {
 
 impl BlockState for WaxedCopperChain {
     fn to_id(&self) -> i32 {
-        if self.r#axis == Axis::X && self.r#waterlogged == false { return 8076; }
-        if self.r#axis == Axis::X && self.r#waterlogged == true { return 8075; }
-        if self.r#waterlogged == true && self.r#axis == Axis::Z { return 8079; }
-        if self.r#waterlogged == true && self.r#axis == Axis::Y { return 8077; }
-        if self.r#axis == Axis::Y && self.r#waterlogged == false { return 8078; }
-        if self.r#axis == Axis::Z && self.r#waterlogged == false { return 8080; }
+        if self.r#axis == Axis::X && self.r#waterlogged == false {
+            return 8076;
+        }
+        if self.r#axis == Axis::X && self.r#waterlogged == true {
+            return 8075;
+        }
+        if self.r#waterlogged == true && self.r#axis == Axis::Z {
+            return 8079;
+        }
+        if self.r#waterlogged == true && self.r#axis == Axis::Y {
+            return 8077;
+        }
+        if self.r#axis == Axis::Y && self.r#waterlogged == false {
+            return 8078;
+        }
+        if self.r#axis == Axis::Z && self.r#waterlogged == false {
+            return 8080;
+        }
         panic!("Invalid block state")
     }
 
@@ -65,4 +76,3 @@ impl BlockState for WaxedCopperChain {
         return None;
     }
 }
-

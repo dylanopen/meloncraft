@@ -30,7 +30,6 @@ use bevy::ecs::component::Component;
 /// on both [`Uuid`] and `u128`, so you can just call `.net_serialize()` and `.net_deserialize()`.
 #[derive(Component, Debug, Clone, PartialEq, Eq, Hash)]
 pub struct Uuid(
-
     /// The actual numerical (128-bit) UUID value, that identifies the entity.
     /// See [`Uuid`] for more information.
     pub u128,

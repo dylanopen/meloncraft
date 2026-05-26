@@ -7,37 +7,92 @@ pub struct JungleLeaves {
     pub distance: i32,
 }
 
-
 impl BlockState for JungleLeaves {
     fn to_id(&self) -> i32 {
-        if self.r#waterlogged == false && self.r#distance == 1 && self.r#persistent == false { return 339; }
-        if self.r#persistent == false && self.r#distance == 2 && self.r#waterlogged == false { return 343; }
-        if self.r#persistent == false && self.r#waterlogged == false && self.r#distance == 6 { return 359; }
-        if self.r#persistent == true && self.r#distance == 5 && self.r#waterlogged == true { return 352; }
-        if self.r#distance == 2 && self.r#persistent == true && self.r#waterlogged == false { return 341; }
-        if self.r#waterlogged == false && self.r#distance == 5 && self.r#persistent == false { return 355; }
-        if self.r#persistent == false && self.r#distance == 4 && self.r#waterlogged == false { return 351; }
-        if self.r#waterlogged == true && self.r#persistent == true && self.r#distance == 4 { return 348; }
-        if self.r#distance == 5 && self.r#persistent == true && self.r#waterlogged == false { return 353; }
-        if self.r#distance == 3 && self.r#persistent == true && self.r#waterlogged == true { return 344; }
-        if self.r#waterlogged == true && self.r#distance == 7 && self.r#persistent == true { return 360; }
-        if self.r#distance == 3 && self.r#persistent == false && self.r#waterlogged == false { return 347; }
-        if self.r#distance == 1 && self.r#persistent == false && self.r#waterlogged == true { return 338; }
-        if self.r#persistent == false && self.r#distance == 2 && self.r#waterlogged == true { return 342; }
-        if self.r#persistent == true && self.r#waterlogged == false && self.r#distance == 3 { return 345; }
-        if self.r#distance == 4 && self.r#waterlogged == false && self.r#persistent == true { return 349; }
-        if self.r#waterlogged == true && self.r#distance == 5 && self.r#persistent == false { return 354; }
-        if self.r#persistent == true && self.r#distance == 1 && self.r#waterlogged == true { return 336; }
-        if self.r#waterlogged == true && self.r#distance == 3 && self.r#persistent == false { return 346; }
-        if self.r#distance == 6 && self.r#waterlogged == true && self.r#persistent == false { return 358; }
-        if self.r#waterlogged == true && self.r#persistent == false && self.r#distance == 4 { return 350; }
-        if self.r#distance == 6 && self.r#waterlogged == true && self.r#persistent == true { return 356; }
-        if self.r#distance == 6 && self.r#persistent == true && self.r#waterlogged == false { return 357; }
-        if self.r#distance == 7 && self.r#persistent == true && self.r#waterlogged == false { return 361; }
-        if self.r#waterlogged == true && self.r#distance == 7 && self.r#persistent == false { return 362; }
-        if self.r#persistent == true && self.r#waterlogged == true && self.r#distance == 2 { return 340; }
-        if self.r#distance == 7 && self.r#waterlogged == false && self.r#persistent == false { return 363; }
-        if self.r#distance == 1 && self.r#persistent == true && self.r#waterlogged == false { return 337; }
+        if self.r#waterlogged == false && self.r#distance == 1 && self.r#persistent == false {
+            return 339;
+        }
+        if self.r#persistent == false && self.r#distance == 2 && self.r#waterlogged == false {
+            return 343;
+        }
+        if self.r#persistent == false && self.r#waterlogged == false && self.r#distance == 6 {
+            return 359;
+        }
+        if self.r#persistent == true && self.r#distance == 5 && self.r#waterlogged == true {
+            return 352;
+        }
+        if self.r#distance == 2 && self.r#persistent == true && self.r#waterlogged == false {
+            return 341;
+        }
+        if self.r#waterlogged == false && self.r#distance == 5 && self.r#persistent == false {
+            return 355;
+        }
+        if self.r#persistent == false && self.r#distance == 4 && self.r#waterlogged == false {
+            return 351;
+        }
+        if self.r#waterlogged == true && self.r#persistent == true && self.r#distance == 4 {
+            return 348;
+        }
+        if self.r#distance == 5 && self.r#persistent == true && self.r#waterlogged == false {
+            return 353;
+        }
+        if self.r#distance == 3 && self.r#persistent == true && self.r#waterlogged == true {
+            return 344;
+        }
+        if self.r#waterlogged == true && self.r#distance == 7 && self.r#persistent == true {
+            return 360;
+        }
+        if self.r#distance == 3 && self.r#persistent == false && self.r#waterlogged == false {
+            return 347;
+        }
+        if self.r#distance == 1 && self.r#persistent == false && self.r#waterlogged == true {
+            return 338;
+        }
+        if self.r#persistent == false && self.r#distance == 2 && self.r#waterlogged == true {
+            return 342;
+        }
+        if self.r#persistent == true && self.r#waterlogged == false && self.r#distance == 3 {
+            return 345;
+        }
+        if self.r#distance == 4 && self.r#waterlogged == false && self.r#persistent == true {
+            return 349;
+        }
+        if self.r#waterlogged == true && self.r#distance == 5 && self.r#persistent == false {
+            return 354;
+        }
+        if self.r#persistent == true && self.r#distance == 1 && self.r#waterlogged == true {
+            return 336;
+        }
+        if self.r#waterlogged == true && self.r#distance == 3 && self.r#persistent == false {
+            return 346;
+        }
+        if self.r#distance == 6 && self.r#waterlogged == true && self.r#persistent == false {
+            return 358;
+        }
+        if self.r#waterlogged == true && self.r#persistent == false && self.r#distance == 4 {
+            return 350;
+        }
+        if self.r#distance == 6 && self.r#waterlogged == true && self.r#persistent == true {
+            return 356;
+        }
+        if self.r#distance == 6 && self.r#persistent == true && self.r#waterlogged == false {
+            return 357;
+        }
+        if self.r#distance == 7 && self.r#persistent == true && self.r#waterlogged == false {
+            return 361;
+        }
+        if self.r#waterlogged == true && self.r#distance == 7 && self.r#persistent == false {
+            return 362;
+        }
+        if self.r#persistent == true && self.r#waterlogged == true && self.r#distance == 2 {
+            return 340;
+        }
+        if self.r#distance == 7 && self.r#waterlogged == false && self.r#persistent == false {
+            return 363;
+        }
+        if self.r#distance == 1 && self.r#persistent == true && self.r#waterlogged == false {
+            return 337;
+        }
         panic!("Invalid block state")
     }
 
@@ -241,4 +296,3 @@ impl BlockState for JungleLeaves {
         return None;
     }
 }
-

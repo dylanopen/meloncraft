@@ -3,12 +3,10 @@
 use bevy::ecs::entity::Entity;
 use bevy::ecs::message::Message;
 
-
 /// Represents a raw command, which is a command that has not been parsed yet. It contains the name
 /// of the command and its arguments as strings.
 #[derive(Message)]
 pub struct RawCommand {
-
     /// The entity that executed the command. This is usually a player, but could be any entity
     /// that can execute commands, such as a command block or a function (when they are
     /// implemented, of course).

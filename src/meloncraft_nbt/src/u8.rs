@@ -3,7 +3,7 @@
 use core::ops::{Deref, DerefMut};
 
 /// NBT wrapper to represent an unsigned byte (`u8`).
-/// 
+///
 /// ## Deref
 /// Dereferencing this (and most other [`NbtValue`](`crate::NbtValue`)s will yield the wrapped type.
 /// In this case, the `u8` representation of the value.
@@ -16,7 +16,6 @@ use core::ops::{Deref, DerefMut};
 pub struct NbtU8(
     /// A `u8` representing the value of this NBT value or tag.
     pub u8,
-
 );
 
 impl Deref for NbtU8 {

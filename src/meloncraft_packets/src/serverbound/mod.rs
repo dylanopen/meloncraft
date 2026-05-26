@@ -1,11 +1,11 @@
 mod configuration;
 mod handshaking;
 mod login;
-mod status;
 mod play;
+mod status;
 
 pub use configuration::*;
 pub use handshaking::*;
 pub use login::*;
-pub use status::*;
 pub use play::*;
+pub use status::*;

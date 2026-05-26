@@ -12,13 +12,12 @@ pub struct ClientboundPing {
 
 impl ClientboundPacket for ClientboundPing {
     fn id() -> i32 {
-        return 0x05
+        return 0x05;
     }
 
     fn state() -> ConnectionState {
-        return ConnectionState::Configuration
+        return ConnectionState::Configuration;
     }
-
 
     fn client(&self) -> Entity {
         return self.client;

@@ -6,7 +6,6 @@ pub struct LargeAmethystBud {
     pub r#facing: Facing,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -19,18 +18,42 @@ pub enum Facing {
 
 impl BlockState for LargeAmethystBud {
     fn to_id(&self) -> i32 {
-        if self.r#waterlogged == false && self.r#facing == Facing::East { return 23217; }
-        if self.r#facing == Facing::South && self.r#waterlogged == false { return 23219; }
-        if self.r#waterlogged == true && self.r#facing == Facing::East { return 23216; }
-        if self.r#facing == Facing::West && self.r#waterlogged == true { return 23220; }
-        if self.r#waterlogged == false && self.r#facing == Facing::West { return 23221; }
-        if self.r#facing == Facing::Up && self.r#waterlogged == true { return 23222; }
-        if self.r#facing == Facing::North && self.r#waterlogged == true { return 23214; }
-        if self.r#waterlogged == false && self.r#facing == Facing::Up { return 23223; }
-        if self.r#facing == Facing::North && self.r#waterlogged == false { return 23215; }
-        if self.r#facing == Facing::South && self.r#waterlogged == true { return 23218; }
-        if self.r#waterlogged == true && self.r#facing == Facing::Down { return 23224; }
-        if self.r#waterlogged == false && self.r#facing == Facing::Down { return 23225; }
+        if self.r#waterlogged == false && self.r#facing == Facing::East {
+            return 23217;
+        }
+        if self.r#facing == Facing::South && self.r#waterlogged == false {
+            return 23219;
+        }
+        if self.r#waterlogged == true && self.r#facing == Facing::East {
+            return 23216;
+        }
+        if self.r#facing == Facing::West && self.r#waterlogged == true {
+            return 23220;
+        }
+        if self.r#waterlogged == false && self.r#facing == Facing::West {
+            return 23221;
+        }
+        if self.r#facing == Facing::Up && self.r#waterlogged == true {
+            return 23222;
+        }
+        if self.r#facing == Facing::North && self.r#waterlogged == true {
+            return 23214;
+        }
+        if self.r#waterlogged == false && self.r#facing == Facing::Up {
+            return 23223;
+        }
+        if self.r#facing == Facing::North && self.r#waterlogged == false {
+            return 23215;
+        }
+        if self.r#facing == Facing::South && self.r#waterlogged == true {
+            return 23218;
+        }
+        if self.r#waterlogged == true && self.r#facing == Facing::Down {
+            return 23224;
+        }
+        if self.r#waterlogged == false && self.r#facing == Facing::Down {
+            return 23225;
+        }
         panic!("Invalid block state")
     }
 
@@ -110,4 +133,3 @@ impl BlockState for LargeAmethystBud {
         return None;
     }
 }
-

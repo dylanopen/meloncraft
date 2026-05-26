@@ -5,7 +5,7 @@ use core::ops::{Deref, DerefMut};
 
 /// NBT wrapper to represent **a list of a single data type**.
 /// Please See [`NbtList::0`] for more information about what an [`NbtList`] stores.
-/// 
+///
 /// ## Deref
 /// Dereferencing this (and most other [`NbtValue`](`crate::NbtValue`)s) will yield the wrapped type.
 /// In this case, a `Vec<NbtValue>` representing all the [`NbtValue`]s in the array.
@@ -20,7 +20,6 @@ use core::ops::{Deref, DerefMut};
 /// [`NbtValue`](`crate::NbtValue`) and [`NbtTag`](`crate::NbtTag`) types.
 #[derive(Debug, Clone, PartialEq)]
 pub struct NbtList(
-
     /// A `Vec` containing the [`NbtValue`]s contained within this list.
     ///
     /// It seems like lists can contain other lists and compounds (and maybe arrays), but I can't

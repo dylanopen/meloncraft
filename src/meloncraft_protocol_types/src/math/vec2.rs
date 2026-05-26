@@ -16,4 +16,3 @@ impl ProtocolType for Vec2 {
         return Ok(Vec2 { x, y });
     }
 }
-

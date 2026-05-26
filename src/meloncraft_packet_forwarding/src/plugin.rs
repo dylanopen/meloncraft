@@ -1,5 +1,5 @@
+use crate::{chat_command, intention, player_action};
 use bevy::app::{App, Plugin, Update};
-use crate::{intention, player_action, chat_command};
 
 pub struct MeloncraftPacketForwardingPlugin;
 

@@ -8,7 +8,6 @@ pub struct AcaciaShelf {
     pub waterlogged: bool,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum SideChain {
     Unconnected,
@@ -27,70 +26,454 @@ pub enum Facing {
 
 impl BlockState for AcaciaShelf {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::North && self.r#side_chain == SideChain::Right && self.r#waterlogged == false && self.r#powered == true { return 2402; }
-        if self.r#waterlogged == false && self.r#facing == Facing::West && self.r#powered == false && self.r#side_chain == SideChain::Center { return 2444; }
-        if self.r#facing == Facing::North && self.r#powered == true && self.r#side_chain == SideChain::Unconnected && self.r#waterlogged == false { return 2400; }
-        if self.r#side_chain == SideChain::Right && self.r#facing == Facing::West && self.r#waterlogged == true && self.r#powered == false { return 2441; }
-        if self.r#powered == true && self.r#facing == Facing::South && self.r#side_chain == SideChain::Center && self.r#waterlogged == true { return 2419; }
-        if self.r#powered == false && self.r#waterlogged == true && self.r#side_chain == SideChain::Right && self.r#facing == Facing::East { return 2457; }
-        if self.r#side_chain == SideChain::Center && self.r#powered == true && self.r#waterlogged == false && self.r#facing == Facing::North { return 2404; }
-        if self.r#powered == true && self.r#facing == Facing::East && self.r#waterlogged == true && self.r#side_chain == SideChain::Center { return 2451; }
-        if self.r#facing == Facing::East && self.r#powered == false && self.r#side_chain == SideChain::Right && self.r#waterlogged == false { return 2458; }
-        if self.r#waterlogged == false && self.r#side_chain == SideChain::Center && self.r#facing == Facing::South && self.r#powered == false { return 2428; }
-        if self.r#facing == Facing::West && self.r#side_chain == SideChain::Unconnected && self.r#waterlogged == true && self.r#powered == true { return 2431; }
-        if self.r#side_chain == SideChain::Right && self.r#waterlogged == false && self.r#facing == Facing::West && self.r#powered == false { return 2442; }
-        if self.r#waterlogged == false && self.r#powered == true && self.r#side_chain == SideChain::Center && self.r#facing == Facing::East { return 2452; }
-        if self.r#waterlogged == true && self.r#powered == false && self.r#side_chain == SideChain::Unconnected && self.r#facing == Facing::East { return 2455; }
-        if self.r#powered == false && self.r#facing == Facing::North && self.r#waterlogged == false && self.r#side_chain == SideChain::Center { return 2412; }
-        if self.r#side_chain == SideChain::Right && self.r#waterlogged == false && self.r#powered == false && self.r#facing == Facing::South { return 2426; }
-        if self.r#powered == true && self.r#side_chain == SideChain::Center && self.r#waterlogged == false && self.r#facing == Facing::West { return 2436; }
-        if self.r#facing == Facing::North && self.r#side_chain == SideChain::Right && self.r#powered == true && self.r#waterlogged == true { return 2401; }
-        if self.r#facing == Facing::South && self.r#side_chain == SideChain::Left && self.r#waterlogged == false && self.r#powered == false { return 2430; }
-        if self.r#powered == false && self.r#waterlogged == false && self.r#side_chain == SideChain::Left && self.r#facing == Facing::North { return 2414; }
-        if self.r#facing == Facing::West && self.r#powered == true && self.r#side_chain == SideChain::Right && self.r#waterlogged == true { return 2433; }
-        if self.r#powered == true && self.r#side_chain == SideChain::Right && self.r#facing == Facing::West && self.r#waterlogged == false { return 2434; }
-        if self.r#side_chain == SideChain::Left && self.r#powered == false && self.r#facing == Facing::North && self.r#waterlogged == true { return 2413; }
-        if self.r#side_chain == SideChain::Right && self.r#facing == Facing::North && self.r#powered == false && self.r#waterlogged == true { return 2409; }
-        if self.r#side_chain == SideChain::Left && self.r#facing == Facing::West && self.r#powered == false && self.r#waterlogged == true { return 2445; }
-        if self.r#waterlogged == true && self.r#powered == true && self.r#facing == Facing::East && self.r#side_chain == SideChain::Left { return 2453; }
-        if self.r#powered == true && self.r#facing == Facing::South && self.r#waterlogged == true && self.r#side_chain == SideChain::Unconnected { return 2415; }
-        if self.r#facing == Facing::East && self.r#powered == true && self.r#waterlogged == true && self.r#side_chain == SideChain::Right { return 2449; }
-        if self.r#side_chain == SideChain::Left && self.r#waterlogged == true && self.r#powered == true && self.r#facing == Facing::North { return 2405; }
-        if self.r#waterlogged == true && self.r#side_chain == SideChain::Unconnected && self.r#facing == Facing::West && self.r#powered == false { return 2439; }
-        if self.r#waterlogged == true && self.r#side_chain == SideChain::Right && self.r#facing == Facing::South && self.r#powered == true { return 2417; }
-        if self.r#side_chain == SideChain::Right && self.r#facing == Facing::North && self.r#powered == false && self.r#waterlogged == false { return 2410; }
-        if self.r#side_chain == SideChain::Unconnected && self.r#powered == true && self.r#facing == Facing::West && self.r#waterlogged == false { return 2432; }
-        if self.r#facing == Facing::West && self.r#powered == true && self.r#side_chain == SideChain::Center && self.r#waterlogged == true { return 2435; }
-        if self.r#waterlogged == false && self.r#powered == true && self.r#side_chain == SideChain::Left && self.r#facing == Facing::West { return 2438; }
-        if self.r#powered == true && self.r#side_chain == SideChain::Unconnected && self.r#facing == Facing::East && self.r#waterlogged == false { return 2448; }
-        if self.r#powered == true && self.r#facing == Facing::South && self.r#waterlogged == false && self.r#side_chain == SideChain::Left { return 2422; }
-        if self.r#side_chain == SideChain::Unconnected && self.r#facing == Facing::East && self.r#waterlogged == false && self.r#powered == false { return 2456; }
-        if self.r#powered == false && self.r#waterlogged == true && self.r#side_chain == SideChain::Unconnected && self.r#facing == Facing::South { return 2423; }
-        if self.r#waterlogged == true && self.r#powered == true && self.r#facing == Facing::North && self.r#side_chain == SideChain::Center { return 2403; }
-        if self.r#side_chain == SideChain::Right && self.r#powered == true && self.r#waterlogged == false && self.r#facing == Facing::South { return 2418; }
-        if self.r#facing == Facing::East && self.r#powered == true && self.r#waterlogged == true && self.r#side_chain == SideChain::Unconnected { return 2447; }
-        if self.r#powered == true && self.r#side_chain == SideChain::Unconnected && self.r#facing == Facing::North && self.r#waterlogged == true { return 2399; }
-        if self.r#side_chain == SideChain::Unconnected && self.r#facing == Facing::South && self.r#waterlogged == false && self.r#powered == true { return 2416; }
-        if self.r#side_chain == SideChain::Left && self.r#waterlogged == false && self.r#powered == false && self.r#facing == Facing::West { return 2446; }
-        if self.r#facing == Facing::South && self.r#powered == false && self.r#side_chain == SideChain::Unconnected && self.r#waterlogged == false { return 2424; }
-        if self.r#powered == true && self.r#waterlogged == false && self.r#facing == Facing::South && self.r#side_chain == SideChain::Center { return 2420; }
-        if self.r#facing == Facing::East && self.r#powered == false && self.r#waterlogged == true && self.r#side_chain == SideChain::Center { return 2459; }
-        if self.r#facing == Facing::West && self.r#waterlogged == true && self.r#powered == true && self.r#side_chain == SideChain::Left { return 2437; }
-        if self.r#side_chain == SideChain::Center && self.r#powered == false && self.r#facing == Facing::North && self.r#waterlogged == true { return 2411; }
-        if self.r#powered == false && self.r#facing == Facing::East && self.r#side_chain == SideChain::Left && self.r#waterlogged == false { return 2462; }
-        if self.r#side_chain == SideChain::Right && self.r#facing == Facing::East && self.r#waterlogged == false && self.r#powered == true { return 2450; }
-        if self.r#facing == Facing::East && self.r#powered == false && self.r#waterlogged == true && self.r#side_chain == SideChain::Left { return 2461; }
-        if self.r#waterlogged == true && self.r#facing == Facing::West && self.r#side_chain == SideChain::Center && self.r#powered == false { return 2443; }
-        if self.r#facing == Facing::North && self.r#powered == true && self.r#waterlogged == false && self.r#side_chain == SideChain::Left { return 2406; }
-        if self.r#facing == Facing::West && self.r#side_chain == SideChain::Unconnected && self.r#powered == false && self.r#waterlogged == false { return 2440; }
-        if self.r#waterlogged == true && self.r#powered == false && self.r#side_chain == SideChain::Left && self.r#facing == Facing::South { return 2429; }
-        if self.r#facing == Facing::East && self.r#side_chain == SideChain::Left && self.r#waterlogged == false && self.r#powered == true { return 2454; }
-        if self.r#facing == Facing::East && self.r#side_chain == SideChain::Center && self.r#waterlogged == false && self.r#powered == false { return 2460; }
-        if self.r#waterlogged == true && self.r#facing == Facing::North && self.r#powered == false && self.r#side_chain == SideChain::Unconnected { return 2407; }
-        if self.r#side_chain == SideChain::Center && self.r#waterlogged == true && self.r#facing == Facing::South && self.r#powered == false { return 2427; }
-        if self.r#side_chain == SideChain::Right && self.r#waterlogged == true && self.r#powered == false && self.r#facing == Facing::South { return 2425; }
-        if self.r#side_chain == SideChain::Unconnected && self.r#waterlogged == false && self.r#powered == false && self.r#facing == Facing::North { return 2408; }
-        if self.r#powered == true && self.r#side_chain == SideChain::Left && self.r#waterlogged == true && self.r#facing == Facing::South { return 2421; }
+        if self.r#facing == Facing::North
+            && self.r#side_chain == SideChain::Right
+            && self.r#waterlogged == false
+            && self.r#powered == true
+        {
+            return 2402;
+        }
+        if self.r#waterlogged == false
+            && self.r#facing == Facing::West
+            && self.r#powered == false
+            && self.r#side_chain == SideChain::Center
+        {
+            return 2444;
+        }
+        if self.r#facing == Facing::North
+            && self.r#powered == true
+            && self.r#side_chain == SideChain::Unconnected
+            && self.r#waterlogged == false
+        {
+            return 2400;
+        }
+        if self.r#side_chain == SideChain::Right
+            && self.r#facing == Facing::West
+            && self.r#waterlogged == true
+            && self.r#powered == false
+        {
+            return 2441;
+        }
+        if self.r#powered == true
+            && self.r#facing == Facing::South
+            && self.r#side_chain == SideChain::Center
+            && self.r#waterlogged == true
+        {
+            return 2419;
+        }
+        if self.r#powered == false
+            && self.r#waterlogged == true
+            && self.r#side_chain == SideChain::Right
+            && self.r#facing == Facing::East
+        {
+            return 2457;
+        }
+        if self.r#side_chain == SideChain::Center
+            && self.r#powered == true
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::North
+        {
+            return 2404;
+        }
+        if self.r#powered == true
+            && self.r#facing == Facing::East
+            && self.r#waterlogged == true
+            && self.r#side_chain == SideChain::Center
+        {
+            return 2451;
+        }
+        if self.r#facing == Facing::East
+            && self.r#powered == false
+            && self.r#side_chain == SideChain::Right
+            && self.r#waterlogged == false
+        {
+            return 2458;
+        }
+        if self.r#waterlogged == false
+            && self.r#side_chain == SideChain::Center
+            && self.r#facing == Facing::South
+            && self.r#powered == false
+        {
+            return 2428;
+        }
+        if self.r#facing == Facing::West
+            && self.r#side_chain == SideChain::Unconnected
+            && self.r#waterlogged == true
+            && self.r#powered == true
+        {
+            return 2431;
+        }
+        if self.r#side_chain == SideChain::Right
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::West
+            && self.r#powered == false
+        {
+            return 2442;
+        }
+        if self.r#waterlogged == false
+            && self.r#powered == true
+            && self.r#side_chain == SideChain::Center
+            && self.r#facing == Facing::East
+        {
+            return 2452;
+        }
+        if self.r#waterlogged == true
+            && self.r#powered == false
+            && self.r#side_chain == SideChain::Unconnected
+            && self.r#facing == Facing::East
+        {
+            return 2455;
+        }
+        if self.r#powered == false
+            && self.r#facing == Facing::North
+            && self.r#waterlogged == false
+            && self.r#side_chain == SideChain::Center
+        {
+            return 2412;
+        }
+        if self.r#side_chain == SideChain::Right
+            && self.r#waterlogged == false
+            && self.r#powered == false
+            && self.r#facing == Facing::South
+        {
+            return 2426;
+        }
+        if self.r#powered == true
+            && self.r#side_chain == SideChain::Center
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::West
+        {
+            return 2436;
+        }
+        if self.r#facing == Facing::North
+            && self.r#side_chain == SideChain::Right
+            && self.r#powered == true
+            && self.r#waterlogged == true
+        {
+            return 2401;
+        }
+        if self.r#facing == Facing::South
+            && self.r#side_chain == SideChain::Left
+            && self.r#waterlogged == false
+            && self.r#powered == false
+        {
+            return 2430;
+        }
+        if self.r#powered == false
+            && self.r#waterlogged == false
+            && self.r#side_chain == SideChain::Left
+            && self.r#facing == Facing::North
+        {
+            return 2414;
+        }
+        if self.r#facing == Facing::West
+            && self.r#powered == true
+            && self.r#side_chain == SideChain::Right
+            && self.r#waterlogged == true
+        {
+            return 2433;
+        }
+        if self.r#powered == true
+            && self.r#side_chain == SideChain::Right
+            && self.r#facing == Facing::West
+            && self.r#waterlogged == false
+        {
+            return 2434;
+        }
+        if self.r#side_chain == SideChain::Left
+            && self.r#powered == false
+            && self.r#facing == Facing::North
+            && self.r#waterlogged == true
+        {
+            return 2413;
+        }
+        if self.r#side_chain == SideChain::Right
+            && self.r#facing == Facing::North
+            && self.r#powered == false
+            && self.r#waterlogged == true
+        {
+            return 2409;
+        }
+        if self.r#side_chain == SideChain::Left
+            && self.r#facing == Facing::West
+            && self.r#powered == false
+            && self.r#waterlogged == true
+        {
+            return 2445;
+        }
+        if self.r#waterlogged == true
+            && self.r#powered == true
+            && self.r#facing == Facing::East
+            && self.r#side_chain == SideChain::Left
+        {
+            return 2453;
+        }
+        if self.r#powered == true
+            && self.r#facing == Facing::South
+            && self.r#waterlogged == true
+            && self.r#side_chain == SideChain::Unconnected
+        {
+            return 2415;
+        }
+        if self.r#facing == Facing::East
+            && self.r#powered == true
+            && self.r#waterlogged == true
+            && self.r#side_chain == SideChain::Right
+        {
+            return 2449;
+        }
+        if self.r#side_chain == SideChain::Left
+            && self.r#waterlogged == true
+            && self.r#powered == true
+            && self.r#facing == Facing::North
+        {
+            return 2405;
+        }
+        if self.r#waterlogged == true
+            && self.r#side_chain == SideChain::Unconnected
+            && self.r#facing == Facing::West
+            && self.r#powered == false
+        {
+            return 2439;
+        }
+        if self.r#waterlogged == true
+            && self.r#side_chain == SideChain::Right
+            && self.r#facing == Facing::South
+            && self.r#powered == true
+        {
+            return 2417;
+        }
+        if self.r#side_chain == SideChain::Right
+            && self.r#facing == Facing::North
+            && self.r#powered == false
+            && self.r#waterlogged == false
+        {
+            return 2410;
+        }
+        if self.r#side_chain == SideChain::Unconnected
+            && self.r#powered == true
+            && self.r#facing == Facing::West
+            && self.r#waterlogged == false
+        {
+            return 2432;
+        }
+        if self.r#facing == Facing::West
+            && self.r#powered == true
+            && self.r#side_chain == SideChain::Center
+            && self.r#waterlogged == true
+        {
+            return 2435;
+        }
+        if self.r#waterlogged == false
+            && self.r#powered == true
+            && self.r#side_chain == SideChain::Left
+            && self.r#facing == Facing::West
+        {
+            return 2438;
+        }
+        if self.r#powered == true
+            && self.r#side_chain == SideChain::Unconnected
+            && self.r#facing == Facing::East
+            && self.r#waterlogged == false
+        {
+            return 2448;
+        }
+        if self.r#powered == true
+            && self.r#facing == Facing::South
+            && self.r#waterlogged == false
+            && self.r#side_chain == SideChain::Left
+        {
+            return 2422;
+        }
+        if self.r#side_chain == SideChain::Unconnected
+            && self.r#facing == Facing::East
+            && self.r#waterlogged == false
+            && self.r#powered == false
+        {
+            return 2456;
+        }
+        if self.r#powered == false
+            && self.r#waterlogged == true
+            && self.r#side_chain == SideChain::Unconnected
+            && self.r#facing == Facing::South
+        {
+            return 2423;
+        }
+        if self.r#waterlogged == true
+            && self.r#powered == true
+            && self.r#facing == Facing::North
+            && self.r#side_chain == SideChain::Center
+        {
+            return 2403;
+        }
+        if self.r#side_chain == SideChain::Right
+            && self.r#powered == true
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::South
+        {
+            return 2418;
+        }
+        if self.r#facing == Facing::East
+            && self.r#powered == true
+            && self.r#waterlogged == true
+            && self.r#side_chain == SideChain::Unconnected
+        {
+            return 2447;
+        }
+        if self.r#powered == true
+            && self.r#side_chain == SideChain::Unconnected
+            && self.r#facing == Facing::North
+            && self.r#waterlogged == true
+        {
+            return 2399;
+        }
+        if self.r#side_chain == SideChain::Unconnected
+            && self.r#facing == Facing::South
+            && self.r#waterlogged == false
+            && self.r#powered == true
+        {
+            return 2416;
+        }
+        if self.r#side_chain == SideChain::Left
+            && self.r#waterlogged == false
+            && self.r#powered == false
+            && self.r#facing == Facing::West
+        {
+            return 2446;
+        }
+        if self.r#facing == Facing::South
+            && self.r#powered == false
+            && self.r#side_chain == SideChain::Unconnected
+            && self.r#waterlogged == false
+        {
+            return 2424;
+        }
+        if self.r#powered == true
+            && self.r#waterlogged == false
+            && self.r#facing == Facing::South
+            && self.r#side_chain == SideChain::Center
+        {
+            return 2420;
+        }
+        if self.r#facing == Facing::East
+            && self.r#powered == false
+            && self.r#waterlogged == true
+            && self.r#side_chain == SideChain::Center
+        {
+            return 2459;
+        }
+        if self.r#facing == Facing::West
+            && self.r#waterlogged == true
+            && self.r#powered == true
+            && self.r#side_chain == SideChain::Left
+        {
+            return 2437;
+        }
+        if self.r#side_chain == SideChain::Center
+            && self.r#powered == false
+            && self.r#facing == Facing::North
+            && self.r#waterlogged == true
+        {
+            return 2411;
+        }
+        if self.r#powered == false
+            && self.r#facing == Facing::East
+            && self.r#side_chain == SideChain::Left
+            && self.r#waterlogged == false
+        {
+            return 2462;
+        }
+        if self.r#side_chain == SideChain::Right
+            && self.r#facing == Facing::East
+            && self.r#waterlogged == false
+            && self.r#powered == true
+        {
+            return 2450;
+        }
+        if self.r#facing == Facing::East
+            && self.r#powered == false
+            && self.r#waterlogged == true
+            && self.r#side_chain == SideChain::Left
+        {
+            return 2461;
+        }
+        if self.r#waterlogged == true
+            && self.r#facing == Facing::West
+            && self.r#side_chain == SideChain::Center
+            && self.r#powered == false
+        {
+            return 2443;
+        }
+        if self.r#facing == Facing::North
+            && self.r#powered == true
+            && self.r#waterlogged == false
+            && self.r#side_chain == SideChain::Left
+        {
+            return 2406;
+        }
+        if self.r#facing == Facing::West
+            && self.r#side_chain == SideChain::Unconnected
+            && self.r#powered == false
+            && self.r#waterlogged == false
+        {
+            return 2440;
+        }
+        if self.r#waterlogged == true
+            && self.r#powered == false
+            && self.r#side_chain == SideChain::Left
+            && self.r#facing == Facing::South
+        {
+            return 2429;
+        }
+        if self.r#facing == Facing::East
+            && self.r#side_chain == SideChain::Left
+            && self.r#waterlogged == false
+            && self.r#powered == true
+        {
+            return 2454;
+        }
+        if self.r#facing == Facing::East
+            && self.r#side_chain == SideChain::Center
+            && self.r#waterlogged == false
+            && self.r#powered == false
+        {
+            return 2460;
+        }
+        if self.r#waterlogged == true
+            && self.r#facing == Facing::North
+            && self.r#powered == false
+            && self.r#side_chain == SideChain::Unconnected
+        {
+            return 2407;
+        }
+        if self.r#side_chain == SideChain::Center
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::South
+            && self.r#powered == false
+        {
+            return 2427;
+        }
+        if self.r#side_chain == SideChain::Right
+            && self.r#waterlogged == true
+            && self.r#powered == false
+            && self.r#facing == Facing::South
+        {
+            return 2425;
+        }
+        if self.r#side_chain == SideChain::Unconnected
+            && self.r#waterlogged == false
+            && self.r#powered == false
+            && self.r#facing == Facing::North
+        {
+            return 2408;
+        }
+        if self.r#powered == true
+            && self.r#side_chain == SideChain::Left
+            && self.r#waterlogged == true
+            && self.r#facing == Facing::South
+        {
+            return 2421;
+        }
         panic!("Invalid block state")
     }
 
@@ -610,4 +993,3 @@ impl BlockState for AcaciaShelf {
         return None;
     }
 }
-

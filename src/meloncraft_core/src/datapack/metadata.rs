@@ -10,7 +10,6 @@
 /// `ClientboundSelectKnownPacks` and `ServerboundSelectKnownPacks`.
 #[derive(Debug, Clone, Eq, PartialEq)]
 pub struct DatapackMetadata {
-
     /// The **namespcae** of the datapack's name, which is the part **before** the colon (`:`) in
     /// the datapack's name.
     ///

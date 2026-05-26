@@ -9,7 +9,6 @@ pub struct SpruceDoor {
     pub powered: bool,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -32,70 +31,518 @@ pub enum Half {
 
 impl BlockState for SpruceDoor {
     fn to_id(&self) -> i32 {
-        if self.r#powered == false && self.r#half == Half::Lower && self.r#open == false && self.r#facing == Facing::East && self.r#hinge == Hinge::Left { return 13917; }
-        if self.r#open == true && self.r#powered == false && self.r#hinge == Hinge::Right && self.r#half == Half::Lower && self.r#facing == Facing::South { return 13887; }
-        if self.r#hinge == Hinge::Right && self.r#facing == Facing::West && self.r#half == Half::Lower && self.r#open == false && self.r#powered == true { return 13904; }
-        if self.r#facing == Facing::West && self.r#hinge == Hinge::Right && self.r#powered == false && self.r#open == true && self.r#half == Half::Lower { return 13903; }
-        if self.r#half == Half::Lower && self.r#powered == false && self.r#facing == Facing::West && self.r#open == false && self.r#hinge == Hinge::Right { return 13905; }
-        if self.r#powered == true && self.r#hinge == Hinge::Left && self.r#half == Half::Upper && self.r#facing == Facing::East && self.r#open == false { return 13908; }
-        if self.r#facing == Facing::North && self.r#half == Half::Upper && self.r#hinge == Hinge::Left && self.r#powered == false && self.r#open == true { return 13859; }
-        if self.r#facing == Facing::North && self.r#half == Half::Upper && self.r#hinge == Hinge::Right && self.r#powered == true && self.r#open == false { return 13864; }
-        if self.r#hinge == Hinge::Right && self.r#powered == false && self.r#facing == Facing::East && self.r#open == false && self.r#half == Half::Lower { return 13921; }
-        if self.r#facing == Facing::West && self.r#powered == true && self.r#half == Half::Upper && self.r#open == false && self.r#hinge == Hinge::Right { return 13896; }
-        if self.r#half == Half::Lower && self.r#hinge == Hinge::Left && self.r#open == true && self.r#facing == Facing::West && self.r#powered == false { return 13899; }
-        if self.r#powered == false && self.r#half == Half::Lower && self.r#hinge == Hinge::Left && self.r#open == true && self.r#facing == Facing::North { return 13867; }
-        if self.r#facing == Facing::South && self.r#open == true && self.r#half == Half::Upper && self.r#powered == false && self.r#hinge == Hinge::Right { return 13879; }
-        if self.r#powered == true && self.r#half == Half::Upper && self.r#facing == Facing::South && self.r#open == true && self.r#hinge == Hinge::Right { return 13878; }
-        if self.r#hinge == Hinge::Left && self.r#half == Half::Lower && self.r#facing == Facing::North && self.r#open == false && self.r#powered == false { return 13869; }
-        if self.r#facing == Facing::South && self.r#half == Half::Upper && self.r#hinge == Hinge::Right && self.r#open == false && self.r#powered == false { return 13881; }
-        if self.r#open == false && self.r#facing == Facing::North && self.r#powered == false && self.r#hinge == Hinge::Left && self.r#half == Half::Upper { return 13861; }
-        if self.r#facing == Facing::East && self.r#open == true && self.r#powered == false && self.r#half == Half::Upper && self.r#hinge == Hinge::Right { return 13911; }
-        if self.r#half == Half::Lower && self.r#facing == Facing::West && self.r#open == false && self.r#powered == true && self.r#hinge == Hinge::Left { return 13900; }
-        if self.r#half == Half::Upper && self.r#hinge == Hinge::Right && self.r#powered == true && self.r#facing == Facing::West && self.r#open == true { return 13894; }
-        if self.r#powered == false && self.r#hinge == Hinge::Right && self.r#half == Half::Lower && self.r#facing == Facing::East && self.r#open == true { return 13919; }
-        if self.r#hinge == Hinge::Left && self.r#half == Half::Lower && self.r#facing == Facing::East && self.r#open == true && self.r#powered == true { return 13914; }
-        if self.r#facing == Facing::East && self.r#powered == false && self.r#hinge == Hinge::Left && self.r#open == true && self.r#half == Half::Upper { return 13907; }
-        if self.r#facing == Facing::North && self.r#hinge == Hinge::Right && self.r#open == true && self.r#half == Half::Upper && self.r#powered == false { return 13863; }
-        if self.r#half == Half::Upper && self.r#facing == Facing::West && self.r#hinge == Hinge::Left && self.r#powered == true && self.r#open == true { return 13890; }
-        if self.r#facing == Facing::South && self.r#half == Half::Upper && self.r#open == false && self.r#hinge == Hinge::Right && self.r#powered == true { return 13880; }
-        if self.r#half == Half::Lower && self.r#open == false && self.r#powered == false && self.r#facing == Facing::South && self.r#hinge == Hinge::Right { return 13889; }
-        if self.r#powered == true && self.r#open == true && self.r#hinge == Hinge::Left && self.r#half == Half::Lower && self.r#facing == Facing::South { return 13882; }
-        if self.r#half == Half::Upper && self.r#powered == false && self.r#facing == Facing::South && self.r#hinge == Hinge::Left && self.r#open == false { return 13877; }
-        if self.r#facing == Facing::East && self.r#half == Half::Upper && self.r#hinge == Hinge::Right && self.r#open == false && self.r#powered == false { return 13913; }
-        if self.r#hinge == Hinge::Right && self.r#open == true && self.r#half == Half::Lower && self.r#powered == true && self.r#facing == Facing::North { return 13870; }
-        if self.r#open == false && self.r#hinge == Hinge::Left && self.r#half == Half::Lower && self.r#powered == false && self.r#facing == Facing::West { return 13901; }
-        if self.r#half == Half::Upper && self.r#open == true && self.r#facing == Facing::East && self.r#hinge == Hinge::Right && self.r#powered == true { return 13910; }
-        if self.r#half == Half::Lower && self.r#powered == false && self.r#hinge == Hinge::Left && self.r#open == true && self.r#facing == Facing::East { return 13915; }
-        if self.r#powered == true && self.r#facing == Facing::North && self.r#hinge == Hinge::Right && self.r#open == true && self.r#half == Half::Upper { return 13862; }
-        if self.r#hinge == Hinge::Left && self.r#facing == Facing::South && self.r#open == true && self.r#powered == false && self.r#half == Half::Upper { return 13875; }
-        if self.r#hinge == Hinge::Right && self.r#open == true && self.r#half == Half::Lower && self.r#facing == Facing::North && self.r#powered == false { return 13871; }
-        if self.r#facing == Facing::South && self.r#powered == true && self.r#hinge == Hinge::Left && self.r#half == Half::Upper && self.r#open == true { return 13874; }
-        if self.r#half == Half::Lower && self.r#open == false && self.r#facing == Facing::North && self.r#powered == true && self.r#hinge == Hinge::Right { return 13872; }
-        if self.r#hinge == Hinge::Left && self.r#open == true && self.r#facing == Facing::North && self.r#powered == true && self.r#half == Half::Upper { return 13858; }
-        if self.r#half == Half::Upper && self.r#hinge == Hinge::Left && self.r#facing == Facing::West && self.r#powered == false && self.r#open == true { return 13891; }
-        if self.r#hinge == Hinge::Right && self.r#powered == false && self.r#facing == Facing::North && self.r#open == false && self.r#half == Half::Upper { return 13865; }
-        if self.r#facing == Facing::South && self.r#half == Half::Upper && self.r#open == false && self.r#hinge == Hinge::Left && self.r#powered == true { return 13876; }
-        if self.r#half == Half::Lower && self.r#open == false && self.r#powered == false && self.r#hinge == Hinge::Left && self.r#facing == Facing::South { return 13885; }
-        if self.r#open == false && self.r#facing == Facing::North && self.r#hinge == Hinge::Left && self.r#powered == true && self.r#half == Half::Upper { return 13860; }
-        if self.r#hinge == Hinge::Right && self.r#powered == true && self.r#facing == Facing::South && self.r#half == Half::Lower && self.r#open == false { return 13888; }
-        if self.r#powered == false && self.r#open == false && self.r#hinge == Hinge::Left && self.r#facing == Facing::West && self.r#half == Half::Upper { return 13893; }
-        if self.r#open == false && self.r#powered == true && self.r#facing == Facing::South && self.r#half == Half::Lower && self.r#hinge == Hinge::Left { return 13884; }
-        if self.r#facing == Facing::East && self.r#half == Half::Upper && self.r#powered == true && self.r#open == true && self.r#hinge == Hinge::Left { return 13906; }
-        if self.r#half == Half::Lower && self.r#hinge == Hinge::Left && self.r#powered == true && self.r#facing == Facing::North && self.r#open == false { return 13868; }
-        if self.r#hinge == Hinge::Left && self.r#half == Half::Upper && self.r#open == false && self.r#powered == false && self.r#facing == Facing::East { return 13909; }
-        if self.r#hinge == Hinge::Right && self.r#powered == true && self.r#open == false && self.r#facing == Facing::East && self.r#half == Half::Lower { return 13920; }
-        if self.r#open == true && self.r#facing == Facing::South && self.r#half == Half::Lower && self.r#powered == false && self.r#hinge == Hinge::Left { return 13883; }
-        if self.r#facing == Facing::North && self.r#hinge == Hinge::Right && self.r#powered == false && self.r#half == Half::Lower && self.r#open == false { return 13873; }
-        if self.r#open == true && self.r#powered == false && self.r#hinge == Hinge::Right && self.r#facing == Facing::West && self.r#half == Half::Upper { return 13895; }
-        if self.r#hinge == Hinge::Left && self.r#facing == Facing::West && self.r#half == Half::Lower && self.r#open == true && self.r#powered == true { return 13898; }
-        if self.r#facing == Facing::West && self.r#hinge == Hinge::Right && self.r#half == Half::Upper && self.r#powered == false && self.r#open == false { return 13897; }
-        if self.r#open == false && self.r#half == Half::Lower && self.r#hinge == Hinge::Left && self.r#powered == true && self.r#facing == Facing::East { return 13916; }
-        if self.r#half == Half::Upper && self.r#open == false && self.r#hinge == Hinge::Left && self.r#facing == Facing::West && self.r#powered == true { return 13892; }
-        if self.r#open == true && self.r#half == Half::Lower && self.r#hinge == Hinge::Right && self.r#facing == Facing::West && self.r#powered == true { return 13902; }
-        if self.r#powered == true && self.r#open == true && self.r#facing == Facing::North && self.r#half == Half::Lower && self.r#hinge == Hinge::Left { return 13866; }
-        if self.r#facing == Facing::South && self.r#hinge == Hinge::Right && self.r#half == Half::Lower && self.r#open == true && self.r#powered == true { return 13886; }
-        if self.r#hinge == Hinge::Right && self.r#facing == Facing::East && self.r#powered == true && self.r#open == true && self.r#half == Half::Lower { return 13918; }
-        if self.r#facing == Facing::East && self.r#hinge == Hinge::Right && self.r#powered == true && self.r#half == Half::Upper && self.r#open == false { return 13912; }
+        if self.r#powered == false
+            && self.r#half == Half::Lower
+            && self.r#open == false
+            && self.r#facing == Facing::East
+            && self.r#hinge == Hinge::Left
+        {
+            return 13917;
+        }
+        if self.r#open == true
+            && self.r#powered == false
+            && self.r#hinge == Hinge::Right
+            && self.r#half == Half::Lower
+            && self.r#facing == Facing::South
+        {
+            return 13887;
+        }
+        if self.r#hinge == Hinge::Right
+            && self.r#facing == Facing::West
+            && self.r#half == Half::Lower
+            && self.r#open == false
+            && self.r#powered == true
+        {
+            return 13904;
+        }
+        if self.r#facing == Facing::West
+            && self.r#hinge == Hinge::Right
+            && self.r#powered == false
+            && self.r#open == true
+            && self.r#half == Half::Lower
+        {
+            return 13903;
+        }
+        if self.r#half == Half::Lower
+            && self.r#powered == false
+            && self.r#facing == Facing::West
+            && self.r#open == false
+            && self.r#hinge == Hinge::Right
+        {
+            return 13905;
+        }
+        if self.r#powered == true
+            && self.r#hinge == Hinge::Left
+            && self.r#half == Half::Upper
+            && self.r#facing == Facing::East
+            && self.r#open == false
+        {
+            return 13908;
+        }
+        if self.r#facing == Facing::North
+            && self.r#half == Half::Upper
+            && self.r#hinge == Hinge::Left
+            && self.r#powered == false
+            && self.r#open == true
+        {
+            return 13859;
+        }
+        if self.r#facing == Facing::North
+            && self.r#half == Half::Upper
+            && self.r#hinge == Hinge::Right
+            && self.r#powered == true
+            && self.r#open == false
+        {
+            return 13864;
+        }
+        if self.r#hinge == Hinge::Right
+            && self.r#powered == false
+            && self.r#facing == Facing::East
+            && self.r#open == false
+            && self.r#half == Half::Lower
+        {
+            return 13921;
+        }
+        if self.r#facing == Facing::West
+            && self.r#powered == true
+            && self.r#half == Half::Upper
+            && self.r#open == false
+            && self.r#hinge == Hinge::Right
+        {
+            return 13896;
+        }
+        if self.r#half == Half::Lower
+            && self.r#hinge == Hinge::Left
+            && self.r#open == true
+            && self.r#facing == Facing::West
+            && self.r#powered == false
+        {
+            return 13899;
+        }
+        if self.r#powered == false
+            && self.r#half == Half::Lower
+            && self.r#hinge == Hinge::Left
+            && self.r#open == true
+            && self.r#facing == Facing::North
+        {
+            return 13867;
+        }
+        if self.r#facing == Facing::South
+            && self.r#open == true
+            && self.r#half == Half::Upper
+            && self.r#powered == false
+            && self.r#hinge == Hinge::Right
+        {
+            return 13879;
+        }
+        if self.r#powered == true
+            && self.r#half == Half::Upper
+            && self.r#facing == Facing::South
+            && self.r#open == true
+            && self.r#hinge == Hinge::Right
+        {
+            return 13878;
+        }
+        if self.r#hinge == Hinge::Left
+            && self.r#half == Half::Lower
+            && self.r#facing == Facing::North
+            && self.r#open == false
+            && self.r#powered == false
+        {
+            return 13869;
+        }
+        if self.r#facing == Facing::South
+            && self.r#half == Half::Upper
+            && self.r#hinge == Hinge::Right
+            && self.r#open == false
+            && self.r#powered == false
+        {
+            return 13881;
+        }
+        if self.r#open == false
+            && self.r#facing == Facing::North
+            && self.r#powered == false
+            && self.r#hinge == Hinge::Left
+            && self.r#half == Half::Upper
+        {
+            return 13861;
+        }
+        if self.r#facing == Facing::East
+            && self.r#open == true
+            && self.r#powered == false
+            && self.r#half == Half::Upper
+            && self.r#hinge == Hinge::Right
+        {
+            return 13911;
+        }
+        if self.r#half == Half::Lower
+            && self.r#facing == Facing::West
+            && self.r#open == false
+            && self.r#powered == true
+            && self.r#hinge == Hinge::Left
+        {
+            return 13900;
+        }
+        if self.r#half == Half::Upper
+            && self.r#hinge == Hinge::Right
+            && self.r#powered == true
+            && self.r#facing == Facing::West
+            && self.r#open == true
+        {
+            return 13894;
+        }
+        if self.r#powered == false
+            && self.r#hinge == Hinge::Right
+            && self.r#half == Half::Lower
+            && self.r#facing == Facing::East
+            && self.r#open == true
+        {
+            return 13919;
+        }
+        if self.r#hinge == Hinge::Left
+            && self.r#half == Half::Lower
+            && self.r#facing == Facing::East
+            && self.r#open == true
+            && self.r#powered == true
+        {
+            return 13914;
+        }
+        if self.r#facing == Facing::East
+            && self.r#powered == false
+            && self.r#hinge == Hinge::Left
+            && self.r#open == true
+            && self.r#half == Half::Upper
+        {
+            return 13907;
+        }
+        if self.r#facing == Facing::North
+            && self.r#hinge == Hinge::Right
+            && self.r#open == true
+            && self.r#half == Half::Upper
+            && self.r#powered == false
+        {
+            return 13863;
+        }
+        if self.r#half == Half::Upper
+            && self.r#facing == Facing::West
+            && self.r#hinge == Hinge::Left
+            && self.r#powered == true
+            && self.r#open == true
+        {
+            return 13890;
+        }
+        if self.r#facing == Facing::South
+            && self.r#half == Half::Upper
+            && self.r#open == false
+            && self.r#hinge == Hinge::Right
+            && self.r#powered == true
+        {
+            return 13880;
+        }
+        if self.r#half == Half::Lower
+            && self.r#open == false
+            && self.r#powered == false
+            && self.r#facing == Facing::South
+            && self.r#hinge == Hinge::Right
+        {
+            return 13889;
+        }
+        if self.r#powered == true
+            && self.r#open == true
+            && self.r#hinge == Hinge::Left
+            && self.r#half == Half::Lower
+            && self.r#facing == Facing::South
+        {
+            return 13882;
+        }
+        if self.r#half == Half::Upper
+            && self.r#powered == false
+            && self.r#facing == Facing::South
+            && self.r#hinge == Hinge::Left
+            && self.r#open == false
+        {
+            return 13877;
+        }
+        if self.r#facing == Facing::East
+            && self.r#half == Half::Upper
+            && self.r#hinge == Hinge::Right
+            && self.r#open == false
+            && self.r#powered == false
+        {
+            return 13913;
+        }
+        if self.r#hinge == Hinge::Right
+            && self.r#open == true
+            && self.r#half == Half::Lower
+            && self.r#powered == true
+            && self.r#facing == Facing::North
+        {
+            return 13870;
+        }
+        if self.r#open == false
+            && self.r#hinge == Hinge::Left
+            && self.r#half == Half::Lower
+            && self.r#powered == false
+            && self.r#facing == Facing::West
+        {
+            return 13901;
+        }
+        if self.r#half == Half::Upper
+            && self.r#open == true
+            && self.r#facing == Facing::East
+            && self.r#hinge == Hinge::Right
+            && self.r#powered == true
+        {
+            return 13910;
+        }
+        if self.r#half == Half::Lower
+            && self.r#powered == false
+            && self.r#hinge == Hinge::Left
+            && self.r#open == true
+            && self.r#facing == Facing::East
+        {
+            return 13915;
+        }
+        if self.r#powered == true
+            && self.r#facing == Facing::North
+            && self.r#hinge == Hinge::Right
+            && self.r#open == true
+            && self.r#half == Half::Upper
+        {
+            return 13862;
+        }
+        if self.r#hinge == Hinge::Left
+            && self.r#facing == Facing::South
+            && self.r#open == true
+            && self.r#powered == false
+            && self.r#half == Half::Upper
+        {
+            return 13875;
+        }
+        if self.r#hinge == Hinge::Right
+            && self.r#open == true
+            && self.r#half == Half::Lower
+            && self.r#facing == Facing::North
+            && self.r#powered == false
+        {
+            return 13871;
+        }
+        if self.r#facing == Facing::South
+            && self.r#powered == true
+            && self.r#hinge == Hinge::Left
+            && self.r#half == Half::Upper
+            && self.r#open == true
+        {
+            return 13874;
+        }
+        if self.r#half == Half::Lower
+            && self.r#open == false
+            && self.r#facing == Facing::North
+            && self.r#powered == true
+            && self.r#hinge == Hinge::Right
+        {
+            return 13872;
+        }
+        if self.r#hinge == Hinge::Left
+            && self.r#open == true
+            && self.r#facing == Facing::North
+            && self.r#powered == true
+            && self.r#half == Half::Upper
+        {
+            return 13858;
+        }
+        if self.r#half == Half::Upper
+            && self.r#hinge == Hinge::Left
+            && self.r#facing == Facing::West
+            && self.r#powered == false
+            && self.r#open == true
+        {
+            return 13891;
+        }
+        if self.r#hinge == Hinge::Right
+            && self.r#powered == false
+            && self.r#facing == Facing::North
+            && self.r#open == false
+            && self.r#half == Half::Upper
+        {
+            return 13865;
+        }
+        if self.r#facing == Facing::South
+            && self.r#half == Half::Upper
+            && self.r#open == false
+            && self.r#hinge == Hinge::Left
+            && self.r#powered == true
+        {
+            return 13876;
+        }
+        if self.r#half == Half::Lower
+            && self.r#open == false
+            && self.r#powered == false
+            && self.r#hinge == Hinge::Left
+            && self.r#facing == Facing::South
+        {
+            return 13885;
+        }
+        if self.r#open == false
+            && self.r#facing == Facing::North
+            && self.r#hinge == Hinge::Left
+            && self.r#powered == true
+            && self.r#half == Half::Upper
+        {
+            return 13860;
+        }
+        if self.r#hinge == Hinge::Right
+            && self.r#powered == true
+            && self.r#facing == Facing::South
+            && self.r#half == Half::Lower
+            && self.r#open == false
+        {
+            return 13888;
+        }
+        if self.r#powered == false
+            && self.r#open == false
+            && self.r#hinge == Hinge::Left
+            && self.r#facing == Facing::West
+            && self.r#half == Half::Upper
+        {
+            return 13893;
+        }
+        if self.r#open == false
+            && self.r#powered == true
+            && self.r#facing == Facing::South
+            && self.r#half == Half::Lower
+            && self.r#hinge == Hinge::Left
+        {
+            return 13884;
+        }
+        if self.r#facing == Facing::East
+            && self.r#half == Half::Upper
+            && self.r#powered == true
+            && self.r#open == true
+            && self.r#hinge == Hinge::Left
+        {
+            return 13906;
+        }
+        if self.r#half == Half::Lower
+            && self.r#hinge == Hinge::Left
+            && self.r#powered == true
+            && self.r#facing == Facing::North
+            && self.r#open == false
+        {
+            return 13868;
+        }
+        if self.r#hinge == Hinge::Left
+            && self.r#half == Half::Upper
+            && self.r#open == false
+            && self.r#powered == false
+            && self.r#facing == Facing::East
+        {
+            return 13909;
+        }
+        if self.r#hinge == Hinge::Right
+            && self.r#powered == true
+            && self.r#open == false
+            && self.r#facing == Facing::East
+            && self.r#half == Half::Lower
+        {
+            return 13920;
+        }
+        if self.r#open == true
+            && self.r#facing == Facing::South
+            && self.r#half == Half::Lower
+            && self.r#powered == false
+            && self.r#hinge == Hinge::Left
+        {
+            return 13883;
+        }
+        if self.r#facing == Facing::North
+            && self.r#hinge == Hinge::Right
+            && self.r#powered == false
+            && self.r#half == Half::Lower
+            && self.r#open == false
+        {
+            return 13873;
+        }
+        if self.r#open == true
+            && self.r#powered == false
+            && self.r#hinge == Hinge::Right
+            && self.r#facing == Facing::West
+            && self.r#half == Half::Upper
+        {
+            return 13895;
+        }
+        if self.r#hinge == Hinge::Left
+            && self.r#facing == Facing::West
+            && self.r#half == Half::Lower
+            && self.r#open == true
+            && self.r#powered == true
+        {
+            return 13898;
+        }
+        if self.r#facing == Facing::West
+            && self.r#hinge == Hinge::Right
+            && self.r#half == Half::Upper
+            && self.r#powered == false
+            && self.r#open == false
+        {
+            return 13897;
+        }
+        if self.r#open == false
+            && self.r#half == Half::Lower
+            && self.r#hinge == Hinge::Left
+            && self.r#powered == true
+            && self.r#facing == Facing::East
+        {
+            return 13916;
+        }
+        if self.r#half == Half::Upper
+            && self.r#open == false
+            && self.r#hinge == Hinge::Left
+            && self.r#facing == Facing::West
+            && self.r#powered == true
+        {
+            return 13892;
+        }
+        if self.r#open == true
+            && self.r#half == Half::Lower
+            && self.r#hinge == Hinge::Right
+            && self.r#facing == Facing::West
+            && self.r#powered == true
+        {
+            return 13902;
+        }
+        if self.r#powered == true
+            && self.r#open == true
+            && self.r#facing == Facing::North
+            && self.r#half == Half::Lower
+            && self.r#hinge == Hinge::Left
+        {
+            return 13866;
+        }
+        if self.r#facing == Facing::South
+            && self.r#hinge == Hinge::Right
+            && self.r#half == Half::Lower
+            && self.r#open == true
+            && self.r#powered == true
+        {
+            return 13886;
+        }
+        if self.r#hinge == Hinge::Right
+            && self.r#facing == Facing::East
+            && self.r#powered == true
+            && self.r#open == true
+            && self.r#half == Half::Lower
+        {
+            return 13918;
+        }
+        if self.r#facing == Facing::East
+            && self.r#hinge == Hinge::Right
+            && self.r#powered == true
+            && self.r#half == Half::Upper
+            && self.r#open == false
+        {
+            return 13912;
+        }
         panic!("Invalid block state")
     }
 
@@ -679,4 +1126,3 @@ impl BlockState for SpruceDoor {
         return None;
     }
 }
-

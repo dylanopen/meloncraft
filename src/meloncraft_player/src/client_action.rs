@@ -8,7 +8,6 @@ use crate::GameProfileProperties;
 /// `ClientboundPlayerInfoUpdate` packet being sent to *all* clients.
 #[derive(Debug, Clone, Message)]
 pub struct UpdateClientPlayerAction {
-
     /// The player whose state has changed and should be updated.
     /// For example, if a player has just joined the game, this would be the Entity representing
     /// that player.
@@ -64,4 +63,3 @@ pub struct InitializeChatAction {
     pub encoded_public_key: Vec<u8>,
     pub public_key_signature: Vec<u8>,
 }
-

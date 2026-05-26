@@ -21,4 +21,3 @@ impl DerefMut for ServerIcon {
         return &mut self.0;
     }
 }
-

@@ -3,8 +3,10 @@ use bevy::ecs::message::{MessageReader, MessageWriter};
 use bevy::ecs::query::Added;
 use bevy::ecs::system::Query;
 use meloncraft_packets::ClientboundPlayerInfoUpdate;
+use meloncraft_player::client_action::{
+    AddPlayerAction, ClientPlayerAction, UpdateClientPlayerAction,
+};
 use meloncraft_player::{GameProfile, PlayerMarker};
-use meloncraft_player::client_action::{AddPlayerAction, ClientPlayerAction, UpdateClientPlayerAction};
 
 pub fn send_client_player_action(
     mut update_client_player_action_mr: MessageReader<UpdateClientPlayerAction>,
@@ -33,12 +35,11 @@ pub fn send_add_player(
             action: ClientPlayerAction::AddPlayer(AddPlayerAction {
                 name: added_player.1.username.clone(),
                 game_profile_properties: Vec::new(),
-            })
+            }),
         });
         update_client_player_action_mw.write(UpdateClientPlayerAction {
             player: added_player.0,
             action: ClientPlayerAction::UpdateListed(true),
         });
-    };
+    }
 }
-

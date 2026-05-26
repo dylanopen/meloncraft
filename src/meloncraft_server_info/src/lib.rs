@@ -16,13 +16,13 @@
 //! logic, etc. are fine but only if they operate on the datatype itself, and not on any external
 //! state or external mutable parameters).
 
-pub mod plugin;
+pub mod difficulty;
+pub mod icon;
 pub mod max_players;
 pub mod motd;
-pub mod icon;
 pub mod online_players;
-pub mod difficulty;
-pub mod world_spawn;
+pub mod plugin;
 pub mod tick;
-pub mod world_border;
 pub mod time;
+pub mod world_border;
+pub mod world_spawn;

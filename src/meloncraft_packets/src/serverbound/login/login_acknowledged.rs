@@ -1,8 +1,8 @@
 use crate::ServerboundPacket;
+use crate::network_messages::ServerboundNetworkPacket;
 use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
-use crate::network_messages::ServerboundNetworkPacket;
 
 #[derive(Message, Debug, Clone)]
 pub struct ServerboundLoginAcknowledged {
@@ -11,16 +11,16 @@ pub struct ServerboundLoginAcknowledged {
 
 impl ServerboundPacket for ServerboundLoginAcknowledged {
     fn id() -> i32 {
-        return 0x03
+        return 0x03;
     }
 
     fn state() -> ConnectionState {
-        return ConnectionState::Login
+        return ConnectionState::Login;
     }
 
     fn deserialize(packet: ServerboundNetworkPacket) -> Option<Self> {
         return Some(Self {
             client: packet.client,
-        })
+        });
     }
 }

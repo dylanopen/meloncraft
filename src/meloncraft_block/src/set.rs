@@ -11,7 +11,6 @@ use crate::block::Block;
 /// update the block in chunk storage.
 #[derive(Message, Debug, Clone)]
 pub struct SetBlock {
-
     /// The location of the block that was broken, as an [`IVec3`].
     /// The coordinates are in block coordinates, not chunk coordinates. These will be the same as
     /// are visible in the client's F3 menu.
@@ -23,4 +22,3 @@ pub struct SetBlock {
     /// To remove a block, set this to air (`Block::new(0)`).
     pub new_block: Block,
 }
-

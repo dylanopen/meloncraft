@@ -8,7 +8,6 @@ pub struct WarpedFenceGate {
     pub in_wall: bool,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -19,38 +18,230 @@ pub enum Facing {
 
 impl BlockState for WarpedFenceGate {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::West && self.r#open == false && self.r#powered == false && self.r#in_wall == true { return 21091; }
-        if self.r#powered == true && self.r#facing == Facing::South && self.r#in_wall == false && self.r#open == false { return 21086; }
-        if self.r#in_wall == false && self.r#facing == Facing::South && self.r#open == true && self.r#powered == true { return 21084; }
-        if self.r#powered == false && self.r#facing == Facing::South && self.r#in_wall == true && self.r#open == false { return 21083; }
-        if self.r#facing == Facing::North && self.r#open == true && self.r#powered == true && self.r#in_wall == true { return 21072; }
-        if self.r#in_wall == true && self.r#open == true && self.r#facing == Facing::East && self.r#powered == false { return 21097; }
-        if self.r#facing == Facing::West && self.r#open == true && self.r#powered == true && self.r#in_wall == true { return 21088; }
-        if self.r#open == false && self.r#in_wall == true && self.r#facing == Facing::East && self.r#powered == false { return 21099; }
-        if self.r#facing == Facing::South && self.r#in_wall == true && self.r#open == false && self.r#powered == true { return 21082; }
-        if self.r#in_wall == true && self.r#powered == true && self.r#facing == Facing::East && self.r#open == true { return 21096; }
-        if self.r#facing == Facing::North && self.r#in_wall == false && self.r#open == false && self.r#powered == true { return 21078; }
-        if self.r#powered == false && self.r#facing == Facing::North && self.r#in_wall == false && self.r#open == false { return 21079; }
-        if self.r#in_wall == false && self.r#powered == false && self.r#facing == Facing::East && self.r#open == true { return 21101; }
-        if self.r#facing == Facing::North && self.r#in_wall == false && self.r#open == true && self.r#powered == false { return 21077; }
-        if self.r#powered == true && self.r#facing == Facing::South && self.r#in_wall == true && self.r#open == true { return 21080; }
-        if self.r#open == false && self.r#in_wall == false && self.r#powered == false && self.r#facing == Facing::East { return 21103; }
-        if self.r#in_wall == false && self.r#open == true && self.r#powered == false && self.r#facing == Facing::West { return 21093; }
-        if self.r#facing == Facing::North && self.r#powered == true && self.r#open == true && self.r#in_wall == false { return 21076; }
-        if self.r#facing == Facing::North && self.r#open == false && self.r#powered == false && self.r#in_wall == true { return 21075; }
-        if self.r#open == true && self.r#facing == Facing::West && self.r#powered == true && self.r#in_wall == false { return 21092; }
-        if self.r#in_wall == false && self.r#open == false && self.r#powered == true && self.r#facing == Facing::West { return 21094; }
-        if self.r#open == false && self.r#in_wall == false && self.r#facing == Facing::East && self.r#powered == true { return 21102; }
-        if self.r#facing == Facing::South && self.r#open == true && self.r#powered == false && self.r#in_wall == false { return 21085; }
-        if self.r#in_wall == false && self.r#powered == true && self.r#facing == Facing::East && self.r#open == true { return 21100; }
-        if self.r#facing == Facing::West && self.r#powered == true && self.r#in_wall == true && self.r#open == false { return 21090; }
-        if self.r#in_wall == true && self.r#open == false && self.r#powered == true && self.r#facing == Facing::East { return 21098; }
-        if self.r#powered == false && self.r#facing == Facing::West && self.r#open == true && self.r#in_wall == true { return 21089; }
-        if self.r#powered == false && self.r#facing == Facing::South && self.r#in_wall == false && self.r#open == false { return 21087; }
-        if self.r#facing == Facing::South && self.r#in_wall == true && self.r#powered == false && self.r#open == true { return 21081; }
-        if self.r#in_wall == false && self.r#powered == false && self.r#open == false && self.r#facing == Facing::West { return 21095; }
-        if self.r#open == true && self.r#facing == Facing::North && self.r#in_wall == true && self.r#powered == false { return 21073; }
-        if self.r#in_wall == true && self.r#facing == Facing::North && self.r#open == false && self.r#powered == true { return 21074; }
+        if self.r#facing == Facing::West
+            && self.r#open == false
+            && self.r#powered == false
+            && self.r#in_wall == true
+        {
+            return 21091;
+        }
+        if self.r#powered == true
+            && self.r#facing == Facing::South
+            && self.r#in_wall == false
+            && self.r#open == false
+        {
+            return 21086;
+        }
+        if self.r#in_wall == false
+            && self.r#facing == Facing::South
+            && self.r#open == true
+            && self.r#powered == true
+        {
+            return 21084;
+        }
+        if self.r#powered == false
+            && self.r#facing == Facing::South
+            && self.r#in_wall == true
+            && self.r#open == false
+        {
+            return 21083;
+        }
+        if self.r#facing == Facing::North
+            && self.r#open == true
+            && self.r#powered == true
+            && self.r#in_wall == true
+        {
+            return 21072;
+        }
+        if self.r#in_wall == true
+            && self.r#open == true
+            && self.r#facing == Facing::East
+            && self.r#powered == false
+        {
+            return 21097;
+        }
+        if self.r#facing == Facing::West
+            && self.r#open == true
+            && self.r#powered == true
+            && self.r#in_wall == true
+        {
+            return 21088;
+        }
+        if self.r#open == false
+            && self.r#in_wall == true
+            && self.r#facing == Facing::East
+            && self.r#powered == false
+        {
+            return 21099;
+        }
+        if self.r#facing == Facing::South
+            && self.r#in_wall == true
+            && self.r#open == false
+            && self.r#powered == true
+        {
+            return 21082;
+        }
+        if self.r#in_wall == true
+            && self.r#powered == true
+            && self.r#facing == Facing::East
+            && self.r#open == true
+        {
+            return 21096;
+        }
+        if self.r#facing == Facing::North
+            && self.r#in_wall == false
+            && self.r#open == false
+            && self.r#powered == true
+        {
+            return 21078;
+        }
+        if self.r#powered == false
+            && self.r#facing == Facing::North
+            && self.r#in_wall == false
+            && self.r#open == false
+        {
+            return 21079;
+        }
+        if self.r#in_wall == false
+            && self.r#powered == false
+            && self.r#facing == Facing::East
+            && self.r#open == true
+        {
+            return 21101;
+        }
+        if self.r#facing == Facing::North
+            && self.r#in_wall == false
+            && self.r#open == true
+            && self.r#powered == false
+        {
+            return 21077;
+        }
+        if self.r#powered == true
+            && self.r#facing == Facing::South
+            && self.r#in_wall == true
+            && self.r#open == true
+        {
+            return 21080;
+        }
+        if self.r#open == false
+            && self.r#in_wall == false
+            && self.r#powered == false
+            && self.r#facing == Facing::East
+        {
+            return 21103;
+        }
+        if self.r#in_wall == false
+            && self.r#open == true
+            && self.r#powered == false
+            && self.r#facing == Facing::West
+        {
+            return 21093;
+        }
+        if self.r#facing == Facing::North
+            && self.r#powered == true
+            && self.r#open == true
+            && self.r#in_wall == false
+        {
+            return 21076;
+        }
+        if self.r#facing == Facing::North
+            && self.r#open == false
+            && self.r#powered == false
+            && self.r#in_wall == true
+        {
+            return 21075;
+        }
+        if self.r#open == true
+            && self.r#facing == Facing::West
+            && self.r#powered == true
+            && self.r#in_wall == false
+        {
+            return 21092;
+        }
+        if self.r#in_wall == false
+            && self.r#open == false
+            && self.r#powered == true
+            && self.r#facing == Facing::West
+        {
+            return 21094;
+        }
+        if self.r#open == false
+            && self.r#in_wall == false
+            && self.r#facing == Facing::East
+            && self.r#powered == true
+        {
+            return 21102;
+        }
+        if self.r#facing == Facing::South
+            && self.r#open == true
+            && self.r#powered == false
+            && self.r#in_wall == false
+        {
+            return 21085;
+        }
+        if self.r#in_wall == false
+            && self.r#powered == true
+            && self.r#facing == Facing::East
+            && self.r#open == true
+        {
+            return 21100;
+        }
+        if self.r#facing == Facing::West
+            && self.r#powered == true
+            && self.r#in_wall == true
+            && self.r#open == false
+        {
+            return 21090;
+        }
+        if self.r#in_wall == true
+            && self.r#open == false
+            && self.r#powered == true
+            && self.r#facing == Facing::East
+        {
+            return 21098;
+        }
+        if self.r#powered == false
+            && self.r#facing == Facing::West
+            && self.r#open == true
+            && self.r#in_wall == true
+        {
+            return 21089;
+        }
+        if self.r#powered == false
+            && self.r#facing == Facing::South
+            && self.r#in_wall == false
+            && self.r#open == false
+        {
+            return 21087;
+        }
+        if self.r#facing == Facing::South
+            && self.r#in_wall == true
+            && self.r#powered == false
+            && self.r#open == true
+        {
+            return 21081;
+        }
+        if self.r#in_wall == false
+            && self.r#powered == false
+            && self.r#open == false
+            && self.r#facing == Facing::West
+        {
+            return 21095;
+        }
+        if self.r#open == true
+            && self.r#facing == Facing::North
+            && self.r#in_wall == true
+            && self.r#powered == false
+        {
+            return 21073;
+        }
+        if self.r#in_wall == true
+            && self.r#facing == Facing::North
+            && self.r#open == false
+            && self.r#powered == true
+        {
+            return 21074;
+        }
         panic!("Invalid block state")
     }
 
@@ -314,4 +505,3 @@ impl BlockState for WarpedFenceGate {
         return None;
     }
 }
-

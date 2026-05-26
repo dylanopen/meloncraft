@@ -6,13 +6,20 @@ pub struct SoulLantern {
     pub waterlogged: bool,
 }
 
-
 impl BlockState for SoulLantern {
     fn to_id(&self) -> i32 {
-        if self.r#hanging == true && self.r#waterlogged == true { return 20639; }
-        if self.r#waterlogged == false && self.r#hanging == true { return 20640; }
-        if self.r#waterlogged == true && self.r#hanging == false { return 20641; }
-        if self.r#hanging == false && self.r#waterlogged == false { return 20642; }
+        if self.r#hanging == true && self.r#waterlogged == true {
+            return 20639;
+        }
+        if self.r#waterlogged == false && self.r#hanging == true {
+            return 20640;
+        }
+        if self.r#waterlogged == true && self.r#hanging == false {
+            return 20641;
+        }
+        if self.r#hanging == false && self.r#waterlogged == false {
+            return 20642;
+        }
         panic!("Invalid block state")
     }
 
@@ -44,4 +51,3 @@ impl BlockState for SoulLantern {
         return None;
     }
 }
-

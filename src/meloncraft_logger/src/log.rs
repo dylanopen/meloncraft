@@ -6,7 +6,7 @@ use crate::level::LogLevel;
 
 /// A log message.
 /// Has a level, source (file and line number) and the message itself.
-/// 
+///
 /// ## Reading
 /// As this is a message, is can be *read* by any systems which want to write the log to, say, a
 /// file or the console.
@@ -17,7 +17,6 @@ use crate::level::LogLevel;
 /// You can also use the macros in [`crate::macros`] to write log messages more easily.
 #[derive(Debug, Clone, PartialEq, Eq, Message)]
 pub struct Log {
-
     /// The level of the log message.
     /// This can be used to filter log messages, for example, to only write error and warn messages
     /// to a file, but write all messages to the console.

@@ -15,10 +15,10 @@ pub struct ClientboundEncryptionRequest {
 
 impl ClientboundPacket for ClientboundEncryptionRequest {
     fn id() -> i32 {
-        return 0x01
+        return 0x01;
     }
     fn state() -> ConnectionState {
-        return ConnectionState::Login
+        return ConnectionState::Login;
     }
 
     fn client(&self) -> Entity {

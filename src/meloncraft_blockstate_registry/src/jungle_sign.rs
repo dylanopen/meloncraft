@@ -6,41 +6,104 @@ pub struct JungleSign {
     pub waterlogged: bool,
 }
 
-
 impl BlockState for JungleSign {
     fn to_id(&self) -> i32 {
-        if self.r#waterlogged == false && self.r#rotation == 7 { return 5309; }
-        if self.r#waterlogged == true && self.r#rotation == 6 { return 5306; }
-        if self.r#rotation == 12 && self.r#waterlogged == false { return 5319; }
-        if self.r#waterlogged == true && self.r#rotation == 12 { return 5318; }
-        if self.r#waterlogged == false && self.r#rotation == 13 { return 5321; }
-        if self.r#rotation == 10 && self.r#waterlogged == false { return 5315; }
-        if self.r#rotation == 4 && self.r#waterlogged == true { return 5302; }
-        if self.r#waterlogged == true && self.r#rotation == 5 { return 5304; }
-        if self.r#rotation == 6 && self.r#waterlogged == false { return 5307; }
-        if self.r#waterlogged == false && self.r#rotation == 14 { return 5323; }
-        if self.r#waterlogged == true && self.r#rotation == 11 { return 5316; }
-        if self.r#rotation == 14 && self.r#waterlogged == true { return 5322; }
-        if self.r#waterlogged == false && self.r#rotation == 15 { return 5325; }
-        if self.r#rotation == 2 && self.r#waterlogged == false { return 5299; }
-        if self.r#waterlogged == false && self.r#rotation == 0 { return 5295; }
-        if self.r#rotation == 3 && self.r#waterlogged == false { return 5301; }
-        if self.r#rotation == 1 && self.r#waterlogged == true { return 5296; }
-        if self.r#waterlogged == true && self.r#rotation == 3 { return 5300; }
-        if self.r#waterlogged == true && self.r#rotation == 2 { return 5298; }
-        if self.r#rotation == 7 && self.r#waterlogged == true { return 5308; }
-        if self.r#rotation == 9 && self.r#waterlogged == true { return 5312; }
-        if self.r#waterlogged == false && self.r#rotation == 5 { return 5305; }
-        if self.r#rotation == 1 && self.r#waterlogged == false { return 5297; }
-        if self.r#waterlogged == false && self.r#rotation == 11 { return 5317; }
-        if self.r#rotation == 13 && self.r#waterlogged == true { return 5320; }
-        if self.r#rotation == 9 && self.r#waterlogged == false { return 5313; }
-        if self.r#waterlogged == false && self.r#rotation == 4 { return 5303; }
-        if self.r#rotation == 15 && self.r#waterlogged == true { return 5324; }
-        if self.r#waterlogged == true && self.r#rotation == 10 { return 5314; }
-        if self.r#rotation == 8 && self.r#waterlogged == true { return 5310; }
-        if self.r#rotation == 8 && self.r#waterlogged == false { return 5311; }
-        if self.r#rotation == 0 && self.r#waterlogged == true { return 5294; }
+        if self.r#waterlogged == false && self.r#rotation == 7 {
+            return 5309;
+        }
+        if self.r#waterlogged == true && self.r#rotation == 6 {
+            return 5306;
+        }
+        if self.r#rotation == 12 && self.r#waterlogged == false {
+            return 5319;
+        }
+        if self.r#waterlogged == true && self.r#rotation == 12 {
+            return 5318;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 13 {
+            return 5321;
+        }
+        if self.r#rotation == 10 && self.r#waterlogged == false {
+            return 5315;
+        }
+        if self.r#rotation == 4 && self.r#waterlogged == true {
+            return 5302;
+        }
+        if self.r#waterlogged == true && self.r#rotation == 5 {
+            return 5304;
+        }
+        if self.r#rotation == 6 && self.r#waterlogged == false {
+            return 5307;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 14 {
+            return 5323;
+        }
+        if self.r#waterlogged == true && self.r#rotation == 11 {
+            return 5316;
+        }
+        if self.r#rotation == 14 && self.r#waterlogged == true {
+            return 5322;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 15 {
+            return 5325;
+        }
+        if self.r#rotation == 2 && self.r#waterlogged == false {
+            return 5299;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 0 {
+            return 5295;
+        }
+        if self.r#rotation == 3 && self.r#waterlogged == false {
+            return 5301;
+        }
+        if self.r#rotation == 1 && self.r#waterlogged == true {
+            return 5296;
+        }
+        if self.r#waterlogged == true && self.r#rotation == 3 {
+            return 5300;
+        }
+        if self.r#waterlogged == true && self.r#rotation == 2 {
+            return 5298;
+        }
+        if self.r#rotation == 7 && self.r#waterlogged == true {
+            return 5308;
+        }
+        if self.r#rotation == 9 && self.r#waterlogged == true {
+            return 5312;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 5 {
+            return 5305;
+        }
+        if self.r#rotation == 1 && self.r#waterlogged == false {
+            return 5297;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 11 {
+            return 5317;
+        }
+        if self.r#rotation == 13 && self.r#waterlogged == true {
+            return 5320;
+        }
+        if self.r#rotation == 9 && self.r#waterlogged == false {
+            return 5313;
+        }
+        if self.r#waterlogged == false && self.r#rotation == 4 {
+            return 5303;
+        }
+        if self.r#rotation == 15 && self.r#waterlogged == true {
+            return 5324;
+        }
+        if self.r#waterlogged == true && self.r#rotation == 10 {
+            return 5314;
+        }
+        if self.r#rotation == 8 && self.r#waterlogged == true {
+            return 5310;
+        }
+        if self.r#rotation == 8 && self.r#waterlogged == false {
+            return 5311;
+        }
+        if self.r#rotation == 0 && self.r#waterlogged == true {
+            return 5294;
+        }
         panic!("Invalid block state")
     }
 
@@ -240,4 +303,3 @@ impl BlockState for JungleSign {
         return None;
     }
 }
-

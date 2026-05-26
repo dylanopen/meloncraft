@@ -1,9 +1,9 @@
-use core::fmt;
+use crate::network_messages::ServerboundNetworkPacket;
 use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
-use meloncraft_client::connection_state::ConnectionState;
-use crate::network_messages::ServerboundNetworkPacket;
+use core::fmt;
 use core::fmt::{Debug, Display};
+use meloncraft_client::connection_state::ConnectionState;
 
 #[derive(Debug)]
 pub enum ServerboundPacketParseError {
@@ -29,15 +29,19 @@ impl Display for ServerboundPacketParseError {
             ServerboundPacketParseError::UnmatchedState {
                 packet_state,
                 required_state,
-            } => return f.write_fmt(format_args!(
-                "Unmatched state: packet={packet_state} -> required={required_state}",
-            )),
+            } => {
+                return f.write_fmt(format_args!(
+                    "Unmatched state: packet={packet_state} -> required={required_state}",
+                ));
+            }
             ServerboundPacketParseError::UnmatchedId {
                 packet_id,
                 required_id,
-            } => return f.write_fmt(format_args!(
-                "Unmatched id: packet={packet_id:?} -> required={required_id:?}",
-            )),
+            } => {
+                return f.write_fmt(format_args!(
+                    "Unmatched id: packet={packet_id:?} -> required={required_id:?}",
+                ));
+            }
         }
     }
 }

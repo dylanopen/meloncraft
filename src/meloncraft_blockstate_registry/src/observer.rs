@@ -6,7 +6,6 @@ pub struct Observer {
     pub powered: bool,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -19,18 +18,42 @@ pub enum Facing {
 
 impl BlockState for Observer {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::East && self.r#powered == true { return 14652; }
-        if self.r#facing == Facing::Up && self.r#powered == true { return 14658; }
-        if self.r#facing == Facing::Up && self.r#powered == false { return 14659; }
-        if self.r#facing == Facing::West && self.r#powered == true { return 14656; }
-        if self.r#facing == Facing::North && self.r#powered == false { return 14651; }
-        if self.r#facing == Facing::South && self.r#powered == false { return 14655; }
-        if self.r#powered == true && self.r#facing == Facing::South { return 14654; }
-        if self.r#powered == true && self.r#facing == Facing::Down { return 14660; }
-        if self.r#powered == false && self.r#facing == Facing::Down { return 14661; }
-        if self.r#powered == false && self.r#facing == Facing::West { return 14657; }
-        if self.r#facing == Facing::East && self.r#powered == false { return 14653; }
-        if self.r#powered == true && self.r#facing == Facing::North { return 14650; }
+        if self.r#facing == Facing::East && self.r#powered == true {
+            return 14652;
+        }
+        if self.r#facing == Facing::Up && self.r#powered == true {
+            return 14658;
+        }
+        if self.r#facing == Facing::Up && self.r#powered == false {
+            return 14659;
+        }
+        if self.r#facing == Facing::West && self.r#powered == true {
+            return 14656;
+        }
+        if self.r#facing == Facing::North && self.r#powered == false {
+            return 14651;
+        }
+        if self.r#facing == Facing::South && self.r#powered == false {
+            return 14655;
+        }
+        if self.r#powered == true && self.r#facing == Facing::South {
+            return 14654;
+        }
+        if self.r#powered == true && self.r#facing == Facing::Down {
+            return 14660;
+        }
+        if self.r#powered == false && self.r#facing == Facing::Down {
+            return 14661;
+        }
+        if self.r#powered == false && self.r#facing == Facing::West {
+            return 14657;
+        }
+        if self.r#facing == Facing::East && self.r#powered == false {
+            return 14653;
+        }
+        if self.r#powered == true && self.r#facing == Facing::North {
+            return 14650;
+        }
         panic!("Invalid block state")
     }
 
@@ -110,4 +133,3 @@ impl BlockState for Observer {
         return None;
     }
 }
-

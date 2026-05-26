@@ -7,7 +7,6 @@ pub struct DriedGhast {
     pub hydration: i32,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -18,38 +17,102 @@ pub enum Facing {
 
 impl BlockState for DriedGhast {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::West && self.r#hydration == 3 && self.r#waterlogged == true { return 14925; }
-        if self.r#hydration == 2 && self.r#facing == Facing::North && self.r#waterlogged == true { return 14907; }
-        if self.r#waterlogged == true && self.r#hydration == 3 && self.r#facing == Facing::East { return 14933; }
-        if self.r#waterlogged == false && self.r#facing == Facing::North && self.r#hydration == 2 { return 14908; }
-        if self.r#facing == Facing::East && self.r#hydration == 1 && self.r#waterlogged == false { return 14930; }
-        if self.r#waterlogged == true && self.r#facing == Facing::North && self.r#hydration == 1 { return 14905; }
-        if self.r#facing == Facing::West && self.r#hydration == 0 && self.r#waterlogged == true { return 14919; }
-        if self.r#hydration == 1 && self.r#waterlogged == true && self.r#facing == Facing::West { return 14921; }
-        if self.r#hydration == 1 && self.r#facing == Facing::West && self.r#waterlogged == false { return 14922; }
-        if self.r#hydration == 2 && self.r#waterlogged == true && self.r#facing == Facing::West { return 14923; }
-        if self.r#waterlogged == false && self.r#facing == Facing::West && self.r#hydration == 3 { return 14926; }
-        if self.r#hydration == 0 && self.r#facing == Facing::South && self.r#waterlogged == false { return 14912; }
-        if self.r#facing == Facing::East && self.r#hydration == 1 && self.r#waterlogged == true { return 14929; }
-        if self.r#hydration == 2 && self.r#waterlogged == true && self.r#facing == Facing::South { return 14915; }
-        if self.r#hydration == 0 && self.r#waterlogged == true && self.r#facing == Facing::North { return 14903; }
-        if self.r#facing == Facing::North && self.r#hydration == 1 && self.r#waterlogged == false { return 14906; }
-        if self.r#waterlogged == false && self.r#hydration == 1 && self.r#facing == Facing::South { return 14914; }
-        if self.r#hydration == 3 && self.r#waterlogged == false && self.r#facing == Facing::East { return 14934; }
-        if self.r#facing == Facing::North && self.r#waterlogged == false && self.r#hydration == 0 { return 14904; }
-        if self.r#waterlogged == false && self.r#facing == Facing::West && self.r#hydration == 0 { return 14920; }
-        if self.r#waterlogged == false && self.r#facing == Facing::East && self.r#hydration == 0 { return 14928; }
-        if self.r#waterlogged == false && self.r#facing == Facing::North && self.r#hydration == 3 { return 14910; }
-        if self.r#waterlogged == false && self.r#facing == Facing::South && self.r#hydration == 2 { return 14916; }
-        if self.r#hydration == 3 && self.r#facing == Facing::South && self.r#waterlogged == true { return 14917; }
-        if self.r#waterlogged == true && self.r#hydration == 0 && self.r#facing == Facing::East { return 14927; }
-        if self.r#hydration == 0 && self.r#facing == Facing::South && self.r#waterlogged == true { return 14911; }
-        if self.r#hydration == 2 && self.r#waterlogged == true && self.r#facing == Facing::East { return 14931; }
-        if self.r#hydration == 2 && self.r#waterlogged == false && self.r#facing == Facing::East { return 14932; }
-        if self.r#hydration == 3 && self.r#facing == Facing::North && self.r#waterlogged == true { return 14909; }
-        if self.r#waterlogged == true && self.r#hydration == 1 && self.r#facing == Facing::South { return 14913; }
-        if self.r#waterlogged == false && self.r#hydration == 3 && self.r#facing == Facing::South { return 14918; }
-        if self.r#hydration == 2 && self.r#facing == Facing::West && self.r#waterlogged == false { return 14924; }
+        if self.r#facing == Facing::West && self.r#hydration == 3 && self.r#waterlogged == true {
+            return 14925;
+        }
+        if self.r#hydration == 2 && self.r#facing == Facing::North && self.r#waterlogged == true {
+            return 14907;
+        }
+        if self.r#waterlogged == true && self.r#hydration == 3 && self.r#facing == Facing::East {
+            return 14933;
+        }
+        if self.r#waterlogged == false && self.r#facing == Facing::North && self.r#hydration == 2 {
+            return 14908;
+        }
+        if self.r#facing == Facing::East && self.r#hydration == 1 && self.r#waterlogged == false {
+            return 14930;
+        }
+        if self.r#waterlogged == true && self.r#facing == Facing::North && self.r#hydration == 1 {
+            return 14905;
+        }
+        if self.r#facing == Facing::West && self.r#hydration == 0 && self.r#waterlogged == true {
+            return 14919;
+        }
+        if self.r#hydration == 1 && self.r#waterlogged == true && self.r#facing == Facing::West {
+            return 14921;
+        }
+        if self.r#hydration == 1 && self.r#facing == Facing::West && self.r#waterlogged == false {
+            return 14922;
+        }
+        if self.r#hydration == 2 && self.r#waterlogged == true && self.r#facing == Facing::West {
+            return 14923;
+        }
+        if self.r#waterlogged == false && self.r#facing == Facing::West && self.r#hydration == 3 {
+            return 14926;
+        }
+        if self.r#hydration == 0 && self.r#facing == Facing::South && self.r#waterlogged == false {
+            return 14912;
+        }
+        if self.r#facing == Facing::East && self.r#hydration == 1 && self.r#waterlogged == true {
+            return 14929;
+        }
+        if self.r#hydration == 2 && self.r#waterlogged == true && self.r#facing == Facing::South {
+            return 14915;
+        }
+        if self.r#hydration == 0 && self.r#waterlogged == true && self.r#facing == Facing::North {
+            return 14903;
+        }
+        if self.r#facing == Facing::North && self.r#hydration == 1 && self.r#waterlogged == false {
+            return 14906;
+        }
+        if self.r#waterlogged == false && self.r#hydration == 1 && self.r#facing == Facing::South {
+            return 14914;
+        }
+        if self.r#hydration == 3 && self.r#waterlogged == false && self.r#facing == Facing::East {
+            return 14934;
+        }
+        if self.r#facing == Facing::North && self.r#waterlogged == false && self.r#hydration == 0 {
+            return 14904;
+        }
+        if self.r#waterlogged == false && self.r#facing == Facing::West && self.r#hydration == 0 {
+            return 14920;
+        }
+        if self.r#waterlogged == false && self.r#facing == Facing::East && self.r#hydration == 0 {
+            return 14928;
+        }
+        if self.r#waterlogged == false && self.r#facing == Facing::North && self.r#hydration == 3 {
+            return 14910;
+        }
+        if self.r#waterlogged == false && self.r#facing == Facing::South && self.r#hydration == 2 {
+            return 14916;
+        }
+        if self.r#hydration == 3 && self.r#facing == Facing::South && self.r#waterlogged == true {
+            return 14917;
+        }
+        if self.r#waterlogged == true && self.r#hydration == 0 && self.r#facing == Facing::East {
+            return 14927;
+        }
+        if self.r#hydration == 0 && self.r#facing == Facing::South && self.r#waterlogged == true {
+            return 14911;
+        }
+        if self.r#hydration == 2 && self.r#waterlogged == true && self.r#facing == Facing::East {
+            return 14931;
+        }
+        if self.r#hydration == 2 && self.r#waterlogged == false && self.r#facing == Facing::East {
+            return 14932;
+        }
+        if self.r#hydration == 3 && self.r#facing == Facing::North && self.r#waterlogged == true {
+            return 14909;
+        }
+        if self.r#waterlogged == true && self.r#hydration == 1 && self.r#facing == Facing::South {
+            return 14913;
+        }
+        if self.r#waterlogged == false && self.r#hydration == 3 && self.r#facing == Facing::South {
+            return 14918;
+        }
+        if self.r#hydration == 2 && self.r#facing == Facing::West && self.r#waterlogged == false {
+            return 14924;
+        }
         panic!("Invalid block state")
     }
 
@@ -281,4 +344,3 @@ impl BlockState for DriedGhast {
         return None;
     }
 }
-

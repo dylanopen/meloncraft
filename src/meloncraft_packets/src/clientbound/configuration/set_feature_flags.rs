@@ -13,13 +13,12 @@ pub struct ClientboundSetFeatureFlags {
 
 impl ClientboundPacket for ClientboundSetFeatureFlags {
     fn id() -> i32 {
-        return 0x0C
+        return 0x0C;
     }
 
     fn state() -> ConnectionState {
-        return ConnectionState::Configuration
+        return ConnectionState::Configuration;
     }
-
 
     fn client(&self) -> Entity {
         return self.client;

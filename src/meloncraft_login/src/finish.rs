@@ -8,7 +8,7 @@ pub fn finish_configuration(
 ) {
     for packet in login_start_pr.read() {
         finish_configuration_pw.write(ClientboundFinishConfiguration {
-            client: packet.client
+            client: packet.client,
         });
     }
 }

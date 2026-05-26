@@ -6,14 +6,13 @@
 /// ## Flags
 /// - [`EntityPositionFlags::on_ground`]
 /// - [`EntityPositionFlags::pushing_against_wall`]
-/// 
+///
 /// ## Serialization
 /// [`From`] is implemented bidirectionally between [`EntityPositionFlags`] and `u8`. It is
 /// converted into a bitset of values: see the individual fields for information about how they are
 /// serialized and deserialized.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub struct EntityPositionFlags {
-    
     /// `true` if the entity's feet are touching the ground, `false` otherwise.
     /// This is represented by the **least significant bit**, `0b_0000_0001`.
     pub on_ground: bool,
@@ -28,7 +27,7 @@ impl From<u8> for EntityPositionFlags {
         return Self {
             on_ground: value & 0b_0000_0001 != 0,
             pushing_against_wall: value & 0b_0000_0010 != 0,
-        }
+        };
     }
 }
 

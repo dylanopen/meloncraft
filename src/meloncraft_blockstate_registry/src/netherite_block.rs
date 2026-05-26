@@ -1,9 +1,7 @@
 use crate::BlockState;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
-pub struct NetheriteBlock {
-}
-
+pub struct NetheriteBlock {}
 
 impl BlockState for NetheriteBlock {
     fn to_id(&self) -> i32 {
@@ -13,10 +11,8 @@ impl BlockState for NetheriteBlock {
 
     fn from_id(state_id: i32) -> Option<Self> {
         if state_id == 21616 {
-            return Some(NetheriteBlock {
-            });
+            return Some(NetheriteBlock {});
         }
         return None;
     }
 }
-

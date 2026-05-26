@@ -14,7 +14,6 @@ use bevy::ecs::component::Component;
 /// - See the individual variants to find the number associated with each game mode.
 #[derive(Component, Debug, Clone, Copy)]
 pub enum GameMode {
-
     /// Represents the `Survival` game mode for a player.
     /// Survival mode has the ID `0` or `0.0` in packets.
     /// See <https://minecraft.wiki/w/Game_mode#Survival>.

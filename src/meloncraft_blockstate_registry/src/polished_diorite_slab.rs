@@ -6,7 +6,6 @@ pub struct PolishedDioriteSlab {
     pub r#type: Type,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Type {
     Top,
@@ -16,12 +15,24 @@ pub enum Type {
 
 impl BlockState for PolishedDioriteSlab {
     fn to_id(&self) -> i32 {
-        if self.r#type == Type::Bottom && self.r#waterlogged == false { return 16235; }
-        if self.r#type == Type::Double && self.r#waterlogged == false { return 16237; }
-        if self.r#waterlogged == true && self.r#type == Type::Top { return 16232; }
-        if self.r#type == Type::Double && self.r#waterlogged == true { return 16236; }
-        if self.r#waterlogged == true && self.r#type == Type::Bottom { return 16234; }
-        if self.r#waterlogged == false && self.r#type == Type::Top { return 16233; }
+        if self.r#type == Type::Bottom && self.r#waterlogged == false {
+            return 16235;
+        }
+        if self.r#type == Type::Double && self.r#waterlogged == false {
+            return 16237;
+        }
+        if self.r#waterlogged == true && self.r#type == Type::Top {
+            return 16232;
+        }
+        if self.r#type == Type::Double && self.r#waterlogged == true {
+            return 16236;
+        }
+        if self.r#waterlogged == true && self.r#type == Type::Bottom {
+            return 16234;
+        }
+        if self.r#waterlogged == false && self.r#type == Type::Top {
+            return 16233;
+        }
         panic!("Invalid block state")
     }
 
@@ -65,4 +76,3 @@ impl BlockState for PolishedDioriteSlab {
         return None;
     }
 }
-

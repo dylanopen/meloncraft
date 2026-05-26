@@ -6,7 +6,6 @@ pub struct PetrifiedOakSlab {
     pub r#type: Type,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Type {
     Top,
@@ -16,12 +15,24 @@ pub enum Type {
 
 impl BlockState for PetrifiedOakSlab {
     fn to_id(&self) -> i32 {
-        if self.r#type == Type::Double && self.r#waterlogged == false { return 13223; }
-        if self.r#waterlogged == true && self.r#type == Type::Bottom { return 13220; }
-        if self.r#waterlogged == true && self.r#type == Type::Top { return 13218; }
-        if self.r#waterlogged == false && self.r#type == Type::Top { return 13219; }
-        if self.r#type == Type::Bottom && self.r#waterlogged == false { return 13221; }
-        if self.r#waterlogged == true && self.r#type == Type::Double { return 13222; }
+        if self.r#type == Type::Double && self.r#waterlogged == false {
+            return 13223;
+        }
+        if self.r#waterlogged == true && self.r#type == Type::Bottom {
+            return 13220;
+        }
+        if self.r#waterlogged == true && self.r#type == Type::Top {
+            return 13218;
+        }
+        if self.r#waterlogged == false && self.r#type == Type::Top {
+            return 13219;
+        }
+        if self.r#type == Type::Bottom && self.r#waterlogged == false {
+            return 13221;
+        }
+        if self.r#waterlogged == true && self.r#type == Type::Double {
+            return 13222;
+        }
         panic!("Invalid block state")
     }
 
@@ -65,4 +76,3 @@ impl BlockState for PetrifiedOakSlab {
         return None;
     }
 }
-

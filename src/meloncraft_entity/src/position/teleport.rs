@@ -1,8 +1,8 @@
 //! Module for message struct [`EntityMoved`].
 
+use crate::position::EntityPosition;
 use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
-use crate::position::EntityPosition;
 
 /// Message sent when an entity moves to a new position.
 ///
@@ -19,7 +19,6 @@ use crate::position::EntityPosition;
 /// entity's position in the ECS.
 #[derive(Debug, Clone, Message)]
 pub struct TeleportEntity {
-
     /// The [`Entity`] representing the entity and client that should be teleported, in the ECS.
     ///
     /// You should use this, alongside a `Query`, when reading this message if you want to get a

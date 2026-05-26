@@ -5,11 +5,14 @@ pub struct HeavyCore {
     pub waterlogged: bool,
 }
 
-
 impl BlockState for HeavyCore {
     fn to_id(&self) -> i32 {
-        if self.r#waterlogged == true { return 29499; }
-        if self.r#waterlogged == false { return 29500; }
+        if self.r#waterlogged == true {
+            return 29499;
+        }
+        if self.r#waterlogged == false {
+            return 29500;
+        }
         panic!("Invalid block state")
     }
 
@@ -27,4 +30,3 @@ impl BlockState for HeavyCore {
         return None;
     }
 }
-

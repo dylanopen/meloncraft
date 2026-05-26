@@ -6,7 +6,6 @@ pub struct PitcherCrop {
     pub age: i32,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Half {
     Upper,
@@ -15,16 +14,36 @@ pub enum Half {
 
 impl BlockState for PitcherCrop {
     fn to_id(&self) -> i32 {
-        if self.r#age == 2 && self.r#half == Half::Lower { return 14602; }
-        if self.r#age == 4 && self.r#half == Half::Lower { return 14606; }
-        if self.r#half == Half::Upper && self.r#age == 2 { return 14601; }
-        if self.r#age == 0 && self.r#half == Half::Upper { return 14597; }
-        if self.r#age == 3 && self.r#half == Half::Lower { return 14604; }
-        if self.r#half == Half::Upper && self.r#age == 1 { return 14599; }
-        if self.r#age == 4 && self.r#half == Half::Upper { return 14605; }
-        if self.r#age == 1 && self.r#half == Half::Lower { return 14600; }
-        if self.r#half == Half::Upper && self.r#age == 3 { return 14603; }
-        if self.r#age == 0 && self.r#half == Half::Lower { return 14598; }
+        if self.r#age == 2 && self.r#half == Half::Lower {
+            return 14602;
+        }
+        if self.r#age == 4 && self.r#half == Half::Lower {
+            return 14606;
+        }
+        if self.r#half == Half::Upper && self.r#age == 2 {
+            return 14601;
+        }
+        if self.r#age == 0 && self.r#half == Half::Upper {
+            return 14597;
+        }
+        if self.r#age == 3 && self.r#half == Half::Lower {
+            return 14604;
+        }
+        if self.r#half == Half::Upper && self.r#age == 1 {
+            return 14599;
+        }
+        if self.r#age == 4 && self.r#half == Half::Upper {
+            return 14605;
+        }
+        if self.r#age == 1 && self.r#half == Half::Lower {
+            return 14600;
+        }
+        if self.r#half == Half::Upper && self.r#age == 3 {
+            return 14603;
+        }
+        if self.r#age == 0 && self.r#half == Half::Lower {
+            return 14598;
+        }
         panic!("Invalid block state")
     }
 
@@ -92,4 +111,3 @@ impl BlockState for PitcherCrop {
         return None;
     }
 }
-

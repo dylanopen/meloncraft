@@ -6,7 +6,6 @@ pub struct AndesiteSlab {
     pub r#type: Type,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Type {
     Top,
@@ -16,12 +15,24 @@ pub enum Type {
 
 impl BlockState for AndesiteSlab {
     fn to_id(&self) -> i32 {
-        if self.r#waterlogged == true && self.r#type == Type::Bottom { return 16270; }
-        if self.r#type == Type::Double && self.r#waterlogged == true { return 16272; }
-        if self.r#type == Type::Top && self.r#waterlogged == true { return 16268; }
-        if self.r#waterlogged == false && self.r#type == Type::Bottom { return 16271; }
-        if self.r#waterlogged == false && self.r#type == Type::Double { return 16273; }
-        if self.r#type == Type::Top && self.r#waterlogged == false { return 16269; }
+        if self.r#waterlogged == true && self.r#type == Type::Bottom {
+            return 16270;
+        }
+        if self.r#type == Type::Double && self.r#waterlogged == true {
+            return 16272;
+        }
+        if self.r#type == Type::Top && self.r#waterlogged == true {
+            return 16268;
+        }
+        if self.r#waterlogged == false && self.r#type == Type::Bottom {
+            return 16271;
+        }
+        if self.r#waterlogged == false && self.r#type == Type::Double {
+            return 16273;
+        }
+        if self.r#type == Type::Top && self.r#waterlogged == false {
+            return 16269;
+        }
         panic!("Invalid block state")
     }
 
@@ -65,4 +76,3 @@ impl BlockState for AndesiteSlab {
         return None;
     }
 }
-

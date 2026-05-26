@@ -6,61 +6,164 @@ pub struct CaveVines {
     pub age: i32,
 }
 
-
 impl BlockState for CaveVines {
     fn to_id(&self) -> i32 {
-        if self.r#berries == false && self.r#age == 21 { return 27597; }
-        if self.r#age == 22 && self.r#berries == true { return 27598; }
-        if self.r#age == 22 && self.r#berries == false { return 27599; }
-        if self.r#berries == true && self.r#age == 3 { return 27560; }
-        if self.r#berries == false && self.r#age == 15 { return 27585; }
-        if self.r#age == 19 && self.r#berries == true { return 27592; }
-        if self.r#berries == false && self.r#age == 2 { return 27559; }
-        if self.r#age == 21 && self.r#berries == true { return 27596; }
-        if self.r#age == 18 && self.r#berries == false { return 27591; }
-        if self.r#berries == false && self.r#age == 0 { return 27555; }
-        if self.r#berries == true && self.r#age == 2 { return 27558; }
-        if self.r#berries == true && self.r#age == 9 { return 27572; }
-        if self.r#age == 0 && self.r#berries == true { return 27554; }
-        if self.r#berries == true && self.r#age == 23 { return 27600; }
-        if self.r#berries == true && self.r#age == 15 { return 27584; }
-        if self.r#berries == false && self.r#age == 25 { return 27605; }
-        if self.r#berries == true && self.r#age == 25 { return 27604; }
-        if self.r#age == 8 && self.r#berries == false { return 27571; }
-        if self.r#berries == false && self.r#age == 24 { return 27603; }
-        if self.r#age == 18 && self.r#berries == true { return 27590; }
-        if self.r#age == 16 && self.r#berries == false { return 27587; }
-        if self.r#berries == false && self.r#age == 7 { return 27569; }
-        if self.r#age == 23 && self.r#berries == false { return 27601; }
-        if self.r#age == 24 && self.r#berries == true { return 27602; }
-        if self.r#age == 10 && self.r#berries == false { return 27575; }
-        if self.r#age == 14 && self.r#berries == true { return 27582; }
-        if self.r#berries == true && self.r#age == 12 { return 27578; }
-        if self.r#berries == true && self.r#age == 1 { return 27556; }
-        if self.r#berries == false && self.r#age == 1 { return 27557; }
-        if self.r#berries == false && self.r#age == 3 { return 27561; }
-        if self.r#age == 8 && self.r#berries == true { return 27570; }
-        if self.r#age == 9 && self.r#berries == false { return 27573; }
-        if self.r#berries == false && self.r#age == 11 { return 27577; }
-        if self.r#berries == false && self.r#age == 14 { return 27583; }
-        if self.r#age == 12 && self.r#berries == false { return 27579; }
-        if self.r#age == 17 && self.r#berries == true { return 27588; }
-        if self.r#age == 13 && self.r#berries == false { return 27581; }
-        if self.r#berries == true && self.r#age == 4 { return 27562; }
-        if self.r#berries == false && self.r#age == 4 { return 27563; }
-        if self.r#berries == true && self.r#age == 11 { return 27576; }
-        if self.r#age == 5 && self.r#berries == true { return 27564; }
-        if self.r#age == 5 && self.r#berries == false { return 27565; }
-        if self.r#age == 6 && self.r#berries == true { return 27566; }
-        if self.r#age == 7 && self.r#berries == true { return 27568; }
-        if self.r#age == 17 && self.r#berries == false { return 27589; }
-        if self.r#berries == false && self.r#age == 19 { return 27593; }
-        if self.r#age == 20 && self.r#berries == true { return 27594; }
-        if self.r#age == 6 && self.r#berries == false { return 27567; }
-        if self.r#berries == true && self.r#age == 13 { return 27580; }
-        if self.r#age == 10 && self.r#berries == true { return 27574; }
-        if self.r#age == 16 && self.r#berries == true { return 27586; }
-        if self.r#berries == false && self.r#age == 20 { return 27595; }
+        if self.r#berries == false && self.r#age == 21 {
+            return 27597;
+        }
+        if self.r#age == 22 && self.r#berries == true {
+            return 27598;
+        }
+        if self.r#age == 22 && self.r#berries == false {
+            return 27599;
+        }
+        if self.r#berries == true && self.r#age == 3 {
+            return 27560;
+        }
+        if self.r#berries == false && self.r#age == 15 {
+            return 27585;
+        }
+        if self.r#age == 19 && self.r#berries == true {
+            return 27592;
+        }
+        if self.r#berries == false && self.r#age == 2 {
+            return 27559;
+        }
+        if self.r#age == 21 && self.r#berries == true {
+            return 27596;
+        }
+        if self.r#age == 18 && self.r#berries == false {
+            return 27591;
+        }
+        if self.r#berries == false && self.r#age == 0 {
+            return 27555;
+        }
+        if self.r#berries == true && self.r#age == 2 {
+            return 27558;
+        }
+        if self.r#berries == true && self.r#age == 9 {
+            return 27572;
+        }
+        if self.r#age == 0 && self.r#berries == true {
+            return 27554;
+        }
+        if self.r#berries == true && self.r#age == 23 {
+            return 27600;
+        }
+        if self.r#berries == true && self.r#age == 15 {
+            return 27584;
+        }
+        if self.r#berries == false && self.r#age == 25 {
+            return 27605;
+        }
+        if self.r#berries == true && self.r#age == 25 {
+            return 27604;
+        }
+        if self.r#age == 8 && self.r#berries == false {
+            return 27571;
+        }
+        if self.r#berries == false && self.r#age == 24 {
+            return 27603;
+        }
+        if self.r#age == 18 && self.r#berries == true {
+            return 27590;
+        }
+        if self.r#age == 16 && self.r#berries == false {
+            return 27587;
+        }
+        if self.r#berries == false && self.r#age == 7 {
+            return 27569;
+        }
+        if self.r#age == 23 && self.r#berries == false {
+            return 27601;
+        }
+        if self.r#age == 24 && self.r#berries == true {
+            return 27602;
+        }
+        if self.r#age == 10 && self.r#berries == false {
+            return 27575;
+        }
+        if self.r#age == 14 && self.r#berries == true {
+            return 27582;
+        }
+        if self.r#berries == true && self.r#age == 12 {
+            return 27578;
+        }
+        if self.r#berries == true && self.r#age == 1 {
+            return 27556;
+        }
+        if self.r#berries == false && self.r#age == 1 {
+            return 27557;
+        }
+        if self.r#berries == false && self.r#age == 3 {
+            return 27561;
+        }
+        if self.r#age == 8 && self.r#berries == true {
+            return 27570;
+        }
+        if self.r#age == 9 && self.r#berries == false {
+            return 27573;
+        }
+        if self.r#berries == false && self.r#age == 11 {
+            return 27577;
+        }
+        if self.r#berries == false && self.r#age == 14 {
+            return 27583;
+        }
+        if self.r#age == 12 && self.r#berries == false {
+            return 27579;
+        }
+        if self.r#age == 17 && self.r#berries == true {
+            return 27588;
+        }
+        if self.r#age == 13 && self.r#berries == false {
+            return 27581;
+        }
+        if self.r#berries == true && self.r#age == 4 {
+            return 27562;
+        }
+        if self.r#berries == false && self.r#age == 4 {
+            return 27563;
+        }
+        if self.r#berries == true && self.r#age == 11 {
+            return 27576;
+        }
+        if self.r#age == 5 && self.r#berries == true {
+            return 27564;
+        }
+        if self.r#age == 5 && self.r#berries == false {
+            return 27565;
+        }
+        if self.r#age == 6 && self.r#berries == true {
+            return 27566;
+        }
+        if self.r#age == 7 && self.r#berries == true {
+            return 27568;
+        }
+        if self.r#age == 17 && self.r#berries == false {
+            return 27589;
+        }
+        if self.r#berries == false && self.r#age == 19 {
+            return 27593;
+        }
+        if self.r#age == 20 && self.r#berries == true {
+            return 27594;
+        }
+        if self.r#age == 6 && self.r#berries == false {
+            return 27567;
+        }
+        if self.r#berries == true && self.r#age == 13 {
+            return 27580;
+        }
+        if self.r#age == 10 && self.r#berries == true {
+            return 27574;
+        }
+        if self.r#age == 16 && self.r#berries == true {
+            return 27586;
+        }
+        if self.r#berries == false && self.r#age == 20 {
+            return 27595;
+        }
         panic!("Invalid block state")
     }
 
@@ -380,4 +483,3 @@ impl BlockState for CaveVines {
         return None;
     }
 }
-

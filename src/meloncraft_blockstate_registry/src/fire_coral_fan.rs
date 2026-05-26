@@ -5,11 +5,14 @@ pub struct FireCoralFan {
     pub waterlogged: bool,
 }
 
-
 impl BlockState for FireCoralFan {
     fn to_id(&self) -> i32 {
-        if self.r#waterlogged == false { return 14982; }
-        if self.r#waterlogged == true { return 14981; }
+        if self.r#waterlogged == false {
+            return 14982;
+        }
+        if self.r#waterlogged == true {
+            return 14981;
+        }
         panic!("Invalid block state")
     }
 
@@ -27,4 +30,3 @@ impl BlockState for FireCoralFan {
         return None;
     }
 }
-

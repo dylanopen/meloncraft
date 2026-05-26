@@ -6,21 +6,44 @@ pub struct TurtleEgg {
     pub hatch: i32,
 }
 
-
 impl BlockState for TurtleEgg {
     fn to_id(&self) -> i32 {
-        if self.r#hatch == 0 && self.r#eggs == 4 { return 14897; }
-        if self.r#hatch == 0 && self.r#eggs == 1 { return 14888; }
-        if self.r#eggs == 3 && self.r#hatch == 1 { return 14895; }
-        if self.r#eggs == 2 && self.r#hatch == 2 { return 14893; }
-        if self.r#hatch == 1 && self.r#eggs == 1 { return 14889; }
-        if self.r#eggs == 4 && self.r#hatch == 2 { return 14899; }
-        if self.r#hatch == 0 && self.r#eggs == 3 { return 14894; }
-        if self.r#hatch == 0 && self.r#eggs == 2 { return 14891; }
-        if self.r#eggs == 3 && self.r#hatch == 2 { return 14896; }
-        if self.r#hatch == 1 && self.r#eggs == 2 { return 14892; }
-        if self.r#hatch == 2 && self.r#eggs == 1 { return 14890; }
-        if self.r#eggs == 4 && self.r#hatch == 1 { return 14898; }
+        if self.r#hatch == 0 && self.r#eggs == 4 {
+            return 14897;
+        }
+        if self.r#hatch == 0 && self.r#eggs == 1 {
+            return 14888;
+        }
+        if self.r#eggs == 3 && self.r#hatch == 1 {
+            return 14895;
+        }
+        if self.r#eggs == 2 && self.r#hatch == 2 {
+            return 14893;
+        }
+        if self.r#hatch == 1 && self.r#eggs == 1 {
+            return 14889;
+        }
+        if self.r#eggs == 4 && self.r#hatch == 2 {
+            return 14899;
+        }
+        if self.r#hatch == 0 && self.r#eggs == 3 {
+            return 14894;
+        }
+        if self.r#hatch == 0 && self.r#eggs == 2 {
+            return 14891;
+        }
+        if self.r#eggs == 3 && self.r#hatch == 2 {
+            return 14896;
+        }
+        if self.r#hatch == 1 && self.r#eggs == 2 {
+            return 14892;
+        }
+        if self.r#hatch == 2 && self.r#eggs == 1 {
+            return 14890;
+        }
+        if self.r#eggs == 4 && self.r#hatch == 1 {
+            return 14898;
+        }
         panic!("Invalid block state")
     }
 
@@ -100,4 +123,3 @@ impl BlockState for TurtleEgg {
         return None;
     }
 }
-

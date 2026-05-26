@@ -11,7 +11,6 @@ use bevy::prelude::Component;
 /// entity as soon as you identify their username and UUID.
 #[derive(Component, Debug, Clone)]
 pub struct GameProfile {
-
     /// The *universally unique identifier* ([`Uuid`]) defining the player.
     /// Every player (and in fact entity) will have a UUID.
     ///
@@ -48,7 +47,10 @@ pub struct GameProfile {
     pub username: String,
 }
 
-#[expect(missing_docs, reason = "This struct is currently unused, as it is optional and an empty GameProfileProperties array is acceptable.")]
+#[expect(
+    missing_docs,
+    reason = "This struct is currently unused, as it is optional and an empty GameProfileProperties array is acceptable."
+)]
 #[derive(Debug, Clone)]
 pub struct GameProfileProperties {
     pub name: String,

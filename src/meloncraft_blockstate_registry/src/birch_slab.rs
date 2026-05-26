@@ -6,7 +6,6 @@ pub struct BirchSlab {
     pub r#type: Type,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Type {
     Top,
@@ -16,12 +15,24 @@ pub enum Type {
 
 impl BlockState for BirchSlab {
     fn to_id(&self) -> i32 {
-        if self.r#type == Type::Bottom && self.r#waterlogged == false { return 13143; }
-        if self.r#type == Type::Double && self.r#waterlogged == false { return 13145; }
-        if self.r#type == Type::Top && self.r#waterlogged == false { return 13141; }
-        if self.r#type == Type::Top && self.r#waterlogged == true { return 13140; }
-        if self.r#type == Type::Double && self.r#waterlogged == true { return 13144; }
-        if self.r#type == Type::Bottom && self.r#waterlogged == true { return 13142; }
+        if self.r#type == Type::Bottom && self.r#waterlogged == false {
+            return 13143;
+        }
+        if self.r#type == Type::Double && self.r#waterlogged == false {
+            return 13145;
+        }
+        if self.r#type == Type::Top && self.r#waterlogged == false {
+            return 13141;
+        }
+        if self.r#type == Type::Top && self.r#waterlogged == true {
+            return 13140;
+        }
+        if self.r#type == Type::Double && self.r#waterlogged == true {
+            return 13144;
+        }
+        if self.r#type == Type::Bottom && self.r#waterlogged == true {
+            return 13142;
+        }
         panic!("Invalid block state")
     }
 
@@ -65,4 +76,3 @@ impl BlockState for BirchSlab {
         return None;
     }
 }
-

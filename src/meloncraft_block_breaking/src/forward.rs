@@ -12,7 +12,7 @@ pub fn set_broken_blocks(
     for block_broken in block_broken_mr.read() {
         set_block_mw.write(SetBlock {
             block_location: block_broken.block_location,
-            new_block: Block::new(0)
+            new_block: Block::new(0),
         });
     }
 }

@@ -6,7 +6,6 @@ pub struct MovingPiston {
     pub r#facing: Facing,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Type {
     Normal,
@@ -25,18 +24,42 @@ pub enum Facing {
 
 impl BlockState for MovingPiston {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::Down && self.r#type == Type::Sticky { return 2120; }
-        if self.r#type == Type::Normal && self.r#facing == Facing::West { return 2115; }
-        if self.r#facing == Facing::North && self.r#type == Type::Normal { return 2109; }
-        if self.r#type == Type::Normal && self.r#facing == Facing::East { return 2111; }
-        if self.r#type == Type::Sticky && self.r#facing == Facing::North { return 2110; }
-        if self.r#type == Type::Sticky && self.r#facing == Facing::Up { return 2118; }
-        if self.r#facing == Facing::South && self.r#type == Type::Normal { return 2113; }
-        if self.r#facing == Facing::Up && self.r#type == Type::Normal { return 2117; }
-        if self.r#type == Type::Sticky && self.r#facing == Facing::West { return 2116; }
-        if self.r#facing == Facing::East && self.r#type == Type::Sticky { return 2112; }
-        if self.r#facing == Facing::South && self.r#type == Type::Sticky { return 2114; }
-        if self.r#type == Type::Normal && self.r#facing == Facing::Down { return 2119; }
+        if self.r#facing == Facing::Down && self.r#type == Type::Sticky {
+            return 2120;
+        }
+        if self.r#type == Type::Normal && self.r#facing == Facing::West {
+            return 2115;
+        }
+        if self.r#facing == Facing::North && self.r#type == Type::Normal {
+            return 2109;
+        }
+        if self.r#type == Type::Normal && self.r#facing == Facing::East {
+            return 2111;
+        }
+        if self.r#type == Type::Sticky && self.r#facing == Facing::North {
+            return 2110;
+        }
+        if self.r#type == Type::Sticky && self.r#facing == Facing::Up {
+            return 2118;
+        }
+        if self.r#facing == Facing::South && self.r#type == Type::Normal {
+            return 2113;
+        }
+        if self.r#facing == Facing::Up && self.r#type == Type::Normal {
+            return 2117;
+        }
+        if self.r#type == Type::Sticky && self.r#facing == Facing::West {
+            return 2116;
+        }
+        if self.r#facing == Facing::East && self.r#type == Type::Sticky {
+            return 2112;
+        }
+        if self.r#facing == Facing::South && self.r#type == Type::Sticky {
+            return 2114;
+        }
+        if self.r#type == Type::Normal && self.r#facing == Facing::Down {
+            return 2119;
+        }
         panic!("Invalid block state")
     }
 
@@ -116,4 +139,3 @@ impl BlockState for MovingPiston {
         return None;
     }
 }
-

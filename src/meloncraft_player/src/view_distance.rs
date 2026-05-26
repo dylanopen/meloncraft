@@ -18,7 +18,6 @@ use bevy::prelude::Component;
 /// But it should not send *more* chunks than requested.
 #[derive(Component, Debug, Clone, Copy)]
 pub struct ClientViewDistance(
-
     /// The view distance value, as a radius of chunks around the player.
     pub u8,
 );

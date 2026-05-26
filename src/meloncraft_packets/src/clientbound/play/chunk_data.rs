@@ -1,11 +1,11 @@
+use crate::clientbound_packet::ClientboundPacket;
 use bevy::ecs::entity::Entity;
 use bevy::ecs::message::Message;
 use bevy::math::IVec2;
 use meloncraft_chunk::block_section::ChunkBlockSection;
 use meloncraft_client::connection_state::ConnectionState;
-use meloncraft_protocol_types::{PrefixedArray, ProtocolType as _, VarInt};
 use meloncraft_protocol_types::chunk_lighting::ChunkLighting;
-use crate::clientbound_packet::ClientboundPacket;
+use meloncraft_protocol_types::{PrefixedArray, ProtocolType as _, VarInt};
 
 #[derive(Message, Debug, Clone)]
 pub struct ClientboundChunkData {
@@ -13,19 +13,17 @@ pub struct ClientboundChunkData {
     pub chunk_pos: IVec2,
     pub data: Vec<ChunkBlockSection>,
     pub light: ChunkLighting,
-
     // TODO: heightmap and block entities
 }
 
 impl ClientboundPacket for ClientboundChunkData {
     fn id() -> i32 {
-        return 0x2C
+        return 0x2C;
     }
 
     fn state() -> ConnectionState {
-        return ConnectionState::Play
+        return ConnectionState::Play;
     }
-
 
     fn client(&self) -> Entity {
         return self.client;
@@ -45,4 +43,3 @@ impl ClientboundPacket for ClientboundChunkData {
         data.extend(self.light.clone().net_serialize());
     }
 }
-

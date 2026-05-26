@@ -5,11 +5,14 @@ pub struct BubbleCoralFan {
     pub waterlogged: bool,
 }
 
-
 impl BlockState for BubbleCoralFan {
     fn to_id(&self) -> i32 {
-        if self.r#waterlogged == true { return 14979; }
-        if self.r#waterlogged == false { return 14980; }
+        if self.r#waterlogged == true {
+            return 14979;
+        }
+        if self.r#waterlogged == false {
+            return 14980;
+        }
         panic!("Invalid block state")
     }
 
@@ -27,4 +30,3 @@ impl BlockState for BubbleCoralFan {
         return None;
     }
 }
-

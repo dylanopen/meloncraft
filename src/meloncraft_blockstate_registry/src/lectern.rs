@@ -7,7 +7,6 @@ pub struct Lectern {
     pub powered: bool,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -18,22 +17,54 @@ pub enum Facing {
 
 impl BlockState for Lectern {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::West && self.r#has_book == true && self.r#powered == true { return 20590; }
-        if self.r#facing == Facing::North && self.r#powered == true && self.r#has_book == false { return 20584; }
-        if self.r#has_book == false && self.r#powered == false && self.r#facing == Facing::West { return 20593; }
-        if self.r#powered == false && self.r#has_book == true && self.r#facing == Facing::North { return 20583; }
-        if self.r#facing == Facing::South && self.r#has_book == true && self.r#powered == false { return 20587; }
-        if self.r#facing == Facing::North && self.r#has_book == false && self.r#powered == false { return 20585; }
-        if self.r#facing == Facing::South && self.r#has_book == false && self.r#powered == true { return 20588; }
-        if self.r#facing == Facing::East && self.r#has_book == true && self.r#powered == false { return 20595; }
-        if self.r#facing == Facing::North && self.r#powered == true && self.r#has_book == true { return 20582; }
-        if self.r#has_book == true && self.r#facing == Facing::South && self.r#powered == true { return 20586; }
-        if self.r#powered == false && self.r#has_book == false && self.r#facing == Facing::East { return 20597; }
-        if self.r#has_book == false && self.r#facing == Facing::West && self.r#powered == true { return 20592; }
-        if self.r#powered == false && self.r#facing == Facing::South && self.r#has_book == false { return 20589; }
-        if self.r#has_book == false && self.r#powered == true && self.r#facing == Facing::East { return 20596; }
-        if self.r#powered == true && self.r#facing == Facing::East && self.r#has_book == true { return 20594; }
-        if self.r#facing == Facing::West && self.r#powered == false && self.r#has_book == true { return 20591; }
+        if self.r#facing == Facing::West && self.r#has_book == true && self.r#powered == true {
+            return 20590;
+        }
+        if self.r#facing == Facing::North && self.r#powered == true && self.r#has_book == false {
+            return 20584;
+        }
+        if self.r#has_book == false && self.r#powered == false && self.r#facing == Facing::West {
+            return 20593;
+        }
+        if self.r#powered == false && self.r#has_book == true && self.r#facing == Facing::North {
+            return 20583;
+        }
+        if self.r#facing == Facing::South && self.r#has_book == true && self.r#powered == false {
+            return 20587;
+        }
+        if self.r#facing == Facing::North && self.r#has_book == false && self.r#powered == false {
+            return 20585;
+        }
+        if self.r#facing == Facing::South && self.r#has_book == false && self.r#powered == true {
+            return 20588;
+        }
+        if self.r#facing == Facing::East && self.r#has_book == true && self.r#powered == false {
+            return 20595;
+        }
+        if self.r#facing == Facing::North && self.r#powered == true && self.r#has_book == true {
+            return 20582;
+        }
+        if self.r#has_book == true && self.r#facing == Facing::South && self.r#powered == true {
+            return 20586;
+        }
+        if self.r#powered == false && self.r#has_book == false && self.r#facing == Facing::East {
+            return 20597;
+        }
+        if self.r#has_book == false && self.r#facing == Facing::West && self.r#powered == true {
+            return 20592;
+        }
+        if self.r#powered == false && self.r#facing == Facing::South && self.r#has_book == false {
+            return 20589;
+        }
+        if self.r#has_book == false && self.r#powered == true && self.r#facing == Facing::East {
+            return 20596;
+        }
+        if self.r#powered == true && self.r#facing == Facing::East && self.r#has_book == true {
+            return 20594;
+        }
+        if self.r#facing == Facing::West && self.r#powered == false && self.r#has_book == true {
+            return 20591;
+        }
         panic!("Invalid block state")
     }
 
@@ -153,4 +184,3 @@ impl BlockState for Lectern {
         return None;
     }
 }
-

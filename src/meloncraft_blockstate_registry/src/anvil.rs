@@ -5,7 +5,6 @@ pub struct Anvil {
     pub r#facing: Facing,
 }
 
-
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Facing {
     North,
@@ -16,10 +15,18 @@ pub enum Facing {
 
 impl BlockState for Anvil {
     fn to_id(&self) -> i32 {
-        if self.r#facing == Facing::West { return 10995; }
-        if self.r#facing == Facing::South { return 10994; }
-        if self.r#facing == Facing::North { return 10993; }
-        if self.r#facing == Facing::East { return 10996; }
+        if self.r#facing == Facing::West {
+            return 10995;
+        }
+        if self.r#facing == Facing::South {
+            return 10994;
+        }
+        if self.r#facing == Facing::North {
+            return 10993;
+        }
+        if self.r#facing == Facing::East {
+            return 10996;
+        }
         panic!("Invalid block state")
     }
 
@@ -47,4 +54,3 @@ impl BlockState for Anvil {
         return None;
     }
 }
-
