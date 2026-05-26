@@ -2,7 +2,6 @@ use crate::clientbound_packet::ClientboundPacket;
 use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
-use crate::network_messages::ClientboundNetworkPacket;
 
 #[derive(Message, Debug, Clone)]
 pub struct ClientboundClearDialog {
@@ -18,12 +17,10 @@ impl ClientboundPacket for ClientboundClearDialog {
         return ConnectionState::Configuration
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let data = Vec::new();
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data,
-        })
+
+    fn client(&self) -> Entity {
+        return self.client;
     }
+
+    fn data(&self, _data: &mut Vec<u8>) {}
 }

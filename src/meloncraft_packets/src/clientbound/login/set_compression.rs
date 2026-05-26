@@ -2,12 +2,11 @@ use crate::clientbound_packet::ClientboundPacket;
 use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
-use crate::network_messages::ClientboundNetworkPacket;
 use meloncraft_protocol_types::ProtocolType as _;
 
 #[derive(Message, Debug, Clone)]
 pub struct ClientboundSetCompression {
-    pub entity: Entity,
+    pub client: Entity,
     pub threshold: i32,
 }
 
@@ -20,11 +19,12 @@ impl ClientboundPacket for ClientboundSetCompression {
         return ConnectionState::Login
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        return Some(ClientboundNetworkPacket {
-            client: self.entity,
-            id: Self::id(),
-            data: self.threshold.net_serialize(),
-        })
+
+    fn client(&self) -> Entity {
+        return self.client;
+    }
+
+    fn data(&self, data: &mut Vec<u8>) {
+        data.extend(self.threshold.net_serialize());
     }
 }

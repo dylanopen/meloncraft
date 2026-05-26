@@ -2,7 +2,6 @@ use crate::clientbound_packet::ClientboundPacket;
 use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
-use crate::network_messages::ClientboundNetworkPacket;
 use meloncraft_protocol_types::{PrefixedArray, ProtocolType as _};
 use meloncraft_registry::RegistryTags;
 
@@ -21,12 +20,12 @@ impl ClientboundPacket for ClientboundUpdateTags {
         return ConnectionState::Configuration
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let data = PrefixedArray(self.registries.clone()).net_serialize();
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data,
-        })
+
+    fn client(&self) -> Entity {
+        return self.client;
+    }
+
+    fn data(&self, data: &mut Vec<u8>) {
+        data.extend(PrefixedArray(self.registries.clone()).net_serialize());
     }
 }

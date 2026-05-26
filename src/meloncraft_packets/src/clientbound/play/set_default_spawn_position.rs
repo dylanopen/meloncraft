@@ -2,7 +2,6 @@ use bevy::ecs::message::Message;
 use bevy::math::IVec3;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
-use crate::network_messages::ClientboundNetworkPacket;
 use meloncraft_protocol_types::{NetworkLocation, ProtocolType as _};
 use crate::clientbound_packet::ClientboundPacket;
 
@@ -36,19 +35,18 @@ impl ClientboundPacket for ClientboundSetDefaultSpawnPosition {
         return ConnectionState::Play
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let mut data = Vec::new();
+
+    fn client(&self) -> Entity {
+        return self.client;
+    }
+
+    fn data(&self, data: &mut Vec<u8>) {
 
         data.extend(self.dimension.net_serialize());
         data.extend(NetworkLocation(self.location).net_serialize());
         data.extend(self.yaw.net_serialize());
         data.extend(self.pitch.net_serialize());
 
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data,
-        })
     }
 }
 

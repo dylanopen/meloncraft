@@ -1,6 +1,6 @@
-pub mod add_resource_pack;
-
 use bevy::app::App;
+
+pub mod add_resource_pack;
 pub use add_resource_pack::ClientboundAddResourcePack;
 
 pub mod clear_dialog;

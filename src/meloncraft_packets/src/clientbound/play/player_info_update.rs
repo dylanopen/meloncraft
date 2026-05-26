@@ -2,7 +2,6 @@ use bevy::ecs::entity::Entity;
 use bevy::ecs::message::Message;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_player::client_action::ClientPlayerAction;
-use crate::network_messages::ClientboundNetworkPacket;
 use meloncraft_player::Uuid;
 use meloncraft_protocol_types::{ProtocolType as _, VarInt};
 
@@ -24,8 +23,12 @@ impl ClientboundPacket for ClientboundPlayerInfoUpdate {
         return ConnectionState::Play
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let mut data = Vec::new();
+
+    fn client(&self) -> Entity {
+        return self.client;
+    }
+
+    fn data(&self, data: &mut Vec<u8>) {
         data.push(self.action_mask);
         data.extend(VarInt(self.players.len().try_into().unwrap()).net_serialize());
 
@@ -35,12 +38,6 @@ impl ClientboundPacket for ClientboundPlayerInfoUpdate {
                 data.extend(action.net_serialize());
             }
         }
-
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data,
-        })
     }
 }
 

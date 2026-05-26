@@ -1,7 +1,6 @@
 use crate::clientbound_packet::ClientboundPacket;
 use bevy::prelude::{Entity, Message};
 use meloncraft_client::connection_state::ConnectionState;
-use crate::network_messages::ClientboundNetworkPacket;
 use meloncraft_protocol_types::ProtocolType as _;
 
 #[derive(Message, Debug, Clone)]
@@ -17,11 +16,12 @@ impl ClientboundPacket for ClientboundPong {
     fn state() -> ConnectionState {
         return ConnectionState::Status
     }
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data: self.timestamp.net_serialize(),
-        })
+
+    fn client(&self) -> Entity {
+        return self.client;
+    }
+
+    fn data(&self, data: &mut Vec<u8>) {
+        data.extend(self.timestamp.net_serialize());
     }
 }

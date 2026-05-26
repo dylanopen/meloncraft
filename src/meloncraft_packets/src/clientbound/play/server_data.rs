@@ -4,7 +4,6 @@ use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_nbt::{NbtString, NbtTag, NbtValue};
 use meloncraft_server_info::icon::ServerIcon;
 use meloncraft_server_info::motd::Motd;
-use crate::network_messages::ClientboundNetworkPacket;
 use meloncraft_protocol_types::{PrefixedArray, ProtocolType as _};
 use crate::clientbound_packet::ClientboundPacket;
 
@@ -29,19 +28,18 @@ impl ClientboundPacket for ClientboundServerData {
         return ConnectionState::Play
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let mut data = Vec::new();
+
+    fn client(&self) -> Entity {
+        return self.client;
+    }
+
+    fn data(&self, data: &mut Vec<u8>) {
 
         data.extend(NbtTag::new(String::new(), NbtValue::String(NbtString(self.motd.0.clone()))).net_serialize());
         data.extend(self.icon.clone()
             .map(|icon_data| return PrefixedArray(icon_data.0))
             .net_serialize());
 
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data,
-        })
     }
 }
 

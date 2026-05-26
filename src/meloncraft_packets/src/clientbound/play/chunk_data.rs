@@ -3,7 +3,6 @@ use bevy::ecs::message::Message;
 use bevy::math::IVec2;
 use meloncraft_chunk::block_section::ChunkBlockSection;
 use meloncraft_client::connection_state::ConnectionState;
-use crate::network_messages::ClientboundNetworkPacket;
 use meloncraft_protocol_types::{PrefixedArray, ProtocolType as _, VarInt};
 use meloncraft_protocol_types::chunk_lighting::ChunkLighting;
 use crate::clientbound_packet::ClientboundPacket;
@@ -27,9 +26,12 @@ impl ClientboundPacket for ClientboundChunkData {
         return ConnectionState::Play
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let mut data = Vec::new();
 
+    fn client(&self) -> Entity {
+        return self.client;
+    }
+
+    fn data(&self, data: &mut Vec<u8>) {
         data.extend(self.chunk_pos.net_serialize());
         data.extend(VarInt(0).net_serialize()); // heightmap array length 0, as not strictly required
 
@@ -41,12 +43,6 @@ impl ClientboundPacket for ClientboundChunkData {
 
         data.extend(VarInt(0).net_serialize()); // block entities array length 0, again, not strictly required
         data.extend(self.light.clone().net_serialize());
-
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data,
-        })
     }
 }
 

@@ -3,7 +3,6 @@ use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_entity::health::current::CurrentHealth;
 use meloncraft_entity::health::food::{FoodHealth, FoodSaturation};
-use crate::network_messages::ClientboundNetworkPacket;
 use meloncraft_protocol_types::{ProtocolType as _, VarInt};
 use crate::clientbound_packet::ClientboundPacket;
 
@@ -24,18 +23,17 @@ impl ClientboundPacket for ClientboundSetHealth {
         return ConnectionState::Play
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let mut data = Vec::new();
+
+    fn client(&self) -> Entity {
+        return self.client;
+    }
+
+    fn data(&self, data: &mut Vec<u8>) {
 
         data.extend(self.current.0.net_serialize());
         data.extend(VarInt(self.food.0).net_serialize());
         data.extend(self.saturation.0.net_serialize());
 
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data,
-        })
     }
 }
 

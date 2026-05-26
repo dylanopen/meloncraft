@@ -2,7 +2,6 @@ use crate::clientbound_packet::ClientboundPacket;
 use bevy::prelude::{Entity, Message};
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_core::Identifier;
-use crate::network_messages::ClientboundNetworkPacket;
 use meloncraft_protocol_types::{NetworkLocation, PrefixedArray, ProtocolType as _, VarInt};
 
 #[expect(clippy::struct_excessive_bools, reason = "It's a packet: we need all those bools, and it's not a state machine.")]
@@ -37,11 +36,16 @@ impl ClientboundPacket for ClientboundPlayLogin {
     fn id() -> i32 {
         return 0x30
     }
+
     fn state() -> ConnectionState {
         return ConnectionState::Play
     }
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let mut data = Vec::new();
+
+    fn client(&self) -> Entity {
+        return self.client;
+    }
+
+    fn data(&self, data: &mut Vec<u8>) {
         data.extend(self.entity_id.net_serialize());
         data.extend(self.is_hardcore.net_serialize());
         data.extend(self.dimension_names.net_serialize());
@@ -67,10 +71,5 @@ impl ClientboundPacket for ClientboundPlayLogin {
         data.extend(VarInt(self.portal_cooldown).net_serialize());
         data.extend(VarInt(self.sea_level).net_serialize());
         data.extend(self.enforces_secure_chat.net_serialize());
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data,
-        })
     }
 }

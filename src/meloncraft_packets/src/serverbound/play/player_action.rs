@@ -22,14 +22,14 @@ impl ServerboundPacket for ServerboundPlayerAction {
     fn state() -> ConnectionState {
         return ConnectionState::Play
     }
-    fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
-        let mut incoming = packet.clone();
-        let client = incoming.client;
+    fn deserialize(packet: ServerboundNetworkPacket) -> Option<Self> {
+        let mut packet = packet;
+        let client = packet.client;
 
-        let status = VarInt::net_deserialize(&mut incoming.data).ok()?.0.try_into().unwrap();
-        let block_location = incoming.data.net_deserialize().ok()?;
-        let block_face = u8::net_deserialize(&mut incoming.data).ok()?.try_into().ok()?;
-        let sequence = VarInt::net_deserialize(&mut incoming.data).ok()?.0;
+        let status = VarInt::net_deserialize(&mut packet.data).ok()?.0.try_into().unwrap();
+        let block_location = packet.data.net_deserialize().ok()?;
+        let block_face = u8::net_deserialize(&mut packet.data).ok()?.try_into().ok()?;
+        let sequence = VarInt::net_deserialize(&mut packet.data).ok()?.0;
 
         return Some(Self {
             client,

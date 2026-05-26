@@ -4,7 +4,6 @@ use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_core::Identifier;
 use meloncraft_nbt::{NbtCompound, NbtTag, NbtValue};
-use crate::network_messages::ClientboundNetworkPacket;
 use meloncraft_protocol_types::{PrefixedArray, ProtocolType as _};
 use meloncraft_registry::RegistryEntry;
 
@@ -24,8 +23,13 @@ impl ClientboundPacket for ClientboundRegistryData {
         return ConnectionState::Configuration
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let mut data = self.registry_id.net_serialize();
+
+    fn client(&self) -> Entity {
+        return self.client;
+    }
+
+    fn data(&self, data: &mut Vec<u8>) {
+        data.extend(self.registry_id.net_serialize());
         let mut entries_data = Vec::new();
         for entry in &self.registry_entries {
             let entry_compound = NbtTag {
@@ -36,10 +40,5 @@ impl ClientboundPacket for ClientboundRegistryData {
             entries_data.extend(entry_compound.net_serialize());
         }
         data.extend(PrefixedArray(entries_data).net_serialize());
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data,
-        })
     }
 }

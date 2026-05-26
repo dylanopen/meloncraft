@@ -1,6 +1,6 @@
-mod login;
-
 use bevy::app::App;
+
+mod login;
 pub use login::ClientboundPlayLogin;
 
 mod synchronize_player_position;

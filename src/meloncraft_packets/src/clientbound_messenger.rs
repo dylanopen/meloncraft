@@ -7,10 +7,8 @@ pub fn fwd<T: Message + ClientboundPacket>(
     mut packet_writer: MessageWriter<ClientboundNetworkPacketReceived>,
 ) {
     for packet in packet_reader.read() {
-        if let Some(network_packet) = packet.to_packet() {
-            packet_writer.write(ClientboundNetworkPacketReceived {
-                packet: network_packet,
-            });
-        }
+        packet_writer.write(ClientboundNetworkPacketReceived {
+            packet: packet.serialize(),
+        });
     }
 }

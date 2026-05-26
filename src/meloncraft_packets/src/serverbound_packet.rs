@@ -45,7 +45,7 @@ impl Display for ServerboundPacketParseError {
 pub trait ServerboundPacket: Sized + Message + Debug + Clone {
     fn id() -> i32;
     fn state() -> ConnectionState;
-    fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self>;
+    fn deserialize(packet: ServerboundNetworkPacket) -> Option<Self>;
 
     fn validate(incoming: &ServerboundNetworkPacket) -> Result<(), ServerboundPacketParseError> {
         if incoming.state != Self::state() {
@@ -61,11 +61,5 @@ pub trait ServerboundPacket: Sized + Message + Debug + Clone {
             });
         }
         return Ok(());
-    }
-
-    #[must_use]
-    fn from_packet(incoming: &ServerboundNetworkPacket) -> Option<Self> {
-        Self::validate(incoming).ok()?;
-        return Some(Self::deserialize(incoming).unwrap());
     }
 }

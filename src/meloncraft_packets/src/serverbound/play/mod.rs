@@ -1,3 +1,5 @@
+use bevy::app::App;
+
 mod confirm_teleportation;
 pub use confirm_teleportation::ServerboundConfirmTeleportation;
 
@@ -24,8 +26,6 @@ pub use player_action::ServerboundPlayerAction;
 
 mod chat_command;
 pub use chat_command::ServerboundChatCommand;
-
-use bevy::app::App;
 
 pub fn register_serverbound_play_packets(app: &mut App) {
     use crate::serverbound_messenger::fwd;

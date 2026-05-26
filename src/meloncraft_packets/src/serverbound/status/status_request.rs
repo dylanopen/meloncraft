@@ -16,7 +16,7 @@ impl ServerboundPacket for ServerboundStatusRequest {
     fn state() -> ConnectionState {
         return ConnectionState::Status
     }
-    fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
+    fn deserialize(packet: ServerboundNetworkPacket) -> Option<Self> {
         return Some(ServerboundStatusRequest {
             client: packet.client,
         })

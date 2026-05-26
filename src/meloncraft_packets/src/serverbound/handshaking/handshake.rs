@@ -3,6 +3,7 @@ use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_client::intention_type::IntentionType;
+use meloncraft_logger::errorlog;
 use crate::network_messages::ServerboundNetworkPacket;
 use meloncraft_protocol_types::{ProtocolType as _, VarInt};
 
@@ -22,8 +23,8 @@ impl ServerboundPacket for ServerboundIntention {
     fn state() -> ConnectionState {
         return ConnectionState::Handshaking
     }
-    fn deserialize(packet: &ServerboundNetworkPacket) -> Option<Self> {
-        let mut incoming = packet.clone();
+    fn deserialize(packet: ServerboundNetworkPacket) -> Option<Self> {
+        let mut incoming = packet;
         let protocol_version = VarInt::net_deserialize(&mut incoming.data).unwrap().0;
         let server_address = String::net_deserialize(&mut incoming.data).unwrap();
         let server_port = u16::net_deserialize(&mut incoming.data).unwrap();
@@ -31,7 +32,10 @@ impl ServerboundPacket for ServerboundIntention {
             1 => IntentionType::Status,
             2 => IntentionType::Login,
             3 => IntentionType::Transfer,
-            _ => return None, // Invalid next state sent by client, we should ignore their connection. TODO: log this
+            next_state_id => {
+                errorlog!("Expected Status (1), Login (2) or Transfer (3) IntentionType, but found value {next_state_id} instead.");
+                return None;
+            }
         };
 
         return Some(ServerboundIntention {

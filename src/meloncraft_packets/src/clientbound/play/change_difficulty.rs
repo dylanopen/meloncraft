@@ -2,7 +2,6 @@ use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_server_info::difficulty::Difficulty;
-use crate::network_messages::ClientboundNetworkPacket;
 use meloncraft_protocol_types::ProtocolType as _;
 use crate::clientbound_packet::ClientboundPacket;
 
@@ -22,17 +21,16 @@ impl ClientboundPacket for ClientboundChangeDifficulty {
         return ConnectionState::Play
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let mut data = Vec::new();
+
+    fn client(&self) -> Entity {
+        return self.client;
+    }
+
+    fn data(&self, data: &mut Vec<u8>) {
 
         data.extend(u8::from(self.difficulty).net_serialize());
         data.extend(self.difficulty_locked.net_serialize());
 
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data,
-        })
     }
 }
 

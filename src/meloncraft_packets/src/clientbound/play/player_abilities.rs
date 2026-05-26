@@ -2,7 +2,6 @@ use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_player::{CanFly, CanInstantBreak, FlySpeed, FovModifier, Invulnerable, IsFlying};
-use crate::network_messages::ClientboundNetworkPacket;
 use meloncraft_protocol_types::ProtocolType as _;
 use crate::clientbound_packet::ClientboundPacket;
 
@@ -40,8 +39,12 @@ impl ClientboundPacket for ClientboundPlayerAbilities {
         return ConnectionState::Play
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let mut data = Vec::new();
+
+    fn client(&self) -> Entity {
+        return self.client;
+    }
+
+    fn data(&self, data: &mut Vec<u8>) {
 
         data.extend((
                 u8::from(self.invulnerable.0)
@@ -52,11 +55,6 @@ impl ClientboundPacket for ClientboundPlayerAbilities {
         data.extend(self.fly_speed.0.net_serialize());
         data.extend(self.fov_modifier.0.net_serialize());
 
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data,
-        })
     }
 }
 

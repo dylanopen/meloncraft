@@ -3,7 +3,6 @@ use bevy::ecs::message::Message;
 use bevy::prelude::Entity;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_core::datapack::DatapackMetadata;
-use crate::network_messages::ClientboundNetworkPacket;
 use meloncraft_protocol_types::{PrefixedArray, ProtocolType as _};
 
 #[derive(Message, Debug, Clone)]
@@ -21,12 +20,12 @@ impl ClientboundPacket for ClientboundSelectKnownPacks {
         return ConnectionState::Configuration
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let data = PrefixedArray(self.known_packs.clone()).net_serialize();
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data,
-        })
+
+    fn client(&self) -> Entity {
+        return self.client;
+    }
+
+    fn data(&self, data: &mut Vec<u8>) {
+        data.extend(PrefixedArray(self.known_packs.clone()).net_serialize());
     }
 }

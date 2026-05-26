@@ -3,7 +3,6 @@ use bevy::math::IVec3;
 use bevy::prelude::Entity;
 use meloncraft_block::block::Block;
 use meloncraft_client::connection_state::ConnectionState;
-use crate::network_messages::ClientboundNetworkPacket;
 use meloncraft_protocol_types::{NetworkLocation, ProtocolType as _, VarInt};
 use crate::clientbound_packet::ClientboundPacket;
 
@@ -23,17 +22,16 @@ impl ClientboundPacket for ClientboundBlockUpdate {
         return ConnectionState::Play
     }
 
-    fn serialize(&self) -> Option<ClientboundNetworkPacket> {
-        let mut data = Vec::new();
+
+    fn client(&self) -> Entity {
+        return self.client;
+    }
+
+    fn data(&self, data: &mut Vec<u8>) {
 
         data.extend(NetworkLocation(self.block_location).net_serialize());
         data.extend(VarInt(self.new_block.state_id).net_serialize());
 
-        return Some(ClientboundNetworkPacket {
-            client: self.client,
-            id: Self::id(),
-            data,
-        })
     }
 }
 
