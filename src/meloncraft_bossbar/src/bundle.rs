@@ -1,6 +1,7 @@
 //! Module for bundle struct [`BossbarBundle`].
 
 use bevy::ecs::bundle::Bundle;
+use meloncraft_entity::Uuid;
 use meloncraft_entity::health::current::CurrentHealth;
 use meloncraft_nbt::NbtString;
 use meloncraft_text::NbtText;
@@ -14,6 +15,7 @@ use crate::title::BossbarTitle;
 #[derive(Bundle, Debug, Clone)]
 pub struct BossbarBundle {
     pub marker: BossbarMarker,
+    pub uuid: Uuid,
     pub health: CurrentHealth,
     pub title: BossbarTitle,
     pub color: BossbarColor,
@@ -27,6 +29,7 @@ impl Default for BossbarBundle {
     fn default() -> Self {
         return BossbarBundle {
             marker: BossbarMarker,
+            uuid: Uuid::random(),
             health: CurrentHealth(1.0),
             title: BossbarTitle(NbtText::Plain(NbtString("Bossbar".to_owned()))),
             color: BossbarColor::Red,

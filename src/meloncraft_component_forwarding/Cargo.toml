@@ -6,6 +6,7 @@ license.workspace = true
 
 [dependencies]
 bevy.workspace = true
+meloncraft_bossbar.workspace = true
 meloncraft_entity.workspace = true
 meloncraft_player.workspace = true
 meloncraft_packets.workspace = true

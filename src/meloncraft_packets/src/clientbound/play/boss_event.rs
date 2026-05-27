@@ -19,7 +19,7 @@ pub struct ClientboundBossEvent {
 
 impl ClientboundPacket for ClientboundBossEvent {
     fn id() -> i32 {
-        return 0x0A;
+        return 0x09;
     }
 
     fn state() -> ConnectionState {
