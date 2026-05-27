@@ -20,5 +20,6 @@ impl Plugin for MeloncraftComponentForwardingPlugin {
         app.add_systems(Update, bossbar::send_bossbar_on_change_active);
         app.add_systems(Update, bossbar::send_bossbar_update_on_change_health);
         app.add_systems(Update, bossbar::send_bossbar_update_on_change_title);
+        app.add_systems(Update, bossbar::send_bossbar_update_on_change_style);
     }
 }
