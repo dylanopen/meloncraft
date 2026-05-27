@@ -1,8 +1,10 @@
+use bevy::ecs::change_detection::DetectChanges as _;
 use bevy::ecs::component::Component;
 use bevy::ecs::entity::Entity;
 use bevy::ecs::message::MessageWriter;
 use bevy::ecs::query::{Changed, With};
 use bevy::ecs::system::{Commands, Query};
+use bevy::ecs::world::Ref;
 use meloncraft_bossbar::active::ActiveBossbars;
 use meloncraft_bossbar::color::BossbarColor;
 use meloncraft_bossbar::division::BossbarDivision;
@@ -77,6 +79,38 @@ pub fn send_bossbar_on_change_active(
             commands
                 .entity(player_entity)
                 .insert(PreviousActiveBossbars(active_bossbars.clone()));
+        }
+    }
+}
+
+#[expect(clippy::type_complexity, reason = "Simplest way to do a query")]
+pub fn send_bossbar_update_on_change_health(
+    bossbar_q: Query<
+        (
+            Entity,
+            &Uuid,
+            &CurrentHealth,
+            &BossbarMarker,
+            Ref<CurrentHealth>,
+        ),
+        Changed<CurrentHealth>,
+    >,
+    active_bossbars_q: Query<(Entity, &ActiveBossbars)>,
+    mut boss_event_pw: MessageWriter<ClientboundBossEvent>,
+) {
+    for (bossbar_entity, uuid, health, _, _) in bossbar_q.iter().filter(|r| return !r.4.is_added())
+    {
+        for (player_entity, active_bossbars) in active_bossbars_q {
+            if !active_bossbars.0.contains(&bossbar_entity) {
+                continue;
+            }
+            boss_event_pw.write(ClientboundBossEvent {
+                client: player_entity,
+                uuid: uuid.clone(),
+                action: BossEventAction::UpdateHealth {
+                    new_health: *health,
+                },
+            });
         }
     }
 }

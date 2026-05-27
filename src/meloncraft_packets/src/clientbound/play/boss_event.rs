@@ -61,19 +61,19 @@ impl ClientboundPacket for ClientboundBossEvent {
                 data.push(bit_flags);
             }
             BossEventAction::Remove => data.extend(VarInt(1).net_serialize()),
-            BossEventAction::UpdateTitle { new_title } => {
-                data.extend(VarInt(2).net_serialize());
-                data.extend(new_title.0.net_serialize());
-            }
             BossEventAction::UpdateHealth { new_health } => {
                 data.extend(VarInt(2).net_serialize());
                 data.extend(new_health.0.net_serialize());
+            }
+            BossEventAction::UpdateTitle { new_title } => {
+                data.extend(VarInt(3).net_serialize());
+                data.extend(new_title.0.net_serialize());
             }
             BossEventAction::UpdateStyle {
                 new_color,
                 new_division,
             } => {
-                data.extend(VarInt(2).net_serialize());
+                data.extend(VarInt(4).net_serialize());
                 data.extend(VarInt(new_color.into()).net_serialize());
                 data.extend(VarInt(new_division.into()).net_serialize());
             }
@@ -82,6 +82,7 @@ impl ClientboundPacket for ClientboundBossEvent {
                 new_is_dragon,
                 new_creates_fog,
             } => {
+                data.extend(VarInt(5).net_serialize());
                 let mut bit_flags = 0_u8;
                 if new_darkens_sky.0 {
                     bit_flags |= 0x_1;
