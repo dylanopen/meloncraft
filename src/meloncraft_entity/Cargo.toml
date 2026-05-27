@@ -6,6 +6,7 @@ license.workspace = true
 
 [dependencies]
 bevy = { workspace = true }
+rand = { version = "0.10.1" }
 
 [lints]
 workspace = true
