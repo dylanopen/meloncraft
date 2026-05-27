@@ -18,3 +18,6 @@
 pub mod health;
 pub mod plugin;
 pub mod position;
+pub mod uuid;
+
+pub use uuid::Uuid;

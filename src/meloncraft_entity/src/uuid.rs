@@ -1,6 +1,7 @@
 //! Module for struct component [`Uuid`].
 
 use bevy::ecs::component::Component;
+use rand::RngExt as _;
 
 /// The *universally unique identifier* (`UUID`) defining the entity.
 /// Every entity (including players) will have a UUID.
@@ -34,3 +35,14 @@ pub struct Uuid(
     /// See [`Uuid`] for more information.
     pub u128,
 );
+
+impl Uuid {
+    /// Generate a random UUID.
+    /// This currently does not conform to the official UUID standard and is likely to change in the
+    /// near future.
+    #[must_use]
+    pub fn random() -> Uuid {
+        let mut rng = rand::rng();
+        return Uuid(rng.random::<u128>());
+    }
+}

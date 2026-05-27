@@ -3,7 +3,7 @@ use crate::network_messages::ServerboundNetworkPacket;
 use bevy::ecs::entity::Entity;
 use bevy::ecs::message::Message;
 use meloncraft_client::connection_state::ConnectionState;
-use meloncraft_player::Uuid;
+use meloncraft_entity::Uuid;
 use meloncraft_protocol_types::ProtocolType as _;
 
 #[derive(Message, Debug, Clone)]

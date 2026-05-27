@@ -1,0 +1,14 @@
+[package]
+name = "meloncraft_bossbar"
+version = "0.1.0"
+edition = "2024"
+license.workspace = true
+
+[dependencies]
+meloncraft_entity.workspace = true
+meloncraft_text.workspace = true
+meloncraft_nbt.workspace = true
+bevy.workspace = true
+
+[lints]
+workspace = true

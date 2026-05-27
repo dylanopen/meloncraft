@@ -2,7 +2,7 @@
 
 use bevy::app::{App, Plugin, Update};
 
-use crate::{abilities, experience, health};
+use crate::{abilities, bossbar, experience, health};
 
 /// Registers systems to send components to clients in packets, when the components change or players
 /// join.
@@ -16,5 +16,11 @@ impl Plugin for MeloncraftComponentForwardingPlugin {
         app.add_systems(Update, health::send_health);
         app.add_systems(Update, abilities::send_player_abilities);
         app.add_systems(Update, experience::send_player_experience);
+
+        app.add_systems(Update, bossbar::send_bossbar_on_change_active);
+        app.add_systems(Update, bossbar::send_bossbar_update_on_change_health);
+        app.add_systems(Update, bossbar::send_bossbar_update_on_change_title);
+        app.add_systems(Update, bossbar::send_bossbar_update_on_change_style);
+        app.add_systems(Update, bossbar::send_bossbar_update_on_change_flags);
     }
 }
