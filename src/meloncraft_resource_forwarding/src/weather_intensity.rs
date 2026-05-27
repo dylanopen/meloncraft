@@ -5,7 +5,7 @@ use bevy::ecs::system::{Query, Res};
 use meloncraft_core::game_event::GameEventType;
 use meloncraft_packets::ClientboundGameEvent;
 use meloncraft_player::PlayerMarker;
-use meloncraft_server_info::weather_intensity::RainIntensity;
+use meloncraft_server_info::weather_intensity::{RainIntensity, ThunderIntensity};
 
 pub fn send_rain_on_join(
     player_q: Query<Entity, Added<PlayerMarker>>,
@@ -27,6 +27,19 @@ pub fn send_rain_on_join(
         game_event_pw.write(ClientboundGameEvent {
             client: player,
             event: GameEventType::RainLevelChange(rain_intensity.0.clone()),
+        });
+    }
+}
+
+pub fn send_thunder_on_join(
+    player_q: Query<Entity, Added<PlayerMarker>>,
+    thunder_intensity: Res<ThunderIntensity>,
+    mut game_event_pw: MessageWriter<ClientboundGameEvent>,
+) {
+    for player in player_q {
+        game_event_pw.write(ClientboundGameEvent {
+            client: player,
+            event: GameEventType::ThunderLevelChange(thunder_intensity.0.clone()),
         });
     }
 }
