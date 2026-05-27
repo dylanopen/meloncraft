@@ -6,9 +6,9 @@ license.workspace = true
 
 [dependencies]
 bevy = { workspace = true }
-lazy_static = { workspace = true }
 meloncraft_protocol_types = { workspace = true }
 meloncraft_client = { workspace = true }
+meloncraft_logger = { workspace = true }
 meloncraft_packets = { workspace = true }
 
 [lints]

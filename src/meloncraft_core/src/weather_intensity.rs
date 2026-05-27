@@ -13,5 +13,5 @@
 /// ## Constraints
 /// - The value of `WeatherIntensity` must be between `0.0` and `1.0`, inclusive. Values outside
 ///   this range may cause packets to fail to send or be ignored by the client.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub struct WeatherIntensity(pub f32);

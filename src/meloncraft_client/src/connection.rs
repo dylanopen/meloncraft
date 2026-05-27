@@ -79,6 +79,20 @@ pub struct ClientConnection {
     /// client's connection state to [`ConnectionState::Login`] or [`ConnectionState::Status`]
     /// depending on the client's intention.
     pub state: ConnectionState,
+
+    /// The number of packets the client has sent to the server, which the server has deserialized.
+    ///
+    /// This increases by one every time the server reads a packet from the client.
+    ///
+    /// ## Usage
+    /// - Currently, this is used to delay packet processing, in the case of *handshaking*. The
+    ///   client sends both the handshake and status/login packet in one stream, and the non-network
+    ///   systems need time to react and change the `ConnectionState`.
+    /// - See the `read_streams` system in the network crate for more details.
+    pub serverbound_packets_processed: usize,
+    // /// A buffer storing any extra bytes that couldn't be sent to the client on that tick, because
+    // /// the system's buffer size was exceeded.
+    // pub packet_queue: Vec<u8>,
 }
 
 impl Clone for ClientConnection {
@@ -87,6 +101,8 @@ impl Clone for ClientConnection {
             tcp_stream: self.tcp_stream.try_clone().unwrap(),
             state: self.state,
             address: self.address,
+            serverbound_packets_processed: self.serverbound_packets_processed,
+            //packet_queue: Vec::new(),
         };
     }
 }

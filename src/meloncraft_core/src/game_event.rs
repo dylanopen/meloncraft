@@ -1,6 +1,6 @@
 use crate::{DemoEventType, GameMode, WeatherIntensity};
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq)]
 pub enum GameEventType {
     NoRespawnBlockAvailable,
     BeginRaining,
@@ -18,8 +18,8 @@ pub enum GameEventType {
     WaitForChunks,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub struct ShouldShowCredits(pub bool);
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub struct ShouldShowRespawnScreen(pub bool);

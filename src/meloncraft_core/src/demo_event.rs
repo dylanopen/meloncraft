@@ -7,7 +7,7 @@
 /// etc.
 ///
 /// Used in the `GameEvent` packet.
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum DemoEventType {
     /// Notification to welcome the client to the demo screen.
     /// This is usually the **first** demo event sent.
