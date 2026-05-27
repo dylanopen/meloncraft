@@ -1,5 +1,5 @@
 use crate::ProtocolType;
-use meloncraft_player::Uuid;
+use meloncraft_entity::Uuid;
 
 impl ProtocolType for Uuid {
     fn net_serialize(&self) -> Vec<u8> {

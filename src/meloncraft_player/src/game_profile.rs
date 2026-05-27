@@ -1,6 +1,6 @@
 //! Module for structs [`GameProfile`] and [`GameProfileProperties`].
 
-use crate::Uuid;
+use meloncraft_entity::Uuid;
 use bevy::prelude::Component;
 
 /// Component storing a player's game profile, including their:

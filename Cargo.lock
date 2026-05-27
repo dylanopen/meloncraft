@@ -1007,6 +1007,7 @@ name = "meloncraft_player"
 version = "0.1.0"
 dependencies = [
  "bevy",
+ "meloncraft_entity",
  "meloncraft_nbt",
 ]
 
@@ -1029,6 +1030,7 @@ dependencies = [
  "bevy",
  "meloncraft_chunk",
  "meloncraft_core",
+ "meloncraft_entity",
  "meloncraft_logger",
  "meloncraft_nbt",
  "meloncraft_player",
