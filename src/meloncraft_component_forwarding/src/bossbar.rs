@@ -1,7 +1,8 @@
+use bevy::ecs::component::Component;
 use bevy::ecs::entity::Entity;
 use bevy::ecs::message::MessageWriter;
 use bevy::ecs::query::{Changed, With};
-use bevy::ecs::system::Query;
+use bevy::ecs::system::{Commands, Query};
 use meloncraft_bossbar::active::ActiveBossbars;
 use meloncraft_bossbar::color::BossbarColor;
 use meloncraft_bossbar::division::BossbarDivision;
@@ -12,9 +13,16 @@ use meloncraft_entity::Uuid;
 use meloncraft_entity::health::current::CurrentHealth;
 use meloncraft_packets::ClientboundBossEvent;
 
+#[derive(Component, Debug, Clone)]
+pub struct PreviousActiveBossbars(pub ActiveBossbars);
+
 #[expect(clippy::type_complexity, reason = "Simplest way to do a query")]
 pub fn send_bossbar(
-    active_bossbars_q: Query<(Entity, &ActiveBossbars), Changed<ActiveBossbars>>,
+    mut commands: Commands,
+    active_bossbars_q: Query<
+        (Entity, &ActiveBossbars, Option<&mut PreviousActiveBossbars>),
+        Changed<ActiveBossbars>,
+    >,
     bossbar_q: Query<
         (
             &Uuid,
@@ -30,7 +38,7 @@ pub fn send_bossbar(
     >,
     mut boss_event_pw: MessageWriter<ClientboundBossEvent>,
 ) {
-    for (player_entity, active_bossbars) in active_bossbars_q {
+    for (player_entity, active_bossbars, previous_active_bossbars) in active_bossbars_q {
         for bossbar_entity in active_bossbars.0.clone() {
             let (uuid, title, health, color, division, darkens_sky, is_dragon, creates_fog) =
                 bossbar_q.get(bossbar_entity).unwrap();
@@ -47,6 +55,13 @@ pub fn send_bossbar(
                     creates_fog: creates_fog.clone(),
                 },
             });
+        }
+        if let Some(mut previous_active_bossbars) = previous_active_bossbars {
+            previous_active_bossbars.0 = active_bossbars.clone();
+        } else {
+            commands
+                .entity(player_entity)
+                .insert(PreviousActiveBossbars(active_bossbars.clone()));
         }
     }
 }
