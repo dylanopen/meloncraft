@@ -3,11 +3,12 @@ use bevy::ecs::entity::Entity;
 use bevy::ecs::message::{MessageReader, MessageWriter};
 use bevy::ecs::schedule::IntoScheduleConfigs as _;
 use bevy::ecs::system::{Commands, Query};
-use bevy::math::{DVec3, IVec2};
+use bevy::math::{DVec3, IVec2, IVec3};
 use meloncraft_client::connection::ClientConnection;
 use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_core::Identifier;
 use meloncraft_core::game_event::GameEventType;
+use meloncraft_entity::position::current_chunk::CurrentChunk;
 use meloncraft_packets::ServerboundAcknowledgeFinishConfiguration;
 use meloncraft_packets::{
     ClientboundGameEvent, ClientboundPlayLogin, ClientboundSetCenterChunk,
@@ -116,14 +117,13 @@ fn game_event_player_info_update(
 }
 
 fn send_chunks(
+    mut commands: Commands,
     mut game_event_pr: MessageReader<ClientboundGameEvent>,
     mut chunk_request_mw: MessageWriter<ChunkRequest>,
-    mut set_center_chunk_pw: MessageWriter<ClientboundSetCenterChunk>,
 ) {
     for packet in game_event_pr.read() {
-        set_center_chunk_pw.write(ClientboundSetCenterChunk {
-            client: packet.client,
-            chunk_pos: IVec2::new(0, 0),
+        commands.entity(packet.client).insert(CurrentChunk {
+            location: IVec3::new(0, 0, 0),
         });
 
         for z in -4..=4 {

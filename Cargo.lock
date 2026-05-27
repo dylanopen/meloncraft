@@ -981,6 +981,7 @@ version = "0.1.0"
 dependencies = [
  "bevy",
  "meloncraft_entity",
+ "meloncraft_logger",
 ]
 
 [[package]]
@@ -1000,6 +1001,7 @@ dependencies = [
  "meloncraft_chunk",
  "meloncraft_client",
  "meloncraft_core",
+ "meloncraft_entity",
  "meloncraft_packets",
  "meloncraft_player",
  "meloncraft_protocol_types",
