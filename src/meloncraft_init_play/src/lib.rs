@@ -121,12 +121,16 @@ fn send_chunks(
     mut chunk_request_mw: MessageWriter<ChunkRequest>,
 ) {
     for packet in game_event_pr.read() {
+        if packet.event != GameEventType::WaitForChunks {
+            continue;
+        }
         commands.entity(packet.client).insert(CurrentChunk {
             location: IVec3::new(0, 0, 0),
         });
 
-        for z in -1..=1 {
-            for x in -1..=1 {
+        for z in -12..=12 {
+            for x in -12..=12 {
+                dbg!();
                 chunk_request_mw.write(ChunkRequest {
                     client: packet.client,
                     chunk_pos: IVec2::new(x, z),

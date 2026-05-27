@@ -12,7 +12,7 @@ use bevy::ecs::component::Component;
 /// - Some packets, such as the `ClientboundGameEvent` packet, represent it as an `f32`.
 /// - `From` is implemented bidirectionally for both `u8` and `f32`.
 /// - See the individual variants to find the number associated with each game mode.
-#[derive(Component, Debug, Clone, Copy)]
+#[derive(Component, Debug, Clone, Copy, PartialEq, Eq)]
 pub enum GameMode {
     /// Represents the `Survival` game mode for a player.
     /// Survival mode has the ID `0` or `0.0` in packets.
