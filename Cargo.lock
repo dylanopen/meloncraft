@@ -830,6 +830,8 @@ name = "meloncraft_bossbar"
 version = "0.1.0"
 dependencies = [
  "bevy",
+ "meloncraft_entity",
+ "meloncraft_text",
 ]
 
 [[package]]
