@@ -2,7 +2,7 @@ use bevy::ecs::change_detection::DetectChanges as _;
 use bevy::ecs::component::Component;
 use bevy::ecs::entity::Entity;
 use bevy::ecs::message::MessageWriter;
-use bevy::ecs::query::{Changed, With};
+use bevy::ecs::query::{Changed, Or, With};
 use bevy::ecs::system::{Commands, Query};
 use bevy::ecs::world::Ref;
 use meloncraft_bossbar::active::ActiveBossbars;
@@ -157,7 +157,7 @@ pub fn send_bossbar_update_on_change_style(
             &BossbarMarker,
             Ref<BossbarMarker>,
         ),
-        Changed<BossbarDivision>,
+        Or<(Changed<BossbarDivision>, Changed<BossbarColor>)>,
     >,
     active_bossbars_q: Query<(Entity, &ActiveBossbars)>,
     mut boss_event_pw: MessageWriter<ClientboundBossEvent>,
@@ -175,6 +175,47 @@ pub fn send_bossbar_update_on_change_style(
                 action: BossEventAction::UpdateStyle {
                     new_color: color.clone(),
                     new_division: division.clone(),
+                },
+            });
+        }
+    }
+}
+
+#[expect(clippy::type_complexity, reason = "Simplest way to do a query")]
+pub fn send_bossbar_update_on_change_flags(
+    bossbar_q: Query<
+        (
+            Entity,
+            &Uuid,
+            &BossbarDarkensSky,
+            &BossbarIsDragon,
+            &BossbarCreatesFog,
+            &BossbarMarker,
+            Ref<BossbarMarker>,
+        ),
+        Or<(
+            Changed<BossbarDarkensSky>,
+            Changed<BossbarIsDragon>,
+            Changed<BossbarCreatesFog>,
+        )>,
+    >,
+    active_bossbars_q: Query<(Entity, &ActiveBossbars)>,
+    mut boss_event_pw: MessageWriter<ClientboundBossEvent>,
+) {
+    for (bossbar_entity, uuid, darkens_sky, is_dragon, creates_fog, _, _) in
+        bossbar_q.iter().filter(|r| return !r.6.is_added())
+    {
+        for (player_entity, active_bossbars) in active_bossbars_q {
+            if !active_bossbars.0.contains(&bossbar_entity) {
+                continue;
+            }
+            boss_event_pw.write(ClientboundBossEvent {
+                client: player_entity,
+                uuid: uuid.clone(),
+                action: BossEventAction::UpdateFlags {
+                    new_darkens_sky: darkens_sky.clone(),
+                    new_is_dragon: is_dragon.clone(),
+                    new_creates_fog: creates_fog.clone(),
                 },
             });
         }
