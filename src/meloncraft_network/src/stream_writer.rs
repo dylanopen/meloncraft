@@ -91,11 +91,11 @@ pub fn write_streams(
                 err
             );
         }
-        tracelog!(
-            "Sent packet with ID {} to client with IP {}. Size: {}",
-            packet.id,
-            connection.address,
-            packet_body_len
-        );
+        //tracelog!(
+        //"Sent packet with ID {} to client with IP {}. Size: {}",
+        //packet.id,
+        //connection.address,
+        //packet_body_len
+        //);
     }
 }
