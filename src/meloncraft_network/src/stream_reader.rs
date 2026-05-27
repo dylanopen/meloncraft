@@ -93,12 +93,12 @@ pub fn read_streams(
             };
             let packet_id = packet_id.0;
 
-            tracelog!(
-                "Packet {} received from {}. Bytes: {:x?}",
-                packet_id,
-                connection.address,
-                &packet_bytes
-            );
+            //tracelog!(
+            //    "Packet {} received from {}. Bytes: {:x?}",
+            //    packet_id,
+            //    connection.address,
+            //    &packet_bytes
+            //);
 
             serverbound_pw.write(ServerboundNetworkPacketReceived {
                 packet: ServerboundNetworkPacket {

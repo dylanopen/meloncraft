@@ -90,6 +90,9 @@ pub struct ClientConnection {
     ///   systems need time to react and change the `ConnectionState`.
     /// - See the `read_streams` system in the network crate for more details.
     pub serverbound_packets_processed: usize,
+    // /// A buffer storing any extra bytes that couldn't be sent to the client on that tick, because
+    // /// the system's buffer size was exceeded.
+    // pub packet_queue: Vec<u8>,
 }
 
 impl Clone for ClientConnection {
@@ -99,6 +102,7 @@ impl Clone for ClientConnection {
             state: self.state,
             address: self.address,
             serverbound_packets_processed: self.serverbound_packets_processed,
+            //packet_queue: Vec::new(),
         };
     }
 }

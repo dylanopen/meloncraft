@@ -28,6 +28,7 @@ pub fn handle_new_clients(mut commands: Commands, listener: Res<NewClientListene
             address,
             tcp_stream,
             serverbound_packets_processed: 0,
+            //packet_queue: Vec::new(),
         });
     }
 }

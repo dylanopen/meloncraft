@@ -130,7 +130,6 @@ fn send_chunks(
 
         for z in -12..=12 {
             for x in -12..=12 {
-                dbg!();
                 chunk_request_mw.write(ChunkRequest {
                     client: packet.client,
                     chunk_pos: IVec2::new(x, z),

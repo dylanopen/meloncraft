@@ -39,7 +39,7 @@ pub fn write_streams(
                 match connection.tcp_stream.write(chunk.get(offset..).unwrap()) {
                     Ok(0) => {
                         errorlog!(
-                            "Write returned 0 bytes for packet {} to client {}. Connection may be closed.",
+                            "Write returned 0 bytes for packet {} to client {}, the connection might be closed.",
                             packet.id,
                             connection.address
                         );
@@ -50,11 +50,10 @@ pub fn write_streams(
                         offset += n;
                     }
                     Err(e) if e.kind() == ErrorKind::WouldBlock => {
-                        // Buffer full — spin until ready
-                        spin_loop();
+                        spin_loop(); // buffer full, so we'll block until ready (not ideal!)
                     }
                     Err(e) if e.kind() == ErrorKind::Interrupted => {
-                        // EINTR — retry immediately
+                        // just try again
                     }
                     Err(e) => {
                         errorlog!(
@@ -72,6 +71,17 @@ pub fn write_streams(
                 break;
             }
         }
+
+        /*match connection.tcp_stream.write(&packet_bytes) {
+            Ok(n) if n != packet_bytes.len() => {
+                connection.packet_queue.extend_from_slice(packet_bytes.get(n..).unwrap());
+            }
+            Err(err) if err.kind() == ErrorKind::WouldBlock => {
+                connection.packet_queue.extend(packet_bytes);
+                continue;
+            },
+            _ => {},
+        }*/
 
         if let Err(err) = connection.tcp_stream.flush() {
             errorlog!(
