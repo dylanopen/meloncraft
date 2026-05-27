@@ -55,8 +55,6 @@ meloncraft_resource_forwarding = { path = "src/meloncraft_resource_forwarding" }
 meloncraft_component_forwarding = { path = "src/meloncraft_component_forwarding" }
 meloncraft_bossbar = { path = "src/meloncraft_bossbar" }
 
-lazy_static = "1.5.0"
-
 [dependencies]
 meloncraft_protocol_types = { workspace = true }
 meloncraft_network = { workspace = true }
@@ -114,7 +112,7 @@ invalid_codeblock_attributes = "forbid"
 
 # Cargo lints:
 cargo_common_metadata = "allow" # Later in development, we'll require all crates to have full metadata added.
-multiple_crate_versions = "allow" # Meloncraft has two dependencies: bevy and lazy_static, which require different versions of certain crates. Unavoidable for now.
+multiple_crate_versions = "forbid"
 negative_feature_names = "forbid"
 redundant_feature_names = "forbid"
 wildcard_dependencies = "forbid"
@@ -460,7 +458,7 @@ needless_pass_by_value = "allow" # Unfortunately, Bevy `Res` needs to be taken a
 needless_raw_string_hashes = "forbid"
 no_effect_underscore_binding = "forbid"
 no_mangle_with_rust_abi = "forbid"
-non_std_lazy_statics = "deny" # We use lazy_static! for storing the network packet buffers. These will be replaced with standard library types very soon, and this lint will then be forbidden. **Must not be manually expected in any future code**.
+non_std_lazy_statics = "forbid"
 nonminimal_bool = "forbid"
 option_as_ref_cloned = "forbid"
 option_option = "forbid"
