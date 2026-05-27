@@ -27,3 +27,4 @@ pub use meloncraft_server_list as server_list;
 pub use meloncraft_text as text;
 pub use meloncraft_world as world;
 pub use meloncraft_world_manager as world_manager;
+pub use meloncraft_bossbar as bossbar;
