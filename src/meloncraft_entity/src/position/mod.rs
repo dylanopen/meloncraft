@@ -3,6 +3,7 @@
 use bevy::ecs::component::Component;
 use bevy::math::DVec3;
 
+pub mod current_chunk;
 pub mod flags;
 pub mod last;
 pub mod moved;
