@@ -15,11 +15,14 @@
 //! logic, etc. are fine but only if they operate on the datatype itself, and not on any external
 //! state or external mutable parameters).
 
+pub mod ability;
 pub mod action_status;
 pub mod allow_player_listings;
 pub mod chat_colors;
 pub mod chat_mode;
+pub mod client_action;
 pub mod displayed_skin_parts;
+pub mod experience;
 pub mod game_profile;
 pub mod locale;
 pub mod main_hand;
@@ -29,9 +32,6 @@ pub mod plugin;
 pub mod text_filtering;
 pub mod username;
 pub mod view_distance;
-pub mod ability;
-pub mod client_action;
-pub mod experience;
 
 pub use ability::*;
 pub use action_status::PlayerActionStatus;
