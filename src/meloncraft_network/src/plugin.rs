@@ -3,6 +3,7 @@ use std::net::TcpListener;
 use bevy::app::{App, Plugin, PreUpdate};
 
 use crate::listener::{self, NewClientListener};
+use crate::stream_reader;
 
 pub struct MeloncraftNetworkPlugin;
 
@@ -12,5 +13,6 @@ impl Plugin for MeloncraftNetworkPlugin {
         tcp_listener.set_nonblocking(true).unwrap();
         app.insert_resource(NewClientListener(tcp_listener));
         app.add_systems(PreUpdate, listener::handle_new_clients);
+        app.add_systems(PreUpdate, stream_reader::read_streams);
     }
 }
