@@ -2,6 +2,8 @@
 
 use bevy::ecs::bundle::Bundle;
 use meloncraft_entity::health::current::CurrentHealth;
+use meloncraft_nbt::NbtString;
+use meloncraft_text::NbtText;
 
 use crate::color::BossbarColor;
 use crate::division::BossbarDivision;
@@ -20,3 +22,20 @@ pub struct BossbarBundle {
     pub is_dragon: BossbarIsDragon,
     pub creates_fog: BossbarCreatesFog,
 }
+
+impl Default for BossbarBundle {
+    fn default() -> Self {
+        return BossbarBundle {
+            marker: BossbarMarker,
+            health: CurrentHealth(1.0),
+            title: BossbarTitle(NbtText::Plain(NbtString("Bossbar".to_owned()))),
+            color: BossbarColor::Red,
+            division: BossbarDivision::DividedInto6,
+            darkens_sky: BossbarDarkensSky(false),
+            is_dragon: BossbarIsDragon(false),
+            creates_fog: BossbarCreatesFog(false),
+        };
+    }
+}
+
+impl BossbarBundle {}
