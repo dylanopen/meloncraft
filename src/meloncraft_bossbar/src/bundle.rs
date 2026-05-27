@@ -38,4 +38,22 @@ impl Default for BossbarBundle {
     }
 }
 
-impl BossbarBundle {}
+impl BossbarBundle {
+    #[must_use]
+    pub fn with_title(mut self, title: BossbarTitle) -> BossbarBundle {
+        self.title = title;
+        return self;
+    }
+
+    #[must_use]
+    pub const fn with_health(mut self, health: CurrentHealth) -> BossbarBundle {
+        self.health = health;
+        return self;
+    }
+
+    #[must_use]
+    pub const fn with_color(mut self, color: BossbarColor) -> BossbarBundle {
+        self.color = color;
+        return self;
+    }
+}
