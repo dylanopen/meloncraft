@@ -5,7 +5,8 @@ edition = "2024"
 license.workspace = true
 
 [dependencies]
-bevy = { workspace = true }
+meloncraft_core.workspace = true
+bevy.workspace = true
 
 [lints]
 workspace = true

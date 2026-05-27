@@ -24,5 +24,6 @@ pub mod online_players;
 pub mod plugin;
 pub mod tick;
 pub mod time;
+pub mod weather_intensity;
 pub mod world_border;
 pub mod world_spawn;

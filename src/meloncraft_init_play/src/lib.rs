@@ -11,8 +11,7 @@ use meloncraft_core::game_event::GameEventType;
 use meloncraft_entity::position::current_chunk::CurrentChunk;
 use meloncraft_packets::ServerboundAcknowledgeFinishConfiguration;
 use meloncraft_packets::{
-    ClientboundGameEvent, ClientboundPlayLogin, ClientboundSetCenterChunk,
-    ClientboundSynchronizePlayerPosition,
+    ClientboundGameEvent, ClientboundPlayLogin, ClientboundSynchronizePlayerPosition,
 };
 use meloncraft_player::PlayerMarker;
 use meloncraft_protocol_types::PrefixedArray;
