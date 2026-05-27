@@ -2,7 +2,7 @@
 
 use bevy::app::{App, Plugin, Update};
 
-use crate::{data, difficulty, ticking, time, world_border, world_spawn};
+use crate::{data, difficulty, ticking, time, weather_intensity, world_border, world_spawn};
 
 /// Registers systems to send resources to clients in packets, when the resources change or players
 /// join.
@@ -48,5 +48,10 @@ impl Plugin for MeloncraftResourceForwardingPlugin {
 
         app.add_systems(Update, data::send_server_data_on_join);
         app.add_systems(Update, data::send_server_data_on_change_motd);
+
+        app.add_systems(Update, weather_intensity::send_rain_on_join);
+        //app.add_systems(Update, weather_intensity::send_rain_on_change);
+        //app.add_systems(Update, weather_intensity::send_thunder_on_join);
+        //app.add_systems(Update, weather_intensity::send_thunder_on_change);
     }
 }
