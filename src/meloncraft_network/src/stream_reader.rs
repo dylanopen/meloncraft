@@ -4,6 +4,7 @@ use bevy::ecs::entity::Entity;
 use bevy::ecs::message::MessageWriter;
 use bevy::ecs::system::Query;
 use meloncraft_client::connection::ClientConnection;
+use meloncraft_client::connection_state::ConnectionState;
 use meloncraft_logger::{errorlog, tracelog};
 use meloncraft_packets::network_messages::{
     ServerboundNetworkPacket, ServerboundNetworkPacketReceived,
@@ -13,10 +14,10 @@ use meloncraft_protocol_types::{ProtocolType as _, VarInt};
 const VARINT_CONTINUE_BIT: u8 = 0b1000_0000;
 
 pub fn read_streams(
-    connection_q: Query<(Entity, &ClientConnection)>,
+    connection_q: Query<(Entity, &mut ClientConnection)>,
     mut serverbound_pw: MessageWriter<ServerboundNetworkPacketReceived>,
 ) {
-    for (client, connection) in connection_q {
+    for (client, mut connection) in connection_q {
         let Ok(mut stream) = connection.tcp_stream.try_clone() else {
             errorlog!("Failed to clone TcpStream for a client.");
             // TODO: maybe we should remove the client's connection?
@@ -24,7 +25,18 @@ pub fn read_streams(
         };
 
         'packets: loop {
-            // First, we get the length of the total packet, which we'll set as the packet_bytes size
+            // First, check if the client's connection state is `Handshaking`. If so, we only
+            // process the packet if it's the first packet the client has ever sent.
+            // Otherwise, we ignore it, because we want the server to process the handshake before
+            // we try to read the next packet (as otherwise we'll read the packet in the wrong
+            // state, causing a crash).
+            if connection.serverbound_packets_processed != 0
+                && connection.state == ConnectionState::Handshaking
+            {
+                break;
+            }
+
+            // Then, we get the length of the total packet, which we'll set as the packet_bytes size
             // later. This is a VarInt, and as we don't have it as a byte-array yet (but a stream that
             // we don't know the size of), we'll have to check the continue bits here instead of using
             // the VarInt's net_deserialize() trait impl method.
@@ -61,7 +73,7 @@ pub fn read_streams(
             let mut packet_bytes = vec![0_u8; length_usize];
             if let Err(err) = stream.read_exact(&mut packet_bytes) {
                 errorlog!(
-                    "Couldn't read {length} bytes from client {}: maybe the client sent an incorrect packet? We'll ignore the packet for now.",
+                    "Couldn't read {length} bytes from client {}: maybe the client sent an incorrect packet? We'll ignore the packet for now. Error: {err}",
                     connection.address
                 );
                 // TODO: maybe we should remove the client's connection?
@@ -97,6 +109,8 @@ pub fn read_streams(
                     state: connection.state,
                 },
             });
+
+            connection.serverbound_packets_processed += 1;
         }
     }
 }
