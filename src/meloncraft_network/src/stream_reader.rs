@@ -110,6 +110,11 @@ pub fn read_streams(
                 },
             });
 
+            // move to the Configuration state upon receiving LoginAcknowledged (0x03) packet
+            if packet_id == 0x03 && connection.state == ConnectionState::Login {
+                connection.state = ConnectionState::Configuration;
+            }
+
             connection.serverbound_packets_processed += 1;
         }
     }

@@ -82,7 +82,7 @@ fn sync_position(
     for login_packet in login_play_pr.read() {
         synchronize_player_position_pw.write(ClientboundSynchronizePlayerPosition {
             client: login_packet.client,
-            position: DVec3::new(42.0, 64.0, -42.0),
+            position: DVec3::new(0.0, 64.0, 0.0),
             velocity: DVec3::ZERO,
             yaw: 0.0,
             pitch: 0.0,
@@ -125,8 +125,8 @@ fn send_chunks(
             location: IVec3::new(0, 0, 0),
         });
 
-        for z in -4..=4 {
-            for x in -4..=4 {
+        for z in -1..=1 {
+            for x in -1..=1 {
                 chunk_request_mw.write(ChunkRequest {
                     client: packet.client,
                     chunk_pos: IVec2::new(x, z),
