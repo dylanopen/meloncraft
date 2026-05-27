@@ -1,7 +1,7 @@
 //! Module for struct component [`Uuid`].
 
 use bevy::ecs::component::Component;
-use rand::RngExt;
+use rand::RngExt as _;
 
 /// The *universally unique identifier* (`UUID`) defining the entity.
 /// Every entity (including players) will have a UUID.
