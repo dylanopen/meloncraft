@@ -114,3 +114,33 @@ pub fn send_bossbar_update_on_change_health(
         }
     }
 }
+
+#[expect(clippy::type_complexity, reason = "Simplest way to do a query")]
+pub fn send_bossbar_update_on_change_title(
+    bossbar_q: Query<
+        (
+            Entity,
+            &Uuid,
+            &BossbarTitle,
+            &BossbarMarker,
+            Ref<CurrentHealth>,
+        ),
+        Changed<CurrentHealth>,
+    >,
+    active_bossbars_q: Query<(Entity, &ActiveBossbars)>,
+    mut boss_event_pw: MessageWriter<ClientboundBossEvent>,
+) {
+    for (bossbar_entity, uuid, title, _, _) in bossbar_q.iter().filter(|r| return !r.4.is_added())
+    {
+        for (player_entity, active_bossbars) in active_bossbars_q {
+            if !active_bossbars.0.contains(&bossbar_entity) {
+                continue;
+            }
+            boss_event_pw.write(ClientboundBossEvent {
+                client: player_entity,
+                uuid: uuid.clone(),
+                action: BossEventAction::UpdateTitle { new_title: title.clone() },
+            });
+        }
+    }
+}
