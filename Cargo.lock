@@ -1150,6 +1150,7 @@ name = "meloncraft_server_info"
 version = "0.1.0"
 dependencies = [
  "bevy",
+ "meloncraft_core",
 ]
 
 [[package]]
