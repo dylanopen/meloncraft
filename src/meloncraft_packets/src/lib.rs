@@ -16,10 +16,15 @@ pub use serverbound_packet::ServerboundPacket;
 pub use clientbound::*;
 pub use serverbound::*;
 
+use self::network_messages::{ClientboundNetworkPacketReceived, ServerboundNetworkPacketReceived};
+
 pub struct MeloncraftPacketsPlugin;
 
 impl Plugin for MeloncraftPacketsPlugin {
     fn build(&self, app: &mut App) {
+        app.add_message::<ServerboundNetworkPacketReceived>();
+        app.add_message::<ClientboundNetworkPacketReceived>();
+
         register_serverbound_handshaking_packets(app);
         register_serverbound_status_packets(app);
         register_serverbound_login_packets(app);

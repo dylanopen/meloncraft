@@ -8,9 +8,9 @@ pub struct MeloncraftNetworkPlugin;
 
 impl Plugin for MeloncraftNetworkPlugin {
     fn build(&self, app: &mut App) {
-        app.insert_resource(NewClientListener(
-            TcpListener::bind("127.0.0.1:25565").unwrap(),
-        ));
+        let tcp_listener = TcpListener::bind("127.0.0.1:25565").unwrap();
+        tcp_listener.set_nonblocking(true).unwrap();
+        app.insert_resource(NewClientListener(tcp_listener));
         app.add_systems(PreUpdate, listener::handle_new_clients);
     }
 }
