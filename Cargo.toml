@@ -112,7 +112,7 @@ invalid_codeblock_attributes = "forbid"
 
 # Cargo lints:
 cargo_common_metadata = "allow" # Later in development, we'll require all crates to have full metadata added.
-multiple_crate_versions = "forbid"
+multiple_crate_versions = "allow" # Bevy seems to need this?!
 negative_feature_names = "forbid"
 redundant_feature_names = "forbid"
 wildcard_dependencies = "forbid"
@@ -458,7 +458,7 @@ needless_pass_by_value = "allow" # Unfortunately, Bevy `Res` needs to be taken a
 needless_raw_string_hashes = "forbid"
 no_effect_underscore_binding = "forbid"
 no_mangle_with_rust_abi = "forbid"
-non_std_lazy_statics = "forbid"
+non_std_lazy_statics = "forbid" 
 nonminimal_bool = "forbid"
 option_as_ref_cloned = "forbid"
 option_option = "forbid"
