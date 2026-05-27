@@ -1,4 +1,4 @@
-use bevy::ecs::change_detection::DetectChanges;
+use bevy::ecs::change_detection::DetectChanges as _;
 use bevy::ecs::entity::Entity;
 use bevy::ecs::message::MessageWriter;
 use bevy::ecs::query::{Added, With};
@@ -64,6 +64,22 @@ pub fn send_thunder_on_join(
     thunder_intensity: Res<ThunderIntensity>,
     mut game_event_pw: MessageWriter<ClientboundGameEvent>,
 ) {
+    for player in player_q {
+        game_event_pw.write(ClientboundGameEvent {
+            client: player,
+            event: GameEventType::ThunderLevelChange(thunder_intensity.0.clone()),
+        });
+    }
+}
+
+pub fn send_thunder_on_change(
+    player_q: Query<Entity, With<PlayerMarker>>,
+    thunder_intensity: Res<ThunderIntensity>,
+    mut game_event_pw: MessageWriter<ClientboundGameEvent>,
+) {
+    if !thunder_intensity.is_changed() {
+        return;
+    }
     for player in player_q {
         game_event_pw.write(ClientboundGameEvent {
             client: player,

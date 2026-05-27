@@ -52,6 +52,6 @@ impl Plugin for MeloncraftResourceForwardingPlugin {
         app.add_systems(Update, weather_intensity::send_rain_on_join);
         app.add_systems(Update, weather_intensity::send_rain_on_change);
         app.add_systems(Update, weather_intensity::send_thunder_on_join);
-        //app.add_systems(Update, weather_intensity::send_thunder_on_change);
+        app.add_systems(Update, weather_intensity::send_thunder_on_change);
     }
 }
