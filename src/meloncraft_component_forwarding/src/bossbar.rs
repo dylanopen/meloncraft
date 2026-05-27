@@ -11,13 +11,13 @@ use meloncraft_bossbar::marker::BossbarMarker;
 use meloncraft_bossbar::title::BossbarTitle;
 use meloncraft_entity::Uuid;
 use meloncraft_entity::health::current::CurrentHealth;
-use meloncraft_packets::ClientboundBossEvent;
+use meloncraft_packets::{BossEventAction, ClientboundBossEvent};
 
 #[derive(Component, Debug, Clone)]
 pub struct PreviousActiveBossbars(pub ActiveBossbars);
 
 #[expect(clippy::type_complexity, reason = "Simplest way to do a query")]
-pub fn send_bossbar(
+pub fn send_bossbar_on_change_active(
     mut commands: Commands,
     active_bossbars_q: Query<
         (Entity, &ActiveBossbars, Option<&mut PreviousActiveBossbars>),
@@ -40,6 +40,11 @@ pub fn send_bossbar(
 ) {
     for (player_entity, active_bossbars, previous_active_bossbars) in active_bossbars_q {
         for bossbar_entity in active_bossbars.0.clone() {
+            if let Some(previous_active_bossbars) = &previous_active_bossbars
+                && previous_active_bossbars.0.0.contains(&bossbar_entity)
+            {
+                continue; // don't add it if they already had the bossbar before
+            }
             let (uuid, title, health, color, division, darkens_sky, is_dragon, creates_fog) =
                 bossbar_q.get(bossbar_entity).unwrap();
             boss_event_pw.write(ClientboundBossEvent {
@@ -57,6 +62,16 @@ pub fn send_bossbar(
             });
         }
         if let Some(mut previous_active_bossbars) = previous_active_bossbars {
+            for previous_active_bossbar in previous_active_bossbars.0.0.clone() {
+                if !active_bossbars.0.contains(&previous_active_bossbar) {
+                    let uuid = bossbar_q.get(previous_active_bossbar).unwrap().0;
+                    boss_event_pw.write(ClientboundBossEvent {
+                        client: player_entity,
+                        uuid: uuid.clone(),
+                        action: BossEventAction::Remove,
+                    });
+                }
+            }
             previous_active_bossbars.0 = active_bossbars.clone();
         } else {
             commands

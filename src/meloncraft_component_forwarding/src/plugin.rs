@@ -16,6 +16,6 @@ impl Plugin for MeloncraftComponentForwardingPlugin {
         app.add_systems(Update, health::send_health);
         app.add_systems(Update, abilities::send_player_abilities);
         app.add_systems(Update, experience::send_player_experience);
-        app.add_systems(Update, bossbar::send_bossbar);
+        app.add_systems(Update, bossbar::send_bossbar_on_change_active);
     }
 }
