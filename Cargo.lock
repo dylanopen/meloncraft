@@ -925,6 +925,11 @@ name = "meloncraft_chat_broadcasting"
 version = "0.1.0"
 dependencies = [
  "bevy",
+ "meloncraft_chat",
+ "meloncraft_logger",
+ "meloncraft_nbt",
+ "meloncraft_player",
+ "meloncraft_text",
 ]
 
 [[package]]
