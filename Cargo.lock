@@ -923,6 +923,9 @@ dependencies = [
 [[package]]
 name = "meloncraft_chat_broadcasting"
 version = "0.1.0"
+dependencies = [
+ "bevy",
+]
 
 [[package]]
 name = "meloncraft_chunk"
