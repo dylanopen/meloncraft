@@ -4,7 +4,7 @@ use std::io::{ErrorKind, Write as _};
 use bevy::ecs::message::MessageReader;
 use bevy::ecs::system::Query;
 use meloncraft_client::connection::ClientConnection;
-use meloncraft_logger::{errorlog, tracelog};
+use meloncraft_logger::errorlog;
 use meloncraft_packets::network_messages::ClientboundNetworkPacketReceived;
 use meloncraft_protocol_types::{ProtocolType as _, VarInt};
 
