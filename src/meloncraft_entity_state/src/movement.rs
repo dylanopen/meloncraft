@@ -70,11 +70,6 @@ pub fn edit_current_chunk(
             .get_mut(entity_moved.entity)
             .unwrap()
             .location = new_chunk;
-        tracelog!(
-            "Updated CurrentChunk for {} to {}",
-            entity_moved.entity,
-            new_chunk
-        );
     }
 }
 
