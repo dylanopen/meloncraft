@@ -1,5 +1,8 @@
 use bevy::app::{App, Plugin};
 
+use crate::send::SendChatMessage;
+use crate::sent::PlayerSentChatMessage;
+
 /// This plugin initializes messages related to player chat messages.
 ///
 /// You may want to forward these messages to/from packets (see the `packet_forwarding` crate), or
@@ -7,5 +10,8 @@ use bevy::app::{App, Plugin};
 pub struct MeloncraftChatPlugin;
 
 impl Plugin for MeloncraftChatPlugin {
-    fn build(&self, app: &mut App) {}
+    fn build(&self, app: &mut App) {
+        app.add_message::<PlayerSentChatMessage>();
+        app.add_message::<SendChatMessage>();
+    }
 }
