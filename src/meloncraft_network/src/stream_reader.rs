@@ -5,7 +5,7 @@ use bevy::ecs::message::MessageWriter;
 use bevy::ecs::system::Query;
 use meloncraft_client::connection::ClientConnection;
 use meloncraft_client::connection_state::ConnectionState;
-use meloncraft_logger::{errorlog, tracelog};
+use meloncraft_logger::errorlog;
 use meloncraft_packets::network_messages::{
     ServerboundNetworkPacket, ServerboundNetworkPacketReceived,
 };
