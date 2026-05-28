@@ -8,7 +8,6 @@ use meloncraft_entity::position::current_chunk::CurrentChunk;
 use meloncraft_entity::position::last::LastEntityPosition;
 use meloncraft_entity::position::moved::EntityMoved;
 use meloncraft_entity::position::teleport::TeleportEntity;
-use meloncraft_logger::tracelog;
 
 pub fn save_old_location(mut entity_moved_mr: MessageReader<EntityMoved>, mut commands: Commands) {
     for entity_moved in entity_moved_mr.read() {
