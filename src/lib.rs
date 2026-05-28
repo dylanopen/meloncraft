@@ -1,6 +1,7 @@
 pub use meloncraft_block as block;
 pub use meloncraft_block_breaking as block_breaking;
 pub use meloncraft_bossbar as bossbar;
+pub use meloncraft_chat as chat;
 pub use meloncraft_chunk as chunk;
 pub use meloncraft_client as client;
 pub use meloncraft_command as command;
