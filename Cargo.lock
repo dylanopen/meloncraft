@@ -916,6 +916,7 @@ name = "meloncraft_chat"
 version = "0.1.0"
 dependencies = [
  "bevy",
+ "meloncraft_text",
 ]
 
 [[package]]

@@ -6,6 +6,7 @@ license.workspace = true
 
 [dependencies]
 bevy.workspace = true
+meloncraft_text.workspace = true
 
 [lints]
 workspace = true
