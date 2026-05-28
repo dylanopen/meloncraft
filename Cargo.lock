@@ -857,6 +857,7 @@ dependencies = [
  "meloncraft_block_breaking",
  "meloncraft_bossbar",
  "meloncraft_chat",
+ "meloncraft_chat_broadcasting",
  "meloncraft_chunk",
  "meloncraft_client",
  "meloncraft_command",
@@ -918,6 +919,10 @@ dependencies = [
  "bevy",
  "meloncraft_text",
 ]
+
+[[package]]
+name = "meloncraft_chat_broadcasting"
+version = "0.1.0"
 
 [[package]]
 name = "meloncraft_chunk"

@@ -23,7 +23,7 @@ pub struct ClientboundSystemChat {
 
 impl ClientboundPacket for ClientboundSystemChat {
     fn id() -> i32 {
-        return 0x54;
+        return 0x77;
     }
 
     fn state() -> ConnectionState {
@@ -36,5 +36,6 @@ impl ClientboundPacket for ClientboundSystemChat {
 
     fn data(&self, data: &mut Vec<u8>) {
         data.extend(self.message.net_serialize());
+        data.extend(self.overlay.net_serialize());
     }
 }
