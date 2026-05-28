@@ -1,4 +1,4 @@
-use crate::{chat_command, intention, player_action};
+use crate::{chat_command, chat_message, intention, player_action};
 use bevy::app::{App, Plugin, Update};
 
 pub struct MeloncraftPacketForwardingPlugin;
@@ -9,6 +9,8 @@ impl Plugin for MeloncraftPacketForwardingPlugin {
         app.add_systems(Update, player_action::fwd_player_broke_block);
 
         app.add_systems(Update, intention::fwd_handshaken);
+
+        app.add_systems(Update, chat_message::fwd_player_sent);
 
         app.add_systems(Update, chat_command::fwd_raw_command);
     }
