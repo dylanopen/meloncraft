@@ -60,6 +60,9 @@ pub use set_time::ClientboundSetTime;
 mod set_experience;
 pub use set_experience::ClientboundSetExperience;
 
+mod system_chat;
+pub use system_chat::ClientboundSystemChat;
+
 mod boss_event;
 pub use boss_event::BossEventAction;
 pub use boss_event::ClientboundBossEvent;
@@ -127,6 +130,9 @@ pub fn register_clientbound_play_packets(app: &mut App) {
 
     app.add_message::<ClientboundSetExperience>();
     app.add_systems(PostUpdate, fwd::<ClientboundSetExperience>);
+
+    app.add_message::<ClientboundSystemChat>();
+    app.add_systems(PostUpdate, fwd::<ClientboundSystemChat>);
 
     app.add_message::<ClientboundBossEvent>();
     app.add_systems(PostUpdate, fwd::<ClientboundBossEvent>);
