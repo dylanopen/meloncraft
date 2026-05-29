@@ -856,6 +856,8 @@ dependencies = [
  "meloncraft_block",
  "meloncraft_block_breaking",
  "meloncraft_bossbar",
+ "meloncraft_chat",
+ "meloncraft_chat_broadcasting",
  "meloncraft_chunk",
  "meloncraft_client",
  "meloncraft_command",
@@ -907,6 +909,26 @@ dependencies = [
  "bevy",
  "meloncraft_entity",
  "meloncraft_nbt",
+ "meloncraft_text",
+]
+
+[[package]]
+name = "meloncraft_chat"
+version = "0.1.0"
+dependencies = [
+ "bevy",
+ "meloncraft_text",
+]
+
+[[package]]
+name = "meloncraft_chat_broadcasting"
+version = "0.1.0"
+dependencies = [
+ "bevy",
+ "meloncraft_chat",
+ "meloncraft_logger",
+ "meloncraft_nbt",
+ "meloncraft_player",
  "meloncraft_text",
 ]
 
@@ -1058,6 +1080,7 @@ version = "0.1.0"
 dependencies = [
  "bevy",
  "meloncraft_block",
+ "meloncraft_chat",
  "meloncraft_client",
  "meloncraft_command",
  "meloncraft_handshaking",

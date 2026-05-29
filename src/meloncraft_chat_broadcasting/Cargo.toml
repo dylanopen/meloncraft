@@ -1,0 +1,16 @@
+[package]
+name = "meloncraft_chat_broadcasting"
+version = "0.1.0"
+edition = "2024"
+license.workspace = true
+
+[dependencies]
+meloncraft_chat.workspace = true
+meloncraft_player.workspace = true
+meloncraft_logger.workspace = true
+meloncraft_nbt.workspace = true
+meloncraft_text.workspace = true
+bevy.workspace = true
+
+[lints]
+workspace = true

@@ -1,0 +1,12 @@
+[package]
+name = "meloncraft_chat"
+version = "0.1.0"
+edition = "2024"
+license.workspace = true
+
+[dependencies]
+bevy.workspace = true
+meloncraft_text.workspace = true
+
+[lints]
+workspace = true

@@ -27,6 +27,9 @@ pub use player_action::ServerboundPlayerAction;
 mod chat_command;
 pub use chat_command::ServerboundChatCommand;
 
+mod chat;
+pub use chat::ServerboundChat;
+
 pub fn register_serverbound_play_packets(app: &mut App) {
     use crate::serverbound_messenger::fwd;
     use bevy::app::PreUpdate;
@@ -57,4 +60,7 @@ pub fn register_serverbound_play_packets(app: &mut App) {
 
     app.add_message::<ServerboundChatCommand>();
     app.add_systems(PreUpdate, fwd::<ServerboundChatCommand>);
+
+    app.add_message::<ServerboundChat>();
+    app.add_systems(PreUpdate, fwd::<ServerboundChat>);
 }
