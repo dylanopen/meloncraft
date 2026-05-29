@@ -18,6 +18,7 @@
 pub mod ability;
 pub mod action_status;
 pub mod allow_player_listings;
+pub mod bundle;
 pub mod chat_colors;
 pub mod chat_mode;
 pub mod client_action;
@@ -36,6 +37,7 @@ pub mod view_distance;
 pub use ability::*;
 pub use action_status::PlayerActionStatus;
 pub use allow_player_listings::AllowPlayerListings;
+pub use bundle::LoadedPlayerBundle;
 pub use chat_colors::ChatColors;
 pub use chat_mode::ChatMode;
 pub use displayed_skin_parts::DisplayedSkinParts;
