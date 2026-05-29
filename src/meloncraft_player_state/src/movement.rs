@@ -3,6 +3,7 @@ use bevy::prelude::{MessageReader, MessageWriter, Query, With};
 use meloncraft_entity::position::EntityPosition;
 use meloncraft_entity::position::moved::EntityMoved;
 use meloncraft_entity::position::teleport::TeleportEntity;
+use meloncraft_logger::warnlog;
 use meloncraft_packets::{ClientboundSynchronizePlayerPosition, ServerboundSetPlayerPosition};
 use meloncraft_player::GameProfile;
 
@@ -21,19 +22,25 @@ pub fn fwd_player_moved(
     existing_positions: Query<&EntityPosition, With<GameProfile>>,
 ) {
     for packet in set_position_pr.read() {
-        let old_position = existing_positions.get(packet.client).map_or_else(
-            |_| return packet.position.clone(),
-            |old_position| return old_position.clone(),
-        );
+        let Ok(old_position) = existing_positions.get(packet.client) else {
+            warnlog!(
+                "Couldn't forward {}'s movement, as their old position was not defined. Please define the players movement when their PlayerMarker is added.",
+                packet.client
+            );
+            continue;
+        };
 
         // For now, we'll set the player's world to the world they were in last tick (as we
-        // don't have dimensions yet):
-        let mut new_position = packet.position.clone();
-        new_position.world = old_position.world;
+        // don't have dimensions yet anyway):
+        let new_position = EntityPosition {
+            location: packet.location,
+            world: old_position.world,
+            flags: packet.flags,
+        };
 
         player_moved_mw.write(EntityMoved {
             entity: packet.client,
-            old_position,
+            old_position: old_position.clone(),
             new_position,
         });
     }

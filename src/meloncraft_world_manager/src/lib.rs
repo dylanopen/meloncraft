@@ -1,4 +1,3 @@
-mod generator;
 pub mod marker;
 mod request_forwarding;
 mod sender;
