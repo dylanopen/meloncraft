@@ -1,10 +1,9 @@
 //! Packet forwarders for world border resources.
 
-use bevy::ecs::change_detection::DetectChanges as _;
 use bevy::ecs::entity::Entity;
 use bevy::ecs::message::MessageWriter;
 use bevy::ecs::query::{Added, Changed, With};
-use bevy::ecs::system::{Query, Res};
+use bevy::ecs::system::Query;
 use meloncraft_entity::position::EntityPosition;
 use meloncraft_packets::{
     ClientboundSetBorderCenter, ClientboundSetBorderSize, ClientboundSetBorderWarningDelay,
@@ -15,17 +14,13 @@ use meloncraft_player::marker::LoadedPlayer;
 use meloncraft_server_info::world_border::{
     WorldBorderCenter, WorldBorderDiameter, WorldBorderWarningDelay, WorldBorderWarningDistance,
 };
-use meloncraft_server_info::world_spawn::WorldSpawn;
-
 pub fn send_world_border_center_on_join(
     new_player_q: Query<(Entity, &EntityPosition), Added<LoadedPlayer>>,
     world_border_center_q: Query<&WorldBorderCenter>,
     mut set_border_center_pw: MessageWriter<ClientboundSetBorderCenter>,
 ) {
     for (client, player_position) in new_player_q {
-        let world_border_center = world_border_center_q
-            .get(player_position.world.unwrap())
-            .unwrap();
+        let world_border_center = world_border_center_q.get(player_position.world).unwrap();
         set_border_center_pw.write(ClientboundSetBorderCenter {
             client,
             center: world_border_center.clone(),
@@ -40,7 +35,7 @@ pub fn send_world_border_center_on_change(
 ) {
     for (border_world, new_border) in world_border_center_q {
         for (client, player_position) in player_q {
-            if Some(border_world) != player_position.world {
+            if border_world != player_position.world {
                 continue;
             }
             set_border_center_pw.write(ClientboundSetBorderCenter {
@@ -57,9 +52,7 @@ pub fn send_world_border_diameter_on_join(
     mut set_border_center_pw: MessageWriter<ClientboundSetBorderSize>,
 ) {
     for (client, player_position) in new_player_q {
-        let world_border_diameter = world_border_diameter_q
-            .get(player_position.world.unwrap())
-            .unwrap();
+        let world_border_diameter = world_border_diameter_q.get(player_position.world).unwrap();
         set_border_center_pw.write(ClientboundSetBorderSize {
             client,
             diameter: world_border_diameter.clone(),
@@ -74,7 +67,7 @@ pub fn send_world_border_diameter_on_change(
 ) {
     for (border_world, new_border) in world_border_diameter_q {
         for (client, player_position) in player_q {
-            if Some(border_world) != player_position.world {
+            if border_world != player_position.world {
                 continue;
             }
             set_border_diameter_pw.write(ClientboundSetBorderSize {
@@ -92,7 +85,7 @@ pub fn send_world_border_warning_delay_on_join(
 ) {
     for (client, player_position) in new_player_q {
         let world_border_warning_delay = world_border_warning_delay_q
-            .get(player_position.world.unwrap())
+            .get(player_position.world)
             .unwrap();
         set_border_warning_delay_pw.write(ClientboundSetBorderWarningDelay {
             client,
@@ -111,7 +104,7 @@ pub fn send_world_border_warning_delay_on_change(
 ) {
     for (border_world, new_border) in world_border_warning_delay_q {
         for (client, player_position) in player_q {
-            if Some(border_world) != player_position.world {
+            if border_world != player_position.world {
                 continue;
             }
             set_border_warning_delay_pw.write(ClientboundSetBorderWarningDelay {
@@ -129,7 +122,7 @@ pub fn send_world_border_warning_distance_on_join(
 ) {
     for (client, player_position) in new_player_q {
         let world_border_warning_distance = world_border_warning_distance_q
-            .get(player_position.world.unwrap())
+            .get(player_position.world)
             .unwrap();
         set_border_warning_distance_pw.write(ClientboundSetBorderWarningDistance {
             client,
@@ -148,7 +141,7 @@ pub fn send_world_border_warning_distance_on_change(
 ) {
     for (border_world, new_border) in world_border_warning_distance_q {
         for (client, player_position) in player_q {
-            if Some(border_world) != player_position.world {
+            if border_world != player_position.world {
                 continue;
             }
             set_border_warning_distance_pw.write(ClientboundSetBorderWarningDistance {

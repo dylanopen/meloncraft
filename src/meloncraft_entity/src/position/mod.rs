@@ -28,7 +28,7 @@ pub struct EntityPosition {
     pub location: DVec3,
 
     /// The entity which represents the world the entity is currently in.
-    pub world: Option<Entity>,
+    pub world: Entity,
 
     /// Extra metadata about the entity's position, such as whether the entity is on the ground or
     /// pushing against a wall. See [`EntityPositionFlags`] for more information about the flags
