@@ -25,10 +25,16 @@ pub fn fwd_player_moved(
             |_| return packet.position.clone(),
             |old_position| return old_position.clone(),
         );
+
+        // For now, we'll set the player's world to the world they were in last tick (as we
+        // don't have dimensions yet):
+        let mut new_position = packet.position.clone();
+        new_position.world = old_position.world;
+
         player_moved_mw.write(EntityMoved {
             entity: packet.client,
             old_position,
-            new_position: packet.position.clone(),
+            new_position,
         });
     }
 }

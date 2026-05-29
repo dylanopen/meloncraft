@@ -1,5 +1,6 @@
 //! Module for resource struct [`WorldSpawn`].
 
+use bevy::ecs::entity::Entity;
 use bevy::ecs::resource::Resource;
 use bevy::math::IVec3;
 
@@ -9,12 +10,15 @@ use bevy::math::IVec3;
 pub struct WorldSpawn {
     /// The block location of the world spawn, as 3 i32s.
     pub location: IVec3,
+
+    /// The entity representing the **world** that the player spawns in.
+    pub world: Entity,
 }
 
 impl WorldSpawn {
     /// Create a new instance of [`WorldSpawn`] with the given `location`.
     #[must_use]
-    pub const fn new(location: IVec3) -> WorldSpawn {
-        return WorldSpawn { location };
+    pub const fn new(location: IVec3, world: Entity) -> WorldSpawn {
+        return WorldSpawn { location, world };
     }
 }

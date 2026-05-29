@@ -28,7 +28,11 @@ impl ServerboundPacket for ServerboundSetPlayerPosition {
 
         return Some(Self {
             client,
-            position: EntityPosition { location, flags },
+            position: EntityPosition {
+                location,
+                flags,
+                world: None,
+            },
         });
     }
 }

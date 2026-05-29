@@ -17,7 +17,7 @@ pub fn send_world_spawn_on_join(
     for client in new_player_q {
         set_default_spawn_position_pw.write(ClientboundSetDefaultSpawnPosition {
             client,
-            dimension: "minecraft:overworld".to_owned(),
+            dimension: "minecraft:overworld".to_owned(), // TODO: get dimension from world_spawn.world
             location: world_spawn.location,
             pitch: 0.0,
             yaw: 0.0,
