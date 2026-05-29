@@ -1,14 +1,16 @@
 use crate::ServerboundPacket;
 use crate::network_messages::ServerboundNetworkPacket;
+use bevy::math::DVec3;
 use bevy::prelude::{Entity, Message};
 use meloncraft_client::connection_state::ConnectionState;
-use meloncraft_entity::position::{EntityPosition, flags::EntityPositionFlags};
+use meloncraft_entity::position::flags::EntityPositionFlags;
 use meloncraft_protocol_types::{ProtocolBuffer as _, ProtocolType as _};
 
 #[derive(Message, Debug, Clone)]
 pub struct ServerboundSetPlayerPosition {
     pub client: Entity,
-    pub position: EntityPosition,
+    pub location: DVec3,
+    pub flags: EntityPositionFlags,
 }
 
 impl ServerboundPacket for ServerboundSetPlayerPosition {
@@ -28,7 +30,8 @@ impl ServerboundPacket for ServerboundSetPlayerPosition {
 
         return Some(Self {
             client,
-            position: EntityPosition { location, flags },
+            location,
+            flags,
         });
     }
 }

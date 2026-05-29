@@ -22,6 +22,16 @@ pub struct EntityPositionFlags {
     pub pushing_against_wall: bool,
 }
 
+impl Default for EntityPositionFlags {
+    fn default() -> Self {
+        // these defaults may change in the future
+        return EntityPositionFlags {
+            on_ground: true,
+            pushing_against_wall: false,
+        };
+    }
+}
+
 impl From<u8> for EntityPositionFlags {
     fn from(value: u8) -> Self {
         return Self {

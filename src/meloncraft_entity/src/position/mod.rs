@@ -1,6 +1,7 @@
 //! Module for struct [`EntityPosition`] and submodules related to it.
 
 use bevy::ecs::component::Component;
+use bevy::ecs::entity::Entity;
 use bevy::math::DVec3;
 
 pub mod current_chunk;
@@ -25,6 +26,9 @@ pub struct EntityPosition {
     /// It can be thought of as a transform of the entity's feet in the world.
     /// Stored as a bevy [`DVec3`].
     pub location: DVec3,
+
+    /// The entity which represents the world the entity is currently in.
+    pub world: Entity,
 
     /// Extra metadata about the entity's position, such as whether the entity is on the ground or
     /// pushing against a wall. See [`EntityPositionFlags`] for more information about the flags

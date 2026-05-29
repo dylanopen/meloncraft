@@ -1,14 +1,16 @@
 //! Module for the [`Difficulty`] enum.
 
-use bevy::ecs::resource::Resource;
+use bevy::ecs::component::Component;
 
 /// The [`Difficulty`] enum stores variants for the 4 Minecraft difficulties:
 /// `Peaceful`, `Easy`, `Normal` and `Hard`.
 ///
+/// This is set per-world, so if you want it as a component, add it to each world you have.
+///
 /// See the variants' documentation or the Minecraft wiki for information on what the different
 /// difficulties do, as well as their protocol IDs.
 /// <https://minecraft.wiki/w/Difficulty>.
-#[derive(Resource, Debug, Clone, Copy, PartialEq, Eq, Hash)]
+#[derive(Component, Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum Difficulty {
     /// **Peaceful** [`Difficulty`].
     /// Protocol ID: `0`.

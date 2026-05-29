@@ -3,20 +3,25 @@
 
 use bevy::ecs::entity::Entity;
 use bevy::ecs::message::{MessageReader, MessageWriter};
+use bevy::ecs::query::With;
 use bevy::ecs::system::Query;
 use bevy::math::DVec3;
 use meloncraft_command::raw::RawCommand;
 use meloncraft_entity::position::EntityPosition;
 use meloncraft_entity::position::flags::EntityPositionFlags;
 use meloncraft_entity::position::teleport::TeleportEntity;
-use meloncraft_player::GameProfile;
+use meloncraft_player::{GameProfile, PlayerMarker};
 
 pub fn cmd_teleport(
     mut raw_command_mr: MessageReader<RawCommand>,
     player_profile_q: Query<(Entity, &GameProfile)>,
+    player_position_q: Query<&EntityPosition, With<PlayerMarker>>,
     mut teleport_entity_mw: MessageWriter<TeleportEntity>,
 ) {
     for raw_command in raw_command_mr.read() {
+        // world is relative to *executor*, for now:
+        let world = player_position_q.get(raw_command.executor).unwrap().world;
+
         if raw_command.name != "teleport" && raw_command.name != "tp" {
             return; // we don't care about other commands
         }
@@ -32,6 +37,7 @@ pub fn cmd_teleport(
         let entity = get_player_entity_by_name(player_name, player_profile_q).unwrap();
         let new_position = EntityPosition {
             location: DVec3::new(new_x, new_y, new_z),
+            world,
             flags: EntityPositionFlags {
                 on_ground: false,
                 pushing_against_wall: false,
