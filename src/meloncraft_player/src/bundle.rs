@@ -1,12 +1,41 @@
 use bevy::ecs::bundle::Bundle;
+use meloncraft_core::GameMode;
+use meloncraft_entity::health::current::CurrentHealth;
+use meloncraft_entity::health::food::{FoodHealth, FoodSaturation};
 use meloncraft_entity::position::EntityPosition;
 
 use crate::experience::Experience;
 use crate::marker::LoadedPlayer;
 use crate::{CanFly, CanInstantBreak, FlySpeed, FovModifier, Invulnerable, IsFlying};
 
+/// A bundle to represent a player who has just joined *and loaded into* the world.
+/// The components of this bundle is added to the existing client's entity, a new entity is not
+/// made.
+///
+/// ## Example
+/// Listen for players which have just joined (just had a [`PlayerMarker`] added)
+/// ```rust
+/// fn player_joined(
+///     mut commands: Commands,
+///     player_q: Query<Entity, Added<PlayerMarker>>,
+///     world_q: Query<Entity, With<Overworld>>,
+/// ) {
+///     let world = world_q.single().unwrap();
+///     for player in player_q {
+///         commands
+///             .entity(player)
+///             .insert(LoadedPlayerBundle::new(EntityPosition {
+///                 location: DVec3::new(0.0, 0.0, 0.0),
+///                 world,
+///                 flags: EntityPositionFlags::default(),
+///             }));
+///     }
+/// }
+/// ```
 #[derive(Bundle)]
 pub struct LoadedPlayerBundle {
+    pub loaded_player: LoadedPlayer,
+    pub entity_position: EntityPosition,
     pub is_flying: IsFlying,
     pub can_fly: CanFly,
     pub invulnerable: Invulnerable,
@@ -14,14 +43,18 @@ pub struct LoadedPlayerBundle {
     pub fly_speed: FlySpeed,
     pub fov_modifier: FovModifier,
     pub experience: Experience,
-    pub loaded_player: LoadedPlayer,
-    pub entity_position: EntityPosition,
+    pub current_health: CurrentHealth,
+    pub food_health: FoodHealth,
+    pub food_saturation: FoodSaturation,
+    pub gamemode: GameMode,
 }
 
 impl LoadedPlayerBundle {
     #[must_use]
     pub const fn new(position: EntityPosition) -> LoadedPlayerBundle {
         return LoadedPlayerBundle {
+            loaded_player: LoadedPlayer,
+            entity_position: position,
             is_flying: IsFlying(false),
             can_fly: CanFly(false),
             invulnerable: Invulnerable(false),
@@ -29,8 +62,10 @@ impl LoadedPlayerBundle {
             fly_speed: FlySpeed(0.05),
             fov_modifier: FovModifier(0.1),
             experience: Experience(0),
-            loaded_player: LoadedPlayer,
-            entity_position: position,
+            current_health: CurrentHealth(20.0),
+            food_health: FoodHealth(20),
+            food_saturation: FoodSaturation(5.0),
+            gamemode: GameMode::Creative,
         };
     }
 
