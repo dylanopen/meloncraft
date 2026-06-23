@@ -1,7 +1,7 @@
 use bevy::ecs::message::{MessageReader, MessageWriter};
-use meloncraft_chat::send::{SendChatMessage, SendTitleMessage};
+use meloncraft_chat::send::{SendActionbarMessage, SendChatMessage, SendTitleMessage};
 use meloncraft_chat::sent::PlayerSentChatMessage;
-use meloncraft_packets::{ClientboundSetTitleText, ClientboundSystemChat, ServerboundChat};
+use meloncraft_packets::{ClientboundSetActionbarText, ClientboundSetTitleText, ClientboundSystemChat, ServerboundChat};
 
 pub fn fwd_player_sent(
     mut chat_pr: MessageReader<ServerboundChat>,
@@ -38,6 +38,20 @@ pub fn fwd_send_title(
     for send_chat in send_title_mr.read() {
         for receiver in send_chat.receivers.clone() {
             set_title_text_pw.write(ClientboundSetTitleText {
+                client: receiver,
+                title: send_chat.message.clone(),
+            });
+        }
+    }
+}
+
+pub fn fwd_send_actionbar(
+    mut send_actionbar_mr: MessageReader<SendActionbarMessage>,
+    mut set_actionbar_text_pw: MessageWriter<ClientboundSetActionbarText>,
+) {
+    for send_chat in send_actionbar_mr.read() {
+        for receiver in send_chat.receivers.clone() {
+            set_actionbar_text_pw.write(ClientboundSetActionbarText {
                 client: receiver,
                 title: send_chat.message.clone(),
             });
