@@ -1,8 +1,8 @@
 use bevy::ecs::message::{MessageReader, MessageWriter};
-use meloncraft_chat::send::{SendChatMessage, SendTitleMessage};
+use meloncraft_chat::send::{ClearTitles, SendChatMessage, SendTitleMessage};
 use meloncraft_chat::sent::PlayerSentChatMessage;
 use meloncraft_chat::title::TitlePosition;
-use meloncraft_packets::{ClientboundSetActionbarText, ClientboundSetSubtitleText, ClientboundSetTitleText, ClientboundSystemChat, ServerboundChat};
+use meloncraft_packets::{ClientboundClearTitles, ClientboundSetActionbarText, ClientboundSetSubtitleText, ClientboundSetTitleText, ClientboundSystemChat, ServerboundChat};
 
 pub fn fwd_player_sent(
     mut chat_pr: MessageReader<ServerboundChat>,
@@ -61,6 +61,18 @@ pub fn fwd_send_title(
                     });
                 },
             }
+        }
+    }
+}
+
+pub fn fwd_clear_titles(
+    mut clear_title_mr: MessageReader<ClearTitles>,
+    mut clear_titles_pw: MessageWriter<ClientboundClearTitles>,
+) {
+    for send_title in clear_title_mr.read() {
+        for receiver in send_title.receivers.clone() {
+            // for now, we always 'reset'.
+            clear_titles_pw.write(ClientboundClearTitles { client: receiver, reset: true });
         }
     }
 }
