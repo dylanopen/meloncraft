@@ -66,6 +66,9 @@ pub use system_chat::ClientboundSystemChat;
 mod set_title_text;
 pub use set_title_text::ClientboundSetTitleText;
 
+mod set_subtitle_text;
+pub use set_subtitle_text::ClientboundSetSubtitleText;
+
 mod set_actionbar_text;
 pub use set_actionbar_text::ClientboundSetActionbarText;
 
@@ -79,7 +82,8 @@ pub fn register_clientbound_play_packets(app: &mut App) {
 
     app.add_message::<ClientboundPlayLogin>();
     app.add_systems(PostUpdate, fwd::<ClientboundPlayLogin>);
-app.add_message::<ClientboundSynchronizePlayerPosition>();
+
+    app.add_message::<ClientboundSynchronizePlayerPosition>();
     app.add_systems(PostUpdate, fwd::<ClientboundSynchronizePlayerPosition>);
 
     app.add_message::<ClientboundPlayerInfoUpdate>();
@@ -141,6 +145,9 @@ app.add_message::<ClientboundSynchronizePlayerPosition>();
 
     app.add_message::<ClientboundSetTitleText>();
     app.add_systems(PostUpdate, fwd::<ClientboundSetTitleText>);
+
+    app.add_message::<ClientboundSetSubtitleText>();
+    app.add_systems(PostUpdate, fwd::<ClientboundSetSubtitleText>);
 
     app.add_message::<ClientboundSetActionbarText>();
     app.add_systems(PostUpdate, fwd::<ClientboundSetActionbarText>);
