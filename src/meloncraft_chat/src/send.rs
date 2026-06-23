@@ -37,7 +37,17 @@ pub struct SendTitleMessage {
     /// `NbtString`, see [`NbtText`] for details.
     pub message: NbtText,
 
-    /// The position of the title message. Can be any variant of [`TitlePosition`]
+    /// The position of the title message. Can be any variant of [`TitlePosition`].
     pub position: TitlePosition,
+}
+
+/// Tell the client(s) that they should clear all titles from the screen.
+/// It **also** clears things such as title fade durations.
+#[derive(Message, Debug, Clone)]
+pub struct ClearTitles {
+    /// A list of player entities that should receive this message.
+    /// Listening systems should send a clear titles packet to all these clients.
+    /// This may contain every entity on the server.
+    pub receivers: Vec<Entity>,
 }
 
