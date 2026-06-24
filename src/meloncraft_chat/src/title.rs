@@ -4,11 +4,10 @@
 /// See the fields for more details.
 #[derive(Debug, Clone)]
 pub enum TitlePosition {
-
     /// Display the message in the middle of the screen.
     /// Largest font size.
     Title,
-    
+
     /// Display the message just below where a [`TitlePosition::Title`] would be,
     /// in a smaller font size.
     ///
@@ -25,7 +24,6 @@ pub enum TitlePosition {
 /// fade out.
 #[derive(Debug, Clone)]
 pub struct TitleTimings {
-
     /// The number of ticks that it takes for any titles to fade *in* on the client's screen.
     pub fade_in_ticks: i32,
 
@@ -35,4 +33,3 @@ pub struct TitleTimings {
     /// The number of ticks that it takes for any titles to fade *out* on the client's screen.
     pub fade_out_ticks: i32,
 }
-
