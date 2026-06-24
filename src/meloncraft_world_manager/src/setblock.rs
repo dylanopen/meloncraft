@@ -8,7 +8,7 @@ use bevy::math::UVec3;
 use meloncraft_block::set::SetBlock;
 use meloncraft_entity::position::EntityPosition;
 use meloncraft_packets::ClientboundBlockUpdate;
-use meloncraft_player::{ClientViewDistance, GameProfile};
+use meloncraft_player::{ClientViewDistance, PlayerMarker};
 use meloncraft_world::world::World;
 
 pub fn store_set_blocks(
@@ -41,7 +41,7 @@ pub fn store_set_blocks(
 
 pub fn send_set_blocks(
     mut set_block_mr: MessageReader<SetBlock>,
-    players: Query<(Entity, &ClientViewDistance, &EntityPosition), With<GameProfile>>,
+    players: Query<(Entity, &ClientViewDistance, &EntityPosition), With<PlayerMarker>>,
     mut block_update_pw: MessageWriter<ClientboundBlockUpdate>,
 ) {
     for set_block in set_block_mr.read() {
