@@ -12,6 +12,8 @@ impl Plugin for MeloncraftPacketForwardingPlugin {
 
         app.add_systems(Update, chat_message::fwd_player_sent);
         app.add_systems(Update, chat_message::fwd_send_chat);
+        app.add_systems(Update, chat_message::fwd_send_title);
+        app.add_systems(Update, chat_message::fwd_clear_titles);
 
         app.add_systems(Update, chat_command::fwd_raw_command);
     }
