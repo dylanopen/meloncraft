@@ -75,6 +75,9 @@ pub use set_actionbar_text::ClientboundSetActionbarText;
 mod clear_titles;
 pub use clear_titles::ClientboundClearTitles;
 
+mod set_title_animation_times;
+pub use set_title_animation_times::ClientboundSetTitleAnimationTimes;
+
 mod boss_event;
 pub use boss_event::BossEventAction;
 pub use boss_event::ClientboundBossEvent;
@@ -157,6 +160,9 @@ pub fn register_clientbound_play_packets(app: &mut App) {
 
     app.add_message::<ClientboundClearTitles>();
     app.add_systems(PostUpdate, fwd::<ClientboundClearTitles>);
+
+    app.add_message::<ClientboundSetTitleAnimationTimes>();
+    app.add_systems(PostUpdate, fwd::<ClientboundSetTitleAnimationTimes>);
 
     app.add_message::<ClientboundBossEvent>();
     app.add_systems(PostUpdate, fwd::<ClientboundBossEvent>);
