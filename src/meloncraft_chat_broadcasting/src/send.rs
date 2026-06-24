@@ -20,7 +20,7 @@ pub fn send_player_chat(
     for chat in player_sent_chat_mr.read() {
         let Ok(sender) = game_profile_q.get(chat.sender) else {
             warnlog!(
-                "Received PlayerSentChatMessage from entity {:?} without a GameProfile",
+                "Received PlayerSentChatMessage from entity {:?} without a GameProfile. Skipping message.",
                 chat.sender
             );
             continue;
@@ -34,3 +34,4 @@ pub fn send_player_chat(
         });
     }
 }
+

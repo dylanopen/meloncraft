@@ -1,6 +1,6 @@
 use bevy::app::{App, Plugin};
 
-use crate::send::SendChatMessage;
+use crate::send::{ClearTitles, SendChatMessage, SendTitleMessage};
 use crate::sent::PlayerSentChatMessage;
 
 /// This plugin initializes messages related to player chat messages.
@@ -13,5 +13,7 @@ impl Plugin for MeloncraftChatPlugin {
     fn build(&self, app: &mut App) {
         app.add_message::<PlayerSentChatMessage>();
         app.add_message::<SendChatMessage>();
+        app.add_message::<SendTitleMessage>();
+        app.add_message::<ClearTitles>();
     }
 }

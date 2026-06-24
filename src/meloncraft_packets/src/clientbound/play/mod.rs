@@ -63,6 +63,21 @@ pub use set_experience::ClientboundSetExperience;
 mod system_chat;
 pub use system_chat::ClientboundSystemChat;
 
+mod set_title_text;
+pub use set_title_text::ClientboundSetTitleText;
+
+mod set_subtitle_text;
+pub use set_subtitle_text::ClientboundSetSubtitleText;
+
+mod set_actionbar_text;
+pub use set_actionbar_text::ClientboundSetActionbarText;
+
+mod clear_titles;
+pub use clear_titles::ClientboundClearTitles;
+
+mod set_title_animation_times;
+pub use set_title_animation_times::ClientboundSetTitleAnimationTimes;
+
 mod boss_event;
 pub use boss_event::BossEventAction;
 pub use boss_event::ClientboundBossEvent;
@@ -133,6 +148,21 @@ pub fn register_clientbound_play_packets(app: &mut App) {
 
     app.add_message::<ClientboundSystemChat>();
     app.add_systems(PostUpdate, fwd::<ClientboundSystemChat>);
+
+    app.add_message::<ClientboundSetTitleText>();
+    app.add_systems(PostUpdate, fwd::<ClientboundSetTitleText>);
+
+    app.add_message::<ClientboundSetSubtitleText>();
+    app.add_systems(PostUpdate, fwd::<ClientboundSetSubtitleText>);
+
+    app.add_message::<ClientboundSetActionbarText>();
+    app.add_systems(PostUpdate, fwd::<ClientboundSetActionbarText>);
+
+    app.add_message::<ClientboundClearTitles>();
+    app.add_systems(PostUpdate, fwd::<ClientboundClearTitles>);
+
+    app.add_message::<ClientboundSetTitleAnimationTimes>();
+    app.add_systems(PostUpdate, fwd::<ClientboundSetTitleAnimationTimes>);
 
     app.add_message::<ClientboundBossEvent>();
     app.add_systems(PostUpdate, fwd::<ClientboundBossEvent>);
