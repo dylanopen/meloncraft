@@ -20,3 +20,19 @@ pub enum TitlePosition {
     /// Seemingly the smallest font size.
     Actionbar,
 }
+
+/// The amount of time that a title message takes to fade in, stay on the screen, and
+/// fade out.
+#[derive(Debug, Clone)]
+pub struct TitleTimings {
+
+    /// The number of ticks that it takes for any titles to fade *in* on the client's screen.
+    pub fade_in_ticks: i32,
+
+    /// The number of ticks that the title message should be fully shown for.
+    pub stay_ticks: i32,
+
+    /// The number of ticks that it takes for any titles to fade *out* on the client's screen.
+    pub fade_out_ticks: i32,
+}
+

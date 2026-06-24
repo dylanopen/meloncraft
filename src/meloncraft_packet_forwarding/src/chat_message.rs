@@ -2,7 +2,7 @@ use bevy::ecs::message::{MessageReader, MessageWriter};
 use meloncraft_chat::send::{ClearTitles, SendChatMessage, SendTitleMessage};
 use meloncraft_chat::sent::PlayerSentChatMessage;
 use meloncraft_chat::title::TitlePosition;
-use meloncraft_packets::{ClientboundClearTitles, ClientboundSetActionbarText, ClientboundSetSubtitleText, ClientboundSetTitleText, ClientboundSystemChat, ServerboundChat};
+use meloncraft_packets::{ClientboundClearTitles, ClientboundSetActionbarText, ClientboundSetSubtitleText, ClientboundSetTitleAnimationTimes, ClientboundSetTitleText, ClientboundSystemChat, ServerboundChat};
 
 pub fn fwd_player_sent(
     mut chat_pr: MessageReader<ServerboundChat>,
@@ -34,12 +34,16 @@ pub fn fwd_send_chat(
 
 pub fn fwd_send_title(
     mut send_title_mr: MessageReader<SendTitleMessage>,
+    mut set_title_animation_times_pw: MessageWriter<ClientboundSetTitleAnimationTimes>,
     mut set_title_text_pw: MessageWriter<ClientboundSetTitleText>,
     mut set_subtitle_text_pw: MessageWriter<ClientboundSetSubtitleText>,
     mut set_actionbar_text_pw: MessageWriter<ClientboundSetActionbarText>,
 ) {
     for send_title in send_title_mr.read() {
         for receiver in send_title.receivers.clone() {
+            if let Some(times) = &send_title.times {
+                set_title_animation_times_pw.write(ClientboundSetTitleAnimationTimes { client: receiver, fade_in_ticks: times.fade_in_ticks, stay_ticks: times.stay_ticks, fade_out_ticks: times.fade_out_ticks });
+            }
 
             match send_title.position {
                 TitlePosition::Title => {

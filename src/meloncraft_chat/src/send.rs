@@ -4,7 +4,7 @@ use bevy::ecs::entity::Entity;
 use bevy::ecs::message::Message;
 use meloncraft_text::NbtText;
 
-use crate::title::TitlePosition;
+use crate::title::{TitlePosition, TitleTimings};
 
 /// Message indicating that the server has sent a chat message to a list of clients.
 /// See the fields for more details.
@@ -39,6 +39,10 @@ pub struct SendTitleMessage {
 
     /// The position of the title message. Can be any variant of [`TitlePosition`].
     pub position: TitlePosition,
+
+    /// The animation timings that the title should be displayed with, or `None` to just
+    /// use the last title's settings.
+    pub times: Option<TitleTimings>,
 }
 
 /// Tell the client(s) that they should clear all titles from the screen.
@@ -50,4 +54,3 @@ pub struct ClearTitles {
     /// This may contain every entity on the server.
     pub receivers: Vec<Entity>,
 }
-
