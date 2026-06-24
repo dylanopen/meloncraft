@@ -34,4 +34,3 @@ pub fn send_player_chat(
         });
     }
 }
-

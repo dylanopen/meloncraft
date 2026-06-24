@@ -6,6 +6,7 @@ use meloncraft_entity::position::teleport::TeleportEntity;
 use meloncraft_logger::warnlog;
 use meloncraft_packets::{ClientboundSynchronizePlayerPosition, ServerboundSetPlayerPosition};
 use meloncraft_player::GameProfile;
+use meloncraft_player::marker::LoadedPlayer;
 
 /// System for forwarding player movement packets as [`EntityMoved`] messages.
 ///
@@ -19,7 +20,7 @@ use meloncraft_player::GameProfile;
 pub fn fwd_player_moved(
     mut set_position_pr: MessageReader<ServerboundSetPlayerPosition>,
     mut player_moved_mw: MessageWriter<EntityMoved>,
-    existing_positions: Query<&EntityPosition, With<GameProfile>>,
+    existing_positions: Query<&EntityPosition, With<LoadedPlayer>>,
 ) {
     for packet in set_position_pr.read() {
         let Ok(old_position) = existing_positions.get(packet.client) else {
